@@ -1,0 +1,8 @@
+{%- assign p = include.p %}
+{%- if p.path contains 'index.html' %}
+{%- assign pageurl = p.url | remove: "/index" %}
+{%- else %}
+{%- assign path_depth = p.url | split: '/' | size | minus: 2 %}
+{%- assign path_sections = p.path | remove: '_' | split: '/' %}
+{% capture pageurl %}{% for _sections in path_sections limit: path_depth %}{{ _sections }}/{% endfor %}{% endcapture %}
+{%- endif %}

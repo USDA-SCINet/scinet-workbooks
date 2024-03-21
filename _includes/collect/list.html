@@ -1,0 +1,25 @@
+{% assign tsets = include.set %}
+{% assign aclass = include.aclass %}
+
+{% if tsets.org %}
+    {% include collect/pagesubset subset=include.mysubset post=tsets %}
+{% else %}
+    {% assign pwb = tsets.wbs %}
+    {% assign ptags = tsets.tags %}
+    {% assign ptypes = tsets.type %}
+    {% assign pdifficulties = tsets.level %}   
+{% endif %}
+
+{% include collect/li.html ttsets=tsets class=include.class aclass=include.aclass %}
+{% if tsets.org %}
+    {% unless pssize == 0 %}
+<ul class="">
+    {% assign _usubset = pagesubset %}
+    {% unless include.loop=="looped" %}{% assign smallersubset=mypagesubset %}{% endunless %}
+    {% for _set in _usubset %}
+        {% include collect/list.html set=_set mysubset=smallersubset class="" loop="looped" %}
+    {% endfor %}
+</ul>
+{% endunless %}
+{% endif %}
+</li>

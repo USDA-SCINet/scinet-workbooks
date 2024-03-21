@@ -1,0 +1,12 @@
+{% assign cats = include.posts %}
+
+<div class="grid-row grid-gap">
+    <div class="tablet:grid-col-6">
+        {% if include.heading %}<h3 class="site-preview-heading">{{ include.heading }}</h3>{% endif %}
+      <ul class="usa-collection">
+        {% for _page in cats %}
+        {% include components/component/info-card.html option=_page %}
+        {% endfor %}
+      </ul>
+    </div>
+</div>

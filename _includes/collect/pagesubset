@@ -1,0 +1,25 @@
+{%- assign pagesubset = "" | split: "" %}
+{%- assign mpost = include.post %}
+{%- assign postslug = mpost.slug | append: mpost.ext %}
+{% capture postpath %}{{ mpost.path | remove: postslug }}{% endcapture %}
+{%- assign depthcount = mpost.org | plus: 1 %}
+
+{%- assign mypagesubset = include.subset | where_exp: "item", "item.path contains postpath" %}
+{%- if mypagesubset | size > 1 %}
+    {%- for _sets in mypagesubset %}
+        {%- unless _sets.path == mpost.path %}
+            {%- assign sslug = _sets.slug | append: _sets.ext %}
+            {%- capture setpath %}{{ _sets.path | remove: sslug }}{% endcapture %}
+            {%- if setpath == postpath or _sets.org == depthcount %}
+                {% assign pagesubset = pagesubset | push: _sets %}
+            {%- endif %}
+        {%- endunless %}
+    {%- endfor %}
+    {%- assign pagesubset = pagesubset | sort: ordered %}
+{%- endif %}
+{%- assign pssize = pagesubset | size %}
+
+{% assign pwb = mypagesubset | map: 'wbs' | uniq %}
+{% assign ptags = mypagesubset | map: 'tags' | uniq %}
+{% assign ptypes = mypagesubset | map: 'type' | uniq %}
+{% assign pdifficulties = mypagesubset | map: 'level' | uniq %}

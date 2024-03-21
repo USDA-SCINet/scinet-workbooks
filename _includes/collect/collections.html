@@ -1,0 +1,28 @@
+{% if include.outer %}{% assign outer = include.outer %}
+{% elsif include.lvl %}
+{% assign outer = site['workbooks'] | where: 'org', include.lvl | sort: "ordered" %}
+{% else %}
+{% assign outer = site['workbooks'] | where: 'org', 1 | sort: "ordered" %}
+{% endif %}
+
+{% assign inner = include.inner | default: site['workbooks'] %}
+
+{% assign wbs = inner | map: 'wbs' | uniq %}
+{% assign tags = inner | map: 'tags' | uniq %}
+{% assign types = inner | map: 'type' | uniq %}
+{% assign difficulties = inner | map: 'level' | uniq %}
+{% assign pagetitle = page.slug %}
+{% assign cal_id = pagetitle | prepend: "cal-" %}
+{% assign sort_list = true %}
+
+<div class="grid-row grid-gap display-flex flex-column flex-align-center">
+  <div class="padding-bottom-2 bg-base-lighter tablet-lg:width-tablet">
+      {% if include.heading %}<h3 class="site-preview-heading">{{ include.heading }}</h3>{% endif %}
+      {% include collect/collect-filter.html %}
+    <ul class="usa-collection border-x border-bottom padding-bottom-2 bg-white">
+      {% for _page in outer %}
+        {% include collect/info-card.html option=_page subset=inner %}
+      {% endfor %}
+    </ul>
+  </div>
+</div>

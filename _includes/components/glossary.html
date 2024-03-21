@@ -1,0 +1,17 @@
+<div class="home-block">
+    {% assign gloss_letters = site.data.glossary['glossary'] | sort: 'term' 
+    | group_by_exp: "item", "item.term | slice: 0, 1" %}
+    
+    {% for letter in gloss_letters %}
+    <div class="padding-bottom-2 tablet-lg:width-tablet">
+    <h2>
+        {{ letter.name }}
+    </h2>
+    <ul class="usa-collection border-x border-bottom padding-bottom-2 ">
+        {% for _mterm in letter.items %}
+            {% include components/component/term-card.html option=_mterm %}
+        {% endfor %}
+    </ul>
+    </div>
+    {% endfor %}
+</div>

@@ -1,0 +1,26 @@
+{%- assign overlay = hero.overlay_color | default: 'primary-darker' -%}
+{%- assign callout = hero.callout_color | default: overlay -%}
+{%- assign title_color = hero.title_color | default: white -%}
+{%- assign subtitle_color = hero.subtitle_color | default: 'white' -%}
+<section class="{% if hero.image %}usa-hero{% else %}no-hero-img{% endif %} bg-{{ overlay }}" {% if hero.image %}style="background-image: url({{ hero.image }})"{% endif %}
+  aria-label="Introduction" ;
+  >
+  <div class="grid-container {% unless hero.image %} full{% endunless %}">
+    <div class="usa-hero__callout bg-{{ callout }}">
+          <h1 class="usa-hero__heading">
+            <span class="usa-hero__heading--alt text-{{ title_color }}">{% if hero.title %}{{ hero.title }}{% else %}{{ page.title }}{% endif %}</span>
+          </h1>
+            {%- if hero.subtitle -%}
+            <span class="font-heading-md text-bold text-{{ subtitle_color }}">
+              {{ hero.subtitle }}
+            </span>
+            {%- endif -%}
+
+          {%- if hero.button -%}
+          <a class="usa-button" href="{% include url.html link=hero.button %}">
+            {{ hero.button.text }}
+          </a>
+          {%- endif -%}
+    </div>
+  </div>
+</section>

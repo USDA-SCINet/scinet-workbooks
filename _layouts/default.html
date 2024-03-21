@@ -1,0 +1,46 @@
+---
+main: foo, bar, qaz
+scripts: /assets/js/external.js
+---
+
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: 'en-US' }}">
+
+<head>
+  {% include layout/meta.html %}
+  {% include layout/styles.html %}
+  {%- if site.google_analytics_ua or site.dap_agency -%}
+  {% include layout/analytics.html %}
+  {%- endif -%}
+  <script>0</script>
+</head>
+
+<body class="{%- if site.site_width -%}site-{{ site.site_width }}{%- endif -%}">
+
+    {% include layout/skipnav.html %}
+    {% include layout/header.html %}
+
+    <main id="main-content" {% for _attr in layout.main %} {{ _attr[0] }}="{{ _attr[1] }}" {% endfor %}>
+
+        {%- if page.alerts -%}
+        <div aria-label="Alerts">
+          <section class="grid-container">
+          {% for _alert in page.alerts %}
+          {% include alert.html alert=_alert %}
+          {% endfor %}
+          </section>
+        </div>
+        {%- endif -%}
+        {% assign hero = page.header %}{% include layout/hero.html %}
+
+        {{ content }}
+        <br>
+
+    </main>
+    {% include layout/footer.html %}
+
+    {% include layout/scripts.html %}
+  
+  </body>
+  
+  </html>

@@ -1,0 +1,11 @@
+{%- if page.author or page.authors -%}
+<div class="grid-container" id="authors">
+{%- if page.author -%}
+<h2>About the Author</h2>
+{% include components/bio.html author=page.author %}
+{%- elsif page.authors -%}
+<h2>About the Authors</h2>
+{% include components/bio.html authors=page.authors %}
+{%- endif -%}
+</div>
+{%- endif -%}

@@ -1,0 +1,18 @@
+{%- assign section = page[{{include.section}}] -%}
+{%- capture includecomp -%}components/{{ section.comp }}.html{%- endcapture -%}
+<div class="grid-row {{ section.s_class }}" aria-label="{{ section.label }}">
+    {%- if section.container -%}<div class="grid-container sci-container {{ section.container }}">{%- endif -%}
+        {%- if section.collect -%}
+            {%- if section.collect == "workbooks" -%}
+                {% assign myposts = site["compiled"] | sort: "ordered" %}
+            {%- elsif section.collect=="authors" -%}
+                {% assign myposts = site.data.authors %}
+            {%- else -%}
+                {% assign myposts = include.collect %}
+            {%- endif -%}
+            {%- include {{ includecomp }} data=section collected=myposts -%}
+        {%- else -%}
+            {%- include {{ includecomp }} data=section -%}
+        {%- endif -%}
+    {%- if section.container -%}</div>{%- endif -%}
+</div>

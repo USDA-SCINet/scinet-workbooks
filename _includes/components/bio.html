@@ -1,0 +1,16 @@
+<div class="home-block">
+    <ul class="usa-card-group">
+    {%- if include.authors -%}
+        {% for _author in include.authors %}
+            {% include components/component/bio-card.html author=_author.author %}
+        {% endfor %}
+    {%- elsif include.author -%}
+        {% include components/component/bio-card.html author=include.author %}
+    {%- else -%}
+    {% for authors in include.collected %}
+        {% assign authorname = authors[0] %}
+        {% include components/component/bio-card.html author=authorname %}
+    {% endfor %}
+    {%- endif -%}
+</ul>
+</div>

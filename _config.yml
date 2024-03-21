@@ -1,0 +1,196 @@
+title: "SCINet | USDA Scientific Computing Initiative"
+description: SCINet is a USDA initiative to provide agricultural scientists access to high performance computing, networking and training
+short_name: "SCINet"
+language: "en"
+lang_direction: "ltr"
+timezone: America/New_York
+icon: "https://scinet.usda.gov/assets/img/site/favicons/favicon.png"
+
+# GitHub information
+# This is used for adding an edit this page link to the footer
+github:
+  organization: USDA-SCINet
+  repository: scinet-site
+  default_branch: main
+
+
+baseurl: ""
+url: "https://scinet.usda.gov"
+
+# Configure a separator for post excerpts
+excerpt_separator: <!--excerpt-->
+
+# Configuration for setting the site width to 100%
+# To enable, uncomment the following line
+# site_width: wide
+site_width: 90%
+
+
+# Configuration for Google Analytics, add your UA code here:
+# google_analytics_ua: UA-????????-??
+
+# Configuration for DAP, add your agency ID here:
+dap_agency: USDA
+dap_subagency: ARS
+
+# Uncomment to enable AnchorJS functionality on docs layout.
+# See https://github.com/bryanbraun/anchorjs for more information.
+anchor_js_targets: [h2, h3, h4, h5, h6]
+
+# Enables Private Eye functionality.
+# See https://github.com/18F/private-eye for more information.
+# Private Eye configuration is in assets/js/main.js
+# private_eye: true
+
+# To enable search, uncomment the search section
+# You will need to setup a search account with search.gov
+# https://search.usa.gov/signup
+# Your search_site_handle value is from the search.gov settings page.
+
+# Your search_site_handle value is from the search.gov settings page.
+search_site_handle: scinet-usda
+
+# touchpoints_form_id:
+
+# Configuration for projects and team collections
+# See https://jekyllrb.com/docs/collections/ for more information about collections.
+collections_dir: workbooks
+collections:
+  workbooks:
+    output: true
+    permalink: /:collection/:path
+  compiled:
+    output: true
+    permalink: /:path
+
+defaults:
+  - 
+    scope:
+      path: ""
+      type: "workbooks"
+    values:
+      layout: "single"
+  - 
+    scope:
+      path: ""
+      type: "compiled"
+    values:
+      layout: "single"
+      org: 0
+  -
+    scope:
+      path: "workbooks/_workbooks/command-line"
+    values:
+      header:
+        image: /assets/img/data_science_workbook_banner.png
+  # - 
+  #   scope:
+  #     path: ""
+  #     type: "events-recurring"
+  #   values:
+  #     future: "show"
+  #     layout: "event"
+  #     cal-titles: "hide"
+  #     sidenav_link: /training/events/
+  #     recurring: true
+  # -
+  #   scope:
+  #     path: ""
+  #     type: "announcements"
+  #   values:
+  #     future: "show"
+  #     layout: "post"
+  #     categories: [Announcements]
+  #     sidenav_link: /news/announcements
+  # -
+  #   scope:
+  #     path: ""
+  #     type: "posts"
+  #   values:
+  #     layout: "post"
+  #     sidenav_link: /news/stories
+  #     breadcrumb_title: "Selected Story"
+  # - 
+  #   scope:
+  #     path: ""
+  #     type: "workshops"
+  #   values:
+  #     future: "show"
+  #     layout: "page"
+  #     layout_type: "workshop"
+  # - 
+  #   scope:
+  #     path: ""
+  #     type: "guidecategory"
+  #   values:
+  #     layout: "guides"
+  #     layout_type: "guides"
+  #     sidenav_link: /guides/
+  #     class: "guide-nav"
+  # - 
+  #   scope:
+  #     path: ""
+  #     type: "guides"
+  #   values:
+  #     layout: "page"
+  #     layout_type: "guides"
+  #     sidenav_link: /guides/
+  # - 
+  #   scope:
+  #     path: ""
+  #     type: "tutorials"
+  #   values:
+  #     layout: "page"
+  #     sidenav_link: /guides/
+  # - 
+  #   scope:
+  #     path: ""
+  #     type: "downtime"
+  #   values:
+  #     alt-title: "TRUE"
+
+# allow posts with dates in the future to be published now
+future: true
+
+# Compress Sass
+sass:
+  style: compressed
+
+# Add code blocks to text
+highlighter: rouge
+
+plugins:
+  - jekyll-last-modified-at
+  - jekyll-sitemap
+  - jekyll-redirect-from
+
+# https://designsystem.digital.gov/documentation/developers/#sass-compilation-requirements
+autoprefixer:
+  browsers:
+    - "> 2%"
+    - last 2 versions
+    - IE 11
+    - not dead
+
+
+# Exclude from processing.
+# The following items will not be processed, by default.
+# Any item listed under the `exclude:` key here will be automatically added to
+# the internal "default list".
+#
+# Excluded items can be processed by explicitly listing the directories or
+# their entries' file path in the `include:` list.
+#
+exclude:
+  - .sass-cache/
+  - .jekyll-cache/
+  - gemfiles/
+  - Gemfile
+  - Gemfile.lock
+  - node_modules/
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  - package.json
+  - gulpfile.js

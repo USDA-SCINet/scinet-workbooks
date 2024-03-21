@@ -1,0 +1,7 @@
+{% assign bg-color = include.bg | default: "primary-lighter" %}
+<div class="bg-{{ bg-color }} padding-2 margin-2">
+    {% if include.header %}{{ include.header | markdownify }}{% endif %}
+    <span>
+    {{ include.text | markdownify }}
+    </span>
+</div>

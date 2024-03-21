@@ -1,0 +1,37 @@
+<div class="grid-row bg-base-lighter" >
+    <div class="sci-container grid-container margin-y-2">
+    
+    <h2>Workbook Navigation</h2>
+    <ul class="">
+      
+      <li class="">
+        <b>Section Index:</b> <a href="{{ prevTOC.last.url  | relative_url }}" class="">{{ prevTOC.last.title }}</a>
+      </li>
+    
+      {% unless page.path contains 'index.html' or page.org or page.previous.url == prevTOC.last.url %}
+      <li class="">
+        <b>Previous {% if page.previous.type %}{{ page.previous.type | capitalize }}{%else %}Lesson{%endif%}:</b> <a href="{{ page.previous.url  | relative_url }}" class="">{{ page.previous.title }}</a>
+      </li>
+      {% endunless %}
+      {%- assign sortpostsize = sortposts | size %}
+      {%- if sortpostsize > 0 %}
+      {%- if page.org %}
+      {%- for _next in sortposts limit: 1 %}
+      <li class="">
+        <b>Next  {% if _next.type %}{{ _next.type | capitalize }}{%else %}Lesson{%endif%}:</b> <a href="{{ _next.url  | relative_url }}" class="">{{ _next.title }}</a>
+      </li>
+      {%- endfor %}
+      {%- elsif page.next.org and page.next.org < prevTOC.last.org %}
+    </ul>
+      <b>Next Workbook:</b> <a href="{{ page.next.url  | relative_url }}" class="">{{ page.next.title }}</a>
+      {%- else %}
+      <li class="">
+        <b>Next {% if page.next.type %}{{ page.next.type | capitalize }}{%else %}Lesson{%endif%}:</b> <a href="{{ page.next.url  | relative_url }}" class="">{{ page.next.title }}</a>
+      </li>
+    </ul>
+      {%- endif %}
+      {%- else %}
+    </ul>
+      {%- endif %}
+    </div>
+    </div>

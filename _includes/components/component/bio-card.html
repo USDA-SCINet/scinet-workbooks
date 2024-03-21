@@ -1,0 +1,45 @@
+{% assign author = include.author %}
+{% assign author = site.data.authors[author] | default: author %}
+
+<li class="usa-card usa-card--flag">
+    <div class="usa-card__container">
+      <div class="usa-card__header">
+        <h2 class="usa-card__heading no_toc">{{ author.name }}</h2>
+      </div>
+      {% if author.avatar %}
+        {%- if author.avatar contains "://" -%}
+            {%- assign author_src = author.avatar -%}
+        {%- else -%}
+            {%- assign author_src = author.avatar | relative_url -%}
+        {%- endif -%}
+      <div class="usa-card__media usa-card__media--inset">
+        <div class="usa-card__img">
+          <img
+            src="{{ author_src }}"
+            alt="{{ author.name }}"
+          />
+        </div>
+      </div>
+      {% endif %}
+      <div class="usa-card__body">
+        {% if author.bio %}
+        <p>{{ author.bio }}</p>
+        {% endif %}
+      </div>
+      <div class="usa-card__footer">
+        {% if author.contact %}
+        <div class="grid-col-auto">
+            {% for _link in author.contact %}
+            {% capture svgname %}{% if _link[0]=="website" %}account_circle{% elsif _link[0]=="email" %}mail{% else %}{{ _link[0] }}{% endif %}{% endcapture %}
+            <a class="usa-social-link ext-nested" style="padding-right: .25rem;" href="{{ _link[1] }}"
+            ><img
+              class="usa-social-link__icon"
+              src="/assets/uswds/img/usa-icons/{{ svgname | default: 'generic' }}.svg"
+              alt="{{ _link[0] }}"
+          /></a>
+            {% endfor %}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </li>

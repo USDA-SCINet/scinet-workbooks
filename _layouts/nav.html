@@ -1,0 +1,73 @@
+---
+layout: default
+main:
+  class: usa-layout-docs usa-layout-docs__main usa-prose 
+
+wbComp:
+  url: /workbooks
+  title: All Workbooks
+---
+
+{% if page.sidenav  == false or page.layout == 'page' %}
+<div class="{{ layout.main.class }}" aria-label="{{ page.title }}" id="page-contents"></div>
+{% if page.class %}<div class="{{ page.class }}">{% endif %}
+{{ content }}
+{% if page.class %}</div>{% endif %}
+
+<br>
+</div>
+{% else %}
+
+{% include TOC-sort %}
+{% assign prevTOClength = prevTOC | size %}
+
+  
+    <div class="grid-container main-side">
+  <div class="grid-row grid-gap flex-align-start">
+      <div class="usa-layout-docs__sidenav desktop:grid-col-3 desktop:padding-y-10{% unless page.sidenav %} usa-sticky-sidenav{% endunless %}">
+
+          <nav aria-label="Secondary navigation">
+            {% include sidenav.html html=content h_max=2 class="usa-sidenav" anchor_class="usa-sidenav__item" submenu_class="usa-sidenav__sublist" prevsn=prevTOC postsn=afterTOC %}
+          </nav>
+      </div>
+      
+      <div class="usa-layout-docs__main desktop:grid-col-9">
+        {% unless prevTOClength == 0 %}
+          {% include layout/breadcrumb.html %}
+          {% endunless %}
+          <div class="{{ layout.main.class }}" aria-label="{{ page.title }}" id="page-contents">
+  
+          {{ content }}
+
+          {% if page.org == 0 %}
+          <br>
+              {% include collect/collections.html outer=sortposts inner=taggedposts %}
+
+
+          {% elsif page.org == 0.5 %}
+
+          {% elsif page.org %}
+          <br>
+          {% include collect/collections.html outer=sortposts inner=subsetposts %}
+
+
+          
+          {% endif %}
+
+          <br>
+        </div>
+
+
+
+  </div>
+</div>
+</div>
+</div>
+
+
+{% unless prevTOClength == 0 %}
+{% include collect/wb-nav.html %}
+{% endunless %}
+  
+{% include authors.html %}
+{% endif %}

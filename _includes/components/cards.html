@@ -1,0 +1,30 @@
+{%- assign cards = include.data -%}
+{%- if include.collected -%}
+    {% assign mycards = cards.cards | concat: include.collected %}
+{%- else -%}
+    {% assign mycards = cards.cards %}
+{%-endif -%}
+
+{%- if cards.title -%}
+<h2>{{ cards.title }}</h2>
+{%- endif -%}
+<div class="home-block">
+    <ul class="usa-card-group {% if cards.button %}margin-bottom-2{% endif %}">
+    {%- if cards.format -%}
+        {%- for _card in mycards -%}
+        {% include components/component/{{ cards.format }}-card.html option=_card %}
+        {%- endfor -%}
+    {%- else -%}
+        {%- for _card in mycards -%}
+        {% include components/component/card.html card=_card %}
+        {%- endfor -%}
+    {%- endif -%}
+    </ul>
+    {%-  if cards.button -%}
+    <div class="right-button">
+        <a class="usa-button" href="{% include url.html link=cards.button %}">
+            {{ cards.button.text }}
+        </a>
+    </div>
+    {%- endif -%}
+</div>

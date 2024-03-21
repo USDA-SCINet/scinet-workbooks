@@ -1,0 +1,15 @@
+---
+layout: page
+main:
+class: usa-grid usa-content usa-layout-docs maxw-tablet margin-x-auto
+
+---
+
+<div class="{% unless page.sidenav %}grid-container main-side{%endunless%}">
+    
+    <p>{% if page.author %}<b>By: <a href="#authors">{{ page.author }}</a></b>{% endif %}
+        {% if page.authors %}<b>By: <a href="#authors">{% for _author in page.authors %}{{ _author.author }}{% if forloop.last == false %}, {% endif %}{% endfor %}</a></b>{% endif %}
+    {% if page.affiliation %}</br><b>{{ page.affiliation }}</b>{% endif %}</p>
+
+{{ content }}
+</div>
