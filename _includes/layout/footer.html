@@ -93,9 +93,9 @@
           </div>
           {%- endfor -%}
           {%- else -%}
-          {%- assign header = site.data.sitedata -%}
+          {%- assign header = site.data.header %}
           <div class="mobile-lg:grid-col-auto footer-flex">
-          {%- include layout/components/logo.html signature=header -%}
+          {% include layout/components/logo.html signature=header %}
           </div>
           {%- endif -%}
 
