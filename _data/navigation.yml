@@ -16,19 +16,62 @@ sidenav-breakpoint: 'desktop'
 primary:
   - title: Home
     url: /
-  - title: Categories
+  - title: Core Skills
     links:
-      - title: Data Science
+      - title: Command Line
+        url: /command-line/
+      - title: Local Machine Setup
+        url: /computing-machine/
+      - title: High Performance Computing
+        url: /intro-hpc/
+      - title: Development Environment
+        url: /development-environment/
+      - title: Programming Fundamentals
+        url: /programming/
+      - title: Data Acquisition
+        url: /data-acquisition/
+      - title: Data Wrangling
+        url: /data-wrangling/
+      - title: Data Visualization
+        url: /data-visualization/
+      - title: Project Management (?)
+        url: /project-management/
+#      - title: Test
+#        url: /test/
+#      - title: Demo
+#        url: /demo-files/
+  - title: Data Domains
+    links:
+      - title: <i>Introduction to Data Science</i>
         url: /data-science/
-      - title: Geospatial
-        url: /geospatial/
-      - title: Bioinformatics
+      - title: Sequence Bioinformatics
         url: /bioinformatics/
-      - title: Test
+      - title: Molecular Structure & Dynamics
+        url: /structure-dynamics/
+      - title: Integrative Systems Biology
+        url: /integrative-biology/
+      - title: Environment & Ecosystems
+        url: /environment/
+      - title: Geospatial Earth Observations
+        url: /geospatial/
+
+  - title: Research Groups
+    links:
+      - title: Arthropod Genomics (AG)
         url: /test/
-      - title: Demo
-        url: /demo-files/
-  - title: Find a Workbook
+      - title: Translational Omics (TO)
+        url: /test/
+      - title: Microbiome Research (MR)
+        url: /test/
+      - title: Protein Function and Phenotype Prediction (PFPP)
+        url: /test/
+      - title: Pollinator Research (PR)
+        url: /test/
+      - title: Geospatial Research (GR)
+        url: /test/
+      - title: Agroecosystem Phenology (LTAR)
+        url: /test/
+  - title: Workbook Finder
     url: /workbooks
   - title: Glossary
     url: /glossary
@@ -45,7 +88,7 @@ primary:
 
 footer:
   - title: RESOURCES
-    links: 
+    links:
     - title: Feedback
       url: mailto:scinet_vrsc@usda.gov
       external: true
@@ -89,4 +132,3 @@ footer:
     - title: Information Quality
       url: https://www.ocio.usda.gov/policy-directives-records-forms/information-quality-activities
       external: true
-
