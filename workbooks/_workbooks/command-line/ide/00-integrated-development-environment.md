@@ -3,12 +3,11 @@ title: "Integrated & Interactive Development Environment (IDE)"
 layout: single
 author: Sharu Paul
 
-
+header:
+  overlay_color: "444444"
+  overlay_image: 04-devel-environment/assets/images/04_development_envir_banner.png
 org: 2
 ordered: 1
-tags: data-science
-wbs: data-science
-description: Describe the workbook for index and search purposes
 ---
 
 
