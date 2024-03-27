@@ -16,8 +16,9 @@
 {% assign sort_list = true %}
 
 <div class="grid-row grid-gap display-flex flex-column flex-align-center">
+  {% if include.heading %}<h1 id="{{include.heading | slugify }}">{{ include.heading }}</h1>{% endif %}
   <div class="padding-bottom-2 bg-base-lighter tablet-lg:width-tablet">
-      {% if include.heading %}<h3 class="site-preview-heading">{{ include.heading }}</h3>{% endif %}
+      
       {% include collect/collect-filter.html %}
     <ul class="usa-collection border-x border-bottom padding-bottom-2 bg-white">
       {% for _page in outer %}
