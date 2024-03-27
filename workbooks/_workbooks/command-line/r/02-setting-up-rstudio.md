@@ -13,7 +13,7 @@ level: beginner
 ---
 
 
-{% include images_path %}
+
 
 
 ---
