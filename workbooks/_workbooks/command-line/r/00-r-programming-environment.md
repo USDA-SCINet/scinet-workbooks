@@ -12,7 +12,7 @@ wbs: data-science
 description: Describe the workbook for index and search purposes
 ---
 
-
+{% include images_path %}
 
 
 
