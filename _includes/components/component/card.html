@@ -1,4 +1,10 @@
 {% assign card = include.card %}
+{% if cardmedia == 1 or card.feature-img-src %}
+{% assign imgsrc = card.feature-img-src | default: '/assets/img/programming_intro_section_gallery.png' %}
+{% assign imgalt = card.feature-img-alt | default: '' %}
+{% else %}
+{% assign imgsrc = 0 %}
+{% endif %}
 
 <li class="usa-card {{ classes }} {% if card.url %}featured_posts{% endif %}">
     {% if card.url %}
@@ -6,18 +12,18 @@
         {% endif %}
       <div class="usa-card__container">
       <div class="usa-card__header">
-        <h2 class="usa-card__heading">{{ card.title }}</h2>
+        <h3 class="usa-card__heading no_toc">{{ card.title }}</h3>
       </div>
-      {% if card.feature-img-src %}
+      {% unless imgsrc == 0 %}
       <div class="usa-card__media">
         <div class="usa-card__img padding-05    feature_img">
-          <img class="maxh-card" src="{{ card.feature-img-src | relative_url }}" alt="{{ card.feature-img-alt }}" />
+          <img class="maxh-card" src="{{ imgsrc | relative_url }}" alt="{{ imgalt }}" />
         </div>
       </div>
-      {% endif %}
+      {% endunless %}
       <div class="usa-card__body">
         <p>
-          {{ card.excerpt }}
+          {{ card.description }}
         </p>
       </div>
     </div>

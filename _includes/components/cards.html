@@ -5,9 +5,10 @@
     {% assign mycards = cards.cards %}
 {%-endif -%}
 
-{%- if cards.title -%}
-<h2>{{ cards.title }}</h2>
-{%- endif -%}
+{% capture sectitle %}{%- if cards.title or include.title -%}<h2>{{ include.title | default: cards.title }}</h2>{%- endif -%}{% endcapture %}
+
+{{ sectitle }}
+
 <div class="home-block">
     <ul class="usa-card-group {% if cards.button %}margin-bottom-2{% endif %}">
     {%- if cards.format -%}

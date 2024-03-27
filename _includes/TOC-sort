@@ -31,9 +31,11 @@
 
           
         {% assign prevTOC = prevTOC | unshift: layout.wbComp %}  
+
+        {% assign pTOC = prevTOC %}
         
         {% else %}
-        
+        {% assign pTOC = prevTOC | unshift: layout.wbComp %}  
 
         {%- assign pagepath = page.slug | append: page.ext %}
         {% capture pageurl %}{{ page.path | remove: pagepath }}{% endcapture %}
