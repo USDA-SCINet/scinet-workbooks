@@ -1,0 +1,30 @@
+
+/*** Overwrite the default page template settings ***/
+
+/* makes navigation bar wide enough to keep all tabs inline */
+.usa-header--extended .usa-nav__inner {
+  @media (min-width: 64em) {
+    max-width: 75rem;
+  }
+}
+
+/* makes navigation dropdowns wide enough to keeps items inline */
+.usa-nav__submenu {
+  @media (min-width: 64em) {
+    width: 17rem;
+  }
+}
+
+/* aligns page title with the USDA logo and keeps subtitle inline */
+.usa-hero__callout {
+  @media (min-width: 40em) {
+    max-width: 75rem;
+    padding-left: 0.1rem;
+  }
+}
+
+.usa-hero__heading {line-height: 1.6;}
+.font-heading-md {font-size: 1.2rem;}
+
+
+/*** Create styles for custom components ***/
