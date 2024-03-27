@@ -99,7 +99,7 @@
         var difficulties = document.getElementById("{{ difficultyid }}");
         var topics = document.getElementById("{{ topicsid }}");
 
-        {% unless page.org == 0 %}let wb = wbs.value.toLowerCase();{% endunless %}
+        {% unless page.org == 0 %}let wb = wbs.value.toLowerCase().replace(" ", "-");{% endunless %}
         let type = types.value.toLowerCase(),
             difficulty = difficulties.value.toLowerCase(),
             topic = topics.value.toLowerCase().replace(" ", "-");
@@ -115,7 +115,7 @@
             if (mylist[i].classList.contains("no-display")) { }
             else mylist[i].classList.add("no-display");
 
-            {% unless page.org == 0 %}let thiswb = mylist[1].getAttribute('wb');{% endunless %}
+            {% unless page.org == 0 %}let thiswb = mylist[i].getAttribute('wb');{% endunless %}
             let thistype = mylist[i].getAttribute('type'),
                 thisdifficulty = mylist[i].getAttribute('difficulty'),
                 thistopic = mylist[i].getAttribute('tagged');
@@ -157,7 +157,7 @@
         } else {
             current = '<b>Current Filters: </b>';
             {% unless page.org == 0 %}if (wb != "") {
-                mylist.push(wb.toUpperCase())
+                mylist.push(wb.toUpperCase().replace("-", " "))
             };{% endunless %}
             if (type != "") {
                 mylist.push(type.toUpperCase())
