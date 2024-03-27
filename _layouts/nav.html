@@ -21,13 +21,29 @@ wbComp:
 {% include TOC-sort %}
 {% assign prevTOClength = prevTOC | size %}
 
+{% capture mycontent %}
+{{ content }}
+{%- if page.org == 0 %}
+<br>
+    {% include compiled_cards.html outer=sortposts inner=taggedposts %}
+
+
+{%- elsif page.org == 0.5 %}
+
+{%- elsif page.org %}
+<br>
+{% include collect/collections.html outer=sortposts inner=subsetposts %}
+
+{%- endif %}
+{% endcapture %}
+
   
     <div class="grid-container main-side">
   <div class="grid-row grid-gap flex-align-start">
       <div class="usa-layout-docs__sidenav desktop:grid-col-3 desktop:padding-y-10{% unless page.sidenav %} usa-sticky-sidenav{% endunless %}">
 
           <nav aria-label="Secondary navigation">
-            {% include sidenav.html html=content h_max=2 class="usa-sidenav" anchor_class="usa-sidenav__item" submenu_class="usa-sidenav__sublist" prevsn=prevTOC postsn=afterTOC %}
+            {% include sidenav.html html=mycontent h_max=2 class="usa-sidenav" anchor_class="usa-sidenav__item" submenu_class="usa-sidenav__sublist" prevsn=prevTOC postsn=afterTOC %}
           </nav>
       </div>
       
@@ -37,22 +53,7 @@ wbComp:
           {% endunless %}
           <div class="{{ layout.main.class }}" aria-label="{{ page.title }}" id="page-contents">
   
-          {{ content }}
-
-          {% if page.org == 0 %}
-          <br>
-              {% include collect/collections.html outer=sortposts inner=taggedposts %}
-
-
-          {% elsif page.org == 0.5 %}
-
-          {% elsif page.org %}
-          <br>
-          {% include collect/collections.html outer=sortposts inner=subsetposts %}
-
-
-          
-          {% endif %}
+          {{ mycontent }}
 
           <br>
         </div>
@@ -65,7 +66,7 @@ wbComp:
 </div>
 
 
-{% unless prevTOClength == 0 %}
+{% unless prevTOClength == 0 or page.org==0 %}
 {% include collect/wb-nav.html %}
 {% endunless %}
   
