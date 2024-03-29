@@ -1,5 +1,5 @@
 ---
-title: Introduction to Data Science
+title: Data Science & Machine Learning
 description: A description of the workbook
 ordered: 1
 svg: /plant.svg
