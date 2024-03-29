@@ -9,7 +9,7 @@ header:
 type: "tutorial"
 ordered: 2
 tags: python ide jupyter
-wbs: data-science
+wbs: core-skills
 description: Describe the workbook for index and search purposes
 ---
 

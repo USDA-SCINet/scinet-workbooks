@@ -10,7 +10,7 @@ header:
 type: "tutorial"
 org: 3
 tags: data-science
-wbs: data-science
+wbs: core-skills
 description: Describe the workbook for index and search purposes
 ---
 

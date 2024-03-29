@@ -8,7 +8,7 @@ header:
 org: 2
 ordered: 3
 type: test
-wbs: data-science
+wbs: core-skills
 description: Describe the workbook for index and search purposes
 ---
 

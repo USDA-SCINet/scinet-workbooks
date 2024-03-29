@@ -6,8 +6,8 @@ author: Aleksandra Badaczewska
 header:
   overlay_image: 04-devel-environment/assets/img/04_development_envir_banner.png
 org: 2
-ordered: 2 
-wbs: data-science
+ordered: 2
+wbs: core-skills
 description: Describe the workbook for index and search purposes
 ---
 {% include images_path %}
@@ -24,9 +24,9 @@ description: Describe the workbook for index and search purposes
 
 ![Python]({{ images_path }}/04_02_python.png)
 
-{% include components/summary.html 
-header="Note:" 
-text="In computer science, an interpreted language is a type of programming language for which most of its implementations execute instructions directly, without previously compiling a program into machine-language instructions. This makes it easier to write and test code, however, Python programs may run slower than those written in a compiled language." %} 
+{% include components/summary.html
+header="Note:"
+text="In computer science, an interpreted language is a type of programming language for which most of its implementations execute instructions directly, without previously compiling a program into machine-language instructions. This makes it easier to write and test code, however, Python programs may run slower than those written in a compiled language." %}
 
 <br><b><span style="color: #ff3870;font-weight: 500;"> To learn more about Python programming and its advantages, see section {% include target_link href=500 text="05: Introduction to Programming" %} / {% include target_link href=531 text="3. Introduction to Python programming" %} </span></b>
 

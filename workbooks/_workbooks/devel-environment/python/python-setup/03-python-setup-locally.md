@@ -11,7 +11,7 @@ header:
 type: "tutorial"
 org: 3
 ordered: 3
-wbs: data-science
+wbs: core-skills
 description: Describe the workbook for index and search purposes
 ---
 
