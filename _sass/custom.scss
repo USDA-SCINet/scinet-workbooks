@@ -22,9 +22,18 @@
     padding-left: 0.1rem;
   }
 }
-
 .usa-hero__heading {line-height: 1.6;}
 .font-heading-md {font-size: 1.2rem;}
+
+/* optimize sidenav width to fit longer titles */
+.usa-sidenav__item {padding-right: 0 !important;}
+.usa-sidenav a {padding-right: 0 !important;}
+.grid-row.grid-gap>* {padding-right: 0;}
+.usa-current {font-size: 0.99rem;}
+
+/* fixes usable width of the cards in a given workbook */
+.sci-container {width: 100%;}
+
 
 
 /*** Create styles for custom components ***/
