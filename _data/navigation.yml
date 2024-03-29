@@ -18,34 +18,40 @@ primary:
     url: /
   - title: Core Skills
     links:
-      - title: Command Line
+      - title: Command Line Interface
         url: /command-line/
       - title: Local Machine Setup
         url: /computing-machine/
       - title: High Performance Computing
         url: /intro-hpc/
-      - title: Project Documentation
-        url: /project-documentation/
       - title: Development Environment
-        url: /development-environment/
+        url: /devel-environment/
       - title: Programming Fundamentals
         url: /programming/
+      - title: Project Documentation
+        url: /project-documentation/
+#      - title: Test
+#        url: /test/
+#      - title: Demo
+#        url: /demo-files/
+  - title: Data Science
+    links:
+      - title: Introduction to Data Science
+        url: /data-science/
+      - title: Fundamentals of Statistics
+        url: /statistics/
+      - title: Machine Learning
+        url: /machine-learning/
+      - title: Data Management
+        url: /data-management/
       - title: Data Acquisition
         url: /data-acquisition/
       - title: Data Wrangling
         url: /data-wrangling/
       - title: Data Visualization
         url: /data-visualization/
-      - title: Machine Learning
-        url: /machine-learning/
-#      - title: Test
-#        url: /test/
-#      - title: Demo
-#        url: /demo-files/
-  - title: Data Domains
+  - title: Specialization
     links:
-      - title: <i>Introduction to Data Science</i>
-        url: /data-science/
       - title: Sequence Bioinformatics
         url: /bioinformatics/
       - title: Molecular Structure & Dynamics
@@ -56,8 +62,6 @@ primary:
         url: /environment-ecosystem/
       - title: Geospatial Earth Observations
         url: /geospatial/
-  - title: Learning Paths
-    url: /pathways/
   - title: Working Groups
     links:
       - title: Arthropod Genomics (AG)
@@ -74,6 +78,8 @@ primary:
         url: /test/
       - title: Agroecosystem Phenology (LTAR)
         url: /test/
+  - title: Learning Paths
+    url: /pathways
   - title: Workbook Finder
     url: /workbooks
   - title: Glossary
