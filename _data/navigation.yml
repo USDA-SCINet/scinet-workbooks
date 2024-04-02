@@ -65,19 +65,19 @@ primary:
   - title: Working Groups
     links:
       - title: Arthropod Genomics (AG)
-        url: /test/
+        url: /working-groups/arthropod-genomics
       - title: Translational Omics (TO)
-        url: /test/
+        url: /working-groups/translational-omics
       - title: Microbiome Research (MR)
-        url: /test/
+        url: /working-groups/microbiome-research
       - title: Protein Function and Phenotype Prediction (PFPP)
-        url: /test/
+        url: /working-groups/protein-function
       - title: Pollinator Research (PR)
-        url: /test/
+        url: /working-groups/pollinator-research
       - title: Geospatial Research (GR)
-        url: /test/
+        url: /working-groups/geospatial-research
       - title: Agroecosystem Phenology (LTAR)
-        url: /test/
+        url: /working-groups/agroecosystem-phenology
   - title: Learning Paths
     url: /pathways
   - title: Workbook Finder

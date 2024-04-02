@@ -64,8 +64,8 @@ collections:
     permalink: /:path
   pathways:
     output: true
-    permalink: /:collection/:path
-
+  working-groups:
+    output: true
 
 defaults:
   -
