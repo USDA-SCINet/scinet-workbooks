@@ -16,19 +16,71 @@ sidenav-breakpoint: 'desktop'
 primary:
   - title: Home
     url: /
-  - title: Categories
+  - title: Core Skills
     links:
-      - title: Data Science
+      - title: Command Line Interface
+        url: /command-line/
+      - title: Local Machine Setup
+        url: /computing-machine/
+      - title: High Performance Computing
+        url: /intro-hpc/
+      - title: Development Environment
+        url: /devel-environment/
+      - title: Programming Fundamentals
+        url: /programming/
+      - title: Project Documentation
+        url: /project-documentation/
+#      - title: Test
+#        url: /test/
+#      - title: Demo
+#        url: /demo-files/
+  - title: Data Science
+    links:
+      - title: Introduction to Data Science
         url: /data-science/
-      - title: Geospatial
-        url: /geospatial/
-      - title: Bioinformatics
+      - title: Fundamentals of Statistics
+        url: /statistics/
+      - title: Machine Learning
+        url: /machine-learning/
+      - title: Data Management
+        url: /data-management/
+      - title: Data Acquisition
+        url: /data-acquisition/
+      - title: Data Wrangling
+        url: /data-wrangling/
+      - title: Data Visualization
+        url: /data-visualization/
+  - title: Specialization
+    links:
+      - title: Sequence Bioinformatics
         url: /bioinformatics/
-      - title: Test
-        url: /test/
-      - title: Demo
-        url: /demo-files/
-  - title: Find a Workbook
+      - title: Molecular Structure & Dynamics
+        url: /structure-dynamics/
+      - title: Integrative Systems Biology
+        url: /integrative-biology/
+      - title: Environment & Ecosystems
+        url: /environment-ecosystem/
+      - title: Geospatial Earth Observations
+        url: /geospatial/
+  - title: Working Groups
+    links:
+      - title: Arthropod Genomics (AG)
+        url: /working-groups/arthropod-genomics
+      - title: Translational Omics (TO)
+        url: /working-groups/translational-omics
+      - title: Microbiome Research (MR)
+        url: /working-groups/microbiome-research
+      - title: Protein Function and Phenotype Prediction (PFPP)
+        url: /working-groups/protein-function
+      - title: Pollinator Research (PR)
+        url: /working-groups/pollinator-research
+      - title: Geospatial Research (GR)
+        url: /working-groups/geospatial-research
+      - title: Agroecosystem Phenology (LTAR)
+        url: /working-groups/agroecosystem-phenology
+  - title: Learning Paths
+    url: /pathways
+  - title: Workbook Finder
     url: /workbooks
   - title: Glossary
     url: /glossary
@@ -45,7 +97,7 @@ primary:
 
 footer:
   - title: RESOURCES
-    links: 
+    links:
     - title: Feedback
       url: mailto:scinet_vrsc@usda.gov
       external: true
@@ -89,4 +141,3 @@ footer:
     - title: Information Quality
       url: https://www.ocio.usda.gov/policy-directives-records-forms/information-quality-activities
       external: true
-

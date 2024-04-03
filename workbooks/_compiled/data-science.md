@@ -1,9 +1,9 @@
 ---
-title: Data Science Workbook
+title: Data Science & Machine Learning
 description: A description of the workbook
-ordered: 2.5
+ordered: 1
 svg: /plant.svg
-excerpt: This is a demo excerpt for the Data Science Workbook
+excerpt: "Data-driven insight through advanced computing techniques"
 
 ---
 

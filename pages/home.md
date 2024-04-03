@@ -1,5 +1,5 @@
 ---
-title: Data Science Workbook
+title: Digital AgriScience Workbook
 permalink: /
 type: future
 sidenav: false
@@ -14,10 +14,10 @@ layout: page
 
 header:
   #overlay_color: "secondary-dark"
-  #callout_color: "secondary-darker"
-  image: /assets/img/data_science_workbook_banner.png
+  callout_color: "transparent" #"secondary-darker"
+  image: /assets/img/agriscience_workbook_banner.png
   # svg
-  subtitle: 'Introduction to large scale computing and data wrangling'
+  subtitle: 'Integrating Large-Scale Computing for Advanced Agricultural Data Science'
 
 attention:
   comp: attention
@@ -42,4 +42,3 @@ cards:
 
 {% include section.html section='cards' %}
 {% include section.html section='attention' %}
-
