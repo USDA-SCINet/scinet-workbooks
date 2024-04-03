@@ -14,8 +14,8 @@ sidenav-breakpoint: 'desktop'
 #   links: primary
 #
 primary:
-  - title: Home
-    url: /
+  - title: Workbook Finder
+    url: /workbooks
   - title: Core Skills
     links:
       - title: Command Line Interface
@@ -80,10 +80,6 @@ primary:
         url: /working-groups/agroecosystem-phenology
   - title: Learning Paths
     url: /pathways
-  - title: Workbook Finder
-    url: /workbooks
-  - title: Glossary
-    url: /glossary
   - title: About
     links:
       - title: About the Project
@@ -93,7 +89,11 @@ primary:
       - title: Contribute
         url: /contribute
 
-
+secondary:
+  - title: Home
+    url: /
+  - title: Glossary
+    url: /glossary
 
 footer:
   - title: RESOURCES
