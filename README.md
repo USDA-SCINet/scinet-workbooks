@@ -57,3 +57,5 @@ If an additional category is needed, a new folder should be made in the _workboo
 
 Please contact [Moe Richert](mailto:moe.richert@usda.gov) with any questions or development needs.
 
+
+Website developed by Aleksandra Badaczewska-Dawid and Moe Richert
