@@ -24,9 +24,16 @@
       <ul class="usa-nav__primary usa-accordion">
         {%- for _section in primary_links -%}
         <li class="usa-nav__primary-item">
-          {%- if _section.links -%}
+          {%- if _section.links or _section.compile -%}
 
-          {%- assign section_links = site.data.navigation[_section.links] | default: _section.links -%}
+          {%- if _section.links %}
+            {%- assign section_links = site.data.navigation[_section.links] | default: _section.links -%}
+          {%- elsif _section.compile_org %}
+            {%- assign section_links = site[_section.compile] | where: 'org', _section.compile_org | sort: "ordered" %}
+          {% else %}
+            {%- assign section_links = site[_section.compile] | sort: "ordered" %}
+          {%- endif %}
+
           {%- assign _section_handle = _section.title | handleize -%}
           {%- assign _section_id = _section_handle | prepend: 'nav-' -%}
           <button type="button" class="usa-accordion__button usa-nav__link" aria-expanded="false" aria-controls="{{ _section_id }}">
@@ -35,6 +42,8 @@
 
           {%- if _section.sublinks -%}
           {%- include layout/components/submenu.html -%}
+          {%- elsif _section.compile -%}
+          {%- include layout/components/automenu.html -%}
           {%- else -%}
           {%- include layout/components/basic-menu.html -%}
           {%- endif -%}
@@ -67,8 +76,8 @@
           </a>
         </li>
 
+        {%- endfor -%}
       </ul>
-      {%- endfor -%}
       {%- endif -%}
       {%- if site.search_site_handle -%}
         {%- include layout/components/search.html  searchid="search_form" -%}
