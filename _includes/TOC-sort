@@ -16,26 +16,26 @@
             {% assign break = page.ordered %}
           {% else %}
             {% assign break = 1 %}
-          {% endif %}  
+          {% endif %}
 
           {% assign prevTOC = site['compiled'] | where_exp: "item", "item.ordered < break and item.url != page.url" %}
           {% assign afterTOC = site['compiled'] | where_exp: "item", "item.ordered > break and item.url != page.url" %}
 
           {% assign taggedposts = site['workbooks'] | where_exp: "item", "item.wbs contains page.slug" %}
-          {% assign sortposts = taggedposts | where: 'org', 1 %}
+          {% assign sortposts = taggedposts | where: 'org', 1 | sort: "ordered" %}
 
 
 
           {% assign prevTOC = prevTOC | sort: "ordered" %}
           {% assign afterTOC = afterTOC | sort: "ordered" %}
 
-          
-        {% assign prevTOC = prevTOC | unshift: layout.wbComp %}  
+
+        {% assign prevTOC = prevTOC | unshift: layout.wbComp %}
 
         {% assign pTOC = prevTOC %}
-        
+
         {% else %}
-        {% assign pTOC = prevTOC | unshift: layout.wbComp %}  
+        {% assign pTOC = prevTOC | unshift: layout.wbComp %}
 
         {%- assign pagepath = page.slug | append: page.ext %}
         {% capture pageurl %}{{ page.path | remove: pagepath }}{% endcapture %}
@@ -44,12 +44,12 @@
           {% for _post in site[page.collection] %}
             {%- assign postslug = _post.slug | append: _post.ext %}
             {% capture postpath %}{{ _post.path | remove: postslug }}{% endcapture %}
-          
+
             {% unless page.url == _post.url %}
               {% if page.path contains postpath and _post.org %}
                 {% assign prevTOC = prevTOC | push: _post %}
               {% endif %}
-            
+
 
             {% if _post.path contains pageurl %}
               {% assign subsetposts = subsetposts | push: _post %}
@@ -65,7 +65,7 @@
           {% assign prevTOC = prevTOC | sort: "org"  %}
 
 
-          
+
         {% endif %}
 
         {% if page.path contains 'index.html' or page.org %}
@@ -74,7 +74,7 @@
           {% assign prevpost = page.previous %}
         {% endif %}
 
-        
+
 
         {% if page.afterTOC %}
           {% assign afterTOC = afterTOC | push: page.afterTOC %}
