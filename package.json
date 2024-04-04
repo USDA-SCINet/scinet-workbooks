@@ -1,7 +1,7 @@
 {
-  "name": "scinet",
+  "name": "scinet-workbooks",
   "private": true,
-  "author": "Moe Richert",
+  "author": "Moe Richert and Aleksandra Badaczewska-Dawid",
   "license": "CC0-1.0",
   "scripts": {
     "start": "bundle exec jekyll serve",
