@@ -1,11 +1,11 @@
 {% if include.outer %}{% assign outer = include.outer %}
 {% elsif include.lvl %}
-{% assign outer = site['workbooks'] | where: 'org', include.lvl | sort: "ordered" %}
+{% assign outer = site[page.collection] | where: 'org', include.lvl | sort: "ordered" %}
 {% else %}
-{% assign outer = site['workbooks'] | where: 'org', 1 | sort: "ordered" %}
+{% assign outer = site[page.collection] | where: 'org', 1 | sort: "ordered" %}
 {% endif %}
 
-{% assign inner = include.inner | default: site['workbooks'] %}
+{% assign inner = include.inner | default: site.documents %}
 
 {% assign cardmedia = 1 %}
 {% assign classes = "tablet-lg:grid-col-6 widescreen:grid-col-4" %}

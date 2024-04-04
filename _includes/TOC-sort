@@ -18,10 +18,12 @@
             {% assign break = 1 %}
           {% endif %}
 
-          {% assign prevTOC = site['compiled'] | where_exp: "item", "item.ordered < break and item.url != page.url" %}
-          {% assign afterTOC = site['compiled'] | where_exp: "item", "item.ordered > break and item.url != page.url" %}
+          {% assign landings = site.documents | where: 'org', 0 %}
 
-          {% assign taggedposts = site['workbooks'] | where_exp: "item", "item.wbs contains page.slug" %}
+          {% assign prevTOC = landings | where_exp: "item", "item.ordered < break and item.url != page.url" %}
+          {% assign afterTOC = landings | where_exp: "item", "item.ordered > break and item.url != page.url" %}
+
+          {% assign taggedposts = site[page.collection] %}
           {% assign sortposts = taggedposts | where: 'org', 1 | sort: "ordered" %}
 
 
@@ -30,9 +32,9 @@
           {% assign afterTOC = afterTOC | sort: "ordered" %}
 
 
-        {% assign prevTOC = prevTOC | unshift: layout.wbComp %}
+          {% assign prevTOC = prevTOC | unshift: layout.wbComp %}
 
-        {% assign pTOC = prevTOC %}
+          {% assign pTOC = prevTOC %}
 
         {% else %}
         {% assign pTOC = prevTOC | unshift: layout.wbComp %}

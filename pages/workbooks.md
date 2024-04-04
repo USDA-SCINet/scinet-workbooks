@@ -1,7 +1,8 @@
 ---
-title: Workbooks
+title: Find a Workbook
 permalink: /workbooks/
 org: 0.5
+layout: page
 cards:
   comp: cards
   format: icon
@@ -14,10 +15,9 @@ collecting:
   title: ""
   label: "Workbooks"
   collect: workbooks
+
 ---
 
-## Explore the Workbook Collections
-{% include section.html section='cards' %}
 
-## Find a Workbook
+ 
 {% include collect/collections.html %}
