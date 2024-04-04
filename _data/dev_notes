@@ -47,3 +47,13 @@
   - add the front matter variable with randomized value for each tutorial, serving as unique identifier (requires some more brainstorming about the best approach)
     - purpose: easy cross linking and embedding sections of tutorials within other tutorials and learning pathways
     - make this variable easily accessible from the rendered website (to facilitate referencing in user-contributed tutorials)
+
+
+
+Note: The workbook tags and filtering are currently not functioning as intended.
+ - We could implement a simple workbook tag - it would currently show as "Core", "Data Science", and "Specialization"
+ - We could have it pull from the url instead of the path.  This would give us "Core", "Data Science", and the various specializations.
+
+ - There is potenial to adjust About to make it as a single link in the secondary navigation, with multiple pages within the sidenav of that page.
+
+ - Will begin outlines for a more robust filter for the Find a Workbook page, to facilitate increased tagging and filtration.
