@@ -1,1 +1,49 @@
 
+# April 3, 2024
+
+- Brainstormed about frontend layout of the platform.
+- Discussed some backend implementations:
+  - front mater variables: `org` and `ordered`
+- Discussed options for acknowledging contributions
+  - where: repo, website
+  - what: ideas, code, knowledge, content, etc.
+
+- Assumed workbooks as well-structured and pre-ordered without the need of repeating a module in few workbooks. Learning Pathways will mix-and-merge elements from various workbooks.
+  - Individual tutorials in workbooks contain knowledge chunks or individual analysis steps. They work as building blocks. They will include examples and exercises.
+  - Learning Pathways will cover the complete pipelines using the knowledge chunks and analytical building blocks, providing the comprehensive guide from raw data to publicable results.
+- Considered Working Groups section as the playground and in-progress documentation for current research (testing or building new pipelines).
+    - they can serve as a solid base for creating new tutorials
+    - create the habit of project documentation
+    - facilitate the publication
+    - increase user engagement
+    - it can be a coordinated effort of the working groups and the VRSC; overtime it helps build the SCINet knowledge base and in-depth background of the SCINet research scope
+    - access can be protect by login
+
+
+**TODO:**
+- create `_data/dev_notes` file to keep track of our development progress and ideas for exploration
+
+- create `pages/styling.md` file to explain front matter variables and styling components (for developers and future contributors)
+
+- update css/sass solutions to directly modify the default USWDS styles
+
+- change backend nomenclature:
+  - **workbooks** are the files in `_compiled` (including bioinformatics.md, data-science.md, geospatial.md, structure-dynamics.md, core-skills.md, environment-ecosystem.md, integrative-biology.md)
+  - **modules** are all sections/categories established within each workbook; currently stored all together in `_workbooks`
+
+- in the Workbook Finder section:
+  - remove the sidebar
+  - remove the "Explore the Workbook collections" component
+  - fix ordering of the modules within the "Filter Workbooks" component, i.e., sort alphabetically
+  - convert category tag into the button pointing to the corresponding workbook
+
+- rearrange the main navigation bar:
+  - Workbook Finder as the first tab
+  - Home, Glossary and About moved above the search bar
+  - move User Guides (related to SCINet infrastructure) from SCINet website into SCINet workbooks (optionally, to consider) to improve user experience, easy cross linking and make both resources more compatible
+
+- backend:
+  - check and (optionally) reimplement/simplify the ordering approach (`org`, `ordered` variables)
+  - add the front matter variable with randomized value for each tutorial, serving as unique identifier (requires some more brainstorming about the best approach)
+    - purpose: easy cross linking and embedding sections of tutorials within other tutorials and learning pathways
+    - make this variable easily accessible from the rendered website (to facilitate referencing in user-contributed tutorials)
