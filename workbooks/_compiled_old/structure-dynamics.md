@@ -2,7 +2,7 @@
 title: Molecular Structure & Dynamics
 description: A description of the workbook
 ordered: 3
-svg: /genomics.svg
+svg: /crop_circuit.svg
 excerpt: "Mapping structure and interactions to biological function"
 
 ---

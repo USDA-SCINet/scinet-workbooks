@@ -30,8 +30,10 @@
             {%- assign section_links = site.data.navigation[_section.links] | default: _section.links -%}
           {%- elsif _section.compile_org %}
             {%- assign section_links = site[_section.compile] | where: 'org', _section.compile_org | sort: "ordered" %}
+          {%- elsif _section.compile_all %}
+            {%- assign section_links = site[_section.compile] | sort: "ordered" %} 
           {% else %}
-            {%- assign section_links = site[_section.compile] | sort: "ordered" %}
+            {%- assign section_links = site[_section.compile] | where: 'org', 1 | sort: "ordered" %}
           {%- endif %}
 
           {%- assign _section_handle = _section.title | handleize -%}

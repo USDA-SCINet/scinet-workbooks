@@ -2,7 +2,7 @@
 title: Core Computational Skills
 description: A description of the workbook
 ordered: 0
-svg: /genomics.svg
+svg: /circuit.svg
 excerpt: "Skillset & digital tools for enhanced research productivity"
 
 ---
