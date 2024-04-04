@@ -17,12 +17,22 @@
 } */
 
 /* aligns page title with the USDA logo and keeps subtitle inline */
-.usa-hero__callout {
+// added formatting so this only applies on transparent backgrounds
+.usa-hero .usa-hero__callout.bg-transparent {
   @media (min-width: 40em) {
     max-width: 75rem;
     padding-left: 0.1rem;
   }
 }
+
+.no-hero-img .usa-hero__callout {
+  @media (min-width: 40em) {
+    max-width: 75rem;
+    padding-left: 0.1rem;
+  }
+}
+
+
 .usa-hero__heading {line-height: 1.6;}
 .font-heading-md {font-size: 1.2rem;}
 
