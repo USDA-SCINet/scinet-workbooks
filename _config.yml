@@ -90,6 +90,9 @@ defaults:
       type: "workbooks"
     values:
       layout: "single"
+      header:
+        overlay_color: "transparent"
+        callout_color: "primary-darker"
   -
     scope:
       path: ""
@@ -98,6 +101,7 @@ defaults:
       layout: "single"
       header:
         image: /assets/img/data_science_workbook_banner.png
+        overlay_color: "transparent"
       wbs: "data-science"
   -
     scope:
@@ -105,8 +109,6 @@ defaults:
       type: "core"
     values:
       layout: "single"
-      header:
-        overlay_color: "primary-darker"
       wbs: "computing-skills"
   -
     scope:
@@ -114,8 +116,6 @@ defaults:
       type: "specialization"
     values:
       layout: "single"
-      header:
-        callout_color: "primary-darker"
   -
     scope:
       path: "workbooks/_specialization/bioinformatics/"
