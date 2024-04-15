@@ -1,15 +1,10 @@
 ---
-title: "Geospatial Data"
-layout: single
-author:
-
-header:
-  overlay_color: "444444"
-  overlay_image: 07-wrangling/assets/img/07_data_acquisition_banner.png
-org: 1
+title: demo md file
+org: 2
 ordered: 1
-wbs: geospatial
 description: Describe the workbook for index and search purposes
+
+
 ---
 
 {% include images_path %}

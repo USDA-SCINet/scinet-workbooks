@@ -1,6 +1,6 @@
 ---
 title: test
-org: 2
+org: 3
 ---
 
 {% include images_path %}
