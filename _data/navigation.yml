@@ -16,7 +16,7 @@ sidenav-breakpoint: 'desktop'
 primary:
   - title: Workbook Finder
     url: /workbooks
-  - title: Core Skills
+  - title: Computing Skills
     compile: core
   - title: Data Science
     compile: data-science
@@ -27,20 +27,19 @@ primary:
     compile_all: true
   - title: Learning Paths
     url: /pathways
-  - title: About
-    links:
-      - title: About the Project
-        url: /about
-      - title: People
-        url: /people
-      - title: Contribute
-        url: /contribute
+  - title: Glossary
+    url: /glossary
 
 secondary:
   - title: Home
     url: /
-  - title: Glossary
-    url: /glossary
+  - title: About
+    url: /about
+  - title: People
+    url: /people
+  - title: Contribute
+    url: /contribute
+
 
 footer:
   - title: RESOURCES

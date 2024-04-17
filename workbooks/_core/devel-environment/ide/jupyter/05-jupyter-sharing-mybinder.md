@@ -7,7 +7,6 @@ header:
   overlay_image: 04-devel-environment/assets/img/04_development_envir_banner.png
 type: "tutorial"
 tags: data-science
-wbs: core-skills
 description: Describe the workbook for index and search purposes
 ---
 

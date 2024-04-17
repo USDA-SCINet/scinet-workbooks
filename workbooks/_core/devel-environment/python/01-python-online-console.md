@@ -9,7 +9,6 @@ header:
 type: "tutorial"
 ordered: 1
 tags: python ide
-wbs: core-skills
 description: Describe the workbook for index and search purposes
 ---
 

@@ -22,7 +22,7 @@
             {% else %}
                 {% assign mycards = pagesubset %}
             {% endif %}
-            
+
       {% else %}
         {%- assign mycards = "" | split: "" %}
 
@@ -30,9 +30,8 @@
 
       {% endif %}
 
-      {% include components/cards.html title=_page.title collected=mycards %}
+      {% include components/cards.html title=_page.title url=_page.url collected=mycards %}
 
-        
       {% endfor %}
       </div>
 </div>

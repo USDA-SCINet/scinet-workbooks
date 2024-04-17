@@ -7,7 +7,6 @@ author: Sharu Paul
 org: 2
 ordered: 1
 tags: data-science
-wbs: core-skills
 description: Describe the workbook for index and search purposes
 ---
 

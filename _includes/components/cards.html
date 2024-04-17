@@ -7,7 +7,12 @@
 
 {% capture sectitle %}{%- if cards.title or include.title -%}<h2>{{ include.title | default: cards.title }}</h2>{%- endif -%}{% endcapture %}
 
-{{ sectitle }}
+{%- if cards.title -%}
+    <h2>{{ cards.title }}</h2>                                                  <!-- workbook categories in Home -->
+{%- else if include.title -%}
+    <a class="h2" href="{{ include.url }}">{{ sectitle }}</a>                   <!-- module title on the workbook's landing page -->
+{%- endif -%}
+
 
 <div class="home-block">
     <ul class="usa-card-group {% if cards.button %}margin-bottom-2{% endif %}">

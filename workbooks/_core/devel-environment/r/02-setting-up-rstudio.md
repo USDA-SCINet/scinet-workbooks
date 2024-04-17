@@ -6,7 +6,6 @@ author: Jennifer Chang
 header:
   overlay_image: 04-devel-environment/assets/img/04_development_envir_banner.png
 type: test
-wbs: core-skills
 tags: r-studio r-project ide
 description: Describe the workbook for index and search purposes
 level: beginner

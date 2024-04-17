@@ -8,7 +8,7 @@
             {%- elsif section.collect.org -%}
                 {% assign wbval = section.collect.workbook | default: 'documents' %}
                 {% assign myposts = site[wbval] | where: 'org', section.collect.org | sort: ordered %}
-
+                {% assign myposts = myposts | where_exp: "item", "item.title != 'Specialized Domains'" %}
             {%- endif -%}
             {%- include {{ includecomp }} data=section collected=myposts -%}
         {%- else -%}

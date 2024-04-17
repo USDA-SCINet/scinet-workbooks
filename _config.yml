@@ -59,16 +59,13 @@ collections:
   workbooks:
     output: true
     permalink: /:collection/:path
+  core:
+    output: true
+    permalink: /:collection/:path
   data-science:
     output: true
     permalink: /:collection/:path
   specialization:
-    output: true
-    permalink: /:path
-  core:
-    output: true
-    permalink: /:collection/:path
-  compiled:
     output: true
     permalink: /:path
   pathways:
@@ -83,6 +80,9 @@ defaults:
       type: "workbooks"
     values:
       layout: "single"
+      header:
+        overlay_color: "transparent"
+        callout_color: "primary-darker"
   -
     scope:
       path: ""
@@ -91,31 +91,54 @@ defaults:
       layout: "single"
       header:
         image: /assets/img/data_science_workbook_banner.png
+        overlay_color: "transparent"
+      wbs: "data-science"
   -
     scope:
       path: ""
       type: "core"
     values:
       layout: "single"
+      wbs: "computing-skills"
       header:
-        overlay_color: "primary-darker"
-
+        image: /assets/img/AS_201891860_310983809_computing.gif
+        overlay_color: "transparent"
   -
     scope:
       path: ""
       type: "specialization"
     values:
       layout: "single"
-      header:
-        callout_color: "primary-darker"
   -
     scope:
-      path: ""
-      type: "compiled"
+      path: "workbooks/_specialization/bioinformatics/"
+      type: "specialization"
     values:
-      layout: "single"
-      org: 0
-
+      wbs: "bioinformatics"
+  -
+   scope:
+     path: "workbooks/_specialization/structure-dynamics/"
+     type: "specialization"
+   values:
+     wbs: "structure-dynamics"
+  -
+   scope:
+     path: "workbooks/_specialization/integrative-biology/"
+     type: "specialization"
+   values:
+     wbs: "integrative-biology"
+  -
+   scope:
+     path: "workbooks/_specialization/environment-ecosystem/"
+     type: "specialization"
+   values:
+     wbs: "environment-ecosystem"
+  -
+   scope:
+     path: "workbooks/_specialization/geospatial/"
+     type: "specialization"
+   values:
+     wbs: "geospatial"
 
 # Compress Sass
 sass:
