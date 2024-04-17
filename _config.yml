@@ -72,18 +72,8 @@ collections:
     output: true
   working-groups:
     output: true
-#  compiled:
-#    output: true
-#    permalink: /:path
 
 defaults:
-#  -
-#    scope:
-#      path: ""
-#      type: "compiled"
-#    values:
-#      layout: "single"
-#      org: 0
   -
     scope:
       path: ""
@@ -110,6 +100,9 @@ defaults:
     values:
       layout: "single"
       wbs: "computing-skills"
+      header:
+        image: /assets/img/AdobeStock_308180459.gif
+        overlay_color: "transparent"
   -
     scope:
       path: ""
