@@ -1,4 +1,122 @@
 
+# April 17, 2024
+
+## General ideas
+- Discussed that relocating certain content from User Guides (SCINet website) to SCINet workbooks can reduce redundancy and improve user experience. <br>
+  Optional approach:
+  - Maintain Index/Table of Contents (possibly in tables) for tools/topics on SCINet website with brief descriptions/category tags and comprehensive cross-linking to tutorials in SCINet Workbooks.
+  - Organize SCINet website guides for easy searching/filtering with minimal update needs; ensure robust links to SCINet workbooks.
+    - It serves as a searching/navigation guide: "What's available and where to find it?"
+  - SCINet workbooks guides could detail exact settings or steps related to SCINet infrastructure (Atlas, Ceres, Juno).
+    - It serves as a practical hands-on guide: "How to do X? How to use Y? How to get started with Z?"
+
+
+## HOME page
+
+### primary navigation bar
+- Discussed removing the `Working Groups` tab from the top navigation bar.
+  - Brainstormed alternative options for a "SCINet-workbooks playground" for users:
+    - Individual GitHub repos under SCINet GitHub organization (to ensure content is searchable once projects are completed and published).
+    - Shared folders on Ceres/Atlas with markdown files or Jupyter Notebooks.
+    - Markdown documentation stored in the backend repo of the SCINet workbooks.
+  - **Purpose:**
+    - Encourage user engagement in contributing new content for the SCINet Workbooks.
+    - Foster a habit of project documentation, benefiting users when publishing results.
+    - Support long-term knowledge retention for the ARS and SCINet initiative.
+
+
+- Discussed retaining the `Learning Paths` tab. <br>
+  **Pathways** are designed as real-life examples of complete pipelines built from individual tutorial steps.
+  - They offer more than just a list of links; they provide step-by-step guides with specific code blocks and explanations of parameters, along with additional intermediate steps (e.g., adjusting file formats) to move from one step to another.
+  - Each tutorial serves as a building block or step that can be utilized in multiple pathways.
+  - Pathways utilize specific tool settings required for a task, while tutorials offer in-depth descriptions of option sets applied for different applications or analysis scenarios.
+  - Experienced users can follow pathway execution, while newcomers are directed to learn more (if needed) about each step or tool from linked tutorials.
+
+### secondary navigation bar
+- (optional) folding the `People` tab as a section under `About`;
+- keeping `Contribute` as a tab directly visible in Home page
+
+
+### content
+- adding a brief (1-3 sentences about the SCINet Workbooks) + `Workbook Finder` button
+  - placed just below the banner, so the `Workbook Finder` button is well visible
+  - [ ✓ ] decided to maintain the current clean layout (without `Specialized Skills` workbook card and buttons)
+
+
+## 0. Workbook's Landing Page
+
+- URLS: `/core/` , `/data-science/`, `specialization`
+- org: 0
+
+### left-side navbar
+- keeping the content as it is currently
+
+### content
+- keeping visual cards for **modules** (in a given workbook only) only
+  - currently it displays items of the module (it will get clogged once we add more content for each module)
+  - module card will link to the module landing page (link as currently in the section/module title)
+  - style: keep 3 modules per row
+- for `Specialized Domains` workbbok, treat the domians (bioinformatics, Geospatial) as modules in the core workbooks
+
+
+## 1. Module's Landing Page
+
+- URL: e.g., `/core/devel-environment/index` ("index" could be removed from the URL)
+- org: 1
+
+### left-side navbar
+- removing `Workbook Index` item from the navbar (because it is visible just below the brief about)
+- adding shortcut names for the items (**sections**) at the next nested level (i.e., `org = 2`)
+  - adding a new front matter variable with the shortcut name used in the left-side navbar (TOC), e.g. **IDE basics**, **Universal IDE**, **IDE for Python**, **IDE for R**
+
+### content
+- brief to the module (as currently)
+- table of content (as current `Workbook Index`)
+  - optional renaming to TOC as it is an organized list (Index is supposed to be alphabetically sorted), e.g., "Sections in this Module"
+- `Workbook Index` list as it is now (keep complete list of sections and nested tutorials)
+
+## 2. Section Page
+
+- URL: e.g., `/core/devel-environment/python/00-python-programming-environment`
+- org: 2
+
+### left-side navbar
+- table of content for the tutorial's content (as it is now)
+- keeping the `Workbook Index` item in the navbar (because it is far at the bottom of the page), change `Workbook Index` to `Tutorials in this Section`
+
+### content
+- regular tutorial or introduction article (distinguished by the `type` variable in the front matter)
+- Workbook Index` list as it is now (keep complete list of sub-sections (in this section only) and nested tutorials), change `Workbook Index` to `Tutorials in this Section`
+
+## 3. Tutorial Page
+
+- URL: e.g., `/core/devel-environment/python/python-setup/03-python-setup-locally`
+- org: 3 or more
+
+### left-side navbar
+- same as level 2, change `Workbook Index` to `Tutorials in this Section`
+
+### content
+- same as level 2, change `Workbook Index` to `Tutorials in this Section`
+
+
+## Workbook Finder Page
+
+- consider moving options in the place of the left-side nav bar (left margin) and have them constantly expanded
+- the box with the list can use 100% width (as the typical content)
+
+- filters:
+  - workbook category: the `wbs` variable is set as default in the config.yml for each workbook; no need to specify it in the individual tutorial's front matter
+  - workbook type: `tutorial`, `introduction`, `pathway` (there also should be `index` or `landing page` type skipped from the filters)
+  - workbook level: `beginner`, `advanced`, `professional`
+  - topics: taken from tags in the front matter
+
+- if no filters selected (default view), display it as it is now (alphabetically listed modules with nested list of tutorials)
+- when filters applied, list individual tutorials along with the filtering tags (converted to action buttons) and add a tag for the corresponding **module** (if not among filters already)
+
+
+---
+
 # April 3, 2024
 
 - Brainstormed about frontend layout of the platform.
@@ -21,39 +139,38 @@
 
 
 **TODO:**
-- create `_data/dev_notes` file to keep track of our development progress and ideas for exploration
+1. [ ✓ ] create `_data/dev_notes` file to keep track of our development progress and ideas for exploration -
 
-- create `pages/styling.md` file to explain front matter variables and styling components (for developers and future contributors)
+2. [ ✓ ] create `pages/styling.md` file to explain front matter variables and styling components (for developers and future contributors)
 
-- update css/sass solutions to directly modify the default USWDS styles
+3. [ ✓ ] update css/sass solutions to directly modify the default USWDS styles
 
-- change backend nomenclature:
+4. [ ✓ ] change backend nomenclature:
   - **workbooks** are the files in `_compiled` (including bioinformatics.md, data-science.md, geospatial.md, structure-dynamics.md, core-skills.md, environment-ecosystem.md, integrative-biology.md)
   - **modules** are all sections/categories established within each workbook; currently stored all together in `_workbooks`
 
-- in the Workbook Finder section:
-  - remove the sidebar
-  - remove the "Explore the Workbook collections" component
-  - fix ordering of the modules within the "Filter Workbooks" component, i.e., sort alphabetically
-  - convert category tag into the button pointing to the corresponding workbook
-
-- rearrange the main navigation bar:
-  - Workbook Finder as the first tab
-  - Home, Glossary and About moved above the search bar
-  - move User Guides (related to SCINet infrastructure) from SCINet website into SCINet workbooks (optionally, to consider) to improve user experience, easy cross linking and make both resources more compatible
-
-- backend:
-  - check and (optionally) reimplement/simplify the ordering approach (`org`, `ordered` variables)
-  - add the front matter variable with randomized value for each tutorial, serving as unique identifier (requires some more brainstorming about the best approach)
-    - purpose: easy cross linking and embedding sections of tutorials within other tutorials and learning pathways
+5. backend:
+  - [ ✓ ] check and (optionally) reimplement/simplify the ordering approach (`org`, `ordered` variables)
+  - [   ] add the front matter variable with randomized value for each tutorial, serving as unique identifier (requires some more brainstorming about the best approach)
+    - PURPOSE: easy cross linking and embedding sections of tutorials within other tutorials and learning pathways
     - make this variable easily accessible from the rendered website (to facilitate referencing in user-contributed tutorials)
 
+6. in the Workbook Finder section:
+  - [ ✓ ] remove the sidebar
+  - [ ✓ ] remove the "Explore the Workbook collections" component
+  - [   ] fix ordering of the modules within the "Filter Workbooks" component, i.e., sort alphabetically
+  - [   ] convert category tag into the button pointing to the corresponding workbook
 
+  Note: The workbook tags and filtering are currently not functioning as intended.
+  - [ ✓ ] We could implement a simple workbook tag - it would currently show as "Core", "Data Science", and "Specialization"
+  - [ ✓ ] We could have it pull from the url instead of the path.  This would give us "Core", "Data Science", and the various specializations.
+    - update: set as the default `wbs` variable in the config.yml
 
-Note: The workbook tags and filtering are currently not functioning as intended.
- - We could implement a simple workbook tag - it would currently show as "Core", "Data Science", and "Specialization"
- - We could have it pull from the url instead of the path.  This would give us "Core", "Data Science", and the various specializations.
+  - Will begin outlines for a more robust filter for the Find a Workbook page, to facilitate increased tagging and filtration.
 
- - There is potenial to adjust About to make it as a single link in the secondary navigation, with multiple pages within the sidenav of that page.
+7. rearrange the main navigation bar:
+  - [ ✓ ] Workbook Finder as the first tab
+  - [ ✓ ] Home and About moved above the search bar
+  - move User Guides (related to SCINet infrastructure) from SCINet website into SCINet workbooks (optionally, to consider) to improve user experience, easy cross linking and make both resources more compatible
 
- - Will begin outlines for a more robust filter for the Find a Workbook page, to facilitate increased tagging and filtration.
+8. There is potenial to adjust About to make it as a single link in the secondary navigation, with multiple pages within the sidenav of that page.
