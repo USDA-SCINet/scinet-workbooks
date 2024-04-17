@@ -101,7 +101,7 @@ defaults:
       layout: "single"
       wbs: "computing-skills"
       header:
-        image: /assets/img/AdobeStock_308180459.gif
+        image: /assets/img/AS_201891860_310983809_computing.gif
         overlay_color: "transparent"
   -
     scope:
