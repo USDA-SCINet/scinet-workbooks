@@ -23,14 +23,13 @@ wbComp:
   {% capture mycontent %}
     {{ content }}
     {%- if page.org == 0 %}
-      <br>
-      {% include compiled_cards.html outer=sortposts inner=taggedposts %}
+      {% include org0_cards.html outer=sortposts inner=taggedposts %}
 
     {%- elsif page.org == 0.5 %}
 
     {%- elsif page.org %}
       <br>
-      {% include collect/collections.html outer=sortposts inner=subsetposts heading="Workbook Index" %}
+      {% include collect/collections.html outer=sortposts heading="Workbook Index" %}
 
     {%- endif %}
   {% endcapture %}
