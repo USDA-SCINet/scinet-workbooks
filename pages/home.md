@@ -13,11 +13,16 @@ sidenav: false
 layout: page
 
 header:
-  #overlay_color: "secondary-dark"
-  callout_color: "transparent" #"secondary-darker"
+  overlay_color: "primary-darker"
+  #callout_color: "transparent" #"secondary-darker"
   image: /assets/img/agriscience_workbook_banner.png
   # svg
   subtitle: 'Integrating Large-Scale Computing for Advanced Agricultural Data Science'
+
+  text: 'A sentence or two describing what the workbooks are for and what they should help the user accomplish.'
+  button: 
+    url: /workbooks
+    text: Find a Workbook
 
 attention:
   comp: attention
@@ -45,9 +50,6 @@ cards:
   format: icon
   title: "Specialized Workbooks"
   label: "Specialized Workbooks"
-#  button:
-#    url: /specialization
-#    text: All Specialized Workbooks
   collect:
     workbook: specialization
     org: 1
