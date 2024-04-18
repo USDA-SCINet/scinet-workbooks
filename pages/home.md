@@ -27,18 +27,32 @@ attention:
   url: https://forum.scinet.usda.gov
   external: true
 
+cards1:
+  comp: cards
+  container: true
+  format: icon
+  title: "Core Workbooks"
+  label: "Core Workbooks"
+#  button:
+#    url: /workbooks
+#    text: All Workbooks
+  collect:
+    org: 0
+
 cards:
   comp: cards
   container: true
   format: icon
-  title: "Explore the Workbooks"
-  label: "Workbooks"
-  button:
-    url: /workbooks
-    text: All Workbooks
-  collect: workbooks
+  title: "Specialized Workbooks"
+  label: "Specialized Workbooks"
+#  button:
+#    url: /specialization
+#    text: All Specialized Workbooks
+  collect:
+    workbook: specialization
+    org: 1
 
 ---
-
+{% include section.html section='cards1' %}
 {% include section.html section='cards' %}
 {% include section.html section='attention' %}

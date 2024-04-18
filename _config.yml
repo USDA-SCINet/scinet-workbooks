@@ -59,7 +59,13 @@ collections:
   workbooks:
     output: true
     permalink: /:collection/:path
-  compiled:
+  core:
+    output: true
+    permalink: /:collection/:path
+  data-science:
+    output: true
+    permalink: /:collection/:path
+  specialization:
     output: true
     permalink: /:path
   pathways:
@@ -74,87 +80,65 @@ defaults:
       type: "workbooks"
     values:
       layout: "single"
+      header:
+        overlay_color: "transparent"
+        callout_color: "primary-darker"
   -
     scope:
       path: ""
-      type: "compiled"
+      type: "data-science"
     values:
       layout: "single"
-      org: 0
-  -
-    scope:
-      path: "workbooks/_workbooks/command-line"
-    values:
       header:
         image: /assets/img/data_science_workbook_banner.png
-  # -
-  #   scope:
-  #     path: ""
-  #     type: "events-recurring"
-  #   values:
-  #     future: "show"
-  #     layout: "event"
-  #     cal-titles: "hide"
-  #     sidenav_link: /training/events/
-  #     recurring: true
-  # -
-  #   scope:
-  #     path: ""
-  #     type: "announcements"
-  #   values:
-  #     future: "show"
-  #     layout: "post"
-  #     categories: [Announcements]
-  #     sidenav_link: /news/announcements
-  # -
-  #   scope:
-  #     path: ""
-  #     type: "posts"
-  #   values:
-  #     layout: "post"
-  #     sidenav_link: /news/stories
-  #     breadcrumb_title: "Selected Story"
-  # -
-  #   scope:
-  #     path: ""
-  #     type: "workshops"
-  #   values:
-  #     future: "show"
-  #     layout: "page"
-  #     layout_type: "workshop"
-  # -
-  #   scope:
-  #     path: ""
-  #     type: "guidecategory"
-  #   values:
-  #     layout: "guides"
-  #     layout_type: "guides"
-  #     sidenav_link: /guides/
-  #     class: "guide-nav"
-  # -
-  #   scope:
-  #     path: ""
-  #     type: "guides"
-  #   values:
-  #     layout: "page"
-  #     layout_type: "guides"
-  #     sidenav_link: /guides/
-  # -
-  #   scope:
-  #     path: ""
-  #     type: "tutorials"
-  #   values:
-  #     layout: "page"
-  #     sidenav_link: /guides/
-  # -
-  #   scope:
-  #     path: ""
-  #     type: "downtime"
-  #   values:
-  #     alt-title: "TRUE"
-
-# allow posts with dates in the future to be published now
-future: true
+        overlay_color: "transparent"
+      wbs: "data-science"
+  -
+    scope:
+      path: ""
+      type: "core"
+    values:
+      layout: "single"
+      wbs: "computing-skills"
+      header:
+        image: /assets/img/AS_201891860_310983809_computing.gif
+        overlay_color: "transparent"
+  -
+    scope:
+      path: ""
+      type: "specialization"
+    values:
+      layout: "single"
+  -
+    scope:
+      path: "workbooks/_specialization/bioinformatics/"
+      type: "specialization"
+    values:
+      wbs: "bioinformatics"
+  -
+   scope:
+     path: "workbooks/_specialization/structure-dynamics/"
+     type: "specialization"
+   values:
+     wbs: "structure-dynamics"
+  -
+   scope:
+     path: "workbooks/_specialization/integrative-biology/"
+     type: "specialization"
+   values:
+     wbs: "integrative-biology"
+  -
+   scope:
+     path: "workbooks/_specialization/environment-ecosystem/"
+     type: "specialization"
+   values:
+     wbs: "environment-ecosystem"
+  -
+   scope:
+     path: "workbooks/_specialization/geospatial/"
+     type: "specialization"
+   values:
+     wbs: "geospatial"
 
 # Compress Sass
 sass:

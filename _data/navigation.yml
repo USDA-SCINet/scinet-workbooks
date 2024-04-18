@@ -16,84 +16,30 @@ sidenav-breakpoint: 'desktop'
 primary:
   - title: Workbook Finder
     url: /workbooks
-  - title: Core Skills
-    links:
-      - title: Command Line Interface
-        url: /command-line/
-      - title: Local Machine Setup
-        url: /computing-machine/
-      - title: High Performance Computing
-        url: /intro-hpc/
-      - title: Development Environment
-        url: /devel-environment/
-      - title: Programming Fundamentals
-        url: /programming/
-      - title: Project Documentation
-        url: /project-documentation/
-#      - title: Test
-#        url: /test/
-#      - title: Demo
-#        url: /demo-files/
+  - title: Computing Skills
+    compile: core
   - title: Data Science
-    links:
-      - title: Introduction to Data Science
-        url: /data-science/
-      - title: Fundamentals of Statistics
-        url: /statistics/
-      - title: Machine Learning
-        url: /machine-learning/
-      - title: Data Management
-        url: /data-management/
-      - title: Data Acquisition
-        url: /data-acquisition/
-      - title: Data Wrangling
-        url: /data-wrangling/
-      - title: Data Visualization
-        url: /data-visualization/
+    compile: data-science
   - title: Specialization
-    links:
-      - title: Sequence Bioinformatics
-        url: /bioinformatics/
-      - title: Molecular Structure & Dynamics
-        url: /structure-dynamics/
-      - title: Integrative Systems Biology
-        url: /integrative-biology/
-      - title: Environment & Ecosystems
-        url: /environment-ecosystem/
-      - title: Geospatial Earth Observations
-        url: /geospatial/
+    compile: specialization
   - title: Working Groups
-    links:
-      - title: Arthropod Genomics (AG)
-        url: /working-groups/arthropod-genomics
-      - title: Translational Omics (TO)
-        url: /working-groups/translational-omics
-      - title: Microbiome Research (MR)
-        url: /working-groups/microbiome-research
-      - title: Protein Function and Phenotype Prediction (PFPP)
-        url: /working-groups/protein-function
-      - title: Pollinator Research (PR)
-        url: /working-groups/pollinator-research
-      - title: Geospatial Research (GR)
-        url: /working-groups/geospatial-research
-      - title: Agroecosystem Phenology (LTAR)
-        url: /working-groups/agroecosystem-phenology
+    compile: working-groups
+    compile_all: true
   - title: Learning Paths
     url: /pathways
-  - title: About
-    links:
-      - title: About the Project
-        url: /about
-      - title: People
-        url: /people
-      - title: Contribute
-        url: /contribute
+  - title: Glossary
+    url: /glossary
 
 secondary:
   - title: Home
     url: /
-  - title: Glossary
-    url: /glossary
+  - title: About
+    url: /about
+  - title: People
+    url: /people
+  - title: Contribute
+    url: /contribute
+
 
 footer:
   - title: RESOURCES

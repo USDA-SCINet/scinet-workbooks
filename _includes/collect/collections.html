@@ -1,11 +1,16 @@
 {% if include.outer %}{% assign outer = include.outer %}
-{% elsif include.lvl %}
-{% assign outer = site['workbooks'] | where: 'org', include.lvl | sort: "ordered" %}
 {% else %}
-{% assign outer = site['workbooks'] | where: 'org', 1 | sort: "ordered" %}
+  {% capture inclevel %}{% if include.lvl %}{{ include.lvl }}{% else %}1{% endif %}{% endcapture %}
+  {% if include.workbooks %}
+    {% assign outer = site['{{ include.workbooks }}'] | where: 'org', inclevel | sort: "ordered" %}
+    {% assign inner = site['{{ include.workbooks }}'] %}
+  {% else %}
+    {% assign inners = site.documents %}
+    {% assign outer = inners | where: 'org', inclevel | sort: "title" %}
+  {% endif %}
 {% endif %}
 
-{% assign inner = include.inner | default: site['workbooks'] %}
+{% assign inner = include.inner | default: inners %}
 
 {% assign wbs = inner | map: 'wbs' | uniq %}
 {% assign tags = inner | map: 'tags' | uniq %}
@@ -15,7 +20,7 @@
 {% assign cal_id = pagetitle | prepend: "cal-" %}
 {% assign sort_list = true %}
 
-<div class="grid-row grid-gap display-flex flex-column flex-align-center">
+<div class="grid-row grid-gap display-flex flex-column flex-align-center margin-y-3">
   {% if include.heading %}<h1 id="{{include.heading | slugify }}">{{ include.heading }}</h1>{% endif %}
   <div class="padding-bottom-2 bg-base-lighter tablet-lg:width-tablet">
       
