@@ -22,9 +22,9 @@ primary:
     compile: data-science
   - title: Specialization
     compile: specialization
-  - title: Working Groups
-    compile: working-groups
-    compile_all: true
+  # - title: Working Groups
+  #   compile: working-groups
+  #   compile_all: true
   - title: Learning Paths
     url: /pathways
   - title: Glossary
@@ -35,8 +35,8 @@ secondary:
     url: /
   - title: About
     url: /about
-  - title: People
-    url: /people
+  # - title: People
+  #   url: /people
   - title: Contribute
     url: /contribute
 
