@@ -56,9 +56,6 @@ search_site_handle: scinet-usda
 # See https://jekyllrb.com/docs/collections/ for more information about collections.
 collections_dir: workbooks
 collections:
-  workbooks:
-    output: true
-    permalink: /:collection/:path
   core:
     output: true
     permalink: /:collection/:path

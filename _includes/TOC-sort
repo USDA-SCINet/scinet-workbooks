@@ -3,6 +3,7 @@
       {% include components/path.html p=page %}
       {% assign sortposts = "" | split: "" %}
       {% assign subsetposts = "" | split: "" %}
+      {% assign nobreadcrumb = 0 %}
 
       {% if page.collection %}
 
@@ -83,4 +84,14 @@
         {% endif %}
 
       {% endunless %}
+      {% elsif page.afterTOC or page.beforeTOC %}
+        {% if page.afterTOC %}
+            {% assign afterTOC = page.afterTOC %}
+        {% endif %}
+        {% if page.beforeTOC %}
+            {% assign prevTOC = page.beforeTOC %}
+        {% endif %}
+
+        {% assign pTOC = prevTOC  %}
+        {% assign nobreadcrumb = 1 %}
       {% endif %}
