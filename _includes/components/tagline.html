@@ -1,0 +1,16 @@
+{%- assign tagline = include.data -%}
+
+<div class="grid-row grid-gap">
+    <div class="{% if tagline.grid %}tablet:grid-col-4{% endif %}">
+        <h2 class="font-heading-l margin-top-0 tablet:margin-bottom-0">
+          {{ tagline.title }}
+        </h2>
+        {% if tagline.grid %}</div>
+    <div class="tablet:grid-col-8 usa-prose">{% endif %}
+        {{ tagline.text | markdownify }}
+        {% if tagline.button %}
+        <a class="usa-button" href="{% include url.html link=tagline.button %}">{{ tagline.button.text }}
+        </a>
+        {% endif %}
+    </div>
+</div>

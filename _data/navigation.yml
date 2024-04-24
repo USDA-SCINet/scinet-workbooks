@@ -20,7 +20,7 @@ primary:
     compile: core
   - title: Data Science
     compile: data-science
-  - title: Specialization
+  - title: Specializations
     compile: specialization
   # - title: Working Groups
   #   compile: working-groups
