@@ -19,13 +19,14 @@
 <li class="{% if cal_id %}{{ cal_id }}{% endif %} usa-collection__item width-full maxw-full" {% if sort_list %}
     wb="{% for wb in pwb %}{{ wb }} {% endfor %} all"
     tagged="{% for tag in ptags %}{{ tag }} {% endfor %}all" type="{% for types in ptypes %}{{ types }} {% endfor %}all"
-    difficulty="{% for lvl in pdifficulties %}{{ lvl }} {% endfor %}all" {% endif %}>
+    difficulty="{% for lvl in pdifficulties %}{{ lvl }} {% endfor %}all" {% endif %}
+    {%- if fetchjs %}id="{{ post.id }}"{%- endif %}>
 
     {% if post_type == 'media' %}
     <img class="usa-collection__img" src="{{ post.mediasrc | relative_url }}" alt="{{ post.mediaalt }}" />
     {% endif %}
     <div class="padding-x-2 usa-collection__body">
-        <h3 class="usa-collection__heading">
+        <h3 class="usa-collection__heading rm-a">
             <a class="usa-link" href="{% include url.html link=post %}">
                 {{ post.title }}
             </a>
