@@ -2,7 +2,7 @@
 title: Find a Workbook
 permalink: /workbooks/
 org: 0.5
-layout: page
+layout: filters
 cards:
   comp: cards
   format: icon
@@ -17,7 +17,5 @@ collecting:
   collect: workbooks
 
 ---
-
-
  
 {% include collect/collections.html %}

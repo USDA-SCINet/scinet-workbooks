@@ -37,20 +37,30 @@ type: "tutorial"
 
 ### tags
 
-tags: command-line
+tags: command-line separated-by-spaces use-dashes-for-spaces-in-tags
+
+Reference existing tags and use those where possible instead of creating new ones.
+
+### packages
+
+packages: [packages used, separated by commas, use brackets for multiple]
 
 ### workbook category
 
 wbs: computing-skills
 
+This is automatically compiled for existing workbooks.
+
 ###
 
 wgs: omics
 
-
 ### author
 
 author: Aleksandra Badaczewska
+
+For multiple authors, use:
+author: [Author 1, Author 2, etc]
 
 ### layout
 

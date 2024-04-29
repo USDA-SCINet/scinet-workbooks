@@ -1,0 +1,23 @@
+<!-- title, options, tname, checked -->
+<fieldset class="usa-fieldset">
+    <legend class="usa-legend text-bold">{{ include.title }}</legend>
+    {% for _option in include.options %}
+        {%- if include.checked=='checked' or _option==include.checked %}
+            {% assign checked = 'checked' %}
+        {%- else %}
+            {% assign checked = '' %}
+        {%- endif %}
+    <div class="usa-radio">
+      <input
+        class="usa-radio__input"
+        id="radio-{{ _option }}"
+        type="radio"
+        name="{{ include.tname }}"
+        value="{{ _option }}"
+        checked="{{ checked }}"
+      />
+      <label class="usa-radio__label capital" for="radio-{{ _option }}"
+        >{{ _option | capitalize | replace: "-", " " }} <span class="att-count"></span></label
+      >
+      {% endfor %}
+    </div>

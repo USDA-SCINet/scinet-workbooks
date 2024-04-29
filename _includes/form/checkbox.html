@@ -1,0 +1,24 @@
+<!-- title, options, tname, checked -->
+<fieldset class="usa-fieldset">
+    <legend class="usa-legend text-bold">{{ include.title }}</legend>
+    {% for _option in include.options %}
+        {%- if include.checked=='checked' or _option==include.checked %}
+            {% capture checked %}checked = 'checked'{% endcapture %}
+        {%- else %}
+            {% assign checked = '' %}
+        {%- endif %}
+    <div class="usa-checkbox">
+        <input
+          class="usa-checkbox__input {{ sectionslug }}-filters"
+          id="check-{{ _option }}"
+          type="checkbox"
+          name="{{ include.tname }}"
+          value="{{ _option }}"
+          {{ checked }}
+        />
+        <label class="usa-checkbox__label capital" for="check-{{ _option }}"
+          >{{ _option | capitalize | replace: "-", " " }}</label
+        >
+      </div>
+    {% endfor %}
+</fieldset>
