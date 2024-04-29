@@ -4,6 +4,11 @@ main:
   class: usa-layout-docs usa-layout-docs__main usa-prose
 
 scripts: ['/assets/js/lib/jquery-3.4.1.min.js', '/assets/js/filter/filters.js']
+
+alert: 
+  type: error
+  title: No Workbooks found
+  text: "No workbooks were found with your current filter parameters. <br>See all workbooks below, or try altering your selection"
 ---
 
 {% if page.filter=='pathways' %}
@@ -154,6 +159,11 @@ scripts: ['/assets/js/lib/jquery-3.4.1.min.js', '/assets/js/filter/filters.js']
                 <h1>Workbooks</h1>
 
               {% if page.heading %}<h1 id="{{ page.heading | slugify }}">{{ page.heading }}</h1>{% endif %}
+              <div id="nowbs" class="tablet-lg:margin-x-3 no-display">
+                {% assign alertdata = layout.alert %}
+                {% include components/alert.html data=alertdata %}
+              </div>
+
               <div class="padding-bottom-2 bg-primary-lighter tablet-lg:width-tablet margin-2">
                   
                   

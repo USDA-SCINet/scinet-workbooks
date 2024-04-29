@@ -10,13 +10,13 @@
     <div class="usa-checkbox">
         <input
           class="usa-checkbox__input {{ sectionslug }}-filters"
-          id="check-{{ _option }}"
+          id="check-{{ include.title }}-{{ _option }}"
           type="checkbox"
           name="{{ include.tname }}"
           value="{{ _option }}"
           {{ checked }}
         />
-        <label class="usa-checkbox__label capital" for="check-{{ _option }}"
+        <label class="usa-checkbox__label capital" for="check-{{ include.title }}-{{ _option }}"
           >{{ _option | capitalize | replace: "-", " " }}</label
         >
       </div>

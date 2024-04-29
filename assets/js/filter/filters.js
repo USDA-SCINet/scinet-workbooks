@@ -4,6 +4,9 @@
 const packaged = [{% include packages.js sect='workbooks' %}]
 
 function submitFilters(form){
+  $("#nowbs").addClass('no-display');
+
+
     var fdata = new FormData(form) //.entries();
     //var data = $('#workbook-array').serialize()
 
@@ -77,18 +80,26 @@ function submitFilters(form){
     var idarray = exclude.flatMap(function (el) { return el.keeps; });
 
     
+    if(idarray.length===0){
+      noWBsFound()
+    } else {
 
+      $(".wb").addClass('no-display');
 
-    $(".wb").addClass('no-display');
-
-    idarray.forEach((divid) =>{
-      var div = document.getElementById(divid);
-      if(div) {
-        div.classList.remove('no-display')
-      }
-    })
+      idarray.forEach((divid) =>{
+        var div = document.getElementById(divid);
+        if(div) {
+          div.classList.remove('no-display')
+        }
+      })
+    }
   }
 
+
+  function noWBsFound(){
+    $("#nowbs").removeClass('no-display')
+    $(".wb").removeClass('no-display');
+  }
 
 $(document).ready(function() {
     
