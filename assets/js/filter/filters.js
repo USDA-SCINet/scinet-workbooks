@@ -5,13 +5,12 @@ const packaged = [{% include packages.js sect='workbooks' %}]
 
 function submitFilters(form){
   $("#nowbs").addClass('no-display');
+  // hide No Results Found message if showing
 
-
-    var fdata = new FormData(form) //.entries();
-    //var data = $('#workbook-array').serialize()
-
-    var formvalues = {};
-    var inclusive = [];
+  // get form data
+    var fdata = new FormData(form) 
+    var formvalues = {}; // form values in array format
+    var inclusive = []; // keys that have 'inclusive' data handling
     fdata.forEach((value, key) => {
       if (value !== "") {
         if(key.includes("inclusive")){
@@ -39,23 +38,24 @@ function submitFilters(form){
         
     });
 
-    //console.log(formvalues.length)
+    var formobject = Object.entries(formvalues);
 
-    if(Object.keys(formvalues).length === 0){
+    //check if formdata has a selction
+    if(formobject.length === 0){
       $(".wb").removeClass('no-display');
     } else {
-      filterWBs(formvalues, inclusive)
+      filterWBs(formobject, inclusive)
     }
 
     return false
   }
 
 
-  function filterWBs(formvalues, inclusive){
+  function filterWBs(formobject, inclusive){
 
-    var entri = Object.entries(formvalues);
-    var obj1 = Object.fromEntries(entri.filter(([k]) => inclusive.includes(k)));
-    var obj2 = Object.fromEntries(entri.filter(([k]) => !inclusive.includes(k)));
+    // refactor
+    var obj1 = Object.fromEntries(formobject.filter(([k]) => inclusive.includes(k)));
+    var obj2 = Object.fromEntries(formobject.filter(([k]) => !inclusive.includes(k)));
 
     var c_exclusive = (arr, target) => target.every(v => arr.includes(v));
     var c_inclusive = (arr, target) => target.some(v => arr.includes(v));
@@ -73,19 +73,23 @@ function submitFilters(form){
       Array.isArray(a[k]) && a[k].includes(search[k])
     );
 
-    //console.log(obj1)
+    // filter by inclusive conditions
     var include = packaged.filter(incConditions(obj1));
+    // filter by exclusive conditions
     var exclude = include.filter(exclConditions(obj2));
 
+    // get ids of items that match the selected tutorials
     var idarray = exclude.flatMap(function (el) { return el.keeps; });
 
-    
+    // display error message if no workbooks found
     if(idarray.length===0){
       noWBsFound()
     } else {
 
+      // hide all tutorials
       $(".wb").addClass('no-display');
 
+      // display only selected tutorials
       idarray.forEach((divid) =>{
         var div = document.getElementById(divid);
         if(div) {
