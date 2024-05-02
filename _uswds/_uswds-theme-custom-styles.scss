@@ -98,6 +98,12 @@ pre {
    }
 }
 
+.align-c{
+   display:flex;
+   @include u-flex('column');
+   @include u-flex('align-center') 
+}
+
 .footer-flex {
    @include at-media-max('mobile-lg') {
       display:flex;
@@ -112,4 +118,11 @@ pre {
    @include usa-table;
    @include usa-table--compact;
    @include usa-table--borderless;
+}
+
+.tooltip-toggle{
+   &:hover {
+      cursor: pointer;
+      .usa-icon{fill: color($theme-color-primary-vivid);}
+   }
 }

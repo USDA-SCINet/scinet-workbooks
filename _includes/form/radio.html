@@ -1,6 +1,6 @@
 <!-- title, options, tname, checked -->
 <fieldset class="usa-fieldset">
-    <legend class="usa-legend text-bold">{{ include.title }}</legend>
+    <legend class="usa-legend text-bold {{ include.labelclass }}">{{ include.title }}</legend>
     {% for _option in include.options %}
         {%- if include.checked=='checked' or _option==include.checked %}
             {% assign checked = 'checked' %}

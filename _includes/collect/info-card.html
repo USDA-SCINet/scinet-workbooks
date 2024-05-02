@@ -64,9 +64,6 @@
             <li class="usa-collection__meta-item usa-tag">{{ wbtag | replace: "-", " " }}</li>
             {% endfor %}
             {% endif %}
-            {% if post.type %}
-            <li class="usa-collection__meta-item usa-tag">{{ post.type }}</li>
-            {% endif %}
             {% if post.tags %}
             {% for tag in post.tags %}
             <li class="usa-collection__meta-item usa-tag">{{ tag | replace: "-", " " }}</li>

@@ -7,7 +7,7 @@ header:
   overlay_image: 04-devel-environment/assets/img/04_development_envir_banner.png
 org: 2
 ordered: 3
-type: test
+type: "lesson module"
 description: Describe the workbook for index and search purposes
 ---
 
@@ -17,6 +17,22 @@ description: Describe the workbook for index and search purposes
 
 ---
 
+{% include div class="accent-warm" txt="
+#### Header
+Highlight this text please" 
+%}
+
+{% include div class="success" txt="
+Highlight this text please"
+%}
+
+{% include div class="base" txt="
+Highlight this text please"
+%}
+
+{% include div class="warm-dark" txt="
+Highlight this text please"
+%}
 
 # Introduction
 
