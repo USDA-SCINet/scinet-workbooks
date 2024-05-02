@@ -12,7 +12,7 @@
 
 {% assign inner = include.inner | default: inners %}
 
-{% assign wbs = inner | map: 'wbs' | uniq %}
+
 {% assign tags = inner | map: 'tags' | uniq %}
 {% assign types = inner | map: 'type' | uniq %}
 {% assign difficulties = inner | map: 'level' | uniq %}
@@ -20,7 +20,7 @@
 {% assign cal_id = pagetitle | prepend: "cal-" %}
 {% assign sort_list = true %}
 
-<div class="grid-row grid-gap display-flex flex-column flex-align-center margin-y-3">
+<div class="grid-row grid-gap align-c margin-y-3">
   {% if include.heading %}<h1 id="{{include.heading | slugify }}">{{ include.heading }}</h1>{% endif %}
   <div class="padding-bottom-2 bg-base-lighter tablet-lg:width-tablet">
       

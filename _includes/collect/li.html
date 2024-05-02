@@ -3,5 +3,6 @@
     {% if sort_list %} wb="{% for wb in pwb %}{{ wb }} {% endfor %} all"
     tagged="{% for tag in ptags %}{{ tag }} {% endfor %}all" type="{% for types in ptypes %}{{ types }} {% endfor %}all"
     difficulty="{% for lvl in pdifficulties %}{{ lvl }} {% endfor %}all" {% endif %}
+    {%- if fetchjs %}id="{{ fsets.id }}"{%- endif %}
 >
     <a class="listed {{ include.aclass }}" href="{{ fsets.url | relative_url }}">{{ fsets.title }}</a>

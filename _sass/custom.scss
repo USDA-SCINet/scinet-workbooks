@@ -54,3 +54,11 @@
    font-size: 1.5em;
    font-weight: bold;
 }
+
+.usa-combo-box__list-option,.usa-combo-box__input,.capital {
+  text-transform: capitalize;
+}
+
+.rm-a a:after {
+  content: none;
+}

@@ -1,0 +1,50 @@
+filters:
+  - section: Workbooks
+    select-all: true
+    subsection:
+      - title: Base Workbooks
+        type: checkbox
+        val: 'core-wbs'
+        values: ['computing-skills', 'data-science']
+      - title: Specialized Workbooks
+        type: checkbox
+        val: 'wbs'
+        values: collect
+        collect: 'specialization'
+  - section: Type and Difficulty
+    subsection:
+      - title: Module Type
+        type: select
+        val: 'type'
+      - title: Module Difficulty
+        type: select
+        val: 'level'
+        unsorted: true
+        values: ['basics', 'intermediate', 'advanced']
+  - section: Keywords
+    title: Filter by Keywords
+    inclusive-toggle: true
+    type: checkbox
+    val: 'tags'
+  - section: Packages
+    inclusive-toggle: true
+    title: Filter by Code Packages
+    type: checkbox
+    val: 'packages'
+  # - section: Interface
+  #   title: Filter by Interface
+  #   default: Select Interface
+  #   type: select
+  #   val: 'interface'
+  - section: Contributors
+    subsection:
+      - title: Author
+        type: dropdown
+        val: 'author'
+      - title: Working Groups
+        type: dropdown
+        val: 'wgs'
+#  - section: Sort
+
+
+vals: ['wbs','type', 'tags', 'level', 'packages', 'author', 'wgs', 'interface']

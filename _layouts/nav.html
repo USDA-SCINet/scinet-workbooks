@@ -23,8 +23,7 @@ wbComp:
   {% capture mycontent %}
     {{ content }}
     {%- if page.org == 0 %}
-      <br>
-      {% include compiled_cards.html outer=sortposts inner=taggedposts %}
+      {% include org0_cards.html outer=sortposts inner=taggedposts %}
 
     {%- elsif page.org == 0.5 %}
 
@@ -45,7 +44,7 @@ wbComp:
       </div>
 
       <div class="usa-layout-docs__main desktop:grid-col-9">
-        {% unless prevTOClength == 0 %}
+        {% unless prevTOClength == 0 or nobreadcrumb == 1 %}
           {% include layout/breadcrumb.html %}
         {% endunless %}
         <div class="{{ layout.main.class }}" aria-label="{{ page.title }}" id="page-contents">

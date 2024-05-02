@@ -15,7 +15,7 @@
       {% if summary.buttons %}
       <div class="grid-row margin-top-2">
         {% for _button in summary.buttons %}
-        <div class="grid-col display-flex flex-column flex-align-center">
+        <div class="grid-col align-c">
         <a class="usa-button" href="{{ _button.url | relative_url }}">
           {{ _button.text }}
         </a>

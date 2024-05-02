@@ -23,7 +23,7 @@ excerpt_separator: <!--excerpt-->
 # Configuration for setting the site width to 100%
 # To enable, uncomment the following line
 # site_width: wide
-site_width: 90%
+site_width: 100%
 
 
 # Configuration for Google Analytics, add your UA code here:
@@ -35,7 +35,7 @@ dap_subagency: ARS
 
 # Uncomment to enable AnchorJS functionality on docs layout.
 # See https://github.com/bryanbraun/anchorjs for more information.
-anchor_js_targets: [h2, h3, h4, h5, h6]
+anchor_js_targets: [h2, h3]
 
 # Enables Private Eye functionality.
 # See https://github.com/18F/private-eye for more information.
@@ -56,9 +56,6 @@ search_site_handle: scinet-usda
 # See https://jekyllrb.com/docs/collections/ for more information about collections.
 collections_dir: workbooks
 collections:
-  workbooks:
-    output: true
-    permalink: /:collection/:path
   core:
     output: true
     permalink: /:collection/:path
@@ -77,9 +74,10 @@ defaults:
   -
     scope:
       path: ""
-      type: "workbooks"
+      type: "pathways"
     values:
       layout: "single"
+      variety: "pathway"
       header:
         overlay_color: "transparent"
         callout_color: "primary-darker"
@@ -89,6 +87,7 @@ defaults:
       type: "data-science"
     values:
       layout: "single"
+      variety: "workbook"
       header:
         image: /assets/img/data_science_workbook_banner.png
         overlay_color: "transparent"
@@ -99,15 +98,17 @@ defaults:
       type: "core"
     values:
       layout: "single"
+      variety: "workbook"
       wbs: "computing-skills"
       header:
-        image: /assets/img/AS_201891860_310983809_computing.gif
+        image: /assets/img/agriscience_workbook_banner.png
         overlay_color: "transparent"
   -
     scope:
       path: ""
       type: "specialization"
     values:
+      variety: "workbook"
       layout: "single"
   -
     scope:

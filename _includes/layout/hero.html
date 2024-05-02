@@ -1,7 +1,7 @@
 {%- assign overlay = hero.overlay_color | default: 'primary-darker' -%}
 {%- assign callout = hero.callout_color | default: overlay -%}
 {%- assign title_color = hero.title_color | default: white -%}
-{%- assign subtitle_color = hero.subtitle_color | default: 'white' -%}
+{%- assign subtitle_color = hero.subtitle_color | default: 'accent-cool' -%}
 <section class="{% if hero.image %}usa-hero{% else %}no-hero-img{% endif %} bg-{{ overlay }}" {% if hero.image %}style="background-image: url({{ hero.image }})"{% endif %}
   aria-label="Introduction" ;
   >
@@ -16,10 +16,27 @@
             </span>
             {%- endif -%}
 
+            {%- if hero.text -%}
+            <p>
+              {{ hero.text }}
+            </p>
+            {%- endif -%}
+
           {%- if hero.button -%}
           <a class="usa-button" href="{% include url.html link=hero.button %}">
             {{ hero.button.text }}
           </a>
+          {%- endif -%}
+          {%- if hero.buttons -%}
+          <ul class="usa-button-group">
+            {%- for button in hero.buttons %}
+            <li class="usa-button-group__item">
+              <a class="usa-button usa-button--{{ button.class }}" href="{% include url.html link=button %}">
+                {{ button.text }}
+              </a>
+            </li>
+            {%- endfor %}
+          </ul>
           {%- endif -%}
     </div>
   </div>
