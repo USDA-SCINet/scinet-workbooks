@@ -121,5 +121,9 @@ $(document).ready(function() {
     });
 
     
-    
+    $('.tooltip-toggle').click(function(){
+      let tog = $(this).attr("toggles")
+      $("#"+tog).toggleClass( "no-display" )
+
+    })
 });

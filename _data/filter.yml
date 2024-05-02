@@ -19,9 +19,11 @@ filters:
       - title: Module Difficulty
         type: select
         val: 'level'
-  - section: Topics
+        unsorted: true
+        values: ['basics', 'intermediate', 'advanced']
+  - section: Keywords
+    title: Filter by Keywords
     inclusive-toggle: true
-    title: Filter by Topics
     type: checkbox
     val: 'tags'
   - section: Packages
@@ -29,6 +31,11 @@ filters:
     title: Filter by Code Packages
     type: checkbox
     val: 'packages'
+  # - section: Interface
+  #   title: Filter by Interface
+  #   default: Select Interface
+  #   type: select
+  #   val: 'interface'
   - section: Contributors
     subsection:
       - title: Author
@@ -40,4 +47,4 @@ filters:
 #  - section: Sort
 
 
-vals: ['wbs','type', 'level', 'tags', 'packages', 'author', 'wgs']
+vals: ['wbs','type', 'tags', 'level', 'packages', 'author', 'wgs', 'interface']

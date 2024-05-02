@@ -1,0 +1,58 @@
+{% assign inners = include.list | default: site.documents %}
+{% assign fetch = include.fetch %}
+{% if include.list %}
+    {% assign tags = inners[fetch] %}
+{% else %}
+    {% assign tags = inners | map: fetch | uniq | compact %}
+{% endif %}
+
+<div class="usa-table-container--scrollable" tabindex="0">
+    <table class="usa-table usa-table--striped">
+      <caption>
+        List of current {% if include.name %}{{ include.name }}s{% else %}{{ fetch }}{% endif %}:
+      </caption>
+      <thead>
+        {% if include.list %}
+         {% for tag in tags limit:1 %}
+         <tr>
+          {% for item in tag %}
+           {% unless item[0]=="url" %}
+            <th data-sortable scope="col" role="columnheader">{{  item[0] | capitalize }}</th>
+           {% endunless %}
+          {% endfor %}
+          </tr>
+         {% endfor %}
+        {% else %}
+        <tr>
+          <th data-sortable scope="col" role="columnheader">{% if include.name %}{{ include.name | capitalize }}{% else %}{{ fetch | capitalize | append: '@' | remove: "s@" | remove: '@' }}{% endif %}</th>
+        </tr>
+        {% endif %}
+      </thead>
+      <tbody>
+      {% if include.list %}
+        {% for tag in tags %}
+        <tr>
+          {% for item in tag %}
+           {% unless item[0]=="url" %}
+            {% capture tagtext %}{% if tag.url and forloop.last %}<a href="{{ tag.url }}">{{ item[1] }}</a>{% else %}{{ item[1] }}{% endif %}{% endcapture %}
+            {% if forloop.first %}
+            <th scope="row" role="rowheader">{{ tagtext }}</th>
+            {% else %}
+            <td>{{ tagtext }}</td>
+            {% endif %}
+           {% endunless %}
+          {% endfor %}
+        </tr>
+        {% endfor %}
+      {% else %}
+        {% for tag in tags %}
+         {% for t in tag %}
+          <tr>
+              <th scope="row" role="rowheader">{{ tag }}</th>
+          </tr>
+         {% endfor %}
+        {% endfor %}
+      {% endif %}
+      </tbody>
+    </table>
+  </div>

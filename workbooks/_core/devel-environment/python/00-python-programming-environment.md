@@ -8,6 +8,7 @@ header:
 org: 2
 ordered: 2
 description: Describe the workbook for index and search purposes
+type: lesson module
 ---
 {% include images_path %}
 

@@ -1,0 +1,14 @@
+{% assign data = include.data %}
+<h4 class="usa-accordion__heading ">
+    <button
+        type="button"
+        class="usa-accordion__button  usa-button--outline"
+        aria-expanded="false" 
+        aria-controls="{{ data.title | slugify }}-accordion"
+    >
+    {{ data.title }}
+    </button>
+</h4>
+<div id="{{ data.title | slugify }}-accordion" class="usa-accordion__content usa-prose allow-overflow">
+    {{ include.details }}
+</div>
