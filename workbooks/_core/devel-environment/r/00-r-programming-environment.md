@@ -18,7 +18,6 @@ description: Describe the workbook for index and search purposes
 ---
 
 
-
 # Introduction
 
 R is a programming language and software environment for statistical computing and graphics. It is widely used among statisticians and data scientists for developing statistical software, data analysis, and data visualization. Statisticians Ross Ihaka and Robert Gentleman created it in the early 1990s at the University of Auckland, New Zealand. It is an open-source language, meaning that anyone can contribute to its development and use it for free. <br>
