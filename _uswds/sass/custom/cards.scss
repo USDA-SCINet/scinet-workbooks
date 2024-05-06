@@ -359,3 +359,17 @@ a.gloss{
 
    }
 }
+
+//bio
+
+.card-img-sq{
+   .usa-card__container{
+      min-height: 17rem;
+      .usa-card__img{
+         background-color: inherit;
+         img{
+            height: auto;
+         }
+      }
+   }
+}
