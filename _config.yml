@@ -89,7 +89,7 @@ defaults:
       layout: "single"
       variety: "workbook"
       header:
-        image: /assets/img/data_science_workbook_banner.png
+        image: /assets/img/data-science_banner.png
         overlay_color: "transparent"
       wbs: "data-science"
   -
