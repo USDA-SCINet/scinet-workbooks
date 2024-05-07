@@ -44,7 +44,7 @@
 
 /* fixes usable width of the cards in a given workbook */
 .sci-container {width: 100%;}
-.usa-card-group {
+.main-side .usa-card-group {
   @media (min-width: 64em) {width: 120%;}
 }
 
