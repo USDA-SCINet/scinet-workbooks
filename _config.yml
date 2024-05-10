@@ -89,7 +89,7 @@ defaults:
       layout: "single"
       variety: "workbook"
       header:
-        image: /assets/img/data_science_workbook_banner.png
+        image: /assets/img/data-science_banner.png
         overlay_color: "transparent"
       wbs: "data-science"
   -
@@ -101,7 +101,7 @@ defaults:
       variety: "workbook"
       wbs: "computing-skills"
       header:
-        image: /assets/img/agriscience_workbook_banner.png
+        image: /assets/img/computing_banner.png
         overlay_color: "transparent"
   -
     scope:
