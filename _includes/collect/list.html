@@ -10,10 +10,17 @@
     {% assign pdifficulties = tsets.level %}   
 {% endif %}
 
-{% include collect/li.html ttsets=tsets class=include.class aclass=include.aclass %}
+{%- assign decor = "" %}
+{% unless sort_list %}
+{% assign types = tsets.type | default: 'index' %}
+{% assign decortype = site.data.filter['icons'] | where: "type", types %}
+{% assign decor = decortype[0].icon %}
+{% endunless %}
+
+{% include collect/li.html ttsets=tsets class=include.class aclass=include.aclass decor=decor %}
 {% if tsets.org %}
     {% unless pssize == 0 %}
-<ul class="">
+<ul class="{%- unless sort_list %}icon-ul{%- endunless %}">
     {% assign _usubset = pagesubset %}
     {% unless include.loop=="looped" %}{% assign smallersubset=mypagesubset %}{% endunless %}
     {% for _set in _usubset %}

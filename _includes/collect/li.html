@@ -1,8 +1,9 @@
-{% assign fsets = include.ttsets %}
+{%- assign fsets = include.ttsets %}
 <li class="{{ include.class }} line-height-sans-4 {% if cal_id %}{{ cal_id }}{% endif %}"
     {% if sort_list %} wb="{% for wb in pwb %}{{ wb }} {% endfor %} all"
     tagged="{% for tag in ptags %}{{ tag }} {% endfor %}all" type="{% for types in ptypes %}{{ types }} {% endfor %}all"
     difficulty="{% for lvl in pdifficulties %}{{ lvl }} {% endfor %}all" {% endif %}
     {%- if fetchjs %}id="{{ fsets.id }}"{%- endif %}
 >
-    <a class="listed {{ include.aclass }}" href="{{ fsets.url | relative_url }}">{{ fsets.title }}</a>
+    <a class="listed {{ include.aclass }}" href="{{ fsets.url | relative_url }}">{%- unless sort_list %}
+        <img class="usa-icon margin-right-05" src="{{ include.decor }}" alt="{{ fsets.type | default: 'index' }}"> {%- endunless %}{{ fsets.title }}</a>

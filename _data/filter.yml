@@ -51,3 +51,26 @@ filters:
 
 vals: ['wbs','type', 'tags', 'level', 'packages', 'author', 'wgs', 'interface']
 
+icons: 
+  - type: index
+    icon: /assets/uswds/img/material-icons/list.svg
+  - type: introduction
+    icon: /assets/uswds/img/material-icons/read_more.svg
+  - type: interactive tutorial
+    icon: /assets/uswds/img/material-icons/build.svg
+  - type: lesson module
+    icon: /assets/uswds/img/material-icons/text_snippet.svg
+  - type: reference material
+    icon: /assets/uswds/img/material-icons/book.svg
+
+capitalize: 
+  - c: CLI
+    d: cli
+  - c: IDE
+    d: ide
+  - c: GUI
+    d: gui
+  - c: VS Code
+    d: vs code
+  - c: BioPerl
+    d: bioperl

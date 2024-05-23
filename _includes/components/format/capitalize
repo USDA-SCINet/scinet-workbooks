@@ -1,0 +1,8 @@
+
+{%- assign title = include.title %}
+{%- assign caparray = site.data.filter['capitalize'] | where: "d", title %}
+{%- if caparray.size > 0 %}
+{{ caparray[0].c }}
+{%- else %}
+{{ title | capitalize }}
+{%- endif %}
