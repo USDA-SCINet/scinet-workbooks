@@ -1,5 +1,5 @@
 filters:
-  - section: Workbooks
+  - section: Domains
     select-all: true
     subsection:
       - title: Base Workbooks
@@ -13,10 +13,12 @@ filters:
         collect: 'specialization'
   - section: Type and Difficulty
     subsection:
-      - title: Module Type
+      - title: Lesson Type
         type: select
         val: 'type'
-      - title: Module Difficulty
+        unsorted: true
+        values: ['interactive tutorial', 'lesson module', 'reference material']
+      - title: Subject Matter Expertise
         type: select
         val: 'level'
         unsorted: true
@@ -48,3 +50,4 @@ filters:
 
 
 vals: ['wbs','type', 'tags', 'level', 'packages', 'author', 'wgs', 'interface']
+

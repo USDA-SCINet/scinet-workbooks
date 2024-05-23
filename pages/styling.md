@@ -40,7 +40,7 @@ This should be conscise but descriptive - what you would want shown in the filte
 
 type: interactive tutorial
 
-Choose between "interactive tutorial" and "lesson module".
+Choose between "interactive tutorial", "lesson module", "introduction", and "reference materials".
 Lesson modules cover information in a textbook-style format, where interactive tutorials walk the user through a practical example.
 
 ## Keywords
