@@ -36,6 +36,12 @@ a.gloss{
    }
 }
 
+.tablet-text-right{
+   @include at-media('tablet') {
+      @include u-text('right');
+   }
+}
+
 .max-tablet {
    @include OR.max-tablet
 }

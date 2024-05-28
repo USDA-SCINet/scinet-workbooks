@@ -5,5 +5,5 @@
     difficulty="{% for lvl in pdifficulties %}{{ lvl }} {% endfor %}all" {% endif %}
     {%- if fetchjs %}id="{{ fsets.id }}"{%- endif %}
 >
-    <a class="listed {{ include.aclass }}" href="{{ fsets.url | relative_url }}">{%- unless sort_list %}
+    <a class="listed {{ include.aclass }}" href="{% include url.html link=fsets %}">{%- unless sort_list %}
         <img class="usa-icon margin-right-05" src="{{ include.decor }}" alt="{{ fsets.type | default: 'index' }}"> {%- endunless %}{{ fsets.title }}</a>

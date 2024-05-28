@@ -5,7 +5,7 @@
     <ul class="">
       
       <li class="">
-        <b>Section Index:</b> <a href="{{ prevTOC.last.url  | relative_url }}" class="">{{ prevTOC.last.title }}</a>
+        <b>Section {{ prevTOC.last.type | default: 'Index' | capitalize }}:</b> <a href="{{ prevTOC.last.url  | relative_url }}" class="">{{ prevTOC.last.title }}</a>
       </li>
     
       {% unless page.path contains 'index.html' or page.org or page.previous.url == prevTOC.last.url %}
@@ -21,9 +21,17 @@
         <b>Next  {% if _next.type %}{{ _next.type | capitalize }}{%else %}Lesson{%endif%}:</b> <a href="{{ _next.url  | relative_url }}" class="">{{ _next.title }}</a>
       </li>
       {%- endfor %}
+      {% elsif sortposts contains page %}
+
+            <li class="">
+              <b>Next</b>
+            </li>
+
+    </ul>
       {%- elsif page.next.org and page.next.org < prevTOC.last.org %}
     </ul>
       <b>Next Workbook:</b> <a href="{{ page.next.url  | relative_url }}" class="">{{ page.next.title }}</a>
+      {%- elsif page.next.url == prevTOC.last.url %}
       {%- else %}
       <li class="">
         <b>Next {% if page.next.type %}{{ page.next.type | capitalize }}{%else %}Lesson{%endif%}:</b> <a href="{{ page.next.url  | relative_url }}" class="">{{ page.next.title }}</a>

@@ -12,7 +12,7 @@
             {%- if _link.url == page.url or _link.url == page.permalink -%}
               {%- break -%}
             {%- endif -%}
-          {%- include layout/components/breadcrumb_link.html title=_link.title url=_link.url -%}
+          {%- include layout/components/breadcrumb_link.html link=_link -%}
         {%- endfor -%}
         {%- endif -%}
       {%- endif -%}

@@ -6,10 +6,34 @@ class: usa-grid usa-content usa-layout-docs maxw-tablet margin-x-auto
 ---
 
 <div class="{% unless page.sidenav %}grid-container main-side{%endunless%}">
-    
-    <p>{% if page.author %}<b>By: <a href="#authors">{{ page.author }}</a></b>{% endif %}
-        {% if page.authors %}<b>By: <a href="#authors">{% for _author in page.authors %}{{ _author.author }}{% if forloop.last == false %}, {% endif %}{% endfor %}</a></b>{% endif %}
-    {% if page.affiliation %}</br><b>{{ page.affiliation }}</b>{% endif %}</p>
+    <div class="grid-row">
+    <div class="tablet:grid-col-8">
+    <p>{% if page.author %}<b>By: <a href="#authors">{% for _author in page.author %}{{ _author }}{% unless forloop.last %}, {% endunless %}{% endfor %}</a></b>{% endif %}
+    {% if page.affiliation %}</br>{{ page.affiliation }}{% endif %}
+   
+    {% if page.wgs %}</br>{% include layout/components/wgs wg=page.wgs %}{% endif %}</p>
+    </div>
 
+    {% if page.type=='interactive tutorial' or page.type=='lesson module' %}
+    <div class="tablet:grid-col-4 tablet-text-right">
+        {%- if page.type=='interactive tutorial' %}
+        <b>Interactive Tutorial</b>
+        {%- else %}
+        <b>Lesson Module</b>
+        {%- endif %}
+    </div>
+    {% endif %}
+    {% if page.prereq %}
+    {% endif %}
+    </div>
+
+
+
+{%- if page.ext == '.html' %}
+{%- unless page.no-md %}
+{{ content | markdownify }}
+{%- endunless %}
+{%- else %}
 {{ content }}
+{%- endif %}
 </div>
