@@ -6,8 +6,9 @@ author: Sharu Paul
 
 org: 2
 ordered: 1
-tags: data-science
+tags: ide
 description: Describe the workbook for index and search purposes
+
 ---
 
 {% include images_path %}

@@ -6,7 +6,7 @@ author: Jennifer Chang
 header:
   overlay_image: 04-devel-environment/assets/img/04_development_envir_banner.png
 type: lesson module
-tags: r-studio r-project ide
+tags: r-studio
 description: Describe the workbook for index and search purposes
 level: beginner
 ---

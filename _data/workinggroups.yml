@@ -1,25 +1,25 @@
 wgs:
   - shorthand: geospatial
     url: https://scinet.usda.gov/research/working-groups/geospatial
-    name: Geospatial Research Working Group
+    title: Geospatial Research Working Group
   - shorthand: ag100pest
     url: https://scinet.usda.gov/research/working-groups/ag100pest
-    name: Ag100Pest Initiative
+    title: Ag100Pest Initiative
   - shorthand: agr
     url: https://scinet.usda.gov/research/working-groups/arthropods
-    name: Arthropod Genomics Research Working Group
+    title: Arthropod Genomics Research Working Group
   - shorthand: microbiome
     url: https://scinet.usda.gov/research/working-groups/microbiome
-    name: Microbiome Working Group
+    title: Microbiome Working Group
   - shorthand: pollinator
     url: https://scinet.usda.gov/research/working-groups/pollinator
-    name: Pollinator Working Group
+    title: Pollinator Working Group
   - shorthand: ltar
     url: https://scinet.usda.gov/research/working-groups/LTARphenology
-    name: SCINet-Longterm Agroecosystem Research Phenology Working Group
+    title: SCINet-Longterm Agroecosystem Research Phenology Working Group
   - shorthand: protein-function
     url: https://scinet.usda.gov/research/working-groups/proteinfunction
-    name: Protein Function and Phenotype Prediction Working Group
+    title: Protein Function and Phenotype Prediction Working Group
   - shorthand: omics
     url: https://scinet.usda.gov/research/working-groups/omics
-    name: Translational Omics Working Group
+    title: Translational Omics Working Group

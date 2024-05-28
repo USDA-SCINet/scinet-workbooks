@@ -1,10 +1,11 @@
 {% assign author = include.author %}
 {% assign author = site.data.authors[author] | default: author %}
 
-<li class="usa-card usa-card--flag">
+<li class="usa-card usa-card--flag card-img-sq">
     <div class="usa-card__container">
       <div class="usa-card__header">
         <h2 class="usa-card__heading no_toc">{{ author.name }}</h2>
+        {% if author.pronouns %}<span class="font-body-2xs"><i>{{ author.pronouns }}</i></span>{% endif %}
       </div>
       {% if author.avatar %}
         {%- if author.avatar contains "://" -%}
@@ -15,6 +16,7 @@
       <div class="usa-card__media usa-card__media--inset">
         <div class="usa-card__img">
           <img
+            class="circle-card-lg"
             src="{{ author_src }}"
             alt="{{ author.name }}"
           />

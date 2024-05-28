@@ -7,8 +7,9 @@ header:
   overlay_image: 04-devel-environment/assets/img/04_development_envir_banner.png
 org: 2
 ordered: 2
+tags: python
 description: Describe the workbook for index and search purposes
-type: lesson module
+
 ---
 {% include images_path %}
 

@@ -37,7 +37,7 @@ Rick Masonbrink:
 Viswa Satheesh:
   name        : "Viswa Satheesh"
   bio         : "Satheesh is a Research Scientist III at the Genome Informatics Facility at Iowa State University. With a Ph.D. in Molecular Biology and Biotechnology, his expertise lies in the field of plant stress biology and epigenetics, where he has made significant contributions by utilizing large-scale biological data. Currently, apart from analyzing NGS data, he creates data analysis tutorials and workshops for scientists in the USDA."
-  avatar      : "/assets/img/people/satheesh.jpeg"
+  avatar      : "/assets/img/people/satheesh.jpg"
   contact:
     twitter     : "satheeshbhoj"
     email       : "mailto:satheesh@iastate.edu"
@@ -57,7 +57,6 @@ Jennifer Chang:
   bio         : "I am a PhD in Bioinformatics and Computational Biology. I have been programming since 2006 and have an interest in data visualization and software development. My research focus has been on analyzing and merging networks, monitoring the evolution of influenza A viruses in swine, and writing cross-platform pipelines. In 2020, I joined the Genomics Informatics Facility in the hopes of developing interdisciplinary pipelines and tutorials."
   avatar      : "/assets/img/people/Jennifer.png"
   contact:
-    twitter     : "someone"
     email       : "mailto:someone@iastate.edu"
     website     : "https://gif.biotech.iastate.edu"
 
@@ -66,7 +65,6 @@ Arun Seetharam:
   bio         : "My main interests are in the fields of Bioinformatics and evolutionary Genomics. Currently, I am working on various projects involving next-generation sequencing, including the first *de novo* assembly of a teosinte genome. I am also developing pipelines to streamline the assembly and annotation process for newly sequenced organisms. My long-term goal is to study genome organization and the evolution of grass species."
   avatar      : "/assets/img/people/Arun.jpg"
   contact:
-    twitter     : "someone"
     email       : "mailto:someone@iastate.edu"
     website     : "https://gif.biotech.iastate.edu"
 
@@ -75,6 +73,14 @@ Kerrie Geil:
   bio         : "Kerrie is an ARS SCINet postdoc in the research group of Dr. Deb Peters in Las Cruces, NM. Her M.S. and Ph.D. degrees are in Atmospheric Sciences and her research background is in climate modeling."
   avatar      : "/assets/img/people/KerrieGeil.png"
   contact:
-    twitter     : "someone"
     email       : "mailto:someone@iastate.edu"
     website     : "https://gif.biotech.iastate.edu"
+
+Moe Richert:
+  name: "Moe Richert"
+  pronouns: "He/Him"
+  bio: "Moe is the web developer for the SCINet office."
+  avatar: "/assets/img/people/MoeRichert.png"
+  contact:
+    email: "moe.richert@usda.gov"
+    website: "https://scinet.usda.gov/"

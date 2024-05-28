@@ -1,0 +1,31 @@
+@use './highlight-styles' as *;
+
+$highlighted-icons: (
+  "warning" "orange" "warning",
+  "info" "cyan" "info",
+  "question" "violet" "help",
+  "tip" "magenta" "star",
+  "error" "red" "error",
+  "note" "mint" "push_pin",
+  "highlighted" "yellow" "flag",
+  "success" "green" "check_circle",
+  "emergency" "red-warm" "error"
+);
+
+
+
+@each $name, $colval, $icon in $highlighted-icons {
+    .highlighted--#{$name} {
+      @include highlighted-status-wrapper-styles($name, $colval);
+      .highlighted__body {
+        @include highlighted-styles-other($name, $colval, $icon)
+      } 
+    }
+    .class--#{$name} {
+      @include highlighted-styles;
+      * + & {
+      margin-top: units(2);
+      };
+      @include highlighted-status-styles($name, $colval);
+    }
+  }

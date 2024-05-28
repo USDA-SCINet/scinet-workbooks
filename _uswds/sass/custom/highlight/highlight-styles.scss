@@ -1,0 +1,138 @@
+@use "uswds-core" as *;
+
+// Base alert styles
+@mixin highlighted-styles {
+    $bgcolor: "primary-lighter";
+    $banner-text-color-token: get-color-token-from-bg(
+      $bgcolor,
+      $theme-alert-text-reverse-color,
+      $theme-alert-text-color,
+      $context: "Highlight (default)"
+    );
+  
+    background-color: color($bgcolor);
+    border-left: units($theme-alert-bar-width) solid color("primary-vivid");
+    color: color($banner-text-color-token);
+    @include u-shadow(2);
+  
+    .highlighted__body {
+      @include border-box-sizing;
+      @include typeset($theme-alert-font-family);
+      @include u-margin-x("auto");
+      @include u-maxw($theme-site-alert-max-width);
+      @include u-padding-y($theme-alert-padding-y);
+      @include u-padding-x($theme-site-margins-mobile-width);
+      @include at-media($theme-site-margins-breakpoint) {
+        padding-left: 2 * $alert-icon-optical-padding;
+      }
+  
+      position: relative;
+
+      p{
+        @include u-margin-y(0);
+      };
+
+      h4, .highlighted__heading {
+        @include typeset($theme-alert-font-family, "lg", 1);
+        margin-top: 0;
+        margin-bottom: units(1);
+      };
+
+      h5{
+        @include typeset($theme-alert-font-family, "md", 1);
+        margin-bottom: units(1);
+      };
+    }
+
+  }
+
+  //set status styles for highlight class
+  @mixin highlighted-status-styles($name, $colval) {
+    $bgcolor: if($name != "emergency", "#{$colval}-10", "#{$colval}-60v");
+    $bordercolor: if($name != "emergency", "#{$colval}-30v", "#{$colval}-80");
+
+    $banner-text-color-token: get-color-token-from-bg(
+      $bgcolor,
+      $theme-alert-text-reverse-color,
+      $theme-alert-text-color,
+      $context: "Highlight (#{$name})"
+    );
+    @include set-text-and-bg($bgcolor);
+
+    border-left: units($theme-alert-bar-width) solid color($bordercolor);
+
+
+    @include u-padding-y($theme-alert-padding-y);
+    @include u-padding-x($theme-site-margins-mobile-width);
+    @include at-media($theme-site-margins-breakpoint) {
+        padding-left: 2 * $alert-icon-optical-padding;
+    }
+  }
+  
+  // Set status styles for alert wrapper/background
+  @mixin highlighted-status-wrapper-styles($name, $colval) {
+    $bgcolor: if($name != "emergency", "#{$colval}-5", "#{$colval}-60v");
+    $bordercolor: if($name != "emergency", "#{$colval}-30v", "#{$colval}-80");
+  
+    background-color: color($bgcolor);
+    border-left: units($theme-alert-bar-width) solid color($bordercolor);
+  }
+  
+
+
+    // Set status styles for alert content
+  // added to __body element
+  @mixin highlighted-styles-other($name, $colval, $icon) {
+    $bgcolor: if($name != "emergency", "#{$colval}-5", "#{$colval}-60v");
+    $banner-text-color-token: get-color-token-from-bg(
+      $bgcolor,
+      $theme-alert-text-reverse-color,
+      $theme-alert-text-color,
+      $context: "Highlight (#{$name})"
+    );
+    @include add-alert-icon($icon, $banner-text-color-token, $bgcolor);
+    @include set-text-and-bg($bgcolor);
+    padding-left: units($theme-alert-icon-size) + ($alert-icon-optical-padding);
+
+    @include at-media($theme-site-margins-breakpoint) {
+      padding-left: units($theme-site-margins-width) * 2;
+      padding-right: units($theme-site-margins-width) * 2;
+    }
+  
+    a {
+      @include set-link-from-bg(
+        $bgcolor,
+        $theme-alert-link-reverse-color,
+        $theme-alert-link-color,
+        $context: "Highlight (#{$name})"
+      );
+    }
+  }
+
+  .highlighted{
+    @include highlighted-styles;
+    * + & {
+    margin-top: units(2);
+    };
+
+}
+
+// Variant - no icon
+@mixin highlighted-no-icon {
+    .highlighted__body {
+      &:before {
+        display: none !important;
+      }
+  
+      padding-left: units(
+        $theme-site-margins-mobile-width - $theme-alert-bar-width
+      );
+      @include at-media($theme-site-margins-breakpoint) {
+        padding-left: 2 * $alert-icon-optical-padding;
+      }
+    }
+  };
+
+  .highlighted--no-icon {
+    @include alert-styles-no-icon;
+  }

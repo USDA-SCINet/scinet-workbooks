@@ -1,7 +1,6 @@
-{%- assign title = include.title -%}
-{%- assign url = include.url -%}
+{%- assign link = include.link -%}
 <li class="usa-breadcrumb__list-item">
-  <a href="{{ url  | relative_url }}" class="usa-breadcrumb__link">
-    <span>{{ title }}</span>
+  <a href="{% include url.html link=link %}" class="usa-breadcrumb__link">
+    <span>{{ link.title }}</span>
   </a>
 </li>
