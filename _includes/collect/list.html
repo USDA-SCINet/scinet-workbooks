@@ -21,7 +21,7 @@
 {% if tsets.org %}
     {% unless pssize == 0 %}
 <ul class="{%- unless sort_list %}icon-ul{%- endunless %}">
-    {% assign _usubset = pagesubset %}
+    {% assign _usubset = pagesubset | sort: "ordered" %}
     {% unless include.loop=="looped" %}{% assign smallersubset=mypagesubset %}{% endunless %}
     {% for _set in _usubset %}
         {% include collect/list.html set=_set mysubset=smallersubset class="" loop="looped" %}

@@ -44,7 +44,7 @@
             <li class="usa-collection__meta-item">
                 <b>Content:</b>
                 <ul class="unstyled-list">
-                    {% assign psubset=pagesubset %}
+                    {% assign psubset=pagesubset | sort: "ordered" %}
                     {% assign largersubset=mypagesubset %}
                     {% for sets in psubset %}
                         {% include collect/list.html set=sets mysubset=largersubset class="usa-collection__meta-item" aclass="text-bold text-underline" %}
