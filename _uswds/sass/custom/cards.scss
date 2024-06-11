@@ -23,7 +23,7 @@ a.gloss{
 
    &:hover{
       .listed{
-         text-decoration:underline;
+         text-decoration:bold;
          color: color("white");
          background-color: color("primary-dark");
       }
@@ -32,6 +32,24 @@ a.gloss{
    .listed{
       &::after {
          content: '\00a0\00BB';
+      }
+   }
+}
+a.gloss_wb{
+   text-decoration: none;
+   color: color("ink");
+
+   &:hover{
+      .listed{
+         text-decoration:bold;
+         color: color("white");
+         background-color: color("accent-warm-darker");
+      }
+   }
+
+   .listed{
+      &::after {
+         content: '\00a0\27A4';
       }
    }
 }

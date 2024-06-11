@@ -1,4 +1,5 @@
 {% assign option = include.option %}
+{% assign gloss = include.gloss | default: site.data.glossary['glossary'] %}
 
 <li class="glossary usa-collection__item width-full maxw-full" {% if sort_list %}
     wb="{% for wb in pwb %}{{ wb }} {% endfor %} all"
@@ -98,12 +99,17 @@
         <ul class="usa-collection__meta padding-top-1" aria-label="Related Terms">
             {% assign relateds = option.related | split: ', ' %}
             {% for _related in relateds %}
-            <a class="gloss" href="#{{ _related | slugify}}" ><li class="usa-collection__meta-item usa-tag listed">{{ _related | capitalize}}</li></a>
+            {% assign glossed = gloss | find_exp:"item", "item.term == _related" %}
+            {% if glossed.size > 0 %}
+            <a class="gloss" href="#{{ _related | slugify }}" ><li class="usa-collection__meta-item usa-tag listed">{{ _related | capitalize }}</li></a>
+            {% else %}
+            <li class="usa-collection__meta-item usa-tag">{{ _related | capitalize }}</li>
+            {% endif %}
             {% endfor %}
             {% if option.cat %}
                 {% assign _cats = option.cat | split: ', ' %}
                 {% for _cat in _cats %}
-                <li class="usa-collection__meta-item usa-tag">{{ _cat | capitalize}}</li>
+                <a class="gloss_wb" href="{{ base_url }}/{{ _cat | slugify }}" ><li class="usa-collection__meta-item usa-tag listed">{{ _cat | capitalize}}</li></a>
                 {% endfor %}
             {% endif %}
         </ul>

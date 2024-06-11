@@ -1,5 +1,6 @@
 <div class="home-block">
-    {% assign gloss_letters = site.data.glossary['glossary'] | sort: 'term' 
+    {% assign gloss = site.data.glossary['glossary'] %}
+    {% assign gloss_letters = gloss | sort: 'term' 
     | group_by_exp: "item", "item.term | slice: 0, 1" %}
     
     {% for letter in gloss_letters %}
@@ -9,7 +10,7 @@
     </h2>
     <ul class="usa-collection border-x border-bottom padding-bottom-2 ">
         {% for _mterm in letter.items %}
-            {% include components/component/term-card.html option=_mterm %}
+            {% include components/component/term-card.html option=_mterm gloss=gloss%}
         {% endfor %}
     </ul>
     </div>
