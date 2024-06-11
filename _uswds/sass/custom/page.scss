@@ -1,7 +1,7 @@
 @use "overrides" as OR;
 
 .top-header {
-    @include OR.top-header
+    @include OR.top-header;
 }
 
 .no-display {
@@ -39,3 +39,10 @@
 .page-contents img{
     padding: 1em;
 }
+
+/* #page-contents{
+    h1{
+        border-bottom: 1px solid;
+    }
+}
+ */

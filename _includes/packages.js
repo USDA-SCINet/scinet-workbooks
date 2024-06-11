@@ -32,15 +32,14 @@
 {
     "ref": "{{ o.id }}",
     "path": "{{ postpath }}",
-    "testsize": "{{ subset.size }}",
     {%- for val in vals %}
-    {%- assign vset = subset | map: val | uniq %}
+    {%- assign vset = subset | map: val | uniq | compact %}
     {%- if vset.size > 1 %}
-    "{{ val }}": [
+    "{{ val }}": [ " ",
         {%- for v in vset %}"{{ v }}"{%- unless forloop.last %},
         {% endunless -%}{% endfor %}
     ]{%- else %}
-    "{{ val }}": "{{ vset }}"{%- endif %}{%- unless forloop.last %},{% endunless -%}{%- endfor %},
+    "{{ val }}": [ "{{ vset }}" ]{%- endif %}{%- unless forloop.last %},{% endunless -%}{%- endfor %},
     "keeps": [
         {%- for s in subset %}"{{ s.id }}"{%- unless forloop.last %},
         {% endunless -%}

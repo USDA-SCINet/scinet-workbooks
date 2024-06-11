@@ -119,10 +119,3 @@ pre {
    @include usa-table--compact;
    @include usa-table--borderless;
 }
-
-.tooltip-toggle{
-   &:hover {
-      cursor: pointer;
-      .usa-icon{fill: color($theme-color-primary-vivid);}
-   }
-}

@@ -26,6 +26,32 @@ Lesson modules cover information in a textbook-style format.
 
 # Front Matter
 
+## Example Front Matter
+
+{:.copy-code}
+```
+{%- raw %}
+---
+title: "Your Tutorial Title Here"
+author: Your Name
+# org: 3 # only needed for intro and index pages
+# ordered: 1 # only needed if order of tutorials within a folder is important
+
+type: interactive tutorial
+level: basics # relative to module
+
+tags: r-project raster geocdl
+packages: [bioperl, biopython]
+# wgs: geospatial # if this is associated with a working group
+
+description: Describe the workbook for index and search purposes
+---
+
+{% include images_path folder=-1 %}
+
+---{% endraw %}
+```
+
 ## Title
 
 title: "Command Line"
@@ -54,6 +80,9 @@ Separate your tags by spaces and use dashes in place of spaces within the tag.
 Reference existing tags and use those where possible instead of creating new ones.
 
 If applicable, please include a GUI, web-based, or command-line tag.
+
+Tags are inherited from the parent indexes.
+If you include "python" as a tag in the index file, all of the children of that folder will be filterable by the "python" keyword.
 
 {% include collect/tags.html fetch='tags' %}
 
@@ -89,16 +118,36 @@ author: [Author 1, Author 2, etc]
 
 If you have not added your information to authors.yml, you will need to do so for it to show up on the page.
 
-## Layout
-
-layout: single
-
 ## Organization Level
 
 org: 1
 
 This is only needed for Intro and Index pages.
+The org level should be one higher than the index in the parent folder.
 
 ## Order within a level
 
 ordered: 1
+
+## Including Assets
+
+Assets and images should be included in an "Assets" folder.  This can be located in the same folder as the file, or in any of the proceeding folders as appropriate.
+
+* Images should be stored in /assets/img/
+* Other files can be stored in /assets/
+
+
+The folder variable indicates where your assets file is relative to your markdown file.
+  * If the assets folder is in the same folder as your markdown file, do not include the folder variable.
+  * If it is in your parent folder, use 'folder=-1'
+  * If it is in the grandparent folder, use 'folder=-2'
+
+
+To access the files, use the following code:
+
+{:.copy-code}
+```
+{%- raw %}
+![Image alt text here]({{ images_path }}/filename.png)
+[My linked file text]({{ file_path }}/filename.ipynb){% endraw %}
+```

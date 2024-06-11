@@ -74,3 +74,9 @@ capitalize:
     d: vs code
   - c: BioPerl
     d: bioperl
+  - c: SLURM
+    d: slurm
+  - c: GeoCDL
+    d: geocdl
+  - c: RStudio
+    d: rstudio

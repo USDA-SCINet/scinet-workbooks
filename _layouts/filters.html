@@ -206,6 +206,15 @@ alert:
                 {% include components/alert.html data=alertdata %}
               </div>
 
+              <div id="search-placeholder" class="tablet-lg:margin-x-3 bg-base-lighter width-full maxw-tablet margin-y-2 padding-2 margin-bottom-2 grid-row no-display"> 
+                <div class="tablet:grid-col-9">
+                  <div id="filter-pills" class="filter-pills"></div>
+                </div>
+                <div class="tablet:grid-col-3">
+                  <button class="usa-button usa-button--base" type="button" onclick="clearSearch()">Clear Search</button>
+                </div>
+              </div>
+
               <div class="padding-bottom-2 bg-primary-lighter width-full maxw-tablet margin-y-2 desktop:margin-x-2">
                   
                   
