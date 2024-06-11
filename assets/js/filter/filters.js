@@ -27,22 +27,25 @@ function loadFilters(form, clear = "nope"){
     if(key === clear[0] && val === clear[1]){
       //do nothing
     } else {
+      if( val === "" ){}else{
       const input = form.elements[key];
+      if( input.id === key){
 
-      if (input instanceof RadioNodeList) {
+          switch(input.type) {
+            case 'checkbox': input.checked = !!val; 
+            default:         input.value = val;     
+          }
+        
+        
+      } else if (input instanceof RadioNodeList) {
           rlength = input.length
           for (var i = 0; i < rlength; i++) {
             if(input[i].value === val){
               input[i].checked = !!val;
             }
           }
-        } else {
-          switch(input.type) {
-            case 'checkbox': input.checked = !!val; break;
-            default:         input.value = val;     break;
-          }
-        }
-    }
+        } 
+    }}
   }
 
   submitFilters(form)
@@ -86,7 +89,6 @@ function sortForm(fdata){
   });
 
   var formobject = Object.entries(formvalues);
-
 
   //check if formdata has a selction
   if(formobject.length === 0){

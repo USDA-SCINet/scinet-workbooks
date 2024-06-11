@@ -60,5 +60,9 @@ wbComp:
   {% include collect/wb-nav.html %}
 {% endunless %}
 
+{% unless page.org %}
+{% include collect/related-reading.html %}
+{% endunless %}
+
 {% include authors.html %}
 {% endif %}

@@ -1,0 +1,54 @@
+{% assign subtags = "" | split: "" %}
+{% assign parenttags = prevTOC.last.tags %}
+{% assign pagetags = page.tags %}
+{% for _arraycheck in parenttags %}
+    {% assign subtags = subtags | push: _arraycheck %}
+{% endfor %}
+{% for _arraycheck in pagetags %}
+    {% assign subtags = subtags | push: _arraycheck %}
+{% endfor %}
+
+{% assign subtags = subtags | uniq | compact | join: "," %}
+{% if subtags != empty or page.wgs or page.reccs %}
+<div class="grid-row class--info" >
+    <div class="sci-container grid-container margin-y-2">
+    
+    <h2>Related Reading</h2>
+    <ul class="">
+        {% unless subtags == empty %}
+      <li class="">
+        <button class="usa-button usa-button--unstyled filter-nav" type="button" att="tags" cont="{{ subtags }}">Find similar workbooks</button>
+      </li>
+      {% endunless %}
+      {% if page.wgs %}
+      {%- assign wg-full = site.data.workinggroups['wgs'] | where: "shorthand", page.wgs %}
+      {%- assign wgname = wg-full[0].title %}
+      <li>
+        <button class="usa-button usa-button--unstyled filter-nav" type="button" att="wgs" cont="{{ page.wgs }}">Other workbooks developed by the {{ wgname }}</button>
+      </li>
+      {% endif %}
+      {% if page.reccs %}
+      <li class="">
+        You may also be interested in:
+        <ul>
+            {% for _rec in page.reccs %}
+                {% assign recpost = site[page.collection]  | where:"url", _rec  | first %}
+                <li><a href="{{ _rec.url | relative_url }}">{{ recpost.title }}</a></li>
+            {% endfor %}
+        </ul>
+      </li>
+      {% endif %}
+      {% if page.external-reccs %}
+      <li class="">
+        <a href="/about/disclaimer#external">External resources</a> you may find helpful:
+        <ul>
+            {% for _rec in page.external-reccs %}
+                <li><a href="{{ _rec.url }}">{{ _rec.title }}</a></li>
+            {% endfor %}
+        </ul>
+      </li>
+      {% endif %}
+      </ul>
+    </div>
+</div>
+{% endif %}

@@ -28,9 +28,9 @@
         <p>{{ author.bio }}</p>
         {% endif %}
       </div>
-      <div class="usa-card__footer">
+      <div class="usa-card__footer mobile-lg:grid-row">
         {% if author.contact %}
-        <div class="grid-col-auto">
+        <div class="grid-col">
             {% for _link in author.contact %}
             {% capture svgname %}{% if _link[0]=="website" %}account_circle{% elsif _link[0]=="email" %}mail{% else %}{{ _link[0] }}{% endif %}{% endcapture %}
             <a class="usa-social-link ext-nested" style="padding-right: .25rem;" href="{{ _link[1] }}"
@@ -42,6 +42,11 @@
             {% endfor %}
           </div>
         {% endif %}
+        <div class="grid-col mobile-lg:text-right">
+          <button class="usa-button usa-button--unstyled filter-nav" type="button" att="author" cont="{{ author.name }}">
+            Workbooks by {{ author.name }}
+          </button>
+        </div>
       </div>
     </div>
   </li>

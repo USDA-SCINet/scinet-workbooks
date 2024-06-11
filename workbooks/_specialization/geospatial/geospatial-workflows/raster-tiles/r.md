@@ -4,6 +4,11 @@ author: Heather Savoy
 type: interactive tutorial
 tags: r-project rstudio
 description: This tutorial assumes you are running this Rmarkdown file in RStudio Server.
+
+reccs: '/geospatial/geospatial-workflows/geocdl/r'
+external-reccs: 
+  - url: https://scinet.usda.gov/
+    title: SCINet Site
 ---
 
 {% include images_path %}

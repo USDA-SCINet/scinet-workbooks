@@ -41,10 +41,10 @@ filters:
   - section: Contributors
     subsection:
       - title: Author
-        type: dropdown
+        type: select
         val: 'author'
       - title: Working Groups
-        type: dropdown
+        type: select
         val: 'wgs'
 #  - section: Sort
 
