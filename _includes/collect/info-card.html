@@ -1,11 +1,12 @@
 {% assign post = include.option %}
 {% assign subset = include.subset %}
 
+{% assign pposttags = post.tags %}
 {% if post.org %}
     {% include collect/pagesubset subset=subset post=post %}
 {% else %}
     {% assign pwb = post.wbs %}
-    {% assign ptags = post.tags %}
+    {% assign ptags = pposttags %}
     {% assign ptypes = post.type %}
     {% assign pdifficulties = post.level  %}       
 {% endif %}
@@ -47,7 +48,7 @@
                     {% assign psubset=pagesubset | sort: "ordered" %}
                     {% assign largersubset=mypagesubset %}
                     {% for sets in psubset %}
-                        {% include collect/list.html set=sets mysubset=largersubset class="usa-collection__meta-item" aclass="text-bold text-underline" %}
+                        {% include collect/list.html set=sets mysubset=largersubset class="usa-collection__meta-item" aclass="text-bold text-underline" parenttags=pposttags %}
                     {% endfor %}
                 </ul>
             </li>
