@@ -71,6 +71,8 @@ GEM
       jekyll (>= 3.5, < 5.0)
       jekyll-feed (~> 0.9)
       jekyll-seo-tag (~> 2.1)
+    nokogiri (1.15.6-arm64-darwin)
+      racc (~> 1.4)
     nokogiri (1.15.6-x86_64-linux)
       racc (~> 1.4)
     parallel (1.24.0)
@@ -97,6 +99,7 @@ GEM
     zeitwerk (2.6.13)
 
 PLATFORMS
+  arm64-darwin-23
   x86_64-linux
 
 DEPENDENCIES
@@ -111,4 +114,4 @@ DEPENDENCIES
   minima (~> 2.5)
 
 BUNDLED WITH
-   2.3.10
+   2.4.22
