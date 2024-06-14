@@ -55,7 +55,7 @@ wbComp:
     </div>
   </div>
 
-
+{% if page.collection %}
 {% unless prevTOClength == 0 or page.org==0 %}
   {% include collect/wb-nav.html %}
 {% endunless %}
@@ -65,4 +65,5 @@ wbComp:
 {% endunless %}
 
 {% include authors.html %}
+{% endif %}
 {% endif %}
