@@ -90,7 +90,7 @@ alert:
                       {%- endif %}
                         {%- if _section.subsection %}
                             {%- for _sub in _section.subsection %}
-                                {% capture labelclass %}{% if forloop.first %} margin-top-1{% endif %}{% endcapture %}
+                                {% capture labelclass %}{% if forloop.first %} padding-top-1{% else %} padding-top-2{% endif %}{% endcapture %}
 
                                 {% assign tname = _sub.title | slugify %}
                                 {% if _sub.values %}
@@ -106,7 +106,7 @@ alert:
                                 {% endif %}
                                 
                                 {%- unless _sub.unsorted %}
-                                {% assign valued = valued | sort %}
+                                {% assign valued = valued | sort_natural %}
                                 {%- endunless %}
                                 
                                 {% assign checked = _sub.checked %}
@@ -120,13 +120,13 @@ alert:
                             {% assign valued = inner | map: _section.val | uniq | compact %}
                                                             
                             {%- unless _section.unsorted %}
-                            {% assign valued = valued | sort %}
+                            {% assign valued = valued | sort_natural %}
                             {%- endunless %}
 
                             {% assign nestingvals = nestingvals | push: _section.val %}
                             {% assign checked = _section.checked %}
 
-                            {% include form/{{ _section.type }}.html title=_section.title options=valued tname=_section.val checked=checked labelclass="margin-top-1" %}
+                            {% include form/{{ _section.type }}.html title=_section.title options=valued tname=_section.val checked=checked labelclass="padding-top-1" %}
 
                         {%- endif %}
         

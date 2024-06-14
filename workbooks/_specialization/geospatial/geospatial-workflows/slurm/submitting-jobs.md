@@ -6,7 +6,7 @@ description: This tutorial covers how to use an R script to list many input file
 author: Heather Savoy
 
 type: interactive tutorial
-tags: r-project
+tags: R-Project
 ---
 
 {% include images_path %}

@@ -2,7 +2,7 @@
 title: 'Distributing raster calculations with tiles - R'
 author: Heather Savoy
 type: interactive tutorial
-tags: r-project rstudio
+tags: R-Project RStudio
 description: This tutorial assumes you are running this Rmarkdown file in RStudio Server.
 
 reccs: '/geospatial/geospatial-workflows/geocdl/r'

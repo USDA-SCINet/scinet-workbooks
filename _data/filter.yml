@@ -62,21 +62,3 @@ icons:
     icon: /assets/uswds/img/material-icons/text_snippet.svg
   - type: reference material
     icon: /assets/uswds/img/material-icons/book.svg
-
-capitalize: 
-  - c: CLI
-    d: cli
-  - c: IDE
-    d: ide
-  - c: GUI
-    d: gui
-  - c: VS Code
-    d: vs code
-  - c: BioPerl
-    d: bioperl
-  - c: SLURM
-    d: slurm
-  - c: GeoCDL
-    d: geocdl
-  - c: RStudio
-    d: rstudio

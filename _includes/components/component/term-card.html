@@ -101,15 +101,15 @@
             {% for _related in relateds %}
             {% assign glossed = gloss | find_exp:"item", "item.term == _related" %}
             {% if glossed.size > 0 %}
-            <a class="gloss" href="#{{ _related | slugify }}" ><li class="usa-collection__meta-item usa-tag listed">{{ _related | capitalize }}</li></a>
+            <a class="gloss" href="#{{ _related | slugify }}" ><li class="usa-collection__meta-item usa-tag listed">{{ _related }}</li></a>
             {% else %}
-            <li class="usa-collection__meta-item usa-tag">{{ _related | capitalize }}</li>
+            <li class="usa-collection__meta-item usa-tag">{{ _related }}</li>
             {% endif %}
             {% endfor %}
             {% if option.cat %}
                 {% assign _cats = option.cat | split: ', ' %}
                 {% for _cat in _cats %}
-                <a class="gloss_wb" href="{{ base_url }}/{{ _cat | slugify }}" ><li class="usa-collection__meta-item usa-tag listed">{{ _cat | capitalize}}</li></a>
+                <a class="gloss_wb" href="{{ base_url }}/{{ _cat | slugify }}" ><li class="usa-collection__meta-item usa-tag listed">{{ _cat }}</li></a>
                 {% endfor %}
             {% endif %}
         </ul>

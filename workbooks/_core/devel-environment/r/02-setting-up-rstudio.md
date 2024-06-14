@@ -6,7 +6,7 @@ author: Jennifer Chang
 header:
   overlay_image: 04-devel-environment/assets/img/04_development_envir_banner.png
 type: lesson module
-tags: r-studio
+tags: RStudio
 description: Describe the workbook for index and search purposes
 level: beginner
 ---
@@ -33,7 +33,7 @@ First you will need to install R or have access to an R environment. It is highl
 
 ## Setup R Locally
 
-1. Install the latest version of R from CRAN - [https://www.r-project.org/](https://www.r-project.org/)
+1. Install the latest version of R from CRAN - [https://www.R-Project.org/](https://www.R-Project.org/)
 2. Install the free version of RStudio IDE - [https://rstudio.com/products/rstudio/download/](https://rstudio.com/products/rstudio/download/)
 
 ![RStudio Quad Chart]({{ images_path }}/RStudio_quad.png)
@@ -70,7 +70,7 @@ ggplot(data, aes(x = x, y = y)) +
 
 R functions are made available as libraries (also referred to as packages) which need to be installed from somewhere. R libraries can be indexed on CRAN, bioconductor and GitHub. What's the difference between installing from these locations?
 
-* **CRAN** R libraries have undergone a stringent quality control process. [CRAN Website](https://cran.r-project.org/)
+* **CRAN** R libraries have undergone a stringent quality control process. [CRAN Website](https://cran.R-Project.org/)
 
   ```R
   cran_pkgs = c("ggplot2", "devtools")    # List one or multiple libraries

@@ -3,7 +3,7 @@
 {% if include.list %}
     {% assign tags = inners[fetch] %}
 {% else %}
-    {% assign tags = inners | map: fetch | uniq | compact %}
+    {% assign tags = inners | map: fetch | uniq | compact | sort_natural %}
 {% endif %}
 
 <div class="usa-table-container--scrollable" tabindex="0">
@@ -17,14 +17,14 @@
          <tr>
           {% for item in tag %}
            {% unless item[0]=="url" %}
-            <th data-sortable scope="col" role="columnheader">{{  item[0] | capitalize }}</th>
+            <th data-sortable scope="col" role="columnheader">{{  item[0] }}</th>
            {% endunless %}
           {% endfor %}
           </tr>
          {% endfor %}
         {% else %}
         <tr>
-          <th data-sortable scope="col" role="columnheader">{% if include.name %}{{ include.name | capitalize }}{% else %}{{ fetch | capitalize | append: '@' | remove: "s@" | remove: '@' }}{% endif %}</th>
+          <th data-sortable scope="col" role="columnheader">{% if include.name %}{{ include.name }}{% else %}{{ fetch | append: '@' | remove: "s@" | remove: '@' }}{% endif %}</th>
         </tr>
         {% endif %}
       </thead>

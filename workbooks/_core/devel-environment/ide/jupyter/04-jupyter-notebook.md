@@ -8,7 +8,7 @@ remove_from_img_path: 'jupyter/'
 header:
   overlay_image: 04-devel-environment/assets/img/04_development_envir_banner.png
 type: "interactive tutorial"
-tags: gui
+tags: GUI
 description: Describe the workbook for index and search purposes
 wgs: geospatial
 ---

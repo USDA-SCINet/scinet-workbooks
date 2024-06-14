@@ -17,7 +17,7 @@
           {{ checked }}
         />
         <label class="usa-checkbox__label capital" for="check-{{ include.title }}-{{ _option }}"
-          >{%- assign checkedcaps = _option | replace: "-", " " %}{% include components/format/capitalize title=checkedcaps %}</label
+          >{{ _option | replace: "-", " " }}</label
         >
       </div>
     {% endfor %}

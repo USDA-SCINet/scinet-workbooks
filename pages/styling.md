@@ -40,7 +40,7 @@ author: Your Name
 type: interactive tutorial
 level: basics # relative to module
 
-tags: r-project raster geocdl
+tags: R-Project raster geocdl
 packages: [bioperl, biopython]
 # wgs: geospatial # if this is associated with a working group
 
@@ -67,13 +67,13 @@ This should be conscise but descriptive - what you would want shown in the filte
 type: interactive tutorial
 
 Choose between "interactive tutorial", "lesson module", "introduction", and "reference materials".
-Lesson modules cover information in a textbook-style format, where interactive tutorials walk the user through a practical example.
+Lesson modules cover information in a textbook-style format, where interactive tutorials walk the user through a practical example.  **type is sensitive**
 
 ## Keywords
 
 tags: command-line separated-by-spaces use-dashes-for-spaces-in-tags
 
-These are used for Keyword filtering.
+These are used for Keyword filtering. **Tags are case sensitive**
 
 Tags use Jekyll's native tagging system.
 Separate your tags by spaces and use dashes in place of spaces within the tag.
@@ -82,7 +82,7 @@ Reference existing tags and use those where possible instead of creating new one
 If applicable, please include a GUI, web-based, or command-line tag.
 
 Tags are inherited from the parent indexes.
-If you include "python" as a tag in the index file, all of the children of that folder will be filterable by the "python" keyword.
+If you include "Python" as a tag in the index file, all of the children of that folder will be filterable by the "Python" keyword.
 
 {% include collect/tags.html fetch='tags' %}
 
@@ -90,7 +90,7 @@ If you include "python" as a tag in the index file, all of the children of that 
 
 packages: [packages of note, separated by commas, use brackets for multiple]
 
-If using more than one term, place terms in brackets and separate with commas.
+If using more than one term, place terms in brackets and separate with commas. **Packages are case sensitive**
 
 {% include collect/tags.html fetch='packages' %}
 
@@ -106,7 +106,7 @@ This is automatically compiled for existing workbooks.
 
 wgs: omics
 
-If you are writing this as a member of a working group, add your working group shorthand with this frontmatter variable.
+If you are writing this as a member of a working group, add your working group shorthand with this frontmatter variable.  **Working group shortnames are case sensitive**
 {% include collect/tags.html list=site.data.workinggroups fetch='wgs' name='working group' %}
 
 ## Author
@@ -115,6 +115,8 @@ author: Aleksandra Badaczewska
 
 For multiple authors, place the names in brackets and separate with commas.
 author: [Author 1, Author 2, etc]
+
+**Author names are case sensitive**
 
 If you have not added your information to authors.yml, you will need to do so for it to show up on the page.
 

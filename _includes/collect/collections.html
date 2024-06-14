@@ -19,6 +19,7 @@
 {% assign pagetitle = page.slug %}
 {% assign cal_id = pagetitle | prepend: "cal-" %}
 {% assign sort_list = true %}
+{% assign tags = tags | sort_natural %}
 
 <div class="grid-row grid-gap align-c margin-y-3">
   {% if include.heading %}<h1 id="{{include.heading | slugify }}">{{ include.heading }}</h1>{% endif %}
