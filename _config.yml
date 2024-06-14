@@ -110,6 +110,9 @@ defaults:
     values:
       variety: "workbook"
       layout: "single"
+      header:
+        image: /assets/img/specializations_banner.png
+        overlay_color: "transparent"
   -
     scope:
       path: "workbooks/_specialization/bioinformatics/"
