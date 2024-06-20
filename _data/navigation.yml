@@ -25,8 +25,8 @@ primary:
   # - title: Working Groups
   #   compile: working-groups
   #   compile_all: true
-  - title: Learning Paths
-    url: /pathways
+  # - title: Learning Paths
+  #   url: /pathways
   - title: Glossary
     url: /glossary
 
