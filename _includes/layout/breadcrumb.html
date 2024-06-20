@@ -2,7 +2,7 @@
     <ol class="usa-breadcrumb__list">
       {%- if page.collection -%}
 
-      {%- if page.org==0%}
+      {%- if page.org==0 %}
         {%- include layout/components/breadcrumb_link.html title='All Workbooks' url='/workbooks' -%}
       {%- elsif  page.org==0.5 -%}
         {%- include layout/components/breadcrumb_link.html title='Home' url='/' -%}
