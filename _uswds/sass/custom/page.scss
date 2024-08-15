@@ -1,11 +1,22 @@
+@use "uswds-core" as *;
 @use "overrides" as OR;
 
+.sticky-nav{
+    @include OR.is-sticky
+}
+
 .top-header {
-    @include OR.top-header
+    @include OR.top-header;
 }
 
 .no-display {
     @include OR.no-display
+}
+.never-display{
+    @include OR.no-display  
+}
+.fc-no-display{
+    @include OR.no-display 
 }
 
 .unstyled-list {
@@ -39,3 +50,34 @@
 .page-contents img{
     padding: 1em;
 }
+
+ .header-note{
+    margin-top: 0px;
+    font-size:  1rem;
+ }
+h1, h2, h3{
+    &:has(+ .header-note){
+        margin-bottom: 0px;
+    }
+}
+
+.usa-prose{
+    h1:first-child {
+        @include OR.top-header;
+    }
+    h1 {
+        border-bottom: 2px solid color('base');
+    }
+    h2 {
+        border-bottom: 2px solid color('base-lighter');
+    }
+}
+
+
+  .text-page-intro {
+    font-size: 1.25rem;
+    max-width: 72ex;
+    font-weight: 300;
+    margin-bottom: 1rem;
+    margin-top: .5rem;
+  }

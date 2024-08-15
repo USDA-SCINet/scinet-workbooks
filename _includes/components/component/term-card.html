@@ -1,12 +1,13 @@
 {% assign option = include.option %}
+{% assign gloss = include.gloss | default: site.data.glossary['glossary'] %}
 
-<li class="glossary usa-collection__item width-full maxw-full" {% if sort_list %}
+<li class="glossary usa-collection__item width-full fullwidth-i fc" datameta="{{  option.term  }}" {% if sort_list %}
     wb="{% for wb in pwb %}{{ wb }} {% endfor %} all"
     tagged="{% for tag in ptags %}{{ tag }} {% endfor %}all" type="{% for types in ptypes %}{{ types }} {% endfor %}all"
     difficulty="{% for lvl in pdifficulties %}{{ lvl }} {% endfor %}all" {% endif %}>
 
     <div class="padding-x-2 usa-collection__body">
-        <h3 class="usa-collection__heading">
+        <h3 class="usa-collection__heading no_toc">
             {{ option.term }}
         </h3>
         {% if option.alt %}<span>({{ option.alt }})</span>{% endif %}
@@ -98,12 +99,17 @@
         <ul class="usa-collection__meta padding-top-1" aria-label="Related Terms">
             {% assign relateds = option.related | split: ', ' %}
             {% for _related in relateds %}
-            <a class="gloss" href="#{{ _related | slugify}}" ><li class="usa-collection__meta-item usa-tag listed">{{ _related | capitalize}}</li></a>
+            {% assign glossed = gloss | find_exp:"item", "item.term == _related" %}
+            {% if glossed.size > 0 %}
+            <a class="gloss" href="#{{ _related | slugify }}" ><li class="usa-collection__meta-item usa-tag listed">{{ _related }}</li></a>
+            {% else %}
+            <li class="usa-collection__meta-item usa-tag">{{ _related }}</li>
+            {% endif %}
             {% endfor %}
             {% if option.cat %}
                 {% assign _cats = option.cat | split: ', ' %}
                 {% for _cat in _cats %}
-                <li class="usa-collection__meta-item usa-tag">{{ _cat | capitalize}}</li>
+                <a class="gloss_wb" href="{{ base_url }}/{{ _cat | slugify }}" ><li class="usa-collection__meta-item usa-tag listed">{{ _cat }}</li></a>
                 {% endfor %}
             {% endif %}
         </ul>

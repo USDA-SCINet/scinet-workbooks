@@ -7,58 +7,97 @@ wbComp:
   url: /workbooks
   title: All Workbooks
 ---
+{% if page.ext == '.ipynb' %}
+{{ content }}
+{% else %}
+{% assign blankarray = "" | split: "" %}
+{% assign hero = page.header %}
 
 {% if page.sidenav  == false or page.layout == 'page' %}
-  <div class="{{ layout.main.class }}" aria-label="{{ page.title }}" id="page-contents">
+{% include layout/hero.html %}
+  <main class="{{ layout.main.class }}" aria-label="{{ page.title }}" id="page-contents">
     {% if page.class %}<div class="{{ page.class }}">{% endif %}
-    {{ content }}
+      {%- if page.subtitle -%}
+        <h1 class="top-header">{{ page.subtitle }}</h1>
+      {%- endif -%}
+      {{ content }}
     {% if page.class %}</div>{% endif %}
     <br>
-  </div>
+  </main>
 
 {% else %}
+  {% assign headertitle = false %}
   {% include TOC-sort %}
   {% assign prevTOClength = prevTOC | size %}
+  {% assign previousTOC = pTOC | default: blankarray %}
+  {% assign nextTOC = afterTOC | default: blankarray %}
+  {% assign sidenav =  previousTOC | push: page %}
+  {% assign sidenav = sidenav | concat: nextTOC %}
+  {% assign bchome = layout.wbComp %}
 
   {% capture mycontent %}
     {{ content }}
-    {%- if page.org == 0 %}
-      {% include org0_cards.html outer=sortposts inner=taggedposts %}
-
-    {%- elsif page.org == 0.5 %}
-
-    {%- elsif page.org %}
+    {%- if page.index %}
       <br>
       {% include collect/collections.html outer=sortposts inner=subsetposts heading="Workbook Index" %}
 
     {%- endif %}
   {% endcapture %}
 
+  {% capture sidenavigation %}
+  <nav aria-label="Secondary navigation">
+    {% include layout/sidenav.html html=mycontent class="usa-sidenav" h_max=3 anchor_class="usa-sidenav__item" submenu_class="usa-sidenav__sublist" sidenav=sidenav %}
+  </nav>
+  {% endcapture %}
+
+  {%- if page.collection %}
+    {% if page.index == 0 %}
+      {% assign herotitle = page.title %}
+    {% else %}
+      {%- assign pageparent = page.parent | default: 0 %}
+      {% capture herotitle %}{{ prevTOC[pageparent].title }}{% endcapture %}
+      {% assign headertitle = page.title %}
+    {% endif %}
+  {% include layout/hero.html title=herotitle %}
+  {%- else %}
+  {% include layout/hero.html %}
+  {%- endif %}
+  <div id="page-contents">
   <div class="grid-container main-side">
     <div class="grid-row grid-gap flex-align-start">
 
-      <div class="usa-layout-docs__sidenav desktop:grid-col-3 desktop:padding-y-10{% unless page.sidenav %} usa-sticky-sidenav{% endunless %}">
-          <nav aria-label="Secondary navigation">
-            {% include sidenav.html html=mycontent h_max=2 class="usa-sidenav" anchor_class="usa-sidenav__item" submenu_class="usa-sidenav__sublist" prevsn=pTOC postsn=afterTOC %}
-          </nav>
-      </div>
+    <!-- desktop breakpoint side navigation. --> 
+   <div class="usa-layout-docs__sidenav display-none desktop:display-block desktop:grid-col-3 desktop:padding-y-10">
+    {{ sidenavigation }}
+    </div>
 
       <div class="usa-layout-docs__main desktop:grid-col-9">
-        {% unless prevTOClength == 0 or nobreadcrumb == 1 %}
           {% include layout/breadcrumb.html %}
-        {% endunless %}
-        <div class="{{ layout.main.class }}" aria-label="{{ page.title }}" id="page-contents">
-          {{ mycontent }}
-          <br>
-        </div>
+          <main class="{{ layout.main.class }} margin-bottom-2" id="main-content">
+            {% if headertitle or page.subtitle %}
+            <h1 class="top-header" >{{ headertitle | default: page.subtitle }}</h1>
+            {%- endif -%}
+            {{ mycontent }}
+          </main>
       </div>
+     <!-- mobile breakpoint sidenav -->
+     <div class="usa-layout-docs__sidenav desktop:display-none width-full  margin-bottom-2">
+     {{ sidenavigation }}
+     </div>
     </div>
   </div>
 
-
-{% unless prevTOClength == 0 or page.org==0 %}
+{% if page.collection %}
+{% unless prevTOClength == 0 or page.index==0 %}
   {% include collect/wb-nav.html %}
 {% endunless %}
 
+{% unless page.index %}
+{% include collect/related-reading.html %}
+{% endunless %}
+
 {% include authors.html %}
+{% endif %}
+</div>
+{% endif %}
 {% endif %}

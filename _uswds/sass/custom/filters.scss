@@ -1,0 +1,69 @@
+@use "uswds-core" as *;
+@use "overrides" as OR;
+
+  .tooltip-toggle{
+    &:hover {
+       cursor: pointer;
+       .usa-icon{fill: color($theme-color-primary-vivid);}
+    }
+ }
+
+ .filter-pills {
+    display: inherit;
+}
+
+
+.filter-pills__list {
+    display: block;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    width: 100%;
+    @include grid-row;
+    white-space: nowrap;
+    @include u-text('white');
+    @include u-text('bold');
+    text-decoration: none;
+    li{
+        display: list-item;
+        margin: 0;
+        ::before{
+            display: none;
+        }
+        ::after{
+            display: none;
+        }
+    }
+
+    .filter-pills__item {
+        @include grid-col('auto');
+        @include u-display('inline-block');
+        @include u-bg('base-dark');
+        @include u-radius('pill');
+        @include u-margin(1);
+        .filter-pills__pill{
+            @include u-margin(1);
+            .filter-pill-name {
+                @include u-margin-x(1);
+            }
+        };
+          
+    }
+    
+}
+
+.filter-pills__item:hover{
+    @include u-bg('ink');
+    cursor: pointer;
+};
+
+.sn-legend.usa-legend{
+    margin-top: 0;
+    padding-top: 1.5rem;
+}
+.confirm-box{
+    display: none
+}
+.confirm-box:has(> input[type=checkbox]:checked ) {
+    display: block
+}

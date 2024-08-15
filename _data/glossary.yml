@@ -1,77 +1,77 @@
 glossary:
   - term: Algorithm
     cat: Data Science
-    definition: is a set of rules in problem-solving operations. Creating algorithms is a foundation of programming, where a developer defines a finite sequence of well-defined instructions to perform computations and process data. Among the typical elements of an algorithm, regardless of programming language, are conditionals and loops that enable repetitive actions and logical decisions.
-    related: bash scripting, programming, problem-solving
+    definition: A set of rules in problem-solving operations. Creating algorithms is a foundation of programming, where a developer defines a finite sequence of well-defined instructions to perform computations and process data. Among the typical elements of an algorithm, regardless of programming language, are conditionals and loops that enable repetitive actions and logical decisions.
+    related: Bash Scripting, Programming, Problem-Solving
   - term: Artificial Intelligence
     cat: Data Science
-    definition: is a branch of Computer Science dealing with cognitive technology and simulation of intelligent behavior, including planning, learning, reasoning, problem-solving, knowledge representation, perception, motion, and manipulation.
-    related: data science, machine learning, big data
+    definition: A branch of Computer Science dealing with cognitive technology and simulation of intelligent behavior, including planning, learning, reasoning, problem-solving, knowledge representation, perception, motion, and manipulation.
+    related: Data Science, Machine Learning, Big Data
   - term: Bash
     cat: Data Science
-    definition: is a command language in the Unix shell that allows users to execute various processes by writing text commands in the terminal window.
-    related: unix-shell, terminal, command-line
+    definition: A command language in the Unix shell that allows users to execute various processes by writing text commands in the terminal window.
+    related: Unix Shell, Terminal, Command Line
   - term: Big Data
     cat: Data Science
     definition: focuses on the large size of data, its variety, and the velocity of generating and processing. These parameters continually expand and become a bottleneck on existing computational approaches. It also integrates modern (i) analytical techniques (e.g., machine learning), (ii) technologies (e.g., distributed computing), and (iii) visualization solutions (e.g., interactive graphing and infographics), applied during the life cycle of Big Data.
-    related: digital data, structured data, unstructured data, data science
+    related: Digital Data, Structured Data, Unstructured Data, Data Science
   - term: Binary
     cat: Data Science
-    definition: is a numbering system where data is expressed in the base-2. It is a mathematical expression which uses only two symbols, typically 0 and 1 to represent data.
+    definition: A numbering system where data is expressed in the base-2. It is a mathematical expression which uses only two symbols, typically 0 and 1 to represent data.
   - term: Cluster
     cat: Data Science
     definition: or a computer cluster is a group of computing machines or servers that work together as a single system. Clusters provide high performance computing and parallel processing by distribution of tasks across multiple machines.
-    related: distributed computing, big data
+    related: Distributed Computing, Big Data
   - term: Code
     cat: Data Science
     definition: in programming is a set of instructions for the computer. Code is written using programming language(s) and can be used to run a process, task, software, system, etc. on a computer.
-    related: programming 
+    related: Programming 
   - term: Command Line
     cat: Data Science
-    definition: is a text interface for the computer that passes the predefined commands to the operating system. Commands trigger the execution of various processes.
-    related: unix-shell, terminal, bash
+    definition: A text interface for the computer that passes the predefined commands to the operating system. Commands trigger the execution of various processes.
+    related: Unix Shell, Terminal, Bash
   - term: Container
     cat: Data Science
-    definition: is a executable package of specific application code and its dependencies. A software container includes all necessary elements needed to run the software such that it can be run in any environment/system.
-    related: programming 
+    definition: A executable package of specific application code and its dependencies. A software container includes all necessary elements needed to run the software such that it can be run in any environment/system.
+    related: Programming 
   - term: Data Science
     cat: Data Science
-    definition: is a modern conception of efficient computational processing of large sets of digital information for data mining and knowledge discovery. Data Science focuses on solving various technical challenges related to Big Data and developing innovative techniques unique to digital data (e.g., Machine Learning). It is a highly interdisciplinary field using the latest developments in Computer & Information Science, also strongly supported by Mathematics and Statistics, and complemented by specific Domain Knowledge.
-    related: big data, machine learning, knowledge
+    definition: A modern conception of efficient computational processing of large sets of digital information for data mining and knowledge discovery. Data Science focuses on solving various technical challenges related to Big Data and developing innovative techniques unique to digital data (e.g., Machine Learning). It is a highly interdisciplinary field using the latest developments in Computer & Information Science, also strongly supported by Mathematics and Statistics, and complemented by specific Domain Knowledge.
+    related: Big Data, Machine Learning, Knowledge
   - term: Data Wrangling
     cat: Data Science
     definition: is the process of transforming raw data into a usable format according to your project's requirements.
   - term: Digital Data
     cat: Data Science
-    definition: is a collection of observables registered in a computer-readable representation. A single item of data is called a datum. Each datum has assigned the binary value of “false, 0” or “true, 1”, resulting in a bit of information, i.e., one binary digit.
-    related: structured data, unstructured data, big data
+    definition: A collection of observables registered in a computer-readable representation. A single item of data is called a datum. Each datum has assigned the binary value of “false, 0” or “true, 1”, resulting in a bit of information, i.e., one binary digit.
+    related: Structured Data, Unstructured Data, Big Data
   - term: Distributed Computing
     cat: Data Science
-    definition: is a system of multiple computer machines connected over a network to create a computing cluster that appears as a single computer to the end-user. It provides a unified environment with access to shared resources (software, data, storage) and coordinated computing power. Distributed computing is a technique typically used in the High-Performance Computing (HPC) infrastructures.
-    related: queue, job scheduler, high-performance computing
+    definition: A system of multiple computer machines connected over a network to create a computing cluster that appears as a single computer to the end-user. It provides a unified environment with access to shared resources (software, data, storage) and coordinated computing power. Distributed computing is a technique typically used in the High-Performance Computing (HPC) infrastructures.
+    related: Queue, Job Scheduler, High-Performance Computing, HPC
   - term: Environment
     cat: Data Science
     definitions:
-      - definition: is a workspace for developers where they create and modify the source code of their application (software, web, etc.). Nowadays, professional developers usually use an Integrated Development Environment (IDE) that is a software suite partially with a graphical interface to make various things easier for the programmer (general code management, tracking and pushing changes, file system browsing, file preview & editing, kernel loading, autocomplete, formatting, etc.);"
+      - definition: A workspace for developers where they create and modify the source code of their application (software, web, etc.). Nowadays, professional developers usually use an Integrated Development Environment (IDE) that is a software suite partially with a graphical interface to make various things easier for the programmer (general code management, tracking and pushing changes, file system browsing, file preview & editing, kernel loading, autocomplete, formatting, etc.);"
         context: Development environment
       - definition: programming environment, is a layer of settings specific for a given programming language or type of developed application. It can be isolated from the general operating system and provides a kind of virtual environment with adjusted software configuration or modules loaded in a selected release. Virtual environments are commonly used when programming in Python and can be easily created using Conda ( environment management system). 
         context: Programming environment
-    related: programming, Python, high-performance computing
+    related: Programming, Python, High-Performance Computing, HPC
   - term: File System
     cat: Data Science
     definition: is the organization of data retained in the digital storage on the computing machine. The content consists of hierarchically ordered folders and files. Folders are user-categorized containers for files. Files contain data and consume digital storage space. Some files belong to the operating system and include configurations, source code, and executables of various programs. Each file and folder is assigned an absolute path that defines its location in the file system. Knowing this path is very useful for navigating the file system from the command line.
-    related: operating system, command-line, bash scripting
+    related: Operating System, Command Line, Bash Scripting
   - term: Gnuplot
     cat: Data Science
-    definition: is a free program that can generate two- and three-dimensional plots of functions, data, and data fits. It works as both command-line and GUI interface. You can export graphic files in a variety of formats (SVG, PNG, etc.) or analyze the results interactively, customizing the graph as you wish.
-    related: data analysis, bash scripting, interactive graphing
+    definition: A free program that can generate two- and three-dimensional plots of functions, data, and data fits. It works as both command-line and GUI interface. You can export graphic files in a variety of formats (SVG, PNG, etc.) or analyze the results interactively, customizing the graph as you wish.
+    related: Data Analysis, Bash Scripting, Interactive Graphing
   - term: GUI
     cat: Data Science
     definition: short for Graphical User Interface, is an interface through which users interact with computers and other electronic devices using icons and other visual elements.
   - term: HPC
     cat: Data Science
     definition: High-Performance Computing, is to perform computations requiring high computational power not available from a single computer. HPC operates on a dedicated infrastructure in the framework of distributed computing that aggregates computer power in networks, such as computer clusters, supercomputers, and cloud-based services.
-    related: distributed computing, queue, big data
+    related: Distributed Computing, Queue, Big Data
   - term: HTML
     cat: Data Science
     definition: HyperText Markup Language is the standard language for webpages. HTML is used to display the contents of a website on a web browser.
@@ -80,110 +80,110 @@ glossary:
     definition: Integrated Development Environment is an application for software development that includes a code editor, debugging tools, and version control system. IDE softwares are designed to make the process of writing, testing, and debugging code easier and more efficient.
   - term: Information
     cat: Data Science
-    definition: is a meaningful and organized product of data processing. It maintains data compression, encapsulates densification of value and veracity, and provides context for querying in the analysis.
-    related: digital data, big data, raw data, knowledge
+    definition: A meaningful and organized product of data processing. It maintains data compression, encapsulates densification of value and veracity, and provides context for querying in the analysis.
+    related: Digital Data, Big Data, raw data, knowledge
   - term: Interactive Graphing
     cat: Data Science
-    definition: is a method for data visualization that enables users to interact with the data on-the-fly, see the details such as numerical values, and freely customize the final plot. That is a modern approach that gives greater insight into the dataset and allows for collaborative work on data analysis.
-    related: visualization, big data, knowledge
+    definition: A method for data visualization that enables users to interact with the data on-the-fly, see the details such as numerical values, and freely customize the final plot. That is a modern approach that gives greater insight into the dataset and allows for collaborative work on data analysis.
+    related: visualization, Big Data, knowledge
   - term: JupyterLab
     cat: Data Science
-    definition: is an integrated development environment (IDE) with an interactive web-based computing interface that supports programming in multiple languages, including Python, Java, R, Julia, Matlab, Octave, etc. The Jupyter interface has a form of a notebook, where you can do it all at once, (i) develop and execute code cells, (ii) write comments and documentation in markdown, and (iii) visualize and analyze results with an interactive graphing.
-    related: programming, environment (IDE), python, interactive graphing
+    definition: An integrated development environment (IDE) with an interactive web-based computing interface that supports programming in multiple languages, including Python, Java, R, Julia, Matlab, Octave, etc. The Jupyter interface has a form of a notebook, where you can do it all at once, (i) develop and execute code cells, (ii) write comments and documentation in markdown, and (iii) visualize and analyze results with an interactive graphing.
+    related: Programming, Environment, IDE, Python, Interactive Graphing
   - term: Kernel
     cat: Data Science
     definition: in computing is the core of the operating system. It is the system that connects the hardware with the software. Kernel is responsible for management of memory, tasks, and processes.
     related: operating system 
   - term: Knowledge
     cat: Data Science
-    definition: is an extracted non-trivial insight from the data classification and analysis of information. Knowledge, while applied, leads to problem-solving, improvements, and steady development.
-    related: digital data, big data, raw data, information
+    definition: An extracted non-trivial insight from the data classification and analysis of information. Knowledge, while applied, leads to problem-solving, improvements, and steady development.
+    related: Digital Data, Big Data, raw data, information
   - term: Library
     cat: Data Science
     definition: a collection of prewritten code. Programming libraries are made to be used for common tasks, for example, Numpy in Python is used for working with huge arrays of data.
     context: Programming
-    related: programming 
+    related: Programming 
   - term: Linux
     cat: Data Science
-    definition: is a family of operating systems that includes Ubuntu, Debian, Fedora, etc. These are open-source operating systems based on the Linux kernel.
+    definition: A family of operating systems that includes Ubuntu, Debian, Fedora, etc. These are open-source operating systems based on the Linux kernel.
   - term: Local Machine
     cat: Data Science
     definition: is the computer that the user is using with direct access to it. Usually, it is your personal computer.
-    related: distributed computing, HPC, remote machine
+    related: Distributed Computing, HPC, remote machine
   - term: Loop
     cat: Data Science
-    definition: is a set of code that is written in such a way that it performs a task repetitively until a condition is met.
+    definition: A set of code that is written in such a way that it performs a task repetitively until a condition is met.
     related: programming 
   - term: Machine Learning
     cat: Data Science
-    definition: is a field of study focused on developing advanced computer algorithms that search for deeply coupled patterns in massive, disparate data and enable knowledge extraction. Machine learning methods are trained with large sets of data, and they learn from examples to make intelligent decisions without being explicitly programmed.
-    related: big data, unstructured data, data science, artificial intelligence
+    definition: A field of study focused on developing advanced computer algorithms that search for deeply coupled patterns in massive, disparate data and enable knowledge extraction. Machine learning methods are trained with large sets of data, and they learn from examples to make intelligent decisions without being explicitly programmed.
+    related: Big Data, Unstructured Data, data science, artificial intelligence
   - term: Module
     cat: Data Science
-    definition: is a small piece of a larger program. Modular programming is a way to design software such that each module is independent and can be used to execute a part of the function.
-    related: programming 
+    definition: A small piece of a larger program. Modular programming is a way to design software such that each module is independent and can be used to execute a part of the function.
+    related: Programming 
   - term: Nextflow
     cat: Data Science
-    definition: is a domain specific language used for bioinformatics data analysis. It uses software containers and enables reproducible scientific workflows.
-    related: programming 
+    definition: A domain specific language used for bioinformatics data analysis. It uses software containers and enables reproducible scientific workflows.
+    related: Programming 
   - term: Node (HPC)
     cat: Data Science
-    definition: is a unit in an HPC cluster. It can be a single computer or a server in a collection that makes the cluster.
+    definition: A unit in an HPC cluster. It can be a single computer or a server in a collection that makes the cluster.
   - term: Operating System
     cat: Data Science
     definition: OS, is the core software on the computer that manages computing resources, performes installations, and executes available programs. Command-line interface (CLI) and Graphical User Interface (GUI) enable the user directly interact with the operating system to set up, configure, and troubleshoot it. Among the popular operating systems are Windows, Mac OS, and Linux.
-    related: command-line, bash shell, programming
+    related: Command Line, Bash shell, Programming
   - term: Programming
     cat: Data Science
     definition: means creating a set of instructions for a computer on how to execute operations in order, following the assumptions and logical conditions of the algorithm. Many programming languages facilitate communication between the code developer and the computing machine. Bash enables a shell scripting using a command-line interpreter for automating repetitive tasks by executing pre-defined commands according to requested conditionals and loops. More advanced analytical operations, including mathematical and statistical functions, modifying complex data structures, or processing non-text data, usually require a higher-level programming language such as Python or C++.
-    related: algorithm, command-line, bash, python, R, C++
+    related: Algorithm, Command Line, Bash, Python, R, C++
   - term: Pseudocode
     cat: Data Science
-    definition: is a representation of code or algorithm, summarizing the code. It is a readable step by step description of what the program should do.
-    related: programming 
+    definition: A representation of code or algorithm, summarizing the code. It is a readable step by step description of what the program should do.
+    related: Programming 
   - term: Queue
     cat: Data Science
     definition: in distributed computing, it is an organized list (sequence) of tasks submitted to the job scheduler that manages the computational resources and decides to start or stop the task. The queue is ordered by wait time, user priority, and availability of requested resources. When the combination of these factors is advantageous, the submitted task begins executing, and so its status changes from waiting to running. The queuing system is typical for distributed computing, such as a network of computer clusters shared by more users. Some of the most popular workload managers are SLURM and PBS.
-    related: HPC, distributed computing, SLURM, PBS
+    related: HPC, Distributed Computing, SLURM, PBS
   - term: Raw Data
     cat: Data Science
     definition: is the data captured from the source and has not been processed before the use. It usually has a large volume and serves as a primary unfiltered input in Data Science.
-    related: digital data, big data, data science
+    related: Digital Data, Big Data, Data Science
   - term: Remote Machine
     cat: Data Science
-    definition: is any other computer or computing network that the user can access by logging into the external network. Performing actions on a remote machine requires a secure login and often requires the user to have an account created by the network administrator. In scientific projects, we use remote computing machines as part of the HPC infrastructure to access high-performance computing and collaboratively share big data.
-    related: distributed computing, HPC, local machine
+    definition: Any other computer or computing network that the user can access by logging into the external network. Performing actions on a remote machine requires a secure login and often requires the user to have an account created by the network administrator. In scientific projects, we use remote computing machines as part of the HPC infrastructure to access high-performance computing and collaboratively share big data.
+    related: Distributed Computing, HPC, Local Machine
   - term: SLURM
     cat: Data Science
     definition: Simple Linux Utility for Resource Management is a cluster management and job scheduling system. It is used in management of the HPC cluster environments.
-    related: distributed computing, HPC
+    related: Distributed Computing, HPC
   - term: Structured Data
     cat: Data Science
     definition: is highly organized in terms of easy digital deciphering. That includes a standardized format, enduring order, and categorization in a well-determined arrangement that facilitates managing and querying datasets in various combinations. A typical example of an organized data structure is a spreadsheet or relational database.
-    related: digital data, unstructured data, big data
+    related: Digital Data, Unstructured Data, Big Data
   - term: Terminal
     cat: Data Science
-    definition: is a program for accessing files on your computer using the command line.
-    related: command-line, unix-shell, bash
+    definition: A program for accessing files on your computer using the command line.
+    related: Command Line, Unix Shell, Bash
   - term: Unix Shell
     cat: Data Science
-    definition: is a command-line interpreter that provides a command-line user interface for a computer's operating system (OS). The OS uses shell scripts/commands to control the execution of the programs and procedures.
-    related: command-line, terminal, bash
+    definition: A command-line interpreter that provides a command-line user interface for a computer's operating system (OS). The OS uses shell scripts/commands to control the execution of the programs and procedures.
+    related: Command Line, Terminal, Bash
   - term: Unstructured Data
     cat: Data Science
     definition: has no organized structure that can be easily detected, processed, and categorized by computer algorithms. This type of data is usually massive and descriptive in nature. A good example is the streams of highly varied text (e.g., emails, social media posts, online blogs, newspapers, books, and scientific publications), audio and video recording, images and photos, data from various sensors (weather, traffic), and medical records.
-    related: digital data, structured data, big data
+    related: Digital Data, Structured Data, Big Data
   - term: Visualization
     cat: Data Science
-    definition: is a highly visually influential and semantically meaningful form of modern communication methods. In Data Science, interactive graphing and creating concise infographics support both the ease of extracting insights and the opportunity for deeper analysis for those interested. That contributes to better knowledge retention.
-    related: data analysis, knowledge, interactive graphing
+    definition: A highly visually influential and semantically meaningful form of modern communication methods. In Data Science, interactive graphing and creating concise infographics support both the ease of extracting insights and the opportunity for deeper analysis for those interested. That contributes to better knowledge retention.
+    related: Data Analysis, Knowledge, Interactive Graphing
   - term: Web Browser
     cat: Data Science
-    definition: is an application used to access internet and browse websites and web pages.
+    definition: An application used to access internet and browse websites and web pages.
   - term: Workdir
     cat: Data Science
-    definition: is a working directory for a project or computational task. It often appears as a variable or instruction that can be assigned a path to a selected location in the file system. That path is then used for all future commands that require a location, such as writing to a file. It is a common variable for workload managers on distributed computing infrastructures. The pathname of the current working directory can be accessed with the 'pwd' command or using the '$PWD' environmental variable.
-    related: HPC, command-line
+    definition: A working directory for a project or computational task. It often appears as a variable or instruction that can be assigned a path to a selected location in the file system. That path is then used for all future commands that require a location, such as writing to a file. It is a common variable for workload managers on distributed computing infrastructures. The pathname of the current working directory can be accessed with the 'pwd' command or using the '$PWD' environmental variable.
+    related: HPC, Command Line
   - term: Alignment 
     alt: Sequence Alignment
     cat: Bioinformatics
@@ -200,13 +200,13 @@ glossary:
         alt: Genome-guided Assembly
       - li: Genomics - reconstructing the genome based on the sequenced DNA fragments 
     alt: Genome Assembly 
-    related: RNA-Seq, transcriptome assembly, genome assembly, MSA
+    related: RNA-Seq, Transcriptome Assembly, Genome Assembly, MSA
     wiki: https://en.wikipedia.org/wiki/Alternative_splicing
   - term: Alternative Splicing 
     alt: Differential RNA splicing
     cat: Bioinformatics
     definition: is the process (* natural in vivo in eukaryotes) of assembling various messenger RNAs (mRNA) from a pool of exons encoded by a single DNA gene. That allows significant compression of genetic material because a single gene code for multiple products, such as protein variants (isoforms) and functional non-coding RNA. The most common mechanism for creating truncated mRNA alternatives is (selected) exon(s) skipping.
-    related: gene expression, transcriptome, messenger RNA
+    related: Gene Expression, Transcriptome, Messenger RNA
     wiki: https://en.wikipedia.org/wiki/Alternative_splicing
   - term: Annotation 
     cat: Bioinformatics
@@ -214,117 +214,117 @@ glossary:
   - term: Assembly 
     cat: Bioinformatics
     definition: Assembly
-    related: genome assembly, transcriptome assembly
+    related: Genome Assembly, Transcriptome Assembly
   - term: Bioinformatics 
     cat: Bioinformatics
     definition: Bioinformatics
-    related: RNA-Seq, sequencing technologies, Big Data
+    related: RNA-Seq, Sequencing Technologies, Big Data
   - term: Chromosome 
     cat: Bioinformatics
     definition: Chromosome
-    related: DNA, gene, genome
+    related: DNA, Gene, Genome
   - term: Contig 
     cat: Bioinformatics
     definition: Contig
-    related: read, scaffold, RNA-Seq
+    related: Read, Scaffold, RNA-Seq
   - term: Differential Expression 
     cat: Bioinformatics
     definition: Differential Expression
-    related: gene expression, transcriptome, RNA-Seq
+    related: Gene Expression, Transcriptome, RNA-Seq
     wiki: https://en.wikipedia.org/wiki/RNA-Seq#Differential_expression
   - term: DNA 
     cat: Bioinformatics
     definition: DNA
-    related: gene, gene expression, sequencing technologies
+    related: Gene, Gene Expression, Sequencing Technologies
   - term: Exon 
     cat: Bioinformatics
     definition: Exon
-    related: gene expression, alternative splicing
+    related: Gene Expression, Alternative Splicing
     wiki: https://en.wikipedia.org/wiki/Exon
   - term: Gene 
     cat: Bioinformatics
     definition: Gene
-    related: DNA, gene expression, chromosome
+    related: DNA, Gene Expression, Chromosome
   - term: Gene Expression 
     cat: Bioinformatics
     definition: Gene Expression
-    related: transcriptome, RNA-Seq, alternative splicing
+    related: Transcriptome, RNA-Seq, Alternative Splicing
   - term: Genome Assembly 
     cat: Bioinformatics
     definition: Genome Assembly
-    related: DNA, sequencing technologies, alignment
+    related: DNA, Sequencing Technologies, Alignment
   - term: Genome Index
     cat: Bioinformatics
-    definition: is a data structure of a compressed full-text file containing the reference genome (e.g., .fna file). Using the genome index makes it efficient when searching a substring (e.g., matching reads) in a large text. Programs such as HISAT2 ⤴ (hisat2-build indexer) build the reference genome index using the FM-index ⤴ approach, where the data is both compressed and indexed to reasonably fit within a computer's memory.
-    related: RNA-seq, transcriptome assembly, mapping, alignment, sequencing
+    definition: A data structure of a compressed full-text file containing the reference genome (e.g., .fna file). Using the genome index makes it efficient when searching a substring (e.g., matching reads) in a large text. Programs such as HISAT2 ⤴ (hisat2-build indexer) build the reference genome index using the FM-index ⤴ approach, where the data is both compressed and indexed to reasonably fit within a computer's memory.
+    related: RNA-seq, Transcriptome Assembly, Mapping, Alignment, Sequencing
   - term: Genomic Reference 
     alt: Reference Genome 
     cat: Bioinformatics
     definition: Genomic Reference
-    related: RNA-seq, genome-guided alignment, transcriptome assembly 
+    related: RNA-seq, Genome-guided Alignment, Transcriptome Assembly 
     wiki: https://en.wikipedia.org/wiki/Reference_genome
   - term: Intron 
     cat: Bioinformatics
     definition: Intron
-    related: exon, gene, gene expression 
+    related: Exon, Gene, Gene Expression 
     wiki: https://en.wikipedia.org/wiki/Intron
   - term: Isoform 
     alt: transcript 
     cat: Bioinformatics
     definition: Isoform
-    related: alternative splicing, gene expression, messenger RNA 
+    related: Alternative Splicing, Gene Expression, Messenger RNA 
     wiki: https://en.wikipedia.org/wiki/Protein_isoform
   - term: Locus
     cat: Bioinformatics
-    definition: is a known, fixed position on a chromosome where a specific gene or genetic marker is located.
-    related: chromosome, gene, DNA
+    definition: A known, fixed position on a chromosome where a specific gene or genetic marker is located.
+    related: Chromosome, Gene, DNA
   - term: Mapping 
     alt: sequencing reads to reference genome
     cat: Bioinformatics
     definition: in RNA-seq analysis, means detecting the presence and location (position) of individual reads (fragments of a sequence obtained from sequencing experiment) within the sequence space of a reference genome. In particular, sequenced RNA can be mapped to the reference genome to identify genes and get information about gene expression.
-    related: RNA-seq, reads alignment, gene expression
+    related: RNA-seq, Reads Alignment, Gene Expression
   - term: Multiple Sequence Alignment 
     alt: MSA 
     cat: Bioinformatics
     definition: Multiple Sequence Alignment
-    related: sequence alignment, evolutionary insights, SNP (polymorphism)
+    related: Sequence Alignment, Evolutionary Insights, SNP (polymorphism)
     ul: 
       - li: MSA for Evolutionary Insights 
         alt: MSA of Proteins
-        related: MSA, sequence alignment, sequence similarity
+        related: MSA, Sequence Alignment, sequence similarity
       - li: MSA for SNP 
         alt: MSA for Single-Nucleotide Polymorphism
-        related: MSA, sequence alignment, nucleotide variant
+        related: MSA, Sequence Alignment, nucleotide variant
   - term: Multiplexing 
     alt: Multiplexed Sequencing 
     cat: Bioinformatics
     definition: Multiplexing 
-    related: RNA-Seq, sequencing technologies, optimization
+    related: RNA-Seq, Sequencing Technologies, optimization
     tutorial: Tutorial
   - term: Nuclotide 
     cat: Bioinformatics
     definition: Nuclotide
-    related: DNA, RNA, monomer
+    related: DNA, RNA, Monomer
   - term: Quality Control 
     alt: of RNA-Seq data 
     cat: Bioinformatics
     definition: Quality Control
-    related: RNA-Seq, read, FastQC
+    related: RNA-Seq, Read, FastQC
   - term: Read
     cat: Bioinformatics
-    definition: is a text in 1-letter per nucleotide base notation for a single fragment of a sequence [DNA/RNA] obtained from sequencing experiment. Due to the huge size of genetic material (~250 million nucleotide in a single chromosome), a typical sequencing experiment requires fragmentation. The superset of selected/filtered fragments of unknown sequences creates the library. During sequencing, library items are encoded, providing a bulk set of reads (i.e., text strings specifying the order of nucleotides in fragments).
-    related: RNA-Seq, sequencing technologies, quality control, assembly
+    definition: A text in 1-letter per nucleotide base notation for a single fragment of a sequence [DNA/RNA] obtained from sequencing experiment. Due to the huge size of genetic material (~250 million nucleotide in a single chromosome), a typical sequencing experiment requires fragmentation. The superset of selected/filtered fragments of unknown sequences creates the library. During sequencing, library items are encoded, providing a bulk set of reads (i.e., text strings specifying the order of nucleotides in fragments).
+    related: RNA-Seq, Sequencing Technologies, quality control, assembly
     tutorial: https://bioinformaticsworkbook.org/introduction/terminology_index#gsc.tab=0 
     wiki: https://en.wikipedia.org/wiki/Read_(biology)
   - term: RNA 
     cat: Bioinformatics
     definition: RNA
-    related: DNA, transcriptome, RNA-Seq
+    related: DNA, Transcriptome, RNA-Seq
   - term: RNA-Seq 
     alt: RNA Sequencing 
     cat: Bioinformatics
     definition: RNA-Seq
-    related: gene expression, transcriptome assembly, NGS (sequencing)
+    related: Gene Expression, Transcriptome Assembly, NGS (sequencing)
     tutorial: https://bioinformaticsworkbook.org/dataAnalysis/RNA-Seq/RNA-SeqIntro/RNAseq-intro#gsc.tab=0
     wiki: https://en.wikipedia.org/wiki/RNA-Seq
   - term: RNA-Seq Library
@@ -338,15 +338,15 @@ glossary:
       - li: polyA-enriched vs ribosomal RNA-depleted
       - li: different read lengths
       - li: different sequencing depths
-    related: RNA-Seq, read, sequencing technologies
+    related: RNA-Seq, Read, Sequencing Technologies
   - term: Scaffold 
     cat: Bioinformatics
     definition: Scaffold
-    related: contig, read, RNA-Seq
+    related: Contig, Read, RNA-Seq
   - term: Sequence 
     cat: Bioinformatics
     definition: Sequence
-    related: biopolymers, sequence alignment, RNA - DNA - proteins
+    related: biopolymers, Sequence Alignment, RNA - DNA - proteins
   - term: Sequencing Technologies 
     cat: Bioinformatics
     definition: Sequencing Technologies
@@ -356,23 +356,23 @@ glossary:
     cat: Bioinformatics
     definition: means ignoring the terminal fragments (ends) of the reads that do not match perfectly to the reference genome alignment. This procedure enables higher mapping efficiency and facilitates detecting structural variants. However, this also bears the danger of incorrectly trimming the reads, leading to the misassignment of reads to repetitive regions. 
     learn: LINK
-    related: RNA-seq, reads mapping, reads trimming
+    related: RNA-seq, Reads Mapping, Reads Trimming
   - term: Transcriptome 
     cat: Bioinformatics
     definition: Transcriptome
-    related: RNA, gene expression, alternative splicing
-  - term: Trnascriptome Assembly 
+    related: RNA, Gene Expression, Alternative Splicing
+  - term: Transcriptome Assembly 
     cat: Bioinformatics
-    definition: Trnascriptome Assembly
-    related: RNA-Seq, gene expression
+    definition: Transcriptome Assembly
+    related: RNA-Seq, Gene Expression
     ul: 
       - li: de novo Assembly 
-        alt: de novo Trnascriptome Assembly 
-        related: transcriptome, no reference genome, gene expression
+        alt: de novo Transcriptome Assembly 
+        related: Transcriptome, no Reference Genome, Gene Expression
       - li: Genome-Guided Assembly 
-        alt: Genome-Guided Alignment/Trnascriptome Assembly
+        alt: Genome-Guided Alignment/Transcriptome Assembly
         definition: in RNA-Seq analysis, alignment of sequencing reads to reference genome, means detecting the presence and location (position) of individual reads (fragments of a sequence obtained from sequencing experiment) within the sequence space of a reference genome. In particular, sequenced RNA can be aligned to the reference genome to identify genes and get information about gene expression. 
-        related: RNA-seq, reads mapping, gene expression, reference genome
+        related: RNA-seq, Reads Mapping, Gene Expression, Reference Genome
     tutorial: https://bioinformaticsworkbook.org/dataAnalysis/RNA-Seq/RNA-SeqIntro/RNAseq-using-a-genome.html#gsc.tab=0
     wiki: https://en.wikipedia.org/wiki/RNA-Seq#Transcriptome_assembly
  

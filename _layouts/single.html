@@ -1,11 +1,11 @@
 ---
 layout: page
 main:
-class: usa-grid usa-content usa-layout-docs maxw-tablet margin-x-auto
-
+class: usa-grid usa-content usa-layout-docs  margin-x-auto
+scripts: ['/assets/js/lib/jquery-3.4.1.min.js', '/assets/js/filter/filternav.js']
 ---
 
-<div class="{% unless page.sidenav %}grid-container main-side{%endunless%}">
+<div class="{% if page.sidenav  == false %}sci-container main-side{% endif %}">
     <div class="grid-row">
     <div class="tablet:grid-col-8">
     <p>{% if page.author %}<b>By: <a href="#authors">{% for _author in page.author %}{{ _author }}{% unless forloop.last %}, {% endunless %}{% endfor %}</a></b>{% endif %}

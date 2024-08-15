@@ -18,9 +18,12 @@ header:
   image: /assets/img/agriscience_workbook_banner.png
   subtitle: 'Educational Resources for High Performance Computing'
   text: 'Self-paced, self-contained, interactive tutorials covering a wide variety of scientific computing techniques and skills from programming and data science fundamentals to domain-specific software and analyses.'
-  button: 
-    url: /workbooks
-    text: Find a Workbook
+  buttons: 
+    - url: /workbooks
+      text: Find a Workbook
+    - url: /workbooks/toc
+      text: Workbook Index
+      class: secondary
 
 details:
   comp: tagline
@@ -63,23 +66,38 @@ cards1:
   comp: cards
   container: true
   format: icon
-  title: "Core Workbooks"
-  label: "Core Workbooks"
+  title: "Subject Areas"
+  label: "Subject Areas"
   collect:
-    org: 0
+    index: 0
+    exclude: contribute
 
-cards:
+keywords:
   comp: cards
+  parentclass: padding-bottom-3
+  grid: true
   container: true
-  format: icon
-  title: "Specialized Workbooks"
-  label: "Specialized Workbooks"
-  collect:
-    workbook: specialization
-    org: 1
+  format: wb
+  title: "Filter Tutorials by Keywords"
+  label: "Common Keywords"
+  #collect: tags
+  cards:
+    - term: R Project
+      color: secondary
+    - term: Python
+      color: secondary
+    - term: graphing
+      color: secondary
+    - term: GeoCDL
+      color: secondary
+    - term: machine learning
+      color: secondary
+    - term: SLURM
+      color: secondary
 
 ---
 {% include section.html section='details' %}
 {% include section.html section='cards1' %}
-{% include section.html section='cards' %}
+
+{% include section.html section='keywords' %}
 {% include section.html section='attention' %}

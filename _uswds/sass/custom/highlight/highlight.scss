@@ -1,24 +1,26 @@
 @use './highlight-styles' as *;
 
 $highlighted-icons: (
-  "warning" "orange" "warning",
-  "info" "cyan" "info",
-  "question" "violet" "help",
-  "tip" "magenta" "star",
-  "error" "red" "error",
-  "note" "mint" "push_pin",
-  "highlighted" "yellow" "flag",
-  "success" "green" "check_circle",
-  "emergency" "red-warm" "error"
+  "warning" "warning" "lighter" "warning",
+  "info" "info" "lighter" "info",
+  "question" "accent-warm" "lighter" "help",
+  "tip" "info" "lighter" "star",
+  "error" "error" "lighter" "error",
+  "note" "info" "lighter" "push_pin",
+  "highlighted" "warning" "lighter" "flag",
+  "success" "success" "lighter" "check_circle",
+  "emergency" "emergency" "base" "error",
+  "primary" "primary" "base" "notifications",
+  "secondary" "secondary" "dark" "notifications"
 );
 
 
 
-@each $name, $colval, $icon in $highlighted-icons {
+@each $name, $colval, $spec, $icon in $highlighted-icons {
     .highlighted--#{$name} {
-      @include highlighted-status-wrapper-styles($name, $colval);
+      @include highlighted-status-wrapper-styles($name, $colval, $spec);
       .highlighted__body {
-        @include highlighted-styles-other($name, $colval, $icon)
+        @include highlighted-styles-other($name, $colval, $spec, $icon)
       } 
     }
     .class--#{$name} {
@@ -26,6 +28,14 @@ $highlighted-icons: (
       * + & {
       margin-top: units(2);
       };
-      @include highlighted-status-styles($name, $colval);
+      @include highlighted-status-styles($name, $colval, $spec);
     }
-  }
+    
+    .usa-ac-header--#{$name} {
+      @include accordion-header-styles($name, $colval, $spec);
+    }
+    
+    .usa-ac-header--#{$name}[aria-expanded="false"] {
+      @include accordion-header-unopened-styles($name, $colval, $spec);
+    }
+}

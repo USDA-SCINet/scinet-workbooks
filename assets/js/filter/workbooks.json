@@ -1,0 +1,4 @@
+---
+---
+
+const packaged = [{% include packages.js sect='workbooks' %}]

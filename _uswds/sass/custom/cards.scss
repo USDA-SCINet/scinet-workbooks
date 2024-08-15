@@ -23,7 +23,7 @@ a.gloss{
 
    &:hover{
       .listed{
-         text-decoration:underline;
+         text-decoration:bold;
          color: color("white");
          background-color: color("primary-dark");
       }
@@ -32,6 +32,24 @@ a.gloss{
    .listed{
       &::after {
          content: '\00a0\00BB';
+      }
+   }
+}
+a.gloss_wb{
+   text-decoration: none;
+   color: color("ink");
+
+   &:hover{
+      .listed{
+         text-decoration:bold;
+         color: color("white");
+         background-color: color("accent-warm-darker");
+      }
+   }
+
+   .listed{
+      &::after {
+         content: '\00a0\27A4';
       }
    }
 }
@@ -433,3 +451,25 @@ a.gloss{
       width:100%
    }
  }
+
+ .usa-button--primary{
+   @include u-text('white');
+   @include u-bg('primary-vivid');
+   &:hover{
+      @include u-text('white');
+      @include u-bg('primary-dark');
+   }
+ }
+
+//lists
+
+ .fullwidth-i{
+   max-width: 100% !important
+ }
+
+.collection {
+   //border-left: 1px solid;
+   //border-right: 1px solid;
+   //border-bottom: 1px solid;
+   padding-bottom: 1rem;
+}

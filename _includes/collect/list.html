@@ -1,11 +1,17 @@
 {% assign tsets = include.set %}
 {% assign aclass = include.aclass %}
+{% assign emptytags = "" | split: "" %}
+{% assign parenttags = include.parenttags | default: emptytags %}
 
-{% if tsets.org %}
+{% assign posttags = tsets.tags %}
+{% assign posttags = parenttags | concat: posttags | uniq %}
+
+{% if tsets.index %}
     {% include collect/pagesubset subset=include.mysubset post=tsets %}
+    {% assign ptags = parenttags | concat: ptags | uniq %}
 {% else %}
-    {% assign pwb = tsets.wbs %}
-    {% assign ptags = tsets.tags %}
+    {% assign pwb = tsets.subject %}
+    {% assign ptags = posttags %}
     {% assign ptypes = tsets.type %}
     {% assign pdifficulties = tsets.level %}   
 {% endif %}
@@ -17,16 +23,22 @@
 {% assign decor = decortype[0].icon %}
 {% endunless %}
 
+{%- capture override-display %}{%- if page.index == 0 %}
+{%- if pwb contains page.subject %}show{%- else %}remove{%- endif %}{%- else %}show{%- endif %}
+{%- endcapture %}
+
+{% unless page.index == 0 and override-display == "remove" %}
 {% include collect/li.html ttsets=tsets class=include.class aclass=include.aclass decor=decor %}
-{% if tsets.org %}
+{% if tsets.index %}
     {% unless pssize == 0 %}
-<ul class="{%- unless sort_list %}icon-ul{%- endunless %}">
-    {% assign _usubset = pagesubset | sort: "ordered" %}
+<ul class="{%- unless sort_list %}icon-ul usa-list{%- endunless %}">
+    {% assign _usubset = pagesubset | sort: "order" %}
     {% unless include.loop=="looped" %}{% assign smallersubset=mypagesubset %}{% endunless %}
     {% for _set in _usubset %}
-        {% include collect/list.html set=_set mysubset=smallersubset class="" loop="looped" %}
+        {% include collect/list.html set=_set mysubset=smallersubset class="" loop="looped" parenttags=posttags %}
     {% endfor %}
 </ul>
 {% endunless %}
 {% endif %}
 </li>
+{% endunless %}

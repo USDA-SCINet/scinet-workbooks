@@ -1,21 +1,21 @@
 <div class="grid-row bg-base-lighter" >
-    <div class="sci-container grid-container margin-y-2">
+    <div class="grid-container margin-y-2 width-full">
     
     <h2>Workbook Navigation</h2>
-    <ul class="">
+    <ul class="usa-list">
       
       <li class="">
         <b>Section {{ prevTOC.last.type | default: 'Index' | capitalize }}:</b> <a href="{{ prevTOC.last.url  | relative_url }}" class="">{{ prevTOC.last.title }}</a>
       </li>
     
-      {% unless page.path contains 'index.html' or page.org or page.previous.url == prevTOC.last.url %}
+      {% unless page.path contains 'index.html' or page.index or page.previous.url == prevTOC.last.url %}
       <li class="">
         <b>Previous {% if page.previous.type %}{{ page.previous.type | capitalize }}{%else %}Lesson{%endif%}:</b> <a href="{{ page.previous.url  | relative_url }}" class="">{{ page.previous.title }}</a>
       </li>
       {% endunless %}
       {%- assign sortpostsize = sortposts | size %}
       {%- if sortpostsize > 0 %}
-      {%- if page.org %}
+      {%- if page.index %}
       {%- for _next in sortposts limit: 1 %}
       <li class="">
         <b>Next  {% if _next.type %}{{ _next.type | capitalize }}{%else %}Lesson{%endif%}:</b> <a href="{{ _next.url  | relative_url }}" class="">{{ _next.title }}</a>
@@ -28,7 +28,7 @@
             </li>
 
     </ul>
-      {%- elsif page.next.org and page.next.org < prevTOC.last.org %}
+      {%- elsif page.next.index and page.next.index < prevTOC.last.index %}
     </ul>
       <b>Next Workbook:</b> <a href="{{ page.next.url  | relative_url }}" class="">{{ page.next.title }}</a>
       {%- elsif page.next.url == prevTOC.last.url %}

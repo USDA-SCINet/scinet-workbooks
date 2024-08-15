@@ -8,23 +8,25 @@
 {% capture sectitle %}{%- if cards.title or include.title -%}<h2>{{ include.title | default: cards.title }}</h2>{%- endif -%}{% endcapture %}
 
 {%- if cards.title -%}
-    <h2>{{ cards.title }}</h2>                                                  <!-- workbook categories in Home -->
+    {{ sectitle }}                                                  <!-- workbook categories in Home -->
 {%- else if include.title -%}
     <a class="h2" href="{{ include.url }}">{{ sectitle }}</a>                   <!-- module title on the workbook's landing page -->
 {%- endif -%}
 
+{% assign classes = cards.classes | default: "" %}
 
-<div class="home-block">
-    <ul class="usa-card-group {% if cards.button %}margin-bottom-2{% endif %}">
-    {%- if cards.format -%}
-        {%- for _card in mycards -%}
-        {% include components/component/{{ cards.format }}-card.html option=_card %}
-        {%- endfor -%}
-    {%- else -%}
-        {%- for _card in mycards -%}
-        {% include components/component/card.html card=_card %}
-        {%- endfor -%}
-    {%- endif -%}
+
+<div class="home-block{% if cards.parentclass %} {{ cards.parentclass }}{% endif %}">
+    <ul class="{% if cards.grid %}grid-row grid-gap usa-list--unstyled{% else %}usa-card-group{% endif %}{% if cards.button %} margin-bottom-2{% endif %}">
+        {%- if cards.format -%}
+            {%- for _card in mycards -%}
+            {% include components/component/{{ cards.format }}-card.html option=_card %}
+            {%- endfor -%}
+        {%- else -%}
+            {%- for _card in mycards -%}
+            {% include components/component/card.html card=_card %}
+            {%- endfor -%}
+        {%- endif -%}
     </ul>
     {%-  if cards.button -%}
     <div class="right-button">

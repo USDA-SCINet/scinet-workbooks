@@ -5,7 +5,7 @@
         <select class="usa-select capital" name="{{ include.tname }}" id="{{ include.tname }}">
             <option value>- Select {{ include.title }} -</option>
             {% for _option in include.options %}
-            <option value="{{ _option }}">{{ _option | capitalize | replace: "-", " " }} <span class="att-count"></span></option>
+            <option value="{{ _option }}">{{ _option }} <span class="att-count"></span></option>
             {% endfor %}
         </select>
     </div>

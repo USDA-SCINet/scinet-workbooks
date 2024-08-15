@@ -1,0 +1,16 @@
+@use "uswds-core" as *;
+@forward "usa-accordion";
+
+.usa-prose > .usa-accordion {
+    margin-top: 1em;
+}
+
+.accordion_content {
+    @extend .usa-accordion__content;
+    overflow:visible;
+ }
+
+.accordion-bordered {
+    @extend .usa-accordion;
+    @extend .usa-accordion--bordered;
+}

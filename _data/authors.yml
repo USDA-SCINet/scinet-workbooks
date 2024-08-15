@@ -84,3 +84,12 @@ Moe Richert:
   contact:
     email: "moe.richert@usda.gov"
     website: "https://scinet.usda.gov/"
+
+Noa Mills:
+  name: "Noa Mills"
+  pronouns: "They/Them"
+  bio: "Noa is an ORISE Research Fellow in the USDA-ARS SCINet Office. They got their bachelors in Computational Mathematics at UC Santa Cruz in 2020, and now work on a range of geospatial data science projects including satellite image analysis and the Geospatial Common Data Library project."
+  avatar: "/assets/img/people/NoaMills.png"
+  contact:
+    email: "noa.mills@usda.gov"
+    linkedin: "https://www.linkedin.com/in/noa-mills-0589b112a/"

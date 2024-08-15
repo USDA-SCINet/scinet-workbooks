@@ -1,8 +1,10 @@
 ---
 layout: default
+scripts: ['/assets/js/lib/jquery-3.4.1.min.js', '/assets/js/filter/filternav.js']
 main:
   class: usa-layout-docs usa-layout-docs__main usa-prose padding-top-0
 ---
+{% assign hero = page.header %}{% include layout/hero.html %}
 
 {{ content }}
 

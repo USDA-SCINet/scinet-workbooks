@@ -1,22 +1,28 @@
 {% assign post = include.option %}
 {% assign subset = include.subset %}
 
-{% if post.org %}
+{% assign pposttags = post.tags %}
+{% if post.index %}
     {% include collect/pagesubset subset=subset post=post %}
 {% else %}
-    {% assign pwb = post.wbs %}
-    {% assign ptags = post.tags %}
+    {% assign pwb = post.subject %}
+    {% assign ptags = pposttags %}
     {% assign ptypes = post.type %}
     {% assign pdifficulties = post.level  %}       
 {% endif %}
 
-{% if page.org == 0 or page.org == 0.5 %}
-    {% assign wbtags = post.wbs | split: "," %}
-{% else %}
-    {% assign wbtags = "" %}
-{% endif %}
+{%- capture override-display %}{%- if page.index == 0 %}
+{%- if pwb contains page.subject %}show{%- else %}remove{%- endif %}{%- else %}show{%- endif %}
+{%- endcapture %}
 
-<li class="{% if cal_id %}{{ cal_id }}{% endif %} usa-collection__item width-full maxw-full" {% if sort_list %}
+{%- capture datameta %}
+{%- if page.filter-names %}datameta="{{ post.title }}, {%- assign titles = pagesubset | map: 'title' | uniq %}{{ titles | array_to_sentence_string: "" }}"{%- endif %}
+{%- endcapture %}
+
+{% assign wbtags = post.subject %}
+
+{% unless page.index == 0 and override-display == "remove" %}
+<li class="{% if cal_id %}{{ cal_id }}{% endif %} usa-collection__item fullwidth-i{%- if page.filter-names %} fc{% endif %}" {{ datameta }} {% if sort_list %}
     wb="{% for wb in pwb %}{{ wb }} {% endfor %} all"
     tagged="{% for tag in ptags %}{{ tag }} {% endfor %}all" type="{% for types in ptypes %}{{ types }} {% endfor %}all"
     difficulty="{% for lvl in pdifficulties %}{{ lvl }} {% endfor %}all" {% endif %}
@@ -26,9 +32,13 @@
     <img class="usa-collection__img" src="{{ post.mediasrc | relative_url }}" alt="{{ post.mediaalt }}" />
     {% endif %}
     <div class="padding-x-2 usa-collection__body">
-        <h3 class="usa-collection__heading rm-a">
+        <h3 class="usa-collection__heading rm-a no_toc">
             <a class="usa-link" href="{% include url.html link=post %}">
                 {{ post.title }}
+                <!-- {%- if page.filter-names %}
+                <svg class="usa-icon filtered" alt="selected" role="img">
+                    <use xlink:href="/assets/uswds/img/sprite.svg#check_circle"></use>
+                  </svg>{%- endif %} -->
             </a>
         </h3>
         {% unless no_summary %}
@@ -38,16 +48,16 @@
         </p>
         {% endif %}
         {% endunless %}
-        {% if post.org %}
+        {% if post.index %}
         {% unless pssize == 0 %}
         <ul class="usa-collection__meta">
             <li class="usa-collection__meta-item">
                 <b>Content:</b>
-                <ul class="unstyled-list">
-                    {% assign psubset=pagesubset | sort: "ordered" %}
+                <ul class="unstyled-list usa-list">
+                    {% assign psubset=pagesubset | sort: "order" %}
                     {% assign largersubset=mypagesubset %}
                     {% for sets in psubset %}
-                        {% include collect/list.html set=sets mysubset=largersubset class="usa-collection__meta-item" aclass="text-bold text-underline" %}
+                        {% include collect/list.html set=sets mysubset=largersubset class="usa-collection__meta-item" aclass="text-bold text-underline" parenttags=pposttags %}
                     {% endfor %}
                 </ul>
             </li>
@@ -59,9 +69,9 @@
         {% unless page.no-tags %}
         {% if post.tags or post.type %}
         <ul class="usa-collection__meta padding-top-1" aria-label="Tags">
-            {% if post.wbs and wbtags != "" %}
+            {% if post.subject and wbtags != "" %}
             {% for wbtag in wbtags %}
-            <li class="usa-collection__meta-item usa-tag">{{ wbtag | replace: "-", " " }}</li>
+            <a class="gloss_wb" href="{{ base_url }}/{{ wbtag }}/" ><li class="usa-collection__meta-item usa-tag listed">{{ wbtag | replace: "-", " " }}</li></a>
             {% endfor %}
             {% endif %}
             {% if post.tags %}
@@ -75,3 +85,4 @@
     </div>
 
 </li>
+{% endunless %}

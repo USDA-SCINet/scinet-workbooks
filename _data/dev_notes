@@ -1,5 +1,21 @@
 
+# August 15
 
+## Breaking changes
+- Frontmatter variables changed. See workbooks/_contribute/format.md or (url)/contribute/format
+- Folder structure changed - all Subject Areas should get their own collection folder and config specifications
+- Flattened search page added per request.  Index is still filterable, but is separate
+- Contribute section added.  Files are in the _contribute collection
+
+## Bugs
+- General QAQC needed to find and address issues
+- Subindex filters are currently broken.  Section commented out while fix is in progress.
+- Bug in Glossary if the user clicks on a Related Term link after filtering
+
+## To-Do Related to Update
+- Adding more usable components to Contribute section.
+- Formatting and improving section ease of use.
+- Fix subindex filter.
 
 # May 7, 2024
 

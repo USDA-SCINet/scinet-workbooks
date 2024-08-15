@@ -1,0 +1,7 @@
+{% assign option = include.option %}
+
+<li class="tablet:grid-col-4 margin-y-1 usa-list--unstyled">
+    <button class="usa-button usa-button--{{ option.color }} filter-nav width-full" type="button" att="{{ include.att | default: 'tags' }}" cont="{{ option.term }}">      
+        <h3 class="arrow margin-0">{{ option.term }}</h3>
+    </button>
+</li>

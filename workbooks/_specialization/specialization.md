@@ -1,6 +1,6 @@
 ---
 title: Specialized Domains
-org: 0
-ordered: 3
+index: .5
+order: 3
 svg: /geospatial.svg
 ---

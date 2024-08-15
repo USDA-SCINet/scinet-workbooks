@@ -30,9 +30,18 @@ in the form $setting: value,
     $theme-site-margins-mobile-width:   2,
     $theme-header-logo-text-width: 50,
     $theme-site-margins-breakpoint: 'tablet',
-    $theme-header-max-width: 'desktop-lg',
-    $theme-grid-container-max-width: 'desktop-lg',
-    $theme-footer-max-width: 'desktop-lg'
+    $theme-header-max-width: 'widescreen',
+    $theme-grid-container-max-width: 'widescreen',
+    $theme-footer-max-width: 'widescreen',
+    $theme-color-secondary-lighter: 'green-cool-10',
+    $theme-color-secondary-light: 'green-30',
+    $theme-color-secondary: 'green-50',
+    $theme-color-secondary-vivid: 'green-cool-50v',
+    $theme-color-secondary-dark: 'green-60v',
+    $theme-color-secondary-darker: 'green-70v',
+    //$theme-body-background-color: 'gray-1',
+    //$theme-color-disabled: "gray-60",
+    $theme-font-type-lang: "public-sans",
     );
 
 

@@ -1,6 +1,11 @@
 {% if page.images_path %}{% assign images_path = page.images_path %}
 {% else %}
-  {% assign folderlvl = include.folder | default: 2 %}
-  {% assign module_path = page.url | split: '/' | slice: 1, folderlvl | join: "/" %}
-  {% assign images_path = module_path | append: '/assets/img/' | relative_url %}
+  {% assign folderdown = include.folder | default: 0 %}
+  {% assign path_segments = page.url | split: '/' %}
+  {% assign path_l = path_segments | size %}
+  {% assign folderlvl = path_l | minus: -2 | minus: folderdown %}
+  
+  {% assign module_path = path_segments | slice: 1, folderlvl | join: "/" %}
+  {% assign file_path = module_path | append: '/assets' | relative_url %}
+  {% assign images_path = module_path | append: '/assets/img' | relative_url %}
 {% endif %}

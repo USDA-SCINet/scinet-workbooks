@@ -1,0 +1,64 @@
+{%- assign item = include.item %}
+{% assign itemclass = item.class | default: "" %}
+{% assign itemattr = item.attr | default: "" %}
+{%- if section.code %}
+{%- if include.code %}
+{% assign codefetch = section.code | append: "-code" %}
+{%- capture codeblock %}
+<div class="usa-accordion {{ itemclass }}" {{ itemattr }} markdown="1">
+
+{% include contribute/components/codeblock/custom/{{ codefetch }} %}
+</div>
+{%- endcapture %}
+{% include contribute/components/codeblock/codeblock code=codeblock %}
+{%- else %}
+<div class="usa-accordion {{ itemclass }}" {{ itemattr }}>
+{% include contribute/components/codeblock/custom/{{ section.code }} %}
+</div>
+{%- endif %}
+
+{%- else %}
+{% assign allclass = item.all-class | default: "" %}
+
+{% if include.code %}
+<ul class="usa-content-list" >
+{% else %}
+<div class="usa-accordion {{ itemclass }}" {{ itemattr }}>
+{% endif %}
+
+{% for option in item.sections %}
+{% capture optiontitle %}{% if option.title %}{{ option.title }}{% else %}{{ option.class | capitalize }}{% if item.titles %} {{ item.titles }}{% endif %}{% endif %}{% endcapture %}
+{% assign optionid = optiontitle | slugify | append: "-code-" | append: include.count %}
+{% assign oclass = option.class | default: "" %}
+{% assign optiontext = option.text | default: optiontitle %}
+{% capture optionclass %}{{ oclass }} {{ allclass }}{% endcapture %}
+{% if item.icon or option.icon %}{% assign icons = true %}{% else %}{% assign icons = false %}{% endif %}
+{% if include.code %}
+{%- capture codeblock %}
+<div class="usa-accordion {{ itemclass }}" {{ itemattr }} markdown="1">
+
+&#123% include accordion title="{{optiontitle}}" class="{{optionclass}}" controls="{{optionid}}" icon="{{icons}}" %&#125
+<div id="{{ optionid }}" class="accordion_content" markdown='1'>
+    
+{{ optiontext }}
+</div>
+</div>
+{%- endcapture %}
+<li>
+<h4>{{ optiontitle }}</h4>
+{% include contribute/components/codeblock/codeblock code=codeblock %}
+</li>
+{% else %}
+{%- capture codeblock %}
+{% include accordion title=optiontitle class=optionclass controls=optionid icon=icons %}
+<div id="{{ optionid }}" class="accordion_content" markdown='1'>
+
+{{ optiontext }}
+        
+</div>
+{%- endcapture %}
+{{ codeblock }}
+{% endif %}
+{% endfor %}
+{% if include.code %}</ul>{% endif %}
+{% endif %}

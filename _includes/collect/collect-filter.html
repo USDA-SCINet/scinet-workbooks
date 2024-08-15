@@ -5,7 +5,7 @@
 {%- assign yearid = formid | prepend: "year-" %}
 {%- assign monthid = formid | prepend: "month-" %}
 {%- assign buttonid = formid | prepend: "button-" %}
-<div class="usa-accordion usa-accordion--bordered padding-y-2 maxw-tablet">
+<div class="usa-accordion usa-accordion--bordered padding-y-2 ">
     <button
         type="button"
         class="usa-accordion__button usa-button--outline bg-base-lightest"
@@ -48,7 +48,7 @@
                 <select class="usa-select" name="{{ topicsid }}" id="{{ topicsid }}">
                     <option value>Filter Workbooks by Keyword</option>
                     {% for tag in tags %}
-                    <option value="{{ tag }}">{{ tag | upcase | replace: "-", " " }}</option>
+                    <option value="{{ tag }}">{{ tag | upcase }}</option>
                     {% endfor %}
                 </select>
             </div>
@@ -73,7 +73,7 @@
 
         let type = types.value.toLowerCase(),
             difficulty = difficulties.value.toLowerCase(),
-            topic = topics.value.toLowerCase().replace(" ", "-");
+            topic = topics.value.toLowerCase();
 
         filterList(type, difficulty, topic);
     };
@@ -134,7 +134,7 @@
                 mylist.push(difficulty.toUpperCase())
             };
             if (topic != "") {
-                mylist.push(topic.toUpperCase().replace("-", " "))
+                mylist.push(topic.toUpperCase())
             };
 
             return current+mylist.join(", ");

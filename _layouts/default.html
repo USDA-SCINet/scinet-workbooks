@@ -2,7 +2,9 @@
 main: foo, bar, qaz
 scripts: /assets/js/external.js
 ---
-
+{% if page.ext == '.ipynb' %}
+{{ content }}
+{% else %}
 <!DOCTYPE html>
 <html lang="{{ page.lang | default: site.lang | default: 'en-US' }}">
 
@@ -20,7 +22,7 @@ scripts: /assets/js/external.js
     {% include layout/skipnav.html %}
     {% include layout/header.html %}
 
-    <main id="main-content" {% for _attr in layout.main %} {{ _attr[0] }}="{{ _attr[1] }}" {% endfor %}>
+    <!-- <main id="main-content"> -->
 
         {%- if page.alerts -%}
         <div aria-label="Alerts">
@@ -31,12 +33,11 @@ scripts: /assets/js/external.js
           </section>
         </div>
         {%- endif -%}
-        {% assign hero = page.header %}{% include layout/hero.html %}
 
         {{ content }}
         <br>
 
-    </main>
+    <!-- </main> -->
     {% include layout/footer.html %}
 
     {% include layout/scripts.html %}
@@ -44,3 +45,4 @@ scripts: /assets/js/external.js
   </body>
   
   </html>
+{% endif %}

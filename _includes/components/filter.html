@@ -3,7 +3,7 @@
   <select class="usa-select" name="{{ dropdown.id }}" id="{{ dropdown.id }}">
     <option value>{{ dropdown.hint }}</option>
     {% for option in filter %}
-    <option value="{{ option }}">{{ option | capitalize }}</option>
+    <option value="{{ option }}">{{ option }}</option>
     {% endfor %}
   </select>
 </div>

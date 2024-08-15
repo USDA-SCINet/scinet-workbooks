@@ -17,3 +17,9 @@
  @mixin pad-05 {
    padding: .5em !important;
 }
+
+@mixin is-sticky {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;      
+}

@@ -1,0 +1,18 @@
+{% if include.datasource %}
+    {% for _table in site.data.tables %}
+    {% if _table[0] == table.datasource %}
+        {% assign tabledata = _table[1] %}
+    {% endif %}
+    {% endfor %}
+{% else %}
+    {% include components/path.html p=page %}
+    {% assign defaultpath = pageurl | append: 'assets/' %}
+    {% assign file_path = include.file_path | default: defaultpath %}
+    <script>console.log('{{file_path}}')</script>
+    {% assign tablename = file_path | append: include.table %}
+    {% include collect/staticfile file=tablename %}
+    {% assign tabledata = staticfile[1] %}
+{% endif %}
+
+    {% include components/table.html title=include.title tabledata=tabledata announcement=include.announcement%}
+

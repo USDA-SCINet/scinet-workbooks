@@ -1,0 +1,72 @@
+<h2>{% if component.title %}{{ component.title }}{% else %}Component Examples{% endif %}</h2>
+{% assign countup = 0 %}
+{% assign pagename = page.title %}
+{% for section in page.components.sections %}
+{% capture sectiontitle %}{{ section.title }}{% if section.pluralize %}s{% endif %}{% endcapture %}
+{% capture accordionclass %}usa-accordion{% unless section.noborder %} accordion-bordered{% endunless %}{% endcapture %}
+{% assign sectionname = section.title %}
+{% assign optionsid = sectiontitle | slugify | append: "-options" %}
+{% assign codeid = sectiontitle | slugify | append: "-code" %}
+<h3>{{ sectiontitle }}</h3>
+{% if section.intro %}<p class="site-text-intro">{{ section.intro }}</p>{% endif %}
+{% if section.description %}<p>{{ section.description }}</p>{% endif %}
+
+<div class="{{ accordionclass }}">
+{% unless section.no-preview %}
+{% if section.unexpanded %}
+{% include accordion title="Component Preview" class="primary" controls=optionsid %}
+{% else %}
+{% include accordion title="Component Preview" expanded="true"  class="primary" controls=optionsid %}
+{% endif %}
+<div id="{{ optionsid }}" class="accordion_content">
+
+{% unless section.no-comp-list %}
+<ul class="usa-content-list" >
+{% endunless %}
+
+{% for opt in section.options %}
+{% unless opt.no-comp-display %}
+{% unless section.no-comp-list %}
+<li>
+    <h4>{% if opt.label %}{{ opt.label }}{% else %}{{ opt.class | capitalize }}{% endif %}</h4>
+{% endunless %}
+{% include contribute/components/{{ page.components.name }} item=opt count=countup ptitle=pagename stitle=sectionname %}
+
+{% unless section.no-comp-list %}</li>{% endunless %}
+{% endunless %}
+{% endfor %}
+{% unless section.no-comp-list %}
+</ul>
+{% endunless %}
+
+</div>
+{% endunless %}
+{% unless section.no-code %}
+{% include accordion title="Component Code" class="outline" controls=codeid %}
+<div id="{{ codeid }}" class="accordion_content">
+
+{% unless section.no-code-list %}
+<ul class="usa-content-list" >
+{% endunless %}
+
+{% for opt in section.options %}
+{% unless section.no-code-list %}
+<li>
+    <h4>{% if opt.label %}{{ opt.label }}{% else %}{{ opt.class | capitalize }}{% endif %}</h4>
+{% endunless %}
+
+{% include contribute/components/{{ page.components.name }} item=opt count=countup ptitle=pagename stitle=sectionname code=true %}
+
+{% unless section.no-code-list %}</li>{% endunless %}
+{% endfor %}
+
+{% unless section.no-code-list %}
+</ul>
+{% endunless %}
+
+</div>
+{% endunless %}
+</div>
+
+{% assign countup = countup | plus: 1 %}
+{% endfor %}

@@ -25,7 +25,7 @@ i.e.
 //theme sizes
  
 .sci-container {
-   @include u-maxw('desktop-lg');
+   @include u-maxw($theme-grid-container-max-width);
    @include u-margin-x('auto');
 }
 
@@ -36,7 +36,7 @@ i.e.
  
 //side nav formatting
 .main-side {
-  @include u-maxw('desktop-lg');
+  @include u-maxw($theme-grid-container-max-width);
 }
 
 //code block scroll
@@ -112,17 +112,42 @@ pre {
    }
 }
 
-//table
 
-.table-list {
-   @include usa-table;
-   @include usa-table--compact;
-   @include usa-table--borderless;
-}
 
-.tooltip-toggle{
-   &:hover {
-      cursor: pointer;
-      .usa-icon{fill: color($theme-color-primary-vivid);}
+.site-preview-heading {
+   @include typeset("lang", "sm", 2);
+   @include u-margin-bottom(2);
+   @include u-margin-top(4);
+   @include u-text("ls-2", "normal", "base");
+ }
+
+ .usa-content-list {
+   @include unstyled-list;
+   > li {
+     border-top: 1px solid color("base-lighter");
+     margin-top: units(1);
+     padding-top: units(1);
+     > h4:first-child{
+      @include typeset("lang", "sm", 2);
+      @include u-margin-bottom(2);
+      @include u-margin-top(4);
+      @include u-text("ls-2", "normal", "base");
+     }
+     > h3:first-child{
+      @include typeset("lang", "md", 2);
+      @include u-margin-bottom(2);
+      @include u-margin-top(4);
+      @include u-text("ls-2", "normal", "base");
+     }
+ 
+     ul {
+       list-style-type: disc;
+       margin-bottom: units(2);
+       padding-left: units(3);
+     }
+ 
+     li {
+       margin-top: units(0.5);
+     }
    }
-}
+ }

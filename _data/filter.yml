@@ -1,16 +1,9 @@
 filters:
-  - section: Domains
+  - section: Subject Area
     select-all: true
-    subsection:
-      - title: Base Workbooks
-        type: checkbox
-        val: 'core-wbs'
-        values: ['computing-skills', 'data-science']
-      - title: Specialized Workbooks
-        type: checkbox
-        val: 'wbs'
-        values: collect
-        collect: 'specialization'
+    title: Filter by Subject Area
+    type: checkbox
+    val: 'subject'
   - section: Type and Difficulty
     subsection:
       - title: Lesson Type
@@ -24,14 +17,18 @@ filters:
         unsorted: true
         values: ['basics', 'intermediate', 'advanced']
   - section: Keywords
-    title: Filter by Keywords
+    title: Add Keywords to Filter
+    select-all: true
+    subtitle: 'Selected Keywords:'
     inclusive-toggle: true
-    type: checkbox
+    type: autoselect
     val: 'tags'
   - section: Packages
     inclusive-toggle: true
-    title: Filter by Code Packages
-    type: checkbox
+    title: Add Code Packages to Filter
+    select-all: true
+    subtitle: 'Selected Packages:'
+    type: autoselect
     val: 'packages'
   # - section: Interface
   #   title: Filter by Interface
@@ -41,15 +38,15 @@ filters:
   - section: Contributors
     subsection:
       - title: Author
-        type: dropdown
+        type: select
         val: 'author'
       - title: Working Groups
-        type: dropdown
+        type: select
         val: 'wgs'
 #  - section: Sort
 
 
-vals: ['wbs','type', 'tags', 'level', 'packages', 'author', 'wgs', 'interface']
+vals: ['subject','type', 'tags', 'level', 'packages', 'author', 'wgs', 'interface']
 
 icons: 
   - type: index
@@ -62,15 +59,5 @@ icons:
     icon: /assets/uswds/img/material-icons/text_snippet.svg
   - type: reference material
     icon: /assets/uswds/img/material-icons/book.svg
-
-capitalize: 
-  - c: CLI
-    d: cli
-  - c: IDE
-    d: ide
-  - c: GUI
-    d: gui
-  - c: VS Code
-    d: vs code
-  - c: BioPerl
-    d: bioperl
+  - type: selected
+    icon: /assets/uswds/img/usa-icons/check_circle.svg

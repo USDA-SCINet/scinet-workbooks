@@ -1,0 +1,10 @@
+{%- assign class=include.class | prepend: "highlighted--" %}
+{%- capture htitle %}{% if include.title %}{{ include.title }}{% else %}{{ include.class | capitalize }}{% endif %}{%- endcapture %}
+{% capture alertrole %}{% if include.role or include.class == 'emergency' %} role="{{ include.role | default: 'alert' }}"{% endif %}{% endcapture %}
+{%- assign txt=include.txt %}
+<div {% if include.id %}id="{{ include.id}}" {% endif %}class="highlighted {{ class }} {% if include.noicon %} highlighted--no-icon {% endif %}"{{alertrole}}>
+    <div class="highlighted__body">
+        {% if include.class or include.title %}<h4 class="highlighted__heading">{{ htitle }}</h4>{% endif %}
+        {{ txt | markdownify }}
+    </div>
+</div>

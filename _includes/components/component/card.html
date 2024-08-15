@@ -5,8 +5,9 @@
 {% else %}
 {% assign imgsrc = 0 %}
 {% endif %}
+{% assign classes = include.classes | default: classes %}
 
-<li class="usa-card {{ classes }} {% if card.url %}featured_posts{% endif %}">
+<li class="usa-card {{ classes }} fc {% if card.url %} featured_posts{% endif %}" datameta="{{ card.title }}">
     {% if card.url %}
     <a href="{% include url.html link=card %}">
         {% endif %}
