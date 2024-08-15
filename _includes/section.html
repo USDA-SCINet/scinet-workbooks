@@ -1,14 +1,22 @@
-{%- assign section = page[{{include.section}}] -%}
+{%- if include.data %}
+{%- assign section = include.data %}
+{%- else %}
+{%- assign section = page[{{include.section}}] %}
+{%- endif %}
 {%- capture includecomp -%}components/{{ section.comp }}.html{%- endcapture -%}
 <div class="grid-row {{ section.s_class }}" aria-label="{{ section.label }}">
-    {%- if section.container -%}<div class="grid-container sci-container {{ section.container }}">{%- endif -%}
+    {%- if section.container -%}<div class="grid-container sci-container {{ section.container }} {% unless data.flex %}width-full{% endunless %}">{%- endif -%}
         {%- if section.collect -%}
             {%- if section.collect=="authors" -%}
-                {% assign myposts = site.data.authors %}
-            {%- elsif section.collect.org -%}
+                {% assign myposts = site.data.authors | sort %}
+            {%- elsif section.collect.index -%}
                 {% assign wbval = section.collect.workbook | default: 'documents' %}
-                {% assign myposts = site[wbval] | where: 'org', section.collect.org | sort: ordered %}
-                {% assign myposts = myposts | where_exp: "item", "item.title != 'Specialized Domains'" %}
+                {% assign myposts = site[wbval] | where: 'index', section.collect.index | sort: order %}
+                {% if section.collect.exclude %}
+                {% assign wbexclude = section.collect.exclude | default: 'none' %}
+                {% assign myposts = myposts | where_exp: "item", "item.collection != wbexclude" %}
+                {% endif %}
+                {% assign myposts = myposts | sort: 'order' %}
             {%- endif -%}
             {%- include {{ includecomp }} data=section collected=myposts -%}
         {%- else -%}

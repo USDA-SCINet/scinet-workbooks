@@ -5,7 +5,7 @@
   {%- assign _anchor_js_targets = site.anchor_js_targets -%}
   {%- assign _prepended_targets = '' | split: '' -%}
   {%- for _target in _anchor_js_targets -%}
-    {%- assign _prepended_target = _target | prepend: '.usa-layout-docs ' -%}
+    {%- assign _prepended_target = _target | prepend: '.usa-layout-docs ' | append: ':not(.rm-a)' -%}
     {%- assign _prepended_targets = _prepended_targets | push: _prepended_target -%}
   {%- endfor -%}
 

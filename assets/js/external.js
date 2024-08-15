@@ -14,12 +14,13 @@
 (function() {  // copy function
 
   const COPY_CODE_CLASS = "copy-code";
+  const FETCHED_DIV = "highlighter-rouge";
   const COPY_BUTTON_CLASS = `usa-button usa-button--outline ${COPY_CODE_CLASS}__button right-button`;
   const COPY_BUTTON_SUCCESS_CLASS = `${COPY_CODE_CLASS}__button--success`;
   const COPY_WRAPPER_CLASS = `${COPY_CODE_CLASS}__wrapper`;
   const SR_STATUS_MESSAGE_CLASS = `${COPY_CODE_CLASS}__sr-status`;
 
-  const COPY_CODE = document.querySelectorAll(`.${COPY_CODE_CLASS}`);
+  const COPY_CODE = document.querySelectorAll(`div.${FETCHED_DIV}:not(.no-copy)`);
   const COPY_WRAPPER = `.${COPY_WRAPPER_CLASS}`;
   const SR_STATUS_MESSAGE = `.${SR_STATUS_MESSAGE_CLASS}`;
 
@@ -104,7 +105,7 @@
     }, 3000);
 
     // Select section code and copy to clipboard
-    const copyComponent = copyBtn.closest(`.${COPY_CODE_CLASS}`);
+    const copyComponent = copyBtn.closest(`.${FETCHED_DIV}`);
     const codeElement = copyComponent.querySelector("code");
     return navigator.clipboard.writeText(codeElement.textContent);
   };
@@ -122,6 +123,7 @@
       const copyButton = createCopyButton();
       const labelSROnly = createSRStatus();
 
+      copyCodeElement.classList.add("copy-code");
       copyWrapper.append(labelSROnly, copyButton);
       copyCodeElement.appendChild(copyWrapper);
 
@@ -131,4 +133,23 @@
 
   init();
 
+})();
+
+
+(function() {  // table function
+  $(".simple-sorted-table").each(function(){
+    $(this).find("thead tr th").each(function(){
+      $(this).attr({
+        "data-sortable": true,
+        scope: "col",
+        role: "columnheader"
+    });
+    });
+    $(this).find("tbody tr th").each(function(){
+      $(this).attr({
+        scope: 'row',
+        role: "rowheader"
+      });
+    });
+  });
 })();

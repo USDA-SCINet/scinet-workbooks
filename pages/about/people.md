@@ -1,6 +1,6 @@
 ---
 title: People
-permalink: /people
+permalink: /about/people
 layout: single
 people:
   comp: bio

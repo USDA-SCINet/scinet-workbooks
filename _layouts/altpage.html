@@ -1,0 +1,188 @@
+---
+layout: default
+scripts: ['/assets/js/lib/jquery-3.4.1.min.js', '/assets/js/filter/filternav.js', '/assets/js/external.js']
+
+---
+{% assign hero = page.header %}
+{% assign blankarray = "" | split: "" %}
+{% assign prevTOC = blankarray %}
+{% assign afterTOC = blankarray %}
+{% assign pTOC = "" %}
+{% assign landingpage = false %}
+{% assign sidenav = blankarray %}
+{% assign subsetposts = blankarray %}
+{% assign sectiondata = "" %}
+{% assign displayposts = blankarray %}
+{% assign headertitle = false %}
+
+
+{%- assign pagepath = page.slug | append: page.ext %}
+{% capture pageurl %}{{ page.path | remove: pagepath }}{% endcapture %}
+{% capture landpath %}_{{ page.collection }}/{% endcapture %}
+{% capture landurl %}/{{ page.collection }}/index{% endcapture %}
+{% assign pdc = 1 %}
+
+{% assign sortposts = blankarray %}
+
+{% for _post in site[page.collection] %}
+
+  {%- assign postslug = _post.slug | append: _post.ext %}
+  {% capture postpath %}{{ _post.path | remove: postslug }}{% endcapture %}
+
+  {% unless page.url == _post.url %}
+    {% if page.path contains postpath and _post.index %}
+      {% assign prevTOC = prevTOC | push: _post %}
+    {% endif %}
+  {% endunless %}
+
+  {% if _post.url == landurl %}
+    {% assign landingpage = _post %}
+  {% else %}
+
+    {% assign subsetposts = subsetposts | push: _post %}
+
+    {%- if postpath == landpath or _post.index == pdc %}
+      {% assign sortposts = sortposts | push: _post %}
+    {%- endif %}
+
+  {% endif %}
+{% endfor %}
+
+{% if sortposts.size > 0 %}
+{% assign sortposts = sortposts | sort: 'order' %}
+{% assign pdc = 2 %}
+
+{% if page.index == 0 %}
+{% assign sidenav = sidenav | concat: sortposts %}
+{% else %}
+{% for _sortedpost in sortposts %}
+  {% assign subposts = blankarray %}
+  {% if _sortedpost.index %}
+  {%- assign sortslug = _sortedpost.slug | append:  _sortedpost.ext %}
+  {% capture sortpath %}{{ _sortedpost.path | remove: sortslug }}{% endcapture %}
+  {% if page.path contains sortpath %}
+
+  {% for _pos in subsetposts %}
+    
+  {% unless _pos.path == _sortedpost.path %}
+  
+    {%- assign posslug = _pos.slug | append: _pos.ext %}
+    {% capture pospath %}{{ _pos.path | remove: posslug }}{% endcapture %}
+
+    {% if _pos.path contains sortpath %}
+
+      {%- if pospath == sortpath or _post.index == pdc %}
+        {% include layout/components/hashed url=_pos.url path=_pos.path shortpath=pospath title=_pos.title %}
+        {% assign displayposts = displayposts | push: _pos %}
+        {% assign subposts = subposts | push: hashed %}
+      {%- endif %}
+    {% endif %}
+
+  {% endunless %}
+
+  {% endfor %}
+  {% endif %}
+  {% endif %}
+
+  {% if subposts.size > 0 %}
+
+  {% if page.componentdisplay %}
+  {% include layout/components/hashed cards=displayposts classes="grid-col-6 tablet:grid-col-4" parentclass="width-full" %}
+  {% capture sectiondata %}
+  <div class="grid-row" aria-label="{{ page.componentdisplay }}">
+<!--     <h2>{{ page.componentdisplay }}</h2> -->
+    {% include contribute/filter title=page.componentdisplay label=page.componentdisplay count=displayposts.size sorting="component" %}
+    {% include components/cards.html data=hashed %}
+  </div>
+  {% endcapture %}
+  {% endif %}
+
+  {% assign sorturl = _sortedpost.permalink | default: _sortedpost.url %}
+
+  {% include layout/components/hashed url=sorturl path=_sortedpost.path shortpath=sortpath title=_sortedpost.title links=subposts %}
+
+  {% assign sidenav = sidenav | push: hashed %}
+  {% else %}
+  {% assign sidenav = sidenav | push: _sortedpost %}
+  {% endif %}
+
+{% endfor %}
+{% endif %}
+
+{% if landingpage %}
+{% assign sidenav = sidenav | unshift: landingpage %}
+{% endif %}
+
+{% endif %}
+
+
+{% assign prevTOC = prevTOC | sort: "index"  %}
+
+{% assign pTOC = prevTOC %}
+
+  {% assign prevTOClength = prevTOC | size %}
+
+  {% capture mycontent %}
+  {% if page.showdescription %}
+  <p class="text-page-intro">{{ page.description }}</p>
+  {% endif %}            
+  {%- if page.ext == '.html' %}
+  {%- unless page.no-md %}
+  {{ content | markdownify }}
+  {%- endunless %}
+  {%- else %}
+  {{ content }}
+  {%- endif %}
+  {% if page.components %}
+  {% include contribute/sections %}
+  {% endif %}
+  {{ sectiondata }}
+  {% endcapture %}
+
+  {% capture sidenavigation %}
+  <nav aria-label="Secondary navigation">
+    {% include layout/sidenav.html html=mycontent class="usa-sidenav" h_max=3 anchor_class="usa-sidenav__item" submenu_class="usa-sidenav__sublist" sidenav=sidenav %}
+  </nav>
+  {% endcapture %}
+
+  {%- if page.collection %}
+  {% if page.index == 0 %}
+    {% assign herotitle = page.title %}
+  {% else %}
+    {%- assign pageparent = page.parent | default: 0 %}
+    {% capture herotitle %}{{ prevTOC[pageparent].title }}{% endcapture %}
+    {% assign headertitle = page.title %}
+  {% endif %}
+  {% include layout/hero.html title=herotitle %}
+  {%- else %}
+  {% include layout/hero.html %}
+  {%- endif %}
+  <div class="grid-container main-side">
+    <div class="grid-row grid-gap flex-align-start">
+
+    <!-- desktop breakpoint side navigation. --> 
+   <div class="usa-layout-docs__sidenav display-none desktop:display-block desktop:grid-col-3 desktop:padding-y-10">
+    {{ sidenavigation }}
+    </div>
+
+      <div class="usa-layout-docs__main desktop:grid-col-9">
+          {% include layout/breadcrumb.html %}
+          <main class="usa-layout-docs usa-layout-docs__main" id="main-content">
+            <div class="sci-container main-side usa-prose">           
+              {% if headertitle or page.subtitle %}
+              <h1 class="top-header" >{{ headertitle | default: page.subtitle }}</h1>
+              {%- endif -%}
+            {{ mycontent }}
+            </div>
+
+
+          <br>
+          </main>
+      </div>
+       <!-- mobile breakpoint sidenav -->
+     <div class="usa-layout-docs__sidenav desktop:display-none width-full">
+     {{ sidenavigation }}
+     <br>
+     </div>
+    </div>
+  </div>

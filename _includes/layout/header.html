@@ -28,15 +28,16 @@
 
           {%- if _section.links %}
             {%- assign section_links = site.data.navigation[_section.links] | default: _section.links -%}
-          {%- elsif _section.compile_org %}
-            {%- assign section_links = site[_section.compile] | where: 'org', _section.compile_org | sort: "ordered" %}
+          {%- elsif _section.compile_index %}
+            {%- assign section_links = site[_section.compile] | where: 'index', _section.compile_index | sort: "order" %}
           {%- elsif _section.compile_all %}
-            {%- assign section_links = site[_section.compile] | sort: "ordered" %} 
+            {%- assign section_links = site[_section.compile] | sort: "order" %} 
           {% else %}
-            {%- assign section_links = site[_section.compile] | where: 'org', 1 | sort: "ordered" %}
+            {%- assign myindex = _section.index | default: 1 %}
+            {%- assign section_links = site[_section.compile] | where: 'index', myindex | sort: "order" %}
           {%- endif %}
 
-          {%- assign _section_handle = _section.title | handleize -%}
+          {%- assign _section_handle = _section.title | slugify -%}
           {%- assign _section_id = _section_handle | prepend: 'nav-' -%}
           <button type="button" class="usa-accordion__button usa-nav__link" aria-expanded="false" aria-controls="{{ _section_id }}">
             <span>{{ _section.title }}</span>

@@ -1,0 +1,12 @@
+---
+layout: default
+main:
+  class: usa-layout-docs usa-layout-docs__main usa-prose
+
+---
+
+{% for collection in site.collections %}
+{% for post in site[collection.label] %}
+    {% include check pg = post %}
+  {% endfor %}
+{% endfor %}

@@ -1,9 +1,0 @@
-{%- assign class=include.class | prepend: "highlighted--" %}
-{%- capture htitle %}{% if include.title %}{{ include.title }}{% else %}{{ include.class | capitalize }}{% endif %}{%- endcapture %}
-{%- assign txt=include.txt %}
-<div {% if include.id %}id="{{ include.id}}" {% endif %}class="highlighted {{ class }} {% if include.noicon %} highlighted--no-icon {% endif %}">
-    <div class="highlighted__body">
-        <h4 class="highlighted__heading">{{ htitle }}</h4>
-        {{ txt | markdownify }}
-    </div>
-</div>

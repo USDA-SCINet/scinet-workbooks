@@ -63,9 +63,9 @@ function sortForm(fdata){
     if (value !== "") {
       if(key.includes("inclusive")){
         inclusive.push(value);
-      } else {
-        if(key=='core-wbs' || key=='wbs'){
-          var mykey = 'wbs'
+      } else if (key.includes("selector")) {} else {
+        if(key=='subject'){
+          var mykey = 'subject'
           inclusive.push(value);
         } else {
           var mykey = key 
@@ -137,44 +137,86 @@ function clearSearch(){
   }
 
     // get ids of items that match the selected tutorials
-    var idarray = exclude.flatMap(function (el) { return el.keeps; });
-
-    checkWBs(idarray)
+    var idarray = exclude.flatMap(function (el) { return el.keeps; }),
+        selarray = exclude.flatMap(function (el) { return el.ref});
+    checkWBs(idarray,selarray)
   }
 
-  function checkWBs(idarray){
+  function checkWBs(idarray,selarray){
 
     // display error message if no workbooks found
     if(idarray.length===0){
       noWBsFound()
     } else {
       // sessionStorage.setItem('showWBs', JSON.stringify(idarray));
-      showWBs(idarray)
+      showWBs(idarray,selarray)
     }
     
   }
 
   function noWBsFound(){
-    $("#nowbs").removeClass('no-display')
-    $(".wb").removeClass('no-display');
+    //$("#nosubject").removeClass('no-display');
+    //$(".wb").removeClass('no-display');
+    filterCounts(0);
+    $(".wb").addClass('no-display').removeClass('wb-select');;
     $("#search-placeholder").removeClass('no-display');
   }
 
-  function showWBs(idarray){
+  function showWBs(idarray,selarray){
 
     // hide all tutorials
-    $(".wb").addClass('no-display');
+    $(".wb").addClass('no-display').removeClass('wb-select');
     $("#search-placeholder").removeClass('no-display');
 
     // display only selected tutorials
+    var counter=0
     idarray.forEach((divid) =>{
       var div = document.getElementById(divid);
       if(div) {
         div.classList.remove('no-display')
+        if (selarray.includes(divid)){
+          div.classList.add('wb-select');
+          counter=counter+1
+        }
       }
     })
+
+    filterCounts(counter)
     
   }
+
+  function filterComp(e){
+    search = e.value.toLowerCase();
+    document.querySelectorAll('.fc').forEach(function(row){
+        text = row.getAttribute("datameta").toLowerCase();
+        if(text.match(search)){
+            row.classList.remove("fc-no-display");
+        } else {
+            row.classList.add("fc-no-display");
+        }
+    });
+    classCount($("#component-count"));
+}
+
+function filterCounts(num){
+  var div = $("#component-count");
+  if (div.attr("path") == "json"){
+    jsonCount(div, num)
+  } else {
+    classCount(div)
+  }
+};
+
+function jsonCount(div, num){
+    var word = (num === 1) ? "workbook" : "workbooks";
+    div.html(`<strong>${num}</strong> ${word} found`);
+}
+
+function classCount(div){
+  componentCount = document.querySelectorAll('.fc:not(.fc-no-display):not(.no-display)').length;
+  var word = (componentCount === 1) ? "workbook" : "workbooks";
+  div.html(`<strong>${componentCount}</strong> ${word} found`);
+}
 
   function displayfilters(myfilters){
     var filters = $('#filter-pills');
@@ -183,12 +225,13 @@ function clearSearch(){
   } 
 
   function makePill(k,v){
-    var pID = "filter-pill-" + k + "-" + v,
-        vText = v.replace(/-/g, " ");
+    var pSet = "filter-pill-" + k + "-" + v,
+        pID = pSet.replace(/ /g, "-");
+        vText = v;
 
     var mypill = $("<li/>", {
       "class": "filter-pills__item",
-      "keyID":k,
+      "keyID": k,
       "value": v,
     }).append($('<a/>',{
       "class": "filter-pills__pill",
@@ -228,31 +271,48 @@ function clearSearch(){
     loadFilters(myform, [k,v])
   }
 
-$(document).ready(function() {
-    
-    $('.filter-toggle').prop("checked", false).click(function() {
-
-        let sectfilter = $(this).attr("toggles"),
-            togs = $(this);
-        
-        if(togs.prop("checked")){
-            togs.text('Select All')
-        } else { togs.text('Deselect All') };
-
-        togs.prop("checked", !togs.prop("checked"));
-        $('.'+sectfilter).prop('checked', this.checked);                
-    });
-
-    
-    $('.tooltip-toggle').click(function(){
-      let tog = $(this).attr("toggles")
-      $("#"+tog).toggleClass( "no-display" )
-
-    });
-
-    if ('lastsearch' in sessionStorage) {
-      var myform = document.getElementById("workbook-array");
-      loadFilters(myform)
-
-    }
-});
+  $(document).ready(function() {
+    var myform = document.getElementById("workbook-array");
+      
+      $('.filter-toggle').prop("checked", false).click(function() {
+  
+          let sectfilter = $(this).attr("toggles"),
+              togs = $(this);
+          
+          if(togs.prop("checked")){
+              togs.text('Select All')
+          } else { togs.text('Deselect All') };
+  
+          togs.prop("checked", !togs.prop("checked"));
+          $('.'+sectfilter).prop('checked', this.checked);                
+      });
+  
+      $('.selectmultiple').on('change', function (e) {
+        let selectedO = $("option:selected", this),
+          selectV = this.value;
+  
+        if (selectV) {
+          let confirmer = selectedO.attr( "confirms" ),
+            match = selectedO.attr( "match" );
+  
+          var fetched = myform.elements[confirmer];
+  
+          if(fetched[match].value === selectV){
+            fetched[match].checked = !!selectV;
+          }      
+        }
+      });
+  
+      
+      $('.tooltip-toggle').click(function(){
+        let tog = $(this).attr("toggles")
+        $("#"+tog).toggleClass( "no-display" )
+  
+      });
+  
+      if ('lastsearch' in sessionStorage) {
+        loadFilters(myform)
+  
+      } else { classCount($("#component-count")); }
+  });
+  

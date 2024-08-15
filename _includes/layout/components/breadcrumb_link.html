@@ -2,7 +2,7 @@
 {%- assign link = include.link -%}
 <li class="usa-breadcrumb__list-item">
   <a href="{% include url.html link=link %}" class="usa-breadcrumb__link">
-    <span>{{ link.title }}</span>
+    <span>{% if link.shortname %}{{ link.shortname }}{% else %}{{ link.title }}{% endif %}</span>
   </a>
 </li>
 {% else %}

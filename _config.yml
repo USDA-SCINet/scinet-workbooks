@@ -35,7 +35,7 @@ dap_subagency: ARS
 
 # Uncomment to enable AnchorJS functionality on docs layout.
 # See https://github.com/bryanbraun/anchorjs for more information.
-anchor_js_targets: [h2, h3]
+anchor_js_targets: [h1, h2, h3]
 
 # Enables Private Eye functionality.
 # See https://github.com/18F/private-eye for more information.
@@ -56,19 +56,25 @@ search_site_handle: scinet-usda
 # See https://jekyllrb.com/docs/collections/ for more information about collections.
 collections_dir: workbooks
 collections:
-  core:
+  computing-skills:
     output: true
     permalink: /:collection/:path
   data-science:
     output: true
     permalink: /:collection/:path
-  specialization:
+  geospatial:
     output: true
-    permalink: /:path
+    permalink: /:collection/:path
+  bioinformatics:
+    output: true
+    permalink:  /:collection/:path
   pathways:
     output: true
   working-groups:
     output: true
+  contribute:
+    output: true
+    permalink:  /:collection/:path
 
 defaults:
   -
@@ -91,55 +97,54 @@ defaults:
       header:
         image: /assets/img/data-science_banner.png
         overlay_color: "transparent"
-      wbs: "data-science"
+      subject: "data-science"
+      order: 200
   -
     scope:
       path: ""
-      type: "core"
+      type: "computing-skills"
     values:
       layout: "single"
       variety: "workbook"
-      wbs: "computing-skills"
+      subject: "computing-skills"
+      order: 200
       header:
         image: /assets/img/computing_banner.png
         overlay_color: "transparent"
   -
     scope:
       path: ""
-      type: "specialization"
+      type: "bioinformatics"
     values:
       variety: "workbook"
       layout: "single"
+      subject: bioinformatics
+      bin: "specialization"
+      order: 200
   -
     scope:
-      path: "workbooks/_specialization/bioinformatics/"
-      type: "specialization"
+      path: ""
+      type: "geospatial"
     values:
-      wbs: "bioinformatics"
+      variety: "workbook"
+      layout: "single"
+      subject: geospatial
+      bin: "specialization"
+      order: 200
   -
    scope:
-     path: "workbooks/_specialization/structure-dynamics/"
+     path: "workbooks/_specialization/demo/"
      type: "specialization"
    values:
-     wbs: "structure-dynamics"
+     subject: "demo"
   -
-   scope:
-     path: "workbooks/_specialization/integrative-biology/"
-     type: "specialization"
-   values:
-     wbs: "integrative-biology"
-  -
-   scope:
-     path: "workbooks/_specialization/environment-ecosystem/"
-     type: "specialization"
-   values:
-     wbs: "environment-ecosystem"
-  -
-   scope:
-     path: "workbooks/_specialization/geospatial/"
-     type: "specialization"
-   values:
-     wbs: "geospatial"
+    scope:
+      path: ""
+      type: "contribute"
+    values:
+      layout: "altpage"
+      showdescription: true
+      parent: 1
 
 # Compress Sass
 sass:

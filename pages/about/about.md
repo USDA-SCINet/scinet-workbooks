@@ -1,12 +1,11 @@
 ---
 title: About the Project
-permalink: /about
-
+permalink: /about/
 layout: single
 
 afterTOC:
   - title: People
-    url: /people
+    url: /about/people
 
 ---
 
