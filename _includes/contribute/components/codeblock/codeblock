@@ -1,0 +1,8 @@
+{%- capture includedcode %}{{ include.code | replace: "<", "&lt;" | replace: ">", "&gt;" }}{%- endcapture %}
+<div class="language-plaintext copy-code highlighter-rouge">
+    <div class="highlight">
+        <pre class="highlight">
+            <code>{{ includedcode }}</code>
+        </pre>
+    </div>
+</div>

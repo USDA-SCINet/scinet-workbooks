@@ -1,0 +1,47 @@
+<table class="usa-table">
+  <thead>
+    <tr>
+        <th data-sortable scope="col" role="columnheader">
+            Table type
+        </th>
+        <th data-sortable scope="col" role="columnheader">
+            Description
+        </th>
+        <th data-sortable scope="col" role="columnheader">
+            Implementation Notes
+        </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row" role="rowheader">Standard Sticky</th>
+      <td>Default table with sticky headers.</td>
+      <td>Wrap in div with class='sticky'</td>
+    </tr>
+    <tr>
+      <th scope="row" role="rowheader">Standard Nonsticky</th>
+      <td>Default table without sticky headers.</td>
+      <td>Use default markdown</td>
+    </tr>
+    <tr>
+        <th scope="row" role="rowheader">Striped Table</th>
+      <td>Striped table with or without sticky headers</td>
+      <td>Wrap in div with class='striped'</td>
+    </tr>
+    <tr>
+        <th scope="row" role="rowheader">Borderless Table</th>
+      <td>Borderless table with or without sticky headers</td>
+      <td>Wrap in div with class='borderless'</td>
+    </tr>
+    <tr>
+        <th scope="row" role="rowheader">Scrollable Table</th>
+      <td>Table permits scrolling data on resize</td>
+      <td>Wrap table in div with class='scrollable-table' and tabindex='0'</td>
+    </tr>
+    <tr>
+        <th scope="row" role="rowheader">Sortable Table</th>
+      <td>HTML provides improved sorting of data</td>
+      <td>If you have complex data, you may benefit from using HTML to style your tables</td>
+    </tr>
+  </tbody>
+</table>

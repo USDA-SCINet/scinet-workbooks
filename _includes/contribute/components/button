@@ -1,0 +1,68 @@
+{%- assign item = include.item %}
+{%- if item.break %}
+{% unless include.code %}
+{% endunless %}
+{% endif %}
+{% if section.title == 'Button Groups' %}
+{%- capture codeblock %}
+{%- if item.liquid and include.code %}
+<ul class="usa-button-group">
+{%- for _subop in item.sections %}
+<li class="usa-button-group__item" markdown='1'>
+
+&#123% include button {% for _att in _subop %}{%- assign att0 = _att[0] %}{{ att0 }}="{{ _subop[att0] }}" {% endfor %}%&#125
+</li>
+{% endfor %}
+</ul>
+{%- else %}
+<ul class="usa-button-group usa-list--unstyled">
+<li class="usa-button-group__item" >
+{% include button class="default" href="#" txt="Default Link" %}
+</li>
+<li class="usa-button-group__item" >
+{% include button class="secondary" href="#" txt="Secondary Link" %}
+</li>
+<li class="usa-button-group__item" >
+{% include button class="base" txt="Alternative Attributes" attr="included details" sections="custom information" %}
+</li>
+</ul>
+{%- endif %}
+{%- endcapture %}
+
+{% elsif item.liquid %}
+{%- if include.code %}
+{%- capture codeblock %}
+{%- for _subop in item.sections %}
+&#123% include button {% for _att in _subop %}{%- assign att0 = _att[0] %}{{ att0 }}="{{ _subop[att0] }}" {% endfor %}%&#125
+{% endfor %}
+{%- endcapture %}
+{%- else %}
+{%- capture codeblock %}
+{% include button class="default" href="#" txt="Default Link" %}
+{% include button class="secondary" href="#" txt="Secondary Link" %}
+{% include button class="base" txt="Alternative Attributes" attr="included details" sections="custom information" %}
+{%- endcapture %}
+{%- endif %}
+{% else %}
+
+{%- capture itemtitle %}{% if item.title %}{{ item.title }}{% else %}{{ item.class | capitalize }}{% endif %}{% endcapture %}
+{%- if include.code %}
+{%- capture codeblock %}
+&#123% include button class="{{item.class}}" txt="{{itemtitle}}" %&#125
+<!--or-->
+{% include button class=item.class txt=itemtitle %}
+{%- endcapture %}
+{%- else %}
+{%- capture codeblock %}{%- if item.noicon %}
+{% include button class=item.class txt=itemtitle %}
+{%- else %}
+{% include button class=item.class txt=itemtitle %}
+{%- endif %}{% endcapture %}
+{%- endif %}
+{% endif %}
+
+{% if include.code %}
+{% include contribute/components/codeblock/codeblock code=codeblock %}
+{% else %}
+{{ codeblock }}
+{% endif %}

@@ -1,0 +1,20 @@
+{%- assign item = include.item %}
+{% assign codesection = page.components.code %}
+{% assign codeloc = item.code | default: codesection %}
+{% capture mycode %}{% include contribute/components/codeblock/custom/{{ codeloc }} %}{% endcapture %}
+{% if include.code %}
+{% capture codeblock %}
+<div class='{{ item.class }}'  markdown='1'>  
+
+{{ mycode }}
+</div>
+{% endcapture %}
+
+{% include contribute/components/codeblock/codeblock code=codeblock %}
+
+{% else %}
+<div class='{{ item.class }}'  markdown='1'>  
+
+{{ mycode | markdownify }}
+</div>
+{% endif %}

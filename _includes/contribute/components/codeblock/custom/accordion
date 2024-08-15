@@ -1,0 +1,32 @@
+{% capture acc1 %}Lorem ipsum-{% include layout/components/random %}{% endcapture %}
+{% capture acc2 %}ut-enim-{% include layout/components/random %}{% endcapture %}
+{% capture acc3 %}duis-aute-{% include layout/components/random %}{% endcapture %}
+{% capture acc4 %}excepteur-sint-{% include layout/components/random %}{% endcapture %}
+
+{% include accordion title="Lorem ipsum" expanded="true" controls=acc1 %}
+<div id="{{ acc1 }}" class="accordion_content"   markdown='1'>
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+
+</div>
+
+{% include accordion title="Ut enim" controls=acc2 %}
+<div id="{{ acc2 }}" class="accordion_content"   markdown='1'>
+
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+
+</div>
+
+{% include accordion title="Duis aute" controls=acc3 %}
+<div id="{{ acc3 }}" class="accordion_content"   markdown='1'>
+
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+
+</div>
+
+{% include accordion title="Excepteur sint" controls=acc4 %}
+<div id="{{ acc4 }}" class="accordion_content"   markdown='1'>
+
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+</div>
