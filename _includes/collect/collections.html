@@ -2,11 +2,11 @@
 {% else %}
   {% capture inclevel %}{% if include.lvl %}{{ include.lvl }}{% else %}1{% endif %}{% endcapture %}
   {% if include.workbooks %}
-    {% assign outer = site['{{ include.workbooks }}'] | where: 'org', inclevel | sort: "ordered" %}
-    {% assign inner = site['{{ include.workbooks }}'] %}
+    {% assign outer = site['{{ include.workbooks }}'] | where: 'index', inclevel | sort: "order" %}
+    {% assign inner = site['{{ include.workbooks }}'] | where_exp: "item", "item.ext != '.ipynb'"%}
   {% else %}
     {% assign inners = site.documents %}
-    {% assign outer = inners | where: 'org', inclevel | sort: "title" %}
+    {% assign outer = inners | where: 'index', inclevel | sort: "title" %}
   {% endif %}
 {% endif %}
 
@@ -21,12 +21,14 @@
 {% assign sort_list = true %}
 {% assign tags = tags | sort_natural %}
 
+{% assign outer = outer | sort: "order" %}
+
 <div class="grid-row grid-gap align-c margin-y-3">
   {% if include.heading %}<h1 id="{{include.heading | slugify }}">{{ include.heading }}</h1>{% endif %}
-  <div class="padding-bottom-2 bg-base-lighter tablet-lg:width-tablet">
+  <div class="padding-bottom-2 bg-base-lighter width-full">
       
       {% include collect/collect-filter.html %}
-    <ul class="usa-collection border-x border-bottom padding-bottom-2 bg-white">
+    <ul class="usa-collection collection bg-white usa-list">
       {% for _page in outer %}
         {% include collect/info-card.html option=_page subset=inner %}
       {% endfor %}

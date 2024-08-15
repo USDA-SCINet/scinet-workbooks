@@ -11,10 +11,10 @@
 {% assign subtags = subtags | uniq | compact | join: "," %}
 {% if subtags != empty or page.wgs or page.reccs %}
 <div class="grid-row class--info" >
-    <div class="sci-container grid-container margin-y-2">
+    <div class="grid-container margin-y-2 width-full">
     
     <h2>Related Reading</h2>
-    <ul class="">
+    <ul class="usa-list">
         {% unless subtags == empty %}
       <li class="">
         <button class="usa-button usa-button--unstyled filter-nav" type="button" att="tags" cont="{{ subtags }}">Find similar workbooks</button>
@@ -30,7 +30,7 @@
       {% if page.reccs %}
       <li class="">
         You may also be interested in:
-        <ul>
+        <ul class=".usa-list">
             {% for _rec in page.reccs %}
                 {% assign recpost = site[page.collection]  | where:"url", _rec  | first %}
                 <li><a href="{{ _rec.url | relative_url }}">{{ recpost.title }}</a></li>
@@ -41,7 +41,7 @@
       {% if page.external-reccs %}
       <li class="">
         <a href="/about/disclaimer#external">External resources</a> you may find helpful:
-        <ul>
+        <ul class=".usa-list">
             {% for _rec in page.external-reccs %}
                 <li><a href="{{ _rec.url }}">{{ _rec.title }}</a></li>
             {% endfor %}
