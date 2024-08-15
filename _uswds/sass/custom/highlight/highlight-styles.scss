@@ -1,8 +1,26 @@
 @use "uswds-core" as *;
 
-// Base alert styles
+// color functions
+
+@function highlight-bg($spec, $colval){
+  $holdcolor: if($spec != "base", "#{$colval}-#{$spec}", "#{$colval}");
+  
+  @return $holdcolor;
+}
+
+@function highlight-border($spec, $colval){
+  @if $spec == "base" {
+    @return "#{$colval}-dark";
+  } @else if $spec == "dark" {
+    @return "#{$colval}-darker";; 
+  } @else {
+    @return  "#{$colval}";
+  };
+}
+
+// Base highlight styles
 @mixin highlighted-styles {
-    $bgcolor: "primary-lighter";
+    $bgcolor: "base-lighter";
     $banner-text-color-token: get-color-token-from-bg(
       $bgcolor,
       $theme-alert-text-reverse-color,
@@ -11,7 +29,7 @@
     );
   
     background-color: color($bgcolor);
-    border-left: units($theme-alert-bar-width) solid color("primary-vivid");
+    border-left: units($theme-alert-bar-width) solid color("base");
     color: color($banner-text-color-token);
     @include u-shadow(2);
   
@@ -47,9 +65,10 @@
   }
 
   //set status styles for highlight class
-  @mixin highlighted-status-styles($name, $colval) {
-    $bgcolor: if($name != "emergency", "#{$colval}-10", "#{$colval}-60v");
-    $bordercolor: if($name != "emergency", "#{$colval}-30v", "#{$colval}-80");
+  @mixin highlighted-status-styles($name, $colval, $spec) {
+    
+    $bgcolor: highlight-bg($spec, $colval);
+    $bordercolor: highlight-border($spec, $colval);
 
     $banner-text-color-token: get-color-token-from-bg(
       $bgcolor,
@@ -57,8 +76,9 @@
       $theme-alert-text-color,
       $context: "Highlight (#{$name})"
     );
-    @include set-text-and-bg($bgcolor);
 
+    @include set-text-and-bg($bgcolor);
+    
     border-left: units($theme-alert-bar-width) solid color($bordercolor);
 
 
@@ -68,28 +88,47 @@
         padding-left: 2 * $alert-icon-optical-padding;
     }
   }
+
+  @function highlight-bg($spec, $colval){
+    $holdcolor: if($spec != "base", "#{$colval}-#{$spec}", "#{$colval}");
+    
+    @return $holdcolor;
+  }
   
-  // Set status styles for alert wrapper/background
-  @mixin highlighted-status-wrapper-styles($name, $colval) {
-    $bgcolor: if($name != "emergency", "#{$colval}-5", "#{$colval}-60v");
-    $bordercolor: if($name != "emergency", "#{$colval}-30v", "#{$colval}-80");
-  
+  @function highlight-border($spec, $colval){
+    @if $spec == "base" {
+      @return "#{$colval}-dark";
+    } @else if $spec == "dark" {
+      @return "#{$colval}-darker";; 
+    } @else {
+      @return  "#{$colval}";
+    };
+  }
+
+
+  // Set status styles for highlight wrapper/background
+  @mixin highlighted-status-wrapper-styles($name, $colval, $spec) {
+    $bgcolor: highlight-bg($spec, $colval);
+    $bordercolor: highlight-border($spec, $colval);
+
     background-color: color($bgcolor);
     border-left: units($theme-alert-bar-width) solid color($bordercolor);
   }
-  
 
 
-    // Set status styles for alert content
+    // Set status styles for highlight content
   // added to __body element
-  @mixin highlighted-styles-other($name, $colval, $icon) {
-    $bgcolor: if($name != "emergency", "#{$colval}-5", "#{$colval}-60v");
+  @mixin highlighted-styles-other($name, $colval, $spec, $icon) {
+
+    $bgcolor: highlight-bg($spec, $colval);
+
     $banner-text-color-token: get-color-token-from-bg(
       $bgcolor,
       $theme-alert-text-reverse-color,
       $theme-alert-text-color,
       $context: "Highlight (#{$name})"
     );
+    
     @include add-alert-icon($icon, $banner-text-color-token, $bgcolor);
     @include set-text-and-bg($bgcolor);
     padding-left: units($theme-alert-icon-size) + ($alert-icon-optical-padding);
@@ -131,8 +170,139 @@
         padding-left: 2 * $alert-icon-optical-padding;
       }
     }
-  };
+};
 
-  .highlighted--no-icon {
+.highlighted--no-icon {
     @include alert-styles-no-icon;
+}
+
+////////////////////////////////////
+/// 
+/// buttons
+/// 
+/// 
+/// .site-accordion-heading {
+/// 
+///   // Set status styles for accordion buttons
+
+@function accord-button-bg($spec, $colval){
+  $holdcolor: if($spec != "dark", "#{$colval}", "#{$colval}-#{$spec}");
+  
+  @return $holdcolor;
+}
+
+@function accord-button-hover($spec, $colval){
+  $holdcolor: if($spec != "dark", "#{$colval}-dark", "#{$colval}-darker");
+  
+  @return $holdcolor;
+}
+
+
+
+// Maps for High Contrast Mode
+
+@mixin accordion-contrast-styles {
+  height: 100%;
+  position: absolute;
+  right: units(2.5);
+  top: 0;
+}
+
+$accordion-icon-mds: (
+  color: color("ButtonText"),
+  svg-height: 20,
+  svg-width: 20,
+  height: units(3),
+);
+
+$accordion-button-unopen-contrast: map-merge(
+  $accordion-icon-mds,
+  (
+    "name": "add",
+  )
+);
+
+$accordion-button-open-contrast: map-merge(
+  $accordion-icon-mds,
+  (
+    "name": "remove",
+  )
+);
+
+
+// Opened styles
+@mixin accordion-header-styles ($name, $colval, $spec) {
+  $bgcolor: accord-button-bg($spec, $colval);
+  $hovercolor: accord-button-hover($spec, $colval);
+
+  @include button-unstyled;
+  @include set-text-and-bg(
+    $bgcolor,
+    $context: "(#{$name}) Accordion"
+  );
+  @include set-icon-from-bg(
+    $bgcolor,
+    "usa-icons/remove",
+    "usa-icons-bg/remove--white"
+  );
+  background-position: right units(2.5) center;
+  background-size: units(3);
+  cursor: pointer;
+  display: inline-block;
+  font-weight: font-weight("bold");
+  margin: 0;
+  padding: units(2) units(2.5) * 2 + units(2) units(2) units(2.5);
+  text-decoration: none;
+  width: 100%;
+
+  &:hover {
+    @include set-text-and-bg(
+      $hovercolor,
+      $context: "(#{$name}) Accordion"
+    );
+    @include set-icon-from-bg(
+      $hovercolor,
+      "usa-icons/remove",
+      "usa-icons-bg/remove--white"
+    );
+    text-decoration: none;
   }
+
+  @media (forced-colors: active) {
+    border: $border-high-contrast;
+    position: relative;
+
+    &::before {
+      @include add-color-icon($accordion-button-open-contrast);
+      @include accordion-contrast-styles();
+      content: "";
+    }
+  }
+}
+
+@mixin accordion-header-unopened-styles  ($name, $colval, $spec) {
+  $bgcolor: accord-button-bg($spec, $colval);
+  $hovercolor: accord-button-hover($spec, $colval);
+
+  @include set-icon-from-bg(
+    $bgcolor,
+    "usa-icons/add",
+    "usa-icons-bg/add--white"
+  );
+  background-size: units(3);
+
+  &:hover {
+    @include set-icon-from-bg(
+      $hovercolor,
+      "usa-icons/add",
+      "usa-icons-bg/add--white"
+    );
+  }
+
+  @media (forced-colors: active) {
+    &::before {
+      @include add-color-icon($accordion-button-unopen-contrast);
+      @include accordion-contrast-styles();
+    }
+  }
+}

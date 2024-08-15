@@ -61,3 +61,9 @@
     margin-top: 0;
     padding-top: 1.5rem;
 }
+.confirm-box{
+    display: none
+}
+.confirm-box:has(> input[type=checkbox]:checked ) {
+    display: block
+}

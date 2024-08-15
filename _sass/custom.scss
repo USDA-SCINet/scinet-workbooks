@@ -37,16 +37,16 @@
 .font-heading-md {font-size: 1.2rem;}
 
 /* optimize sidenav width to fit longer titles */
-.usa-sidenav__item {padding-right: 0 !important;}
+/* .usa-sidenav__item {padding-right: 0 !important;}
 .usa-sidenav a {padding-right: 0 !important;}
 .grid-row.grid-gap> .usa-layout-docs__sidenav {padding-right: 0;}
-.usa-current {font-size: 0.99rem;}
+.usa-current {font-size: 0.99rem;} */
 
 /* fixes usable width of the cards in a given workbook */
-.sci-container {width: 100%;}
+/* .sci-container {width: 100%;}
 .main-side .usa-card-group {
   @media (min-width: 64em) {width: 120%;}
-}
+} */
 
 
 /*** Create styles for custom components ***/
@@ -59,8 +59,4 @@
 
 .usa-combo-box__list-option,.usa-combo-box__input,.capital {
   text-transform: capitalize;
-}
-
-.rm-a a:after {
-  content: none;
 }

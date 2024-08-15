@@ -451,3 +451,25 @@ a.gloss_wb{
       width:100%
    }
  }
+
+ .usa-button--primary{
+   @include u-text('white');
+   @include u-bg('primary-vivid');
+   &:hover{
+      @include u-text('white');
+      @include u-bg('primary-dark');
+   }
+ }
+
+//lists
+
+ .fullwidth-i{
+   max-width: 100% !important
+ }
+
+.collection {
+   //border-left: 1px solid;
+   //border-right: 1px solid;
+   //border-bottom: 1px solid;
+   padding-bottom: 1rem;
+}

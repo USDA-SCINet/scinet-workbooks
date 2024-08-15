@@ -1,0 +1,22 @@
+@use "uswds-core" as *;
+
+.t-success{
+    color: color('success');
+    font-weight: font-weight('bold') 
+}
+.t-info{
+    color: color('info-dark');
+    font-weight: font-weight('bold') 
+}
+.t-error{
+    color: color('error-dark');
+    font-weight: font-weight('bold') 
+}
+.t-warning{
+    color: color('warning-dark');
+    font-weight: font-weight('bold') 
+}
+.t-disabled{
+    color: color('disabled-dark');
+    font-weight: font-weight('bold') 
+}

@@ -1,0 +1,36 @@
+@use "uswds-core" as *;
+@forward "usa-table";
+
+table {
+    @extend .usa-table;
+}
+
+.sticky{
+    table{
+    @extend .usa-table--sticky-header;
+    }
+}
+
+.borderless {
+    table{
+    @extend .usa-table--borderless;
+    }
+}
+
+.striped {
+    table{
+        @extend .usa-table--striped;
+    }
+}
+
+.scrollable-table {
+    @extend .usa-table-container--scrollable;
+}
+
+//table
+
+.table-list {
+    @include usa-table;
+    @include usa-table--compact;
+    @include usa-table--borderless;
+ }
