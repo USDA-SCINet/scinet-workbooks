@@ -27,7 +27,7 @@
   {% if include.heading %}<h1 id="{{include.heading | slugify }}">{{ include.heading }}</h1>{% endif %}
   <div class="padding-bottom-2 bg-base-lighter width-full">
       
-      {% include collect/collect-filter.html %}
+      {% comment %}{% include collect/collect-filter.html %}{% endcomment %}
     <ul class="usa-collection collection bg-white usa-list">
       {% for _page in outer %}
         {% include collect/info-card.html option=_page subset=inner %}
