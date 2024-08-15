@@ -1,13 +1,13 @@
 {% assign option = include.option %}
 {% assign gloss = include.gloss | default: site.data.glossary['glossary'] %}
 
-<li class="glossary usa-collection__item width-full maxw-full" {% if sort_list %}
+<li class="glossary usa-collection__item width-full fullwidth-i fc" datameta="{{  option.term  }}" {% if sort_list %}
     wb="{% for wb in pwb %}{{ wb }} {% endfor %} all"
     tagged="{% for tag in ptags %}{{ tag }} {% endfor %}all" type="{% for types in ptypes %}{{ types }} {% endfor %}all"
     difficulty="{% for lvl in pdifficulties %}{{ lvl }} {% endfor %}all" {% endif %}>
 
     <div class="padding-x-2 usa-collection__body">
-        <h3 class="usa-collection__heading">
+        <h3 class="usa-collection__heading no_toc">
             {{ option.term }}
         </h3>
         {% if option.alt %}<span>({{ option.alt }})</span>{% endif %}

@@ -1,0 +1,16 @@
+{% assign data = include.data %}
+{% capture titleslug %}{{ data.title | default: "See example code" | slugify }}-{% include layout/components/random %}{% endcapture %}
+{% capture expanded %}{% if include.expanded=TRUE %}aria-expanded="true"{% else %}aria-expanded="false"{% endif %}{% endcapture %}
+<h5 class="usa-accordion__heading">
+    <button
+        type="button"
+        class="usa-accordion__button usa-button--{{ data.class }}"
+        {{ expanded }}
+        aria-controls="{{ titleslug }}"
+    >
+    {{ data.title }}
+    </button>
+</h5>
+<div id="{{ titleslug }}" class="usa-accordion__content allow-overflow">
+    {% if include.details %}{{ include.details | markdownify }}{% else %}{{ data.text | markdownify }}{% endif %}
+</div>

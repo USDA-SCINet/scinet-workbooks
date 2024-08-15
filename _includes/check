@@ -1,0 +1,11 @@
+{%- assign pg = include.pg %}
+<section class="grid-container">
+    <ul>
+        <li><b>title: {{ pg.title }}</b></li>
+        {% for v in pg %}
+        {% unless v == "content"  or v=="next" or v=="previous" or v=="output" or v=="excerpt"%}
+        <li>{{ v }}: {{ pg[v] }}</li>
+        {% endunless %}
+        {% endfor %}
+    </ul>
+</section>

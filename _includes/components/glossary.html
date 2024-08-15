@@ -1,17 +1,23 @@
 <div class="home-block">
     {% assign gloss = site.data.glossary['glossary'] %}
+    {% include contribute/filter title="Filter Terms" label="Filter Terms" count=gloss.size sorting="term" %}
     {% assign gloss_letters = gloss | sort: 'term' 
     | group_by_exp: "item", "item.term | slice: 0, 1" %}
     
     {% for letter in gloss_letters %}
-    <div class="padding-bottom-2 tablet-lg:width-tablet">
+    {% assign termlist = "" %}
+    {% capture termcards %}
+    {%- for _mterm in letter.items %}
+    {%- assign termlist = termlist | append: _mterm.term | append: " - " %}
+    {% include components/component/term-card.html option=_mterm gloss=gloss%}
+    {%- endfor %}
+    {% endcapture %}
+    <div class="padding-bottom-2 width-full fccat" datameta="{{  termlist  }}">
     <h2>
         {{ letter.name }}
     </h2>
-    <ul class="usa-collection border-x border-bottom padding-bottom-2 ">
-        {% for _mterm in letter.items %}
-            {% include components/component/term-card.html option=_mterm gloss=gloss%}
-        {% endfor %}
+    <ul class="usa-collection collection">
+            {{ termcards }}
     </ul>
     </div>
     {% endfor %}
