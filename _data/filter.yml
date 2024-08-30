@@ -4,18 +4,17 @@ filters:
     title: Filter by Subject Area
     type: checkbox
     val: 'subject'
-  - section: Type and Difficulty
-    subsection:
-      - title: Lesson Type
-        type: select
-        val: 'type'
-        unsorted: true
-        values: ['interactive tutorial', 'lesson module', 'reference material']
-      - title: Subject Matter Expertise
-        type: select
-        val: 'level'
-        unsorted: true
-        values: ['basics', 'intermediate', 'advanced']
+  - section: Lesson Type # and Difficulty
+    title: Lesson Type
+    type: select
+    val: 'type'
+    unsorted: true
+    values: ['interactive tutorial', 'lesson module', 'reference material']
+      # - title: Subject Matter Expertise
+      #   type: select
+      #   val: 'level'
+      #   unsorted: true
+      #   values: ['basics', 'intermediate', 'advanced']
   - section: Keywords
     title: Add Keywords to Filter
     select-all: true
