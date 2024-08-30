@@ -244,8 +244,9 @@ alert:
 
               <div class="width-full desktop:margin-x-3 margin-y-2 ">
                 {%- if page.filter-names %}
+                {% assign filterlabel = page.filter-label | default: page.filter-names %}
                 {%- capture toggledesc %}Count does not include nested pages.{% endcapture %}
-                {% include contribute/filter title=page.filter-names label=page.filter-names count=outer.size sorting="workbook" toggle=toggledesc %}
+                {% include contribute/filter title=page.filter-names label=page.filter-label count=outer.size sorting="workbook" toggle=toggledesc %}
                 {%- else %}
                 {%- capture alerttext %}<div><p class="text-base-darker margin-top-1 margin-bottom-0"><span id="component-count" path="json"><strong></strong> workbooks found</span></p>
                 </div>
