@@ -22,7 +22,6 @@ author: Your Name
 ## order: 1 ## only needed if order of tutorials within a folder is important
 
 type: interactive tutorial
-level: basics ## relative to module
 
 tags: [R Project, raster, GeoCDL]
 packages: [bioperl, biopython]
@@ -117,21 +116,6 @@ Descriptions should be 1-3 sentences, descriptive, and contained in quotes.
 
 ```
 description: "Describe the workbook for index and search purposes"
-```
-
-### Tutorial Level
-
-{:.header-note .t-success}
-Required 
-
-Indicates the level of subject matter expertise the tutorial assumes the reader has 
-  * Options are: 
-    * basics 
-    * intermediate 
-    * advanced 
-
-```
-level: "Describe the workbook for index and search purposes"
 ```
 
 
