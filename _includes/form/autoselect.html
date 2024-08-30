@@ -1,6 +1,7 @@
 <!-- title, options, tname -->
 <div class="tablet-lg:grid-col-12 ">{%- assign loop = 0 %}
     <label class="usa-label text-bold {{ include.labelclass }}" for="{{ include.tname }}-selector">{{ include.title }}:</label>
+    {% if _section.inclusive-toggle %}<div id="{{ _section.val }}-hint" class="usa-hint">Results match tag 1 AND tag 2</div>{% endif %}
     <div class="usa-combo-box">
         <select class="usa-select capital selectmultiple" name="{{ include.tname }}-selector" id="{{ include.tname }}-selector">
             <option value>- Select {{ include.title }} -</option>

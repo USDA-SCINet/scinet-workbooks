@@ -303,6 +303,15 @@ function classCount(div){
           }      
         }
       });
+
+      $('.inclusive-toggle').prop("checked", false).click(function() {
+        let tog = $(this),
+            togv = $("#"+tog.attr("value")+"-hint");
+            
+        if(tog.prop("checked")){
+          togv.text('Results match tag 1 OR tag 2')
+        } else { togv.text('Results match tag 1 AND tag 2') };
+      })
   
       
       $('.tooltip-toggle').click(function(){

@@ -98,11 +98,11 @@ alert:
             
                     <div class="usa-card">
                       {%- if _section.inclusive-toggle %}
-                      {%- capture toggledesc %}When checked, results will include workbooks if they have any one of the selected {{ _section.val }}.{% endcapture %}
+                      {%- capture toggledesc %}When checked, results will include workbooks if they have at least one of the selected {{ _section.val }}.{% endcapture %}
                       <div class="grid-row flex-align-center">
                       <div class="usa-checkbox grid-col-11 ">
                         <input
-                          class="usa-checkbox__input usa-checkbox__input--tile"
+                          class="usa-checkbox__input usa-checkbox__input--tile inclusive-toggle"
                           id="inclusive-{{ _section.val }}"
                           type="checkbox"
                           name="inclusive-{{ _section.val }}"
