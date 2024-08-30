@@ -13,7 +13,7 @@
 <div class="bg-base-lighter padding-2 radius-md width-full">
   <h2 class="font-lang-lg margin-top-0 margin-bottom-0 no_toc rm-a no_toc">{{ include.title }}</h2>
   <div role="region" aria-label="{{ include.label }}" aria-atomic="true" class="margin-top-1">
-    <label for="icon-filter">Filter by name</label>
+    <label for="icon-filter">{{ include.label | default: "Filter by name" }}</label>
     <input class="usa-input" id="icon-filter" type="text" onkeyup="filterComp(this)">
     {{ count }}
   </div>

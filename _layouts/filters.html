@@ -98,11 +98,11 @@ alert:
             
                     <div class="usa-card">
                       {%- if _section.inclusive-toggle %}
-                      {%- capture toggledesc %}When checked, results will include workbooks if they have any one of the selected {{ _section.val }}.{% endcapture %}
+                      {%- capture toggledesc %}When checked, results will include workbooks if they have at least one of the selected {{ _section.val }}.{% endcapture %}
                       <div class="grid-row flex-align-center">
                       <div class="usa-checkbox grid-col-11 ">
                         <input
-                          class="usa-checkbox__input usa-checkbox__input--tile"
+                          class="usa-checkbox__input usa-checkbox__input--tile inclusive-toggle"
                           id="inclusive-{{ _section.val }}"
                           type="checkbox"
                           name="inclusive-{{ _section.val }}"
@@ -244,8 +244,9 @@ alert:
 
               <div class="width-full desktop:margin-x-3 margin-y-2 ">
                 {%- if page.filter-names %}
+                {% assign filterlabel = page.filter-label | default: page.filter-names %}
                 {%- capture toggledesc %}Count does not include nested pages.{% endcapture %}
-                {% include contribute/filter title=page.filter-names label=page.filter-names count=outer.size sorting="workbook" toggle=toggledesc %}
+                {% include contribute/filter title=page.filter-names label=page.filter-label count=outer.size sorting="workbook" toggle=toggledesc %}
                 {%- else %}
                 {%- capture alerttext %}<div><p class="text-base-darker margin-top-1 margin-bottom-0"><span id="component-count" path="json"><strong></strong> workbooks found</span></p>
                 </div>
