@@ -157,9 +157,10 @@ function clearSearch(){
   function noWBsFound(){
     //$("#nosubject").removeClass('no-display');
     //$(".wb").removeClass('no-display');
-    filterCounts(0);
     $(".wb").addClass('no-display').removeClass('wb-select');;
     $("#search-placeholder").removeClass('no-display');
+    
+    filterCounts(0);
   }
 
   function showWBs(idarray,selarray){
