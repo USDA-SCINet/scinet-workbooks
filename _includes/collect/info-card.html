@@ -34,13 +34,18 @@
     <div class="padding-x-2 usa-collection__body">
         <h3 class="usa-collection__heading rm-a no_toc">
             <a class="usa-link" href="{% include url.html link=post %}">
-                {{ post.title }}
+                {%- if page.filter-names %}
+                {% assign types = post.type | default: 'index' %}
+                {% assign decortype = site.data.filter['icons'] | where: "type", types %}
+                {% assign decor = decortype[0].icon %}
+                <img class="usa-icon margin-right-05" src="{{ decor }}" alt="{{ types }}"> {%- endif %}{{ post.title }}
                 <!-- {%- if page.filter-names %}
                 <svg class="usa-icon filtered" alt="selected" role="img">
                     <use xlink:href="/assets/uswds/img/sprite.svg#check_circle"></use>
                   </svg>{%- endif %} -->
             </a>
         </h3>
+        {% if page.filter-names %}<div class="mobile-lg:margin-left-3">{% endif %}
         {% unless no_summary %}
         {% if post.description %}
         <p class="usa-collection__description">
@@ -82,6 +87,7 @@
         </ul>
         {% endif %}
         {% endunless %}
+        {% if page.filter-names %}</div>{% endif %}
     </div>
 
 </li>

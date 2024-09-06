@@ -42,6 +42,8 @@ primary:
   #   compile_all: true
   # - title: Learning Paths
   #   url: /pathways
+  - title: Using the Workbook
+    url: /about/use
   - title: Glossary
     url: /glossary
   - title: Index

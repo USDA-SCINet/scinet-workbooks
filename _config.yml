@@ -75,6 +75,9 @@ collections:
   contribute:
     output: true
     permalink:  /:collection/:path
+  about:
+    output: true
+    permalink:  /:collection/:path    
 
 defaults:
   -
@@ -99,6 +102,7 @@ defaults:
         overlay_color: "transparent"
       subject: "data-science"
       order: 200
+      ordered: true
   -
     scope:
       path: ""
@@ -111,6 +115,7 @@ defaults:
       header:
         image: /assets/img/computing_banner.png
         overlay_color: "transparent"
+      ordered: true
   -
     scope:
       path: ""
@@ -121,6 +126,7 @@ defaults:
       subject: bioinformatics
       bin: "specialization"
       order: 200
+      ordered: true
   -
     scope:
       path: ""
@@ -132,12 +138,6 @@ defaults:
       bin: "specialization"
       order: 200
   -
-   scope:
-     path: "workbooks/_specialization/demo/"
-     type: "specialization"
-   values:
-     subject: "demo"
-  -
     scope:
       path: ""
       type: "contribute"
@@ -145,6 +145,23 @@ defaults:
       layout: "altpage"
       showdescription: true
       parent: 1
+      prevTOC: 
+          index: -1
+          title: About
+          url: /about/
+
+  -
+    scope:
+      path: ""
+      type: "about"
+    values:
+      layout: "altpage"
+      parent: 0
+      order: 200
+      afterTOC:
+          title: Contribute
+          url: /contribute/
+
 
 # Compress Sass
 sass:

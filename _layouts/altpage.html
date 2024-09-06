@@ -115,6 +115,14 @@ scripts: ['/assets/js/lib/jquery-3.4.1.min.js', '/assets/js/filter/filternav.js'
 
 {% endif %}
 
+{% if page.prevTOC %}
+{% assign prevTOC = prevTOC | unshift: page.prevTOC %}
+{% endif %}
+
+{% if page.afterTOC %}
+{% assign sidenav = sidenav | push: page.afterTOC %}
+{% endif %}
+
 
 {% assign prevTOC = prevTOC | sort: "index"  %}
 

@@ -1,15 +1,12 @@
 ---
 title: People
-permalink: /about/people
-layout: single
 people:
   comp: bio
   collect: authors
   container: true
 
-beforeTOC:
-  - title: About
-    url: /about
+description: Contributors to the SCINet Workbooks
+showdescription: true
 
 ---
 

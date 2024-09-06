@@ -6,7 +6,16 @@
       {%- if page.collection -%}
 
       {%- if page.index==0 %}
-        {%- include layout/components/breadcrumb_link.html title='All Workbooks' url='/workbooks' -%}
+        {% if prevTOClength == 1 %}
+        {%- for _link in prevTOC -%}
+          {%- if _link.url == page.url or _link.url == page.permalink -%}
+            {%- break -%}
+          {%- endif -%}
+          {%- include layout/components/breadcrumb_link.html link=_link -%}
+        {%- endfor -%}
+        {% else %}
+          {%- include layout/components/breadcrumb_link.html title='All Workbooks' url='/workbooks' -%}
+        {% endif %}
       {%- elsif  page.index==0.5 -%}
         {%- include layout/components/breadcrumb_link.html title='Home' url='/' -%}
       {%- else -%}

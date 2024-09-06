@@ -30,6 +30,9 @@ wbComp:
   {% include TOC-sort %}
   {% assign prevTOClength = prevTOC | size %}
   {% assign previousTOC = pTOC | default: blankarray %}
+  {% unless prevTOClength == 0 or page.index==0 %}
+    {% assign previousTOC =  previousTOC | push: prevTOC.last %}
+  {% endunless %}
   {% assign nextTOC = afterTOC | default: blankarray %}
   {% assign sidenav =  previousTOC | push: page %}
   {% assign sidenav = sidenav | concat: nextTOC %}
@@ -88,9 +91,11 @@ wbComp:
   </div>
 
 {% if page.collection %}
+{% if page.ordered %}
 {% unless prevTOClength == 0 or page.index==0 %}
   {% include collect/wb-nav.html %}
 {% endunless %}
+{% endif %}
 
 {% unless page.index %}
 {% include collect/related-reading.html %}
