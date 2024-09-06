@@ -9,7 +9,7 @@
     <div class="tablet:grid-col-8 usa-prose">{% endif %}
         {{ tagline.text | markdownify }}
         {% if tagline.button %}
-        <a class="usa-button" href="{% include url.html link=tagline.button %}">{{ tagline.button.text }}
+        <a class="usa-button{% if tagline.button.class %} usa-button--{{ tagline.button.class }}{% endif %}" href="{% include url.html link=tagline.button %}">{{ tagline.button.text }}
         </a>
         {% endif %}
     </div>
