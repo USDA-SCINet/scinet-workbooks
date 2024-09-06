@@ -4,7 +4,7 @@ title: SLURM Job Arrays for Many Data Input Files - R
 description: "(Page description here)"
 type: interactive tutorial
 
-tags: 
+tags: [R Project]
 packages: 
 level: 
 author: 
