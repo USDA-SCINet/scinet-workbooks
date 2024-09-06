@@ -102,6 +102,7 @@ defaults:
         overlay_color: "transparent"
       subject: "data-science"
       order: 200
+      ordered: true
   -
     scope:
       path: ""
@@ -114,6 +115,7 @@ defaults:
       header:
         image: /assets/img/computing_banner.png
         overlay_color: "transparent"
+      ordered: true
   -
     scope:
       path: ""
@@ -124,6 +126,7 @@ defaults:
       subject: bioinformatics
       bin: "specialization"
       order: 200
+      ordered: true
   -
     scope:
       path: ""

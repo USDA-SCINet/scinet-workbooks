@@ -88,9 +88,11 @@ wbComp:
   </div>
 
 {% if page.collection %}
+{% if page.ordered %}
 {% unless prevTOClength == 0 or page.index==0 %}
   {% include collect/wb-nav.html %}
 {% endunless %}
+{% endif %}
 
 {% unless page.index %}
 {% include collect/related-reading.html %}
