@@ -9,6 +9,7 @@
     "update-dep": "npm install && bundle install && npx gulp update",
     "start-detached": "bundle exec jekyll serve --detach",
     "setup-jekyll": "bundle",
+    "update-mod": "bash ./_scripts/git-modified-date.sh",
     "pa11y-ci": "pa11y-ci --threshold=7"
   },
   "dependencies": {

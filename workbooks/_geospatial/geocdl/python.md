@@ -4,19 +4,18 @@ title: GeoCDL - Python
 description: "Python Package for USDA-ARS SCINet GeoCDL"
 type: interactive tutorial
 
-tags: [Python]
-packages: 
-level: 
+tags: [GeoCDL, Raster, Vector, CRS]
+language: Python
+# terms: [GeoCDL, Raster, Vector, CRS] # For if you want defined terms that are not your tags
+packages: pygcdl
+wgs: geospatial
 author: Noa Mills
-
+updated: 2024-05-29
 ---
 
-{% include images_path %}
 
----
 
-**Last Update:** 29 May 2024 <br />
-**Download Jupyter Notebook**: [GRWG22_GeoCDL.Rmd]({{ file_path }}/pygcdl_tutorial.ipynb)
+## Overview
 
 This tutorial covers the python package `pygcdl` for the SCINet Geospatial Common 
 Data Library (GeoCDL), a community project from the 
@@ -51,20 +50,21 @@ If you have any questions, problems, or requests related to the python interface
 use the issue tracker on our GitHub repository: 
 [https://github.com/USDA-SCINet/pygcdl](https://github.com/USDA-SCINet/pygcdl). 
 
-## Nomenclature
+### Materials
 
-* <b>GeoCDL:</b> Geospatial Common Data Library, a collection of commonly used raster 
-  datasets accessible from an API running on SCINet's Ceres cluster
-* <b>Raster:</b> A geospatial datatype where data is stored as a grid of regularly sized pixels. Geospatial rasters contain geospatial metadata, which maps each pixel of the raster to a geospatial location on the Earth's surface. Examples of geospatial raster file types include: geotiff (.tif), and netCDF (.nc).
-* <b>Vector:</b> A geospatial datatype where data is stored as a collection of points, lines, or polygons. Each coordinate maps to a location on Earth's surface. Examples of geospatial vector file types include: geojson (.geojson), and shapefiles (.shp). 
-* <b>CRS:</b> Coordinate Reference System, also known as a spatial reference system. A
-  system for defining geospatial coordinates.
+* **Download Jupyter Notebook**: [GRWG22_GeoCDL.Rmd](./assets/pygcdl_tutorial.ipynb)
 
-## Data Details
+{% include packages %}
 
-###### Dataset: MODIS NDVI
-* Link: [https://doi.org/10.3334/ORNLDAAC/1299](https://doi.org/10.3334/ORNLDAAC/1299)
-* Details: This data set provides Moderate Resolution Imaging Spectroradiometer 
+### Nomenclature
+
+{% include terms %}
+
+### Data Details
+
+* **Dataset: MODIS NDVI**
+  * Link: [https://doi.org/10.3334/ORNLDAAC/1299](https://doi.org/10.3334/ORNLDAAC/1299)
+  * Details: This data set provides Moderate Resolution Imaging Spectroradiometer 
   (MODIS) normalized difference vegetation index (NDVI) data, smoothed and gap-filled, 
   for the conterminous US for the period 2000-01-01 through 2015-12-31. The data 
   were generated using the NASA Stennis Time Series Product Tool (TSPT) to generate 
@@ -72,9 +72,9 @@ use the issue tracker on our GitHub repository:
   satellite (MODIS MYD13Q1 product) instruments. TSPT produces NDVI data that 
   are less affected by clouds and bad pixels.
 
-###### Dataset: PRISM
-* Link: [https://prism.oregonstate.edu/](https://prism.oregonstate.edu/)
-* Details: The PRISM Climate Group gathers climate observations from a 
+* **Dataset: PRISM**
+  * Link: [https://prism.oregonstate.edu/](https://prism.oregonstate.edu/)
+  * Details: The PRISM Climate Group gathers climate observations from a 
   wide range of monitoring networks, applies sophisticated quality control 
   measures, and develops spatial climate datasets to reveal short- and long-term 
   climate patterns. The resulting datasets incorporate a variety of modeling 
@@ -82,24 +82,17 @@ use the issue tracker on our GitHub repository:
   the period from 1895 to the present.
 
 
-## Primary Libraries
-
-| Name | Description | Link |
-|:--|:--|:--|
-| pygcdl | Python interface for SCINet GeoCDL API | https://github.com/USDA-SCINet/pygcdl |
-| geopandas | Geospatial vector data for python | https://geopandas.org/en/stable/ |
-| rioxarray | Geospatial raster data for python | https://corteva.github.io/rioxarray/stable/ |
-
-
-### Tutorial Steps:
+## Tutorial Steps:
 0. Import Libraries
 1. Specify area and dates of interest 
 2. Select datasets and their variables
 3. Download the data
 4. Visualize the results
 
+<ol class="usa-process-list">
+  <li class="usa-process-list__item"  markdown='1'>  
 
-## Part 0: Import Libraries
+### Import Libraries
 
 
 ```python
@@ -122,7 +115,10 @@ import math
 pygcdl_obj = pygcdl.PyGeoCDL()
 ```
 
-## Part 1: Specify area and dates of interest 
+  </li>
+  <li class="usa-process-list__item"  markdown='1'>  
+
+### Specify area and dates of interest 
 
 Here, we specify the spatial extent of our requests. We can request either polygon-based or point-based subsets. When we request a subset, we can specify the spatial extent in one of these three ways:
 
@@ -193,7 +189,10 @@ months = "7:8"
 grain_method = "finer"
 ```
 
-## Part 2: Select datasets and their variables
+  </li>
+  <li class="usa-process-list__item"  markdown='1'>  
+
+### Select datasets and their variables
 
 
 We can use the `list_datasets()` function to list all of the datasets that are available in the Geospatial Common Data Library.
@@ -227,7 +226,10 @@ dsvars = pd.DataFrame(
 print(dsvars)
 ```
 
-## Part 3: Download the data
+  </li>
+  <li class="usa-process-list__item"  markdown='1'>  
+
+### Download the data
 
 First, we create a directory where we would like our data to download to.
 
@@ -258,7 +260,10 @@ subset_files = pygcdl_obj.download_polygon_subset(
 subset_files
 ```
 
-## Part 4: Visualize the results
+  </li>
+  <li class="usa-process-list__item"  markdown='1'>  
+
+### Visualize the results
 
 Our use of `pygcdl` for this example is complete, but we can visualize the data that we downloaded. We can see that in our site, NDVI increased over July-August in 2008 but by different degrees within the site. 
 
@@ -360,3 +365,6 @@ for i in range(num_images):
     axs[i].tick_params(labelrotation=45)
 fig.colorbar(im)
 ```
+
+</li>
+</ol>

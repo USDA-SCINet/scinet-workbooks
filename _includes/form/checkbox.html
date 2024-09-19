@@ -1,4 +1,4 @@
-<!-- title, options, tname, checked, labelclass -->
+<!-- title, options, tname, checked, labelclass formatting-->
 <fieldset class="usa-fieldset">
     {% unless include.nolegend %}<legend class="usa-legend text-bold {{ include.labelclass }}">{{ include.title }}</legend>{% endunless %}
     {% for _option in include.options %}
@@ -7,17 +7,32 @@
         {%- else %}
             {% assign checked = '' %}
         {%- endif %}
+        {%- if include.formatting == 'capitalize' %}
+        {% assign option = _option %}
+        {% assign option_formmatted = _option | replace: "-", " "%} 
+        {% assign classname = " capital" %}
+        {%- elsif include.formatting %}
+        {% assign fetch1 = include.formatting[1] %}
+        {% assign fetch2 = include.formatting[2] %}
+        {% assign option = _option[fetch1] %}
+        {% assign option_formatted = _option[fetch2] %}
+        {% assign classname = "" %}
+        {%- else %}
+        {% assign option = _option %}
+        {% assign option_formmatted = _option %}
+        {% assign classname = "" %}
+        {%- endif %}
     <div class="usa-checkbox">
         <input
           class="usa-checkbox__input {{ sectionslug }}-filters"
-          id="check-{{ include.title }}-{{ _option }}"
+          id="check-{{ include.title }}-{{ option }}"
           type="checkbox"
           name="{{ include.tname }}"
-          value="{{ _option }}"
+          value="{{ option }}"
           {{ checked }}
         />
-        <label class="usa-checkbox__label capital" for="check-{{ include.title }}-{{ _option }}"
-          >{{ _option }}</label
+        <label class="usa-checkbox__label{{ classname }}" for="check-{{ include.title }}-{{ _option }}"
+          >{{ option_formmatted }}</label
         >
       </div>
     {% endfor %}

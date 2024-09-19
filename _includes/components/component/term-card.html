@@ -30,31 +30,6 @@
         {% endif %}
         {% endunless %}
 
-        
-        {% if option.ul %}
-        <ul class="usa-collection__meta">
-            {% if option.ul_exp %}<li class="usa-collection__meta-item"><b>{{ option.ul_exp }}</b><ul class="">{% endif %}
-                {% for _li in option.ul %}
-                <li class="{% if option.ul_exp %}line-height-sans-4 {% else %}usa-collection__meta-item{% endif %}">{% if _li.context %}<b>{{ _li.context }} - </b>{% endif %}{{ _li.li }}
-                    {% if _li.alt %} [see <a href="#{{ _li.alt | slugify }}">{{ _li.alt}}</a>]{% endif %}
-                    {% if _li.related %}
-                    {% assign retags = _li.related | split: ', ' %}
-                    <ul>
-                        <li>
-                            {% for _tagged in retags %}
-                            <a href="#{{ _tagged | slugify }}">{{ _tagged }}</a>{% unless forloop.last %} | {% endunless %}
-                            {% endfor %}
-                        </li>
-                    </ul>
-                    {% endif %}
-                </li>
-                {% endfor %}
-
-            {% if option.ul_exp %}</ul></li>{% endif %}
-
-        </ul>
-        {% endif %}
-
         {% if option.ul %}
         <ul class="usa-collection__meta">
             {% if option.ul_exp %}<li class="usa-collection__meta-item"><b>{{ option.ul_exp }}</b><ul class="">{% endif %}
@@ -94,7 +69,7 @@
         </ul>
         {% endif %}
 
-
+        {% unless include.no-related %}
         {% if option.related %}
         <ul class="usa-collection__meta padding-top-1" aria-label="Related Terms">
             {% assign relateds = option.related | split: ', ' %}
@@ -114,6 +89,7 @@
             {% endif %}
         </ul>
         {% endif %}
+        {% endunless %}
     </div>
 
 </li>

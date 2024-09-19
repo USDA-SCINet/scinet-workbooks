@@ -1,0 +1,67 @@
+{% assign ttags = page.terms | default: page.tags %}
+{% assign terms = include.terms | default: ttags %}
+{% assign gloss = site.data.glossary['glossary'] %}
+
+<ul>
+{% for _term in terms %}
+{% if _term.definition %}
+{% assign define = _term %}
+{% else %}
+{% assign defines = gloss | where: "term", _term %}
+{% if defines.size > 1 %}
+{% assign capcollection = page.collection | capitalize %}
+{% assign define = defines | find_exp:"item", "item.cat == capcollection" %}
+{% else %}
+{% assign define = defines[0] %}
+{% endif %}
+{% endif %}
+
+<li class="">
+    <b>{{ define.term }}</b>
+    {% if define.alt %}<span>({{ define.alt }})</span>{% endif %}
+    {% unless no_summary %}
+    {% if define.definition %}
+    <p class="usa-collection__description">
+        {{ define.definition }}
+    </p>
+    {% elsif define.definitions %}
+    <div class="usa-collection__description">
+    <ul>
+    {% for definition in define.definitions %}
+    <li>
+        {% if definition.context %}<b>{{ definition.context }} - </b>{% endif %}{% if definition.alt %}({{ definition.alt}}) - {% endif %}
+        {{ definition.definition }}
+    </li>
+    {% endfor %}
+    </ul>
+    </div>
+    {% endif %}
+    {% endunless %}
+
+    {% if define.ul %}
+    <ul class="usa-collection__meta">
+        {% if define.ul_exp %}<li class="usa-collection__meta-item"><b>{{ define.ul_exp }}</b><ul class="">{% endif %}
+            {% for _li in define.ul %}
+            <li class="{% if define.ul_exp %}line-height-sans-4 {% else %}usa-collection__meta-item{% endif %}">{% if _li.context %}<b>{{ _li.context }} - </b>{% endif %}{{ _li.li }}
+                {% if _li.alt %} [see <a href="/glossary/#{{ _li.alt | slugify }}">{{ _li.alt}}</a>]{% endif %}
+            </li>
+            {% endfor %}
+
+        {% if define.ul_exp %}</ul></li>{% endif %}
+
+    </ul>
+    {% endif %}
+
+    {% if option.wiki %}
+    <ul class="usa-collection__meta">
+        {% if option.wiki %}
+        <li class="usa-collection__meta-item">
+            <a href="{{ option.wiki }}">Wikipedia</a>
+        </li>
+        {% endif %}
+    </ul>
+    {% endif %}
+
+</li>
+{% endfor %}
+</ul>

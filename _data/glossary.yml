@@ -154,8 +154,9 @@ glossary:
     definition: Any other computer or computing network that the user can access by logging into the external network. Performing actions on a remote machine requires a secure login and often requires the user to have an account created by the network administrator. In scientific projects, we use remote computing machines as part of the HPC infrastructure to access high-performance computing and collaboratively share big data.
     related: Distributed Computing, HPC, Local Machine
   - term: SLURM
+    alt: SLURM Workload Manager
     cat: Data Science
-    definition: Simple Linux Utility for Resource Management is a cluster management and job scheduling system. It is used in management of the HPC cluster environments.
+    definition: Simple Linux Utility for Resource Management - a cluster management and job scheduling system. It is used in management of the HPC cluster environments.
     related: Distributed Computing, HPC
   - term: Structured Data
     cat: Data Science
@@ -375,4 +376,133 @@ glossary:
         related: RNA-seq, Reads Mapping, Gene Expression, Reference Genome
     tutorial: https://bioinformaticsworkbook.org/dataAnalysis/RNA-Seq/RNA-SeqIntro/RNAseq-using-a-genome.html#gsc.tab=0
     wiki: https://en.wikipedia.org/wiki/RNA-Seq#Transcriptome_assembly
- 
+  - term: Spatial Interpolation
+    cat: Geospatial
+    definition: "Using observations of dependent and independent variables to estimate the value of the dependent variable at unobserved independent variable values. For spatial applications, this can be the case of having point observations (i.e., variable observations at known x-y coordinates) and then predicting a gridded map of the variable (i.e., estimating the variable at the remaining x-y cells in the study area)."
+    related: Interpolation
+  - term: Geostatistics
+    cat: Geospatial
+    definition: "Statistics focusing on spatial datasets, e.g. treating spatially heterogeneous variables as random variables with covariance structures describing spatial dependence."
+  - term: Kriging
+    cat: Geospatial
+    definition: A geostatistical approach for spatial interpolatation. It uses a variogram model fitted to point observations to define spatial dependence.
+  - term: Variogram
+    cat: Geospatial
+    definition: A model describing the relationship between variance between values of pairs of points as a function of the spatial distance between those points.
+  - term: Random Forest
+    cat: Geospatial
+    definition: A machine learning algorithm that uses an ensemble of decision trees.
+  - term: GeoCDL
+    cat: Geospatial
+    alt: Geospatial Common Data Library
+    definition: A collection of commonly used raster datasets accessible from an API running on SCINet's Ceres cluster
+  - term: Raster
+    cat: Geospatial
+    definition: "A geospatial datatype where data is stored as a grid of regularly sized pixels. Geospatial rasters contain geospatial metadata, which maps each pixel of the raster to a geospatial location on the Earth's surface. Examples of geospatial raster file types include: geotiff (.tif), and netCDF (.nc)."
+  - term: Vector
+    cat: Geospatial
+    definition: "A geospatial datatype where data is stored as a collection of points, lines, or polygons. Each coordinate maps to a location on Earth's surface."
+    related: geojson, shapefile
+  - term: CRS
+    cat: Geospatial
+    alt: Coordinate Reference System
+    definition: A system for defining geospatial coordinates. Also known as a spatial reference system.
+  - term: Parallel processing
+    definition: Distributing computational tasks among multiple cores. 
+    related: Core
+  - term: Core
+    definition: A processor on a central processing unit; a physical or logical component that can execute computational tasks. 
+  - term: Tile
+    alt: Chunk
+    definition: A continuous segment of a raster dataset or multi-dimensional array.
+  - term: NDVI
+    cat: Geospatial
+    alt: Normalized Difference Vegetation Index
+    definition: A quantity derived from the red and near-infrared bands of imagery to detect vegetation. 
+  - term: Spatial join
+    cat: Geospatial
+    definition: Combining two spatial datasets by the relationship between their geometries.
+  - term: Zonal statistics
+    cat: Geospatial
+    definition: "Calculating summary statistics, e.g. mean, of cell values from a raster in each region, where regions can be defined by an overlapping polygon feature collection."
+
+
+packages:
+  - name: geoR
+    lang: R
+    description: Analysis of Geostatistical Data
+    url: https://cran.r-project.org/web/packages/geoR/index.html
+  - name: ranger
+    lang: R
+    description: A Fast Implementation of Random Forests
+    url: https://cran.r-project.org/web/packages/ranger/
+  - name: pandas
+    lang: Python
+    description: Dataframes and other datatypes for data analysis and manipulation 
+    url: https://pandas.pydata.org/
+  - name: geopandas
+    lang: Python
+    description: Extends datatypes used by pandas to allow spatial operations on geometric types
+    url: https://geopandas.org/en/stable/
+  - name: scikit-learn
+    lang: Python
+    description: Machine Learning in Python
+    url: https://scikit-learn.org/stable/
+  - name: plotnine
+    lang: Python
+    description: A plotting library for Python modeled after R's <a href="https://ggplot2.tidyverse.org/">ggplot2</a>
+    url: https://plotnine.readthedocs.io/en/v0.12.3/
+  - name: rgeocdl
+    lang: R
+    description: R interface for SCINet GeoCDL API
+  - name: pygcdl
+    lang: R
+    description: Python interface for SCINet GeoCDL API
+    url: https://github.com/USDA-SCINet/pygcdl
+  - name: rioxarray
+    lang: R
+    description: rasterio xarray extension - Geospatial raster data for python
+    url: https://corteva.github.io/rioxarray/stable/
+  - name: sf
+    lang: R
+    description: Simple Features for R
+    url: https://r-spatial.github.io/sf/
+  - name: GDAL
+    description: Geospatial Data Abstraction Library 
+    url: https://gdal.org/
+  - name: rasterio
+    lang: Python
+    description: Access to geospatial raster data 
+    url: https://rasterio.readthedocs.io/en/latest/
+  - name: multiprocessing
+    lang: Python
+    description: Process-based parallelism 
+    url: https://docs.python.org/3/library/multiprocessing.html
+  - name: dask
+    lang: Python
+    description: Scale the Python tools you love
+    url: https://www.dask.org
+  - name: terra 
+    lang: R
+    description: Spatial Data Analysis 
+    url: https://cran.r-project.org/web/packages/terra/index.html
+  - name: foreach 
+    lang: R
+    description: Provides Foreach Looping Construct
+    url: https://cran.r-project.org/web/packages/foreach/index.html 
+  - name: doParallel
+    lang: R
+    description: Foreach Parallel Adaptor for the 'parallel' Package
+    url: https://cran.r-project.org/web/packages/doParallel/index.html 
+  - name: USAboundaries
+    lang: R
+    description: Historical and Contemporary Boundaries of the United States of America
+    url: https://cran.r-project.org/web/packages/USAboundaries/index.html
+  - name: ggplot2
+    lang: R
+    description: Create Elegant Data Visualisations Using the Grammar of Graphics
+    url: https://cran.r-project.org/web/packages/ggplot2/index.html
+  - name: rasterstats
+    lang: Python
+    description: Summarizes geospatial raster datasets based on vector geometries
+    url: https://pythonhosted.org/rasterstats/

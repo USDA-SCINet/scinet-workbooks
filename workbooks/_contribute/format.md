@@ -29,10 +29,7 @@ packages: [bioperl, biopython]
 
 description: "Describe the workbook for index and search purposes"
 ---
-
-{% include images_path folder=-1 %}
-
----{% endraw %}
+{% endraw %}
 ```
 
 
@@ -233,21 +230,24 @@ Assets and images should be included in an "Assets" folder.  This can be located
 * Images should be stored in /assets/img/
 * Other files can be stored in /assets/
 
-
-The folder variable indicates where your assets file is relative to your markdown file.
-  * If the assets folder is in the same folder as your markdown file, do not include the folder variable.
-  * If it is in your parent folder, use 'folder=-1'
-  * If it is in the grandparent folder, use 'folder=-2'
-
-
-To access the files, use the following code:
+To access the files where the assets folder is in the same folder as the file, use the following code:
 
 ```
 {%- raw %}
-![Image alt text here]({{ images_path }}/filename.png)
-[My linked file text]({{ file_path }}/filename.ipynb){% endraw %}
+![Image alt text here](./assets/img/filename.png)
+[My linked file text](./assets/filename.ipynb){% endraw %}
 ```
 
+If the assets folder is in a parent folder, you may either include 'file_path' at the top of your page and use that variable, or use dot notation.
+
+```
+{%- raw %}
+{% include file_path folder=1 %}
+<!-- the following will be the same -->
+
+![Image alt text here](../assets/filename.png)
+[My linked file text]({{ file_path }}/filename.ipynb){% endraw %}
+```
 
 
 ## File Names 

@@ -1,0 +1,981 @@
+modified:
+  - commit: 4eb5a24ca4a14d11ba9ffc5d94b0081fda065c53
+    modified: Thu Mar 21 15:35:06 2024 -0400
+    authored: 2024-03-21T15:35:06-04:00
+    committed: 2024-03-21T15:35:06-04:00
+    filename:  LICENSE.md
+  - commit: 0a14eb0925691bd315170cef03b9c44f60f73b15
+    modified: Wed Apr 3 17:26:25 2024 -0400
+    authored: 2024-04-03T17:26:25-04:00
+    committed: 2024-04-03T17:26:25-04:00
+    filename:  README.md
+  - commit: d40cf61c98b98d7ad019ae42b121c9b7e84db690
+    modified: Thu Aug 15 16:16:47 2024 -0400
+    authored: 2024-08-15T16:16:47-04:00
+    committed: 2024-08-15T16:16:47-04:00
+    filename:  _includes/contribute/components/codeblock/custom/tablemd
+  - commit: 4eb5a24ca4a14d11ba9ffc5d94b0081fda065c53
+    modified: Thu Mar 21 15:35:06 2024 -0400
+    authored: 2024-03-21T15:35:06-04:00
+    committed: 2024-03-21T15:35:06-04:00
+    filename:  assets/img/sources.md
+  - commit: 4eb5a24ca4a14d11ba9ffc5d94b0081fda065c53
+    modified: Thu Mar 21 15:35:06 2024 -0400
+    authored: 2024-03-21T15:35:06-04:00
+    committed: 2024-03-21T15:35:06-04:00
+    filename:  assets/uswds/img/material-icons/fmd_bad.svg
+  - commit: 4eb5a24ca4a14d11ba9ffc5d94b0081fda065c53
+    modified: Thu Mar 21 15:35:06 2024 -0400
+    authored: 2024-03-21T15:35:06-04:00
+    committed: 2024-03-21T15:35:06-04:00
+    filename:  assets/uswds/img/material-icons/fmd_good.svg
+  - commit: 4eb5a24ca4a14d11ba9ffc5d94b0081fda065c53
+    modified: Thu Mar 21 15:35:06 2024 -0400
+    authored: 2024-03-21T15:35:06-04:00
+    committed: 2024-03-21T15:35:06-04:00
+    filename:  pages/404.md
+  - commit: 3e4fce083c10dcf9f6bf5aa3d96cb9b6b1fcc03d
+    modified: Fri Aug 30 14:39:52 2024 -0400
+    authored: 2024-08-30T14:39:52-04:00
+    committed: 2024-08-30T14:39:52-04:00
+    filename:  pages/glossary.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  pages/home.md
+  - commit: 1214b3f2b473019e94d86db4230f0461aec27fe3
+    modified: Thu Apr 4 16:53:44 2024 -0400
+    authored: 2024-04-04T16:53:44-04:00
+    committed: 2024-04-04T16:53:44-04:00
+    filename:  pages/pathways.md
+  - commit: a9aee32862c19e0a8863cf7bb24ffbc5243aa26e
+    modified: Fri Sep 6 15:31:18 2024 -0400
+    authored: 2024-09-06T15:31:18-04:00
+    committed: 2024-09-06T15:31:18-04:00
+    filename:  workbooks/_about/people.md
+  - commit: a9aee32862c19e0a8863cf7bb24ffbc5243aa26e
+    modified: Fri Sep 6 15:31:18 2024 -0400
+    authored: 2024-09-06T15:31:18-04:00
+    committed: 2024-09-06T15:31:18-04:00
+    filename:  workbooks/_about/use.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_bioinformatics/atac-sequencing/atac-sequencing.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_bioinformatics/blast/finding-a-gene.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_bioinformatics/blast/parallel.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_bioinformatics/comparative-genomics/gene-overlap-significance.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_bioinformatics/comparative-genomics/opscan.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_bioinformatics/comparative-genomics/orthofinder.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_bioinformatics/comparative-genomics/phylostratiophraphy.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_bioinformatics/comparative-genomics/positive-neutral-negative-selection.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_bioinformatics/demo-files/demo.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_bioinformatics/demo-files/demo/test.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_bioinformatics/experimental-design/biological-system.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_bioinformatics/experimental-design/costs.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_bioinformatics/experimental-design/exceptions.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_bioinformatics/experimental-design/generic-examples.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_bioinformatics/experimental-design/sequencing-tchnology.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_bioinformatics/genome-annotation/baker2-gene-prediction.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_bioinformatics/genome-annotation/genome-methylation.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_bioinformatics/genome-annotation/maker-gene-prediction.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_bioinformatics/genome-annotation/motif-identification.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_bioinformatics/genome-assembly/assembly-examples/arabidopsis-thaliana/long-read-assembly.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_bioinformatics/genome-assembly/assembly-examples/arabidopsis-thaliana/masura-assembly.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_bioinformatics/genome-assembly/assembly-examples/arabidopsis-thaliana/pilon-polishing.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_bioinformatics/genome-assembly/assembly-examples/arabidopsis-thaliana/short-read-assembly.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_bioinformatics/genome-assembly/assembly-examples/bacillus-thuringiensis/cam-assembly.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_bioinformatics/genome-assembly/assembly-examples/bacillus-thuringiensis/spades-assembly.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_bioinformatics/genome-assembly/assembly-quality/genome-phix-contamination.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_bioinformatics/genome-assembly/assembly-quality/genome-size.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_bioinformatics/genome-assembly/assembly-quality/genome-vector-contamination.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_bioinformatics/genome-assembly/cam.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_bioinformatics/genome-assembly/genetic-map/create-agps.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_bioinformatics/genome-assembly/genetic-map/generating-genetic-maps.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_bioinformatics/genome-assembly/masurca.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_bioinformatics/genome-assembly/scaffolding-assemblies/hi-c.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_bioinformatics/genome-assembly/scaffolding-assemblies/synteny.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_bioinformatics/genome-assembly/spades.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_bioinformatics/genome-repeat-id/asses-structural-variation.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_bioinformatics/genome-repeat-id/de-novo-repeat-annotation.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_bioinformatics/genome-repeat-id/dna-transposon.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_bioinformatics/genome-repeat-id/helitron-id.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_bioinformatics/genome-repeat-id/ltr-retrotransposon.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_bioinformatics/genome-repeat-id/repeat-annotation.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_bioinformatics/genome-repeat-id/tandem-duplication-annotation.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_bioinformatics/metagenomics/dada2.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_bioinformatics/metagenomics/kraken2.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_bioinformatics/metagenomics/qc-assembly-mapping.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_bioinformatics/metagenomics/qiime2.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_bioinformatics/rna-sequencing/10x-genomics.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_bioinformatics/rna-sequencing/deseq2.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_bioinformatics/rna-sequencing/id-strand-information.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_bioinformatics/rna-sequencing/wiithout-genome-assembly.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_bioinformatics/rna-sequencing/with-genome-assembly.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_bioinformatics/terminology/fasta.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_bioinformatics/terminology/file-formats.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_bioinformatics/terminology/terms.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_bioinformatics/variant-discovery/freebayes.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_bioinformatics/variant-discovery/gatk.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_bioinformatics/variant-discovery/snp-calling-stacks.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_bioinformatics/variant-discovery/snp-calling-tassel.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_computing-skills/command-line/commands-and-processes/background-processing.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_computing-skills/command-line/commands-and-processes/command-chaining.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_computing-skills/command-line/commands-and-processes/command-cheatsheet.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_computing-skills/command-line/commands-and-processes/ioe-streams.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_computing-skills/command-line/commands-and-processes/job-control.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_computing-skills/command-line/file-system/maintenance/synchronization.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_computing-skills/command-line/file-system/memory/links.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_computing-skills/command-line/file-system/memory/size.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_computing-skills/command-line/file-system/structure/browsing.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_computing-skills/command-line/file-system/structure/change-path.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_computing-skills/command-line/file-system/structure/export-path.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_computing-skills/command-line/file-system/structure/find-path.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_computing-skills/command-line/file-system/structure/get-path.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_computing-skills/command-line/file-system/structure/home.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_computing-skills/command-line/file-system/structure/management.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_computing-skills/command-line/file-system/structure/navigating.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_computing-skills/command-line/file-system/structure/permissions.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_computing-skills/command-line/terminal-cli-shell/cli-access/identify-os.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_computing-skills/command-line/terminal-cli-shell/cli-access/linux-cli.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_computing-skills/command-line/terminal-cli-shell/cli-access/mac-cli.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_computing-skills/command-line/terminal-cli-shell/cli-access/windows-cli.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_computing-skills/command-line/terminal-cli-shell/cli.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_computing-skills/command-line/terminal-cli-shell/getting-started-cli/autocompletion.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_computing-skills/command-line/terminal-cli-shell/getting-started-cli/history.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_computing-skills/command-line/terminal-cli-shell/getting-started-cli/manual.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_computing-skills/command-line/terminal-cli-shell/getting-started-cli/open-terminal.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_computing-skills/command-line/terminal-cli-shell/shell.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_computing-skills/command-line/terminal-cli-shell/terminal/terminal-terminology.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_computing-skills/command-line/terminal-cli-shell/terminal/why-terminal-is-useful.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_computing-skills/command-line/text-editors/nano.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_computing-skills/command-line/text-editors/vim.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_computing-skills/command-line/text-processing/compare-files/cmp.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_computing-skills/command-line/text-processing/compare-files/comm.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_computing-skills/command-line/text-processing/compare-files/diff.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_computing-skills/command-line/text-processing/file-preview/less.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_computing-skills/command-line/text-processing/file-preview/more.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_computing-skills/command-line/text-processing/file-streaming/cat.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_computing-skills/command-line/text-processing/file-streaming/head.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_computing-skills/command-line/text-processing/file-streaming/paste.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_computing-skills/command-line/text-processing/file-streaming/tail.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_computing-skills/command-line/text-processing/find-replace/grep.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_computing-skills/command-line/text-processing/find-replace/regex.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_computing-skills/command-line/text-processing/find-replace/sed.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_computing-skills/command-line/text-processing/find-replace/tr.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_computing-skills/command-line/text-processing/ready-made-pipelines.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_computing-skills/command-line/text-processing/sort-count-select/awk.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_computing-skills/command-line/text-processing/sort-count-select/count.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_computing-skills/command-line/text-processing/sort-count-select/shuf.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_computing-skills/command-line/text-processing/sort-count-select/sort.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_computing-skills/command-line/text-processing/sort-count-select/uniq.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_computing-skills/devel-environment/ide/jupyter/jupyter-lab.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_computing-skills/devel-environment/ide/jupyter/jupyter-notebook.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_computing-skills/devel-environment/ide/jupyter/jupyter-sharing-mybinder.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_computing-skills/devel-environment/ide/vscode.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_computing-skills/devel-environment/python/python-online-console.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_computing-skills/devel-environment/python/python-online-jupyter-colab.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_computing-skills/devel-environment/python/python-setup/python-jupyter-notebook.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_computing-skills/devel-environment/python/python-setup/python-pycharm-ide.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_computing-skills/devel-environment/python/python-setup/python-terminal-shell.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_computing-skills/devel-environment/python/python-setup/python-text-editor.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_computing-skills/devel-environment/r/rstudio-basics.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_computing-skills/devel-environment/r/setting-up-rstudio.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_contribute/components/accordion.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_contribute/components/alerts.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_contribute/components/buttons.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_contribute/components/code.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_contribute/components/icon.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_contribute/components/table.md
+  - commit: 819c54b78f0179c43a173e5938b37337d53594dc
+    modified: Fri Aug 30 14:45:18 2024 -0400
+    authored: 2024-08-30T14:45:18-04:00
+    committed: 2024-08-30T14:45:18-04:00
+    filename:  workbooks/_contribute/format.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_data-science/data-manipulation/manipulating-text-files-python/read-write-split-select.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_data-science/data-manipulation/ready-made-apps/aggegate-data-slicing.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_data-science/data-manipulation/ready-made-apps/merge-files-by-column.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_data-science/data-visualization/graphic-design/raster-graphics.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_data-science/data-visualization/graphic-design/vector-graphics.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_data-science/data-visualization/graphing/gnuplot.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_data-science/data-visualization/graphing/plotly-dash/dash.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_data-science/data-visualization/graphing/plotly-dash/plotly-graphing/1d-plot.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_data-science/data-visualization/graphing/plotly-dash/plotly-graphing/clustergram.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_data-science/data-visualization/graphing/plotly-dash/plotly-graphing/dendrogram.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_data-science/data-visualization/graphing/plotly-dash/plotly-graphing/heatmap.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_data-science/data-visualization/graphing/plotly-dash/plotly-graphing/scatter-plot.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_data-science/data-visualization/graphing/plotly-dash/plotly.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_data-science/data-visualization/graphing/rstudio/boxplots.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_data-science/data-visualization/graphing/rstudio/complexheatmap.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_data-science/data-visualization/graphing/rstudio/heatmaps.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_data-science/remote-data/data-download/git.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_data-science/remote-data/data-download/web-scraping.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_data-science/remote-data/data-download/weget.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_data-science/remote-data/data-preview/viewing-text-files.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_data-science/remote-data/data-transfer/copying-data-gui.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_data-science/remote-data/data-transfer/copying-data-ssh.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_data-science/remote-data/data-transfer/file-transfer.md
+  - commit: e7ebe73a5b6b41aacfac1d0001723d0b7694503e
+    modified: Fri Sep 6 15:29:48 2024 -0400
+    authored: 2024-09-06T15:29:48-04:00
+    committed: 2024-09-06T15:29:48-04:00
+    filename:  workbooks/_drafts/demo/demo5/demo-nested.md
+  - commit: e7ebe73a5b6b41aacfac1d0001723d0b7694503e
+    modified: Fri Sep 6 15:29:48 2024 -0400
+    authored: 2024-09-06T15:29:48-04:00
+    committed: 2024-09-06T15:29:48-04:00
+    filename:  workbooks/_drafts/demo/demo5/demo-nested1.md
+  - commit: e7ebe73a5b6b41aacfac1d0001723d0b7694503e
+    modified: Fri Sep 6 15:29:48 2024 -0400
+    authored: 2024-09-06T15:29:48-04:00
+    committed: 2024-09-06T15:29:48-04:00
+    filename:  workbooks/_drafts/demo/myfile.md
+  - commit: e7ebe73a5b6b41aacfac1d0001723d0b7694503e
+    modified: Fri Sep 6 15:29:48 2024 -0400
+    authored: 2024-09-06T15:29:48-04:00
+    committed: 2024-09-06T15:29:48-04:00
+    filename:  workbooks/_drafts/demo/myfile2.md
+  - commit: e7ebe73a5b6b41aacfac1d0001723d0b7694503e
+    modified: Fri Sep 6 15:29:48 2024 -0400
+    authored: 2024-09-06T15:29:48-04:00
+    committed: 2024-09-06T15:29:48-04:00
+    filename:  workbooks/_drafts/demo/myfile3.md
+  - commit: e7ebe73a5b6b41aacfac1d0001723d0b7694503e
+    modified: Fri Sep 6 15:29:48 2024 -0400
+    authored: 2024-09-06T15:29:48-04:00
+    committed: 2024-09-06T15:29:48-04:00
+    filename:  workbooks/_drafts/demo/myfile4.md
+  - commit: e7ebe73a5b6b41aacfac1d0001723d0b7694503e
+    modified: Fri Sep 6 15:29:48 2024 -0400
+    authored: 2024-09-06T15:29:48-04:00
+    committed: 2024-09-06T15:29:48-04:00
+    filename:  workbooks/_drafts/specialization.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_geospatial/data-processing/photogrammetry.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_geospatial/data-processing/raster-tiles/python.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_geospatial/data-processing/raster-tiles/r.md
+  - commit: e7ebe73a5b6b41aacfac1d0001723d0b7694503e
+    modified: Fri Sep 6 15:29:48 2024 -0400
+    authored: 2024-09-06T15:29:48-04:00
+    committed: 2024-09-06T15:29:48-04:00
+    filename:  workbooks/_geospatial/data-processing/slurm/job-arrays/python.md
+  - commit: e7ebe73a5b6b41aacfac1d0001723d0b7694503e
+    modified: Fri Sep 6 15:29:48 2024 -0400
+    authored: 2024-09-06T15:29:48-04:00
+    committed: 2024-09-06T15:29:48-04:00
+    filename:  workbooks/_geospatial/data-processing/slurm/job-arrays/r.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_geospatial/data-processing/slurm/submitting-jobs.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_geospatial/data-processing/vector-data/python.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_geospatial/data-processing/vector-data/r.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_geospatial/file-formats/raster-properties.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_geospatial/geocdl/python.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_geospatial/geocdl/r.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_geospatial/image-analysis/deep-learning/advanced/python.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_geospatial/image-analysis/deep-learning/advanced/r.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_geospatial/image-analysis/deep-learning/deep-learning-images/python.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_geospatial/image-analysis/deep-learning/deep-learning-images/r.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_geospatial/image-analysis/deep-learning/modifying-deep-learning-networks/python.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_geospatial/image-analysis/deep-learning/modifying-deep-learning-networks/r.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_geospatial/image-analysis/image-processing/python.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_geospatial/image-analysis/image-processing/r.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_geospatial/image-analysis/machine-learning/python.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_geospatial/image-analysis/machine-learning/r.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_geospatial/importing-data/sentinel-2.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_geospatial/spatial-modeling/spatial-interpolation.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/_geospatial/visualizations/pub-quality-maps.md
+  - commit: 932c564537bd316850d3fb569048b7355cd06c62
+    modified: Fri Aug 30 14:41:25 2024 -0400
+    authored: 2024-08-30T14:41:25-04:00
+    committed: 2024-08-30T14:41:25-04:00
+    filename:  workbooks/index.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/test.md
+  - commit: 9db63b980358745339e3462acf951995452ed2cc
+    modified: Thu Aug 15 16:08:35 2024 -0400
+    authored: 2024-08-15T16:08:35-04:00
+    committed: 2024-08-15T16:08:35-04:00
+    filename:  workbooks/toc.md

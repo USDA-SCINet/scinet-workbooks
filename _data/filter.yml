@@ -4,17 +4,17 @@ filters:
     title: Filter by Subject Area
     type: checkbox
     val: 'subject'
-  - section: Lesson Type # and Difficulty
-    title: Lesson Type
-    type: select
-    val: 'type'
-    unsorted: true
-    values: ['interactive tutorial', 'lesson module', 'reference material']
-      # - title: Subject Matter Expertise
-      #   type: select
-      #   val: 'level'
-      #   unsorted: true
-      #   values: ['basics', 'intermediate', 'advanced']
+    formatting: 'capitalize'
+  # - section: Lesson Type 
+  #   title: Lesson Type
+  #   type: select
+  #   val: 'type'
+  #   unsorted: true
+  #   values: ['interactive tutorial', 'lesson module', 'reference material']
+  - section: Coding Language
+    title: Select Coding Language
+    type: checkbox
+    val: 'language'
   - section: Keywords
     title: Add Keywords to Filter
     select-all: true
@@ -42,10 +42,13 @@ filters:
       - title: Working Groups
         type: select
         val: 'wgs'
+        # values: 'table'
+        # fetch: workinggroups
+        # formatting: [shorthand, title]
 #  - section: Sort
 
 
-vals: ['subject','type', 'tags', 'level', 'packages', 'author', 'wgs', 'interface']
+vals: ['subject','type', 'language', 'tags', 'packages', 'author', 'wgs', 'interface']
 
 icons: 
   - type: index

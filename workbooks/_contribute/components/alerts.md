@@ -24,6 +24,7 @@ components:
         - class: info
         - class: tip
         - class: note
+        - class: download
         - class: warning
         - class: highlighted
         - class: question
@@ -40,6 +41,7 @@ components:
         - class: info
         - class: tip
         - class: note
+        - class: download
         - class: warning
         - class: highlighted
         - class: question

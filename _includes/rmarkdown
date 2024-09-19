@@ -1,0 +1,15 @@
+{%- assign file = include.file %}
+{% assign folder = include.folder | default: 0 %}
+{%- include file_path folder=folder %}
+
+To download the Rmarkdown file for this tutorial to either Ceres or
+Atlas within Open on Demand, you can use the following lines:
+
+```r
+library(httr)
+tutorial_name <- '{{ file }}'
+GET(paste0('{{ file_path }}',tutorial_name), 
+    write_disk(tutorial_name))
+```
+
+* **Download RMarkdown**: [{{ file }}]({{ file_path }}/{{ file }})

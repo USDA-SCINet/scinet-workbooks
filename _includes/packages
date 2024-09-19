@@ -1,0 +1,44 @@
+{%- assign terms = include.packages | default: page.packages %}
+{%- assign gloss = site.data.glossary['packages'] %}
+{%- assign packagearray = "" | split: "" %}<div class="usa-table-container" tabindex="0">
+    <table class="usa-table usa-table--sticky">
+        <caption>
+            {{ include.title | default: 'Primary Libraries/Packages' }}
+        </caption>
+        <thead>
+            <tr>
+                <th role="columnheader">Name</th>
+                <th role="columnheader">Description</th>
+                <th role="columnheader">Tutorials</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for _term in terms %}
+            <tr>
+                {% assign defines = gloss | where: "name", _term %}
+            {% if defines.size > 0 %}
+                {% if defines.size > 1 and page.language %}
+                        {% assign define = defines | find_exp:"item", "item.lang == page.language" %}
+                {% else %}
+                    {% assign define = defines[0] %}     
+                {% endif %}
+                <th scope="row">
+                    {% if define.url %}<a href="{{ define.url }}">{{ define.name }}</a>{% else %}{{ define.name }}{% endif %}
+                </th>
+                <td>{{ define.description }}</td>
+                <td><button class="usa-button usa-button--unstyled filter-nav" type="button" att="packages" cont="{{ define.name }}">{{ define.name }} workbooks</button></td>
+            {% else %}
+            <th scope="row">
+                {{ _term }}
+            </th>
+            <td></td>
+            <td><button class="usa-button usa-button--unstyled filter-nav" type="button" att="packages" cont="{{ _term }}">{{ _term }} workbooks</button></td>
+            
+            {% endif %}
+        </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+
+    </div>

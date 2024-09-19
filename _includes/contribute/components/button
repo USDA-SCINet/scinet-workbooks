@@ -1,8 +1,4 @@
 {%- assign item = include.item %}
-{%- if item.break %}
-{% unless include.code %}
-{% endunless %}
-{% endif %}
 {% if section.title == 'Button Groups' %}
 {%- capture codeblock %}
 {%- if item.liquid and include.code %}
