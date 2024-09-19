@@ -1,0 +1,15 @@
+{% if page.file_path %}{% assign file_path = page.file_path %}
+{% else %}
+  {% if include.folder %}
+  {% assign folderdown = include.folder %}
+  {% else %}
+  {% assign folderdown = 0 %}
+  {% endif %}
+  {% assign path_segments = page.url | split: '/' %}
+  {% assign path_l = path_segments | size %}
+  {% assign folderlvl = path_l | minus: 2 | minus: folderdown %}
+  
+  {% assign module_path = path_segments | slice: 1, folderlvl | join: "/" %}
+  {% assign file_path = module_path | append: '/assets' | relative_url %}
+  {% assign images_path = module_path | append: '/assets/img' | relative_url %}
+{% endif %}

@@ -9,8 +9,3 @@ order: 1
 type: interactive tutorial
 ---
 
-{% include images_path %}
-
-
-
----

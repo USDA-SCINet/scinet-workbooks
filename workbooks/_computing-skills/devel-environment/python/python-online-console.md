@@ -9,7 +9,7 @@ tags: [Python,IDE]
 description: Describe the workbook for index and search purposes
 ---
 
-{% include images_path folder=-1 %}
+
 
 
 
@@ -32,7 +32,7 @@ There are many online platforms that allow you to write and run Python code dire
 
 *If you want to start right away without creating any free account, open the Python console online at <a href="https://www.python.org/shell/" target="_blank">https://www.python.org/shell/  ⤴</a> and go straight to [Start coding in Python](#start-coding-in-python) section in this tutorial.*
 
-![03_python-online-console.png]({{ images_path }}/03_python-online-console.png)
+![03_python-online-console.png](../assets/img/03_python-online-console.png)
 
 
 #### • *pythonanywhere.com*
@@ -42,15 +42,15 @@ There are many online platforms that allow you to write and run Python code dire
 * You will see the webpage interface, shown on the screenshoot below
 * You can watch the one-minute video to learn about the features
 
-![PythonAnywhere]({{ images_path }}/03_python-anywhere.png) <br><br>
+![PythonAnywhere](../assets/img/03_python-anywhere.png) <br><br>
 
 **2. Click-on the green button:** <span style="background-color: green; color: white;">Start running Python online</span> **and then** <span style="background-color: #5bc0de; color: white;">Create a Beginner account</span> **for free** <br>
 
-![PythonAnywhere](/assets/03_python-anywhere-account.png) <br><br>
+![PythonAnywhere](../assets/img/03_python-anywhere-account.png) <br><br>
 
 **3. Once registered, take a tour to get a quick overview**
 
-![PythonAnywhere]({{ images_path }}/03_python-anywhere-guide.png) <br><br>
+![PythonAnywhere](../assets/img/03_python-anywhere-guide.png) <br><br>
 
 **4. Click-on the `New console: >>> Python` and select version `3.9`** <br>
 
@@ -60,7 +60,7 @@ There are many online platforms that allow you to write and run Python code dire
 **Follow hands-on examples to create your first Python code** <br>
 In this section are a few simple examples of Python code that you can try out.
 
-<p align="center"><img width="800" src="{{ images_path }}/03_python-anywhere.gif"></p>
+<p align="center"><img width="800" src="../assets/img/03_python-anywhere.gif"></p>
 
 
 ***Example 1:*** *Printing a message to the console:*
@@ -71,7 +71,7 @@ print("Hello, world!")
 
 *This code will print the message "Hello, world!" to the console. It uses a built-in Python function `print()`. The argument of this function is a text string enclosed in the single or double quotation marks, `""` or `''`.*
 
-![]({{ images_path }}/03_python-anywhere_ex1.png)<br>
+![](../assets/img/03_python-anywhere_ex1.png)<br>
 
 <div style="background: #dff5b3; padding: 15px;">
 <span style="font-weight:800;">NOTE:</span>
@@ -91,7 +91,7 @@ print(x, y)
 
 *This code defines two variables, `x` and `y`, and assigns them the values 10 and 5, respectively. The current value assigned to the variable can be displayed on the console screen using `print()` function with a variable as an argument (e.g., `print(x)`).*
 
-![]({{ images_path }}/03_python-anywhere_ex2A.png)<br>
+![](../assets/img/03_python-anywhere_ex2A.png)<br>
 
 <div style="background: #dff5b3; padding: 15px;">
 <span style="font-weight:800;">NOTE:</span>
@@ -113,7 +113,7 @@ print(z)
 
 *This code uses previously defined variables `x` and `y` to perform some basic arithmetic operations like summing or multiplying. The result of the calculations is assigned to a new variable `z`. It stores the most recent assigned value, which can be previewed using a built-in `print()` function.*
 
-![]({{ images_path }}/03_python-anywhere_ex2B.png)<br>
+![](../assets/img/03_python-anywhere_ex2B.png)<br>
 
 <div style="background: #dff5b3; padding: 15px;">
 <span style="font-weight:800;">NOTE:</span>

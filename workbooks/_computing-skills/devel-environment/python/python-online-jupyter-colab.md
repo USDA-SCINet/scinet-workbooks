@@ -9,11 +9,9 @@ tags: [Python,IDE,Jupyter]
 description: Describe the workbook for index and search purposes
 ---
 
-{% include images_path %}
 
 
 
----
 
 
 <span style="color: #ff3870;font-weight: 500;">NOTE:</span> <i>Please note that this tutorial requires the user to have a basic understanding of the options available in Jupyter. If you are not familiar with Jupyter, we recommend exploring other tutorials in section {% include target_link href=400 text="04. Development Environment" %} to get started:</i>

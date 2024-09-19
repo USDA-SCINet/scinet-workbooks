@@ -20,6 +20,11 @@
         <button class="usa-button usa-button--unstyled filter-nav" type="button" att="tags" cont="{{ subtags }}">Find similar workbooks</button>
       </li>
       {% endunless %}
+      {% if page.language %}
+      <li class="">
+        <button class="usa-button usa-button--unstyled filter-nav" type="button" att="language" cont="{{ page.language }}">Other {{page.language}} workbooks</button>
+      </li>
+      {% endif %}
       {% if page.wgs %}
       {%- assign wg-full = site.data.workinggroups['wgs'] | where: "shorthand", page.wgs %}
       {%- assign wgname = wg-full[0].title %}

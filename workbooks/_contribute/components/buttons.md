@@ -6,16 +6,17 @@ components:
   name: button
   sections:
     - title: Button Options
-      no-comp-list: true
       options:
-        - class: default
-        - class: secondary
-        - class: base
-        - class: outline
-        - class: big
+        - label: Basic Buttons
+          liquid: true
+          sections:
+          - class: default
+          - class: secondary
+          - class: base
+          - class: outline
+          - class: big
         - label: Additional Flexibility
           liquid: true
-          break: true
           sections:
             - class: default
               href: "#"

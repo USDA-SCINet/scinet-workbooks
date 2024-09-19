@@ -1,0 +1,8 @@
+{%- for _subop in item.sections %}
+{% if include.code %}{$ if item.liquid or include.both %}
+&#123% include button {% for _att in _subop %}{%- assign att0 = _att[0] %}{{ att0 }}="{{ _subop[att0] }}" {% endfor %}%&#125
+{% if include.both %}<!--or-->{% endif %}{% if unless }
+{%- capture batt %}{%- for att in _subop %}{%- assign att0 = att[0] %}{%- unless att0 == "class" or att0 == "type" or att0 == "txt" %} {{ att0 }}="{{ _subop[att0] }}"{%- endunless %}{%- endfor %}{%- endcapture %}
+{%- capture btag %}{%- if _subop.href -%}a{% else %}button{% endif %}{%- endcapture %}
+<{{ btag }}{{ batt }} class="usa-button--{{ _subop.bclass }}" {% unless _subop.href %} type="{{ _subop.type | default: 'button' }}"{% endunless %}>{{ _subop.txt }}</{{ btag }}>
+{%- endfor %}

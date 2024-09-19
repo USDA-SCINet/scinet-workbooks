@@ -2,31 +2,56 @@
 layout: page
 main:
 class: usa-grid usa-content usa-layout-docs  margin-x-auto
-scripts: ['/assets/js/lib/jquery-3.4.1.min.js', '/assets/js/filter/filternav.js']
+scripts: ['/assets/js/lib/jquery-3.4.1.min.js', '/assets/js/filter/filternav.js','/assets/js/external.js']
 ---
 
-<div class="{% if page.sidenav  == false %}sci-container main-side{% endif %}">
+<div class="{% if page.sidenav  == false %}sci-container main-side{% endif %} usa-prose">
     <div class="grid-row">
     <div class="tablet:grid-col-8">
-    <p>{% if page.author %}<b>By: <a href="#authors">{% for _author in page.author %}{{ _author }}{% unless forloop.last %}, {% endunless %}{% endfor %}</a></b>{% endif %}
-    {% if page.affiliation %}</br>{{ page.affiliation }}{% endif %}
-   
-    {% if page.wgs %}</br>{% include layout/components/wgs wg=page.wgs %}{% endif %}</p>
+        <div class="usa-collection__body">
+            {% if page.author %}<b>By: <a href="#authors">{% for _author in page.author %}{{ _author }}{% unless forloop.last %}, {% endunless %}{% endfor %}</a></b>{% endif %}
+            {% if page.affiliation or page.wgs %}
+            <ul class="usa-collection__meta">
+                {% if page.affiliation %}<li class="usa-collection__meta-item">{{ page.affiliation }}</li>{% endif %}
+                {% if page.wgs %}<li class="usa-collection__meta-item">{% include layout/components/wgs wg=page.wgs %}</li>{% endif %}
+            </ul>
+            {% endif %}
+        </div>
     </div>
 
     {% if page.type=='interactive tutorial' or page.type=='lesson module' %}
     <div class="tablet:grid-col-4 tablet-text-right">
-        {%- if page.type=='interactive tutorial' %}
-        <b>Interactive Tutorial</b>
-        {%- else %}
-        <b>Lesson Module</b>
-        {%- endif %}
+        <div class="usa-collection__body">
+            {%- if page.type=='interactive tutorial' %}
+            <b>Interactive Tutorial</b>
+            {%- else %}
+            <b>Lesson Module</b>
+            {%- endif %}
+            <ul class="usa-collection__meta">
+                {%- if page.updated %}
+                {%- assign pagedate = page.updated %}
+                {%- else %}
+                {%- assign _modifed = site.data.modified["modified"] -%}
+                {% capture ppath %}{% if page.collection %}workbooks/{% endif %}{{ page.path }}{% endcapture %}{%- assign modifieddate = _modifed | where_exp: "commit", "commit.filename == ppath" -%}
+                {%- for _mdate in modifieddate limit:1 %}{% assign pagedate = _mdate.modified %}{%- endfor %}
+                {%- endif %}
+                {% if page.published %}
+                <li class="usa-collection__meta-item"><b>Published:</b> {{ pagedate | date: '%B %d, %Y' }}</li>
+                {% endif %}
+                {% unless page.published and page.published == pagedate %}
+                <li class="usa-collection__meta-item"><b>Last Update:</b> {{ pagedate | date: '%B %d, %Y' }}</li>
+                {% endunless %}
+                {% if page.language %}
+                <li class="usa-collection__meta-item"><b>Language:</b> {{ page.language }}</li>
+                {% endif %}
+            </ul>
+
+        </div>
     </div>
     {% endif %}
     {% if page.prereq %}
     {% endif %}
     </div>
-
 
 
 {%- if page.ext == '.html' %}

@@ -8,11 +8,8 @@ description: Describe the workbook for index and search purposes
 level: beginner
 ---
 
-{% include images_path %}
 
 
-
----
 
 
 ## Introduction
