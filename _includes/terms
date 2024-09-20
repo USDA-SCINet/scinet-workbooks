@@ -37,13 +37,13 @@
     </li>
     {% endfor %}
     {% endif %}
-    {% if option.wiki or defined==0 %}
+    {% if option.wiki or defined == 1 %}
         {% if option.wiki %}
         <li >
             <a href="{{ option.wiki }}">Wikipedia</a>
         </li>
         {% endif %}
-        {% if defined == 0 %}
+        {% if defined == 1 %}
         <li>
             {% include layout/filter-related.html search=define.term attribute='tags' atext=' workbooks' class='sm-txt' %}
         </li>
