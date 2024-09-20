@@ -212,9 +212,11 @@ alert:
                   
                     <ul class="icon-ul usa-list">
                       {% for _icon in site.data.filter['icons'] %}
+                      {% unless page.filter-names and _icon.type=='selected' %}
                       <li class="capital">
                         <img class="usa-icon margin-right-05" src="{{ _icon.icon }}" alt="{{ _icon.type }}">{{ _icon.type }}
                       </li>
+                      {% endunless %}
                       {% endfor %}
                     </ul>
                  
