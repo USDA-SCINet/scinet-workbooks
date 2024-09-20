@@ -4,6 +4,7 @@
       {% assign sortposts = blankarray %}
       {% assign subsetposts = blankarray %}
       {% assign nobreadcrumb = 0 %}
+      {% if page.nobreadcrumb %}{% assign nobreadcrumb = 1 %}{% endif %}
 
       {% if page.collection %}
 

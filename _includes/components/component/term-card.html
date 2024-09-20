@@ -1,6 +1,5 @@
 {% assign option = include.option %}
 {% assign gloss = include.gloss | default: site.data.glossary['glossary'] %}
-
 <li class="glossary usa-collection__item width-full fullwidth-i fc" datameta="{{  option.term  }}" {% if sort_list %}
     wb="{% for wb in pwb %}{{ wb }} {% endfor %} all"
     tagged="{% for tag in ptags %}{{ tag }} {% endfor %}all" type="{% for types in ptypes %}{{ types }} {% endfor %}all"
@@ -54,7 +53,11 @@
         </ul>
         {% endif %}
 
-        {% if option.wiki or option.tutorial %}
+        {% assign definedoption = 0 %}
+        {% if include.sitetags and include.sitetags contains option.term %}
+        {% assign definedoption = 1 %}
+        {% endif %}
+        {% if option.wiki or option.tutorial or definedoption==1 %}
         <ul class="usa-collection__meta">
             {% if option.wiki %}
             <li class="usa-collection__meta-item">
@@ -66,6 +69,11 @@
                 <a href="{{ option.tutorial }}">Related Tutorial</a>
             </li>
             {% endif %}
+            {% if definedoption==1 %}
+            <li class="usa-collection__meta-item">
+                {% include layout/filter-related.html search=option.term attribute='tags' atext=' workbooks' class='sm-txt' %}
+            </li>
+            {% endif %}
         </ul>
         {% endif %}
 
@@ -74,12 +82,18 @@
         <ul class="usa-collection__meta padding-top-1" aria-label="Related Terms">
             {% assign relateds = option.related | split: ', ' %}
             {% for _related in relateds %}
+
+            <li class="usa-collection__meta-item usa-tag">{{ _related }}</li>
+
+            {% comment %}<!-- links between related terms, but is buggy with the search filter-->
             {% assign glossed = gloss | find_exp:"item", "item.term == _related" %}
             {% if glossed.size > 0 %}
             <a class="gloss" href="#{{ _related | slugify }}" ><li class="usa-collection__meta-item usa-tag listed">{{ _related }}</li></a>
             {% else %}
             <li class="usa-collection__meta-item usa-tag">{{ _related }}</li>
             {% endif %}
+            {% endcomment %}
+
             {% endfor %}
             {% if option.cat %}
                 {% assign _cats = option.cat | split: ', ' %}

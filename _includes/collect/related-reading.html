@@ -17,19 +17,19 @@
     <ul class="usa-list">
         {% unless subtags == empty %}
       <li class="">
-        <button class="usa-button usa-button--unstyled filter-nav" type="button" att="tags" cont="{{ subtags }}">Find similar workbooks</button>
+        {% include layout/filter-related.html search=subtags attribute='tags' text='Find similar workbooks' %}
       </li>
       {% endunless %}
       {% if page.language %}
       <li class="">
-        <button class="usa-button usa-button--unstyled filter-nav" type="button" att="language" cont="{{ page.language }}">Other {{page.language}} workbooks</button>
+        {% include layout/filter-related.html search=page.language attribute='language' btext='Other ' atext=' workbooks' %}
       </li>
       {% endif %}
       {% if page.wgs %}
       {%- assign wg-full = site.data.workinggroups['wgs'] | where: "shorthand", page.wgs %}
-      {%- assign wgname = wg-full[0].title %}
+      {%- assign wgname = wg-full[0].title | prepend: 'Other workbooks developed by the ' %}
       <li>
-        <button class="usa-button usa-button--unstyled filter-nav" type="button" att="wgs" cont="{{ page.wgs }}">Other workbooks developed by the {{ wgname }}</button>
+        {% include layout/filter-related.html search=page.wgs attribute='wgs' text=wgname %}
       </li>
       {% endif %}
       {% if page.reccs %}

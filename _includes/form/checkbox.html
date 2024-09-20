@@ -7,16 +7,16 @@
         {%- else %}
             {% assign checked = '' %}
         {%- endif %}
+        {%- if include.formatting %}
         {%- if include.formatting == 'capitalize' %}
-        {% assign option = _option %}
-        {% assign option_formmatted = _option | replace: "-", " "%} 
-        {% assign classname = " capital" %}
-        {%- elsif include.formatting %}
-        {% assign fetch1 = include.formatting[1] %}
-        {% assign fetch2 = include.formatting[2] %}
-        {% assign option = _option[fetch1] %}
-        {% assign option_formatted = _option[fetch2] %}
-        {% assign classname = "" %}
+          {% assign option = _option %}
+          {% assign option_formmatted = _option | replace: "-", " "%} 
+          {% assign classname = " capital" %}
+        {%- else %}
+          {% assign option = _option.shorthand %}
+          {% assign option_formatted = _option.searchname %}
+          {% assign classname = "" %}
+        {%- endif %}
         {%- else %}
         {% assign option = _option %}
         {% assign option_formmatted = _option %}

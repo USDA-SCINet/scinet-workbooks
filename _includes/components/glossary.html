@@ -1,5 +1,7 @@
 <div class="home-block">
     {% assign gloss = site.data.glossary['glossary'] %}
+    {% assign inner = site.documents | where: 'variety', 'workbook' %}
+    {% assign stags = inner | map: 'tags' | uniq | compact %}
     {% include contribute/filter title="Filter Terms" label="Filter Terms" count=gloss.size sorting="term" %}
     {% assign gloss_letters = gloss | sort: 'term' 
     | group_by_exp: "item", "item.term | slice: 0, 1" %}
@@ -9,7 +11,7 @@
     {% capture termcards %}
     {%- for _mterm in letter.items %}
     {%- assign termlist = termlist | append: _mterm.term | append: " - " %}
-    {% include components/component/term-card.html option=_mterm gloss=gloss%}
+    {% include components/component/term-card.html option=_mterm gloss=gloss sitetags=stags %}
     {%- endfor %}
     {% endcapture %}
     <div class="padding-bottom-2 width-full fccat" datameta="{{  termlist  }}">
