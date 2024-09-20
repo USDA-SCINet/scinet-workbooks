@@ -40,7 +40,7 @@
             </th>
             <td></td>
             {% if include.sortable %}<td></td>{% endif %}
-            <td>{% include layout/filter-related.html search=_term attribute='packages' atext=' workbooks' %}   
+            <td>{% include layout/filter-related.html search=_term attribute='packages' atext=' workbooks' %}   </td>
             {% endif %}
         </tr>
             {% endfor %}
