@@ -144,6 +144,8 @@ Tags allow users to filter and search for the tutorial using the workbook finder
   * Multiple tags can be listed using the format: [Tag 1, Tag 2] 
     * example: [GUI, RStudio, Open OnDemand]  
   * Reference existing tags and use those where possible instead of creating new ones. 
+  * If you would like your keywords defined in the text, include {% raw %}{% include terms %}{% endraw %} in the text of your file where you would like them defined. 
+    * Keyword definitions are stored in the _data/glossary.yml file
 
 *Tags are inherited by child files, so if your module is tagged RStudio, all tutorials within the module will be filterable by RStudio. 
 
@@ -160,6 +162,45 @@ tags:[command line, separated by commas, contained in brackets]
 </div>
 </div>
 
+### Terms
+
+{:.header-note .t-info}
+Optional
+
+Terms are not used as keywords, but can be used to include definitions in your file if you would like terms to be defined that are not used as a filter for your tutorial.  This will override the use of 'tags' for the 'include terms' component only.
+
+  * Terms are case-sensitive
+  * If more than one term has the same name, it will grab the term definition associated with your workbook's Subject Area.
+  * Multiple terms can be listed using the format: [Term 1, Term 2] 
+    * example: [GUI, RStudio, Open OnDemand]  
+  * For your terms to be defined in the text, include {% raw %}{% include terms %}{% endraw %} in the text of your file where you would like them defined. 
+    * Definitions are stored in the _data/glossary.yml file
+
+```
+tags:[glossary terms, separated by commas, contained in brackets]
+```
+
+<a href="/glossary/" class="usa-button usa-button--outline">List of current terms</a>
+
+### Language
+
+{:.header-note .t-info}
+Optional
+
+If your tutorial is focused on the use of a specific coding language, use this variable.
+  * Languages are case-sensitive. 
+
+```
+language: Python
+```
+<div class="usa-accordion accordion-bordered"  markdown="1">
+
+{% include accordion title="List of current Coding Languages" class="outline"  controls="lang-list-acc" icon=false %}
+<div id="lang-list-acc" class="accordion_content" markdown='1'>
+    
+{% include collect/tags.html fetch='language' name='language' %}
+</div>
+</div>
 
 ### Packages
 
@@ -170,19 +211,13 @@ If the tutorial is focused on a specific package, you can use the “packages”
   * Packages are case sensitive. 
   * If it is a single package, just write the package in brackets. [Package 1]
   * If it is multiple packages, use: [Package 1, Package2] 
+  * If you would like your packages defined in the text, include {% raw %}{% include packages %}{% endraw %} in the text of your file where you would like them defined. 
+    * Package definitions are stored in the _data/packages.yml file
 
 ```
 packages: [Package 1, Package2] 
 ```
-
-<div class="usa-accordion accordion-bordered"  markdown="1">
-
-{% include accordion title="List of current packages" class="outline"  controls="pkg-list-acc" icon=false %}
-<div id="pkg-list-acc" class="accordion_content" markdown='1'>
-    
-{% include collect/tags.html fetch='packages' %}
-</div>
-</div>
+<a href="/glossary/packages" class="usa-button usa-button--outline">List of current packages</a>
 
 
 ### Order 

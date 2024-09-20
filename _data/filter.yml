@@ -42,9 +42,9 @@ filters:
       - title: Working Groups
         type: select
         val: 'wgs'
-        # values: 'table'
-        # fetch: workinggroups
-        # formatting: [shorthand, title]
+        values: 'table'
+        table: workinggroups
+        formatting: shorthand
 #  - section: Sort
 
 

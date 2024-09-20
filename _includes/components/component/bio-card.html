@@ -43,9 +43,7 @@
           </div>
         {% endif %}
         <div class="grid-col mobile-lg:text-right">
-          <button class="usa-button usa-button--unstyled filter-nav" type="button" att="author" cont="{{ author.name }}">
-            Workbooks by {{ author.name }}
-          </button>
+          {% include layout/filter-related.html search=page.wgs attribute='author' btext='Workbooks by ' %}
         </div>
       </div>
     </div>

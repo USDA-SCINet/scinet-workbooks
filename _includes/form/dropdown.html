@@ -5,16 +5,9 @@
         <select class="usa-select capital" name="{{ include.tname }}" id="{{ include.tname }}">
             <option value>- Select {{ include.title }} -</option>
             {% for _option in include.options %}
-            {%- if include.formatting == 'capitalize' %}
-            {%- assign option = _option %}
-            {%- assign option_formmatted = _option | replace: "-", " "%}
-            {%- elsif include.formatting %}
-            {%- assign fetch1 = include.formatting[1] %}
-            <script>console.log({{fetch1}})</script>
-            {%- assign fetch2 = include.formatting[2] %}
-            {%- assign option = _option[fetch1] %}
-            {%- assign option_formatted = _option[fetch2] %}
-            {%- assign classname = "" %}
+            {% if include.formatting == 'shorthand' %}
+            {% assign option = _option.shorthand %}
+            {% assign option_formatted = _option.searchname %}
             {%- else %}
             {%- assign option = _option %}
             {%- assign option_formmatted = _option %}

@@ -5,7 +5,14 @@
         <select class="usa-select capital" name="{{ include.tname }}" id="{{ include.tname }}">
             <option value>- Select {{ include.title }} -</option>
             {% for _option in include.options %}
-            <option value="{{ _option }}">{{ _option }} <span class="att-count"></span></option>
+            {%- if include.formatting == 'shorthand' %}
+            {% assign option = _option.shorthand %}
+            {% assign option_formatted = _option.searchname %}
+            {%- else %}
+            {% assign option = _option %}
+            {% assign option_formatted = _option %}
+            {%- endif %}
+            <option value="{{ option }}">{{ option_formatted }} <span class="att-count"></span></option>
             {% endfor %}
         </select>
 

@@ -137,8 +137,10 @@ alert:
                                         {% assign valued = site[_sub.collect] | map: _sub.val | uniq | compact %}
                                         {% assign nestingvals = nestingvals | push: _sub.val %}
                                     {% elsif _sub.values == 'table' %}
-                                      {% assign tables = site.data[_subtable] %}
+
+                                      {% assign tables = site.data[_sub.table] %}
                                       {% assign valued = tables[_sub.val] %}
+
                                     {% else %}
                                     {% assign valued = _sub.values %}  
                                     {% endif %}
@@ -153,7 +155,7 @@ alert:
                                 
                                 {% assign checked = _sub.checked %}
 
-                                {% include form/{{ _sub.type }}.html title=_sub.title options=valued tname=_sub.val checked=checked labelclass='sn-legend' formatting=_section.formatting %}
+                                {% include form/{{ _sub.type }}.html title=_sub.title options=valued tname=_sub.val checked=checked labelclass='sn-legend' formatting=_sub.formatting %}
 
                             {%- endfor %}
                 
@@ -212,24 +214,17 @@ alert:
                   
                     <ul class="icon-ul usa-list">
                       {% for _icon in site.data.filter['icons'] %}
+                      {% unless page.filter-names and _icon.type=='selected' %}
                       <li class="capital">
                         <img class="usa-icon margin-right-05" src="{{ _icon.icon }}" alt="{{ _icon.type }}">{{ _icon.type }}
                       </li>
+                      {% endunless %}
                       {% endfor %}
                     </ul>
                  
                 </div>
           </div>
       </div>
-
-<!--       <div>
-        <label class="usa-label" for="sort_attribute">Sort by:</label>
-        <select name="sort_attribute" id="sort_attribute" class="usa-select">
-          <option value="title">Title</option>
-          <option value="level">Difficulty</option>
-          <option value="subject">Workbook</option>
-        </select>
-        </div> -->
 
       </div>
       </div>

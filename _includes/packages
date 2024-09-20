@@ -1,15 +1,21 @@
 {%- assign terms = include.packages | default: page.packages %}
-{%- assign gloss = site.data.glossary['packages'] %}
+{%- assign gloss = site.data.packages['packages'] %}
 {%- assign packagearray = "" | split: "" %}<div class="usa-table-container" tabindex="0">
     <table class="usa-table usa-table--sticky">
         <caption>
             {{ include.title | default: 'Primary Libraries/Packages' }}
         </caption>
         <thead>
-            <tr>
+            <tr>{% if include.sortable %}
+                <th data-sortable scope="col" role="columnheader">Name</th>
+                <th data-sortable scope="col" role="columnheader">Description</th>
+                <th data-sortable scope="col" role="columnheader">Language</th>
+                <th data-sortable scope="col" role="columnheader">Tutorials</th>
+                {% else %}
                 <th role="columnheader">Name</th>
                 <th role="columnheader">Description</th>
                 <th role="columnheader">Tutorials</th>
+                {% endif %}
             </tr>
         </thead>
         <tbody>
@@ -22,18 +28,19 @@
                 {% else %}
                     {% assign define = defines[0] %}     
                 {% endif %}
-                <th scope="row">
+                <th scope="row" {% if include.sortable %} role="rowheader"{% endif %}>
                     {% if define.url %}<a href="{{ define.url }}">{{ define.name }}</a>{% else %}{{ define.name }}{% endif %}
                 </th>
                 <td>{{ define.description }}</td>
-                <td><button class="usa-button usa-button--unstyled filter-nav" type="button" att="packages" cont="{{ define.name }}">{{ define.name }} workbooks</button></td>
+                {% if include.sortable %}<td>{{ define.lang }}</td>{% endif %}
+                <td>{% include layout/filter-related.html search=define.name attribute='packages' atext=' workbooks' %}</td>
             {% else %}
-            <th scope="row">
+            <th scope="row" {% if include.sortable %} role="rowheader"{% endif %}>
                 {{ _term }}
             </th>
             <td></td>
-            <td><button class="usa-button usa-button--unstyled filter-nav" type="button" att="packages" cont="{{ _term }}">{{ _term }} workbooks</button></td>
-            
+            {% if include.sortable %}<td></td>{% endif %}
+            <td>{% include layout/filter-related.html search=_term attribute='packages' atext=' workbooks' %}   
             {% endif %}
         </tr>
             {% endfor %}

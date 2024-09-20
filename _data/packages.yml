@@ -1,0 +1,79 @@
+packages:
+  - name: geoR
+    lang: R
+    description: Analysis of Geostatistical Data
+    url: https://cran.r-project.org/web/packages/geoR/index.html
+  - name: ranger
+    lang: R
+    description: A Fast Implementation of Random Forests
+    url: https://cran.r-project.org/web/packages/ranger/
+  - name: pandas
+    lang: Python
+    description: Dataframes and other datatypes for data analysis and manipulation 
+    url: https://pandas.pydata.org/
+  - name: geopandas
+    lang: Python
+    description: Extends datatypes used by pandas to allow spatial operations on geometric types
+    url: https://geopandas.org/en/stable/
+  - name: scikit-learn
+    lang: Python
+    description: Machine Learning in Python
+    url: https://scikit-learn.org/stable/
+  - name: plotnine
+    lang: Python
+    description: A plotting library for Python modeled after R's <a href="https://ggplot2.tidyverse.org/">ggplot2</a>
+    url: https://plotnine.readthedocs.io/en/v0.12.3/
+  - name: rgeocdl
+    lang: R
+    description: R interface for SCINet GeoCDL API
+  - name: pygcdl
+    lang: R
+    description: Python interface for SCINet GeoCDL API
+    url: https://github.com/USDA-SCINet/pygcdl
+  - name: rioxarray
+    lang: R
+    description: rasterio xarray extension - Geospatial raster data for python
+    url: https://corteva.github.io/rioxarray/stable/
+  - name: sf
+    lang: R
+    description: Simple Features for R
+    url: https://r-spatial.github.io/sf/
+  - name: GDAL
+    description: Geospatial Data Abstraction Library 
+    url: https://gdal.org/
+  - name: rasterio
+    lang: Python
+    description: Access to geospatial raster data 
+    url: https://rasterio.readthedocs.io/en/latest/
+  - name: multiprocessing
+    lang: Python
+    description: Process-based parallelism 
+    url: https://docs.python.org/3/library/multiprocessing.html
+  - name: dask
+    lang: Python
+    description: Scale the Python tools you love
+    url: https://www.dask.org
+  - name: terra 
+    lang: R
+    description: Spatial Data Analysis 
+    url: https://cran.r-project.org/web/packages/terra/index.html
+  - name: foreach 
+    lang: R
+    description: Provides Foreach Looping Construct
+    url: https://cran.r-project.org/web/packages/foreach/index.html 
+  - name: doParallel
+    lang: R
+    description: Foreach Parallel Adaptor for the 'parallel' Package
+    url: https://cran.r-project.org/web/packages/doParallel/index.html 
+  - name: USAboundaries
+    lang: R
+    description: Historical and Contemporary Boundaries of the United States of America
+    url: https://cran.r-project.org/web/packages/USAboundaries/index.html
+  - name: ggplot2
+    lang: R
+    description: Create Elegant Data Visualisations Using the Grammar of Graphics
+    url: https://cran.r-project.org/web/packages/ggplot2/index.html
+  - name: rasterstats
+    lang: Python
+    description: Summarizes geospatial raster datasets based on vector geometries
+    url: https://pythonhosted.org/rasterstats/
