@@ -50,6 +50,9 @@ anchor_js_targets: [h1, h2, h3]
 # Your search_site_handle value is from the search.gov settings page.
 search_site_handle: scinet-usda
 
+newline: >
+  :
+
 # touchpoints_form_id:
 
 # Configuration for projects and team collections

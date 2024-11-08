@@ -134,22 +134,3 @@
   init();
 
 })();
-
-
-(function() {  // table function
-  $(".simple-sorted-table").each(function(){
-    $(this).find("thead tr th").each(function(){
-      $(this).attr({
-        "data-sortable": true,
-        scope: "col",
-        role: "columnheader"
-    });
-    });
-    $(this).find("tbody tr th").each(function(){
-      $(this).attr({
-        scope: 'row',
-        role: "rowheader"
-      });
-    });
-  });
-})();
