@@ -4,7 +4,52 @@ title: "Formatting Toolkit"
 description: "Formatting toolkit for workbook contributors"
 #showdescription: false
 parent: 0
+order: 1
 ---
+
+## File Names 
+
+For ease of site navigation, we are using index.html files for all index pages.  These cause the page url to use the folder path as the url without any additional text and makes for a more user-friendly experience.   
+
+For an example: 
+
+* Folder: geospatial 
+  * Index.html (url: site/geospatial/) 
+  * Folder: image-processing 
+    * Index.html (url: site/geospatial/image-processing/) 
+    * Folder: raster-tiles 
+      * Index.html [introduction] (url: site/geospatial/image-processing/raster-tiles/) 
+      * python.md (url: site/geospatial/image-processing/raster-tiles/python) 
+      * r.md (url: site/geospatial/image-processing/raster-tiles/r) 
+      
+
+## Including Assets 
+
+Assets and images should be included in an "Assets" folder.  This can be located in the same folder as the file, or in any of the proceeding folders as appropriate. 
+
+* Images should be stored in /assets/img/
+* Other files can be stored in /assets/
+
+To access the files where the assets folder is in the same folder as the file, use the following code:
+
+```
+{%- raw %}
+![Image alt text here](./assets/img/filename.png)
+[My linked file text](./assets/filename.ipynb){% endraw %}
+```
+
+If the assets folder is in a parent folder, you may either include 'file_path' at the top of your page and use that variable, or use dot notation.
+
+```
+{%- raw %}
+{% include file_path folder=1 %}
+<!-- the following will be the same -->
+
+![Image alt text here](../assets/filename.png)
+[My linked file text]({{ file_path }}/filename.ipynb){% endraw %}
+```
+
+
 
 ## Front Matter
 
@@ -23,11 +68,24 @@ author: Your Name
 
 type: interactive tutorial
 
-tags: [R Project, raster, GeoCDL]
+tags: [R Project, Raster, GeoCDL]
+# terms: [Spatial Interpolation, Geostatistics] # use if you want to automatically define terms that are not tags
+
+# language: R # if workbook is specific to a programming language
+
 packages: [bioperl, biopython]
+
 ## wgs: geospatial ## if this is associated with a working group
 
 description: "Describe the workbook for index and search purposes"
+
+materials: # if you want to include materials at the top of the page
+  - text: Material description
+    url: /filename.ext 
+    # external: true # use for any links starting with https://
+
+# published: 2023-09-17 # not required, but useful
+# updated: 2023-09-17 # not required, but useful
 ---
 {% endraw %}
 ```
@@ -251,51 +309,3 @@ Index should equal the nested value of your file:
         * Index.html [introduction]  (index:2) 
         * python.md (no index variable) 
         * r.md (no index variable) 
-
-
-
-
-
-
-
-## Including Assets 
-
-Assets and images should be included in an "Assets" folder.  This can be located in the same folder as the file, or in any of the proceeding folders as appropriate. 
-
-* Images should be stored in /assets/img/
-* Other files can be stored in /assets/
-
-To access the files where the assets folder is in the same folder as the file, use the following code:
-
-```
-{%- raw %}
-![Image alt text here](./assets/img/filename.png)
-[My linked file text](./assets/filename.ipynb){% endraw %}
-```
-
-If the assets folder is in a parent folder, you may either include 'file_path' at the top of your page and use that variable, or use dot notation.
-
-```
-{%- raw %}
-{% include file_path folder=1 %}
-<!-- the following will be the same -->
-
-![Image alt text here](../assets/filename.png)
-[My linked file text]({{ file_path }}/filename.ipynb){% endraw %}
-```
-
-
-## File Names 
-
-For ease of site navigation, we are using index.html files for all index pages.  These cause the page url to use the folder path as the url without any additional text and makes for a more user-friendly experience.   
-
-For an example: 
-
-* Folder: geospatial 
-  * Index.html (url: site/geospatial/) 
-  * Folder: image-processing 
-    * Index.html (url: site/geospatial/image-processing/) 
-    * Folder: raster-tiles 
-      * Index.html [introduction] (url: site/geospatial/image-processing/raster-tiles/) 
-      * python.md (url: site/geospatial/image-processing/raster-tiles/python) 
-      * r.md (url: site/geospatial/image-processing/raster-tiles/r) 

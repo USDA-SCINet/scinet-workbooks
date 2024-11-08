@@ -3,44 +3,96 @@ title: Table
 description: "A table displays information in columns and rows."
 
 components:
+  title: Markdown Component Formatting
   name: table
   code: table
+  intro: "These examples use code to format markdown tables."
   sections:
-    - title: Standard Tables
-      options:
-        - label: Standard Sticky Table
-          class: sticky
-        - label: Standard Nonsticky Table
-          class: ''
-    - title: Striped Tables
+    - title: Markdown Table Appearance
       unexpanded: true
       options: 
-        - label: Striped Sticky Table
+        - label: Striped Table
           class: striped sticky
-        - label: Striped Nonsticky Table
-          class: ''
-    - title: Borderless Tables
-      unexpanded: true
-      options: 
         - label: Borderless Table
           class: borderless
-    - title: Scrollable tables
+        - label: Compact Table
+          class: striped compact
+    - title: Markdown Table Flex Options
+      intro: Basic markdown tables do not allow for the code needed for stacking tables, but do allow for scrollable tables and sticky headers.
       unexpanded: true
       options:
-        - label: Scrollable Table
-          class: scrollable-table
+        - label: Sticky Table
+          class: sticky
         - label: Scrollable Striped Table
           class: scrollable-table striped
-    - title: Sortable Tables
+    - title: Markdown Sortable Tables
       unexpanded: true
       description: "Please note that the markdown example only works for very basic tables.  If you would like more complex sorting, use HTML code."
       options:
         - label: Sorted Table - Markdown
           code: tablemd
+          caption: Table Caption Required
           class: striped simple-sorted-table
         - label: Sorted Table - HTML
           code: tablehtml    
           class: striped simple-sorted-table
+
+
+importing-information:
+  title: Generating tables from data
+  name: jstable
+  intro: "This code will import and format data from a json file.  Data loaded this way is rendered for the user on page load, so if you would like to share large datasets consider a download option instead."
+  sections: 
+    - title: Table appearance
+      unexpanded: true
+      options:
+        - label: Auto Striped Table
+          data:
+            file: /data/table.json
+            title: Striped json table
+            classes: striped
+            sticky: true
+        - label: Auto Borderless Table
+          data:
+            file: /data/table.json
+            title: Borderless json table
+            classes: borderless
+            sticky: true
+        - label: Auto Mixed Display Table
+          data:
+            file: /data/table.json
+            title: Mixed display json table
+            classes: striped borderless compact
+    - title: Table flex options
+      unexpanded: true
+      options:
+        - label: Auto Sticky Table
+          data:
+            file: /data/table.json
+            title: Sticky json table
+            sticky: true
+        - label: Scrolling Table
+          data:
+            file: /data/table.json
+            title: Scrolling json table
+            scroll: true
+            fixed: true
+        - label: Fixed Table
+          data:
+            file: /data/table.json
+            title: Fixed json table
+            fixed: true
+#    - title: Sortable Tables
+#      unexpanded: true
+#      options:
+#        - label: Sorted Table
+#          data:
+#            file: /data/table.json
+#            title: Striped json table
+#            classes: striped
+#            sticky: true
+#            sortable: true
+
 
 ---
 
@@ -64,3 +116,5 @@ Tables are useful for displaying and organizing information, making it easier to
     *  Non-tabular data
 
 Additional guidance can be found on the [USWDS component page](https://designsystem.digital.gov/components/table/)
+
+{% include contribute/sections section='importing-information' %}

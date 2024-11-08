@@ -1,0 +1,13 @@
+{%- assign item = include.item['data'] %}
+{% if include.code %}
+{%- capture tattr %}{%- for _att in item %}{%- assign att0 = _att[0] %} {{ att0 }}={% if item[att0] == true %}{{ item[att0] }}{% else %}"{{ item[att0] }}"{% endif %} {%- endfor %}{%- endcapture %}
+{% capture leftside %}{% raw %}{%{% endraw %}{% endcapture %}{% capture rightside %}{% raw %}%}{% endraw %}{% endcapture %}
+{% capture codeblock %}
+{{ leftside }} include json-table {{ tattr }} {{ rightside }}
+{% endcapture %}
+
+{% include contribute/components/codeblock/codeblock code=codeblock %}
+
+{% else %}
+{% include json-table file=item.file title=item.title classes=item.classes sticky=item.sticky scroll=item.scroll flex=item.flex sortable=item.stortable %}
+{% endif %}

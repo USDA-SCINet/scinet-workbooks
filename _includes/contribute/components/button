@@ -12,15 +12,11 @@
 </ul>
 {%- else %}
 <ul class="usa-button-group usa-list--unstyled">
-<li class="usa-button-group__item" >
-{% include button class="default" href="#" txt="Default Link" %}
-</li>
-<li class="usa-button-group__item" >
-{% include button class="secondary" href="#" txt="Secondary Link" %}
-</li>
-<li class="usa-button-group__item" >
-{% include button class="base" txt="Alternative Attributes" attr="included details" sections="custom information" %}
-</li>
+    {%- for _subop in item.sections %}
+    <li class="usa-button-group__item" >
+    {% include button class=_subop.class href="#" txt=_subop.txt %}
+    </li>
+    {% endfor %}
 </ul>
 {%- endif %}
 {%- endcapture %}
@@ -34,10 +30,10 @@
 {%- endcapture %}
 {%- else %}
 {%- capture codeblock %}
-{% include button class="default" href="#" txt="Default Link" %}
-{% include button class="secondary" href="#" txt="Secondary Link" %}
-{% include button class="base" txt="Alternative Attributes" attr="included details" sections="custom information" %}
-{%- endcapture %}
+{%- for _subop in item.sections %}
+{% include button class=_subop.class href="#" txt=_subop.txt %}
+{% endfor %}
+{% endcapture %}
 {%- endif %}
 {% else %}
 
