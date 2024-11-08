@@ -70,7 +70,7 @@ cards1:
   label: "Subject Areas"
   collect:
     index: 0
-    exclude: contribute
+    exclude: true
 
 keywords:
   comp: cards

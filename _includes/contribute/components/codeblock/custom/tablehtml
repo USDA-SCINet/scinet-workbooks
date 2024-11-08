@@ -1,4 +1,5 @@
 <table class="usa-table">
+  <caption>Table Caption is Required if sortable</caption>
   <thead>
     <tr>
         <th data-sortable scope="col" role="columnheader">
@@ -44,4 +45,5 @@
       <td>If you have complex data, you may benefit from using HTML to style your tables</td>
     </tr>
   </tbody>
+  <div class="usa-sr-only usa-table__announcement-region" aria-live="polite"></div>
 </table>

@@ -13,8 +13,7 @@
                 {% assign wbval = section.collect.workbook | default: 'documents' %}
                 {% assign myposts = site[wbval] | where: 'index', section.collect.index | sort: order %}
                 {% if section.collect.exclude %}
-                {% assign wbexclude = section.collect.exclude | default: 'none' %}
-                {% assign myposts = myposts | where_exp: "item", "item.collection != wbexclude" %}
+                {% assign myposts = myposts | where_exp: "item", "item.exclude != true" %}
                 {% endif %}
                 {% assign myposts = myposts | sort: 'order' %}
             {%- endif -%}

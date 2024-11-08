@@ -1,0 +1,27 @@
+[
+    {
+    "Table Feature": "Sticky Tables",
+    "Description": "Add sticky headers to tables that scroll with the user",
+    "Implementation Notes": "Add attribute `sticky: true`"
+    },
+    {
+    "Table Feature": "Color and Border",
+    "Description": "Classes for formatting table appearance",
+    "Implementation Notes": "Add any of attributes: `classes: [borderless, striped, compact]` or leave off for a basic bordered table"
+    },
+    {
+    "Table Feature": "Scrollable Table",
+    "Description": "Table permits scrolling data on resize",
+    "Implementation Notes": "Add attribute `scrollable: true`."
+    },
+    {
+    "Table Feature": "Fixed table",
+    "Description": "Table does not flex on small screens",
+    "Implementation Notes": "Add attribute `fixed: true`."
+    },
+    {
+    "Table Feature": "Sortable Table",
+    "Description": "Allow sorting of table by contents",
+    "Implementation Notes": "Add attribute `sorted: true`"
+    }
+]

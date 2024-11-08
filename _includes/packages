@@ -1,7 +1,7 @@
 {%- assign terms = include.packages | default: page.packages %}
 {%- assign gloss = site.data.packages['packages'] %}
-{%- assign packagearray = "" | split: "" %}<div class="usa-table-container" tabindex="0">
-    <table class="usa-table usa-table--sticky">
+{%- assign packagearray = "" | split: "" %}<div class="usa-table-container  flex-scroll" tabindex="0">
+    <table class="usa-table usa-table--sticky  usa-table--stacked-header width-full">
         <caption>
             {{ include.title | default: 'Primary Libraries/Packages' }}
         </caption>
