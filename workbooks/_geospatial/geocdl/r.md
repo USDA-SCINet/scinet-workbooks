@@ -5,7 +5,7 @@ description: "(Page description here)"
 type: interactive tutorial
 
 tags: [GeoCDL, Raster, CRS]
-packages: [pygcdl, sf]
+packages: [rgeocdl, sf]
 language: R
 
 author: Heather Savoy
