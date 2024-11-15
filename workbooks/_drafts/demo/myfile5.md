@@ -1,11 +1,11 @@
 ---
-title: Demo File 2
+title: Demo File 5
 description: This is a demo structure example
 
 author: Moe Richert
-tags: [testing]
-description: This is a demo - demo number 2
-order: 2
+tags: [ATest]
+description: This is a demo - demo number 5
+order: 5
 type: interactive tutorial
 ---
 
