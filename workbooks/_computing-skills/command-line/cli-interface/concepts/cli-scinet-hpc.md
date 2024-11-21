@@ -1,12 +1,12 @@
 ---
 
-title: Introduction to Command Line Interface (CLI)
+title: Accessing the CLI on the SCINet HPC
 description: "(Page description here)"
-index: 2
-order: 1
+type: interactive tutorial
+order: 2
 tags: [command line]
 packages: 
-level: 2
+level: 
 author: 
 
 ---

@@ -3,7 +3,7 @@
 title: Terminal basic terminology
 description: "(Page description here)"
 type: reference material
-order: 2
+order: 1
 tags: 
 packages: 
 level: 

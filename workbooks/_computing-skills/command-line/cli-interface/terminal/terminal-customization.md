@@ -1,10 +1,10 @@
 ---
 
-title: What is Command Line?
+title: Terminal customization
 description: "(Page description here)"
-type: lesson module
+type: interactive tutorial
 order: 2
-tags: [command line]
+tags: 
 packages: 
 level: 
 author: 
