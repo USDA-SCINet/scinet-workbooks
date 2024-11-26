@@ -113,7 +113,7 @@ Before you get started actively using the SCINet resources, follow these steps:
 
 <div class="usa-accordion">
 
-{% include accordion title="Sign up for a SCINet account (required)" class="outline " controls="access-scinet-1" %} 
+{% include accordion title="Sign up for a SCINet account (required)" class="primary " controls="access-scinet-1" %} 
 <div id="access-scinet-1" class="accordion_content">    
 <p>
 The SCINet account is required to get an access to the SCINet HPC clusters and specialized content of the SCINet resources, 
@@ -125,7 +125,7 @@ such as <a href="https://scinet.usda.gov/training/free-online-training" target="
 *<em>The approval process depends on the affiliation of the requester.</em>
 </div>
 
-{% include accordion title="Request a project directory (required)" class="outline " controls="access-scinet-2" %} 
+{% include accordion title="Request a project directory (required)" class="primary " controls="access-scinet-2" %} 
 <div id="access-scinet-2" class="accordion_content">    
 <p>
 <a href="https://scinet.usda.gov/guides/data/storage#project-directories" target="_blank">Project directories</a> are usually associated with ARS Research Projects. 
@@ -264,15 +264,16 @@ Among SCINet web-based user interfaces, the <a href="https://scinet.usda.gov/gui
     </div>
 </div>
 
+----
+
 ### Access Ceres CLI via OOD
 
 Follow these steps for accessing command line interface on Ceres via Open onDemand interface in web browser.
 
-**1.** Open a web browser and navigate to the URL for the <a href="[https://](http://ceres-ood.scinet.usda.gov/)" target="_blank">Ceres OOD service</a>. *Click on a link or copy-paste the URL.*
-```bash
-# URL to Ceres OOD
-http://ceres-ood.scinet.usda.gov/
-```
+**1.** Open a web browser and navigate to the URL for the <a href="http://ceres-ood.scinet.usda.gov/" target="_blank">Atlas OOD service</a>. *Click on a link or copy-paste the URL.*
+
+<h4 style="color: deeppink; margin-left: 10px;"># URL to Ceres OOD: <span style="color: #005ea2; padding-left: 20px; font-size: 1.34rem;">http://ceres-ood.scinet.usda.gov/</span></h4>
+
 
 **2.** Log in using your user SCINet credentials. *Follow the instructions for <a href="https://scinet.usda.gov/guides/access/web-based-login#accessing-web-based-interfaces" target="_blank"><b>Accessing Web-Based Interfaces</b></a>*
 
@@ -280,26 +281,207 @@ http://ceres-ood.scinet.usda.gov/
 
   ![scinet login in web browser](../assets/img/scinet-login.png)
 
-  - Choose “Login.gov or USDA LincPass” as your sign-in option.
+  - Choose `Login.gov or USDA LincPass` as your sign-in option.
     - A. If you have a LincPass/AltLinc or PIV Exemption, you will authenticate as usual with eAuth.
     - B. If you do not have a LincPass/AltLinc or PIV Exemption, you will authenticate using Login.gov.
       - *Please see the detailed instructions for <a href="https://scinet.usda.gov/guides/access/login/logingov" target="_blank">logging on to SCINet using Login.gov</a>.*
 
-  After successful authentication, you will automatically be redirected to Open OnDemand web interface.
+  After successful authentication, you will automatically be redirected to Open OnDemand web interface for Ceres cluster.
 
   ![ceres ood in web browser](../assets/img/ceres-ood.png)
+
+  <div id="question-alerts-1" class="highlighted highlighted--question ">
+    <div class="highlighted__body">
+        <h4 class="highlighted__heading">Learn more</h4>
+        <p>
+            To get the most out of the Open OnDemand interface, explore the dedicated <a href="https://scinet.usda.gov/guides/use/open-ondemand#using-ood" target="_blank">User Guides</a> 
+            available on the SCINet website. These guides provide more details on available GUI tools, job scheduling and interactive applications like Jupyter or RStudio.
+        </p>
+    </div>
+  </div>
 
 **3.** In the OOD interface, locate the <b>Clusters</b> tab in the top menu bar and select <b>Shell Access</b>.
 
   ![ceres shell access in web browser](../assets/img/ceres-shell-access.png)
 
-
 **4.** A new browser tab will open with a terminal emulator, providing a Unix shell loaded and starting in your home directory by default.
 
   ![ceres cli in web browser](../assets/img/ceres-cli.png)
 
+  You can use this CLI just like a terminal on your local machine, with all standard bash commands functioning. Just note that you are now on a cluster, giving you direct access to all pre-installed modules and tools available on the system.
+
+
+#### Tips for using Ceres CLI
+
+1. Software from environment modules will NOT work on the **login** node.
+2. If interactive access is needed, use `salloc` command to get an **interactive session on a compute** node.
+```
+salloc -N1 -n2 -t 2:00:00 -A <your_slurm_account>
+```
+3. Most sortware available via modules on Ceres will run on all nodes.
+- However there are several packages that require specific Intel features. In this case request Intel processors by either adding 
+`-C INTEL` to your `salloc` command or adding `#SBATCH -C INTEL` to the job script.  
+4. Color was intentionally disabled on the **login** and **dtn** nodes to improve the speed of `ls` command.
+If you still want color you can use `ls --color=auto`
+
+<div class="usa-accordion">
+
+{% include accordion title="Check your current path:" class="outline " controls="ceres-cli-usage-1" %} 
+<div id="ceres-cli-usage-1" class="accordion_content" markdown="1">    
+<em>Displays the full path of your current directory.</em><br>
+```
+pwd
+```
+</div>
+
+{% include accordion title="Find your project location:" class="outline " controls="ceres-cli-usage-2" %}
+<div id="ceres-cli-usage-2" class="accordion_content" markdown="1">
+<em>All projects are located at <b>/project</b> . This command lists all available projects.</em><br>
+```
+ls /project
+```
+</div>
+
+{% include accordion title="Navigate quickly to your home directory:" class="outline " controls="ceres-cli-usage-3" %} 
+<div id="ceres-cli-usage-3" class="accordion_content" markdown="1">    
+<em>Takes you directly to your home directory.</em><br>
+```
+cd ~
+```
+</div>
+
+{% include accordion title="Check available modules:" class="outline " controls="ceres-cli-usage-4" %} 
+<div id="ceres-cli-usage-4" class="accordion_content" markdown="1">    
+<em>Displays a list of all modules available on the cluster, for example available <code>python</code> versions.</em><br>
+```
+module avail python
+```
+</div>
+
+{% include accordion title="Load a selected module:" class="outline " controls="ceres-cli-usage-5" %} 
+<div id="ceres-cli-usage-5" class="accordion_content" markdown="1">    
+<em>Loads a specific pre-installed module for use.</em><br>
+```
+module load <module-name>
+```
+</div>
+
+{% include accordion title="To see your quaotas on Ceres cluster, run:" class="outline " controls="ceres-cli-usage-6" %} 
+<div id="ceres-cli-usage-6" class="accordion_content" markdown="1">    
+<em>Group <a href="https://scinet.usda.gov/guides/data/quotas#storage-quotas" target="_blank">quaotas</a> control the amount of data stored are enabled on both home and project directories.</em><br>
+```
+/usr/local/bin/my_quotas
+```
+</div>
+
+</div>
+
+
+----
 
 ### Access Atlas CLI via OOD
+
+Follow these steps for accessing command line interface on Atlas via Open onDemand interface in web browser.
+
+**1.** Open a web browser and navigate to the URL for the <a href="https://atlas-ood.hpc.msstate.edu/" target="_blank">Ceres OOD service</a>. *Click on a link or copy-paste the URL.*
+
+<h4 style="color: deeppink; margin-left: 10px;"># URL to Atlas OOD: <span style="color: #005ea2; padding-left: 20px; font-size: 1.34rem;">https://atlas-ood.hpc.msstate.edu/</span></h4>
+
+
+**2.** Log in using your user SCINet credentials. *Follow the instructions for <a href="https://scinet.usda.gov/guides/access/web-based-login#accessing-web-based-interfaces" target="_blank"><b>Accessing Web-Based Interfaces</b></a>*
+
+  - You will initially be presented with the SCINet login page.
+
+  ![scinet login in web browser](../assets/img/scinet-login.png)
+
+  - Choose `Login.gov or USDA LincPass` as your sign-in option.
+    - A. If you have a LincPass/AltLinc or PIV Exemption, you will authenticate as usual with eAuth.
+    - B. If you do not have a LincPass/AltLinc or PIV Exemption, you will authenticate using Login.gov.
+      - *Please see the detailed instructions for <a href="https://scinet.usda.gov/guides/access/login/logingov" target="_blank">logging on to SCINet using Login.gov</a>.*
+
+  After successful authentication, you will automatically be redirected to Open OnDemand web interface for Ceres cluster.
+
+  ![atlas ood in web browser](../assets/img/atlas-ood.png)
+
+  <div id="question-alerts-1" class="highlighted highlighted--question ">
+    <div class="highlighted__body">
+        <h4 class="highlighted__heading">Learn more</h4>
+        <p>
+            To get the most out of the Open OnDemand interface, explore the dedicated <a href="https://scinet.usda.gov/guides/use/open-ondemand#using-ood" target="_blank">User Guides</a> 
+            available on the SCINet website. These guides provide more details on available GUI tools, job scheduling and interactive applications like Jupyter or RStudio.
+        </p>
+    </div>
+  </div>
+
+**3.** In the OOD interface, locate the <b>Clusters</b> tab in the top menu bar and select <b>Shell Access</b>.
+
+  ![atlas shell access in web browser](../assets/img/atlas-shell-access.png)
+
+
+**4.** A new browser tab will open with a terminal emulator, providing a Unix shell loaded and starting in your home directory by default.
+
+  ![atlas cli in web browser](../assets/img/atlas-cli.png)
+
+  You can use this CLI just like a terminal on your local machine, with all standard bash commands functioning. Just note that you are now on a cluster, giving you direct access to all pre-installed modules and tools available on the system.
+
+#### Tips for using Atlas CLI
+
+<div class="usa-accordion">
+
+{% include accordion title="Check your current path:" class="outline " controls="atlas-cli-1" %} 
+<div id="atlas-cli-1" class="accordion_content" markdown="1">    
+<em>Displays the full path of your current directory.</em><br>
+```
+pwd
+```
+</div>
+
+{% include accordion title="Find your project location:" class="outline " controls="atlas-cli-2" %}
+<div id="atlas-cli-2" class="accordion_content" markdown="1">
+<em>All projects are located at <b>/project</b> . This command lists all available projects.</em><br>
+```
+ls /project
+```
+</div>
+
+{% include accordion title="Navigate quickly to your home directory:" class="outline " controls="atlas-cli-3" %} 
+<div id="atlas-cli-3" class="accordion_content" markdown="1">    
+<em>Takes you directly to your home directory.</em><br>
+```
+cd ~
+```
+</div>
+
+{% include accordion title="Check available modules:" class="outline " controls="atlas-cli-4" %} 
+<div id="atlas-cli-4" class="accordion_content" markdown="1">    
+<em>Displays a list of all modules available on the cluster, for example available <code>python</code> versions.</em><br>
+```
+module avail python
+```
+</div>
+
+{% include accordion title="Load a selected module:" class="outline " controls="atlas-cli-5" %} 
+<div id="atlas-cli-5" class="accordion_content" markdown="1">    
+<em>Loads a specific pre-installed module for use.</em><br>
+```
+module load <module-name>
+```
+</div>
+
+{% include accordion title="To see your quaotas on Atlas cluster, run:" class="outline " controls="atlas-cli-6" %} 
+<div id="atlas-cli-6" class="accordion_content" markdown="1">    
+<em>Each user has a home folder with a 10GB <a href="https://www.hpc.msstate.edu/computing/atlas/" target="_blank">quaota</a>.</em><br>
+```
+quota -s
+```
+<em>The default storage space for each project under <code>/project</code> on Atlas is 1 TB.</em><br>
+```
+/apps/bin/reportFSUsage -p proj1,proj2,proj3
+```
+</div>
+
+</div>
+
 
 
 ## Command-line access to HPC CLI
