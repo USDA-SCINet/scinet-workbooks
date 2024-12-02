@@ -201,7 +201,7 @@ You can easily find the links to the User Guides in the top dropdown menu on the
 If your question is not on the FAQs list or the answer in the guide is not comprehensive, <b>contact the VRSC support team</b>. 
 Email is a good way to contact SCINet support team for information or direct help. 
 </p>
-<li><b>scinet_vrsc@usda.gov</b></li>
+<li><b style="color: deeppink; font-size: 20px;">scinet_vrsc@usda.gov</b></li>
 <ul>
 <li>use it for questions or feedback about the website, SCINet newsletter or to contribute content</li>
 <li>to get technical assistance with your SCINet account</li>
@@ -485,3 +485,204 @@ quota -s
 
 
 ## Command-line access to HPC CLI
+
+SCINet offers SSH access to <a href="https://scinet.usda.gov/about/compute#scinet-high-performance-computer-systems" target="_blank">both HPC clusters</a>, 
+allowing you to securely connect from the command line interface (CLI) on your local machine directly to the cluster's command line interface 
+for seamless remote interaction with the cluster's computing resources, managing and running your tasks. Once configured, all you need is a single `ssh` command executed directly from your [terminal](/glossary/#terminal).
+
+<div id="note-alerts-1" class="highlighted highlighted--note ">
+<div class="highlighted__body" markdown="1">
+<p>
+SSH provides users with secure command-line access to high-performance computing (HPC) clusters, enabling direct interaction 
+with the cluster's resources from their local machine's terminal. The key benefit for SCINet users is the ability to execute commands, 
+transfer files and manage jobs efficiently without the need for a graphical interface.
+</p>
+<table class='striped sticky'>
+<tr><th>node type</th><th>Ceres cluster</th><th>Atlas cluster</th><th>purpose</th></tr>
+<tr><th>login</th> <td>@ceres.scinet.usda.gov</td> <td>@atlas-login.hpc.msstate.edu</td><td>job scheduling</td></tr>
+<tr><th>transfer</th> <td> @ceres-dtn.scinet.usda.gov</td> <td>@atlas-dtn.hpc.msstate.edu</td><td>data transfer, <code>scp</code></td></tr>
+</table>
+<b>Command:</b> <i>(provide your scinet username and hostname for a selected node)</i><br>
+```
+ssh user.name@ceres.scinet.usda.gov
+```
+</div>
+</div>
+
+<div id="question-alerts-1" class="highlighted highlighted--question ">
+  <div class="highlighted__body">
+    <h4 class="highlighted__heading">Learn more</h4>
+    <p>
+        To learn more about the SSH protocol concept and its applications for accessing HPC clusters, explore the dedicated 
+        <a href="https://datascience.101workbook.org/06-hpc/02-file-access/03-secure-shell-connection/" target="_blank">tutorial</a> 
+        available in the <a href="https://datascience.101workbook.org/" target="_blank">Data Science Workbook</a>. These guides cover key concepts such as secure connections, 
+        <a href="https://datascience.101workbook.org/07-wrangling/01-file-access/02b-ssh-transfer/" target="_blank">file transfers</a> and command-line tools for 
+        <a href="https://datascience.101workbook.org/07-wrangling/01-file-access/04b-view-pdf-files-x11/" target="_blank">viewing remote graphical files</a>.
+    </p>
+  </div>
+</div>
+
+<div id="emergency-alerts-0" class="highlighted highlighted--emergency " role="alert">
+    <div class="highlighted__body">
+        <h4 class="highlighted__heading">Use OOD instead</h4>
+        <p>We recommend <a href="#web-based-access-to-hpc-cli">Open OnDemand interface</a> as a simpler, more versatile alternative to SSH. 
+           Please note that for most use cases, you do NOT need to use a direct SSH connection to SCINet clusters.</p>
+    </div>
+</div>
+
+<div id="warning-alerts-0" class="highlighted highlighted--warning ">
+    <div class="highlighted__body">
+        <h4 class="highlighted__heading">SCINet SSH login</h4>
+        <p>
+            To access the HPC CLI via the SSH protocol, you must have an <b>active internet connection</b>. For the best experience, 
+            it is recommended to use a device equipped with a <b>terminal application</b>, such as a laptop or other personal computuer. <br>
+            For the most accurate and up-to-date instructions on logging into each cluster using SSH protocol, please refer to the 
+            <a href="https://scinet.usda.gov/guides/access/ssh-login#ssh-access-to-scinet" target="_blank">SCINet website/User Guides/<b>SSH access to SCINet</b></a>.
+        </p>
+
+    </div>
+</div>
+
+----
+
+### Access Ceres CLI via SSH
+
+Follow these steps for accessing CLI on Ceres via Secure Shell (SSH) connection in a command line interface (e.g. terminal or PowerShell) on your local machine.
+
+<div class="usa-accordion">
+
+{% include accordion title="1. Check for the CLI tool on your local machine (one-time step)" class="outline " controls="ceres-ssh-1" %} 
+<div id="ceres-ssh-1" class="accordion_content" markdown="1">    
+If you do wish to access SCINet systems via SSH, you will need to have a <a href="http://127.0.0.1:4000/computing-skills/command-line/cli-interface/terminal/" target="_blank">CLI tool *(learn more from tutorial)*</a> for interacting with your computer's operating system through a command-line interface (CLI). 
+For macOS and Linux, use the <b>Terminal</b>; on Windows, use <b>PowerShell</b> for advanced functionality or <b>CMD</b> for basic tasks. *Those tools should be pre-installed on the corresponding operating systmes.*
+
+| CLI tool | Terminal | CMD shell (Command Prompt) | PowerShell |
+|--------------------|----------|----------------------------|------------|
+| description        | A general term for a command-line interface used to interact with the underlying operating system. | The default command-line interface for Windows operating systems. | A more advanced command-line and scripting environment for Windows, based on .NET. |
+| functionality      | Commonly used on Unix-like systems (Linux, macOS) and can run shell programs like Bash, Zsh or Fish. | Provides basic functionality for running scripts, managing files and <u>executing Windows commands</u>. | Supports object-oriented scripting and automation, integrating deeply with Windows system management tools. |
+| OS                 | macOS, Linux | Windows | Windows |
+
+<div id="note-alerts-1" class="highlighted highlighted--tip ">
+<div class="highlighted__body">
+<p>To use <a href="http://127.0.0.1:4000/computing-skills/command-line/cli-interface/shell/" target="_blank">Unix shell and Bash commands <i>(tutorial)</i></a> on Windows, the Windows Subsystem for Linux (WSL) is recommended, 
+as it enables a Linux environment within Windows, allowing you to run native Linux tools and scripts seamlessly.</p>
+</div>
+</div>
+
+</div>
+
+{% include accordion title="2. Ensure you have SmallStepCLI installed (one-time step)" class="outline " controls="ceres-ssh-2" %}
+<div id="ceres-ssh-2" class="accordion_content" markdown="1">
+To enable a seamless command-line login process to Ceres cluster, you need to install a software tool called **"SmallStepCLI"** on your computer. *This tool is NOT pre-installed and must be manually installed, but this setup is a one-time step for your chosen machine.*
+
+<table><tr>
+  <th>Installation instructions</th> 
+  <td><a href="https://scinet.usda.gov/guides/access/ssh-login#windows-instructions" target="_blank">Windows</a></td>
+  <td><a href="https://scinet.usda.gov/guides/access/ssh-login#mac-instructions" target="_blank">macOS</a></td> 
+  <td><a href="https://scinet.usda.gov/guides/access/ssh-login#linux-instructions" target="_blank">Linux</a></td>
+</tr></table>
+
+Once the SmallStepCLI is successfully installed, **follow instructions** for <a href="https://scinet.usda.gov/guides/access/ssh-login#after-small-step-installation" target="_blank">After Small Step Installation</a>. *This guide also includes troubleshooting steps specifically for Windows users, so be sure to review them when needed.*
+
+</div>
+
+{% include accordion title="3. Access Ceres CLI using SSH connection (every time)" class="primary " controls="ceres-ssh-3" %} 
+<div id="ceres-ssh-3" class="accordion_content" markdown="1">    
+1. Open the CLI Tool:
+- **Windows:** Use PowerShell or Command Prompt. Alternatively, open a terminal within WSL if installed.
+- **macOS** or **Linux:** Open the Terminal application.
+2. Connect to the Ceres cluster using the hostname for its login node: <br>
+Type the following command, replacing `<username>` with your SCInet username:
+```
+ssh <username>@ceres.scinet.usda.gov
+```
+3. Authenticate: <br>
+The first time you ssh to Ceres, your default web browser should open automatically to the SCINet authentication page. Use it as you typically do when logging in to SCINet 
+or follow the detailed guide: <a href="https://scinet.usda.gov/guides/access/ssh-login#ssh-access-after-small-step-installation" target="_blank">SSH Access After Small Step Installation</a>.
+4. Return to your terminal app and you should be already logged in to Ceres CLI. <br>*You will only need to authenticate once per day (or every 16 hours) on any cluster (Atlas or Ceres) to gain immediate SSH access to both.*
+
+![access Ceres via CLI in terminal](../assets/img/ceres-ssh.gif)
+*(demo was recorded on macOS)*
+
+</div>
+
+</div>
+
+#### Troubleshooting
+
+* Windows users will find most tools other than the built-in windows ssh command line tools no longer work.
+* <a href="https://scinet.usda.gov/guides/access/ssh-login#key-warnings-when-connecting-to-ceres-or-atlas" target="_blank">Warning about changed SSH keys</a>
+* <a href="https://scinet.usda.gov/guides/access/ssh-login#creating-a-configuration-file" target="_blank">Creating a custom SSH configuration file</a> *(for more control over the details of your SSH connections to SCINet)*
+* <a href="https://scinet.usda.gov/guides/access/ssh-login#other-notes" target="_blank">Other notes</a>
+
+----
+
+### Access Atlas CLI via SSH
+
+Follow these steps for accessing CLI on Atlas via Secure Shell (SSH) connection in a command line interface (e.g. terminal or PowerShell) on your local machine.
+
+<div class="usa-accordion">
+
+{% include accordion title="1. Check for the CLI tool on your local machine (one-time step)" class="outline " controls="atlas-ssh-1" %} 
+<div id="atlas-ssh-1" class="accordion_content" markdown="1">    
+If you do wish to access SCINet systems via SSH, you will need to have a <a href="http://127.0.0.1:4000/computing-skills/command-line/cli-interface/terminal/" target="_blank">CLI tool *(learn more from tutorial)*</a>for interacting with your computer's operating system through a command-line interface (CLI). 
+For macOS and Linux, use the <b>Terminal</b>; on Windows, use <b>PowerShell</b> for advanced functionality or <b>CMD</b> for basic tasks. *Those tools should be pre-installed on the corresponding operating systmes.*
+
+| CLI tool | Terminal | CMD shell (Command Prompt) | PowerShell |
+|--------------------|----------|----------------------------|------------|
+| description        | A general term for a command-line interface used to interact with the underlying operating system. | The default command-line interface for Windows operating systems. | A more advanced command-line and scripting environment for Windows, based on .NET. |
+| functionality      | Commonly used on Unix-like systems (Linux, macOS) and can run shell programs like Bash, Zsh or Fish. | Provides basic functionality for running scripts, managing files and <u>executing Windows commands</u>. | Supports object-oriented scripting and automation, integrating deeply with Windows system management tools. |
+| OS                 | macOS, Linux | Windows | Windows |
+
+<div id="note-alerts-1" class="highlighted highlighted--tip ">
+<div class="highlighted__body">
+<p>To use <a href="http://127.0.0.1:4000/computing-skills/command-line/cli-interface/shell/" target="_blank">Unix shell and Bash commands <i>(tutorial)</i></a> on Windows, the Windows Subsystem for Linux (WSL) is recommended, 
+as it enables a Linux environment within Windows, allowing you to run native Linux tools and scripts seamlessly.</p>
+</div>
+</div>
+
+</div>
+
+{% include accordion title="2. Ensure you have SmallStepCLI installed (one-time step)" class="outline " controls="atlas-ssh-2" %}
+<div id="atlas-ssh-2" class="accordion_content" markdown="1">
+To enable a seamless command-line login process to Atlas cluster, you need to install a software tool called **"SmallStepCLI"** on your computer. *This tool is NOT pre-installed and must be manually installed, but this setup is a one-time step for your chosen machine.*
+
+<table><tr>
+  <th>Installation instructions</th> 
+  <td><a href="https://scinet.usda.gov/guides/access/ssh-login#windows-instructions" target="_blank">Windows</a></td>
+  <td><a href="https://scinet.usda.gov/guides/access/ssh-login#mac-instructions" target="_blank">macOS</a></td> 
+  <td><a href="https://scinet.usda.gov/guides/access/ssh-login#linux-instructions" target="_blank">Linux</a></td>
+</tr></table>
+
+Once the SmallStepCLI is successfully installed, **follow instructions** for <a href="https://scinet.usda.gov/guides/access/ssh-login#after-small-step-installation" target="_blank">After Small Step Installation</a>. *This guide also includes troubleshooting steps specifically for Windows users, so be sure to review them when needed.*
+
+</div>
+
+{% include accordion title="3. Access Atlas CLI using SSH connection (every time)" class="primary " controls="atlas-ssh-3" %} 
+<div id="atlas-ssh-3" class="accordion_content" markdown="1">    
+1. Open the CLI Tool:
+- **Windows:** Use PowerShell or Command Prompt. Alternatively, open a terminal within WSL if installed.
+- **macOS** or **Linux:** Open the Terminal application.
+2. Connect to the Atlas cluster using the hostname for its login node: <br>
+Type the following command, replacing `<username>` with your SCInet username:
+```
+ssh <username>@atlas-login.hpc.msstate.edu
+```
+3. Authenticate: <br>
+The first time you ssh to Atlas, your default web browser should open automatically to the SCINet authentication page. Use it as you typically do when logging in to SCINet 
+or follow the detailed guide: <a href="https://scinet.usda.gov/guides/access/ssh-login#ssh-access-after-small-step-installation" target="_blank">SSH Access After Small Step Installation</a>.
+4. Return to your terminal app and you should be already logged in to Atlas CLI. <br>*You will only need to authenticate once per day (or every 16 hours) on any cluster (Atlas or Ceres) to gain immediate SSH access to both.*
+
+![access Atlas via CLI in terminal](../assets/img/atlas-ssh.gif)
+*(demo was recorded on macOS)*
+
+</div>
+
+</div>
+
+#### Troubleshooting
+
+* Windows users will find most tools other than the built-in windows ssh command line tools no longer work.
+* <a href="https://scinet.usda.gov/guides/access/ssh-login#key-warnings-when-connecting-to-ceres-or-atlas" target="_blank">Warning about changed SSH keys</a>
+* <a href="https://scinet.usda.gov/guides/access/ssh-login#creating-a-configuration-file" target="_blank">Creating a custom SSH configuration file</a> *(for more control over the details of your SSH connections to SCINet)*
+* <a href="https://scinet.usda.gov/guides/access/ssh-login#other-notes" target="_blank">Other notes</a>
