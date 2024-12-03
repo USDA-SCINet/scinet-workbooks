@@ -54,11 +54,11 @@ This tutorial demostrates practical steps for accessing the command line interfa
     {% include accordion title="Key concepts" class="primary " controls="scope-concepts" %}
     <div id="scope-concepts" class="accordion_content">
         <ul>
-            <li><b>Command Line Interface (CLI)</b>, A text-based method to interact with computing systems.</li>
-            <li><b>Accessing HPC Systems</b>, Techniques for connecting to SCINet HPC infrastructure and accessing the CLI.</li>
+            <li><b>Command Line Interface (CLI):</b> A text-based method to interact with computing systems, critical for using HPC.</li>
+            <li><b>Accessing HPC Systems:</b> Methods for connecting to SCINet HPC infrastructure and accessing the CLI.</li>
             <ul>
-                <li>- <b>Secure Connections</b>, Ensuring access through authenticated and secure methods (e.g., SSH).</li>
-                <li>- <b>Browser-Based Access</b>, Using Open OnDemand for web-based CLI functionality.</li>
+                <li><b>Secure connections:</b> Using SSH (Secure Shell) for authenticated, encrypted command line access.</li>
+                <li><b>Browser-based access:</b> Using Open OnDemand for web-based CLI functionality.</li>
             </ul>
         </ul>
     </div>
@@ -66,13 +66,13 @@ This tutorial demostrates practical steps for accessing the command line interfa
     {% include accordion title="Tools/Technologies" class="primary " controls="scope-tools" %} 
     <div id="scope-tools" class="accordion_content">
         <ul>
-            <li><b>Open OnDemand (OOD)</b>, A browser-based platform to access CLI functionality on HPC systems.</li>
-            <li><b>SSH (Secure Shell)</b>, A secure connection protocol for direct CLI access from local machines.</li>
-            <li>Supported Local Tools for SSH Access:</li>
+            <li><b>Open OnDemand (OOD):</b> A browser-based platform to access CLI functionality on HPC systems.</li>
+            <li><b>SSH (Secure Shell):</b> A secure connection protocol for direct CLI access from local machines.</li>
+            <li>Supported local tools for SSH access:</li>
             <ul>
-                <li>- <b>Windows:</b> PuTTY, Windows Terminal, WSL</li>
-                <li>- <b>macOS:</b> built-in Terminal</li>
-                <li>- <b>Linux:</b> built-in Terminal</li>
+                <li><b>Windows:</b> PuTTY, Windows Terminal, WSL</li>
+                <li><b>macOS:</b> built-in Terminal</li>
+                <li><b>Linux:</b> built-in Terminal</li>
             </ul>
         </ul>
     </div>
@@ -80,9 +80,9 @@ This tutorial demostrates practical steps for accessing the command line interfa
     {% include accordion title="Applications" class="primary " controls="scope-apps" %} 
     <div id="scope-apps" class="accordion_content">    
         <ul>
-            <li>Web-Based Access: <em>Logging in and interacting with HPC CLI through Open OnDemand on any device.</em> <b>(recommended)</b></li>
-            <li>Accessing HPC CLI: <em>Establishing secure connections via SSH from a local machine.</em></li>
-            <li>Getting Started with HPC Systems: <em>Becoming comfortable with the interface to support future computational workflows.</em></li>
+            <li><b>Web-based access:</b> Logging in and interacting with HPC CLI through Open OnDemand on any device. <b>(recommended)</b></li>
+            <li><b>Accessing HPC CLI:</b> Establishing secure connections via SSH from a local machine.</li>
+            <li><b>Getting started with HPC systems:</b> Becoming comfortable with the interface to support future computational workflows.</li>
         </ul>
     </div>
 </div>
@@ -554,7 +554,7 @@ Follow these steps for accessing CLI on Ceres via Secure Shell (SSH) connection 
 {% include accordion title="1. Check for the CLI tool on your local machine (one-time step)" class="outline " controls="ceres-ssh-1" %} 
 <div id="ceres-ssh-1" class="accordion_content" markdown="1">    
 If you do wish to access SCINet systems via SSH, you will need to have a <a href="http://127.0.0.1:4000/computing-skills/command-line/cli-interface/terminal/" target="_blank">CLI tool *(learn more from tutorial)*</a> for interacting with your computer's operating system through a command-line interface (CLI). 
-For macOS and Linux, use the <b>Terminal</b>; on Windows, use <b>PowerShell</b> for advanced functionality or <b>CMD</b> for basic tasks. *Those tools should be pre-installed on the corresponding operating systmes.*
+For macOS and Linux, use the <b>Terminal</b>; on Windows, use <b>PowerShell</b> for advanced functionality or <b>CMD</b> for basic tasks. *Those tools should be pre-installed on the corresponding operating systems.*
 
 | CLI tool | Terminal | CMD shell (Command Prompt) | PowerShell |
 |--------------------|----------|----------------------------|------------|
@@ -626,7 +626,7 @@ Follow these steps for accessing CLI on Atlas via Secure Shell (SSH) connection 
 {% include accordion title="1. Check for the CLI tool on your local machine (one-time step)" class="outline " controls="atlas-ssh-1" %} 
 <div id="atlas-ssh-1" class="accordion_content" markdown="1">    
 If you do wish to access SCINet systems via SSH, you will need to have a <a href="http://127.0.0.1:4000/computing-skills/command-line/cli-interface/terminal/" target="_blank">CLI tool *(learn more from tutorial)*</a>for interacting with your computer's operating system through a command-line interface (CLI). 
-For macOS and Linux, use the <b>Terminal</b>; on Windows, use <b>PowerShell</b> for advanced functionality or <b>CMD</b> for basic tasks. *Those tools should be pre-installed on the corresponding operating systmes.*
+For macOS and Linux, use the <b>Terminal</b>; on Windows, use <b>PowerShell</b> for advanced functionality or <b>CMD</b> for basic tasks. *Those tools should be pre-installed on the corresponding operating systems.*
 
 | CLI tool | Terminal | CMD shell (Command Prompt) | PowerShell |
 |--------------------|----------|----------------------------|------------|
