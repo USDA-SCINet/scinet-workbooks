@@ -1,7 +1,7 @@
 ---
 
 title: Accessing the CLI on the SCINet HPC
-description: "(Page description here)"
+description: "Starting the cluster’s command line (shell window) with OOD in a web browser or SSH in a terminal."
 type: interactive tutorial
 order: 2
 tags: [command line]
@@ -144,7 +144,7 @@ in <code>/90daydata/shared</code>, it is recommended to <a href="https://forms.o
 </div>
 </div>
 
-{% include accordion title="Read the SCINet Policy (optional)" class="outline " controls="access-scinet-3" %}
+{% include accordion title="Read the SCINet Policy (recommended)" class="outline " controls="access-scinet-3" %}
 <div id="access-scinet-3" class="accordion_content">
 <p>
 Reading the SCINet Policy before you get started using the SCINet resources is important for several reasons. 
@@ -163,7 +163,7 @@ In particular, you can learn about:
 </table>
 </div>
 
-{% include accordion title="Know where to find help (optional)" class="outline " controls="access-scinet-4" %} 
+{% include accordion title="Know where to find help (recommended)" class="outline " controls="access-scinet-4" %} 
 <div id="access-scinet-4" class="accordion_content">
 
 <div class="usa-accordion">
@@ -535,7 +535,7 @@ ssh user.name@ceres.scinet.usda.gov
         <h4 class="highlighted__heading">SCINet SSH login</h4>
         <p>
             To access the HPC CLI via the SSH protocol, you must have an <b>active internet connection</b>. For the best experience, 
-            it is recommended to use a device equipped with a <b>terminal application</b>, such as a laptop or other personal computuer. <br>
+            it is recommended to use a device equipped with a <b>terminal application</b>, such as a laptop or other personal computuer. <i>(see a lesson module <a href="/computing-skills/command-line/cli-interface/terminal/" target="_blank">What is a Terminal? The interface tool for the CLI</a>)</i><br>
             For the most accurate and up-to-date instructions on logging into each cluster using SSH protocol, please refer to the 
             <a href="https://scinet.usda.gov/guides/access/ssh-login#ssh-access-to-scinet" target="_blank">SCINet website/User Guides/<b>SSH access to SCINet</b></a>.
         </p>
