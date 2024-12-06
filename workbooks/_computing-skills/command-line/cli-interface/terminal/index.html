@@ -110,24 +110,50 @@ On any platform, you can open the Terminal (or a terminal emulator) from the gra
 and it will appear as a window on your screen. By default, terminals often use a well-known dark theme with light text for better readability.
 
 ![terminal application - CLI tool](../assets/img/terminal-mac.png) 
-*(`iTerm` terminal can be launched from the **Applications** on a macOS; terminal window looks similar across platforms)*
+*(Terminal can be launched from the **Applications** on a macOS; terminal window looks similar across platforms)*
 
 ### Interface
 
 The terminal interface is a simple, **text-based window** where you can type and execute commands. 
 It typically displays a [prompt](/glossary/#prompt), which indicates that the terminal is ready to receive input. The prompt often includes information like the username, hostname and current directory. 
-After you type a command and press `Enter`, the terminal executes it and displays the output or an error message directly below. The interface is minimalist, focusing entirely on text interaction without graphical elements.
+*(learn more from the <a href="/computing-skills/command-line/cli-interface/#terminology-explained" target="_blank">Terminology Explained/Terminal interface elements</a>)* <br>
+After you type a command and press `Enter`, the terminal executes it and displays the output or an error message directly below. The interface is minimalist, focusing entirely on text interaction without graphical elements. 
+*(learn more from the <a href="/computing-skills/command-line/cli-interface/terminal/terminal-customization" target="_blank">Terminal customization</a>)*
 
 ![terminal application - CLI tool](../assets/img/terminal-interface.gif) 
 
 ### Key features
 
-* **Input and Output:** Users type text commands (input), and the terminal displays responses or results (output). *(<a href="/computing-skills/command-line/cli-interface/terminal/terminal-terminology" target="_blank">see terms</a>)*
+* **Input and Output:** Users type text commands (input), and the terminal displays responses or results (output). *(<a href="/computing-skills/command-line/cli-interface/#terminology-explained" target="_blank">see terms</a>)*
 * **Customization:** Terminals can be customized with themes, fonts and shortcuts for better usability. *(<a href="/computing-skills/command-line/cli-interface/terminal/terminal-customization" target="_blank">see tutorial</a>)*
 * **Command Help:** Learn about commands directly in the terminal by using built-in help tools. *(<a href="/computing-skills/command-line/cli-interface/shell/commands/manual" target="_blank">see tutorial</a>)*
 * **History and editing:** Modern terminals support command history *(<a href="/computing-skills/command-line/cli-interface/shell/commands/history" target="_blank">see tutorial</a>)* 
 and inline editing *(<a href="/computing-skills/command-line/cli-interface/shell/commands/autocompletion" target="_blank">see tutorial</a>)* for efficiency. 
 * **Remote Access:** Terminals enable users to connect to remote resources, such as SCINet HPC systems. *(<a href="/computing-skills/command-line/cli-interface/concepts/cli-scinet-hpc" target="_blank">see tutorial</a>)* 
+
+### Basic terminology
+
+When working in a terminal, understanding basic terminology is essential. It not only helps you use the terminal more effectively but is also crucial when seeking assistance or describing an issue accurately.
+
+| term                | definition | notes |
+|---------------------|------------|-------|
+| Terminal (emulator) | A program that provides a text-based interface to interact with the operating system. | Examples include GNOME Terminal, iTerm or Windows Terminal. |
+| Welcome Message     | The startup message when logging into a remote machine. | It usually tells you about the architecture of available resources and rules for the users. |
+| Prompt              | The text next to where you type your commands. | Prompts can be modified to include additional information like hostname or current folder location. |
+| Command-Line        | The specific place within the terminal interface where commands are entered. | Usually indicated by a blinking cursor next to the **prompt**, where users type commands to execute. |
+| Command             | The program or script you are trying to run. | Built-in commands and aliases are called by name, while custom Bash scripts stored in files can be executed with 'dot syntax' : `. ~/path/script.sh`.
+| Argument            | Added to a command to modify the output. | There is always a space between a command and the argument. |
+| Standard Out        | The text result of a command. | Use `> filename1` to redirect output into the file. Use `>> filename1` to append output to the end of a file. |
+| Standard Error      | The error message of a failed command. | Use `2> filename2` to redirect error message into the file. Use `2>> filename2` to append error message to the end of a file. |
+
+![terminal components](../assets/img/terminal-explained.png)
+
+When you open a **terminal** (emulator, CLI tool), you may first see a **welcome message** providing details like the last login date, system architecture, and user guidelines set by administrators. 
+Below it, the **prompt** appears. This line is where you interact with the system. 
+The **command-line** is the space where you type commands: names of programs, built-in shell processes, aliases or executable scripts. Pressing `Enter` executes these commands, 
+instructing the system to perform a specific task. Many commands accept **arguments**, which are additional inputs or options that modify their behavior or output. 
+Once executed, commands typically produce text output. This information is sent to **standard output** (stdout), usually displayed as text in the terminal. 
+If something goes wrong, error messages are sent to **standard error** (stderr). Both stdout and stderr can be redirected to files for later use, allowing efficient handling of data and error logs.
 
 
 ### Why Terminal instead of a GUI?
@@ -146,14 +172,14 @@ offering greater flexibility for repetitive steps and advanced computing needs a
 <h4 class="highlighted__heading">Example</h4>
 Renaming thousands of image files manually in a GUI would be a time-consuming and error-prone task. With a single command in the terminal, such as a loop or a batch rename utility, 
 you can quickly and accurately rename all files based on a pattern (e.g., adding a prefix or changing extensions), saving significant time and effort. <br>
-*For example, this command renames all `.jpg` files in seconds.*
+*For example, this command renames all `.jpg` files present in a current directory (i.e., folder) in seconds.*
 ```
 for file in *.jpg; do mv "$file" "new_$file"; done
 ```
 </div>
 </div>
 
-**Here a few advantages of using CLI tool:**
+**Here a few advantages of using CLI tool to support your research:**
 
 <div class="usa-accordion">
 
@@ -241,7 +267,7 @@ Windows provides several terminal-like applications, each with its own features 
 |----------|-------------|----------------------|---------------|
 | <a href="https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/windows-commands" target="_blank">Command Prompt</a> | The classic Windows CLI for running batch scripts and **native Windows commands**. | Limited to Windows commands; no native Unix shell support. | Yes |
 | <a href="https://learn.microsoft.com/en-us/powershell/" target="_blank">PowerShell</a> | An advanced scripting environment for automation and system management in Windows. | Supports scripting; **requires WSL for Unix shell**. | Yes |
-| <a href="https://learn.microsoft.com/en-us/windows/terminal/" target="_blank">Windows Terminal</a> | A modern terminal application that supports tabs, customization and integration with WSL. | Fully customizable; supports PowerShell, Command Prompt and WSL for Unix shell. | No |
+| <a href="https://learn.microsoft.com/en-us/windows/terminal/" target="_blank">Windows Terminal</a> | A modern terminal application that supports tabs, customization and integration with WSL. | Fully customizable; supports PowerShell, Command Prompt and WSL for Unix shell. | Yes/No |
 
 
 <div id="info-alerts-1" class="highlighted highlighted--info ">
@@ -269,7 +295,44 @@ To run Unix/Bash scripts on Windows machine, you must use <a href="https://learn
 
 #### Recommended Tool for Unix Shell: `PowerShell` with WSL
 
-To get a Unix shell (e.g., Bash) on Windows with minimal effort, you can install Windows Subsystem for Linux (WSL).
+To get a Unix shell (e.g., Bash) on Windows with minimal effort, you can install <a href="https://learn.microsoft.com/en-us/windows/wsl/" target="_blank">Windows Subsystem for Linux (WSL)</a>.
+
+<div id="question-alerts-1" class="highlighted highlighted--question ">
+<div class="highlighted__body">
+<h4 class="highlighted__heading">Learn more</h4>
+<p markdown="1">
+Follow the <a href="https://datascience.101workbook.org/02-computing-machine/01b-windows-setup/" target="_blank">Unix Command Line Tools on Windows</a> 
+tutorial in the <a href="https://datascience.101workbook.org/sitemap.html" target="_blank">Data Science Workbook</a> to install and set up Windows Subsystem for Linux (WSL). 
+This tutorial also includes practical guides on using the [Unix shell](/glossary/#unix-shell) to run 
+<a href="https://datascience.101workbook.org/02-computing-machine/01b-windows-setup/#task-change-files-structure-and-rename-files-bash-commands-via-wsl" target="_blank">bash scripts</a>, 
+as well as working with <a href="https://datascience.101workbook.org/02-computing-machine/01b-windows-setup/#python/" target="_blank">Python</a> 
+and <a href="https://datascience.101workbook.org/02-computing-machine/01b-windows-setup/#r" target="_blank">R</a> within the WSL environment.
+</p>
+</div>
+</div>
+
+#### Launch Terminal session
+
+In Windows, you can start a terminal session using **Windows Terminal** or **PowerShell** by following these steps:
+
+<div class="usa-accordion">
+
+{% include accordion title="A. From the Start Menu:" class="outline " controls="terminal-win-1" %} 
+<div id="terminal-win-1" class="accordion_content">    
+<p markdown="1">Click the **Start Menu** (Windows icon) in the bottom-left corner of the screen.</p>
+<p markdown="1">Scroll through the list of applications to find `Windows Terminal` or `PowerShell`, typically at the top. <br>Click to launch Terminal window. *The **Windows Terminal** app allows you to have multiple tabs in a single window.*</p>
+<p markdown="1">![Terminal on macOS](../assets/img/terminal-win.png)</p>
+</div>
+
+{% include accordion title="B. Using the Search Icon:" class="outline " controls="terminal-win-2" %}
+<div id="terminal-win-2" class="accordion_content">
+<p markdown="1">Click on the magnifying glass icon (or use the **Windows Key + S** shortcut) to open the search bar.</p>
+<p markdown="1">Type `Windows Terminal` or `PowerShell` in the search bar, and select the desired application from the search results. <br>*The **PowerShell** app allows you to have just a single tab in a window.*</p>
+<p markdown="1">![Terminal on macOS](../assets/img/shell-win.png)</p>
+</div>
+
+</div>
+
 
 ----
 
@@ -283,7 +346,7 @@ To get a Unix shell (e.g., Bash) on Windows with minimal effort, you can install
 
 #### Recommended Tool for Unix Shell: `Terminal.app`
 
-macOS is built on Unix, so its terminal applications naturally support Unix commands and environments, making it easy to use `Bash` or `Zsh` shells with no additional setup required.
+macOS is built on Unix, so its terminal applications naturally support Unix commands and environments, making it easy to use Unix shells such as `Bash` or `Zsh` with no additional setup required.
 
 #### Launch Terminal session
 
@@ -303,10 +366,10 @@ In macOS you can start a terminal session by clicking on the black square **Term
 
 #### Recommended Tool for Unix Shell: `GNOME Terminal`
 
-Most Linux distributions come with a pre-installed terminal application, such as GNOME Terminal, which is fully integrated with Unix environments and requires no additional setup.
+Most Linux distributions come with a pre-installed terminal application, such as `GNOME Terminal`, which is fully integrated with Unix environments and requires no additional setup.
 
 #### Launch Terminal session
 
-In Linux you can start a terminal session by clicking on the black square icon ‘Terminal’ present in the Menu bar.
+In Linux you can start a terminal session by clicking on the black square icon **Terminal** present in the Menu bar.
 
 ![Terminal on Linux](../assets/img/terminal-linux.png)
