@@ -27,7 +27,7 @@ and performing your computational tasks with precision, speed, automation and a 
 ![GUI vs CLI](./assets/img/cli_vs_gui.png)
 
 
-### Terminology Explained
+## Terminology Explained
 
 <div class='borderless' markdown='1'>  
 
@@ -39,6 +39,238 @@ and performing your computational tasks with precision, speed, automation and a 
 | **Command Line** <br>[tutorial](/computing-skills/command-line/cli-interface/shell/commands/) | The input area in the CLI (the actual line) where commands are typed. | Represents the input area (usually a single line) where a user enters text commands. |  The command line is a specific part of the CLI environment. | Usually preceded by a prompt, e.g., `user@host:~$` in Unix/Linux or `C:\>` in Windows. |
 
 </div>
+
+### Terminal interface elements
+
+
+<div class="usa-accordion">
+
+{% include accordion title="Terminal (emulator)" class="outline " controls="terminal-term-1" %} 
+<div id="terminal-term-1" class="accordion_content" markdown="1">
+
+| definition | notes |
+|------------|-------|
+| A program that provides a text-based interface to interact with the operating system. | Examples include GNOME Terminal, iTerm or Windows Terminal. |
+
+</div>
+
+{% include accordion title="Welcome Message" class="outline " controls="terminal-term-2" %}
+<div id="terminal-term-2" class="accordion_content" markdown="1">
+
+| definition | notes |
+|------------|-------|
+| The startup message when logging into a remote machine. | It usually tells you about the architecture of available resources and rules for the users. |
+
+</div>
+
+{% include accordion title="Prompt" class="outline " controls="terminal-term-3" %}
+<div id="terminal-term-3" class="accordion_content" markdown="1">
+
+| definition | notes |
+|------------|-------|
+| The text next to where you type your commands. | Prompts can be modified to include additional information like hostname or current folder location. |
+
+</div>
+
+{% include accordion title="Command-Line" class="outline " controls="terminal-term-4" %}
+<div id="terminal-term-4" class="accordion_content" markdown="1">
+
+| definition | notes |
+|------------|-------|
+| The specific place within the terminal interface where commands are entered. | Usually indicated by a blinking cursor next to the **prompt**, where users type commands to execute. |
+
+</div>
+
+</div>
+
+----
+
+### Shell (command interpreter)
+
+
+<div class="usa-accordion">
+
+{% include accordion title="Shell" class="outline " controls="shell-term-1" %} 
+<div id="shell-term-1" class="accordion_content" markdown="1">
+
+| definition | notes |
+|------------|-------|
+| The command interpreter that processes input and executes commands. | Examples include Bash, Zsh and PowerShell. Shells can be configured to use custom scripts and aliases. |
+
+</div>
+
+{% include accordion title="Bash" class="outline " controls="shell-term-2" %} 
+<div id="shell-term-2" class="accordion_content" markdown="1">
+
+| definition | notes |
+|------------|-------|
+| A popular Unix shell used for command processing. | Default shell for many Linux distributions; default shell on SCINet HPC. |
+
+</div>
+
+{% include accordion title="Command" class="outline " controls="shell-term-3" %} 
+<div id="shell-term-3" class="accordion_content" markdown="1">
+
+| definition | notes |
+|------------|-------|
+| An instruction issued to the interpreter to perform a specific action. | Commands can be specific to a given shell, interpreter or operating system. |
+
+</div>
+
+{% include accordion title="Standard Out" class="outline " controls="shell-term-4" %} 
+<div id="shell-term-4" class="accordion_content" markdown="1">
+
+| definition | notes |
+|------------|-------|
+| The text result of a command. | Use `> filename1` to redirect output into the file. Use `>> filename1` to append output to the end of a file. |
+
+</div>
+
+{% include accordion title="Standard Error" class="outline " controls="shell-term-5" %} 
+<div id="shell-term-5" class="accordion_content" markdown="1">    
+
+| definition | notes |
+|------------|-------|
+| The error message of a failed command. | Use `2> filename2` to redirect error message into the file. Use `2>> filename2` to append error message to the end of a file. |
+
+</div>
+
+{% include accordion title="Built-in commands" class="outline " controls="shell-term-6" %}
+<div id="shell-term-6" class="accordion_content" markdown="1">
+
+| definition | notes |
+|------------|-------|
+| Commands provided by the shell itself, not external executables. | Examples: `cd`, `echo`. These are processed directly by the shell without needing a system call to external binaries. |
+
+</div>
+
+{% include accordion title="Aliases" class="outline " controls="shell-term-7" %}
+<div id="shell-term-7" class="accordion_content" markdown="1">
+
+| definition | notes |
+|------------|-------|
+| Shortcuts for commands or command sequences. | Defined in the shell configuration, e.g., alias `ll='ls -l'`. |
+
+</div>
+
+{% include accordion title="Script" class="outline " controls="shell-term-8" %}
+<div id="shell-term-8" class="accordion_content" markdown="1">
+
+| definition | notes |
+|------------|-------|
+| A file containing a sequence of commands to be interpreted by a shell. | Used for automation of tasks. |
+
+</div>
+
+{% include accordion title="Environment Variable" class="outline " controls="shell-term-9" %}
+<div id="shell-term-9" class="accordion_content" markdown="1">
+
+| definition | notes |
+|------------|-------|
+| A dynamic value used by the shell or OS to store information like paths or configurations. | Examples: `PATH`, `HOME` or `USER`. |
+
+</div>
+
+{% include accordion title="Syntax" class="outline " controls="shell-term-10" %}
+<div id="shell-term-10" class="accordion_content" markdown="1">
+
+| definition | notes |
+|------------|-------|
+| The structure and rules for writing commands in the CLI environment. | Incorrect syntax often results in error messages. |
+
+</div>
+
+</div>
+
+----
+
+### Command line (input area)
+
+<div class="usa-accordion">
+
+{% include accordion title="Input Area" class="outline " controls="command-term-1" %} 
+<div id="command-term-1" class="accordion_content" markdown="1">
+
+| definition | notes |
+|------------|-------|
+| The section of the CLI where users type commands. | Usually indicated by a blinking cursor. |
+
+</div>
+
+{% include accordion title="Cursor" class="outline " controls="command-term-2" %} 
+<div id="command-term-2" class="accordion_content" markdown="1">
+
+| definition | notes |
+|------------|-------|
+| A visual indicator of the current typing position in the command line. | It blinks to show readiness for input. |
+
+</div>
+
+{% include accordion title="Command" class="outline " controls="command-term-3" %} 
+<div id="command-term-3" class="accordion_content" markdown="1">
+
+| definition | notes |
+|------------|-------|
+| An instruction issued to the interpreter to perform a specific action. | Commands can be specific to a given shell, interpreter or operating system. |
+
+</div>
+
+{% include accordion title="Argument" class="outline " controls="command-term-4" %} 
+<div id="command-term-4" class="accordion_content" markdown="1">
+
+| definition | notes |
+|------------|-------|
+| Input provided to a command to specify targets or parameters. | For instance, `ls /home` uses `/home` as an argument to the `ls` command. |
+
+</div>
+
+{% include accordion title="Flag" class="outline " controls="command-term-5" %} 
+<div id="command-term-5" class="accordion_content" markdown="1">    
+
+| definition | notes |
+|------------|-------|
+| A modifier that changes the behavior of a command. | Typically prefixed with a dash (`-`) or double dash (`--`). |
+
+</div>
+
+{% include accordion title="Pipes" class="outline " controls="command-term-6" %}
+<div id="command-term-6" class="accordion_content" markdown="1">
+
+| definition | notes |
+|------------|-------|
+| A mechanism to send the output of one command as input to another. | Represented by `|`, e.g., `ls | grep "file"` to filter the ls output for "file". |
+
+</div>
+
+{% include accordion title="Background Process" class="outline " controls="command-term-7" %}
+<div id="command-term-7" class="accordion_content" markdown="1">
+
+| definition | notes |
+|------------|-------|
+| A task running independently of the current shell session. | Commands are sent to the background using `&`. |
+
+</div>
+
+{% include accordion title="Foreground Process" class="outline " controls="command-term-8" %}
+<div id="command-term-8" class="accordion_content" markdown="1">
+
+| definition | notes |
+|------------|-------|
+| A task running in the current shell session. | Can be paused with `Ctrl+Z` or stopped with `Ctrl+C`. |
+
+</div>
+
+{% include accordion title="Exit Code" class="outline " controls="command-term-9" %}
+<div id="command-term-9" class="accordion_content" markdown="1">
+
+| definition | notes |
+|------------|-------|
+| A number returned by a command to indicate success or failure. | **0** typically means success, while non-zero codes indicate errors. |
+
+</div>
+
+</div>
+
 
 
 <div id="basic-alerts-1" class="highlighted highlighted--basic ">
