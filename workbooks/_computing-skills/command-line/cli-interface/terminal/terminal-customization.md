@@ -16,7 +16,7 @@ author: Aleksandra Badaczewska
 
 This interactive tutorial focuses on guiding you through the process of customizing terminal applications across different platforms 
 with practical instructions for adjusting your terminal window on SCINet clusters.  By understanding how to adjust themes, 
-configure tabs and panes, and modify appearance settings, you will create a tailored and efficient terminal environment to enhance your productivity and user experience.<br>
+configure tabs and panes and modify appearance settings, you will create a tailored and efficient terminal environment to enhance your productivity and user experience.<br>
 
 <div id="info-alerts-1" class="highlighted highlighted--info ">
     <div class="highlighted__body">
@@ -93,9 +93,17 @@ Organizing your terminal workflow by using multiple tabs or panes allows you to 
 1. Open a new tab with `Ctrl` + `Shift` + `T`.
 2. Switch tabs with `Ctrl` + `Tab` or use the mouse.
 3. Split panes:
-  - Use `Alt` + `Shift` `+ -` for horizontal or `Alt` + `Shift` `+ +` for vertical.
-  - Navigate between panes using `Alt` + Arrow Key.
+  - Use `Alt` + `Shift` + `-` for horizontal split.
+  - Use `Alt` + `Shift` + `+` for vertical.
+  - Navigate between panes using `Alt` + Arrow Key or use a mouse to point-and-click.
+4. Merge/close panes:
+  - Click on the pane you want to close to bring it into focus.
+  - Press `Ctrl` + `Shift` + `W` to close the pane.
+  - The remaining panes will automatically adjust to fill the space.
+5. Resize panes:
+  - Hold down `Alt` + `Shift`, then use the arrow keys to resize the focused pane.
 
+![Windows terminal tabs & panes](../assets/img/win_tabs-panes.gif)
 </div>
 
 {% include accordion title="Terminal.app (macOS)" class="outline " controls="tabs-panes-2" %}
@@ -111,10 +119,14 @@ Organizing your terminal workflow by using multiple tabs or panes allows you to 
 
 {% include accordion title="GNOME Terminal" class="outline " controls="tabs-panes-3" %}
 <div id="tabs-panes-3" class="accordion_content" markdown="1">
-1. Open a new tab with `Ctrl` + `Shift` + `T` or from the **File** menu.
-2. Switch between tabs using `Ctrl` + `PgUp/PgDn`.
+1. Open a new tab with `Ctrl` + `Shift` + `T` or by clicking the `+` button at the top bar or select `new Tab` from **File** menu.
+2. Switch between tabs using `Alt` + tab number, e.g., `1` or `2`.
+  ![Linux terminal tabs & panes](../assets/img/linux_tabs-panes.gif)
 3. Open a new pane:
   - Install `tmux` or use a terminal multiplexer to split panes inside the terminal.
+4. If **Menubar** is not visible by default, right-click inside terminal window and check `Show Menubar`. 
+  ![linux terminal menu bar](../assets/img/linux_terminal-menubar.png)
+  - The Menubar includes the following tabs: `File`, `Edit`, `View`, `Search`, `Terminal`, `Tabs` and `Help`.
 
 </div>
 
@@ -131,8 +143,30 @@ Each profile can have distinct themes, fonts or startup commands.
 
 {% include accordion title="Windows Terminal" class="outline " controls="profiles-1" %} 
 <div id="profiles-1" class="accordion_content" markdown="1">
-1. In **Settings**, under **Profiles**, click `Add a new profile`.
-2. Customize its appearance and commands.
+1. **Add a new Profile**
+  - Open `Settings` and navigate to the `Profiles` section.
+    - Click the `Add a new profile` button *(located at the bottom of the options menu on the left)*.
+    - Customize the profile's appearance and commands as desired.
+2. **Set up startup preferences**
+  - In `Settings`, click on `Startup` to configure basic terminal settings:
+    - **Default profile:** Choose the profile to load by default (e.g., PowerShell, Command Prompt, Azure Cloud Shell or any custom profile).
+    - **Default terminal application:** Select between `Windows Console` and `Windows Terminal`.
+    - Enable `Launch on machine startup` to automatically open the terminal when your machine starts.
+    - Adjust the `Launch (window) size` to set the terminal's initial dimensions.
+3. **Customize interaction settings**
+  - In `Settings`, navigate to `Interaction` to configure in-terminal behaviors:
+    - Enable `Automatically copy selection to clipboard` to copy text to the clipboard by default.
+    - Turn on `Remove trailing white-space` when copying and pasting.
+    - Enable `Automatically detect URLs` to make links clickable.
+    - Set warnings for closing multiple tabs, and configure additional interaction options.
+4. **Apply general settings to all profiles**
+  - In `Settings`, under `Defaults`, customize settings that apply to all profiles:
+    - Specify a   Starting directory` for new terminal sessions.
+    - Set a `Tab title` to pass to the shell on startup.
+    - Enable opening the terminal in an `Administrator Window` by default.
+    - Use the **Additional settings** section to fine-tune `Appearance` and other `Advanced` options.
+
+![Windows terminal profile](../assets/img/win_terminal-profiles.gif)
 </div>
 
 {% include accordion title="Terminal.app (macOS)" class="outline " controls="profiles-2" %}
@@ -145,8 +179,10 @@ Each profile can have distinct themes, fonts or startup commands.
 
 {% include accordion title="GNOME Terminal" class="outline " controls="profiles-3" %}
 <div id="profiles-3" class="accordion_content" markdown="1">
-1. Go to **Preferences** > **Profiles** > **New Profile**.
-2. Customize it and set it as default.
+1. Go to **Edit** > **Preferences** > **Profiles** > `+`.
+2. Rename a new prfile, customize it and set it as default.
+
+![Linux terminal profile](../assets/img/linux_terminal-profiles.png)
 </div>
 
 </div>
@@ -162,12 +198,16 @@ Customizing themes enhances visual clarity and comfort during extended usage.
 {% include accordion title="Windows Terminal" class="outline " controls="themes-1" %} 
 <div id="themes-1" class="accordion_content" markdown="1">
 1. Open **Settings** (click the down-arrow next to tabs or press `Ctrl` + `,`).
-2. Under **Profiles**, select the terminal profile (e.g., PowerShell, Command Prompt).
-3. Modify the **Appearance** section:
-  - Change the color scheme by selecting a pre-defined one (e.g., *One Half Dark*, *Solarized Dark*).
-  - Adjust the background image or opacity if desired.
+2. Customize the theme for the default profile:
+  - Under `Appearance`, elect `Application Theme` to work in dark or light mode.
+  - Under `Color schemes`, customize terminal background color.
+3. Under **Profiles**, select a specific profile to modify its appearance (e.g., PowerShell, Command Prompt).
+  - Under `Additional settings` modify the **Appearance** section:
+  - Change the `Color scheme` by selecting a pre-defined one (e.g., *One Half Dark*, *Solarized Dark*).
+  - Adjust the `Cursor`, `Background image`,  `text formatting` and `Transparency`, if desired.
 4. Save your changes.
 
+![Windows terminal theme](../assets/img/win_terminal-theme.gif)
 </div>
 
 {% include accordion title="Terminal.app (macOS)" class="outline " controls="themes-2" %}
@@ -180,18 +220,17 @@ Customizing themes enhances visual clarity and comfort during extended usage.
   - Adjust colors, text styles, and background transparency under **Text and Colors**.
   - Save your changes as a new profile.
 
-![terminal theme](../assets/img/mac_terminal-theme.png)
+![mac terminal theme](../assets/img/mac_terminal-theme.png)
 </div>
 
 {% include accordion title="GNOME Terminal" class="outline " controls="themes-3" %}
 <div id="themes-3" class="accordion_content" markdown="1">
-1. Open **Preferences** from the menu or right-click in the terminal and select **Preferences**.
-2. Select the profile you want to customize.
-3. Go to the **Colors** tab:
-  - Choose a built-in theme (e.g., *Tango*, *Solarized*).
-  - Enable or disable `Use dark theme`.
-  - Create a custom theme by toggling `Use colors from system theme` and selecting your own palette.
-4. Save your changes.
+1. Open **Preferences** from the `Edit` menu or right-click in the terminal and select **Preferences**.
+2. Select **General** tab in the left-sidebar.
+3. Select the **Theme variant**: `Default`, `Light` or `Dark`.
+4. Decide to open new terminal instances in a new window or as a tab.
+
+![Linux terminal theme](../assets/img/linux_terminal-theme.png)
 </div>
 
 </div>
@@ -206,8 +245,11 @@ You can select from predefined colors or set custom options to match your prefer
 
 {% include accordion title="Windows Terminal" class="outline " controls="terminal-bc-1" %} 
 <div id="terminal-bc-1" class="accordion_content" markdown="1">
-1. In **Settings** > **Profiles** > **Appearance**, choose a `Background image path`.
-2. Adjust transparency with the `Background image opacity` slider.
+1. In **Settings** > **Profiles** > **Color schemes**, choose a built-in color scheme or create a ne one.
+  ![terminal with semi-transparent background color](../assets/img/win_terminal-bc.png)
+
+2. Adjust transparency with the `Background opacity` slider.
+  ![terminal with semi-transparent background color](../assets/img/win_terminal-transparency.png)
 
 </div>
 
@@ -216,13 +258,19 @@ You can select from predefined colors or set custom options to match your prefer
 1. In **Terminal** > **Settings** > **Profiles** > **Text**, in `Background` section adjust `Color & Effects`.
 2. Set `Opacity` and `Blur` levels for semi-transparent effects.
 
-![terminal with semi-transparent background color](../assets/img/mac_terminal-bc.png)
+![mac terminal with semi-transparent background color](../assets/img/mac_terminal-bc.png)
 </div>
 
 {% include accordion title="GNOME Terminal" class="outline " controls="terminal-bc-3" %}
 <div id="terminal-bc-3" class="accordion_content" markdown="1">
-1. In **Preferences** > **Profiles** > **Colors**, toggle `Use transparent background`.
-2. Adjust the transparency slider to your preference.
+1. In **Preferences** > **Profiles** > `<selected Profile>`
+2. Go to the **Colors** tab:
+  - Choose a built-in schemes (e.g., `GNOME dark`).
+  - Select default color for `Text` and `Background`, also adjuct `Cursor` and `Highlight`.
+  - Or, create a custom theme by toggling `Use colors from system theme` and selecting your own palette.
+3. Toggle `Use transparent background` and adjust slider to your preference or `Use transparency from system theme`
+
+![Linux terminal with semi-transparent background color](../assets/img/linux_terminal-bc.png)
 </div>
 
 </div>
@@ -237,10 +285,11 @@ Choosing a suitable font can significantly improve coding or command-line produc
 
 {% include accordion title="Windows Terminal" class="outline " controls="terminal-font-1" %} 
 <div id="terminal-font-1" class="accordion_content" markdown="1">
-1. Open **Settings** > **Profiles** > **Appearance**.
-2. Scroll to **Font face** and select a font from the dropdown.
+1. Open **Settings** > **Defaults** > **Additional settings** > **Appearance**.
+2. Scroll to `Font face` and select a font from the dropdown.
 3. Adjust font size and weight as needed.
 
+![Windows terminal font size and color](../assets/img/win_terminal-font.gif)
 </div>
 
 {% include accordion title="Terminal.app (macOS)" class="outline " controls="terminal-font-2" %}
@@ -249,16 +298,18 @@ Choosing a suitable font can significantly improve coding or command-line produc
 2. Choose a font from the list or adjust the size and line spacing.
 3. Fonts like *Menlo* and *Monaco* are popular choices.
 
-![terminal font size and color](../assets/img/mac_terminal-font.png)
+![mac terminal font size and color](../assets/img/mac_terminal-font.png)
 </div>
 
 {% include accordion title="GNOME Terminal" class="outline " controls="terminal-font-3" %}
 <div id="terminal-font-3" class="accordion_content" markdown="1">
-1. Open **Preferences** and select your profile.
+1. Open **Edit** > **Preferences** and select your profile.
 2. Under the **Text** tab:
-  - Toggle `Custom font` and choose a font and size.
-  - Preview the changes live in the terminal.
-
+  ![Linux terminal font type and size](../assets/img/linux_terminal-font.png)
+  - Toggle `Custom font` and choose a font type and size.
+  - Adjuct `Cursor` features such as shape and blinking. 
+3. Under the **Colors** tab:
+  - Adjuct `Text` colors across categories (e.g., default text, cursor, highlight).
 </div>
 
 </div>
@@ -275,7 +326,9 @@ or running specific commands. Custom shortcuts streamline workflows and enhance 
 {% include accordion title="Windows Terminal" class="outline " controls="shortcut-1" %} 
 <div id="shortcut-1" class="accordion_content" markdown="1">
 1. In **Settings**, navigate to **Actions**.
-2. Edit existing key bindings or add custom shortcuts using JSON syntax.
+2. Edit existing key bindings or add custom shortcuts using `Add new` button.
+
+![Windows terminal shortcuts](../assets/img/win_terminal-shortcuts.gif)
 </div>
 
 {% include accordion title="Terminal.app (macOS)" class="outline " controls="shortcut-2" %}
@@ -287,16 +340,20 @@ or running specific commands. Custom shortcuts streamline workflows and enhance 
   - Save the new shortcut.
 3. *Example:* <br>
 You could create a shortcut to quickly clear the screen by assigning the action `"Send Text"` with the command `clear` and binding it to `Control` + `L`. 
-*Return to the Terminal window and use the shortcut to ensure it performs the desired action.*
+*Return to the Terminal and use the shortcut to ensure it performs the desired action.*
 
-![terminal shortcuts](../assets/img/mac_terminal_shortcut.png)
+![mac terminal shortcuts](../assets/img/mac_terminal-shortcuts.png)
 
 </div>
 
 {% include accordion title="GNOME Terminal" class="outline " controls="shortcut-3" %}
 <div id="shortcut-3" class="accordion_content" markdown="1">
-1. Go to **Preferences** > **Shortcuts**.
+1. Go to **Edit** > **Preferences** > **Shortcuts**.
 2. Customize key bindings for common actions like opening tabs or switching profiles.
+  - Double-click the `Shortcut Key` field corresponding to a selected `Action`. Press a new combination of keys on your keyboard.
+
+![Linux terminal shortcuts](../assets/img/linux_terminal-shortcuts.png)
+
 </div>
 
 </div>
@@ -304,10 +361,12 @@ You could create a shortcut to quickly clear the screen by assigning the action 
 
 ----
 
-## **SCINet terminal via OOD Shell Access in a web browser**
+## **SCINet terminal settings**
 
-The X HPC offers shell access via Open OnDemand (OOD), providing a straightforward interface with a few pre-defined theme options to choose from. 
-While advanced customization is not available compared to local terminals, selecting an optimal theme can enhance comfort and usability, 
+### OOD Shell Access in a web browser
+
+The SCINet HPC offers <a href="/computing-skills/command-line/cli-interface/concepts/cli-scinet-hpc#web-based-access-to-hpc-cli" target="_blank">shell access to Atlas and Ceres via Open OnDemand (OOD)</a>, providing a straightforward interface with a few pre-defined theme options to choose from. 
+While advanced customization is not available compared to terminals launched on a local machine, selecting an optimal theme can enhance comfort and usability, 
 offering a more tailored experience that accommodates diverse visual preferences and needs.
 
 ![scinet terminal theme default](../assets/img/scinet-terminal-ood.png)
@@ -318,11 +377,29 @@ offering a more tailored experience that accommodates diverse visual preferences
 <div class="highlighted__body">
 <h4 class="highlighted__heading">Learn more</h4>
 <p markdown="1">
-If you're unsure how to access the shell via the OOD web-based interface, follow the step-by-step instructions provided in the <a href="/computing-skills/command-line/cli-interface/concepts/cli-scinet-hpc#web-based-access-to-hpc-cli" target="_blank">Web-based access to SCINet CLI</a> tutorial. It will guide you through the process of logging in and launching the shell efficiently.</p>
+If you're unsure how to access the shell via the OOD web-based interface, follow the step-by-step instructions provided in the <a href="/computing-skills/command-line/cli-interface/concepts/cli-scinet-hpc#web-based-access-to-hpc-cli" target="_blank">Web-based access to SCINet CLI</a> tutorial. It will guide you through the process of logging in and launching the shell quickly.</p>
 <li><a href="/computing-skills/command-line/cli-interface/concepts/cli-scinet-hpc#access-ceres-cli-via-ood" target="_blank">Access Ceres CLI via OOD</a></li>
 <li><a href="/computing-skills/command-line/cli-interface/concepts/cli-scinet-hpc#access-atlas-cli-via-ood" target="_blank">Access Atlas CLI via OOD</a></li><br>
 <div markdown="1">
 ![quick shell access via SCINet OOD](../assets/img/odd-clusters-shell.png)
 </div>
+</div>
+</div>
+
+### SSH login in a local terminal 
+
+When you customize general settings (such as themes, fonts and transparency) for your terminal on a local machine, 
+these settings remain intact even when you <a href="/computing-skills/command-line/cli-interface/concepts/cli-scinet-hpc#command-line-access-to-hpc-cli" target="_blank">SSH into a SCINet HPC cluster (Ceres or Atlas)</a>. 
+However, certain visual elements like prompt coloring and file listing styles may not carry over, as these are shell-specific settings controlled by configurations on the cluster.
+
+![scinet terminal theme options](../assets/img/local-terminal-on-scinet.png)
+
+<div id="question-alerts-1" class="highlighted highlighted--question ">
+<div class="highlighted__body">
+<h4 class="highlighted__heading">Learn more</h4>
+<p markdown="1">
+To restore or customize these shell-specific settings on the cluster, you can modify your .bashrc (or equivalent shell configuration file).
+For detailed guidance on configuring your shell environment, refer to tuorial: <a href="/computing-skills/command-line/cli-interface/shell/shell" target="_blank">Shell customization with text coloring and prompt styling</a>.
+</p>
 </div>
 </div>
