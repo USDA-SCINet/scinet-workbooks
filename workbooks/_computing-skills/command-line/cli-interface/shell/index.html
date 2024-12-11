@@ -68,8 +68,8 @@ It also touches on PowerShell in Windows to provide a comparative understanding 
     {% include accordion title="Tools/Technologies" class="primary " controls="scope-tools" %} 
     <div id="scope-tools" class="accordion_content">
         <ul>
-            <li><b>Unix/Linux shells:</b>Bash, Zsh, Fish, tcsh, ksh</li>
-            <li><b>macOS:</b> ash <i>(default until macOS Catalina)</i>, Zsh <i>(default since macOS Catalina)</i></li>
+            <li><b>Unix/Linux shells:</b> Bash, Zsh, Fish, tcsh, ksh</li>
+            <li><b>macOS:</b> Bash <i>(default until macOS Catalina)</i>, Zsh <i>(default since macOS Catalina)</i></li>
             <li><b>Windows:</b> PowerShell, Command Prompt, Windows Subsystem for Linux (WSL) with Bash</li>
         </ul>
     </div>
@@ -80,7 +80,7 @@ It also touches on PowerShell in Windows to provide a comparative understanding 
             <li>Directly executing operating system commands via the CLI. Enabling cross-platform workflows.</li>
             <li>Automating repetitive tasks using shell scripts.</li>
             <li>Interacting with HPC systems and clusters for research workflows.</li>
-              <ul><li>Writing complex scripts for computational research.</li></ul>
+            <li>Writing complex scripts for computational research.</li>
             <li>Managing files, processes and user permissions.</li>
         </ul>
     </div>
@@ -118,15 +118,15 @@ It also touches on PowerShell in Windows to provide a comparative understanding 
 
 ### How the shell works?
 
-The shell is the program running inside a terminal window (CLI tool), which provides a text-based interface for a user-computer interaction. 
-CLI tools automatically load a default shell to process user commands and communicate with the underlying operating system. *For example:*
+The shell is the program running inside a [terminal](/glossary/#terminal) window, which provides a text-based interface for a user-computer interaction. 
+<a href="/computing-skills/command-line/cli-interface/terminal/" target="_blank">Terminal emulators</a> automatically load a default shell to process user commands and communicate with the underlying operating system. *For example:*
 - On Linux, `Bash` is often the default.
 - On Windows, `PowerShell` is standard.
 
 <div id="success-alerts-1" class="highlighted highlighted--success ">
 <div class="highlighted__body" markdown="1">
 <h4 class="highlighted__heading">Example</h4>
-When you open a terminal window, you'll see a blinking cursor, waiting for you to type commands. The shell will try to interpret anything you enter there. 
+When you open a terminal window <a href="/computing-skills/command-line/cli-interface/terminal/" target="_blank">(see tutorial)</a>, you'll see a blinking cursor, waiting for you to type commands. The shell will try to interpret anything you enter there. 
 1. You type a command (e.g., `ls`).
 2. The shell interprets the text-based command and communicates with the operating system.
 3. The operating system executes the corresponding processes and sends the result back to the shell.
@@ -157,9 +157,9 @@ Each shell type is tailored to different environments, but all perform the funda
 <div class="highlighted__body">
 <p markdown="1">
 PowerShell is the default shell on Windows systems, offering robust tools for managing Windows environments. 
-However, for cross-platform compatibility and skills that can be applied to high-performance computing (HPC) systems, it's beneficial to **switch to using Bash via the Windows Subsystem for Linux (WSL)**. 
+However, for cross-platform compatibility and skills that can be applied to high-performance computing (HPC) systems, it's beneficial to **switch to using Bash via the Windows Subsystem for Linux (WSL)** <a href="https://datascience.101workbook.org/02-computing-machine/01b-windows-setup/" target="_blank">(see a tutorial in DataScience workbook)</a>. 
 Bash is the default on most Linux systems, making it essential for interacting with Unix-like operating systems and HPC environments, including SCINet clusters. <br>
-The table below highlights key differences between PowerShell and Bash environments.
+*The table below highlights key differences between PowerShell and Bash environments.*
 </p>
 <div markdown="1">
 
@@ -204,7 +204,7 @@ When working with Unix shells, understanding key terms is essential. These terms
 
 | term    | definition | notes |
 |---------|------------|-------|
-| shell   | A `command interpreter` that processes user commands and sends them to the OS for execution. | Examples include Bash, Zsh and PowerShell. |
+| shell   | A `command interpreter` that processes user commands and sends them to the OS for execution. | Examples include `Bash`, `Zsh`, `tcsh`, `ksh`. |
 | prompt  | The text displayed by the shell indicating readiness to accept a command. | Often customizable and can include user, host, and current directory information. |
 | environment variable | A key-value pair used to store system or user-specific settings. | Examples include `PATH`, which defines the directories the shell searches for commands. |
 | `PATH`  | An environment variable specifying directories where the shell looks for executable commands. | Example: Adding a directory to `PATH` allows running commands from that directory directly. |
@@ -244,17 +244,14 @@ ls
 {% include accordion title="Interactive mode:" class="outline " controls="bash-feature-2" %}
 <div id="bash-feature-2" class="accordion_content" markdown="1">
 Running commands directly in real-time. Users type commands and the shell executes them immediately.
-```bash
-# list files in the current directory
-ls
-```
+![shell command line](../assets/img/shell-command-line.gif)
 </div>
 
 {% include accordion title="Batch mode:" class="outline " controls="bash-feature-3" %} 
 <div id="bash-feature-3" class="accordion_content" markdown="1">    
 Execute multiple commands or a script non-interactively for large-scale automation.
 
-*Example: Create a Bash script to run data analysis on multiple files. Save the code into the analyze_data.sh file.*
+*Example: Create a Bash script to run data analysis on multiple files. (Save the code below into the `analyze_data.sh` file.)*
 ```bash
 #!/bin/bash
 for file in *.csv; do
@@ -275,7 +272,7 @@ ls | grep "file" > output.txt
 
 {% include accordion title="Scripting:" class="outline " controls="bash-feature-5" %} 
 <div id="bash-feature-5" class="accordion_content" markdown="1">    
-Automate repetitive tasks by running a series of commands from a script file.
+Automate repetitive tasks by running a series of commands for different inputs from a script file.
 ```bash
 # a simple Bash script
 for file in *.txt; do echo "Processing $file"; done
@@ -398,11 +395,12 @@ filtering and organizing data in bioinformatics, geospatial research and other f
 Regardless of the platform, you can change the default shell with some effort, for example, to a Unix shell like Bash.
 Here's how to check which shell is currently in use across different platforms:
 
-| CLI tool | in Linux/macOS Terminal | in Windows Terminal/PowerShell | in WSL on Windows |
+|          | in Linux/macOS Terminal | in Windows Terminal/PowerShell | in WSL on Windows |
 |----------|-------------------------|--------------------------------|-------------------|
 | command  |  `echo $SHELL`          |  `$env:SHELL`                  | `wsl echo $SHELL` |
 | output   | The output will display the path to the current shell, such as `/bin/bash` or `/bin/zsh`. | Note that on Windows, this may not always return a value, as shells like Command Prompt or PowerShell may not use the `$SHELL` environment variable. | Once WSL is installed and activated, Bash commands should work as usual, just like in a native Linux environment. |
 
+![check the current shell](../assets/img/shell_check.png)
 
 ### Switching to Bash shell
 
