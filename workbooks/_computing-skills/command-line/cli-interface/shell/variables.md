@@ -89,7 +89,7 @@ It consists of:
 </div>
 </div>
 
-### Shell environment
+### Shell environment (components)
 
 The **shell environment** serves as the foundational context for running commands, determining how processes are executed and how the system interacts with your inputs. 
 Its primary purpose is to manage operational settings, such as `paths` to executable files and default behavior for commands. 
@@ -97,6 +97,97 @@ However, it also offers powerful customization options, allowing users to tailor
 On HPC systems, configuring the shell environment is particularly crucial, as it directly impacts the efficiency and correctness of settings for jobs submitted to computing nodes. 
 By understanding the environment components and customizing these settings, you can create a streamlined and robust environment for high-performance computing tasks on SCINet clusters.
 
+<div id="note-alerts-1" class="highlighted highlighted--tip ">
+<div class="highlighted__body" markdown="1">
+Understanding the **components** and **configuration options** of the shell environment is essential for ensuring efficient and error-free workflows in the command-line interface, particularly in high-performance computing (HPC) environments where setting additional variables is often required to successfully submit tasks to compute nodes.
+</div>
+</div>
+
+Here is a table outlining the significant components of a shell environment.
+
+| component                 | description | example | is customizable? | where to set/find it? |
+|---------------------------|-------------|---------|------------------|------------------|
+| shell prompt              | The command line interface displayed for user interaction, which can be customized. | `PS1="[\u@\h \W]\$ "` | yes | in a startup script, e.g., `.bashrc` |
+| history                   | A record of previously executed commands for reuse or reference. | `history` command or `.bash_history` file | N/A | `history` command or `.bash_history` file |
+| startup scripts           | Configuration files executed when a shell session starts, defining default settings. | `.bashrc`, `.bash_profile`, `.zshrc` | yes | in a Home directory: `cd ~` |
+| **environment variables** | Global variables that store **system-wide** settings, paths and configurations. | `PATH`, `HOME`, `USER`, `LD_LIBRARY_PATH` | some | in a startup script, e.g., `.bashrc` |
+| **shell variables**       | Local variables specific to the **current shell**, often used in shell scripts or interactive sessions. | `my_variable=anything` | yes | in a shell or in a script file |
+| aliases                   | Shortcuts or alternative names for longer or more complex commands. | `alias ll='ls -la'` | yes | in a startup script, e.g., `.bashrc` |
+| functions                 | User-defined scripts or commands stored in memory for quick execution. | `function greet() { echo "Hello"; }` | yes | in a startup script, e.g., `.bashrc` |
+| modules (on HPC)          | Dynamic adjustment of environment settings for software management on HPC systems. | `module load python` | no | on SCINet: `/apps/spack-managed/modulefiles/` |
+
+### Examples of practical applications
+
+By actively utilizing these components, work in the CLI, particularly on HPC systems, becomes more efficient and streamlined 
+because they allow you to save time and reduce errors by reusing commands, automating routine setups and simplifying access to essential tools and configurations.
+
+<div class="usa-accordion">
+
+{% include accordion title="reusing past commands" class="outline " controls="shell_env-1" %} 
+<div id="shell_env-1" class="accordion_content" markdown="1">
+Quickly rerun or adapt previously executed complex command pipelines using the command history, saving time and effort instead of retyping them.
+
+*Instead of retyping a long command like:*
+```
+grep -r 'error' /var/logs/ | sort | uniq > error_report.txt
+```
+*You can press the up arrow to select it from history or click `Ctrl+R` followed by a keyword (e.g., grep) to browse only relevant commands.*
+</div>
+
+{% include accordion title="streamlining access to long paths" class="outline " controls="shell_env-2" %}
+<div id="shell_env-2" class="accordion_content" markdown="1">
+Set and use environment variables to store often-used paths or configurations, allowing them to be accessed with a single word rather than typing long, repetitive paths.
+
+*Instead of typing a full directory path each time:*
+```
+cd /project/$USER/myproject/data/analysis/
+```
+*You can set it as a variable:*
+```
+DATA_PATH="/project/$USER/myproject/data/analysis/"
+cd $DATA_PATH
+```
+</div>
+
+{% include accordion title="simplifying frequent commands with aliases" class="outline " controls="shell_env-3" %}
+<div id="shell_env-3" class="accordion_content" markdown="1">
+Use aliases to simplify frequently used commands, such as turning `ls -la` into `ll`, improving speed and reducing typing errors.
+
+*Replace repetitive typing:*
+```
+ls -la --color=auto
+```
+*With an alias:*
+```
+alias ll='ls -la --color=auto'
+```
+*Now, simply type:*
+```
+ll
+```
+</div>
+
+{% include accordion title="loading tools pre-installed on HPC" class="outline " controls="shell_env-4" %}
+<div id="shell_env-4" class="accordion_content" markdown="1">
+Load necessary software and libraries in seconds using HPC modules (`module load python`), avoiding the lengthy process of manual installation or compilation.
+
+*Instead of manually installing software, quickly load it with a module command:*
+```
+module load python
+```
+*This provides immediate access to preinstalled python programming language, saving time and avoiding installation errors.*
+</div>
+
+{% include accordion title="customizing the prompt for improved user's experience" class="outline " controls="shell_env-5" %}
+<div id="shell_env-5" class="accordion_content" markdown="1">
+Adjust the shell prompt to display useful information, such as the current directory or HPC node name:
+```
+PS1="[\u@\h \W]\$ "
+```
+Results in a prompt like: `[user@hpc-node ~]$`, keeping you aware of your context.
+</div>
+
+</div>
 
 
 ## Configuration
