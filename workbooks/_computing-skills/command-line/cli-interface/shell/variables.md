@@ -4,10 +4,10 @@ title: Using environment and shell variables
 description: "Key principles of defining, accessing and usage scenarios of environment and shell variables in SCINet CLI"
 type: interactive tutorial
 order: 2
-tags: [UNIX]
+tags: [UNIX, shell, environment, variables, $PATH, $LD_LIBRARY_PATH, $HOME, $USER, JOBID, .bashrc]
 packages: 
 level: 
-author: 
+author: Aleksandra Badaczewska 
 
 ---
 
@@ -410,7 +410,7 @@ salloc -N1 -n1 -t 1:00:00 -A <scinet-account>           # request an interactive
 * *Are there any SLURM-specific variables present, such as `SLURM_JOBID` or `SLURM_NTASKS` that indicate a job is running on a compute node?*
 </div>
 
-{% include accordion title="Practical Uses of $USER and $HOME for daily work on HPC" class="outline" controls="environment-var2" %} 
+{% include accordion title="Practical uses of $USER and $HOME for daily work on HPC" class="outline" controls="environment-var2" %} 
 <div id="environment-var2" class="accordion_content" markdown="1">
 Navigate to your home directory quickly:
 ```bash
@@ -453,7 +453,7 @@ ln -s /project/<your-scinet-project>/$USER/my_script.sh $HOME/
 *Useful for collaboration or to physically store large files in a project while having them accessible directly from home.*
 </div>
 
-{% include accordion title="Modify PATH for custom software" class="outline" controls="environment-var3" %} 
+{% include accordion title="Modify $PATH for custom software" class="outline" controls="environment-var3" %} 
 <div id="environment-var3" class="accordion_content" markdown="1">    
 You can add a custom software directory to your `PATH` using the `export` statement, ensuring executables in that directory can be run directly from any location in the file system.
 * Temporary for the current session (expires when the session ends):
@@ -468,7 +468,7 @@ source ~/.bashrc
 *This ensures the change is permanent across future shell sessions. The use of `echo` combined with appending (`>>`) and immediately sourcing the `.bashrc` is a common and effective approach.*
 </div>
 
-{% include accordion title="Check or change a default SHELL" class="outline" controls="environment-var4" %} 
+{% include accordion title="Check or change a default $SHELL" class="outline" controls="environment-var4" %} 
 <div id="environment-var4" class="accordion_content" markdown="1">    
 First, check which shells are available on an HPC system before changing the default:
 ```bash
@@ -612,7 +612,7 @@ These variables provide details about the platform architecture, current session
 
 ##  Viewing variables
 
-Variables are defined as name=value pairs, where the value can be retrieved by referencing the variable name with a $ prefix (e.g., `$HOME`). This applies to both shell and environment variables across most Unix-based shells.
+Variables are defined as `name=value` pairs, where the value can be retrieved by referencing the variable name with a `$` prefix (e.g., `$HOME`). This applies to both shell and environment variables across most Unix-based shells.
 
 **Display a value of the selected variable:**
 ```bash
@@ -724,7 +724,7 @@ and refresh the current shell session by applying changes from the configuration
 source ~/.bashrc
 ```
 
-## **Debugging common issues**
+## **Troubleshooting common issues**
 
 When working on HPC clusters, issues related to environment variables can lead to software errors, missing executables, or misconfigured jobs. This section explores common problems reported by users on SCINet clusters and provides practical debugging techniques to diagnose and resolve them effectively.
 
@@ -763,7 +763,7 @@ First, ensure that your executable file exist and find its location in the file 
 ![missing_executable_path](../assets/img/missing_executable_path.png)
 **Common Cause:** If the executable file exists, the `PATH` variable may not include the directory where the executable resides.
 ```bash
-echo $PATH        # outputs an empty line
+echo $PATH        # tool's path not present among listed locations
 ```
 ![missing_executable_path](../assets/img/missing_executable_path2.png)
 
@@ -783,7 +783,10 @@ By adding a tool's directory to the `PATH` variable, the shell automatically sea
 
 {% include accordion title="Error while loading shared libraries: $LD_LIBRARY_PATH" class="outline" controls="var-debug-3" %} 
 <div id="var-debug-3" class="accordion_content" markdown="1">    
-**SYMPTOMS:** Errors such as `error while loading shared libraries` or `unable to load shared object` often indicate library path issues caused by missing (or not linked) required libraries in the specified search paths. Typically, the concern is a missing .so (shared object) file, which should first be located on the system, and its directory path checked for inclusion in the `LD_LIBRARY_PATH` variable.
+**SYMPTOMS:** Errors such as `error while loading shared libraries` or `unable to load shared object` often indicate 
+library path issues caused by missing (or not linked) required libraries in the specified search paths. 
+Typically, the concern is a missing `.so` (shared object) file, which should first be located on the system, 
+and its directory path checked for inclusion in the `LD_LIBRARY_PATH` variable.
 ![missing_shared_library](../assets/img/missing_shared_library.png)
 
 **SOLUTIONS:** <br>
@@ -821,8 +824,10 @@ done
 
 {% include accordion title="Variable works interactively but fails in batch jobs or scripts" class="outline" controls="var-debug-5" %} 
 <div id="var-debug-5" class="accordion_content" markdown="1">    
-**SYMPTOMS:** A variable works correctly when defined in an interactive session in the command line but fails to persist in batch jobs or scripts, often leading to errors like `variable not defined` or unexpected empty values during execution. <br>
-**CAUSE:** This occurs when the variable is defined locally in the shell but not exported to the environment, preventing it from being inherited by subshells or child processes.
+**SYMPTOMS:** A variable works correctly when defined in an interactive session in the command line but fails to persist in batch jobs or scripts, 
+often leading to errors like `variable not defined` or unexpected empty values during execution. <br>
+**CAUSE:** This occurs when the variable is defined locally in the shell but not exported to the environment, 
+preventing it from being inherited by subshells or child processes.
 
 **SOLUTIONS:** <br>
 Use `export` to make a variable available to child processes:
@@ -842,8 +847,10 @@ source ~/.bashrc
 
 {% include accordion title="Variables not persisting across sessions" class="outline" controls="var-debug-6" %} 
 <div id="var-debug-6" class="accordion_content" markdown="1">    
-**SYMPTOMS:** Custom variables work as expected during a shell session but need to be redefined after logging out or starting a new terminal session, causing repeated manual configuration.
-**CAUSE:** This happens because variables set in the current shell are temporary and not saved in the user's startup files, preventing them from being automatically available in new sessions.
+**SYMPTOMS:** Custom variables work as expected during a shell session but need to be redefined after logging out or 
+starting a new terminal session, causing repeated manual configuration. <br>
+**CAUSE:** This happens because variables set in the current shell are temporary and not saved in the user's startup files, 
+preventing them from being automatically available in new sessions.
 
 **SOLUTIONS:** <br>
 Add the `export` statement to your shell startup file (`~/.bashrc`) to perist a variable for future shell sessions:
@@ -856,7 +863,9 @@ source ~/.bashrc
 
 {% include accordion title="Standard commands stop working after modifying $PATH or $LD_LIBRARY_PATH" class="outline" controls="var-debug-7" %} 
 <div id="var-debug-7" class="accordion_content" markdown="1">    
-**SYMPTOMS:** Standard commands like `ls`, `grep` or `python` fail with errors such as `command not found` or behave unexpectedly after modifying the `PATH` or `LD_LIBRARY_PATH` variables. This issue occurs when the original system paths are overwritten instead of extended, causing essential system directories to be excluded from the search path.
+**SYMPTOMS:** Standard commands like `ls`, `grep` or `python` fail with errors such as `command not found` or 
+behave unexpectedly after modifying the `PATH` or `LD_LIBRARY_PATH` variables. This issue occurs when the original system paths 
+are overwritten instead of extended, causing essential system directories to be excluded from the search path.
 
 | <span style="color: red">Incorrect Example</span> | Correct Approach |
 | --                | --               |
@@ -865,12 +874,13 @@ source ~/.bashrc
 | `export LD_LIBRARY_PATH=/custom/lib` | `export LD_LIBRARY_PATH=/custom/lib:$LD_LIBRARY_PATH` |
 
 **SOLUTIONS:** <br>
-**A.** Restore Defaults Manually: Reset the variables to standard defaults typical for HPC clusters.
+**A.** Restore defaults manually: Reset the variables to standard defaults typical for HPC clusters.
 ```bash
 export PATH=/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin
 export LD_LIBRARY_PATH=/usr/local/lib:/usr/lib
 ```
-**B.** Contact VRSC: If unsure about the standard paths or if the issue persists, contact SCINet support team (scinet_vrsc@usda.gov) to reset the affected built-in variables to their default state.
+**B.** Contact VRSC: If unsure about the standard paths or if the issue persists, contact SCINet support team (**scinet_vrsc@usda.gov**) 
+to reset the affected built-in variables to their default state.
 
 </div>
 
