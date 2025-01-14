@@ -402,6 +402,33 @@ Here's how to check which shell is currently in use across different platforms:
 
 ![check the current shell](../assets/img/shell_check.png)
 
+
+### Shells on SCINet clusters
+
+List all shells installed on SCINet clusters:
+```bash
+cat /etc/shells
+```
+*On Ceres you should see:* <br>
+`/bin/sh`, `/bin/bash`, `/usr/bin/sh`, `/usr/bin/bash`, `/usr/bin/tmux`, `/bin/tmux`, `/usr/bin/zsh`, `/bin/zsh`, `/bin/csh`, `/bin/tcsh`, `/usr/bin/csh`, `/usr/bin/tcsh`, `/bin/ksh`, `/bin/rksh`, `/usr/bin/ksh`, `/usr/bin/rksh`
+
+| Path | Description |
+| --   | --          |
+| `/bin/sh`, `/usr/bin/sh`     | **Bourne Shell** (sh)  - The original Unix shell, basic and minimal, often a symbolic link to other modern shells like `bash` for compatibility purposes. |
+| `/bin/bash`, `/usr/bin/bash` | **Bourne Again Shell** (bash) - A <u>widely used modern shell</u> derived from `sh`, featuring enhanced scripting capabilities, command history and job control. |
+| `/usr/bin/zsh`, `/bin/zsh`   | **Z Shell** (zsh) - An <u>advanced shell</u> with extensive features like powerful auto-completion, plugins, and themes. Often paired with Oh My Zsh for customization. |
+| `/bin/csh`, `/usr/bin/csh`   | **C Shell** (csh) - A shell with C-like syntax, designed for interactive use. Less common for scripting due to syntax limitations. |
+| `/bin/tcsh`, `/usr/bin/tcsh` | **TC Shell** (tcsh) - An enhanced version of `csh` with additional scripting features and better interactive use support. |
+| `/bin/ksh`, `/usr/bin/ksh`   | **Korn Shell** (ksh) - A scripting-focused shell combining features of `sh` and `csh`, widely used in enterprise environments. |
+| `/bin/rksh`, `/usr/bin/rksh` | **Restricted Korn Shell** (rksh) - A restricted version of `ksh` that limits certain features for controlled environments, often for security purposes. |
+| `/usr/bin/tmux`, `/bin/tmux` | **tmux** (Terminal Multiplexer) - A <u>terminal multiplexer</u> allowing multiple terminal sessions in one window, commonly used in HPC environments for session persistence. |
+
+**Key Differences and Uses:**
+- `bash` and `zsh`: Most commonly used for interactive sessions and scripting today. zsh is popular for modern shell customization.
+- `sh`, `csh`, `ksh`: Often found in legacy systems or minimal Unix environments.
+- `rksh`: Used for restricted environments where limited user control is necessary.
+- **tmux**: <u>Not a shell</u> but a terminal multiplexer useful for persistent sessions in HPC environments.
+
 ### Switching to Bash shell
 
 
@@ -439,6 +466,11 @@ wsl --install -d Ubuntu
   ```
   ![change shell](../assets/img/shell_change.png)
   *You may need to log out and back in for the change to take effect. You can see the shell name in your prompt and Terminal title.*
+</div>
+
+{% include accordion title="SCINet HPC" class="outline " controls="bash-3" %}
+<div id="bash-3" class="accordion_content" markdown="1">
+Simply type `/bin/bash` into the terminal and press `Enter` **to start a Bash session**.
 </div>
 
 </div>
