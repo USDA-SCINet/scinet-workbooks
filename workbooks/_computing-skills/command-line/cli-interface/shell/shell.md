@@ -61,10 +61,10 @@ This tutorial offers a comprehensive, hands-on guide to customizing shell enviro
 
 {% include accordion title="Applications" class="primary " controls="scope-apps" %} 
 <div id="scope-apps" class="accordion_content" markdown="1">    
-* **Text styling for readability:** Enhance terminal output with colored text for better visibility of errors, warnings, and key results.
+* **Text styling for readability:** Enhance terminal output with colored text for better visibility of errors and key results.
 * **Prompt customization for productivity:** Design a dynamic shell prompt that displays essential details like the current working directory, username and Git branch.
 * **Persistent customization:** Apply long-term shell modifications by editing shell configuration files.
-* **Troubleshooting in shell setups:** Identify and fix issues like broken prompts, incorrect ANSI sequences and compatibility errors.
+* **Troubleshooting in shell setups:** Identify and fix issues like broken prompts or incorrect ANSI sequences.
 </div>
 </div>
 
@@ -135,14 +135,14 @@ Beyond text coloring and prompt styling, you can also customize other shell comp
 
 <div id="note-alerts-1" class="highlighted highlighted--note ">
 <div class="highlighted__body" markdown="1">
-The shell prompt is the text that appears before you type a command in the terminal. It updates dynamically with user actions, such as changing directories. Personalizing it allows you to display helpful system information directly to improve clarity and usability, especially in complex computing environments like HPC clusters.
+The shell prompt is the text that appears before you type a command in the terminal. It updates dynamically with user actions, such as changing directories. Personalizing it allows you to display helpful system information directly to improve clarity and usability, especially in advanced computing environments like HPC clusters.
 ![default_prompt](../assets/img/default_prompt.png)
 </div>
 </div>
 
-**Prompt Structure**
+### *Prompt Structure*
 
-The shell prompt is a string displayed in the terminal before the cursor where you type commands. Its behavior and appearance are controlled by the `PS1` (Prompt String 1) **variable** in most Unix shells like Bash and Zsh.
+The shell prompt is a string displayed in the terminal before the cursor where you type commands. Its behavior and appearance are controlled by the **PS1 variable** *(Prompt String 1)* in most Unix shells like Bash and Zsh. This variable is composed of **colored elements that dynamically update with information** like the `username`, `hostname` and `current directory`, using a combination of placeholders and ANSI escape codes for customization.
 ```
 [alex.badacz@atlas-login-1 ~]$
 [username@hostname workdir]$
@@ -153,84 +153,216 @@ The default shell prompt typically displays:
 - **Current working directory:** The directory where commands will be executed.
 - **Prompt symbol:** `$` for a regular user and `#` for the root user.
 
+### *Prompt Elements*
 
-**Prompt Elements**
+Prompt elements are placeholders that dynamically display useful system information, such as the username, hostname, current directory and time, helping users to **customize the prompt for better context and usability**. A few predefined shortcuts, prefixed with a backslash (`\`), provide a quick way to insert these elements, making it easier to personalize the prompt efficiently. These elements can be further organized using separators, such as colons (`:`) and spaces, to improve readability, while the prompt marker, such as `$` for regular users and `#` for root, serves as a starting point for entering commands.
+
+**Dynamic Placeholders**
 
 | Element | Description | Example output |
 | --      | --          | --             |
-| `\u`    | Username    | john |
-| `\h`    | Hostname (system name) | compute-node1 |
-| `\w`    | Current working directory (full path) | /home/john |
-| `\W`    | Current working directory (basename only) | john   |
-| `\t` or `\T` | Current time in HH:MM:SS format | 14:35:22 |
-| `\$`    | Display `$` for normal users and `#` for root | $ or # |
+| `\u`    | Username    | `alex.badacz` |
+| `\h`    | Hostname (system name) | `atlas-login-1` |
+| `\H`  	| Full hostname (including domain) | `atlas-login-1.example.com` |
+| `\w`    | Current working directory (full path) | `/home/alex.badacz` |
+| `\W`    | Current working directory (basename only) | `alex.badacz` or `~` |
+| `\t`    | Current time in HH:MM:SS format (24-hour) | `14:35:22` |
+| `\T`    | Current time in HH:MM:SS format (12-hour) | `02:35:22` |
+| `\d`    | Current date in Weekday Month Date format	| `Mon Jan 15` |
+| `\j`    | Number of jobs currently managed by the shell | `3` |
+| `\l`    | Current terminal device (tty) | `pts/0` |
+| `\n`    | Newline (starts a new line in the prompt) | (New line) |
+| `\s`    | Name of the shell | `bash` |
+| `\v`    | Version of the shell | `5.1.8` |
+| `\V`    | Detailed version of the shell | `5.1.8(1)-release` |
+| `\!`    | Command history number | `123` |
+| `\#`    | Command number in the current session | `45` |
+| `\$`    | Typical prompt marker; shows `$` for normal users and `#` for root | `$` or `#` |
+| `\\`    | Backslash character `\` | `\` |
 
-**Prompt Colors**
+**Separators and Markers**
 
-You can modify text colors and effects in the prompt using **ANSI escape codes**. These codes use the `\e` (escape) character, followed by a color code.
+| Element | Description | Example output |
+| --      | --          | --             |
+| `@`     | Typically used as a separator betwwen user and hostname, e.g., `\u@\h`         | `alex.badacz@atlas-login-1` |
+| `:`     | Typically used as a separator between hostname and workdir path, e.g., `\h:\W` | `atlas-login-1:~`
+| space   | A white character like space or tab is used as elements separator to increase readability, e.g., `\d \u` | `16:33:09 alex.badacz` |
+| `[` `]` | Brackets are used for enhanced clarity and visibility, e.g., `[\d] \u`       | `[16:33:09] alex.badacz` |
 
-| Escape code | Effect     | Example use |
-| --          | --         | --          |
-| `\e[31m`    | Red text   | `\e[31mError!` |
-| `\e[32m`    | Green text | `\e[32mSuccess!` |
-| `\e[1m`     | Bold text  | `\e[1mImportant!` |
-| `\e[0m`     | Reset (clears all styling) | `\e[0m` *(back to normal)* |
 
-**Example:**
+<div id="note-alerts-1" class="highlighted highlighted--highlighted ">
+<div class="highlighted__body" markdown="1">
+The `\$` is used instead of `$` because the dollar sign has a special meaning in the shell, representing variables and commands, so escaping it (`\$`) ensures it is displayed literally in the prompt, whereas @ does not have special meaning and can be used directly as a separator.
+</div>
+</div>
+
+### *Prompt Variable:* `PS1`
+
+Prompt behavior and appearance are controlled by the *Prompt String 1*, i.e., the `PS1` **shell variable**, in most Unix shells like Bash and Zsh. It is defined like any other shell variable, with a string value assigned to the variable name. This string is composed of placeholders that represent various [prompt elements](#prompt-elements) dynamically updated by the shell.
+
+```
+PS1="[\u@\h \W]\$ "
+```
+*This will display the prompt in the format explained above, i.e.,* `[username@hostname workdir]$ ` *for example:*
+```
+[alex.badacz@atlas-login-1 ~]$ 
+```
+*This is a typical default mono-color prompt found on many computing machines, including HPC systems.*
+
+<div id="note-alerts-1" class="highlighted highlighted--tip ">
+<div class="highlighted__body" markdown="1">
+Users can [personalize PS1](#ps1-customization) to better suit their needs by modifying its appearance: adjusting the text content, elements order and adding colors.
+</div>
+</div>
+
+### *Prompt Colors & Effects*
+
+You can modify text colors and effects in the prompt using [**ANSI escape codes** *(see full list)*](#ansi-escape-codes). These codes use the `\e` (escape) character, followed by a color code. Text placed immediately after an ANSI escape code will take on the desired color or effect, and the sequence should always be terminated with the reset code (`\e[0m`) to revert to normal formatting. 
+
+*You can test ANSI color codes followed by custom text in the terminal using the `echo -e` command (with single quotes `''`) before applying them to your custom `PS1` prompt configuration.*
+
+| Escape code | Effect     | Example code      | Code for testing in a terminal | 
+| --          | --         | --                | --           |
+| `\e[31m`    | <span style="color: red;">Red text</span>   | `\e[31mError!`    | `echo -e '\e[31mError!\e[0m'` |
+| `\e[32m`    | <span style="color: green;">Green text</span> | `\e[32mSuccess!`  | `echo -e '\e[32mSuccess!\e[0m'` |
+| `\e[1m`     | **Bold text**  | `\e[1mImportant!` | `echo -e '\e[1mImportant!\e[0m'` |
+| `\e[0m`     | Reset (clears all styling) | `\e[0m` *(back to normal)* | - |
+
+![ansi-simple-examples](../assets/img/ansi-simple-examples.png)
+
+**Example of single-colored PS1:**
 ```bash
 PS1="\e[32m\u@\h:\w\$ \e[0m"
 ```
-*Output: Green username, hostname, and working directory, with a default `$` prompt.*
+- placeholders: `\u` for username, `\h` for hostname and `\w` for current directory
+- ANSI escape sequences `\e[32m` for green text and `\e[0m` to resets text formatting at the end of the prmpt syntax
 
-- Variables (\u for username, \w for current directory).
-- Escape Sequences (\e[32m for green text).
-- Multiline prompts and dynamic content.
+*Output: Green prompt string including username, hostname and working directory, with a default `$` prompt marker.*
+![green-prompt-example](../assets/img/green-prompt-example.png)
 
-### PS1 customization
+<div id="note-alerts-1" class="highlighted highlighted--highlighted ">
+<div class="highlighted__body" markdown="1">
+Inserting escape codes start formatting from the point they appear and continue until they are explicitly reset using the reset code (`\e[0m`). Each escape code applies a specific color or style to the text that follows, and without resetting, the effect persists across the entire prompt or command output.
+
+</div>
+</div>
+
+**Example of multi-colored PS1:**
+```bash
+PS1="\e[32m\u\e[0m@\e[34m\h\e[0m:\e[33m\w\e[0m\$ "
+```
+To analyze this PS1 setting, start by splitting the syntax at every `\e[0m`, which will reveal the number of sections with different colors:
+
+| syntax    | **\e[32m\u\e[0m**  | **@** | **\e[34m\h\e[0m** | **:** | **\e[33m\w\e[0m**  | **\$**  |
+| --        | --                 | --  | --                  | --    | --                 | --      |
+| ANSI code | `\e[32m` , `\e[0m` | -   | `\e[34m` , `\e[0m`  | -     | `\e[33m` , `\e[0m` | -       |
+| dynamic element | `\u`         | -   | `\h`                | -     | `\w`               | -       |
+| formatting    | green username | default @ | blue hostname | default : | yellow workdir | default $ |
+| output    | <span style="color:green;">alex.badacz</span> | @ | <span style="color:blue;">atlas-login-2</span> | : | <span style="color:yellow; background-color:black;">~</span> | $ |
+
+Then, within each section, identify the [ANSI color code](#ansi-escape-codes) (e.g., `\e[32m` for green), followed by the [placeholder](#prompt-elements) (e.g., `\u` for username), and any literal characters (`@, :`) that separate elements.
+
+
+### **PS1 customization**
 
 `PS1` (Prompt String 1) is the primary shell prompt variable that defines how the prompt appears in interactive shell sessions.
 
-Customizing PS1:
-- Improve visibility and readability.
-- Display essential information like time, username, and working directory.
-- Add visual separation between commands and results.
+Here are some key reasons for customizing the PS1 prompt:
+- **Enhanced Readability:** Organize prompt elements to make it easier to read and distinguish information at a glance.
+- **Increased Productivity:** Quickly access relevant details such as the current directory, username or system time.
+- **Error Prevention:** Clearly indicate important information such as root privileges to avoid accidental destructive commands.
+- **Context Awareness:** Differentiate between environments by customizing prompt colors or markers.
+- **Personalization:** Tailor the prompt's appearance with colors and symbols to reflect personal preferences and workflow style.
 
-#### Creating a basic custom Prompt
+<div class="usa-accordion">
+<h4>Examples of practical applications</h4>
 
-You can set a basic, colorful prompt by directly modifying the `PS1` variable in the terminal.
+{% include accordion title="Display useful dynamic information ::: (hostname, workdir, date and time)" class="outline" controls="ps1-custom-1" %}
+<div id="ps1-custom-1" class="accordion_content" markdown="1">
+
+Learn [built-in placeholders](#prompt-elements) to include essential elements:
+* user, hostname and absolute path to a workdir:
 ```bash
-PS1="\e[34m[\u@\h:\w]\$ \e[0m"
+PS1="\u@\h:\w\$ "             # alex.badacz@atlas-login-2:~/geo_data$
 ```
-*Output: Blue username and working directory, with a default `$` sign for standard user, `#` for root.*
+* simplify to a basename of a workdir: 
+```bash
+PS1="\u:\W\$ "                # alex.badacz:geo_data$
+```
+* add date and time:
+```bash
+PS1="\d \t @\h\$ "            # Tue Jan 21 13:51:39 @atlas-login-2$
+```
+*(OUTPUT: basic, colorless prompt built with various elements)*
+![basic_prompt_examples](../assets/img/basic_prompt_example.png)
 
 Exercise: 
 - Display time, user and working directory with colors.
 
-#### Make customized PS1 permanent
+</div>
 
-To save prompt customization, add the `PS1` definition to your `~/.bashrc` or `~/.zshrc` file.
+{% include accordion title="Improve visibility and readability ::: (arrange elements, add separators, symbols and emojis)" class="outline" controls="ps1-custom-2" %}
+<div id="ps1-custom-2" class="accordion_content" markdown="1">
 
-### Advanced prompt customization
+The PS1 variable can include custom text to enhance readability and organization. Enhance your prompt by rearranging elements and using separators to improve clarity and ease of use. Also, make your terminal experience more engaging and enjoyable with creative use of colors, icons and symbols.
 
-#### Incorporating Git integration
+* use common separators:
+  - spaces after the prompt marker (`$`) to separate prompt and command line
+  - colons (`:`) to separate elements like the hostname and working directory
+  - at (`@`) to separate elements like the user and hostname
 
-You can display the current Git branch and its status directly in your prompt for development efficiency.
 ```bash
-PS1='\u@\h:\w $(git branch 2>/dev/null | grep "*" | sed "s/* //")\$ '
+PS1="\u\h\W\$"              # alex.badaczatlas-login-2geo_data$
+# compare to:
+PS1="\u@\h:\W\$ "           # alex.badacz@atlas-login-2:geo_data$ 
 ```
-*Output: Shows the current branch when inside a Git repository.*
+*These customizations help create a prompt that is both informative and easy to read.*
+![ps1_custom_text](../assets/img/ps1_custom_text.png)
 
-#### Adding emojis and symbols
+* use visual aids to make your prompt more intuitive:
+  - Unicode symbols for better visibility
+  - emojis to make the prompt visually engaging
 
-You can use Unicode symbols for better visibility and emojis to make the prompt visually engaging.
 ```bash
-PS1="\u@\h:\w 🔥 \$ "
+PS1="\u ⚡ \h ➜ \w \$ "  
+PS1="\u@\h:\w 🔥 "
+PS1="👨‍💻 @\h 📂 \W \$ "
 ```
-*Output: john@server:/home/john 🔥 $*
+*These customizations improve the user experience by making it easier to quickly locate relevant information.*
+![ps1_custom_engaging](../assets/img/ps1_custom_engaging.png)
+</div>
 
-#### Making the Prompt dynamic
-- Changing the prompt based on exit codes.
+{% include accordion title="Personalize the prompt marker ::: (use any symbol or emoji)" class="outline" controls="ps1-custom-3" %}
+<div id="ps1-custom-3" class="accordion_content" markdown="1">
 
-Exercise:
-- Create a Fully Customized Prompt showing username, working directory, git status and last command exit code with colors.
+Modify the default prompt marker (`$`) by using alternative symbols such as `#`, `>`, `|` or even emojis (⚡ 🔸 🔥 🎯 🛠️) to make the prompt more visually appealing and easier to separate it from the command line.
+```bash
+PS1="\u: \W > "              # using alterante character as prompt marker >
+PS1="\u: \W ⇨ "              # using arrow symbol as prompt marker
+PS1="\u: \W 🎯 "             # using emoji as prompt marker
+PS1="\u: \W  ✅ "            # using checkmark as prompt marker
+```
+*Custom prompt markers can personalize your shell and enhance readability or distinguish between different environments.*
+![ps1_custom_marker](../assets/img/ps1_custom_marker.png)
+</div>
+
+{% include accordion title="Enhance prompt with colors ::: (apply ANSI escape codes to style text)" class="outline" controls="ps1-custom-4" %}
+<div id="ps1-custom-4" class="accordion_content" markdown="1">
+
+Add colors to your prompt using [ANSI escape codes](#ansi-escape-codes) to improve visual clarity and organization. Colors can help highlight important elements such as the username, hostname or working directory, making it easier to distinguish between different sections of the prompt. *Learn basics of the prompt syntax coloring in section [Prompt Colors & Effects](#prompt-colors--effects).*
+```bash
+# Bold red user@host, cyan working directory and a clean > marker.
+PS1="\e[1;31m[\u@\h]\e[0m \e[1;36m\w\e[0m > " 
+
+# Username in green, hostname in blue and working directory in yellow.
+PS1="\e[32m\u\e[0m@\e[34m\h\e[0m:\e[33m\w\e[0m\$ " 
+
+#Current time in purple, username in light green, hostname in light blue, and directory in yellow.
+PS1="\e[35m[\t]\e[0m \e[92m\u\e[0m@\e[94m\h\e[0m:\e[93m\W\e[0m\$ "
+```
+*These color customizations make the prompt visually appealing and help improve efficiency by quickly identifying important information at a glance.*
+![ps1_custom_marker](../assets/img/ps1_custom_colors.png)
+</div>
+
+</div>
 
