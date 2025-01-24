@@ -75,7 +75,7 @@ This tutorial offers a comprehensive, hands-on guide to customizing shell enviro
 <div id="note-alerts-1" class="highlighted highlighted--note ">
 <div class="highlighted__body" markdown="1">
 The shell prompt is the text that appears before you type a command in the terminal. It updates dynamically with user actions, such as changing directories. Personalizing it allows you to display helpful system information directly to improve clarity and usability, especially in advanced computing environments like HPC clusters.
-![default_prompt](../assets/img/default_prompt.png)
+![default_prompt](../../assets/img/default_prompt.png)
 </div>
 </div>
 
@@ -171,7 +171,7 @@ You can modify text colors and effects in the prompt using [**ANSI escape codes*
 | `\e[1m`     | **Bold text**  | `\e[1mImportant!` | `echo -e '\e[1mImportant!\e[0m'` |
 | `\e[0m`     | Reset (clears all styling) | `\e[0m` *(back to normal)* | - |
 
-![ansi-simple-examples](../assets/img/ansi-simple-examples.png)
+![ansi-simple-examples](../../assets/img/ansi-simple-examples.png)
 
 **Example of single-colored PS1:**
 ```bash
@@ -181,7 +181,7 @@ PS1="\e[32m\u@\h:\w\$ \e[0m"
 - ANSI escape sequences `\e[32m` for green text and `\e[0m` to resets text formatting at the end of the prmpt syntax
 
 *Output: Green prompt string including username, hostname and working directory, with a default `$` prompt marker.*
-![green-prompt-example](../assets/img/green-prompt-example.png)
+![green-prompt-example](../../assets/img/green-prompt-example.png)
 
 <div id="note-alerts-1" class="highlighted highlighted--highlighted ">
 <div class="highlighted__body" markdown="1">
@@ -191,7 +191,7 @@ or command output.
 ```
 PS1="\e[32m\u@\h:\w\$ "     # missing \e[0m at the end of the syntax
 ```
-![ps1_missing_reset_code](../assets/img/ps1_missing_reset_code.png)
+![ps1_missing_reset_code](../../assets/img/ps1_missing_reset_code.png)
 </div>
 </div>
 
@@ -211,7 +211,7 @@ To analyze this PS1 setting, start by splitting the syntax at every `\e[0m`, whi
 Then, within each section, identify the [ANSI color code](#ansi-escape-codes) (e.g., `\e[32m` for green), 
 followed by the [placeholder](#prompt-elements) (e.g., `\u` for username), and any literal characters (`@ :`) that separate elements.
 
-![ps1_multicolor](../assets/img/ps1_multicolor.png)
+![ps1_multicolor](../../assets/img/ps1_multicolor.png)
 
 
 ### **PS1 customization**
@@ -245,7 +245,7 @@ PS1="\u:\W\$ "                # alex.badacz:geo_data$
 PS1="\d \t @\h\$ "            # Tue Jan 21 13:51:39 @atlas-login-2$
 ```
 *(OUTPUT: basic, colorless prompt built with various elements)*
-![basic_prompt_examples](../assets/img/basic_prompt_example.png)
+![basic_prompt_examples](../../assets/img/basic_prompt_example.png)
 
 </div>
 
@@ -265,7 +265,7 @@ PS1="\u\h\W\$"              # alex.badaczatlas-login-2geo_data$
 PS1="\u@\h:\W\$ "           # alex.badacz@atlas-login-2:geo_data$ 
 ```
 *These customizations help create a prompt that is both informative and easy to read.*
-![ps1_custom_text](../assets/img/ps1_custom_text.png)
+![ps1_custom_text](../../assets/img/ps1_custom_text.png)
 
 * use visual aids to make your prompt more intuitive:
   - Unicode symbols for better visibility
@@ -277,7 +277,7 @@ PS1="\u@\h:\w 🔥 "
 PS1="👨‍💻 @\h 📂 \W \$ "
 ```
 *These customizations improve the user experience by making it easier to quickly locate relevant information.*
-![ps1_custom_engaging](../assets/img/ps1_custom_engaging.png)
+![ps1_custom_engaging](../../assets/img/ps1_custom_engaging.png)
 </div>
 
 {% include accordion title="Personalize the prompt marker ::: (use any symbol or emoji)" class="outline" controls="ps1-custom-3" %}
@@ -291,7 +291,7 @@ PS1="\u: \W 🎯 "             # using emoji as prompt marker
 PS1="\u: \W  ✅ "            # using checkmark as prompt marker
 ```
 *Custom prompt markers can personalize your shell and enhance readability or distinguish between different environments.*
-![ps1_custom_marker](../assets/img/ps1_custom_marker.png)
+![ps1_custom_marker](../../assets/img/ps1_custom_marker.png)
 </div>
 
 {% include accordion title="Enhance prompt with colors ::: (apply ANSI escape codes to style text)" class="outline" controls="ps1-custom-4" %}
@@ -305,11 +305,11 @@ PS1="\e[1;31m[\u@\h]\e[0m \e[1;36m\w\e[0m > "
 # Username in green, hostname in blue and working directory in yellow.
 PS1="\e[32m\u\e[0m@\e[34m\h\e[0m:\e[33m\w\e[0m\$ " 
 
-# Current time in purple, username in light green, hostname in light blue and directory in yellow.
+# Current tdropdownime in purple, username in light green, hostname in light blue and directory in yellow.
 PS1="\e[35m[\t]\e[0m \e[92m\u\e[0m@\e[94m\h\e[0m:\e[93m\W\e[0m\$ "
 ```
 *These color customizations make the prompt visually appealing and help improve efficiency by quickly identifying information.*
-![ps1_custom_marker](../assets/img/ps1_custom_colors.png)
+![ps1_custom_marker](../../assets/img/ps1_custom_colors.png)
 </div>
 
 </div>
@@ -338,7 +338,7 @@ For example, show details about HPC environment, such as $CLUSTER (system-wide) 
 PS1='[$CLUSTER] \u:\W\$ '                     # [atlas] alex.badacz:DSW_tutorials$
 PS1='[Job: $SLURM_JOB_ID] \u:\W\$ '           # [Job: 16786549] alex.badacz:DSW_tutorials$
 ```
-![ps1_shell_variable](../assets/img/ps1_shell_variable.p)
+![ps1_shell_variable](../../assets/img/ps1_shell_variable.png)
 </div>
 
 {% include accordion title="Display custom aliases, like the number of active jobs in the queue" class="outline" controls="ps1-advanced-2" %}
@@ -352,7 +352,7 @@ alias jobcount='squeue -u $USER --noheader | wc -l'
 PS1="[\$(jobcount) jobs] \u@\h:\W$ "
 ```
 *This prompt displays the number of your jobs in a queue dynamically.*
-![ps1_alias_job_counter](../assets/img/ps1_alias_job_counter.png)
+![ps1_alias_job_counter](../../assets/img/ps1_alias_job_counter.png)
 </div>
 
 {% include accordion title="Display Git status indicators" class="outline" controls="ps1-advanced-3" %}
@@ -363,7 +363,7 @@ You can display the current Git branch and its status directly in your prompt fo
 PS1='\u@\h:\W $(git branch 2>/dev/null | grep "*" | sed "s/* //")\$ '
 ```
 *This prompt shows the current branch when inside a Git repository.*
-![ps1_git_branch](../assets/img/ps1_git_branch.png)
+![ps1_git_branch](../../assets/img/ps1_git_branch.png)
 </div>
 
 {% include accordion title="Indicate failed commands using exit codes" class="outline" controls="ps1-advanced-4" %}
@@ -382,53 +382,172 @@ PS1='$(if [ $? -eq 0 ]; then echo "✔"; else echo "✖"; fi) \u@\h:\W\$ '
 - This indicator is followed by the standard `username@hostname:current_directory$` prompt.
 
 *This PS1 variable display a different color indicator depending on whether the last command was successful (exit code 0) or failed (non-zero exit code).*
-![ps1_exit_code](../assets/img/ps1_exit_code.png)
+![ps1_exit_code](../../assets/img/ps1_exit_code.png)
 </div>
 
 </div>
 
 ## Persisting shell customizations
 
-* **Immediate Effect:** <br>
-Note that changes to the `PS1` variable take effect immediately once reassigned, allowing you to see the updated prompt right away.
+When customizing your Bash prompt (`PS1` shell variable), it's important to understand how changes take effect, how to maintain them across subshells 
+and how to make them permanent for future sessions. Follow the corresponding instructions to achieve the desired level of persistence:
+* [Immediate effect](#immediate-effect-current-shell) *(current shell)*
+* [Persistence with export](#persistence-with-export-inheritated-in-subshells) *(inheritated in subshells)*
+* [Permanent change](#permanent-change-future-shells) *(future shells)*
 
-* **Persistence with Export:** <br>
-Note that using `export PS1="..."` ensures the custom prompt is applied across subshells during the current session.
+### Immediate effect *(current shell)*
 
-* **Permanent Customization:** <br>
-Note that adding the `PS1` assignment to your `~/.bashrc` file makes the customization permanent, applying it automatically in new shell sessions.
+Changes to the `PS1` variable take effect immediately once reassigned in command line, displaying the updated prompt right away.
+```bash
+PS1="\e[32m\u\e[0m@\e[34m\h\e[0m:\e[33m\W\e[0m\$ "
+```
+However, this change is temporary and applies only to the current shell session. Once you close the terminal or start a new session, 
+the prompt will revert to its default or previously set value. 
 
-*How to Apply Changes?*
-- Sourcing: 
+<div id="note-alerts-1" class="highlighted highlighted--tip ">
+<div class="highlighted__body" markdown="1">
+This level of persistence is useful for quick, temporary customizations or testing different prompt styles without making permanent modifications.
+</div>
+</div>
+
+![ps1 in a current shell only](../../assets/img/ps1_current_shell.gif)
+
+### Persistence with `export` *(inheritated in subshells)*
+
+Using `export PS1` ensures the custom prompt is applied across subshells during the current session. 
+*This means that any new terminal instances or commands executed within the session, such as opening a subshell with bash 
+or running scripts that invoke a new shell, will inherit the customized prompt.*
+```bash
+export PS1="\e[32m\u\e[0m@\e[34m\h\e[0m:\e[33m\W\e[0m\$ " 
+```
+However, this change remains temporary and will be lost once the terminal session is closed or the system is restarted. 
+
+<div id="note-alerts-1" class="highlighted highlighted--tip ">
+<div class="highlighted__body" markdown="1">
+This level of persistence is useful when you need the custom prompt to be available across multiple subshells without permanently modifying configuration files.
+</div>
+</div>
+
+![ps1 inheritated in a subshell](../../assets/img/ps1_subshell.gif)
+
+### Permanent change *(future shells)*
+
+Adding the `PS1` assignment to your `~/.bashrc` file makes the customization permanent, applying it automatically in every new shell sessions. 
+*The `.bashrc` file is executed whenever an interactive non-login shell is launched, such as when opening a new terminal window in OOD interface.*
+```bash
+# Open config file in a text editor:
+nano ~/.bashrc
+
+# Modify existing definition of PS1 variable (or add it if not present):
+PS1="\e[32m\u\e[0m@\e[34m\h\e[0m:\e[33m\W\e[0m\$ "
+
+# Save and exit (Ctrl + X, Y, Enter)
+```
+*This method ensures that your prompt customization persists for all future sessions without the need to manually reapply the settings.*
+
+<div id="note-alerts-1" class="highlighted highlighted--tip ">
+<div class="highlighted__body" markdown="1">
+This level of persistence is ideal for users who want a consistent prompt experience across all terminal sessions.
+</div>
+</div>
+
+<div id="note-alerts-1" class="highlighted highlighted--warning ">
+<div class="highlighted__body" markdown="1">
+Using the `echo 'PS1="..."' >> ~/.bashrc` command to modify your `PS1` will add a new definition to the end of the `.bashrc` file each time it is run, leading redundant entries. 
+To prevent your configuration file from becoming cluttered or accidentaly overwritten, it is recommended to manually update the `PS1` variable in the file. 
+</div>
+</div>
+
+***How to apply changes in a current session?***
+
+When you update the `.bashrc` file, any changes made do not take effect immediately in the current session. <br>
+*(The shell only reads the `.bashrc` file when a new terminal session is started.)* <br>
+To apply the changes without opening a new terminal, you need to manually reload the config file what applies the updated settings instantly. 
+This ensures that your customizations are reflected in the current session without the need to restart the terminal.
+
 ```bash
 source ~/.bashrc
 ```
 
-### Reset PS1 to default
+![ps1 permanent change for default prompt](../../assets/img/ps1_permanent.gif)
 
-Resetting the default prompt:
+
+### **Reset PS1 to default**
+
+**Reset prompt to system default:** *(modify PS1 variable in your `.bashrc` config file, [see instructions](#permanent-change-future-shells))* 
 ```bash
+# add or modify in your ~/.bashrc
 PS1="[\u@\h \W]\$ "
 ```
+*This is the default prompt on SCINet clusters, showing the username, hostname and current working directory.*
+
+**Reload `.bashrc` to restore the default set in the config file:**
+```bash
+source ~/.bashrc
+```
+*This will reload the prompt settings as defined in your `.bashrc` file.*
 
 
 ## **Troubleshooting common issues**
 
-- Broken prompts after edits.
-
 <div class="usa-accordion">
 
-{% include accordion title="Error: event not found" class="outline" controls="shell-custom-1" %} 
-<div id="shell-custom-1" class="accordion_content" markdown="1">    
-**SYMPTOMS:** When customizing the shell prompt with ANSI escape codes to add colors, an error message such as `event not found` appears if the customization includes an exclamation mark (`!`), which is commonly used to show command history numbers.
+{% include accordion title="Broken prompts after edits" class="outline" controls="shell-custom-1" %}
+<div id="shell-custom-1" class="accordion_content" markdown="1">
+**SYMPTOMS:** After customizing the shell prompt, the prompt may appear broken, display unexpected characters or fail to update correctly. 
+This often occurs when escape sequences are incorrectly written, such as a missing backslash (`\`) before escape codes, 
+leading to them being interpreted as regular text rather than ANSI codes.
 ```bash
-export PS1="\e[31m[\u@\h \W]!\$\e[0m"
-# -bash: !\$: event not found
+# incorrect ANSI code syntax
+PS1="e[31m[\u@\h \W]\$ \e[0m"  
+# The prompt displays 'e[31m' instead of showing red color
 ```
+**SOLUTIONS:** <br>
+Ensure that escape sequences are correctly formatted by including the necessary backslash (`\`) before each ANSI escape code to properly apply the intended color.
+```bash
+# corrected ANSI code syntax
+PS1="\e[31m[\u@\h \W]\$ \e[0m"
+```
+</div>
+
+{% include accordion title="Color spills into command line" class="outline" controls="shell-custom-2" %}
+<div id="shell-custom-2" class="accordion_content" markdown="1">
+**SYMPTOMS:** After customizing the shell prompt with ANSI escape codes for color, the prompt color unexpectedly carries over into the command line input, 
+causing commands to appear in the same color as the prompt. This usually happens when the closing escape sequence (`\e[0m`) is missing or improperly formatted.
+```bash
+# incorrect syntax
+PS1='\e[32m[\u@\h \W]\$ '  
+```
+*Commands typed after the prompt remain green instead of resetting to default color.*
+
+**SOLUTIONS:** <br>
+To fix this issue, ensure that the color reset escape sequence (`\e[0m`) is included at the end of the prompt string to restore the default terminal color after the prompt.
+```bash
+# correct syntax
+PS1='\e[32m[\u@\h \W]\$\e[0m '
+```
+</div>
+
+{% include accordion title="Error: event not found or `>` subshell started ::: (aka. history expansion error)" class="outline" controls="shell-custom-3" %} 
+<div id="shell-custom-3" class="accordion_content" markdown="1">    
+**SYMPTOMS:** After running the command, you may see unexpected output like:
+```bash
+PS1="\e[31m[\u@\h \W]!\$\e[0m"
+# -bash: !\$: event not found
+# or output like this:
+# PS1="\e[31m[\u@\h \W]"\e[0m"
+# >
+# >
+```
+The issue occurs because of Bash history expansion, which is triggered by the exclamation mark (`!`) in the PS1 assignment.
+- In Bash, the exclamation mark (`!`) is a special character used for history expansion, meaning it tries to recall previous commands.
+- Since the prompt string is enclosed in double quotes (`""`), Bash interprets `!` instead of treating it as a literal character.
+- As a result, Bash tries to expand `!` and, if no matching history entry is found, replaces it with a double quote (`"`), leading to a syntax error when evaluating the prompt.
+
 **SOLUTIONS:** <br>
 The issue occurs because double quotes (`""`) allow Bash to perform history expansion, interpreting `!` as a special character instead of displaying it literally in the prompt. To prevent this, use single quotes (`''`), which prevent special character interpretation and ensure the prompt displays correctly.
 ```bash
-export PS1='\e[31m[\u@\h \W]!\$\e[0m'
+PS1='\e[31m[\u@\h \W]!\$\e[0m'
 ```
 *By using single quotes, the `!` character is treated as a literal and will appear in the prompt as intended, avoiding unintended shell behavior.*
 </div>
@@ -437,5 +556,14 @@ export PS1='\e[31m[\u@\h \W]!\$\e[0m'
 <div id="shell-custom-10" class="accordion_content" markdown="1">    
 - Balance aesthetics and clarity.
 - Avoid excessive colors.
+
+---
+
+- **Ensure all escape sequences are properly enclosed** <br>
+Use `\` around ANSI escape codes to indicate non-printing characters, which helps Bash correctly calculate prompt length and prevents visual glitches.
+- **Use single quotes ('') instead of double quotes ("")** <br>
+This prevents unintended expansion of special characters and ensures the prompt displays as intended.
+- **Test prompt changes safely** <br>
+Before making permanent edits in `~/.bashrc`, test changes in the current session to identify issues early.
 </div>
 </div>
