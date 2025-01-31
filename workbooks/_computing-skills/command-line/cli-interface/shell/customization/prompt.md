@@ -47,7 +47,7 @@ This tutorial offers a comprehensive, hands-on guide to customizing shell enviro
 * **ANSI escape codes:** Special sequences used in the terminal to control text appearance (color, bold, underline).
 * **Shell prompt (PS1):** A customizable string displayed in the terminal, commonly showing the user, hostname and current directory.
 * **Prompt Customization:** Modifying `PS1` to create a visually engaging and functional shell prompt.
-* **Variable Persistence:** Techniques for storing customizations across sessions using configuration files like `.bashrc` and `.zshrc`.
+* **Variable Persistence:** Techniques for storing customizations across sessions using configuration files like `.bashrc` or `.zshrc`.
 </div>
 
 {% include accordion title="Tools/Technologies" class="primary " controls="scope-tools" %} 
@@ -439,7 +439,7 @@ Adding the `PS1` assignment to your `~/.bashrc` file makes the customization per
 nano ~/.bashrc
 
 # Modify existing definition of PS1 variable (or add it if not present):
-PS1="\e[32m\u\e[0m@\e[34m\h\e[0m:\e[33m\W\e[0m\$ "
+PS1='\e[32m\u\e[0m@\e[34m\h\e[0m:\e[33m\W\e[0m\$ '
 
 # Save and exit (Ctrl + X, Y, Enter)
 ```
@@ -447,14 +447,14 @@ PS1="\e[32m\u\e[0m@\e[34m\h\e[0m:\e[33m\W\e[0m\$ "
 
 <div id="note-alerts-1" class="highlighted highlighted--tip ">
 <div class="highlighted__body" markdown="1">
-This level of persistence is ideal for users who want a consistent prompt experience across all terminal sessions.
+This level of persistence is ideal for users who want a consistent prompt experience across all shell sessions.
 </div>
 </div>
 
 <div id="note-alerts-1" class="highlighted highlighted--warning ">
 <div class="highlighted__body" markdown="1">
-Using the `echo 'PS1="..."' >> ~/.bashrc` command to modify your `PS1` will add a new definition to the end of the `.bashrc` file each time it is run, leading redundant entries. 
-To prevent your configuration file from becoming cluttered or accidentaly overwritten, it is recommended to manually update the `PS1` variable in the file. 
+Using the `echo "PS1='...'" >> ~/.bashrc` command to modify your `PS1` will append a new definition to the end of the `.bashrc` file each time it is executed, 
+leading to redundant entries. To prevent your config file from becoming cluttered or accidentally overwritten, it is recommended to manually update the `PS1` variable within the file. 
 </div>
 </div>
 
