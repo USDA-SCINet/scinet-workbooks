@@ -78,7 +78,6 @@ Kerrie Geil:
 
 Moe Richert:
   name: "Moe Richert"
-  pronouns: "He/Him"
   bio: "Moe is the web developer for the SCINet office."
   avatar: "/assets/img/people/MoeRichert.png"
   contact:
@@ -87,7 +86,6 @@ Moe Richert:
 
 Noa Mills:
   name: "Noa Mills"
-  pronouns: "They/Them"
   bio: "Noa is an ORISE Research Fellow in the USDA-ARS SCINet Office. They got their bachelors in Computational Mathematics at UC Santa Cruz in 2020, and now work on a range of geospatial data science projects including satellite image analysis and the Geospatial Common Data Library project."
   avatar: "/assets/img/people/NoaMills.png"
   contact:
