@@ -101,9 +101,9 @@ Most of text coloring features are not enabled by default on HPC clusters, so to
 <div id="note-alerts-1" class="highlighted highlighted--note ">
 <div class="highlighted__body" markdown="1">
 ANSI escape codes are special sequences of characters (e.g., `\e[1m]`) used to **control text formatting, color and other display attributes** in the command-line interface. When processed by the terminal, these codes alter the appearance of the text output by:
-- changing colors, 
-- making text bold, 
-- adding underlines
+- changing text colors (red, green, yellow, etc.),
+- changing background colors,
+- effects like making text bold or adding underline
 
 *ANSI codes are widely supported across various terminal emulators, making them a universal and portable tool for improving command-line interaction.*
 </div>
@@ -137,10 +137,6 @@ echo -e "\e[33mThis text is yellow\e[0m"
 
 
 #### Common ANSI code categories
-
-* text colors (red, green, yellow, etc.)
-* background colors
-* effects like bold, underline, etc
 
 | text decoration    | text color            | background color        | example syntax | expected output |
 |--------------------|-----------------------|-------------------------|----------------|-----------------|
@@ -316,18 +312,18 @@ you would combine the color code for blue (`34`) with the code for bold (`1`).</
 
 Here's the reference list with the most commonly useful keys for LS_COLORS:
 
-| key  | description                  | setting   | expected formatting | comment                                                                                            |
-|------|------------------------------|-----------|---------------------|----------------------------------------------------------------------------------------------------|
-| `di` | Directory                    | `di=1;34` | bold blue           | Directories are highlighted in bold blue, making them easy to distinguish in large file lists.     |
-| `fi` | Regular file                 | `fi=1;37` | bold white          | Regular files are shown in bold white, useful for highlighting important data files.               |
-| `ln` | Symbolic link                | `ln=3;36` | italic cyan         | Symbolic links are displayed in italic cyan for visibility when linking files or directories.      |
-| `ex` | Executable file              | `ex=1;32` | bold green          | Executables are displayed in bold green, making them stand out among scripts or binaries.          |
-| `or` | Orphaned symbolic link       | `or=3;31` | italic red          | Broken links are shown in italic red, helping to identify and fix missing references.              |
-| `mi` | Missing file (broken link)   | `mi=5;31` | blinking red        | Similar to orphaned links, broken symbolic links are highlighted in blinking red.                  |
-| `pi` | Named pipe (FIFO)            | `pi=33`   | yellow              | Pipes are displayed in yellow, indicating intermediate processing components in workflows.         |
-| `ow` | Other writable directory     | `ow=1;33` | bold yellow         | Writable directories are shown in bold yellow, alerting users to shared or risky access.           |
-| `tw` | Sticky, other writable dir   | `tw=1;33` | bold yellow         | Sticky writable directories are shown in bold yellow to identify them for permission management.   |
-| `ca` | File with capability set     | `ca=1;35` | bold purple        | Files with special privileges are highlighted in bold purple, indicating extra caution is needed. |
+| key  | description                  | setting   | expected formatting | comment |
+|------|------------------------------|-----------|---------------------|---------|
+| `di` | Directory                    | `di=1;34` | <b style="color: blue">bold blue</b> | Directories are highlighted in bold blue, making them easy to distinguish in large file lists.|
+| `fi` | Regular file                 | `fi=1;37` | <b style="color: white; background-color: black;">bold white</b> | Regular files are shown in bold white, useful for highlighting important data files. |
+| `ln` | Symbolic link                | `ln=3;36` | <i style="color: cyan; background-color: black;">italic cyan</i> | Symbolic links are displayed in italic cyan for visibility when linking files or directories.      |
+| `ex` | Executable file              | `ex=1;32` | <b style="color: green">bold green</b> | Executables are displayed in bold green, making them stand out among scripts or binaries. |
+| `or` | Orphaned symbolic link       | `or=3;31` | <i style="color: red;">italic red</i> | Broken links are shown in italic red, helping to identify and fix missing references. |
+| `mi` | Missing file (broken link)   | `mi=5;31` | <span style="color:red;">blinking red</span> | Similar to orphaned links, broken symbolic links are highlighted in blinking red. |
+| `pi` | Named pipe (FIFO)            | `pi=33`   | <span style="color: yellow; background-color: black;">yellow</span> | Pipes are displayed in yellow, indicating intermediate processing components in workflows. |
+| `ow` | Other writable directory     | `ow=1;33` | <b style="color: yellow; background-color: black;">bold yellow</b> | Writable directories are shown in bold yellow, alerting users to shared or risky access. |
+| `tw` | Sticky, other writable dir   | `tw=1;33` | <b style="color: yellow; background-color: black;">bold yellow</b> | Sticky writable directories are shown in bold yellow to identify them for permission management. |
+| `ca` | File with capability set     | `ca=1;35` | <b style="color: purple;">bold purple</b> | Files with special privileges are highlighted in bold purple, indicating extra caution is needed. |
 
 <div id="note-alerts-1" class="highlighted highlighted--tip ">
 <div class="highlighted__body" markdown="1">
@@ -430,17 +426,17 @@ The `--color` flag is the main option in `grep` that controls whether matched te
 </div>
 
 
-The environment variable **GREP_COLORS** allows you to customize the color scheme of various parts of the `grep` output.
+The environment variable **GREP_COLORS** allows you to customize the color scheme of various parts of the `grep` output. <br>
 Here's how specific `grep` flags link directly to customizable components in `GREP_COLORS`:
 
-| GREP_COLORS         | example setting         | grep flag        | *What it affects?*                                                    |
+| GREP_COLORS(key)    | example_settings_         | grep_option      | *What it affects?*                                                    |
 |---------------------|-------------------------|------------------|-----------------------------------------------------------------------|
-| `mt` (matched text) | `mt=1;31` (bold red)    | `--color`        | Colors the matching portion of the line. |
+| `mt` (matched_text) | `mt=1;31` <b style="color: red;">bold_red</b> | `--color` | Colors the matching portion of the line. |
 |                     |                         | `-o`             | Displays and colors only the matched part of a line. |
-| `fn` (file name)    | `fn=35` (purple)        | `-H`             | Colors the filename when searching through multiple files. |
-|                     |                         | `-r` / `-R`      | Colors the filenames when displaying matches across directories. |
-| `ln` (line number)  | `ln=32` (green)         | `-n`             | Colors the line number in the output. |
-| `se` (separator)    | `se=36` (cyan)          | `-C`, `-A`, `-B` | Colors the `--` separator when showing lines around the match. |
+| `fn` (file_name)    | `fn=35` <span style="color: purple;">purple</span>    | `-H` | Colors the filename when searching through multiple files. |
+|                     |                         | `-r` / `-R`      | Colors the filenames for matches across directories. |
+| `ln` (line_number)  | `ln=32` <span style="color: green;">green</span>      | `-n` | Colors the line number in the output. |
+| `se` (separator)    | `se=36` <span style="color: cyan; background-color: black;">cyan</span> | `-C`, `-A`, `-B` | Colors the `--` separator when showing lines <br>around the match. |
 
 
 **SYNTAX:**
@@ -467,8 +463,8 @@ grep --color=auto -Hn -C 2 "pattern" slurm-logfile.out
 - The `matching pattern`/keyword <b style="color: red;">ortho</b> is highlighted in bold red. 
   - *This is the default coloring for matches using the `mt` setting in GREP_COLORS.*
 - The `-C 2` option displays 2 lines before and after each match, giving you context about the log entries.
-  - *The <span style="color:cyan; background-color: black;">--</span> seen between sections (colored cyan by default using `se`) marks the break between different matched locations in the file.*
-  - *The -C 2 option in grep is particularly useful when you want to extract lines that are positionally related to the matched lines but don’t contain the shared pattern themselves.*
+  - *The <span style="color:cyan; background-color: black;">- -</span> seen between sections (colored cyan by default with using `se`) marks the break between different matches.*
+  - *The `-C N` option in grep is particularly useful when you want to extract `N` lines that are positionally related to the matched lines but don’t contain the shared pattern themselves.*
 
 
 #### Customize GREP_COLORS
@@ -509,3 +505,246 @@ export GREP_COLORS='mt=1;33:fn=3;31:ln=46:se=36'
 ```bash
 source ~/.bashrc
 ``` 
+
+## Highlighting errors and warnings 
+
+<div id="note-alerts-1" class="highlighted highlighted--note ">
+<div class="highlighted__body" markdown="1">
+By using colors to distinguish between different types of messages such as `errors`, `warnings` and `informational logs`, users can quickly interpret results, debug issues and monitor the progress of their jobs more effectively. 
+</div>
+</div>
+
+In HPC environments, where job logs and outputs can be extensive, visually distinguishing errors from warnings and regular messages is critical. 
+
+**Use color to highlight severity levels:**
+```bash
+grep -nE "ERROR|Warning" job_output.log | awk '/ERROR/ {print "\033[31m" $0 "\033[0m"} /Warning/ {print "\033[33m" $0 "\033[0m"}'
+```
+*This command searches for ERROR and WARNING and color-codes them (<span style="color: red">red for errors</span>, <span style="color: yellow; background-color: black;">yellow for warnings</span>), helping you quickly spot critical issues without manually filtering large log files.*
+
+![coloring errors warnings](../../assets/img/coloring_errors_warnings.png)
+
+
+### Set permanent solutions
+
+**A) Create persistent aliases for log highlighting**
+
+You can create shell aliases to quickly filter and colorize logs.
+```bash
+# Add this to your .bashrc file to make settings persistent
+alias logcheck='grep -E "ERROR|Warning" | awk '\''/ERROR/ {print "\033[31m" $0 "\033[0m"} /Warning/ {print "\033[33m" $0 "\033[0m"}'\'''
+```
+***How to use it?***
+```bash
+cat job_output.log | logcheck
+```
+*Your custom `logcheck` command will instantly highlight errors (red) and warnings (yellow) without retyping the full command.*
+
+![alias logcheck](../../assets/img/alias_logcheck.png)
+
+**B) Alternatively, create a more general-purpose log scanner function**
+
+```bash
+# Add this to your .bashrc file to make settings persistent
+logscan() {
+  A=$(echo "$1" | awk -F"|" '{print $1}')
+  B=$(echo "$1" | awk -F"|" '{print $2}')
+  grep -E "$1" "$2" | awk -v A="$A" -v B="$B" '$0 ~ A {print "\033[31m" $0 "\033[0m"} $0 ~ B {print "\033[33m" $0 "\033[0m"}'
+}
+```
+***How to use it?***
+```bash
+logscan "ERROR|WARNING" job_output.log            # test other search patterns, e.g., "False|True"
+```
+*Your custom `logscan` command will instantly highlight first pattern (*ERROR*) in red and the second pattern (*Warning*) in yellow.*
+
+![function logscan](../../assets/img/function_logscan.png)
+
+
+## Monitoring system performance 
+
+Real-time system monitoring on HPC clusters involves tracking resource usage (CPU, memory, disk, network) to detect bottlenecks, 
+optimize job performance and ensure efficient resource allocation. By using color-coded indicators, 
+critical metrics such as high CPU or memory usage can be highlighted, making it easier to identify potential issues at a glance. 
+This allows you to monitor resource usage in real time while testing and refining your pipeline in an interactive session on a compute node. Based on the observed metrics, **you can accurately assess the resources needed to submit optimized production jobs to the cluster's queue**.
+
+**A) Highlighting tasks with high CPU usage**
+
+```bash
+top -b -n 1 | awk 'NR <= 7 {print} NR > 7 && $9 > 10 { if ($9 > 80) printf "\033[31m%s\033[0m\n", $0; else print $0 }'
+```
+*This command runs `top` in batch mode and use `awk`-based filtering to:* 
+- *keep the headers:* `NR <= 7 {print}`
+- *hides processes using 10% or less CPU:* `NR > 7 && $9 > 10`
+- *highlights those using over 80% in red:* `{ if ($9 > 80) printf "\033[31m%s\033[0m\n", $0; else print $0 }`
+
+**Real-time monitoring of CPU usage**
+
+Using `top` combined with `awk` displays a one-time snapshot of resource usage, while embedding it in `watch` continuously updates the output at regular intervals, providing real-time monitoring.
+
+```bash
+watch -c "top -b -n 1 | awk 'NR <= 7 {print} NR > 7 && \$9 > 10 { if (\$9 > 80) printf \"\033[31m%s\033[0m\n\", \$0; else print \$0 }'"
+```
+*This monitors CPU usage every 2 seconds, filters jobs with CPU usage >10% and highlights processes with CPU >80% in red.* 
+- *The `-c` option in `watch` enables the display of ANSI colors in the output.*
+
+![monitor cpu usage](../../assets/img/monitor_cpu_usage.png)
+
+<div id="note-alerts-1" class="highlighted highlighted--tip ">
+<div class="highlighted__body" markdown="1">
+Customize thresholds or add memory checks to gain deeper insights into potential resource bottlenecks during job execution.
+</div>
+</div>
+
+**B) Monitor the status of your submitted jobs**
+
+Monitoring your jobs in the SLURM queue with color-coded output helps you quickly identify their status at a glance, saving time when managing multiple jobs.
+
+For example, you can highlight running, pending and failed jobs in different colors to efficiently track the progress and prioritize troubleshooting.
+
+```bash
+squeue -u $USER | awk 'NR == 1 {print} 
+    / R / {print "\033[32m" $0 "\033[0m"}             
+    / PD / {print "\033[33m" $0 "\033[0m"}            
+    / F / {print "\033[31m" $0 "\033[0m"}'
+
+# Green (\033[32m) for running jobs # Yellow (\033[33m) for jobs waiting in the queue # Red (\033[31m) for jobs that have failed
+```
+![queue monitoring](../../assets/img/queue_monitoring.png)
+
+**C) Monitor resource usage of your jobs**
+
+You can extend the `squeue` command to check resource requests like CPU time or memory limits and color-code them.
+
+```bash
+squeue -u $USER -o "%.18i %.8j %.8u %.10M %.6D %.6C %.10L %.6t" | awk 'NR == 1 {print} 
+    $6 > 8 {print "\033[31m" $0 "\033[0m"} 
+    $6 >= 4 && $6 <= 8 {print "\033[33m" $0 "\033[0m"} 
+    $6 < 4 {print "\033[32m" $0 "\033[0m"}'
+
+# Green (\033[32m) for running jobs # Yellow (\033[33m) for jobs waiting in the queue # Red (\033[31m) for jobs that have failed
+```
+- *The `-o` flag customizes the output to display columns like `job ID`, `name`, `user`, `memory` and `CPU usage`.*
+- *The coloring logic is based on CPUs used (`$6`):*
+    - *more than 8 CPUs: Red for high usage*
+    - *between 4 and 8 CPUs: Yellow for medium usage*
+    - *less than 4 CPUs: Green for low usage*
+
+![monitoring resources is the queue](../../assets/img/queue_monitoring_resources.png)
+
+<div id="note-alerts-1" class="highlighted highlighted--tip ">
+<div class="highlighted__body" markdown="1">
+You can use an awk-based coloring approach to easily analyze **resource usage and job statuses in your completed jobs** by combining it with the `sacct` command, helping you quickly spot high memory usage, long runtimes or failed jobs.
+```bash
+sacct -j JOBID --format=JobID,JobName,Elapsed,State,MaxRSS,CPUTime,ExitCode | awk 'NR == 1 {print} 
+    /FAILED|CANCELLED/ {print "\033[31m" $0 "\033[0m"} 
+    /COMPLETED/ && $5 ~ /[0-9]+G/ {print "\033[33m" $0 "\033[0m"} 
+    /COMPLETED/ && $5 ~ /[0-9]+M/ {print "\033[32m" $0 "\033[0m"}'
+```
+In this example:
+- *Red: Failed or canceled jobs.*
+- *Yellow: Completed jobs that consumed large memory (in GB).*
+- *Green: Jobs with moderate memory usage (in MB).*
+***NOTE:*** *To use this method, you need to know the `JOBID` of the completed or running job.*
+</div>
+</div>
+
+
+## Debugging and troubleshooting
+
+<div id="note-alerts-1" class="highlighted highlighted--warning ">
+<div class="highlighted__body" markdown="1">
+**Search patterns in aliases are not case-sensitive by default** unless specified, so they will only match exact cases (e.g., "ERROR" vs. "error"). Be sure to customize these patterns to match the specific messages or keywords relevant to your applications for effective filtering and debugging.
+</div>
+</div>
+
+**A) Catch errors in log files in real time**
+
+While running test job in the interactive session on a compute node, you can use `tail -f` to monitor the job’s progress and detect errors or warnings early.
+
+<div id="note-alerts-1" class="highlighted highlighted--note ">
+<div class="highlighted__body" markdown="1">
+By default, `tail` displays the last few lines of a file (typically the last 10 lines). The `-f` stands for follow, meaning it will keep running and **display new lines as they are appended to the file**. You might use this to monitor logs in real time, especially in SCINet HPC environment.
+```bash
+tail -f slurm-16364729.out 
+```
+</div>
+</div>
+
+You can create a custom alias like `taildebug` to filter and highlight only errors and warnings in real time from a log file, allowing you to skip all irrelevant lines and focus on critical debug information.
+```bash
+# Add this to your .bashrc file to make settings persistent
+alias tailgrep='tail -f | grep --color=always -E "ERROR|WARNING"'
+```
+***How to use it?*** <br>
+*For best results, run your job in one shell window and monitor the filtered log output in the other one (e.g., [launched via OOD](/computing-skills/command-line/cli-interface/concepts/cli-scinet-hpc#web-based-access-to-hpc-cli)).*
+```bash
+tailgrep slurm-16364729.out 
+```
+![alias for live time debug: tailgrep](../../assets/img/alias_debug_tailgrep.png)
+
+**B) Separate successful steps in real time**
+
+Efficient debugging in HPC requires clear identification of success and failure states, especially in complex multi-node jobs. <br>
+Separate successful operations from errors:
+```bash
+# Add this to your .bashrc file to make settings persistent
+alias tailawk='tail -f | awk '\''/SUCCESS/ {print "\033[32m" $0 "\033[0m"} /FAILED/ {print "\033[31m" $0 "\033[0m"}'\'''
+# Other useful keywords include: DONE, FINISHED, DEBUG; 
+```
+***How to use it?*** <br>
+*For best results, run your job in one shell window and monitor the filtered log output in the other one (e.g., [launched via OOD](/computing-skills/command-line/cli-interface/concepts/cli-scinet-hpc#web-based-access-to-hpc-cli)).*
+```bash
+tailawk slurm-16364729.out 
+```
+*As job outputs are appended to logs in real time, this command highlights successful messages in green and failures in red, making it easy to spot problems while the job is still running.*
+![alias for live time debug: tailawk](../../assets/img/alias_debug_tailawk.png)
+
+**C) Advanced highlighting with multicolor debug**
+
+If you want to highlight more categories (e.g., `INFO`, `DEBUG`, `CRITICAL`) with distinct colors, you can define functions:
+```bash
+filter_logs() {
+  awk '/\[ERROR\]/ {print "\033[31m" $0 "\033[0m"} 
+       /WARNING/ {print "\033[33m" $0 "\033[0m"} 
+       /\[INFO\]/ {print $0} 
+       /DEBUG/ {print "\033[36m" $0 "\033[0m"}' "$1"
+}
+
+```
+![](../../assets/img/function_debug_multi.png)
+
+
+## **Troubleshooting common issues**
+
+<div class="usa-accordion">
+
+{% include accordion title="Solutions for common grep issues" class="outline" controls="coloring-custom-1" %}
+<div id="coloring-custom-1" class="accordion_content" markdown="1">
+**SYMPTOMS:** No color in grep output.
+
+**SOLUTIONS:** <br>
+Ensure your terminal supports [ANSI color codes](#ansi-escape-codes-reference).
+```bash
+# test with echo -e 
+echo -e "\033[31mRed Text\033[0m"
+```
+
+**SYMPTOMS:** Color disappears when grep output is piped.
+
+**SOLUTIONS:** <br>
+Use `--color=always` when you pipe grep:
+```bash
+grep --color=always "pattern" file.txt | less -R
+```
+*The `-R` option in less preserves color codes.*
+
+<div id="note-alerts-1" class="highlighted highlighted--tip ">
+<div class="highlighted__body" markdown="1">
+Avoid conflicting grep settings, for example, ensure no existing aliases like <br>`alias grep="grep --color=never"` are disabling color.
+</div>
+</div>
+
+</div>
+
+</div>
