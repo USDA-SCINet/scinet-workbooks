@@ -85,7 +85,7 @@ Here’s how it can be particularly useful:
 | --               | --                |
 | [Enhancing command output clarity](#coloring-any-text-with-echo) | Use `echo -e` or `awk` with colored text to visually differentiate key outputs for better readability and faster navigation. |
 | [Listing files and directories](#coloring-ls-output-with-ls_colors)    | Use colors to distinguish between file types (e.g., directories, executables, symbolic links), making navigation faster and more intuitive. |
-| [Searching through results ](#coloring-grep-output-with-grep_colors)       | Highlight matching patterns when using tools like `grep` to quickly spot relevant lines in massive datasets. |
+| [Searching through results ](#coloring-grep-with-grep_colors)       | Highlight matching patterns when using tools like `grep` to quickly spot relevant lines in massive datasets. |
 | [Highlighting errors and warnings](#highlighting-errors-and-warnings) | Easily differentiate between error messages, warnings and regular logs to quickly identify critical information. |
 | [Monitoring system performance](#monitoring-system-performance)    | Enhance readability of real-time metrics by using color-coded output for resource utilization, completion statuses or performance metrics. |
 | [Debugging and troubleshooting](#debugging-and-troubleshooting)    | Visually separate successful and failed operations to streamline the debugging process. |
@@ -366,7 +366,7 @@ source ~/.bashrc
 ```
 
 
-## Coloring `grep` output with `GREP_COLORS`
+## Coloring `grep` with `GREP_COLORS`
 
 <div id="note-alerts-1" class="highlighted highlighted--note ">
 <div class="highlighted__body" markdown="1">
@@ -525,7 +525,7 @@ grep -nE "ERROR|Warning" job_output.log | awk '/ERROR/ {print "\033[31m" $0 "\03
 ![coloring errors warnings](../../assets/img/coloring_errors_warnings.png)
 
 
-### Set permanent solutions
+#### <span style="font-size:1.34rem">Set permanent solutions</span>
 
 **A) Create persistent aliases for log highlighting**
 
@@ -626,9 +626,9 @@ squeue -u $USER -o "%.18i %.8j %.8u %.10M %.6D %.6C %.10L %.6t" | awk 'NR == 1 {
 ```
 - *The `-o` flag customizes the output to display columns like `job ID`, `name`, `user`, `memory` and `CPU usage`.*
 - *The coloring logic is based on CPUs used (`$6`):*
-    - *more than 8 CPUs: Red for high usage*
-    - *between 4 and 8 CPUs: Yellow for medium usage*
-    - *less than 4 CPUs: Green for low usage*
+    - *more than 8 CPUs: <span style="color: red;">Red for high usage</span>*
+    - *between 4 and 8 CPUs: <span style="color: yellow;background-color: black;">Yellow for medium usage</span>*
+    - *less than 4 CPUs: <span style="color: green">Green for low usage</span>*
 
 ![monitoring resources is the queue](../../assets/img/queue_monitoring_resources.png)
 
@@ -645,6 +645,7 @@ In this example:
 - *Red: Failed or canceled jobs.*
 - *Yellow: Completed jobs that consumed large memory (in GB).*
 - *Green: Jobs with moderate memory usage (in MB).*
+
 ***NOTE:*** *To use this method, you need to know the `JOBID` of the completed or running job.*
 </div>
 </div>
@@ -710,7 +711,6 @@ filter_logs() {
        /\[INFO\]/ {print $0} 
        /DEBUG/ {print "\033[36m" $0 "\033[0m"}' "$1"
 }
-
 ```
 ![](../../assets/img/function_debug_multi.png)
 
@@ -723,8 +723,7 @@ filter_logs() {
 <div id="coloring-custom-1" class="accordion_content" markdown="1">
 **SYMPTOMS:** No color in grep output.
 
-**SOLUTIONS:** <br>
-Ensure your terminal supports [ANSI color codes](#ansi-escape-codes-reference).
+**SOLUTIONS:** Ensure your terminal supports [ANSI color codes](#ansi-escape-codes-reference).
 ```bash
 # test with echo -e 
 echo -e "\033[31mRed Text\033[0m"
@@ -732,12 +731,11 @@ echo -e "\033[31mRed Text\033[0m"
 
 **SYMPTOMS:** Color disappears when grep output is piped.
 
-**SOLUTIONS:** <br>
-Use `--color=always` when you pipe grep:
+**SOLUTIONS:** Use `--color=always` when you pipe grep:
 ```bash
 grep --color=always "pattern" file.txt | less -R
 ```
-*The `-R` option in less preserves color codes.*
+*The `-R` option in `less` preserves color codes.*
 
 <div id="note-alerts-1" class="highlighted highlighted--tip ">
 <div class="highlighted__body" markdown="1">
