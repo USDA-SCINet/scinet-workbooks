@@ -166,7 +166,7 @@ Additionally, this function offers flexibility by dynamically generating statist
 while also allowing the option to specify any other user when submitting jobs in a team project.
 
 
-### How functions differ from commands
+### *How functions differ from commands*
 
 When using the shell, understanding the difference between shell functions and commands is important for choosing the most effective method to execute tasks. 
 While both can be used to execute actions within the shell, functions offer unique advantages for grouping commands and reusing logic.
@@ -188,7 +188,7 @@ shell functions empower users to create custom workflows by grouping commands, a
 </div>
 </div>
 
-### How functions differ from aliases
+### *How functions differ from aliases*
 
 Functions and aliases both provide ways to enhance the shell experience by reducing the effort required to execute common tasks. 
 However, their scope and capabilities differ significantly:
@@ -209,9 +209,9 @@ This distinction is important because while both shell functions and aliases sim
 </div>
 </div>
 
-#### Shell functions handle arguments and errors
+### *Functions handle arguments and errors*
 
-Unlike aliases, which act as simple command shortcuts, shell functions excel in handling arguments, executing conditional logic and managing errors. 
+Unlike [aliases](/computing-skills/command-line/cli-interface/shell/customization/aliases), which act as simple command shortcuts, shell functions excel in handling arguments, executing conditional logic and managing errors. 
 This makes them ideal for automating multi-step tasks that require decision-making or dynamic input. 
 Shell functions can also seamlessly fit into complex workflows involving pipes and file processing.
 
@@ -222,75 +222,53 @@ Shell functions can also seamlessly fit into complex workflows involving pipes a
 | error handling       | No built-in error handling; relies on the underlying command. | Can detect, handle and recover from errors using return codes and conditions. |
 | workflow integration | Can be piped, but with static behavior once defined.          | Can generate, filter and pass output dynamically while making decisions. |
 
-Here’s a simple but useful example for quick **resource usage monitoring**. <br>
-*This code checks CPU and memory usage on the current node and displays them immediately.*
+*Here’s a simple but illustrative and useful example for **quick resource usage monitoring**.*
 
-**Alias** <br>
-Aliases, being simple substitutions, are far more limited than shell functions in this task. At most, an alias could run a one-liner command that checks CPU and memory usage and displays the result. 
+**Aliases** are limited to simple command substitutions, making them useful for quick tasks like displaying system usage:
 ```bash
 alias node_usage='top -b -n1 | head -n 20'
 # usage: node_usage
 ```
 ![alias node usage](../../assets/img/alias_node_usage.png)
-You could also create a more complex alias that combines `top` and `free` into a single output using simple inline processing:
-```bash
-alias check_usage='echo "CPU: $(top -bn1 | grep "Cpu(s)" | awk "{print 100 - \$8}")% | Memory: $(free | awk "/Mem:/ {printf(\"%.0f\", \$3/\$2 * 100)}")%"'
-# usage: check_resources
-```
-![alias check usage](../../assets/img/alias_check_usage.png)
-However, it's still not able to 1) dynamically handle thresholds passed as arguments, 2) apply logic for warnings or critical levels and 3) color-code output based on conditions.
 
 <div id="note-alerts-1" class="highlighted highlighted--tip ">
 <div class="highlighted__body" markdown="1">
 For any meaningful logic, color output or argument-based thresholds, you’d need a shell function.
 </div></div>
 
-**Shell Function** <br>
-The *resource monitoring* function example demonstrates argument handling (custom thresholds), logic/conditions (different usage levels), workflow integration (system commands like `top`) and color-coded output: <br>
-(<span style="color:green;">Normal usage</span> ; <span style="color: yellow; background-color: black;">Warning if usage exceeds a threshold</span> ; <span style="color: red;">Critical if usage is dangerously high</span>).
-
+In contrast, a **shell function** like `monitor_cpu` ([explore more powerful function `monitor_resources`]()) not only **integrates multiple system commands** (e.g., `top` and `free`) to monitor CPU and memory usage on the current node but also **supports argument handling** (e.g., allowing users to set custom usage thresholds with each function call) and **implements flow-control logic** (e.g., using `if` conditions) to trigger warnings and critical alerts based on usage levels.
 ```bash
-monitor_resources() {
-    # Thresholds for warnings and critical alerts (can be overridden via user-provided arguments)
-    cpu_warn=${1:-70}    # $1 for CPU Warning;  default at 70% CPU usage
-    cpu_crit=${2:-90}    # $2 for CPU Critical; default at 90% CPU usage
-    mem_warn=${3:-70}    # $3 for Mem Warning;  default at 70% memory usage
-    mem_crit=${4:-90}    # $4 for Mem Critical; default at 90% memory usage
+monitor_cpu() {
+    cpu_warn=${1:-70}            # sets default warning threshold at 70% CPU usage
+    cpu_usage=$(top -bn1 | awk '/Cpu\(s\)/ {print 100 - $8}' | cut -d'.' -f1)
 
-    # Get current usage
-    cpu_usage=$(top -bn1 | grep "Cpu(s)" | awk '{print 100 - $8}' | cut -d'.' -f1)
-    mem_usage=$(free | awk '/Mem:/ {printf("%.0f", $3/$2 * 100)}')
-
-    # Internal function to color output
-    color_output() {
-        if [ "$1" -ge "$cpu_crit" ] || [ "$2" -ge "$mem_crit" ]; then
-            echo -e "\033[1;31mCRITICAL: CPU ${cpu_usage}% | Memory ${mem_usage}%\033[0m"  # Red
-        elif [ "$1" -ge "$cpu_warn" ] || [ "$2" -ge "$mem_warn" ]; then
-            echo -e "\033[1;33mWARNING: CPU ${cpu_usage}% | Memory ${mem_usage}%\033[0m"  # Yellow
-        else
-            echo -e "\033[1;32mNORMAL: CPU ${cpu_usage}% | Memory ${mem_usage}%\033[0m"  # Green
-        fi
-    }
-    color_output "$cpu_usage" "$mem_usage"      # Display results
+    if [ "$cpu_usage" -ge "$cpu_warn" ]; then
+        echo -e "\033[1;33mWARNING: CPU Usage at ${cpu_usage}%\033[0m"  # Yellow
+    else
+        echo "CPU Usage: ${cpu_usage}%"
+    fi
 }
+# usage: monitor_cpu            # uses default warning threshold at 70% CPU usage
+# usage: monitor_cpu 50         # uses custom threshold using $1 positional argument
 ```
-Run with default thresholds:
-```bash
-monitor_resources                     # no arguments provided; uses default thresholds
-```
-Run with custom thresholds (e.g., warning at 50% and critical at 80%):
-```bash
-monitor_resources 50 80 50 80         # arguments: $1=60 $2=80 $3=60 $4=80
-```
-![function for resource monitoring](../../assets/img/function_resource_monitoring.png)
+![function to monitor cpu](../../assets/img/function_monitor_cpu.png)
 
 *This example demonstrates:*
-- ***Argument handling:*** *Accepts optional CPU and memory thresholds via arguments (`$1`, `$2`, `$3`, `$4`).*
-- ***Error handling:*** *Basic, but detects missing arguments and defaults thresholds to safe values if not provided.*
-- ***Workflow integration:*** *Integrates system commands like `top` and `free` to extract real-time system data.*
-- ***Logic and Conditions:*** *Uses if conditions to determine output based on warning and critical thresholds.*
-- ***Nested/internal functions:*** *The main function defines internal functions to handle subtasks like resource checks or formatting. This modular design simplifies maintenance and enhances reusability.*
+* ***[Argument handling](/computing-skills/command-line/cli-interface/shell/customization/functions#passing-arguments-to-functions):*** *Accepts optional CPU thresholds via positional argument ($1).*
+* ***Error handling:*** *Basic, but detects missing arguments and defaults thresholds to safe values if not provided.*
+* ***[Logic and Conditions](/computing-skills/command-line/cli-interface/shell/customization/functions#conditionals-and-loops-in-functions):*** *Uses `if` conditions to determine output based on warning thresholds.*
+* ***Workflow integration:*** *Integrates system commands like `top` to extract real-time system data.*
 
+<div id="note-alerts-1" class="highlighted highlighted--success ">
+<div class="highlighted__body" markdown="1">
+Explore section [Passing arguments to functions](/computing-skills/command-line/cli-interface/shell/customization/functions#passing-arguments-to-functions) in this tutorial, to learn effective strategies for [advanced argument handling](#advanced-argument-handling) to make your shell functions more flexible and robust.
+- [Using `$1`, `$2` and other positional parameters within a function](#using-1-2-and-other-positional-parameters-within-a-function)
+- [Managing arguments effectively: use `$#` to check for missing arguments](#managing-arguments-effectively)
+- [Using `shift` for processing variable-length arguments](#using-shift-for-processing-variable-length-arguments)
+- [Working with `$@` and `$*` to handle all arguments](#working-with--and--to-handle-all-arguments)
+- [Parsing named arguments for better readability and maintenance](#parsing-named-arguments-for-better-readability-and-maintenance)
+</div>
+</div>
 
 ## Defining shell functions: basic syntax
 
@@ -356,7 +334,7 @@ Use `return` to exit a function with an error code if something goes wrong.
 | readability | Easy to define but can be harder to extend.  | Easier to read and maintain for complex tasks. |
 | spaces and semicolons | Requires a space after `{ ` and before `}`. Commands must be separated by semicolons (`;`) to avoid syntax errors. | Requires a space after `{ ` and before `}`. No semicolons are needed as commands are separated by newlines. | 
 
-#### Defining a one-line function
+### *Defining a one-line function*
 
 If a function is simple and contains only one command, you can define it on a single line:
 ```bash
@@ -390,7 +368,7 @@ In one-line shell functions, the **semicolon (`;`) is used to separate multiple 
 *Without a semicolon or newline, the shell would interpret the commands as one continuous, invalid statement, leading to syntax errors!*
 </div> </div>
 
-#### Defining multi-line functions
+### *Defining multi-line functions*
 
 Most shell functions you’ll encounter or create will be multi-line, especially when they involve loops, conditionals or error handling. 
 ```bash
@@ -410,68 +388,172 @@ backup() {
 * *If the directory exists, it creates a compressed backup using `tar`.*
 * *Output message changes based on success or failure (i.e., prints "Usage" message).*
 
+### Conditionals and loops in functions
 
-### Useful shell functions
+Enhancing shell functions with conditionals and loops allows users to **introduce dynamic decision-making and repetition** making the same code reusable for different inputs or applications. 
+This is particularly valuable on HPC systems, where tasks such as batch processing, file checks and iterative computations are common.
 
-Here are some common and useful alias examples:
-
-**Display a directory usage** *(your /home when no arguments provided)*:
-```bash
-check_dir_usage() { dir=${1:-~}; du -sh "$dir"/*; }
-# usage: check_dir_usage 
-# usage: check_dir_usage <directory>
-```
-  - `dir=${1:-~}`: *If a directory provided ()`$1`), it will check that directory. Otherwise, it defaults to the home directory (`~`).*
-  -  `du -sh "$dir"/*`: *Displays the disk usage of each item in the specified directory.*
-
-  ![function check_dir_usage](../../assets/img/function_check_dir_usage.png)
-
-
-**Find large files** in selected directory *(e.g., files larger than 500 MB in the current directory)*:
-```bash
-find_large_files() {
-    if [ -z "$1" ]; then
-        echo "Usage: find_large_files <size> (e.g., 100M, 1G)"
-        return 1
-    fi
-
-    dir=${2:-.}
-    find "$dir" -type f -size +"$1" -exec ls -lh {} \;
-}
-# usage: find_large_files 500M
-# usage: find_large_files 500M <directory> 
-```
-  - `$1`: *File size threshold (e.g., 100M, 1G).*
-    - If no size is specified, a help message will be displayed to guide the user on proper usage.
-  - `$2`: *Directory to search in. If not provided, it defaults to the current directory (`.`).*
-  - `find "$dir"`: *Dynamically searches the provided directory.*
-
-  ![function find_large_files](../../assets/img/function_find_large_files.png)
-
-
-**Check quota on any SCINet cluster:** <br>
-*This script allows for flexibility in environments where different clusters (Atlas vs. Ceres) require distinct quota management commands.*
-```bash
-check_quota() {
-    case "$HOSTNAME" in
-        ceres*) my_quotas ;;
-        atlas*) quota -s ;;
-        *) echo "Hostname does not match Atlas or Ceres." ;;
-    esac
-}
-```
-
-<div id="note-alerts-1" class="highlighted highlighted--highlighted ">
+<div id="note-alerts-1" class="highlighted highlighted--note ">
 <div class="highlighted__body" markdown="1">
-In the case statement within shell scripts, the double semicolon (`;;`) is used to mark the end of a case branch. 
-This tells the shell that the commands for the current pattern have finished, and it should proceed to check the next pattern (if any).
+By integrating control flow, shell functions can adapt to varying inputs and automate tasks efficiently.
 </div>
 </div>
 
-  ![function check_quota ceres](../../assets/img/function_check_quota_ceres.png)
-  ![function check_quota atlas](../../assets/img/function_check_quota_atlas.png)
+<details><summary>Quick lesson about the <b>for loop</b></summary>
 
-### Passing Arguments to Functions
+<div id="note-alerts-1" class="highlighted highlighted--note ">
+<div class="highlighted__body" markdown="1">
+A for loop in shell scripting is used to iterate through a list of items, executing commands for each item in the list. 
+This is particularly useful for repetitive tasks like processing multiple files or commands sequentially.
+```bash
+for variable in list
+do
+  commands
+done
+```
+*For example, this loop will iterate over all `.txt` files and execute the command for each:*
+```bash
+for file in *.txt
+do
+  echo "Processing $file"
+done
+```
+</div>
+</div>
+
+</details>
+
+<details><summary>Quick lesson about the <b>while loop</b></summary>
+
+<div id="note-alerts-1" class="highlighted highlighted--note ">
+<div class="highlighted__body" markdown="1">
+A `while` loop in shell scripting executes commands repeatedly as long as a specified condition remains true. 
+It is useful for tasks requiring continuous monitoring or iterative processing until a condition is met.
+```bash
+while [ condition ]
+do
+  commands
+done
+```
+*For example, this loop prints a message five times, incrementing the counter on each iteration:*
+```bash
+count=1
+while [ $count -le 5 ]
+do
+  echo "Iteration $count"
+  count=$((count + 1))
+done
+```
+</div>
+</div>
+
+</details>
+
+<details><summary>Quick lesson about the <b>if-else-fi conditional</b></summary>
+
+<div id="note-alerts-1" class="highlighted highlighted--note ">
+<div class="highlighted__body" markdown="1">
+The `if-else-fi` construct allows decision-making in shell scripts by executing commands based on conditions. 
+If a condition evaluates to true, the `if` block runs; otherwise, the `else` block (if present) executes.
+```bash
+if [ condition ]
+then
+  commands
+else
+  alternative_commands
+fi
+```
+*For example, this checks whether `data.txt` exists and prints a corresponding message:*
+```bash
+if [ -f "data.txt" ]
+then
+  echo "File exists."
+else
+  echo "File does not exist."
+fi
+```
+</div>
+</div>
+
+</details>
+
+<details><summary>Quick lesson about the <b>case statement</b></summary>
+
+<div id="note-alerts-1" class="highlighted highlighted--note ">
+<div class="highlighted__body" markdown="1">
+The `case` statement provides a way to execute commands based on pattern matching, 
+making it useful for scenarios involving multiple conditions (like menu options or command-line arguments).
+```bash
+case variable in
+  pattern1)
+    commands ;;
+  pattern2)
+    commands ;;
+  *)
+    default_commands ;;
+esac
+```
+*For example, this takes user input and prints a message based on the entered day, with a default response for invalid inputs:*
+```bash
+read -p "Enter a day (mon, tue, wed): " day
+case $day in
+  mon)
+    echo "Start of the work week" ;;
+  tue)
+    echo "It's Tuesday" ;;
+  wed)
+    echo "Halfway through the week" ;;
+  *)
+    echo "Invalid input" ;;
+esac
+```
+</div>
+</div>
+
+</details>
+
+Using the control flow elements, we can create useful shell functions that automate repetitive tasks, make decisions based on conditions and efficiently process data. With a `for` loop, we can **iterate over files or arguments**, while a `while` loop enables **continuous execution until a condition is met**. The `if-else-fi` conditional allows **dynamic branching based on specific criteria**, and the `case` statement simplifies **handling multiple conditions**, making shell functions more powerful and flexible for HPC environments.
+
+### *Example: `for` loop and `if-else`*
+
+**A function to check if files exist and process them if they do**:
+```bash
+process_files() {
+  for file in "$@"; do
+    if [ -e "$file" ]; then
+      echo "Processing $file"
+      # Code your task here
+    else
+      echo "Warning: $file not found"
+    fi
+  done
+}
+# usage: process_files file1.txt file2.txt file3.txt
+```
+*This function iterates through the user-provided file arguments using a loop, checks their existence with a conditional and processes them if found.*
+
+### *Example: `while` loop and `case`*
+
+**A function to provide an interactive menu for executing different actions based on user input:**
+```bash
+user_menu() {
+  while true; do
+    read -p "Choose (start/stop/exit): " choice
+    case $choice in
+      start) echo "Starting process...";;  
+      stop) echo "Stopping process...";;  
+      exit) echo "Exiting..."; break;;  
+      *) echo "Invalid option. Try again.";;  
+    esac
+  done
+}
+# usage: user_menu
+```
+*This function continuously prompts the user for input using a `while` loop, processes the input using a `case` statement to execute commands ander selected option, and exits when the user types "exit".*
+- *The `choice` variable stores the user's input, which is evaluated using a `case` statement to determine the corresponding action.*
+- *You can modify this template function to include your own options with custom commands.*
+
+### Passing arguments to functions
 
 When you pass arguments to a shell function, the **arguments are accessed using positional parameters** like `$1`, `$2`, `$3`, etc. 
 These represent the first, second and third arguments *(i.e., separate words)* passed to the function during execution, and they are managed similarly to how arguments are passed to shell scripts.
@@ -522,7 +604,9 @@ backup() {
 
 #### Advanced argument handling
 
-**Using `shift` for processing variable-length arguments**
+---
+
+#### Using `shift` for processing variable-length arguments
 
 The `shift` command moves the positional parameters to the left, discarding the first argument (`$1`) and shifting all others. 
 This is useful for processing a list of arguments one at a time.
@@ -548,7 +632,7 @@ This reduces overhead, making scripts more streamlined and effective for tasks l
 </div>
 </div>
 
-**Working with `$@` and `$*` to handle all arguments**
+#### Working with `$@` and `$*` to handle all arguments
 
 | syntax | *what it does?* |
 |-- | --|
@@ -588,7 +672,7 @@ Explanation:
 - `"$*"` (quoted): Combines all arguments into one string (`"apple banana cherry pie"`).
 
 
-**Parsing named arguments for better readability and maintenance**
+#### Parsing named arguments for better readability and maintenance
 
 Named arguments provide more readable and maintainable code by explicitly **labeling each argument** instead of relying on positional parameters. 
 This is typically done by parsing the argument list with a `while` loop and `case` statements.
@@ -624,17 +708,79 @@ This approach is particularly useful for functions that need **optional or multi
 </div>
 </div>
 
-### Conditionals and Loops Inside Functions
-- Enhancing functions with control flow constructs.
 
-### Capturing Function Output
-- Returning values using echo or exit status codes.
-- Redirecting output for further processing.
-- Function Exit Codes and Error Handling
-  - Understanding how functions return exit codes.
-  - Using trap to handle errors or cleanup after failure.
-  - Propagating exit codes to calling scripts or commands.
+### Capturing function output
 
+When writing shell functions, capturing and handling their output effectively is crucial for debugging, 
+automation and integrating functions into larger workflows. This section explores methods for returning values, 
+redirecting output and handling exit codes.
+
+Functions in shell scripting do not return values like traditional programming languages. Instead, they communicate results using:
+1. `echo` command for standard output *(used for passing text or data)*.
+2. Exit status codes (i.e., `return` or `exit`) for signaling success or failure.
+
+<div id="note-alerts-1" class="highlighted highlighted--success ">
+<div class="highlighted__body" markdown="1">
+By using echo for output and exit codes for control flow, shell functions become more reliable, modular and easier to integrate into larger scripts.
+</div>
+</div>
+
+#### Returning output using `echo`
+
+```bash
+get_date() { echo "$(date +"%Y-%m-%d")"; }
+```
+*Use `echo` when the function needs to return data for further use.*
+
+You can use the returned value in the following way:
+```bash
+# Call a function to display returned value:
+get_date
+
+# Capture the returned value in a variable for later use:
+today=$(get_date)
+
+# Use the returned value dynamically using expansion:
+echo "Today's date is: " $(get_date)    # or
+echo "Today's date is: $today"
+```
+
+#### Returning an exit status code for error handling
+
+Every command in Linux returns an exit code (**0 for success**, non-zero for failure). <br>
+Functions can propagate these exit codes for error handling.
+
+```bash
+# Return 0 if file exists, 1 otherwise
+check_file() { [ -f "$1" ] && return 0 || return 1; }
+```
+*Use exit codes when the function’s success or failure determines script execution flow.*
+
+You can use the returned exit code (0 ~ success; 1 ~ failure) as conditions for further processing:
+```bash
+check_file "data.txt" && echo "File found!" || echo "File missing!"
+```
+
+#### Filtering function output with `grep`
+
+Use pipes (`|`) to pass function output to another command.
+```bash
+list_logs() { ls /project/my_project; }
+# USAGE:
+list_logs | grep "log"                # Filter only log files
+```
+
+#### Redirecting function output to a file
+
+Use `>` or `>>` to save function output for logging or further processing.
+```bash
+backup_logs() {
+    tar -czf logs_backup.tar.gz /project/my_project/log
+    echo "Backup completed"
+}
+# USAGE:
+backup_logs > backup_report.txt       # Save output to a file
+```
 
 
 ## Tips for Function Management
@@ -664,10 +810,10 @@ This approach is particularly useful for functions that need **optional or multi
   - Using readonly functions where necessary.
 
 
-## Persisting Functions
+## Persisting functions
 - Adding functions to .bashrc, .zshrc, or profile scripts for persistent usage.
 
-### Environment and Scope of Shell Functions
+### Environment and scope of shell functions
 
 - Understanding local vs. global scope of variables within functions.
 - Using the local keyword for variable isolation.
@@ -679,13 +825,95 @@ This approach is particularly useful for functions that need **optional or multi
 - Sourcing files using source or . to make functions accessible across sessions.
 
 
-## Practical Shell Functions for HPC
-- Examples tailored to high-performance computing (HPC) environments.
-  - Automating job submissions.
-  - Monitoring resource usage.
+## **Practical shell functions for HPC**
+
+Here are some common and useful shell function examples:
+
+### *List all functions defined in a shell*
+
+In Bash, you can list all function names using:
+```bash
+declare -F | awk '{print $3}'
+```
+*This outputs only the function names (without definitions).*
+
+Another Bash-specific method to list functions:
+```bash
+compgen -A function
+```
+*This is concise and directly outputs function names.*
+
+To list both function names and their definitions:
+```bash
+typeset -f
+```
 
 
-GPU resources check *(works on a GPU node only)*
+### Check quota on any SCINet cluster
+
+*This script allows for flexibility in environments where different clusters (Atlas vs. Ceres) require distinct quota management commands.*
+```bash
+check_quota() {
+    case "$HOSTNAME" in
+        ceres*) my_quotas ;;
+        atlas*) quota -s ;;
+        *) echo "Hostname does not match Atlas or Ceres." ;;
+    esac
+}
+```
+
+<div id="note-alerts-1" class="highlighted highlighted--highlighted ">
+<div class="highlighted__body" markdown="1">
+In the case statement within shell scripts, the double semicolon (`;;`) is used to mark the end of a case branch. 
+This tells the shell that the commands for the current pattern have finished, and it should proceed to check the next pattern (if any).
+</div>
+</div>
+
+  ![function check_quota ceres](../../assets/img/function_check_quota_ceres.png)
+  ![function check_quota atlas](../../assets/img/function_check_quota_atlas.png)
+
+
+### Find large files in a directory 
+
+*(e.g., files larger than 500 MB in the current directory)*
+```bash
+find_large_files() {
+    if [ -z "$1" ]; then
+        echo "Usage: find_large_files <size> (e.g., 100M, 1G)"
+        return 1
+    fi
+
+    dir=${2:-.}
+    find "$dir" -type f -size +"$1" -exec ls -lh {} \;
+}
+# usage: find_large_files 500M
+# usage: find_large_files 500M <directory> 
+```
+  - `$1`: *File size threshold (e.g., 100M, 1G).*
+    - If no size is specified, a help message will be displayed to guide the user on proper usage.
+  - `$2`: *Directory to search in. If not provided, it defaults to the current directory (`.`).*
+  - `find "$dir"`: *Dynamically searches the provided directory.*
+
+  ![function find_large_files](../../assets/img/function_find_large_files.png)
+
+
+### Display a file or directory size
+
+*(your /home when no arguments provided)*
+```bash
+check_dir_usage() { dir=${1:-~}; du -sh "$dir"/*; }
+# usage: check_dir_usage 
+# usage: check_dir_usage <directory>
+```
+  - `dir=${1:-~}`: *If a directory provided ()`$1`), it will check that directory. Otherwise, it defaults to the home directory (`~`).*
+  -  `du -sh "$dir"/*`: *Displays the disk usage of each item in the specified directory.*
+
+  ![function check_dir_usage](../../assets/img/function_check_dir_usage.png)
+
+
+### GPU resources check 
+
+*(works on a GPU node only)*
 
 This function provides a quick and user-friendly summary of the key resources allocated to an interactive job on an HPC cluster, including CPU cores, memory usage, free memory and GPUs. 
 It may help you monitor and optimize your job's performance and resource usage in real time.
@@ -741,6 +969,63 @@ check_interactive_resources() {
 - **Memory Usage:** Shows the amount of allocated memory versus total memory (in GB).
 - **Free Memory:** Displays available memory on the node (in GB).
 - **GPUs Allocated:** Shows the number of GPUs currently in use by your job versus the total available on the node.
+
+### CPU and memory on a node
+
+This function demonstrates:
+- argument handling (custom thresholds), 
+- logic/conditions (different usage levels), 
+- workflow integration (system commands like `top`) and 
+- color-coded output: 
+(<span style="color:green;">Normal usage</span> ; <span style="color: yellow; background-color: black;">Warning if usage exceeds a threshold</span> ; <span style="color: red;">Critical if usage is dangerously high</span>).
+
+*This code checks CPU and memory usage on the current node and displays them immediately.*
+```bash
+monitor_resources() {
+    # Thresholds for warnings and critical alerts (can be overridden via user-provided arguments)
+    cpu_warn=${1:-70}    # $1 for CPU Warning;  default at 70% CPU usage
+    cpu_crit=${2:-90}    # $2 for CPU Critical; default at 90% CPU usage
+    mem_warn=${3:-70}    # $3 for Mem Warning;  default at 70% memory usage
+    mem_crit=${4:-90}    # $4 for Mem Critical; default at 90% memory usage
+
+    # Get current usage
+    cpu_usage=$(top -bn1 | grep "Cpu(s)" | awk '{print 100 - $8}' | cut -d'.' -f1)
+    mem_usage=$(free | awk '/Mem:/ {printf("%.0f", $3/$2 * 100)}')
+
+    # Internal function to color output
+    color_output() {
+        if [ "$1" -ge "$cpu_crit" ] || [ "$2" -ge "$mem_crit" ]; then
+            echo -e "\033[1;31mCRITICAL: CPU ${cpu_usage}% | Memory ${mem_usage}%\033[0m"  # Red
+        elif [ "$1" -ge "$cpu_warn" ] || [ "$2" -ge "$mem_warn" ]; then
+            echo -e "\033[1;33mWARNING: CPU ${cpu_usage}% | Memory ${mem_usage}%\033[0m"  # Yellow
+        else
+            echo -e "\033[1;32mNORMAL: CPU ${cpu_usage}% | Memory ${mem_usage}%\033[0m"  # Green
+        fi
+    }
+    color_output "$cpu_usage" "$mem_usage"      # Display results
+}
+```
+Run with default thresholds:
+```bash
+monitor_resources                     # no arguments provided; uses default thresholds
+```
+Run with custom thresholds (e.g., warning at 50% and critical at 80%):
+```bash
+monitor_resources 50 80 50 80         # arguments: $1=60 $2=80 $3=60 $4=80
+```
+![function for resource monitoring](../../assets/img/function_resource_monitoring.png)
+
+*This example demonstrates:*
+- ***Argument handling:*** *Accepts optional CPU and memory thresholds via arguments (`$1`, `$2`, `$3`, `$4`).*
+- ***Error handling:*** *Basic, but detects missing arguments and defaults thresholds to safe values if not provided.*
+- ***Workflow integration:*** *Integrates system commands like `top` and `free` to extract real-time system data.*
+- ***Logic and Conditions:*** *Uses if conditions to determine output based on warning and critical thresholds.*
+- ***Nested/internal functions:*** *The main function defines internal functions to handle subtasks like resource checks or formatting. This modular design simplifies maintenance and enhances reusability.*
+
+
+
+
+
 
 
 
