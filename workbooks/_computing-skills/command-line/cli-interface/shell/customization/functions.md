@@ -236,7 +236,7 @@ alias node_usage='top -b -n1 | head -n 20'
 For any meaningful logic, color output or argument-based thresholds, you’d need a shell function.
 </div></div>
 
-In contrast, a **shell function** like `monitor_cpu` ([explore more powerful function `monitor_resources`]()) not only **integrates multiple system commands** (e.g., `top` and `free`) to monitor CPU and memory usage on the current node but also **supports argument handling** (e.g., allowing users to set custom usage thresholds with each function call) and **implements flow-control logic** (e.g., using `if` conditions) to trigger warnings and critical alerts based on usage levels.
+In contrast, a **shell function** like `monitor_cpu` ([explore more powerful function `monitor_resources`](#cpu-and-memory-on-a-node)) not only **integrates multiple system commands** (e.g., `top` and `free`) to monitor CPU and memory usage on the current node but also **supports argument handling** (e.g., allowing users to set custom usage thresholds with each function call) and **implements flow-control logic** (e.g., using `if` conditions) to trigger warnings and critical alerts based on usage levels.
 ```bash
 monitor_cpu() {
     cpu_warn=${1:-70}            # sets default warning threshold at 70% CPU usage
@@ -256,7 +256,7 @@ monitor_cpu() {
 *This example demonstrates:*
 * ***[Argument handling](/computing-skills/command-line/cli-interface/shell/customization/functions#passing-arguments-to-functions):*** *Accepts optional CPU thresholds via positional argument ($1).*
 * ***Error handling:*** *Basic, but detects missing arguments and defaults thresholds to safe values if not provided.*
-* ***[Logic and Conditions](/computing-skills/command-line/cli-interface/shell/customization/functions#conditionals-and-loops-in-functions):*** *Uses `if` conditions to determine output based on warning thresholds.*
+* ***[Logic and Conditions](/computing-skills/command-line/cli-interface/shell/customization/functions#conditionals-and-loops):*** *Uses `if` conditions to determine output based on warning thresholds.*
 * ***Workflow integration:*** *Integrates system commands like `top` to extract real-time system data.*
 
 <div id="note-alerts-1" class="highlighted highlighted--success ">
@@ -270,7 +270,7 @@ Explore section [Passing arguments to functions](/computing-skills/command-line/
 </div>
 </div>
 
-## Defining shell functions: basic syntax
+## **Defining shell functions: syntax**
 
 Shell functions in Unix-like systems enable you to group multiple commands under a single name and run them as a unit. 
 They are more powerful than aliases because they support argument passing, logic, and conditionals. Defining a function 
@@ -368,7 +368,7 @@ In one-line shell functions, the **semicolon (`;`) is used to separate multiple 
 *Without a semicolon or newline, the shell would interpret the commands as one continuous, invalid statement, leading to syntax errors!*
 </div> </div>
 
-### *Defining multi-line functions*
+### *Defining a multi-line function*
 
 Most shell functions you’ll encounter or create will be multi-line, especially when they involve loops, conditionals or error handling. 
 ```bash
@@ -388,7 +388,91 @@ backup() {
 * *If the directory exists, it creates a compressed backup using `tar`.*
 * *Output message changes based on success or failure (i.e., prints "Usage" message).*
 
-### Conditionals and loops in functions
+
+### Escaping special characters
+
+Quoting and escaping special characters in shell functions work exactly the same as they do for aliases. 
+If you're familiar with handling special characters in aliases, you can apply the same principles when defining functions.
+
+<div id="note-alerts-1" class="highlighted highlighted--success ">
+<div class="highlighted__body" markdown="1">
+This topic is comprehensively covered in the Aliases tutorial, section: [Quoting and escaping special characters](/computing-skills/command-line/cli-interface/shell/customization/aliases#quoting-and-escaping-special-characters). You can refer to that section for detailed explanations and examples.
+</div>
+</div>
+
+<div id="note-alerts-1" class="highlighted highlighted--highlighted ">
+<div class="highlighted__body" markdown="1">
+***Quick recap: Why it matters?***
+1. Prevents unexpected behavior when using characters like `$`, `*`, `&`, `"`, `'` and `\`.
+2. Ensures variables are correctly expanded inside function definitions.
+3. Protects commands from unintended shell interpretation, especially in HPC environments where precision is critical.
+
+- Use double quotes (`"`) when you want variable expansion (`$var` → its value) but still protect spaces and special characters. *# Variable $USER expands correctly to its assigned value.*
+```bash
+greet_user() { echo "Hello, $USER!"; }
+# OUTPUT: Hello, alex.badacz!
+```
+- Use single quotes (`'`) to treat everything literally (no variable expansion, no special character interpretation). *# Variable $HOME will NOT expand to its value.*
+```bash
+print_literal() { echo 'This will not expand: $HOME'; }
+# OUTPUT: This will not expand: $HOME 
+```
+- Use escaping (`\`) to treat special characters as regular characters inside functions when quoting isn't an option. *# Special characters are treated as regular characters.*
+```bash
+escape_example() { echo "Dollar sign: \$"; }
+# OUTPUT: Dollar sign: $
+```
+</div>
+</div>
+
+
+### Environment and variable scope
+
+Shell functions operate within a specific scope, meaning variables inside them can either be **local to the function or global within the shell session**. 
+Understanding scope is crucial for avoiding variable conflicts, improving script maintainability and ensuring correct behavior in HPC workflows.
+
+#### Local vs. Global variables
+
+By default, variables inside a function are `global`, meaning they persist even after the function has executed. 
+This can lead to unintended modifications of variables used elsewhere in your shell session.
+
+*For example, here is the function that modifies the global variable, which could cause issues if `my_var` was used elsewhere.*
+```bash
+my_var="Original Value"
+
+modify_var() { my_var="Modified inside function"; }
+modify_var
+echo "$my_var"  # Output: "Modified inside function"
+```
+![function local vs. global variables](../../assets/img/function_local_global_var.png)
+
+To prevent unintended changes to global variables, use `local` inside functions. 
+This restricts the variable's scope to the function, ensuring it does not interfere with the shell environment.
+```bash
+my_var="Original Value"
+
+safe_var() { local my_var="Only inside function"; }
+safe_var
+echo "$my_var"  # Output: "Original Value"
+```
+*Using `local` scope for variables in a function:*
+- *prevents accidental modification of global variables*
+- *makes functions self-contained and safer to use in scripts*
+- *is essential for modular design and function reusability*
+
+#### Environment variables
+
+Functions automatically inherit environment variables, meaning they can access system-wide settings and configurations.
+```bash
+print_home() { echo "Your home directory is: $HOME"; }
+```
+**When to use environment variables in functions?**
+- To access system-wide values (`$HOME`, `$PATH`, `$USER`). *Use `env` command to list all environment variables available in your shell.*
+- To configure/overwrite global settings for a session (`export VAR=value`).
+- To pass information between scripts and functions efficiently.
+
+
+### **Conditionals and loops**
 
 Enhancing shell functions with conditionals and loops allows users to **introduce dynamic decision-making and repetition** making the same code reusable for different inputs or applications. 
 This is particularly valuable on HPC systems, where tasks such as batch processing, file checks and iterative computations are common.
@@ -553,7 +637,7 @@ user_menu() {
 - *The `choice` variable stores the user's input, which is evaluated using a `case` statement to determine the corresponding action.*
 - *You can modify this template function to include your own options with custom commands.*
 
-### Passing arguments to functions
+### **Passing arguments** to functions
 
 When you pass arguments to a shell function, the **arguments are accessed using positional parameters** like `$1`, `$2`, `$3`, etc. 
 These represent the first, second and third arguments *(i.e., separate words)* passed to the function during execution, and they are managed similarly to how arguments are passed to shell scripts.
@@ -619,8 +703,8 @@ print_args() {
 }
 # usage:  print_args "apple" "banana" "cherry"
 ```
-* Initial call of a functions takes all positional arguments: $1="apple", $2="banana", $3="cherry"
-* First iteration in the while loop prints `apple` and shifts the arguments (`$1` becomes `banana`). It continues until no arguments remain.
+* *Initial call of a functions takes all positional arguments: $1="apple", $2="banana", $3="cherry"*
+* *First iteration in the while loop prints `apple` and shifts the arguments (`$1` becomes `banana`). It continues until no arguments remain.*
 
 ![function with shifting arguments](../../assets/img/function_shift_arguments.png)
 
@@ -628,7 +712,7 @@ print_args() {
 <div class="highlighted__body" markdown="1">
 Shifting arguments with `shift` is useful when you want to **perform the same task on all items in the argument list** within a single function call. 
 Instead of calling the function multiple times for each input, you can loop through the arguments one by one, processing them efficiently in a single job. 
-This reduces overhead, making scripts more streamlined and effective for tasks like batch processing files or handling multiple inputs dynamically.
+This reduces overhead, making scripts more streamlined and effective for tasks like batch processing files or handling multiple inputs.
 </div>
 </div>
 
@@ -665,19 +749,18 @@ show_all_args() {
 ```
 ![function strategies to handle all args](../../assets/img/function_handle_all_args.png)
 
-Explanation:
-- `$@` (unquoted): Expands to all arguments as separate words (`apple` `banana` `cherry pie`).
-- `$*` (unquoted): Expands into a single string (`apple banana cherry pie`).
-- `"$@"` (quoted): Treats each argument as an individual string (`"apple"` `"banana"` `"cherry pie"`).
-- `"$*"` (quoted): Combines all arguments into one string (`"apple banana cherry pie"`).
+- `$@` (unquoted): *Expands to all arguments as separate words (`apple` `banana` `cherry pie`).*
+- `$*` (unquoted): *Expands into a single string (`apple banana cherry pie`).*
+- `"$@"` (quoted): *Treats each argument as an individual string (`"apple"` `"banana"` `"cherry pie"`).*
+- `"$*"` (quoted): *Combines all arguments into one string (`"apple banana cherry pie"`).*
 
 
 #### Parsing named arguments for better readability and maintenance
 
 Named arguments provide more readable and maintainable code by explicitly **labeling each argument** instead of relying on positional parameters. 
-This is typically done by parsing the argument list with a `while` loop and `case` statements.
+This is typically done by parsing the argument list with a [`while` loop and `case` statements](#example-while-loop-and-case).
 
-*For example, this function processes named options (--task, --priority, --user) and assigns values to corresponding variables.*
+*For example, this function processes named options (\--task, \--priority, \--user) and assigns values to corresponding variables.*
 ```bash
 run_task() {
     while [ $# -gt 0 ]; do
@@ -696,13 +779,13 @@ run_task() {
 # usage: run_task --task "backup" --priority "high" --user "Alice"
 ```
 * `shift 2` *skips the option and its value to process the next argument.*
-* *If no arguments are provided, the variables will default to hard-coded values: `task="default_task"`, `priority="normal"`, `user="default_user"`.*
+* *If no arguments are provided, the variables will default to hard-coded values: <br>`task="default_task"`, `priority="normal"`, `user="default_user"`*
 
 ![function with named arguments](../../assets/img/function_named_arguments.png)
 
 <div id="note-alerts-1" class="highlighted highlighted--tip ">
 <div class="highlighted__body" markdown="1">
-When parsing named arguments in shell functions, using the `case` statement with `shift` allows you to handle options flexibly and cleanly. 
+When parsing named arguments in shell functions, using the [`case` statement](#example-while-loop-and-case) with `shift` allows you to handle options flexibly and cleanly. 
 Assigning default values ensures your **function works even if some arguments are missing**, improving robustness and user experience. 
 This approach is particularly useful for functions that need **optional or multiple inputs**.
 </div>
@@ -750,16 +833,25 @@ echo "Today's date is: $today"
 Every command in Linux returns an exit code (**0 for success**, non-zero for failure). <br>
 Functions can propagate these exit codes for error handling.
 
+<div id="note-alerts-1" class="highlighted highlighted--tip ">
+<div class="highlighted__body" markdown="1">
+Use exit codes when the function's success or failure determines script execution flow.
+</div></div>
+
+
 ```bash
 # Return 0 if file exists, 1 otherwise
 check_file() { [ -f "$1" ] && return 0 || return 1; }
 ```
-*Use exit codes when the function’s success or failure determines script execution flow.*
+*This command checks whether the file provided as the positional argument `$1` exists, returning 0 if it does and 1 otherwise.*
 
 You can use the returned exit code (0 ~ success; 1 ~ failure) as conditions for further processing:
 ```bash
 check_file "data.txt" && echo "File found!" || echo "File missing!"
 ```
+*This command checks if the file "data.txt" exists.*
+- *If the file exists (returned code is 0), it prints "File found!".*
+- *The `&&` operator runs the second command only if the first succeeds, while `||` runs the third command if the first fails.*
 
 #### Filtering function output with `grep`
 
@@ -782,76 +874,405 @@ backup_logs() {
 backup_logs > backup_report.txt       # Save output to a file
 ```
 
+### Time and performance monitoring
 
-## Tips for Function Management
-- Organizing functions in scripts or configuration files.
-- Modular function design.
+In HPC environments, function performance is critical, especially when dealing with large datasets, job scheduling, or computational tasks. 
+Monitoring execution time helps identify bottlenecks, optimize scripts, and improve efficiency.
 
-### Quoting and Escaping Special Characters in Functions
-- Preventing errors due to improper quoting.
-- Working with special characters like $, *, and &.
+<div id="note-alerts-1" class="highlighted highlighted--note ">
+<div class="highlighted__body" markdown="1">
+By incorporating timing and performance monitoring into your shell functions, you ensure your scripts run efficiently, predictably and optimized for HPC workloads.
+</div>
+</div>
 
-### Avoiding Conflicts with System Functions and Commands
-- Checking for conflicts and using naming conventions.
-- Shadowing system commands.
+#### Measuring the execution time of functions
 
-### Enhancing Functions with Debugging and Logging
-- Using set -x and set -e for debugging.
-- Logging function activities to files.
+To measure how long a function takes to execute, use the built-in `time` command:
+```bash
+time my_function
+# output:   real    0m2.345s ; user    0m1.890s ; sys     0m0.455s
+```
+*The function took 2.345 seconds in total, with 1.890 seconds spent on actual computation and 0.455 seconds on system calls.*
+- **Real time:** *The total time elapsed (wall-clock time).*
+- **User time:** *The CPU time spent executing user-space commands.*
+- **System time:** *The CPU time spent in kernel-space operations.*
 
-### Timing and Performance Monitoring
-- Measuring the execution time of functions using built-in commands like time.
-- Practical examples for performance-critical scenarios.
+#### Profiling functions for optimization
 
-### Security Considerations
-- Avoiding security risks when using shell functions.
-  - Sanitizing user input.
-  - Preventing command injection.
-  - Using readonly functions where necessary.
+To measure how a function performs over multiple runs, use a loop:
+```bash
+benchmark() {
+    local start=$(date +%s)
+    for i in {1..10}; do
+        my_function             # Execute the function multiple times
+    done
+    local end=$(date +%s)
+    echo "Total execution time for 10 runs: $((end - start)) seconds"
+}
+```
+*This helps identify performance bottlenecks, compare execution times before and after optimizations and ensure function scales efficiently under repeated calls.*
 
 
-## Persisting functions
-- Adding functions to .bashrc, .zshrc, or profile scripts for persistent usage.
+### Tips for function management
 
-### Environment and scope of shell functions
+- [Choose meaningful function names](#choose-meaningful-function-names)
+- [Apply modular function design](#apply-modular-function-design)
+- [Test new functions before making them permanent](#test-new-functions-before-making-them-permanent)
+- [Enhance functions with logging](#enhance-functions-with-logging)
+- [Organize functions in configuration files](#organize-functions-in-configuration-files)
+- [Document your functions to keep a reference for future use](#document-your-functions-to-keep-a-reference-for-future-use)
 
-- Understanding local vs. global scope of variables within functions.
-- Using the local keyword for variable isolation.
-- When and why functions inherit environment variables.
+#### Choose meaningful function names
 
-### Loading External Function Libraries
 
-- Organizing reusable functions into external scripts or libraries.
-- Sourcing files using source or . to make functions accessible across sessions.
+A function’s name should clearly describe its purpose to improve readability and maintainability. 
+This makes it easier to remember its function and avoids conflicts with system commands.
+
+<div id="note-alerts-4" class="highlighted highlighted--tip "> <div class="highlighted__body" markdown="1">
+Use descriptive and distinct names for functions in HPC to prevent conflicts with system commands. 
+When defining functions, choose names that indicate their purpose while ensuring they don’t shadow built-in commands.
+
+| good function name | why it's good? | bad function name  | why it's bad? |
+|--                  |--              |--                  |--             |
+| `list_my_jobs`     | Clearly indicates its function.     | `jobs`        | Conflicts with the built-in jobs command. |
+| `safe_remove`      | Prevents accidental file deletion.  | `rm`          | Overwrites the critical `rm` command. |
+| `check_process_logs` | Descriptive and avoids conflicts. | `log`         | Too generic and may conflict with system tools. |
+| `submit_sbatch_jobs` | 	Specifies its purpose.           | `submit`      | Too broad and can be misleading. |
+
+</div> </div>
+
+To check if a function name conflicts with an existing command, use:
+```bash
+type my_function_name             # if a function exists, its definition is returned
+# or
+command -v my_function_name       # if a function exists, its name is returned
+```
+![function check existsing by names](../../assets/img/function_check_existsing.png)
+
+#### Apply modular function design
+
+Break down complex tasks into smaller, reusable functions to improve maintainability and readability. 
+Instead of writing one large function, create smaller helper functions that perform specific tasks:
+- **more readable** – Each function has a clear, single responsibility.
+- **reusable** – `count_lines` and `count_errors` can be used in other scripts.
+- **easier to debug** – Fixing or improving one function doesn't affect others.
+
+<table>
+<tr> 
+<td> 
+<div markdown="1" style="max-width:445px;">
+```bash
+process_log() {
+    local file="$1"
+    
+    if [[ ! -f "$file" ]]; then
+        echo "Error: File not found!"
+        return 1
+    fi
+
+    echo "Processing file: $file"
+    echo "Total lines: $(wc -l < "$file")"
+    echo "Errors found: $(grep -i 'error' "$file" | wc -l)"
+}
+```
+USAGE:
+```bash
+process_log <file>
+```
+</div>
+</td>
+<td> 
+<div markdown="1" style="max-width:445px;">
+```bash
+# Check if file exists
+check_file() { [[ -f "$1" ]] || { echo "Error: File not found!"; return 1; }; }
+```
+```bash
+# Count lines in a file
+count_lines() { wc -l < "$1"; }
+```
+```bash
+# Count occurrences of "error" in a file
+count_errors() { grep -i 'error' "$1" | wc -l; }
+```
+```bash
+# Main function that calls modular helper functions
+process_log() {
+    local file="$1"
+    check_file "$file" || return 1      # Ensure file exists before proceeding
+
+    echo "Processing file: $file"
+    echo "Total lines: $(count_lines "$file")"
+    echo "Errors found: $(count_errors "$file")"
+}
+```
+</div>
+</td>
+</tr>
+</table>
+
+
+#### Test new functions before making them permanent
+
+Define and test functions interactively in a shell before saving them permanently in `~/.bashrc` or `~/bin/functions.sh`.
+
+*For example, copy-paste and execute this code in your current shell:*
+```bash
+test_func() { echo "Testing function with input: $1"; }
+
+test_func "test input"
+```
+Modify the function body to your needs and test until it works as expected, then add it to a permanent script or configuration file. 
+
+
+#### Enhance functions with logging
+
+When working with shell functions, especially in HPC environments, debugging and logging are crucial for tracking issues, improving efficiency and ensuring reliability.
+
+**Logging** is essential in HPC workflows where long-running functions need monitoring. Instead of printing everything to the console, redirect function outputs to log files for later review.
+
+This function logs execution details while displaying output in the terminal.
+```bash
+log_function() { echo "Executing task at $(date)" | tee -a ~/function.log; }
+```
+*This ensures:*
+- *The user sees real-time messages in the terminal.*
+- *The execution history is recorded in `~/function.log` for later analysis.*
+
+Alternatively, redirect both stdout (standard output, `>>`) and stderr (errors, `2>>`) to separate log files:
+```bash
+log_function() { echo "Executing task at $(date)" >> ~/function.log 2>> ~/function_errors.log; }
+```
+
+
+#### Organize functions in configuration files
+
+1. Keep frequently used functions in shell configuration files (i.e., `~/.bashrc`, `~/.bash_profile`) or separate script files (e.g., `~/bin/functions.sh`). 
+2. Source them using:
+```bash 
+source ~/.bashrc
+source ~/bin/functions.sh 
+```
+
+#### Document your functions to keep a reference for future use
+
+If you define multiple functions, document them in your configuration file or a separate script (e.g., `~/bin/functions.sh`).
+
+The simplest documentation is the purpose of the function:
+```bash
+# Function to list jobs for the current user
+list_jobs() { squeue -u $USER; }
+```
+
+For more complex functions, include comments explaining arguments and usage:
+```bash
+# A function analyzes log files for errors.
+# Usage: check_process_logs logfile
+check_process_logs() { grep -i "ERROR" "$1"; }
+```
+
+For multi-line functions, document key steps inline to improve readability and maintainability:
+```bash
+# A function creates a compressed backup of log files with a timestamp.
+# Usage: backup_logs /path/to/logs
+backup_logs() {
+    local log_dir="$1"  # Directory containing log files
+    local backup_file="logs_$(date +"%Y%m%d_%H%M%S").tar.gz"  # Timestamped backup file
+    [[ -d "$log_dir" ]] || { echo "Error: Directory not found"; return 1; }  # Check if directory exists
+    tar -czf "$backup_file" "$log_dir"/*.log && echo "Backup saved as $backup_file"  # Create archive and confirm
+}
+```
+
+
+## **Persisting functions**
+
+Understanding the correct usage of temporary and permanent shell functions in an HPC environment can significantly enhance your daily routine, 
+particularly when handling large-scale job submissions, data processing and system monitoring. 
+Proper function persistence ensures efficiency, reduces redundancy and maintains consistency across sessions.
+
+#### Temporary functions
+
+Functions defined within the current shell session are temporary and are not retained once the session ends. 
+These functions are useful for quick, one-time tasks, experimentation, or debugging interactive sessions on HPC nodes.
+
+Limitations of temporary functions include:
+* **Session-specific:** The function exists only in the shell session where it was defined.
+* **Lost after logout:** The function disappears once the session is closed or the system logs out.
+* **Not suitable for repetitive tasks:** If you need the function in multiple sessions or nodes, defining it every time becomes inefficient.
+
+<div id="note-alerts-1" class="highlighted highlighted--tip ">
+<div class="highlighted__body" markdown="1">
+Useful during debugging, interactive (real-time) analysis or temporary fixes while working on an HPC node.
+</div>
+</div>
+
+*Suppose you are working on a project where you frequently filter and summarize data files during a simulation run. 
+To avaoid retyping a complex command and speed up the repeatitve task, you can create a quick temporary function for interactive use:*
+```bash
+process_file() { cat /project/my_account/my_project/iteration_X/output.dat | grep "KEYWORD" | awk '{print $1,$3,$5}' | sort | uniq -c; }
+```
+After defining the function, you can call it every minute to track the data file in real time:
+```bash
+process_file
+```
+*Once your project is finished, you don’t need this function anymore, so defining it permanently would be unnecessary.*
+
+
+#### Permanent functions
+
+Permanent functions are stored in shell configuration files, making them **available across multiple sessions** and logins. 
+These are essential **for repetitive tasks** that you frequently execute across different nodes in an HPC cluster.
+
+Benefits of permanent functions include:
+* **Persistent across sessions:** Once defined in a shell config file, the function is always available.
+* **Ideal for repetitive tasks:** Saves time on frequently used operations.
+* **Ensures consistency:** Reduces the chance of errors in repetitive command sequences.
+* **Project history or documentation:** Well-described functions provides details of methods used and logic in your analysis.
+
+<div id="note-alerts-1" class="highlighted highlighted--tip ">
+<div class="highlighted__body" markdown="1">
+This is particularly useful for tasks you perform regularly, such as automating file management, monitoring resource usage, or executing complex command sequences across multiple sessions. 
+Persisted functions ensure that commonly used operations are always accessible, reusable and optimized for your specific needs. 
+</div>
+</div>
+
+*For example, if you frequently check space usage in different directories, a function with an argument can make this process more universal and efficient.*
+
+**To create a permanent function:**
+
+1. Open your ~/.bashrc configuration file:
+```bash
+nano ~/.bashrc
+```
+
+2. Add the function definition: <br>
+*This function helps you quickly check the disk usage of any directory and optionally list all files larger than a specified size in an HPC environment.*
+```bash
+check_disk_usage() {
+    local dir="${1:-$HOME}"         # First argument: directory (defaults to $HOME)
+    local size_threshold="${2:-0}"  # Second argument: file size threshold (defaults to 0)
+    du -sh "$dir"
+    if [[ "$size_threshold" -gt 0 ]]; then
+        find "$dir" -type f -size +"${size_threshold}M" -exec ls -lh {} + | awk '{print $9, $5}'
+    fi
+}
+```
+*By defining this as a permanent function, you ensure that you can efficiently monitor storage usage and identify large files across multiple sessions without manually running multiple commands each time.* 
+
+3. Save the file (CTRL + X, then Y) and reload the configuration:
+```bash
+source ~/.bashrc 
+```
+
+4. Use this flexible function in various scenarios:
+
+-  Check disk usage (only) in the default location:
+```bash
+check_disk_usage
+```
+- Check disk usage (only) for any directory:
+```bash
+check_disk_usage /project/isu_gif_vrsc/Alex/
+```
+- Check disk usage AND list files larger than <number> MB:
+```bash
+check_disk_usage /project/isu_gif_vrsc/Alex/ 500
+```
+
+***This is particularly useful for managing project directories, detecting storage issues and optimizing disk space.***
+![function flexible disk check](../../assets/img/function_flexible_disk_check.png)
+
+
+### Loading functions from a file
+
+When working on multiple HPC projects, maintaining a clean and organized environment is essential. 
+Instead of cluttering your `~/.bashrc` with all permanent functions, a project-specific approach allows you to load only the functions you need for a given project. 
+This keeps your environment lightweight and prevents unnecessary function definitions from overwhelming your shell session.
+
+<div id="note-alerts-1" class="highlighted highlighted--tip ">
+<div class="highlighted__body" markdown="1">
+When working with complex scripts or multiple reusable functions, it's best to organize them into separate files and load them into your session dynamically.
+</div>
+</div>
+
+#### Organizing functions by project
+
+A better approach than defining all functions in `.bashrc` is to store them in separate function files per project and load them dynamically when needed.
+
+*For example, create a `bin` directory (if not present) and add a functions file for each project separately:*
+```
+~/bin/
+│── functions_projectA.sh
+│── functions_projectB.sh
+│── functions_projectC.sh
+```
+
+1. Create a new function file for your project.
+2. Define reusable functions inside the file. *Save the file and exit edition mode.*
+3. Manually load functions for a project when needed.
+```bash
+source ~/bin/functions_projectA.sh
+```
+*Now, all functions defined in the sourced file are available in your current shell.*
+
+<div id="note-alerts-1" class="highlighted highlighted--tip ">
+<div class="highlighted__body" markdown="1">
+**Why Use a Project-Specific Approach?**
+
+* **Avoids clutter:** Your `.bashrc` remains clean, keeping only essential configurations.
+* **Improves maintainability:** Functions are grouped by project, making them easy to manage.
+* **Prevents function overload:**  You only load what you need, avoiding unnecessary commands in your environment.
+* **Supports multiple projects:** Easily switch between different function sets as required.
+
+*By following this modular and project-specific approach, you keep your HPC work organized, scalable and efficient while ensuring that functions remain relevant and manageable across different projects.*
+</div>
+</div>
 
 
 ## **Practical shell functions for HPC**
 
-Here are some common and useful shell function examples:
-
 ### *List all functions defined in a shell*
 
-In Bash, you can list all function names using:
+In Bash, you can list all function names using:  &emsp;  *(This outputs only the function names without definitions.)*
 ```bash
 declare -F | awk '{print $3}'
 ```
-*This outputs only the function names (without definitions).*
 
-Another Bash-specific method to list functions:
+Another Bash-specific method to list functions:  &emsp;  *(This is concise and directly outputs function names.)*
 ```bash
 compgen -A function
 ```
-*This is concise and directly outputs function names.*
 
 To list both function names and their definitions:
 ```bash
 typeset -f
 ```
 
+To display the definition of a selected function:
+```bash
+type <function_name>
+```
+
+---
+
+Here are some common and useful shell function examples:
+
+* [Check quota on any SCINet cluster](/computing-skills/command-line/cli-interface/shell/customization/functions#check-quota-on-any-scinet-cluster)
+* [Quick stats on queued jobs](/computing-skills/command-line/cli-interface/shell/customization/functions#quick-stats-on-queued-jobs)
+* [List sizes of items in a directory](/computing-skills/command-line/cli-interface/shell/customization/functions#list-sizes-of-items-in-a-directory)
+* [Find large files in a directory](/computing-skills/command-line/cli-interface/shell/customization/functions#find-large-files-in-a-directory)
+* [GPU resources check](/computing-skills/command-line/cli-interface/shell/customization/functions#gpu-resources-check)
+* [CPU and memory on a node](/computing-skills/command-line/cli-interface/shell/customization/functions#cpu-and-memory-on-a-node)
+* [Create backup file or dir](#create-backup-file-or-dir)
+* [Iterate files & process if exist](#iterate-files--process-if-exist)
+* [Function with named arguments](#function-with-named-arguments)
+
 
 ### Check quota on any SCINet cluster
 
-*This script allows for flexibility in environments where different clusters (Atlas vs. Ceres) require distinct quota management commands.*
+*(works on Atlas and Ceres but needs to be added to .bashrc on each separately)*
+
+This script unifies the way you check your quota on both SCINet clusters (i.e., same command for Atlas and Ceres).
 ```bash
 check_quota() {
     case "$HOSTNAME" in
@@ -860,6 +1281,8 @@ check_quota() {
         *) echo "Hostname does not match Atlas or Ceres." ;;
     esac
 }
+
+# usage: check_quota 
 ```
 
 <div id="note-alerts-1" class="highlighted highlighted--highlighted ">
@@ -869,9 +1292,63 @@ This tells the shell that the commands for the current pattern have finished, an
 </div>
 </div>
 
-  ![function check_quota ceres](../../assets/img/function_check_quota_ceres.png)
-  ![function check_quota atlas](../../assets/img/function_check_quota_atlas.png)
+![function check_quota ceres](../../assets/img/function_check_quota_ceres.png)
+![function check_quota atlas](../../assets/img/function_check_quota_atlas.png)
 
+---
+
+### Quick stats on queued jobs
+
+This function offers flexibility by dynamically generating job statistics for the current user (`$USER`) by default, while also allowing the option to specify any other user when submitting jobs in a team project. Returned output includes:
+- the total number of running and pending jobs
+- the longest-running job
+- the most recently started job
+
+```bash
+job_stats() {
+    local user=${1:-$USER}          # specify user.name or use $USER as default
+    
+    # Count running and pending jobs
+    running_jobs=$(squeue -u "$user" -t RUNNING | wc -l)
+    pending_jobs=$(squeue -u "$user" -t PENDING | wc -l)
+    
+    # Find the job with the longest running time
+    longest_running=$(squeue -u "$user" -o "%A %L %j" --sort=-L | head -n 2 | tail -n 1)
+    
+    # Find the most recently started job
+    most_recent=$(squeue -u "$user" -o "%A %S %j" --sort=-S | head -n 2 | tail -n 1)
+
+    # Display the results
+    echo "Running jobs: $((running_jobs - 1))"  # Subtract header line
+    echo "Pending jobs: $((pending_jobs - 1))"  # Subtract header line
+    echo "Longest-running job: $longest_running"
+    echo "Most recently started job: $most_recent"
+}
+
+# usage for current user:   job_stats()
+# usage for any user:       job_stats() user.name
+```
+![function job_stats](../../assets/img/function_job_stats.png)
+
+---
+
+### List sizes of items in a directory
+
+*(checks your /home when no arguments (directory path) provided)*
+```bash
+check_dir_usage() { dir=${1:-~}; du -sh "$dir"/*; }
+
+# usage: check_dir_usage 
+# usage: check_dir_usage <directory>
+```
+- `dir=${1:-~}`: *If a directory provided ()`$1`), it will check that directory. Otherwise, it defaults to the home directory (`~`).*
+-  `du -sh "$dir"/*`: *Displays the disk usage of each item in the specified directory.*
+
+![function check_dir_usage](../../assets/img/function_check_dir_usage.png)
+
+Explore [check_disk_usage](#permanent-functions) function example to quickly check the **disk usage of any directory and optionally list all files larger than a specified size**. 
+
+---
 
 ### Find large files in a directory 
 
@@ -886,30 +1363,20 @@ find_large_files() {
     dir=${2:-.}
     find "$dir" -type f -size +"$1" -exec ls -lh {} \;
 }
+
 # usage: find_large_files 500M
 # usage: find_large_files 500M <directory> 
 ```
-  - `$1`: *File size threshold (e.g., 100M, 1G).*
-    - If no size is specified, a help message will be displayed to guide the user on proper usage.
-  - `$2`: *Directory to search in. If not provided, it defaults to the current directory (`.`).*
-  - `find "$dir"`: *Dynamically searches the provided directory.*
+- `$1`: *File size threshold (e.g., 100M, 1G).*
+  - If no size is specified, a help message will be displayed to guide the user on proper usage.
+- `$2`: *Directory to search in. If not provided, it defaults to the current directory (`.`).*
+- `find "$dir"`: *Dynamically searches the provided directory.*
 
-  ![function find_large_files](../../assets/img/function_find_large_files.png)
+![function find_large_files](../../assets/img/function_find_large_files.png)
 
+Explore [check_disk_usage](#permanent-functions) function example to quickly check the **disk usage of any directory and optionally list all files larger than a specified size**. 
 
-### Display a file or directory size
-
-*(your /home when no arguments provided)*
-```bash
-check_dir_usage() { dir=${1:-~}; du -sh "$dir"/*; }
-# usage: check_dir_usage 
-# usage: check_dir_usage <directory>
-```
-  - `dir=${1:-~}`: *If a directory provided ()`$1`), it will check that directory. Otherwise, it defaults to the home directory (`~`).*
-  -  `du -sh "$dir"/*`: *Displays the disk usage of each item in the specified directory.*
-
-  ![function check_dir_usage](../../assets/img/function_check_dir_usage.png)
-
+---
 
 ### GPU resources check 
 
@@ -960,6 +1427,7 @@ check_interactive_resources() {
     echo "GPUs Allocated: $gpu_alloc / $gpu_total"
     echo "-------------------------------------------"
 }
+
 # usage: check_interactive_resources
 ```
 ![function check_interactive_resources](../../assets/img/function_check_interactive_resources.png)
@@ -970,16 +1438,14 @@ check_interactive_resources() {
 - **Free Memory:** Displays available memory on the node (in GB).
 - **GPUs Allocated:** Shows the number of GPUs currently in use by your job versus the total available on the node.
 
+---
+
 ### CPU and memory on a node
 
-This function demonstrates:
-- argument handling (custom thresholds), 
-- logic/conditions (different usage levels), 
-- workflow integration (system commands like `top`) and 
-- color-coded output: 
-(<span style="color:green;">Normal usage</span> ; <span style="color: yellow; background-color: black;">Warning if usage exceeds a threshold</span> ; <span style="color: red;">Critical if usage is dangerously high</span>).
+*(useful in the interactive session on a compute node)*
 
-*This code checks CPU and memory usage on the current node and displays them immediately.*
+This code checks CPU and memory usage on the current node and displays them immediately with color-coded output: <br>
+(<span style="color:green;">Normal usage</span> ; <span style="color: yellow; background-color: black;">Warning if usage exceeds a threshold</span> ; <span style="color: red;">Critical if usage is dangerously high</span>)
 ```bash
 monitor_resources() {
     # Thresholds for warnings and critical alerts (can be overridden via user-provided arguments)
@@ -1022,20 +1488,115 @@ monitor_resources 50 80 50 80         # arguments: $1=60 $2=80 $3=60 $4=80
 - ***Logic and Conditions:*** *Uses if conditions to determine output based on warning and critical thresholds.*
 - ***Nested/internal functions:*** *The main function defines internal functions to handle subtasks like resource checks or formatting. This modular design simplifies maintenance and enhances reusability.*
 
+---
 
+### Create backup file or dir
 
+Explore an example function depending on your needs:
+- [`tar` based *(hard-coded)* backup:](#redirecting-function-output-to-a-file)  compress a specific file/dir using its absolute path
+- [`cp` based *(dynamic)* backup:](#managing-arguments-effectively) copy any directory from source path ($1) to the destination path ($2)
+- [`tar` based *(dynamic)* backup:](/computing-skills/command-line/cli-interface/shell/customization/functions#defining-a-multi-line-function) compress any directory in a current location to .tar.gz format
+- [`tar` based *()dynamic* backup with timestamp:](#document-your-functions-to-keep-a-reference-for-future-use) compress any directory and add a date & time tag to the backup name to distinguish historical versions
 
+---
 
+### Iterate files & process if exist
 
+Template function to iterate through a list of files, check if each file exists and process them if they do.
+```bash
+process_files() {
+  for file in "$@"; do
+    if [ -e "$file" ]; then
+      echo "Processing $file"
+      # Code your task here
+    else
+      echo "Warning: $file not found"
+    fi
+  done
+}
+# usage: process_files file1.txt file2.txt file3.txt
+```
+*This function iterates through the user-provided file arguments using a loop, checks their existence with a conditional and processes them if found.*
+
+<div id="note-alerts-1" class="highlighted highlighted--tip ">
+<div class="highlighted__body" markdown="1">
+Explore [Using shift for processing variable-length arguments](#using-shift-for-processing-variable-length-arguments) to process a list of aruments one at a time. 
+*This is useful when you want to perform the same task on all items in the argument list within a single function call.*
+</div> </div>
+
+---
+
+### Function with named arguments
+
+Explore [Example: while loop and case](/computing-skills/command-line/cli-interface/shell/customization/functions#example-while-loop-and-case), 
+if you create a function to provide an interactive menu options for executing different scenarios based on user input. 
+
+You can also create [labeled options/arguments](#parsing-named-arguments-for-better-readability-and-maintenance) (instead of relying on positional parameters) for better readability and maintenance.
+
+---
 
 
 ## **Troubleshooting common issues**
 
-- Common errors (e.g., unrecognized arguments, syntax errors).
-- Debugging tips and best practices.
+Shell functions can behave unexpectedly due to syntax errors, incorrect argument handling or misinterpreted shell commands. 
+
+*Below are common issues and effective ways to troubleshoot them.*
+
+<div class="usa-accordion">
+
+{% include accordion title="Unrecognized arguments or unexpected behavior" class="overview " controls="shell-function-0" %}
+<div id="shell-function-0" class="accordion_content" markdown="1">
+**SYMPTOMS:** The function does not correctly process arguments, leading to missing or incorrect values.
+
+**SOLUTIONS:** Ensure that arguments are referenced properly using `$1`, `$2`, etc., and check for missing arguments before execution.
+</div>
+
+{% include accordion title="Syntax Errors (unexpected tokens, missing quotes)" class="overview " controls="shell-function-1" %}
+<div id="shell-function-1" class="accordion_content" markdown="1">
+**SYMPTOMS:** Errors like `syntax error near unexpected token` or `command not found` appear.
+
+**SOLUTIONS:** Verify that function definitions follow proper syntax (`function_name() { ... }`) and correctly use quotes to handle spaces and special characters.
+</div>
+
+{% include accordion title="Command not found inside a function" class="overview " controls="shell-function-2" %}
+<div id="shell-function-2" class="accordion_content" markdown="1">
+**SYMPTOMS:** A command works in the terminal but fails inside a function.
+
+**SOLUTIONS:** Ensure the command is available in the `$PATH` and use absolute paths (`/bin/command`) if necessary.
+</div>
+
+{% include accordion title="Variable scope issues (Global vs. Local)" class="overview " controls="shell-function-3" %}
+<div id="shell-function-3" class="accordion_content" markdown="1">
+**SYMPTOMS:** Variables retain values across function calls when they shouldn't.
+
+**SOLUTIONS:** Use `local` keyword to keep variables isolated within functions and avoid conflicts.
+</div>
+
+{% include accordion title="Functions not available after shell restart" class="overview " controls="shell-function-4" %}
+<div id="shell-function-4" class="accordion_content" markdown="1">
+**SYMPTOMS:** Functions disappear after logging out.
+
+**SOLUTIONS:** Persist functions by defining them in a sourced script (`~/.bashrc` or custom `~/bin/functions.sh`) instead of just in a temporary session.
+</div>
+
+</div>
 
 ### Best practices
 
-- Naming conventions.
-- Efficient argument parsing.
-- Avoiding common pitfalls.
+Following best practices improves function readability, reliability and maintainability, especially in HPC environments where efficiency matters.
+
+**Use clear and descriptive naming conventions**
+- Function names should indicate their purpose *(e.g., `check_disk_usage` instead of `chkdu`)*.
+- Use underscores instead of hyphens *(e.g., `my_function` is better than `my-function`)*.
+
+**Apply efficient argument parsing**
+- Prefer named arguments (`--file log.txt`) over positional ones (`$1`, `$2`) when functions handle multiple parameters.
+- Validate arguments before using them to prevent unexpected behavior.
+
+**Test functions in isolation**
+- Before adding functions to scripts, test them interactively to ensure they behave as expected.
+
+**Avoid common pitfalls**
+- Don’t redefine system commands *(e.g., avoid creating a function named ls)*.
+- Use `local` variables inside functions to prevent accidental overwrites.
+- Always quote variables (`"$var"`) to handle spaces and special characters correctly.
