@@ -175,10 +175,10 @@ fi
 ```
 
 
-## Editing & applying changes in .bashrc
+## **Working with `.bashrc`**
 
 Customizing `.bashrc` requires careful editing to avoid errors that might disrupt your shell environment. 
-*This section covers how to [locate](#locating-bashrc), [edit](#editing-safely), [apply](#applying-changes) and [back up](#backing-up-configuration-files) your `.bashrc` configuration safely, ensuring a smooth experience on SCINet HPC systems.*
+*This section covers how to [locate](#locating-bashrc), [edit](#editing-safely), [apply](#applying-changes) and [back up](#backing-up-configuration-files) your `.bashrc` configuration safely, ensuring a smooth experience on SCINet HPC.*
 
 ### *When does `.bashrc` run?*
 
@@ -217,25 +217,25 @@ If the file is missing, you can create one using:
 touch ~/.bashrc
 ```
 
-<div id="note-alerts-1" class="highlighted highlighted--tip ">
+<div id="note-alerts-1" class="highlighted highlighted--success ">
 <div class="highlighted__body" markdown="1">
-SCINet HPC clusters provide a [default `.bashrc`]() for every user - modifying it carefully ensures system-wide settings remain intact.
+SCINet HPC clusters provide a [default `.bashrc`](/computing-skills/command-line/cli-interface/shell/customization/bashrc#bashrc) for every user - modifying it carefully ensures system-wide settings remain intact.
 </div> </div>
 
 ### Editing safely
 
 Use a command-line text editor like **nano** or **vim** to modify `.bashrc`:
 ```bash
-nano ~/.bashrc          # easy-to-use text editor
+nano ~/.bashrc       # easy-to-use text editor
 ```
 or
 ```bash
-vim ~/.bashrc    # Advanced editor (if you're comfortable with Vim)
+vim ~/.bashrc        # Advanced editor (if you're comfortable with Vim)
 ```
 
 <div id="note-alerts-1" class="highlighted highlighted--tip ">
 <div class="highlighted__body" markdown="1">
-Always keep a backup copy of your `.bashrc` - in case changes cause errors you may need to revert quickly.
+Always keep a backup of your `.bashrc` - in case changes cause errors you may need to revert quickly.
 </div> </div>
 
 
@@ -244,32 +244,32 @@ Always keep a backup copy of your `.bashrc` - in case changes cause errors you m
 <div id="note-alerts-1" class="highlighted highlighted--note ">
 <div class="highlighted__body" markdown="1">
 ***When to use `source ~/.bashrc`?***
-- If you added aliases, functions or variable exports and want to apply them instantly in a curent session.
+- If you added aliases, functions or variable exports and want to apply them in a curent session.
 - Useful for testing small changes without opening a new session.
 
-***When to restart the shell?** <br>
+***When to restart the shell?*** <br>
 If the changes involve `PATH` modifications or environment variables, a fresh session ensures they are applied consistently.
 </div> </div>
 
-#### Applying changes in a curren t session without logging out
+#### Applying changes in a current session without logging out
 
 After modifying `.bashrc`, apply the changes immediately without starting a new terminal:
 ```bash
 source ~/.bashrc
 ```
 
-***Alternatively, you can restart your shell by closing and reopening the terminal.***
+**Alternatively, you can restart your shell by closing and reopening the terminal.**
 
 <div id="note-alerts-1" class="highlighted highlighted--tip ">
 <div class="highlighted__body" markdown="1">
-If something breaks, open a new shell and revert `.bashrc` from your backup or create a new one and copy-paste the default content.
+If something breaks, open a new shell and revert `~/.bashrc` from your backup or create a new one and copy-paste the [default content](#bashrc).
 </div> </div>
 
 ### Backing up configuration files
 
 Before making major changes, always create a backup to restore previous settings if needed:
 ```bash
-cp ~/.bashrc ~/.bashrc.backup
+cp ~/.bashrc ~/.bashrc.backup           # Copy your existing .bashrc as a backup with a new filename
 ```
 
 If an error occurs, you can restore the backup with:
@@ -294,17 +294,23 @@ git commit -m "Initial backup of .bashrc"
 
 *(Reference tutorial: [Shell customization](/computing-skills/command-line/cli-interface/shell/customization/index))*
 
-Customizing your shell settings through `.bashrc` allows you to create a more efficient, user-friendly and automated by default command-line experience. 
+Customizing your shell settings through `~/.bashrc` allows you to create a more efficient, user-friendly and automated by default command-line experience. 
 By defining **variables**, **aliases**, **shell functions** and modifying **system paths**, you can significantly speed up your daily routine and repetitive tasks on SCINet clusters.
 
 ### Essential shell commands for `.bashrc` customization
 
-To customize `.bashrc`, you’ll frequently use this command:
+To customize `~/.bashrc`, you’ll frequently use this command:
 ```bash
 nano ~/.bashrc          # open .bashrc in nano editor
 ```
 
-### Setting environment variables 
+To immediately load changes from `~/.bashrc` (or any other custom script):
+```bash
+source ~/.bashrc        # Applies recent changes in a current shell
+source ~/.bash_aliases  # Load additional aliases from a separate file (if it exists)
+```
+
+### Setting env/shell variables: `export` 
 
 *(Reference tutorial: [Using environment and shell variables](/computing-skills/command-line/cli-interface/shell/variables))*
 
@@ -343,8 +349,16 @@ export MY_PROJECT_DIR=/projects/<scinet-project>/$USER    # Define project direc
 
 <div id="note-alerts-1" class="highlighted highlighted--note ">
 <div class="highlighted__body" markdown="1">
-The `$PATH` variable determines where the shell looks for executable programs when you type a command. 
-Appending directories to `$PATH` allows you to run programs from custom locations without specifying full paths.
+The `$PATH` variable determines **where the shell looks for executable programs** when you type a command. 
+Appending directories to `$PATH` allows you to run programs from custom locations using directly its name, without specifying full paths.
+
+To add a new directory (`/your/custom/path`) to your `$PATH`, ensure that each path is separated by a colon (`:`), as shown below:
+```bash
+export PATH="$HOME/bin:/your/custom/path:$PATH"
+```
+* `$HOME/bin` is a commonly used directory for user scripts and binaries.
+* But, you can add a path (`/your/custom/path`) to any custom directory with executables to make them directly accessible in the command line.
+* `:$PATH` at the end, ensures existing directories remain in the search path and the new ones are appended.
 </div> </div>
 
 #### Adding ~/bin to $PATH 
@@ -433,13 +447,22 @@ This section covers essential tweaks that enhance usability, reduce repetitive t
 
 #### Improve tab completion
 
-Tab completion is a powerful feature in the shell that helps you auto-complete file names, directories and commands with the `Tab` key. 
-Enabling additional shell options improves this feature further:
-* Instead of typing `cd myfolder`, you can simply type `myfolder` and press `Enter`.
+Tab completion is a powerful feature that helps you auto-complete file names, directories and commands with the `Tab` key. <br>
+*Instead of typing `cd myfolder`, you can simply type `myfolder` and press `Enter`.*
 ```bash
 shopt -s autocd         # Change directories by typing their name without `cd`  
 ```
-* The following setting ensures the terminal updates its display correctly after resizing, preventing visual glitches when working in SSH sessions or with resizable terminal windows.
+
+#### Enable command auto-correction
+
+To make navigation easier, you can enable automatic correction for minor typos when changing directories.
+```bash
+shopt -s cdspell        # Correct minor directory name typos automatically
+```
+
+#### Automatically adjust window size
+
+The following setting ensures the terminal updates its display correctly after resizing, preventing visual glitches when working in SSH sessions or with resizable terminal windows.
 ```bash
 shopt -s checkwinsize   # Automatically adjust window size after resizing terminal  
 ```
@@ -454,10 +477,6 @@ By default, Bash limits the number of commands stored in history.
 However, on HPC systems, **keeping an extensive persistent command history can be invaluable** for tracking past jobs, debugging commands, and reusing complex workflows.
 </div></div>
 
-* Large history storage ensures you can retrieve commands from previous sessions, making it easier to reuse complex job submission commands.
-* `ignoredups:erasedups` prevents duplicate entries (e.g., running ls multiple times won't clutter your history).
-* histappend ensures that new commands are added to history instead of replacing the previous session’s history, preserving command history between multiple terminal windows.
-
 By optimizing history settings, you can track past commands across sessions and keep a copy of never-ending history.
 
 ```bash
@@ -469,13 +488,19 @@ export HISTCONTROL=ignoredups:erasedups  # Remove duplicate entries
 shopt -s histappend                      # Append history instead of overwriting it  
 export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}history -a; history -c; history -r"
 ```
+* Large history storage ensures you can retrieve commands from previous sessions, making it easier to reuse complex job submission commands.
+* `ignoredups:erasedups` prevents duplicate entries (e.g., running ls multiple times won't clutter your history).
+* histappend ensures that new commands are added to history instead of replacing the previous session’s history, preserving command history between multiple terminal windows.
 
+<div id="note-alerts-1" class="highlighted highlighted--highlighted ">
+<div class="highlighted__body" markdown="1">
 **Useful history shortcuts for daily use:**
 
 `!!` – Re-run the last command <br>
 `!123` – Run command number 123 from history <br>
 `!grep` – Run the most recent command that started with 'grep' <br>
 `Ctrl + R` – Search command history interactively <br>
+</div></div>
 
 #### Set default text editor
 
@@ -490,23 +515,121 @@ export EDITOR=nano  # Use nano (or replace with vim/emacs)
 
 #### Improve `less` and `grep` formatting
 
-By tweaking settings for commonly used commands like less and grep, you can make output more readable and visually distinct.
+By tweaking settings for commonly used commands like `less` and `grep`, you make output more readable and visually distinct.
 * Highlights matching text in selected color, making it easier to locate search results in long log files.
 * Improves readability when scrolling through formatted log files and command outputs.
 
-**Enable Color Output for grep**
+**Enable Color Output for `grep`**
 ```bash
 export GREP_OPTIONS='--color=auto'  # Enable colored output  
 export GREP_COLOR='1;32'            # Set color to bright green  
 ```
 
-**Optimize less for better navigation**
+**Optimize `less` for better navigation**
 ```bash
-export LESS='-R'  # Enable raw control characters for color output  
+export LESS='-R'                    # Enable raw control characters for color output  
 ```
 
+### Manage software accessibility
+
+SCINet HPC environments include a wide range of [pre-installed software](https://scinet.usda.gov/guides/software/), but most applications are located outside the space dedicated for individual users. 
+Instead, software is managed through environment modules, allowing users to load, unload and switch between different versions of programs seamlessly.
+
+### *Environment modules on SCINet*
+
+<div id="note-alerts-1" class="highlighted highlighted--note">
+<div class="highlighted__body" markdown="1">
+HPC systems typically use module systems *(e.g., Lmod or [Environment Modules](https://scinet.usda.gov/guides/software/modules))* to dynamically configure the software environment. 
+Instead of manually setting environment variables, <br>users can **load specific software versions with the `module` command**.
+</div></div>
+
+#### Automatically loading frequently used modules
+
+If you frequently use specific software, you can ensure it loads automatically when you start a new session by adding the following command to your `~/.bashrc` file:
+```bash
+module load python_3/3.9.18 gcc/12.2.0              # specify your desired modules
+```
+*This ensures that Python 3.9 and GCC 12.2 are always available without needing to manually load them each time you log in.*
+
+<div id="note-alerts-1" class="highlighted highlighted--warning ">
+<div class="highlighted__body" markdown="1">
+On Ceres Cluster, the `module` command is **only available on compute nodes**, meaning it cannot be used directly on the login node.
+To prevent errors when sourcing `~/.bashrc`, you should **conditionally load modules** only when on a compute node. <br>
+You can modify your `.bashrc` like this:
+```bash
+if [[ $(hostname) =~ "compute" ]]; then
+    module load python_3/3.9.18 gcc/12.2.0
+fi
+```
+</div></div>
 
 
+### *Custom user installations*
+
+While HPC clusters provide many pre-installed software packages via the module system, you may need to install and manage your own software, 
+particularly if a required package is missing or you need a specific version. Since regular users do not have root access, 
+software must be installed in `/home` directories or allocated storage locations (`/project/<scinet-project>/$USER/SOFTWARE`). 
+To make these custom installations accessible, you need to properly configure environment variables such as `PATH` and `LD_LIBRARY_PATH`.
+
+#### Setting `PATH` for locally installed software
+
+If you install software in a local directory (e.g., `$HOME/software`), you must update your `PATH` so that the system can locate and execute these programs.
+```bash
+export PATH=$HOME/software/bin:$PATH            # the executable is typically stored in a bin subdirectory of installed software
+```
+*This adds `~/software/bin` to the system's search path for executables, ensuring that binaries in this directory can be run without specifying their full path.*
+
+
+#### Setting up user-installed software with Conda
+
+If you use Conda to manage environments, you may need to adjust your environment settings. Follow the up-to-date instructions provided in [SCInet User Guides](https://scinet.usda.gov/guides/software/conda).
+
+#### Setting `LD_LIBRARY_PATH` for custom library locations
+
+Some software depends on custom-built libraries stored outside standard system locations. <br>(e.g., `/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/usr/local/cuda/bin:/usr/local/cuda/lib64`)
+If an application complains about missing shared libraries (`.so` files), you need to extend `LD_LIBRARY_PATH`:
+
+```bash
+export LD_LIBRARY_PATH=$HOME/software/lib:$LD_LIBRARY_PATH
+```
+*This ensures that shared libraries in `~/software/lib` are found by programs that need them.*
+
+<div id="note-alerts-1" class="highlighted highlighted--warning ">
+<div class="highlighted__body" markdown="1">
+Modifying `LD_LIBRARY_PATH` incorrectly can cause system applications to behave unexpectedly. 
+Always append (:$LD_LIBRARY_PATH) rather than overwrite the variable.
+
+To check whether the correct library path is set, use:
+```bash
+echo $LD_LIBRARY_PATH
+# or
+ldd /path/to/binary         # Lists the shared libraries used by a program
+```
+</div></div>
+
+
+### *Set up Singularity/apptainer*
+
+<div id="note-alerts-1" class="highlighted highlighted--note ">
+<div class="highlighted__body" markdown="1">
+Some software packages may not be available for the version of Linux running on the HPC cluster. In this case, users may want to run containers. 
+Containers are self-contained application execution environments that contain all necessary software to run an application or workflow, 
+so users don’t need to worry about installing all the dependencies. There are many pre-built container images for scientific applications available for download and use.
+</div></div>
+
+Follow the up-to-date instructions provided in [SCInet User Guides](https://scinet.usda.gov/guides/software/singularity#singularity-apptainer-containers).
+
+<div id="note-alerts-1" class="highlighted highlighted--highlighted ">
+<div class="highlighted__body" markdown="1">
+While pulling/building the containers, pay attention to the home directory as the cached image blobs will be saved in `$HOME/.apptainer`. 
+Since the home directory has a limited amount of space, this can fill up quite easily. Users can change where the files will be cached by setting environment variables.
+
+We recommend adding the following two commands to the job scripts that use apptainer:
+```bash
+export APPTAINER_CACHEDIR=$TMPDIR 
+export APPTAINER_TMPDIR=$TMPDIR
+```
+</div></div>
 
 
 ## Sample shell configurations
@@ -584,7 +707,7 @@ alias ls='ls --color=auto'
 
 On both SCINet HPC clusters, the `.bash_profile` is already configured to automatically load everything from your `.bashrc`. 
 Modifying `.bash_profile` directly can cause conflicts or unexpected behavior in your shell environment.
-***[Put all customizations](#editing--applying-changes-in-bashrc) in `.bashrc` to keep your setup clear, organized and error-free.***
+***[Put all customizations](#working-with-bashrc) in `.bashrc` to keep your setup clear, organized and error-free.***
 </div> </div>
 
 Below is the default content of `.bash_profile `as set on SCINet HPC clusters. <br>
