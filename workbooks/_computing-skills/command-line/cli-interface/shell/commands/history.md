@@ -202,7 +202,7 @@ This is useful when you know exactly how many steps ago a command was executed, 
 ### *Run command by* ***absolute index***
 
 Once you know the **exact history index of a command**, you can retrieve and execute it in a single step using the `!<index>` expansion. 
-This method is useful when recalling a specific command from history, especially for frequently used or complex commands.
+This method is useful when recalling a specific command from history, especially for frequent or complex ones.
 ```bash
 !100
 ```
@@ -217,7 +217,7 @@ In this case, use `!100:p` to preview before running.
 
 ## **Search command history**
 
-When working in the terminal, manually scrolling through past commands can be inefficient, 
+When working in the terminal, [manually scrolling through past commands](#access-past-commands-history) can be inefficient, 
 especially in HPC environments where the number of entered commands is large and repetitive. 
 Instead of [cycling through history one command at a time](#navigate-history-with-keyboard), you can **quickly locate and reuse specific commands using search techniques**. The shell provides powerful tools like [incremental search](#incremental-search-ctrl--r) and [filtering with `grep`](#filter-history-with-grep) 
 to find past commands based on keywords, saving time and reducing repetitive typing.
@@ -271,10 +271,13 @@ for quicker access and to avoid repetitive typing. *(links redirect to the corre
 </div></div>
 
 
-## Managing and clearing history
+## **Control persisted history records**
 
-The shell automatically stores command history in the `~/.bash_history` file, allowing users to recall past commands across sessions. 
-However, there are times when you may want to edit, clear or temporarily disable history, for example, to remove sensitive commands, declutter your history or prevent logging of specific actions. The following techniques help manage history effectively based on different use cases.
+By default, Bash maintains an in-memory `history` of commands during an active session, providing immediate and interactive access to previously executed commands. 
+When the session ends, these commands are automatically written to `~/.bash_history` file, enabling users to retrieve past commands across sessions. 
+However, there are times when you may want to edit, clear or temporarily disable history, for example, 
+to **remove sensitive commands** or **declutter your persisted history**. 
+The following techniques can help you take control of recorded history based on your specific needs.
 
 
 ### Edit `.bash_history` file
@@ -296,90 +299,259 @@ history -r
 ```
 </div></div>
 
-### Clear history
+### Disable or clear session history
 
-If you want to remove your command history, either for privacy reasons or to clear unnecessary clutter, use the following commands based on your needs.
+**While working in a current shell session**, you may want to clear in-memory recorded commands or prevent them from being saved for future sessions. 
+This could be for privacy, security, or simply to keep your history clean. You have two main options to do so:
 
-To remove the history for the current session:
+| behavior   | [clear in-memory history](#clear-in-memory-history)| [disable writing to .bash_history](#disable-writing-to-bash_history) |
+|--          |--                     |--                      |
+| usage      | `history -c`          | `unset HISTFILE`       |
+| past commands from current session | **permanantly removed** <br>(cannot be accessed via `history` or arrow keys) | still available until the session ends |
+| future commands in current session | still recorded in memory and accessible | still recorded in memory and accessible |
+| saving records to `.bash_history` file | what's in memory is saved at session end | **nothing saved to .bash_history** <br>(history logging in this session is disabled) |
+| future shell sessions              | unaffected, will record commands in memory and save to `.bash_history` at session end | unaffected, will save command history to `.bash_history` at session end |
+
+<div id="info-alerts-1" class="highlighted highlighted--highlighted ">
+<div class="highlighted__body"  markdown="1">
+Neither approach affects commands already saved in `~/.bash_history`. The default `history` behavior, including in-memory tracking and history saving, 
+will be restored automatically in future shell sessions.
+</div></div>
+
+
+#### Clear in-memory history 
+
+To remove all command history up to this point in the current session:
 ```bash
 history -c
 ```
-*This clears history only for the current shell session, but past commands will still be saved in `~/.bash_history` when you log out.*
+*This clears the in-memory command history for the current session, preventing past commands from appearing when using `history` or arrow-key navigation.* 
+*All future commands will still be recorded in memory and saved to `~/.bash_history` at session end.*
 
-<div id="info-alerts-1" class="highlighted highlighted--tip ">
-<div class="highlighted__body"  markdown="1">
-Useful when testing commands or executing temporary operations you don’t want recorded in the session history.
-</div></div>
 
-To disable history temporarily:
+#### Disable writing to `.bash_history` 
+
+To prevent the shell from saving any commands from this session to the `~/.bash_history` file:
 ```bash
 unset HISTFILE
 ```
-*This prevents the shell from saving history for the current session, meaning no commands will be written to `~/.bash_history`. However, history will return to normal when you start a new session.*
+*This disables history logging for the current session, ensuring that no commands will be written to `~/.bash_history`.* 
+*However, until the session ends, you can still access and reuse past commands from this session, as they remain in memory `history`.*
 
 <div id="info-alerts-1" class="highlighted highlighted--tip ">
 <div class="highlighted__body"  markdown="1">
-Helpful when running sensitive commands that shouldn’t be stored, such as handling credentials, accessing restricted files or performing security-related tasks.
+For complete privacy, you can combine both:
+```bash
+history -c && unset HISTFILE
+```
+*This clears existing session history and disables further logging to `.bash_history` for the current session.*
 </div></div>
 
 
-## Customizing history behavior
+## **Customize command history**
 
-You can modify history behavior by setting variables in `~/.bashrc` *(shell startp script)*:
+You can modify history behavior by setting corresponding variables in `~/.bashrc` *([shell startp script](/computing-skills/command-line/cli-interface/shell/customization/bashrc))*. 
+These configurations help control how commands are stored, synchronized and shared across sessions. 
+By applying these techniques, you can control, modify and protect your shell history as needed, 
+ensuring efficiency while maintaining privacy and security in your HPC environment.
 
 ### Configure history size
 
-Control how many commands are stored:
+Control how many commands are stored in memory and the history file:
 ```bash
-export HISTSIZE=1000        # Number of commands in memory
-export HISTFILESIZE=2000    # Number of commands in the history file
+export HISTSIZE=1000        # number of temporary commands stored in memory for a current session
+export HISTFILESIZE=2000    # number of permanant commands saved to the history file
 ```
+* `HISTSIZE` controls the number of commands retained in memory for the current session.
+* `HISTFILESIZE` determines the total number of commands saved to ~/.bash_history across sessions.
+
+### ***Never-ending history***
+
+To store an unlimited number of commands, set both values to unlimited:
+```bash
+export HISTSIZE=
+export HISTFILESIZE=
+```
+*This ensures that your history file grows indefinitely.* 
+
+<div id="info-alerts-1" class="highlighted highlighted--tip ">
+<div class="highlighted__body"  markdown="1">
+Leaving history sizes empty in some Bash versions may not properly handle unlimited history. 
+In such a case, explicitly set them to a large number like 1000000 to ensure history is retained.
+</div></div>
+
 
 ### Ignore duplicated entries
 
-To prevent duplicate history entries:
+To prevent duplicate history entries use:
+* `ignoredups` to prevent duplicate consecutive commands <br>
+*(If you run the same command multiple times in a row, only the first occurrence is recorded.)*
+* `erasedups` to ignore all duplicates, regardless of spacing
 ```bash
-export HISTCONTROL=ignoredups
+export HISTCONTROL=ignoredups       # ignores consecutive duplicates
+export HISTCONTROL=erasedups        # keeps only one record per unique command
 ```
 
 ### Ignore specific commands
 
-To ignore commands like `ls` and `pwd`:
+To exclude specific commands (e.g., `ls` and `pwd`) from history:
 ```bash
 export HISTIGNORE="ls:pwd:clear"
 ```
+* Use a colon (`:`) separator between commands.
+* Wildcards can be used to ignore patterns: `"rm *:ls:cd"` <br>
+*(This will ignore any `rm` command with arguments, all `ls` and `cd` commands.)*
 
-### Append instead of overwriting history
+<div id="info-alerts-1" class="highlighted highlighted--tip ">
+<div class="highlighted__body"  markdown="1">
+Automatically ignore commands that contain sensitive keywords like `password` or `token`:
+```bash
+export HISTIGNORE="ls:pwd:mkdir:rm *:clear:exit:*password*:*token*"
+```
+</div></div>
 
-Ensure that history from multiple sessions is merged rather than overwritten:
+
+### Append instead of overwriting
+
+<div id="info-alerts-1" class="highlighted highlighted--highlighted ">
+<div class="highlighted__body"  markdown="1">
+By default, when you open a new terminal session, Bash overwrites the history file.
+
+***Ensure that history from multiple sessions is merged rather than overwritten!***
+</div></div>
+
+To append new commands to history instead of overwriting it:
 ```bash
 shopt -s histappend
 ```
+*This ensures that history from multiple concurrent sessions is merged instead of lost when closing a terminal.*
 
 ### Make updates immediate
 
-By default, history updates when you exit a session. To write commands instantly:
+<div id="info-alerts-1" class="highlighted highlighted--highlighted ">
+<div class="highlighted__body"  markdown="1">
+By default, history is only written to the file when a session ends.
+</div></div>
+
+To write (and persist) each command immediately after execution:
 ```bash
 export PROMPT_COMMAND='history -a'
 ```
+*This ensures commands appear in `~/.bash_history` as soon as they are executed, making them available in new sessions.*
+
 
 ### Multi-session history synchronization
 
-When using multiple terminals, synchronize history across them:
+<div id="info-alerts-1" class="highlighted highlighted--highlighted ">
+<div class="highlighted__body"  markdown="1">
+When using multiple terminal sessions concurrently, history changes might not be immediately visible in all open windows.
+</div></div>
+
+To sync history across sessions dynamically:
 ```bash
+export PROMPT_COMMAND="history -a; history -n; history -w"
 export HISTCONTROL=ignoreboth
-export PROMPT_COMMAND="history -a; history -n"
+shopt -s histappend
 ```
+* `history -a` appends the latest command to ~/.bash_history.
+* `history -n` loads new history from the file into memory.
+* `history -w` ensures history is written to disk immediately, reducing the risk of losing commands if the shell crashes.
+* For full synchronization, also enable `HISTCONTROL` and `histappend`. <br>
+*This ensures real-time updates and no duplicate history entries across multiple open sessions.*
+
 
 ### Export history to share
 
-For collaborative work, you can share your history:
+To save command history for sharing or documentation:
 ```bash
 history > my_hpc_commands.txt
 ```
 
-And reload it in another session:
+To reload the history into another session:
 ```bash
 cat my_hpc_commands.txt >> ~/.bash_history
 ```
+
+<div id="info-alerts-1" class="highlighted highlighted--tip ">
+<div class="highlighted__body"  markdown="1">
+This is useful for collaborative work or preserving session commands for later use.
+</div></div>
+
+
+## **Make customization permanent**
+
+To ensure that your command history settings persist across sessions, add the following configurations to your `~/.bashrc` file:
+
+**1. Open your Bash configuration file for edition:**
+```bash
+nano ~/.bashrc
+```
+
+### *Ready-made history settings*
+
+**2. Append your changes** *(or the following ready-made)* **command history configuration:**
+```bash
+# Command History Customization
+export HISTSIZE=               # Number of commands stored in memory: unlimited
+export HISTFILESIZE=           # Number of commands stored in ~/.bash_history: unlimited
+export HISTIGNORE="ls:pwd:mkdir:rm *:clear:exit:*password*:*token*"  # Commands to exclude from history
+HISTTIMEFORMAT="%F %T "         # Save timestamped history
+# Synchronize history across multiple sessions
+shopt -s histappend             # Append history instead of overwriting
+export HISTCONTROL=ignoreboth   # Includes duplicate removal & ignores extra spaces
+export PROMPT_COMMAND="history -a; history -n; history -w"      # Append, write and reload history after each command in any session
+```
+
+**3. Save and exit edition mode:** <br>
+Press `CTRL + X`, then press `Y` and hit `Enter` to save changes.
+
+**4. Reload the configuration to apply changes immediately:**
+
+Source your updated configuration file:
+```bash
+source ~/.bashrc
+```
+
+### Useful aliases & shell functions
+
+In addition to history customization, you may find these aliases and functions helpful for managing and interacting with your command history more efficiently.
+* Use [aliases](#aliases-for-quick-history-management) for quick actions like clearing, wiping or viewing history with timestamps.
+* Utilize [shell functions](#shell-functions-for-advanced-history-handling) to search, remove or export history for better control.
+
+#### Aliases for quick history management
+
+*(Reference tutorial: [Alias definition and usage: create shortcuts for repetitive commands](/computing-skills/command-line/cli-interface/shell/customization/aliases))*
+
+```bash
+# Backup history automatically;                         # usage: histbackup
+alias histbackup='cp ~/.bash_history ~/.bash_history.backup'
+
+# View history with timestamps                          # usage: histtime
+alias histtime="HISTTIMEFORMAT='%F %T ' history"
+
+# Clear current session history                         # usage: histclear
+alias histclear="history -c"
+
+# Remove all history permanently                        # usage: histwipe
+alias histwipe="cat /dev/null > ~/.bash_history && history -c && exit"
+```
+
+#### Shell functions for advanced history handling
+
+*(Reference tutorial: [Shell Functions: group command sequences and enable argument passing](/computing-skills/command-line/cli-interface/shell/customization/functions))*
+
+```bash
+# Search command history interactively                  # usage: histsearch sbatch
+histsearch() { history | grep --color=auto "$1"; }
+
+# Remove the command at specific history index          # usage: histremove 1002
+histremove() {
+    history -d "$1"
+    history -w
+}
+
+# Export command history to a file with a timestamp     # usage: histexport
+histexport() { history > "history_$(date +'%Y-%m-%d_%H-%M-%S').txt"; }
+```
+
 
