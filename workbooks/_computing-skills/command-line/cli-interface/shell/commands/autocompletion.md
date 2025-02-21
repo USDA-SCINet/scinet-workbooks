@@ -156,7 +156,7 @@ Simply type a letter *(e.g., "z")* and press `Tab` twice to **list all callable 
 <div class="highlighted__body"  markdown="1">
 Bash's built-in tab completion does not automatically suggest flags or options (like `--all`, `--help`) unless **bash-completion** is installed. 
 This advanced flag/option completion for commands like `ls`, `tar`, `git`, etc., is **enabled by default on Atlas** but not on Ceres cluster. <br>
-* You can check if `bash-completion` is installed by running:*
+*You can check if `bash-completion` is installed by running:*
 ```bash
 type _init_completion
 ```
@@ -188,7 +188,7 @@ This works because they have **predefined completion scripts** integrated into B
 
 *For example, when using `git`:*
 ```bash
-git chec<Tab>   →   checkout   # unique match completed with single Tab
+git chec<Tab>   →   checkout   # unique match completed with a single Tab
 git st<Tab><Tab>  →   stage    stash    status      # list of matches displayed with Tab pressed twice
 ```
 ![autocompletion of tool options](../../assets/img/autocompletion_tool_options.png)
