@@ -18,6 +18,10 @@ glossary:
   - term: Binary
     cat: Data Science
     definition: A numbering system where data is expressed in the base-2. It is a mathematical expression which uses only two symbols, typically 0 and 1 to represent data.
+  - term: CLI Environment
+    cat: Computing Skills
+    definition: A CLI environment serves as a system-wide configuration, providing a command interpreter that processes user inputs, along with environment variables, system utilities, and scripting support for managing tasks and processes.
+    related: Command Line Interface, Unix Shell
   - term: Cluster
     cat: Data Science
     definition: or a computer cluster is a group of computing machines or servers that work together as a single system. Clusters provide high performance computing and parallel processing by distribution of tasks across multiple machines.
@@ -141,6 +145,10 @@ glossary:
     cat: Computing Skills
     definition: OS, is the core software on the computer that manages computing resources, performes installations, and executes available programs. Command-line interface (CLI) and Graphical User Interface (GUI) enable the user directly interact with the operating system to set up, configure, and troubleshoot it. Among the popular operating systems are Windows, Mac OS, and Linux.
     related: Command Line, Bash shell, Programming
+  - term: Prompt
+    cat: Computing Skills 
+    definition: In the command line, a prompt is the text displayed before the cursor, indicating that the system is ready to receive user input (e.g., <code>user@hostname:~$</code> in Linux or <code>C:\Users\Name></code> in Windows).
+    related: Command Line, Command
   - term: Programming
     cat: Computing Skills
     definition: means creating a set of instructions for a computer on how to execute operations in order, following the assumptions and logical conditions of the algorithm. Many programming languages facilitate communication between the code developer and the computing machine. Bash enables a shell scripting using a command-line interpreter for automating repetitive tasks by executing pre-defined commands according to requested conditionals and loops. More advanced analytical operations, including mathematical and statistical functions, modifying complex data structures, or processing non-text data, usually require a higher-level programming language such as Python or C++.
