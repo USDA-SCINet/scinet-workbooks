@@ -5,7 +5,7 @@ description: "A command interpreter that processes user commands and passes them
 type: lesson module
 index: 3
 order: 4
-tags: 
+tags: [CLI environment, Unix shell, command interpreter, command line] 
 packages: 
 level: 3
 author: Aleksandra Badaczewska
@@ -21,28 +21,23 @@ It highlights the shell's role in executing commands, scripting and facilitating
 
 
 <div id="info-alerts-1" class="highlighted highlighted--info ">
-    <div class="highlighted__body">
-        <h4 class="highlighted__heading">Main Objectives</h4>
-        <ul>
-            <li>Understand the Unix shell as a critical component of the CLI.</li>
-            <li>Explore Bash as the most commonly used shell in Unix-like systems.</li>
-            <ul><li>Compare Bash with Windows PowerShell to highlight key differences.</li></ul>
-            <li>Demonstrate examples of shell usage for computational tasks in research.</li>
-        </ul>
-
-    </div>
+<div class="highlighted__body" markdown="1">
+<h4 class="highlighted__heading">Main Objectives</h4>
+* Understand the Unix shell as a critical component of the CLI.
+* Explore Bash as the most commonly used shell in Unix-like systems.
+  * Compare Bash with Windows PowerShell to highlight key differences.
+* Demonstrate examples of shell usage for computational tasks in research.
+</div>
 </div>
 
 <div id="success-alerts-1" class="highlighted highlighted--success ">
-    <div class="highlighted__body">
-        <h4 class="highlighted__heading">Goals</h4>
-        <p>By the end of this lesson, you will:</p>
-        <ul>
-            <li>Comprehend the Unix shell's role as a command interpreter in the CLI.</li>
-            <li>Gain a working knowledge of Bash and its essential features.</li>
-            <li>Develop confidence in using shell commands on SCINet HPC systems to perform computational tasks.</li>
-        </ul>
-    </div>
+<div class="highlighted__body" markdown="1">
+<h4 class="highlighted__heading">Goals</h4>
+By the end of this lesson, you will:
+* Comprehend the Unix shell's role as a command interpreter in the CLI.
+* Gain a working knowledge of Bash and its essential features.
+* Develop confidence in using shell commands on SCINet HPC systems to perform computational tasks.
+</div>
 </div>
 
 
@@ -53,37 +48,29 @@ It also touches on PowerShell in Windows to provide a comparative understanding 
 
 <div class="usa-accordion">
 
-    {% include accordion title="Key concepts" class="primary " controls="scope-concepts" %}
-    <div id="scope-concepts" class="accordion_content">
-        <ul>
-            <li><b>Shell:</b> A command interpreter that processes user commands entered into the CLI.</li>
-            <ul>
-                <li><b>PowerShell:</b> A command-line shell and scripting language designed for Windows environments.</li>
-                <li><b>Unix Shell:</b> A foundational CLI tool in Unix-like operating systems, including Linux and macOS.</li>
-                <ul><li><b>Bash:</b> A common Unix shell, being the default in most systems.</li></ul>
-            </ul>
-        </ul>
-    </div>
+{% include accordion title="Key concepts" class="primary " controls="scope-concepts" %}
+<div id="scope-concepts" class="accordion_content" markdown="1">
+* **Shell:** A command interpreter that processes user commands entered into the CLI.
+  * **PowerShell:** A command-line shell and scripting language designed for Windows environments.
+  * **Unix Shell:** A foundational CLI tool in Unix-like operating systems, including Linux and macOS.
+    * **Bash:** A common Unix shell, being the default in most systems.
+</div>
 
-    {% include accordion title="Tools/Technologies" class="primary " controls="scope-tools" %} 
-    <div id="scope-tools" class="accordion_content">
-        <ul>
-            <li><b>Unix/Linux shells:</b> Bash, Zsh, Fish, tcsh, ksh</li>
-            <li><b>macOS:</b> Bash <i>(default until macOS Catalina)</i>, Zsh <i>(default since macOS Catalina)</i></li>
-            <li><b>Windows:</b> PowerShell, Command Prompt, Windows Subsystem for Linux (WSL) with Bash</li>
-        </ul>
-    </div>
+{% include accordion title="Tools/Technologies" class="primary " controls="scope-tools" %} 
+<div id="scope-tools" class="accordion_content" markdown="1">
+* **Unix/Linux shells:** Bash, Zsh, Fish, tcsh, ksh
+* **macOS:** `Bash` (default until macOS Catalina)*, `Zsh` *(default since macOS Catalina)*
+* **Windows:** PowerShell, Command Prompt, Windows Subsystem for Linux (WSL) with Bash
+</div>
 
-    {% include accordion title="Applications" class="primary " controls="scope-apps" %} 
-    <div id="scope-apps" class="accordion_content">    
-        <ul>
-            <li>Directly executing operating system commands via the CLI. Enabling cross-platform workflows.</li>
-            <li>Automating repetitive tasks using shell scripts.</li>
-            <li>Interacting with HPC systems and clusters for research workflows.</li>
-            <li>Writing complex scripts for computational research.</li>
-            <li>Managing files, processes and user permissions.</li>
-        </ul>
-    </div>
+{% include accordion title="Applications" class="primary " controls="scope-apps" %} 
+<div id="scope-apps" class="accordion_content" markdown="1"> 
+* Directly executing operating system commands via the CLI. Enabling cross-platform workflows.
+* Automating repetitive tasks using shell scripts.
+* Interacting with HPC systems and clusters for research workflows.
+* Writing complex scripts for computational research.
+* Managing files, processes and user permissions.
+</div>
 </div>
 
 
@@ -105,28 +92,26 @@ It also touches on PowerShell in Windows to provide a comparative understanding 
 ## What is a Shell?
 
 <div id="note-alerts-1" class="highlighted highlighted--note ">
-    <div class="highlighted__body">
-        <p>
-            A shell is a <b>command interpreter</b> that processes user commands entered into the CLI and returns the output. 
-            It serves as a bridge between the user and the operating system, converting human-readable commands into a form the computer can understand and execute. 
-            Different operating systems use different shells or command interpreters; for example, Windows features PowerShell, while Unix-like systems use the <b>Unix shell</b>. 
-            Among these, <b>Bash shell</b> is the most commonly used, especially in high-performance computing (HPC) systems.
-        </p>
-    </div>
+<div class="highlighted__body" markdown="1">
+A shell is a **command interpreter** that processes user commands entered into the CLI and returns the output. 
+It serves as a bridge between the user and the operating system, converting human-readable commands into a form the computer can understand and execute. 
+Different operating systems use different shells or command interpreters; for example, Windows features PowerShell, while Unix-like systems use the **Unix shell**. 
+Among these, **Bash shell** is the most commonly used, especially in high-performance computing (HPC) systems.
+</div>
 </div>
 
 
 ### How the shell works?
 
 The shell is the program running inside a [terminal](/glossary/#terminal) window, which provides a text-based interface for a user-computer interaction. 
-<a href="/computing-skills/command-line/cli-interface/terminal/" target="_blank">Terminal emulators</a> automatically load a default shell to process user commands and communicate with the underlying operating system. *For example:*
+<a href="/computing-skills/command-line/cli-interface/terminal/#examples-of-terminal-emulators/" target="_blank">Terminal emulators</a> automatically load a default shell to process user commands and communicate with the underlying operating system. *For example:*
 - On Linux, `Bash` is often the default.
 - On Windows, `PowerShell` is standard.
 
 <div id="success-alerts-1" class="highlighted highlighted--success ">
 <div class="highlighted__body" markdown="1">
 <h4 class="highlighted__heading">Example</h4>
-When you open a terminal window <a href="/computing-skills/command-line/cli-interface/terminal/" target="_blank">(see tutorial)</a>, you'll see a blinking cursor, waiting for you to type commands. The shell will try to interpret anything you enter there. 
+When you open a terminal window <a href="/computing-skills/command-line/cli-interface/terminal/#interface" target="_blank">(see tutorial)</a>, you'll see a blinking cursor, waiting for you to type commands. The shell will try to interpret anything you enter there. 
 1. You type a command (e.g., `ls`).
 2. The shell interprets the text-based command and communicates with the operating system.
 3. The operating system executes the corresponding processes and sends the result back to the shell.
@@ -281,14 +266,14 @@ for file in *.txt; do echo "Processing $file"; done
 
 {% include accordion title="Command history:" class="outline " controls="bash-feature-6" %} 
 <div id="bash-feature-6" class="accordion_content" markdown="1">    
-Access previously used commands for quick reuse and efficiency.
+Access previously used commands for quick reuse and efficiency. *([see tutorial](/computing-skills/command-line/cli-interface/shell/commands/history))*
 
 *Example: Recall and reuse previous commands with the `up arrow` key or `history` command.*
 </div>
 
 {% include accordion title="Customization:" class="outline " controls="bash-feature-7" %} 
 <div id="bash-feature-7" class="accordion_content" markdown="1">    
-Tailor the shell with aliases, custom prompts and configuration files.
+Tailor the shell with aliases, custom prompts and configuration files. *([see tutorial](/computing-skills/command-line/cli-interface/shell/customization/index))*
 ```bash
 # create a shortcut for a custom combination of commands
 alias ll="ls -la"
@@ -334,11 +319,10 @@ ls                                      # Lists files in the current directory
 ### Why researcher should use Bash?
 
 <div id="note-alerts-1" class="highlighted highlighted--tip ">
-    <div class="highlighted__body">
-        <p>
-            By using Bash, researchers unlock the ability to interact efficiently with SCINet computational resources, automate workflows and handle data with precision, making it a vital skill for advancing their research.
-        </p>
-    </div>
+<div class="highlighted__body" markdown="1">
+By using Bash, you unlock the ability to interact efficiently with SCINet computational resources, 
+automate workflows and handle data with precision, making it a vital skill for advancing your research.
+</div>
 </div>
 
 <div class="usa-accordion">
@@ -352,9 +336,12 @@ Researchers can submit jobs to the scheduler, such as SLURM, using Bash scripts 
 ```bash
 #!/bin/bash
 #SBATCH --job-name=my_job       # Job name
-#SBATCH --output=output.log     # Output file
+#SBATCH --account=projectname   # SCINet account
+#SBATCH --partition=atlas       # Job queue type
+#SBATCH --nodes=1               # Number of nodes
 #SBATCH --ntasks=4              # Number of tasks
 #SBATCH --time=01:00:00         # Time limit (hh:mm:ss)
+#SBATCH --output=output.log     # Output file
 
 module load python              # load required module
 python my_script.py             # execute the Python script
@@ -364,7 +351,7 @@ Submit the job with the `sbatch` command: `sbatch job_script.sh`
 
 {% include accordion title="To work across platforms" class="outline " controls="bash-usage-2" %} 
 <div id="bash-usage-2" class="accordion_content">    
-<p>Bash runs on Linux, macOS and Windows (via WSL), providing a consistent interface and tools regardless of the operating system.</p>
+<p>Bash runs on Linux, macOS and Windows (via WSL), providing a consistent interface and tools  across any operating system.</p>
 </div>
 
 {% include accordion title="To customize commands for tasks" class="outline " controls="bash-usage-3" %} 
@@ -470,7 +457,8 @@ wsl --install -d Ubuntu
 
 {% include accordion title="SCINet HPC" class="outline " controls="bash-3" %}
 <div id="bash-3" class="accordion_content" markdown="1">
-Simply type `/bin/bash` into the terminal and press `Enter` **to start a Bash session**.
+On SCINet clusters, `Bash` is the default shell loaded at the start of any login shell access session. <br>
+Simply type `/bin/bash` into the terminal and press `Enter` **to start a fresh Bash subshell**.
 </div>
 
 </div>

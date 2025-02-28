@@ -4,7 +4,7 @@ title: 'Command manual '
 description: "Built-in documentation providing detailed descriptions, usage and options for system commands and utilities."
 type: interactive tutorial
 order: 4
-tags: 
+tags: [command manual, command help, documentation] 
 packages: 
 level: 
 author: Aleksandra Badaczewska
@@ -15,7 +15,7 @@ author: Aleksandra Badaczewska
 
 This interactive tutorial explores the command manual, a built-in system for accessing detailed documentation about shell commands and utilities. 
 By using manual pages (`man`), quick-help options (`--help`) and other lookup tools (`whatis`, `apropos`), users can efficiently find command syntax, 
-descriptions and examples—without leaving the terminal. This tutorial provides hands-on exercises to help you confidently navigate command manuals 
+descriptions and examples without leaving the terminal. This tutorial provides hands-on exercises to help you confidently navigate command manuals 
 and get the information you need when working in the shell.
 <br>
 
@@ -69,7 +69,7 @@ troubleshoot command usage and optimize their work without relying on external d
 * **Finding command usage and syntax:**  Learn how to use commands correctly with `man` and `--help`.
 * **Searching for relevant commands:** Use `apropos` to find related tools for specific tasks.
 * **Troubleshooting errors:** Look up error messages and options in command documentation.
-* **HPC environment optimization:** Quickly access reference material for complex HPC utilities.
+* **HPC environment optimization:** Quickly access reference documentation for complex HPC utilities.
 </div>
 </div>
 
@@ -81,6 +81,7 @@ troubleshoot command usage and optimize their work without relying on external d
 For HPC users, understanding how to quickly access documentation is essential when working with unfamiliar commands, 
 troubleshooting issues or optimizing scripts on SCINet HPC clusters. Unix-based systems provide built-in manuals and 
 help tools for almost every command to learn command syntax, options and usage. For HPC users, this knowledge is even more critical. 
+
 Efficiently accessing built-in documentation allows you to:
 * Learn unfamiliar commands quickly.
 * Find the right options without trial and error.
@@ -89,10 +90,10 @@ Efficiently accessing built-in documentation allows you to:
 
 #### *Why use built-in documentation instead of searching online?*
 
-* **Immediate Access:** *No need for internet connectivity, which may be restricted in some HPC environments.*
-* **Version-Specific Information:** *Online resources may not match the specific software versions installed on an HPC system.*
-* **Detailed and Authoritative:** *Built-in manuals are maintained by the developers of the command or system.*
-* **Faster and More Efficient:** *Searching for help directly in the terminal can be quicker than browsing online documentation.*
+* **Immediate access:** *No need for internet connectivity, which may be restricted in some HPC environments.*
+* **Version-specific information:** *Online resources may not match the specific software versions installed on an HPC system.*
+* **Detailed and authoritative:** *Built-in manuals are maintained by the developers of the command or system.*
+* **Faster and more efficient:** *Searching for help directly in the terminal can be quicker than browsing online documentation.*
 
 
 ### Types of command documentation
@@ -276,8 +277,8 @@ whatis mkdir
 
 <div id="info-alerts-2" class="highlighted highlighted--note"> 
 <div class="highlighted__body" markdown="1"> 
-`apropos` helps you find commands related to a specific keyword by searching the short descriptions in the [man page](#using-the-man-command) database. 
-It is useful when you **don’t remember the exact command name** but know a relevant term. *This allows you to quickly identify relevant commands and decide which one to explore further using man <command>.*
+`apropos` helps you find commands related to a specific keyword by searching the short descriptions in the [man page](#what-is-the-command-manual) database. 
+It is useful when you **don’t remember the exact command name** but know a relevant term. *This allows you to quickly identify relevant commands and decide which one to explore using `man` pages.*
 </div></div>
 
 If you’re unsure which command to use for a task, try:
@@ -307,7 +308,7 @@ apropos "text"
 <div id="info-alerts-3" class="highlighted highlighted--note"> 
 <div class="highlighted__body" markdown="1"> 
 The `help` command provides brief descriptions and usage details **for shell built-in commands**. 
-Unlike `man`, which documents external programs, `help` is specific to commands that are built into the shell, such as `cd`, `echo` and `alias`.
+Unlike `man`, which documents external programs, `help` is specific to commands that are built into the shell, such as `cd`, `echo` or `alias`.
 </div></div>
 
 To display help for a shell built-in, use:
@@ -364,10 +365,10 @@ Typing long commands and file names can be tedious and error-prone. Command auto
 <div id="info-alerts-2" class="highlighted highlighted--info"> 
 <div class="highlighted__body" markdown="1"> 
 Many Linux distributions provide web-based manuals and resources, such as [man7.org](https://man7.org), [manpages.ubuntu.com](https://manpages.ubuntu.com) or official wikis, for accessing command documentation and system references. These online resources can be especially useful when:
-- The built-in man pages lack examples or detailed explanations.
-- You need cross-version comparisons, as online documentation often covers multiple Linux distributions.
-- You're working on a remote system without installed manual pages.
-- You want community-driven explanations from forums, wikis or Q&A sites like Stack Overflow and ArchWiki.
+- the built-in man pages lack examples or detailed explanations,
+- need cross-version comparisons, as online documentation often covers multiple Linux distributions,
+- working on a remote system without installed manual pages,
+- want community-driven explanations from forums, wikis or Q&A sites like Stack Overflow and ArchWiki.
 </div></div>
 
 
@@ -375,14 +376,19 @@ Many Linux distributions provide web-based manuals and resources, such as [man7.
 
 <div id="info-alerts-1" class="highlighted highlighted--tip ">
 <div class="highlighted__body"  markdown="1">
-Mastering the command manual and lookup tools helps you work efficiently on HPC systems. 
+Mastering the command manual and lookup tools helps you work efficiently on HPC systems. <br>
 By using `man`, `--help`, `whatis` and `apropos`, you can quickly find the right command, 
-understand its options and troubleshoot issues — saving valuable time.
+understand its options and troubleshoot issues, saving valuable time.
 </div>
 </div>
 
+<div id="success-alerts-1" class="highlighted highlighted--success ">
+<div class="highlighted__body"  markdown="1">
+<h4 class="highlighted__heading">Exercise: Try it yourself!</h4>
 1. Find the command that allows you to count the number of words in a file.
 2. Find a related command that performs line counting.
 3. Use `man`, `whatis` or `apropos` to compare them.
 4. Find an option for one of the commands that allows counting characters instead.
 5. Try searching for lesser-known commands related to your HPC tasks.
+</div>
+</div>

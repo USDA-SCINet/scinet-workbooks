@@ -4,7 +4,7 @@ title: Command autocompletion
 description: "A shell feature that predicts and completes commands, filenames and options based on partial input from a user."
 type: interactive tutorial
 order: 2
-tags: 
+tags: [tab autocompletion, command, productivity] 
 packages: 
 level: 
 author: Aleksandra Badaczewska
@@ -30,7 +30,7 @@ This interactive tutorial focuses on command autocompletion, a powerful shell fe
 <h4 class="highlighted__heading">Goals</h4>
 <p>By the end of this tutorial, you will:</p>
 * Efficiently use `Tab`-based autocompletion to reduce typing errors and speed up command entry.
-* Navigate file paths and directories using intelligent autocompletion.
+* Navigate file paths and directories using autocompletion.
 * Learn how to enable and extend Bash autocompletion for additional commands.
 </div>
 </div>
@@ -55,7 +55,7 @@ You will explore default shell completion, how to enable advanced features and h
 {% include accordion title="Tools/Technologies" class="primary " controls="scope-tools" %} 
 <div id="scope-tools" class="accordion_content" markdown="1">
 * **Bash shell:** A popular shell environment (command interpreter) available on most Unix-like and HPC systems.
-* **Tab key (`⇥`):** The primary input method for triggering shell autocompletion.
+* **Tab key:** The primary input method for triggering shell autocompletion.
 * **`bash-completion` package:** A tool that extends default Bash autocompletion capabilities.
 * **Shell configuration files (`.bashrc`):** Shell startup script used to enable and customize autocompletion behavior.
 </div>

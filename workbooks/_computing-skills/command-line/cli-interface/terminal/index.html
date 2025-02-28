@@ -5,7 +5,7 @@ description: "A software or hardware environment that provides access to the CLI
 type: lesson module
 index: 3
 order: 3
-tags: [terminal]
+tags: [terminal, CLI, text-based interface]
 packages: 
 level: 3
 author: Aleksandra Badaczewska
@@ -22,27 +22,22 @@ highlighting their differences and the role they play in enabling efficient inte
 
 
 <div id="info-alerts-1" class="highlighted highlighted--info ">
-    <div class="highlighted__body">
-        <h4 class="highlighted__heading">Main Objectives</h4>
-        <ul>
-            <li>Understand the terminal's role as a gateway to the CLI.</li>
-            <li>Explore the features of terminals across different operating systems (Windows, macOS, Linux).</li>
-            <li>Demonstrate examples of terminal usage in research projects.</li>
-        </ul>
-
-    </div>
+<div class="highlighted__body" markdown="1">
+<h4 class="highlighted__heading">Main Objectives</h4>
+* Understand the terminal's role as a gateway to the CLI.
+* Explore the features of terminals across different operating systems (Windows, macOS, Linux).
+* Demonstrate examples of terminal usage in research projects.
+</div>
 </div>
 
 <div id="success-alerts-1" class="highlighted highlighted--success ">
-    <div class="highlighted__body">
-        <h4 class="highlighted__heading">Goals</h4>
-        <p>By the end of this lesson, you will:</p>
-        <ul>
-            <li>Develop a clear understanding of how the terminal functions as a CLI tool.</li>
-            <li>Recognize the differences between terminal emulators on Linux, macOS and Windows.</li>
-            <li>Gain the confidence to leverage terminal capabilities in computational research on SCINet HPC.</li>
-        </ul>
-    </div>
+<div class="highlighted__body" markdown="1">
+<h4 class="highlighted__heading">Goals</h4>
+By the end of this lesson, you will:
+* Develop a clear understanding of how the terminal functions as a CLI tool.
+* Recognize the differences between terminal emulators on Linux, macOS and Windows.
+* Gain the confidence to leverage terminal capabilities in computational research on SCINet HPC.
+</div>
 </div>
 
 
@@ -52,34 +47,28 @@ highlighting their differences and the role they play in enabling efficient inte
 
 <div class="usa-accordion">
 
-    {% include accordion title="Key concepts" class="primary " controls="scope-concepts" %}
-    <div id="scope-concepts" class="accordion_content">
-        <ul>
-            <li><b>Terminal application:</b> The software tool that provides access to the CLI.</li>
-            <li><b>Terminal emulators:</b> Programs that mimic the functionality of a physical terminal for text-based input and output.</li>
-            <li><b>Cross-platform behavior:</b> Differences in terminal emulators across operating systems (Windows, macOS, Linux).</li>
-            <li><b>User interaction:</b> The interface where users enter CLI commands and view output.</li>
-        </ul>
-    </div>
+{% include accordion title="Key concepts" class="primary " controls="scope-concepts" %}
+<div id="scope-concepts" class="accordion_content" markdown="1">
+* **Terminal application:** The software tool that provides access to the CLI.
+* **Terminal emulators:** Programs that mimic the functionality of a physical terminal for text-based input and output.
+* **Cross-platform behavior:** Differences in terminal emulators across operating systems (Windows, macOS, Linux).
+* **User interaction:** The interface where users enter CLI commands and view output.
+</div>
 
-    {% include accordion title="Tools/Technologies" class="primary " controls="scope-tools" %} 
-    <div id="scope-tools" class="accordion_content">
-        <ul>
-            <li><b>Windows:</b> Windows Terminal, Command Prompt, PowerShell, WSL Terminal</li>
-            <li><b>macOS:</b> Terminal.app, iTerm</li>
-            <li><b>Linux:</b> GNOME Terminal, KDE Konsole, xterm</li>
-        </ul>
-    </div>
+{% include accordion title="Tools/Technologies" class="primary " controls="scope-tools" %} 
+<div id="scope-tools" class="accordion_content" markdown="1">
+* **Windows:** Windows Terminal, Command Prompt, PowerShell, WSL Terminal
+* **macOS:** Terminal.app, iTerm
+* **Linux:** GNOME Terminal, KDE Konsole, xterm
+</div>
 
-    {% include accordion title="Applications" class="primary " controls="scope-apps" %} 
-    <div id="scope-apps" class="accordion_content">    
-        <ul>
-            <li>Providing a unified interface for CLI commands on various systems.</li>
-            <li>Offering customization options (e.g., themes, shortcuts) for user efficiency.</li>
-            <li>Acting as the primary interface for accessing HPC systems and other advanced computing resources.</li>
-            <li>Enabling seamless interaction with remote systems via SSH. <em>(see the tutorial: <a href="/computing-skills/command-line/cli-interface/concepts/cli-scinet-hpc" target="_blank">Command-line access to CLI on SCINet HPC</a>)</em></li>
-        </ul>
-    </div>
+{% include accordion title="Applications" class="primary " controls="scope-apps" %} 
+<div id="scope-apps" class="accordion_content" markdown="1">    
+* Providing a unified interface for CLI commands on various systems.
+* Offering customization options (e.g., themes, shortcuts) for user efficiency.
+* Acting as the primary interface for accessing HPC systems and other advanced computing resources.
+* Enabling seamless interaction with remote systems via SSH. <em>(see the tutorial: <a href="/computing-skills/command-line/cli-interface/concepts/cli-scinet-hpc#command-line-access-to-hpc-cli" target="_blank">Command-line access to CLI on SCINet HPC</a>)</em>
+</div>
 </div>
 
 
@@ -97,13 +86,11 @@ highlighting their differences and the role they play in enabling efficient inte
 ## What is a Terminal?
 
 <div id="note-alerts-1" class="highlighted highlighted--note ">
-    <div class="highlighted__body">
-        <p>
-            The terminal is a <b>software application</b> that provides a command line <i>(text-based)</i> interface (CLI) for entering and executing commands on a computer. 
-            By using predefined text commands (specific words or phrases that instruct the computer to perform tasks) you can navigate the file system, 
-            view or edit file content and run programs on your laptop or other computing machines, including high-performance computing (HPC) clusters.
-        </p>
-    </div>
+<div class="highlighted__body" markdown="1">
+The terminal is a **software application** that provides a command line *(text-based)* interface (CLI) for entering and executing commands on a computer. 
+By using predefined text commands (specific words or phrases that instruct the computer to perform tasks) you can navigate the file system, 
+view or edit file content and run programs on your laptop or other computing machines, including high-performance computing (HPC) clusters.
+</div>
 </div>
 
 On any platform, you can open the Terminal (or a terminal emulator) from the graphical interface, just like any other application 
@@ -142,7 +129,7 @@ When working in a terminal, understanding basic terminology is essential. It not
 | Prompt              | The text next to where you type your commands. | Prompts can be modified to include additional information like hostname or current folder location. |
 | Command-Line        | The specific place within the terminal interface where commands are entered. | Usually indicated by a blinking cursor next to the **prompt**, where users type commands to execute. |
 | Command             | The program or script you are trying to run. | Built-in commands and aliases are called by name, while custom Bash scripts stored in files can be executed with 'dot syntax' : `. ~/path/script.sh`.
-| Argument            | Added to a command to modify the output. | There is always a space between a command and the argument. |
+| Option or Argument  | Added to a command to modify the output. | There is always a space between a command and the argument. |
 | Standard Out        | The text result of a command. | Use `> filename1` to redirect output into the file. Use `>> filename1` to append output to the end of a file. |
 | Standard Error      | The error message of a failed command. | Use `2> filename2` to redirect error message into the file. Use `2>> filename2` to append error message to the end of a file. |
 
@@ -239,19 +226,18 @@ such as text-based command input, output display and support for various **CLI e
 These terminal apps allow users to interact with the system's CLI, manage files, run commands and connect to remote systems such as SCINet HPC.
 
 <div id="note-alerts-1" class="highlighted highlighted--note ">
-<div class="highlighted__body">
-<p markdown="1">
+<div class="highlighted__body" markdown="1">
 CLI environments refer to the underlying **shells that interpret and execute the commands** entered in a terminal. 
 These environments, like `Bash`, `Zsh` or `PowerShell`, define the syntax and functionality available for command-line interaction with the specific operating system.
-</p>
 </div>
 </div>
 
 <div id="highlighted-alerts-1" class="highlighted highlighted--highlighted ">
-<div class="highlighted__body">
-<p markdown="1">In this lesson module, we focus on CLI tools ([terminal apps](/glossary/#terminal)) that support the **[Unix shell](/glossary/#unix-shell)**, a widely-used CLI environment ([command interpreter](/glossary/#cli-environment)). It is the standard for accessing and operating on HPC systems (including SCINet clusters), 
-    making it an essential tool for advancing the computational aspects of your research.
-</p><br>
+<div class="highlighted__body" markdown="1">
+In this lesson module, we focus on CLI tools ([terminal apps](/glossary/#terminal)) that support the **[Unix shell](/glossary/#unix-shell)**, 
+a widely-used CLI environment ([command interpreter](/glossary/#cli-environment)). It is the standard for accessing and operating on HPC systems 
+(including SCINet clusters), making it an essential tool for advancing the computational aspects of your research.
+
 <em>Learn more in the lesson module <a href="/computing-skills/command-line/cli-interface/shell/" target="_blank"><b>What is a Unix Shell?</b> The Command Interpreter for the CLI</a></em>.
 </div>
 </div>

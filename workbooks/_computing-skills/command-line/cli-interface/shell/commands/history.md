@@ -4,7 +4,7 @@ title: Command history
 description: "A record of previously executed commands that allows users to recall, search and reuse past inputs in the CLI."
 type: interactive tutorial
 order: 3
-tags: 
+tags: [history command, search history, never-ending history, repeatablity, productivity] 
 packages: 
 level: 
 author: Aleksandra Badaczewska
@@ -23,7 +23,7 @@ where executing long and complex commands is common. You will learn how to view,
 <div class="highlighted__body"  markdown="1">
 <h4 class="highlighted__heading">Main Objectives</h4>
 * Learn how to navigate and reuse previously entered commands efficiently.
-* Explore reverse search (`Ctrl` + `R`) for quickly locating past commands.
+* Explore reverse search (`Ctrl` + `R`) for quick retrieval of past commands.
 * Understand how to manage and configure command history for improved usability.
 </div>
 </div>
@@ -43,8 +43,8 @@ where executing long and complex commands is common. You will learn how to view,
 ### Tutorial scope
 
 This tutorial provides a hands-on guide to efficiently using command history in the shell. It covers basic history navigation, 
-advanced search techniques, and history management, helping users reduce redundant typing and improve workflow efficiency, 
-particularly when working with long job submission commands and complex scripts in SCINet HPC environments.
+advanced search techniques and history management, helping users reduce redundant typing and improve workflow efficiency, 
+particularly when working with long command chains and complex inline scripts in SCINet HPC environments.
 <div class="usa-accordion">
 
 {% include accordion title="Key concepts" class="primary " controls="scope-concepts" %}
@@ -66,9 +66,9 @@ particularly when working with long job submission commands and complex scripts 
 {% include accordion title="Applications" class="primary " controls="scope-apps" %} 
 <div id="scope-apps" class="accordion_content" markdown="1"> 
 * **Reusing long commands:** Quickly recall and modify frequently used HPC job submission commands.
-* **Efficient troubleshooting:** Retrieve and rerun previous commands instead of manually retyping them. 
 * **Enhanced productivity:** Use shortcuts to speed up navigation through command history.
 * **History customization:** Adjust history settings for **long-term tracking** of command usage.
+* **Efficient troubleshooting:** Retrieve and inspect previous commands instead of manually retyping them. 
 </div>
 </div>
 
@@ -81,7 +81,7 @@ Command history is a continuous record of previously executed commands that can 
 This feature minimizes redundant typing, speeds up repetitive tasks and improves troubleshooting by allowing users to quickly access past commands. 
 It also aids knowledge retention and serves as a built-in project documentation tool, preserving a trace of analytical steps and computational procedures for future reference.
 
-***Benefits of using command history, particularly in an HPC environment:***
+***Benefits of using command history, particularly in an HPC environment***
 
 | capabilities | practical advantage |
 |-- |-- |
@@ -131,7 +131,7 @@ This method is useful when searching for a recent command without overwhelming o
 
 <div id="info-alerts-1" class="highlighted highlighted--tip ">
 <div class="highlighted__body"  markdown="1">
-For faster navigation and editing, when working with long or multi-line commands:
+For faster [navigation and editing](/computing-skills/command-line/cli-interface/shell/commands/#navigating-the-command-line), when working with long or multi-line commands:
 * `Ctrl + A` moves the cursor to the beginning of the line.
 * `Ctrl + E` moves the cursor to the end of the line.
 </div></div>
@@ -160,7 +160,7 @@ Use the preview option (`:p`) if unsure about a command's content before running
 ### *Always Preview before running*
 
 Each command in history has an [index number](#access-past-commands-history), which allows you to reference and execute it directly.
-To preview a command from history at a specific index before executing it, append `:p` *(print)* to the `!<index>` expansion command. 
+To preview a command from history at a specific index before executing it, append `:p` *(aka. print)* to the `!<index>` expansion command. 
 This prevents accidental execution, allowing you to verify its content.
 
 ```bash
@@ -210,7 +210,7 @@ This method is useful when recalling a specific command from history, especially
 
 <div id="info-alerts-1" class="highlighted highlighted--warning ">
 <div class="highlighted__body"  markdown="1">
-Ensure you [check the command before execution](#preview-a-command-before-execution) to avoid running unintended or outdated commands. 
+Ensure you [check the command before execution](#always-preview-before-running) to avoid running unintended or outdated commands. 
 In this case, use `!100:p` to preview before running.
 </div></div>
 

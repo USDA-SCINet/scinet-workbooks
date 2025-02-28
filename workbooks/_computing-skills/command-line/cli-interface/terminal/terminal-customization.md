@@ -4,7 +4,7 @@ title: Terminal customization
 description: "Cross-platform terminal settings for visual comfort and enhanced usability."
 type: interactive tutorial
 order: 1
-tags: 
+tags: [terminal, CLI, text-based interface, customization]
 packages: 
 level: 
 author: Aleksandra Badaczewska
@@ -19,27 +19,22 @@ with practical instructions for adjusting your terminal window on SCINet cluster
 configure tabs and panes and modify appearance settings, you will create a tailored and efficient terminal environment to enhance your productivity and user experience.<br>
 
 <div id="info-alerts-1" class="highlighted highlighted--info ">
-    <div class="highlighted__body">
-        <h4 class="highlighted__heading">Main Objectives</h4>
-        <ul>
-            <li>Learn the methods and tools required to customize terminal applications across platforms.</li>
-            <li>Understand the key interface elements and settings available in popular terminal (emulators).</li>
-            <li>Demonstrate how to modify themes, adjust fonts, configure tabs and panes and create custom profiles.</li>
-        </ul>
-
-    </div>
+<div class="highlighted__body" markdown="1">
+<h4 class="highlighted__heading">Main Objectives</h4>
+* Learn the methods and tools required to customize terminal applications across platforms.
+* Understand the key interface elements and settings available in popular terminal (emulators).
+* Demonstrate how to modify themes, adjust fonts, configure tabs and panes and create custom profiles.
+</div>
 </div>
 
 <div id="success-alerts-1" class="highlighted highlighted--success ">
-    <div class="highlighted__body">
-        <h4 class="highlighted__heading">Goals</h4>
-        <p>By the end of this tutorial, you will:</p>
-        <ul>
-            <li>Gain the confidence to navigate and configure terminal settings to improve usability and efficiency.</li>
-            <li>Acquire general knowledge of cross-platform customization options in GNOME Terminal, Terminal.app, and Windows Terminal.</li>
-            <li>Successfully personalize the appearance and layout of a terminal window when working on SCINet HPC.</li>
-        </ul>
-    </div>
+<div class="highlighted__body" markdown="1">
+<h4 class="highlighted__heading">Goals</h4>
+By the end of this tutorial, you will:
+* Gain the confidence to navigate and configure terminal settings to improve usability and efficiency.
+* Acquire general knowledge of cross-platform customization options in GNOME Terminal, Terminal.app, and Windows Terminal.
+* Successfully personalize the appearance and layout of a terminal window when working on SCINet HPC.
+</div>
 </div>
 
 
@@ -50,32 +45,26 @@ Experiment with these settings to create a terminal environment tailored to your
 
 <div class="usa-accordion">
 
-    {% include accordion title="Key concepts" class="primary " controls="scope-concepts" %}
-    <div id="scope-concepts" class="accordion_content">
-        <ul>
-            <li><b>Terminal:</b> A text-based interface tool for interacting with an operating system.</li>
-            <li><b>Customization:</b> Techniques to personalize terminal appearance, layout and settings independent of shell configuration.</li>
-            <li><b>Cross-Platform Support:</b> Understanding customization features across popular terminal applications (GNOME Terminal, Terminal.app and Windows Terminal).</li>
-        </ul>
-    </div>
+{% include accordion title="Key concepts" class="primary " controls="scope-concepts" %}
+<div id="scope-concepts" class="accordion_content" markdown="1">
+* **Terminal:** A text-based interface tool for interacting with an operating system.
+* **Customization:** Techniques to personalize terminal appearance, layout and settings independent of shell configuration.
+* **Cross-Platform Support:** Understanding customization features across popular terminal applications (GNOME Terminal, Terminal.app and Windows Terminal).
+</div>
 
-    {% include accordion title="Tools/Technologies" class="primary " controls="scope-tools" %} 
-    <div id="scope-tools" class="accordion_content">
-        <ul>
-            <li><b>GNOME Terminal:</b> A widely-used terminal application for Linux environments.</li>
-            <li><b>Terminal.app:</b> The built-in terminal application for macOS users.</li>
-            <li><b>Windows Terminal:</b> A modern terminal application for Windows with support for multiple profiles and themes.</li>
-        </ul>
-    </div>
+{% include accordion title="Tools/Technologies" class="primary " controls="scope-tools" %} 
+<div id="scope-tools" class="accordion_content" markdown="1">
+* **GNOME Terminal:** A widely-used terminal application for Linux environments.
+* **Terminal.app:** The built-in terminal application for macOS users.
+* **Windows Terminal:** A modern terminal application for Windows with support for multiple profiles and themes.
+</div>
 
-    {% include accordion title="Applications" class="primary " controls="scope-apps" %} 
-    <div id="scope-apps" class="accordion_content">    
-        <ul>
-            <li><b>Appearance Customization:</b> Changing themes, fonts and backgrounds to personalize the terminal experience.</li>
-            <li><b>Efficient Workflow:</b> Using multiple tabs, panes and shortcuts to streamline multitasking.</li>
-            <li><b>Platform Consistency:</b> Adapting terminal settings across operating systems for a cohesive working environment.</li>
-        </ul>
-    </div>
+{% include accordion title="Applications" class="primary " controls="scope-apps" %} 
+<div id="scope-apps" class="accordion_content" markdown="1">    
+* **Appearance Customization:** Changing themes, fonts and backgrounds to personalize the terminal experience.
+* **Efficient Workflow:** Using multiple tabs, panes and shortcuts to streamline multitasking.
+* **Platform Consistency:** Adapting terminal settings across operating systems for a cohesive working environment.
+</div>
 </div>
 
 
@@ -374,15 +363,13 @@ offering a more tailored experience that accommodates diverse visual preferences
 ![scinet terminal theme options](../assets/img/scinet-terminal-odd-theme.png)
 
 <div id="question-alerts-1" class="highlighted highlighted--question ">
-<div class="highlighted__body">
+<div class="highlighted__body" markdown="1">
 <h4 class="highlighted__heading">Learn more</h4>
-<p markdown="1">
-If you're unsure how to access the shell via the OOD web-based interface, follow the step-by-step instructions provided in the <a href="/computing-skills/command-line/cli-interface/concepts/cli-scinet-hpc#web-based-access-to-hpc-cli" target="_blank">Web-based access to SCINet CLI</a> tutorial. It will guide you through the process of logging in and launching the shell quickly.</p>
-<li><a href="/computing-skills/command-line/cli-interface/concepts/cli-scinet-hpc#access-ceres-cli-via-ood" target="_blank">Access Ceres CLI via OOD</a></li>
-<li><a href="/computing-skills/command-line/cli-interface/concepts/cli-scinet-hpc#access-atlas-cli-via-ood" target="_blank">Access Atlas CLI via OOD</a></li><br>
-<div markdown="1">
+If you're unsure how to access the shell via the OOD web-based interface, follow the step-by-step instructions provided in the <a href="/computing-skills/command-line/cli-interface/concepts/cli-scinet-hpc#web-based-access-to-hpc-cli" target="_blank">Web-based access to SCINet CLI</a> tutorial. It will guide you through the process of logging in and launching the shell quickly.
+* <a href="/computing-skills/command-line/cli-interface/concepts/cli-scinet-hpc#access-ceres-cli-via-ood" target="_blank">Access Ceres CLI via OOD</a>
+* <a href="/computing-skills/command-line/cli-interface/concepts/cli-scinet-hpc#access-atlas-cli-via-ood" target="_blank">Access Atlas CLI via OOD</a>
+
 ![quick shell access via SCINet OOD](../assets/img/odd-clusters-shell.png)
-</div>
 </div>
 </div>
 
@@ -395,11 +382,9 @@ However, certain visual elements like prompt coloring and file listing styles ma
 ![scinet terminal theme options](../assets/img/local-terminal-on-scinet.png)
 
 <div id="question-alerts-1" class="highlighted highlighted--question ">
-<div class="highlighted__body">
+<div class="highlighted__body" markdown="1">
 <h4 class="highlighted__heading">Learn more</h4>
-<p markdown="1">
 To restore or customize these shell-specific settings on the cluster, you can modify your .bashrc (or equivalent shell configuration file).
-For detailed guidance on configuring your shell environment, refer to tuorial: <a href="/computing-skills/command-line/cli-interface/shell/shell" target="_blank">Shell customization with text coloring and prompt styling</a>.
-</p>
+For detailed guidance on configuring your shell environment, refer to the tutorials: *<a href="/computing-skills/command-line/cli-interface/shell/customization/index" target="_blank">Shell customization</a>* and *<a href="/computing-skills/command-line/cli-interface/shell/customization/coloring" target="_blank">Text coloring: LS_COLORS, GREP_COLORS</a>*.
 </div>
 </div>

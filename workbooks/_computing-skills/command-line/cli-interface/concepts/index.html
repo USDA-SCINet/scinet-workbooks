@@ -21,27 +21,22 @@ It also highlights examples of CLI environments across different operating syste
 
 
 <div id="info-alerts-1" class="highlighted highlighted--info ">
-    <div class="highlighted__body">
-        <h4 class="highlighted__heading">Main Objectives</h4>
-        <ul>
-            <li>Understand what the CLI is and its role in system interaction.</li>
-            <li>Differentiate between CLI and GUI approaches  to computer interaction, with user's broader control in CLI.</li>
-            <li>Identify common CLI environments and tools used across platforms.</li>
-        </ul>
-
-    </div>
+<div class="highlighted__body" markdown="1">
+<h4 class="highlighted__heading">Main Objectives</h4>
+* Understand what the CLI is and its role in system interaction.
+* Differentiate between CLI and GUI approaches  to computer interaction, with user's broader control in CLI.
+* Identify common CLI environments and tools used across platforms.
+</div>
 </div>
 
 <div id="success-alerts-1" class="highlighted highlighted--success ">
-    <div class="highlighted__body">
-        <h4 class="highlighted__heading">Goals</h4>
-        <p>By the end of this lesson, you will:</p>
-        <ul>
-            <li>Understand why the CLI is essential for USDA researchers working on computationally advanced projects, including data processing and software development.</li>
-            <li>Gain the confidence to transition from using a GUI to leveraging the CLI effectively.</li>
-            <li>Acquire knowledge of the CLI environments available on the SCINet HPC systems (Atlas, Ceres).</li>
-        </ul>
-    </div>
+<div class="highlighted__body" markdown="1">
+<h4 class="highlighted__heading">Goals</h4>
+<p>By the end of this lesson, you will:</p>
+* Understand why the CLI is essential for USDA researchers working on computationally advanced projects, including data processing and software development.
+* Gain the confidence to transition from using a GUI to leveraging the CLI effectively.
+* Acquire knowledge of the CLI environments available on the SCINet HPC systems (Atlas, Ceres).
+</div>
 </div>
 
 
@@ -51,36 +46,30 @@ It also highlights examples of CLI environments across different operating syste
 
 <div class="usa-accordion">
 
-    {% include accordion title="Key concepts" class="primary " controls="scope-concepts" %}
-    <div id="scope-concepts" class="accordion_content">
-        <ul>
-            <li><b>Command Line Interface (CLI):</b> A text-based method to interact with computing systems.</li>
-            <li><b>CLI environments:</b> Platforms where the CLI operates (e.g., Bash, PowerShell).</li>
-            <li><b>Text-based interaction:</b> Direct command entry for performing tasks or controlling systems.</li>
-            <li><b>Command execution:</b> Running instructions or scripts for file management, system configuration or data processing.</li>
-        </ul>
-    </div>
+{% include accordion title="Key concepts" class="primary " controls="scope-concepts" %}
+<div id="scope-concepts" class="accordion_content" markdown="1">
+* **Command Line Interface (CLI):** A text-based method to interact with computing systems.
+* **CLI environments:** Platforms where the CLI operates (e.g., Bash, PowerShell).
+* **Text-based interaction:** Direct command entry for performing tasks or controlling systems.
+* **Command execution:** Running instructions or scripts for file management, system configuration or data processing.
+</div>
 
-    {% include accordion title="Tools/Technologies" class="primary " controls="scope-tools" %} 
-    <div id="scope-tools" class="accordion_content">
-        <ul>
-            <li><b>Windows:</b> Command Prompt, PowerShell, Windows Terminal, Windows Subsystem for Linux (WSL)</li>
-            <li><b>macOS:</b> Terminal.app (using Zsh or Bash shells)</li>
-            <li><b>Linux:</b> GNOME Terminal, KDE Konsole, xterm (using Bash or Zsh shells)</li>
-        </ul>
-    </div>
+{% include accordion title="Tools/Technologies" class="primary " controls="scope-tools" %} 
+<div id="scope-tools" class="accordion_content" markdown="1">
+* **Windows:** Command Prompt, PowerShell, Windows Terminal, Windows Subsystem for Linux (WSL)</li>
+* **macOS:** Terminal.app (using Zsh or Bash shells)</li>
+* **Linux:** GNOME Terminal, KDE Konsole, xterm (using Bash or Zsh shells)</li>
+</div>
 
-    {% include accordion title="Applications" class="primary " controls="scope-apps" %} 
-    <div id="scope-apps" class="accordion_content">    
-        <ul>
-            <li>Navigating and managing files vith CLI commands.</li>
-            <li>Automating repetitive tasks.</li>
-            <li>Data wrangling, including Big Data.</li>
-            <li>High-performance computing.</li>
-            <li>Customn code development.</li>
-            <li>Configuring systems efficiently.</li>
-        </ul>
-    </div>
+{% include accordion title="Applications" class="primary " controls="scope-apps" %} 
+<div id="scope-apps" class="accordion_content" markdown="1">    
+* Navigating and managing files vith CLI commands.
+* Automating repetitive tasks.
+* Data wrangling, including Big Data.
+* High-performance computing.
+* Customn code development.
+* Configuring systems efficiently.
+</div>
 </div>
 
 
@@ -131,50 +120,51 @@ directly interacting with the computer's core functions without relying on visua
 
 <div class="usa-accordion">
 
-    {% include accordion title="Universal compatibility across systems" class="outline " controls="cli-concept-1" %} 
-    <div id="cli-concept-1" class="accordion_content">    
-        <p>The CLI is not tied to any specific system or platform. Whether you're using Linux, macOS, Windows or even computing cluster, 
-        many commands and tools follow similar principles, making CLI knowledge highly transferable. This universality allows users to apply 
-        their knowledge on various platforms, from personal laptops to powerful servers and high-performance computing clusters.</p>
-    </div>
+{% include accordion title="Universal compatibility across systems" class="outline " controls="cli-concept-1" %} 
+<div id="cli-concept-1" class="accordion_content" markdown="1">    
+The CLI is not tied to any specific system or platform. Whether you're using Linux, macOS, Windows or computing cluster, 
+many commands and tools follow similar principles, making CLI knowledge highly transferable. This universality allows users to apply 
+their knowledge on various platforms, from personal laptops to powerful servers and high-performance computing clusters.
+</div>
 
-    {% include accordion title="A single window for all tasks" class="outline " controls="cli-concept-2" %}
-    <div id="cli-concept-2" class="accordion_content">
-        <p>In the CLI, there are no multiple windows, buttons or icons like in a GUI. Everything you do <i>(whether it's navigating directories, 
-        managing files or running programs)</i> happens within one text-based interface.</p>
-        <em>Think of it as a conversation: you type a command (your input) and the system responds with a result (its output), all in the same window.</em>
-    </div>
+{% include accordion title="A single window for all tasks" class="outline " controls="cli-concept-2" %}
+<div id="cli-concept-2" class="accordion_content" markdown="1">
+In the CLI, there are no multiple windows, buttons or icons like in a GUI. Everything you do (whether it's navigating directories, 
+managing files or running programs) happens within one text-based interface.
+Think of it as a conversation: you type a command (your input) and the system responds with a result (its output), all in the same window.
+</div>
 
-    {% include accordion title="Streamlined user-system interaction" class="outline " controls="cli-concept-3" %} 
-    <div id="cli-concept-3" class="accordion_content">    
-        <p>While the CLI may appear minimal, it is incredibly powerful. With a few keystrokes, you can perform complex tasks, 
-        automate workflows and combine multiple commands, all without switching between windows or menus.</p>
-    </div>
+{% include accordion title="Streamlined user-system interaction" class="outline " controls="cli-concept-3" %} 
+<div id="cli-concept-3" class="accordion_content" markdown="1">    
+While the CLI may appear minimal, it is incredibly powerful. With a few keystrokes, you can perform complex tasks, 
+automate workflows and combine multiple commands, all without switching between windows or menus.
+</div>
 
-    {% include accordion title="Text-based input and output in the command-line" class="outline " controls="cli-concept-4" %} 
-    <div id="cli-concept-4" class="accordion_content">    
-        <p>All interactions in the CLI involve text. You type commands as instructions, and the system replies in text. </p>
-        <em>For example, asking to see the contents of a directory will result in a plain-text list of files. <br>
-        If something goes wrong or needs attention, the system will explain the issue in a text-based message.</em>
-    </div>
+{% include accordion title="Text-based input and output in the command-line" class="outline " controls="cli-concept-4" %} 
+<div id="cli-concept-4" class="accordion_content" markdown="1">    
+All interactions in the CLI involve text. You type commands as instructions, and the system replies in text. 
+For example, asking to see the contents of a directory will result in a plain-text list of files. 
+If something goes wrong or needs attention, the system will explain the issue in a text-based message.
+</div>
 
-    {% include accordion title="Navigate the file system with commands" class="outline " controls="cli-concept-5" %} 
-    <div id="cli-concept-5" class="accordion_content">
-        <p>The CLI allows you to move through your computer's file system using simple commands. </p>
-        <em>For example, you can "change location" by typing a <b>cd</b> command to switch directories/folders. <br>
-        This is similar to opening and closing folders in a GUI, but it's done entirely through text. </em>
-    </div>
+{% include accordion title="Navigate the file system with commands" class="outline " controls="cli-concept-5" %} 
+<div id="cli-concept-5" class="accordion_content" markdown="1">
+The CLI allows you to move through your computer's file system using simple commands. 
+For example, you can "change location" by typing a `cd` command to switch directories/folders. 
+This is similar to opening and closing folders in a GUI, but it's done entirely through text. 
+</div>
 
-    {% include accordion title="Access to hidden system features" class="outline " controls="cli-concept-6" %} 
-    <div id="cli-concept-6" class="accordion_content">    
-        <p>Many system functionalities, tools and configurations are accessible only through the CLI. 
-        This includes advanced tools for process management, system monitoring and administrative tasks, which are often not available in GUI interfaces.</p>
-    </div>
+{% include accordion title="Access to hidden system features" class="outline " controls="cli-concept-6" %} 
+<div id="cli-concept-6" class="accordion_content" markdown="1">    
+Many system functionalities, tools and configurations are accessible only through the CLI. 
+This includes advanced tools for process management, system monitoring and administrative tasks, which are often not available in GUI interfaces.
+</div>
 
-    {% include accordion title="Error handling and feedback" class="outline " controls="cli-concept-7" %} 
-    <div id="cli-concept-7" class="accordion_content">    
-        <p>The CLI provides immediate feedback for every command. Errors include helpful messages that guide users to correct mistakes, making it an effective way to learn and troubleshoot.</p>
-    </div>
+{% include accordion title="Error handling and feedback" class="outline " controls="cli-concept-7" %} 
+<div id="cli-concept-7" class="accordion_content" markdown="1">    
+The CLI provides immediate feedback for every command. Errors include helpful messages that guide users to correct mistakes, 
+making it an effective way to learn and troubleshoot.
+</div>
 
 </div>
 
@@ -230,12 +220,11 @@ It's important to differentiate between:
 | Linux/macOS | Terminal       | A CLI tool used to access the shell on Unix-based systems. |
 
 <div id="question-alerts-1" class="highlighted highlighted--question ">
-    <div class="highlighted__body">
-        <h4 class="highlighted__heading">Learn more</h4>
-        <p>
-            Explore the lesson module on <a href="/computing-skills/command-line/cli-interface/terminal/" target="_blank"><i>What is a Terminal? The interface tool for the CLI</i></a> to learn how terminals serve as the gateway for interacting with the command line.
-        </p>
-    </div>
+<div class="highlighted__body">
+<h4 class="highlighted__heading">Learn more</h4>
+Explore the lesson module on <a href="/computing-skills/command-line/cli-interface/terminal/" target="_blank"><i>What is a Terminal? 
+The interface tool for the CLI</i></a> to learn how terminals serve as the gateway for interacting with the command line.
+</div>
 </div>
 
 
@@ -246,64 +235,56 @@ It's important to differentiate between:
 | Fish        | A user-friendly shell with intuitive syntax and strong customization options.          |
 
 <div id="question-alerts-1" class="highlighted highlighted--question ">
-    <div class="highlighted__body">
-        <h4 class="highlighted__heading">Learn more</h4>
-        <p>
-            Explore the lesson module on <a href="/computing-skills/command-line/cli-interface/shell/" target="_blank"><i>What is a Unix Shell? The Command Interpreter for the CLI</i></a> to discover how Unix shell interprets and executes your commands.
-        </p>
-    </div>
+<div class="highlighted__body">
+<h4 class="highlighted__heading">Learn more</h4>
+Explore the lesson module on <a href="/computing-skills/command-line/cli-interface/shell/" target="_blank"><i>What is a Unix Shell? 
+The Command Interpreter for the CLI</i></a> to discover how Unix shell interprets and executes your commands.
+</div>
 </div>
 
 
 ## Why researcher should use CLI?
 
 <div id="note-alerts-1" class="highlighted highlighted--tip ">
-    <div class="highlighted__body">
-        <p>
-            The CLI is essential for researchers handling advanced computational projects, such as data processing, simulations and software development. 
-            Its efficiency and scripting capabilities make it a critical tool for complex workflows.
-        </p>
-    </div>
+<div class="highlighted__body">
+The CLI is essential for researchers handling advanced computational projects, including data processing, simulations and software development. 
+Its efficiency, automation potential and scripting capabilities, along with the ease of documentation for knowledge retention and reproducibility, 
+make it a critical tool for complex tasks.
+</div>
 </div>
 
 The Command Line Interface is more than just a technical tool - it's a gateway to unlocking efficiency and precision for researchers tackling advanced computational challenges. <br>
 
 <div class="usa-accordion">
 
-    {% include accordion title="To get access and benefits of using HPC" class="outline " controls="cli-usage-1" %} 
-    <div id="cli-usage-1" class="accordion_content">    
-        <p>
-            The CLI is the primary method for accessing HPC systems, which are crucial for large-scale computations. <br>
-            For example, researchers can submit batch jobs to analyze terabytes of genomic sequences or simulate soil erosion models, optimizing time and computational resources.
-        </p>
-    </div>
+{% include accordion title="To get access and benefits of using HPC" class="outline " controls="cli-usage-1" %} 
+<div id="cli-usage-1" class="accordion_content" markdown="1">    
+The CLI is the primary method for accessing HPC systems, which are crucial for large-scale computations. <br>
+For example, researchers can submit batch jobs to analyze terabytes of genomic sequences or simulate soil erosion models, 
+optimizing time and computational resources.
+</div>
 
-    {% include accordion title="To efficiently handle large datasets" class="outline " controls="cli-usage-2" %}
-    <div id="cli-usage-2" class="accordion_content">
-        <p>
-            From organizing directories to parsing through massive text files, the CLI provides tools like <b>grep</b>, <b>awk</b> and <b>sed</b> for handling data efficiently. 
-            This is particularly valuable in fields like bioinformatics, where analyzing text-based sequence data is common, or in geospatial research, 
-            where structured metadata must be extracted and organized.
-        </p>
-    </div>
+{% include accordion title="To efficiently handle large datasets" class="outline " controls="cli-usage-2" %}
+<div id="cli-usage-2" class="accordion_content" markdown="1">
+From organizing directories to parsing through massive text files, the CLI provides tools like `grep`, `awk` and `sed` for handling data efficiently. 
+This is particularly valuable in fields like bioinformatics, where analyzing text-based sequence data is common, or in geospatial research, 
+where structured metadata must be extracted and organized.
+</div>
 
-    {% include accordion title="To automate repetitive tasks with custom scripts" class="outline " controls="cli-usage-3" %} 
-    <div id="cli-usage-3" class="accordion_content">    
-        <p>
-            One of the CLI's greatest strengths is its scripting ability. Repetitive tasks, such as converting file formats, 
-            running simulations or applying the same statistical model across multiple datasets, can be automated using shell scripts. 
-            For USDA researchers, this means tasks like automating the preprocessing of crop yield data or analyzing climate impact across regions can be performed seamlessly.
-        </p>
-    </div>
+{% include accordion title="To automate repetitive tasks with custom scripts" class="outline " controls="cli-usage-3" %} 
+<div id="cli-usage-3" class="accordion_content" markdown="1">    
+One of the CLI's greatest strengths is its scripting ability. Repetitive tasks, such as converting file formats, 
+running simulations or applying the same statistical model across multiple datasets, can be automated using shell scripts. 
+For USDA researchers, this means tasks like automating the preprocessing of crop yield data or analyzing climate impact 
+across regions can be performed seamlessly.
+</div>
 
-    {% include accordion title="To enhance workflow efficiency" class="outline " controls="cli-usage-4" %} 
-    <div id="cli-usage-4" class="accordion_content">    
-        <p>
-            The CLI allows researchers to process large datasets with minimal overhead. 
-            For example, bioinformaticians can use CLI tools like <b>BLAST</b> or <b>FASTQC</b> to analyze genomic data efficiently, 
-            while geospatial researchers can process satellite images or climate models using tools like <b>GDAL</b> or <b>QGIS</b> processing scripts.
-        </p>
-    </div>
+{% include accordion title="To enhance workflow efficiency" class="outline " controls="cli-usage-4" %} 
+<div id="cli-usage-4" class="accordion_content" markdown="1">
+The CLI allows researchers to process large datasets with minimal overhead. 
+For example, bioinformaticians can use CLI tools like **BLAST** or **FASTQC** to analyze genomic data efficiently, 
+while geospatial researchers can process satellite images or climate models using tools like **GDAL** or **QGIS** processing scripts.
+</div>
 
 </div>
 
@@ -328,10 +309,9 @@ Learn about the CLI environments available on the SCINet HPC and how they suppor
 These tools enable access to high-performance computing resources for large-scale tasks.
 
 <div id="question-alerts-1" class="highlighted highlighted--question ">
-    <div class="highlighted__body">
-        <h4 class="highlighted__heading">Learn more</h4>
-        <p>
-            Explore the interactive tutorial on <a href="/computing-skills/command-line/cli-interface/concepts/cli-scinet-hpc" target="_blank"><i>Accessing the CLI on the SCINet HPC</i></a> to get started with using command line interface in your projects.
-        </p>
-    </div>
+<div class="highlighted__body">
+<h4 class="highlighted__heading">Learn more</h4>
+Explore the interactive tutorial on <a href="/computing-skills/command-line/cli-interface/concepts/cli-scinet-hpc" target="_blank"><i>Accessing the CLI on the SCINet HPC</i></a> 
+to get started with using command line interface in your projects.
+</div>
 </div>
