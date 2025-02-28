@@ -37,7 +37,7 @@ how to access the CLI, you will take your first steps toward effectively utilizi
         <h4 class="highlighted__heading">Goals</h4>
         <p>By the end of this tutorial, you will:</p>
         <ul>
-            <li>Successfully establish a secure connection to the selected SCINet HPC cluster using the SSH protocol or OOD service.</li>
+            <li>Successfully establish a secure connection to the selected SCINet HPC cluster using <br>OOD service (website) or SSH protocol (terminal).</li>
             <li>Gain the confidence to transition from using a GUI to leveraging the CLI effectively.</li>
             <li>Acquire knowledge of the CLI environments available on the SCINet HPC systems (Atlas, Ceres).</li>
         </ul>
@@ -67,7 +67,7 @@ This tutorial demostrates practical steps for accessing the command line interfa
     <div id="scope-tools" class="accordion_content">
         <ul>
             <li><b>Open OnDemand (OOD):</b> A browser-based platform to access CLI functionality on HPC systems.</li>
-            <li><b>SSH (Secure Shell):</b> A secure connection protocol for direct CLI access from local machines.</li>
+            <li><b>SSH (Secure Shell):</b> A secure connection protocol for direct CLI access from local machines in terminal window.</li>
             <li>Supported local tools for SSH access:</li>
             <ul>
                 <li><b>Windows:</b> PuTTY, Windows Terminal, WSL</li>
@@ -81,7 +81,7 @@ This tutorial demostrates practical steps for accessing the command line interfa
     <div id="scope-apps" class="accordion_content">    
         <ul>
             <li><b>Web-based access:</b> Logging in and interacting with HPC CLI through Open OnDemand on any device. <b>(recommended)</b></li>
-            <li><b>Accessing HPC CLI:</b> Establishing secure connections via SSH from a local machine.</li>
+            <li><b>Accessing HPC CLI:</b> Establishing secure connections via SSH from a local machine in terminal window.</li>
             <li><b>Getting started with HPC systems:</b> Becoming comfortable with the interface to support future computational workflows.</li>
         </ul>
     </div>
@@ -233,6 +233,23 @@ Finally, contact other SCINet users on the <a href="https://forum.scinet.usda.go
 </div>
 
 
+### Welcome message <br> *cluster rules & quick updates*
+
+The welcome message is a text displayed immediately in the terminal window upon logging into an HPC cluster and appears with each new shell session. 
+It typically includes key information such as system status, upcoming maintenance schedules, usage policies and available software modules or resources. 
+
+![welcome message in scinet clusters](../assets/img/scinet_cli_welcome_message.png)
+
+Serving as an essential guide, **welcome message** helps first-time users explore the rules & tips, while keeping regular users informed about important updates, 
+such as scheduled downtimes or new features. Additionally, it often provides guidelines and best practices for efficient and responsible cluster usage, 
+ensuring fair resource allocation and optimal performance for all users. 
+
+<div id="note-alerts-1" class="highlighted highlighted--tip ">
+<div class="highlighted__body" markdown="1">
+The welcome message may change over time, so it's best to check it briefly at each login to stay updated.
+</div></div>
+
+
 ## Web-based access to HPC CLI
 
 SCINet provides several <a href="https://scinet.usda.gov/guides/access/#web-based-access-to-scinet" target="_blank">web-based interfaces</a> 
@@ -277,14 +294,14 @@ Follow these steps for accessing command line interface on Ceres via Open onDema
 
 **2.** Log in using your user SCINet credentials. *Follow the instructions for <a href="https://scinet.usda.gov/guides/access/web-based-login#accessing-web-based-interfaces" target="_blank"><b>Accessing Web-Based Interfaces</b></a>*
 
-  - You will initially be presented with the SCINet login page.
+  - You will be presented with the USDA eAuthentication login page.
 
   ![scinet login in web browser](../assets/img/scinet-login.png)
 
-  - Choose `Login.gov or USDA LincPass` as your sign-in option.
-    - A. If you have a LincPass/AltLinc or PIV Exemption, you will authenticate as usual with eAuth.
-    - B. If you do not have a LincPass/AltLinc or PIV Exemption, you will authenticate using Login.gov.
-      - *Please see the detailed instructions for <a href="https://scinet.usda.gov/guides/access/login/logingov" target="_blank">logging on to SCINet using Login.gov</a>.*
+  - Select the login option that is appropriate for you.
+    - *Please see the detailed instructions for <a href="https://scinet.usda.gov/guides/access/web-based-login#accessing-web-based-interfaces" target="_blank">logging on to SCINet web-based interfaces</a>.* *(if you have a `LincPass`/`AltLinc`)*
+    - *Please see the detailed instructions for <a href="https://scinet.usda.gov/guides/access/login/alt-login#non-usda-users---logingov" target="_blank">logging on to SCINet using Login.gov</a>.* *(sponsored, non-USDA SCINet users)*
+    - *Please see the detailed instructions for <a href="https://scinet.usda.gov/guides/access/login/alt-login#usda-users-without-a-lincpassaltlinc" target="_blank">alternative Login guide</a>.*
 
   After successful authentication, you will automatically be redirected to Open OnDemand web interface for Ceres cluster.
 
@@ -294,7 +311,7 @@ Follow these steps for accessing command line interface on Ceres via Open onDema
     <div class="highlighted__body">
         <h4 class="highlighted__heading">Learn more</h4>
         <p>
-            To get the most out of the Open OnDemand interface, explore the dedicated <a href="https://scinet.usda.gov/guides/use/open-ondemand#using-ood" target="_blank">User Guides</a> 
+            To get the most out of the Open OnDemand interface, explore the dedicated <a href="https://scinet.usda.gov/guides/use/open-ondemand#using-ood" target="_blank">User Guides → Using OOD</a> 
             available on the SCINet website. These guides provide more details on available GUI tools, job scheduling and interactive applications like Jupyter or RStudio.
         </p>
     </div>
@@ -390,14 +407,14 @@ Follow these steps for accessing command line interface on Atlas via Open onDema
 
 **2.** Log in using your user SCINet credentials. *Follow the instructions for <a href="https://scinet.usda.gov/guides/access/web-based-login#accessing-web-based-interfaces" target="_blank"><b>Accessing Web-Based Interfaces</b></a>*
 
-  - You will initially be presented with the SCINet login page.
+  - You will be presented with the USDA eAuthentication login page.
 
   ![scinet login in web browser](../assets/img/scinet-login.png)
 
-  - Choose `Login.gov or USDA LincPass` as your sign-in option.
-    - A. If you have a LincPass/AltLinc or PIV Exemption, you will authenticate as usual with eAuth.
-    - B. If you do not have a LincPass/AltLinc or PIV Exemption, you will authenticate using Login.gov.
-      - *Please see the detailed instructions for <a href="https://scinet.usda.gov/guides/access/login/logingov" target="_blank">logging on to SCINet using Login.gov</a>.*
+  - Select the login option that is appropriate for you.
+    - *Please see the detailed instructions for <a href="https://scinet.usda.gov/guides/access/web-based-login#accessing-web-based-interfaces" target="_blank">logging on to SCINet web-based interfaces</a>.* *(if you have a `LincPass`/`AltLinc`)*
+    - *Please see the detailed instructions for <a href="https://scinet.usda.gov/guides/access/login/alt-login#non-usda-users---logingov" target="_blank">logging on to SCINet using Login.gov</a>.* *(sponsored, non-USDA SCINet users)*
+    - *Please see the detailed instructions for <a href="https://scinet.usda.gov/guides/access/login/alt-login#usda-users-without-a-lincpassaltlinc" target="_blank">alternative Login guide</a>.*
 
   After successful authentication, you will automatically be redirected to Open OnDemand web interface for Ceres cluster.
 
@@ -407,7 +424,7 @@ Follow these steps for accessing command line interface on Atlas via Open onDema
     <div class="highlighted__body">
         <h4 class="highlighted__heading">Learn more</h4>
         <p>
-            To get the most out of the Open OnDemand interface, explore the dedicated <a href="https://scinet.usda.gov/guides/use/open-ondemand#using-ood" target="_blank">User Guides</a> 
+            To get the most out of the Open OnDemand interface, explore the dedicated <a href="https://scinet.usda.gov/guides/use/open-ondemand#using-ood" target="_blank">User Guides → Using OOD</a> 
             available on the SCINet website. These guides provide more details on available GUI tools, job scheduling and interactive applications like Jupyter or RStudio.
         </p>
     </div>
