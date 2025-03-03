@@ -35,7 +35,7 @@ The tutorial is designed for regular users without administrative privileges, pr
 <p>By the end of this tutorial, you will:</p>
 * Develop confidence in modifying and managing your `.bashrc` file for an optimized shell experience.
 * Understand how to make persistent and effective shell customizations without administrative privileges.
-* Gain practical skills in defining aliases, managing environment variables and automating command execution.
+* Gain practical skills in defining aliases, managing environment variables and automating tasks.
 * Learn debugging techniques to troubleshoot `.bashrc` errors and prevent login issues.
 </div>
 </div>

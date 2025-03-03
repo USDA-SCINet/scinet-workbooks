@@ -13,7 +13,7 @@ author: Aleksandra Badaczewska
 
 ## Overview
 
-This interactive tutorial introduces the concept of shell functions in Unix-like operating systems, which allow you to group sequences of commands and enable flexible argument passing. Shell functions serve as reusable, modular building blocks that enhance productivity by making complex or repetitive command sequences more manageable and efficient. This guide focuses on defining, using and managing shell functions through practical examples, with emphasis on how they can optimize workflows in SCINet HPC environment.
+This interactive tutorial introduces the concept of shell functions in Unix-like operating systems, which allow you to group sequences of commands and enable flexible argument passing. Shell functions serve as reusable, modular building blocks that enhance productivity by making complex or repetitive command sequences more manageable and efficient. This guide provides practical examples for defining, using and managing shell functions to enhance your efficiency in SCINet HPC environment.
 <br>
 
 <div id="info-alerts-1" class="highlighted highlighted--info ">
@@ -21,7 +21,7 @@ This interactive tutorial introduces the concept of shell functions in Unix-like
 <h4 class="highlighted__heading">Main Objectives</h4>
 * Understand the purpose, syntax and structure of shell functions. 
 * Learn how to pass arguments and control function behavior dynamically.
-* Explore practical applications of shell functions, especially for repetitive or complex tasks in an HPC environment.
+* Explore practical applications of shell functions for repetitive or complex tasks in an HPC environment.
 </div>
 </div>
 
@@ -29,9 +29,9 @@ This interactive tutorial introduces the concept of shell functions in Unix-like
 <div class="highlighted__body"  markdown="1">
 <h4 class="highlighted__heading">Goals</h4>
 <p>By the end of this tutorial, you will:</p>
+* Understand key differences between shell functions, aliases and built-in shell commands.
 * Master the basics of defining, calling and passing arguments to shell functions.
 * Create both simple and advanced shell functions with conditionals, loops and error handling.
-* Understand key differences between shell functions, aliases and built-in shell commands.
 * Gain insights into best practices for function design and troubleshooting common issues.
 </div>
 </div>
@@ -48,7 +48,7 @@ You’ll explore how shell functions can be used to automate, streamline and opt
 {% include accordion title="Key concepts" class="primary " controls="scope-concepts" %}
 <div id="scope-concepts" class="accordion_content" markdown="1">
 * **Shell Functions:** Reusable blocks of commands grouped under a function name that can be invoked with arguments.
-* **Function arguments:** The ability to pass dynamic inputs to shell functions using positional parameters like `$1`, `$2`, and `$@`.
+* **Function arguments:** The ability to pass dynamic inputs to shell functions using positional parameters like `$1`, `$2`, `$@`.
 * **Return values:** Mechanisms to output results or pass status codes back to the shell.
 * **Function scope:** Understanding local vs. global variable scope within shell functions.
 </div>
@@ -62,9 +62,9 @@ You’ll explore how shell functions can be used to automate, streamline and opt
 
 {% include accordion title="Applications" class="primary " controls="scope-apps" %} 
 <div id="scope-apps" class="accordion_content" markdown="1">    
-* **Task automation:** Automate sequences such as data analysis pipelines, file operations or log monitoring using shell functions.
+* **Task automation:** Automate command sequences such as data analysis pipelines, file operations or log monitoring.
+* **Dynamic processing:** Use functions to process large datasets with argument-driven logic for file transformation tasks.
 * **Customized workflows:** Create functions for initializing environments, loading modules or setting project-specific configurations.
-* **Dynamic processing:** Use functions to process large datasets with argument-driven logic for tasks like file transformations or reporting.
 * **Error handling and cleanup:** Simplify complex cleanup operations in scripts by encapsulating them within functions with error-handling capabilities.
 </div>
 </div>
@@ -254,9 +254,9 @@ monitor_cpu() {
 ![function to monitor cpu](../../assets/img/function_monitor_cpu.png)
 
 *This example demonstrates:*
-* ***[Argument handling](/computing-skills/command-line/cli-interface/shell/customization/functions#passing-arguments-to-functions):*** *Accepts optional CPU thresholds via positional argument ($1).*
-* ***Error handling:*** *Basic, but detects missing arguments and defaults thresholds to safe values if not provided.*
-* ***[Logic and Conditions](/computing-skills/command-line/cli-interface/shell/customization/functions#conditionals-and-loops):*** *Uses `if` conditions to determine output based on warning thresholds.*
+* ***[Argument handling](#passing-arguments-to-functions):*** *Accepts optional CPU thresholds via positional argument ($1).*
+* ***[Error handling](#returning-an-exit-status-code-for-error-handling):*** *Basic, but detects missing arguments and defaults thresholds to safe values if not provided.*
+* ***[Logic and Conditions](#conditionals-and-loops):*** *Uses `if` conditions to determine output based on warning thresholds.*
 * ***Workflow integration:*** *Integrates system commands like `top` to extract real-time system data.*
 
 <div id="note-alerts-1" class="highlighted highlighted--success ">
@@ -327,7 +327,7 @@ Always check if the correct number of arguments is provided (`[ $# -eq <expected
 Use `return` to exit a function with an error code if something goes wrong.
 
 
-| aspect      | [one-line function](#defining-a-one-line-function) | [multi-line function](#defining-multi-line-functions) |
+| aspect      | [one-line function](#defining-a-one-line-function) | [multi-line function](#defining-a-multi-line-function) |
 |--           |--                                                  |--                                                     |
 | definition  | Defined on a single line using `{ … }` with commands separated by semicolons (`;`) and spaces around content in brackets `{ content }`.     | Defined on a single line using { ... }. |
 | complexity  | Best for simple commands with minimal logic. | Ideal for functions with conditionals, loops, and logic. |
@@ -1494,7 +1494,7 @@ monitor_resources 50 80 50 80         # arguments: $1=60 $2=80 $3=60 $4=80
 
 Explore an example function depending on your needs:
 - [`tar` based *(hard-coded)* backup:](#redirecting-function-output-to-a-file)  compress a specific file/dir using its absolute path
-- [`cp` based *(dynamic)* backup:](#managing-arguments-effectively) copy any directory from source path ($1) to the destination path ($2)
+- [`cp` based *(dynamic)* backup:](#managing-arguments-effectively) copy any directory from source path (`$1`) to the destination path (`$2`)
 - [`tar` based *(dynamic)* backup:](/computing-skills/command-line/cli-interface/shell/customization/functions#defining-a-multi-line-function) compress any directory in a current location to .tar.gz format
 - [`tar` based *()dynamic* backup with timestamp:](#document-your-functions-to-keep-a-reference-for-future-use) compress any directory and add a date & time tag to the backup name to distinguish historical versions
 

@@ -19,28 +19,23 @@ You will also learn how to declare, modify and persist new variables to customiz
 <br>
 
 <div id="info-alerts-1" class="highlighted highlighted--info ">
-    <div class="highlighted__body">
-        <h4 class="highlighted__heading">Main Objectives</h4>
-        <ul>
-            <li>Understand the difference between environment and shell variables and their roles in shell configuration.</li>
-            <li>Provide the reference list with built-in variables on SCINet HPC.</li>
-            <li>Demonstrate how to define, export and persist variables across sessions, including practical applications.</li>
-            <li>Explore debugging techniques to diagnose and resolve issues related to environment variables.</li>
-        </ul>
-
-    </div>
+<div class="highlighted__body" markdown="1">
+<h4 class="highlighted__heading">Main Objectives</h4>
+* Understand the difference between environment and shell variables and their roles in shell configuration.
+* Provide the reference list with built-in variables on SCINet HPC.
+* Demonstrate how to define, export and persist variables across sessions, including practical applications.
+* Explore debugging techniques to diagnose and resolve issues related to environment variables.
+</div>
 </div>
 
 <div id="success-alerts-1" class="highlighted highlighted--success ">
-    <div class="highlighted__body">
-        <h4 class="highlighted__heading">Goals</h4>
-        <p>By the end of this tutorial, you will:</p>
-        <ul>
-            <li>Acquire knowledge of how to access and manipulate variables in Bash shell.</li>
-            <li>Gain confidence in using effectively the built-in variables cross-platform, including HPC systems.</li>
-            <li>Get started with setting project-specific custom variables for optimal performance on SCINet clusters.</li>
-        </ul>
-    </div>
+<div class="highlighted__body" markdown="1">
+<h4 class="highlighted__heading">Goals</h4>
+<p>By the end of this tutorial, you will:</p>
+* Acquire knowledge of how to access and manipulate variables in Bash shell.
+* Gain confidence in using effectively the built-in variables cross-platform, including HPC systems.
+* Get started with setting project-specific custom variables for optimal performance on SCINet clusters.
+</div>
 </div>
 
 
@@ -190,7 +185,7 @@ Results in a prompt like: `[user@hpc-node ~]$`, keeping you aware of your contex
 </div>
 
 
-## Configuration
+## **Configuration**
 
 Shell configuration involves managing the behavior and settings of a command-line session. In practice, it involves defining and managing environment variables, setting aliases and adjusting shell settings to control how the command-line interface behaves. 
 This section will guide you through hands-on steps for configuring shell components to effectively control and personalize your command-line environment.
@@ -256,7 +251,7 @@ Shell variables are local, session-specific variables used within a shell instan
 
 {% include accordion title="Check the built-in shell variables on SCINet" class="outline" controls="shell-var1" %}
 <div id="shell-var1" class="accordion_content" markdown="1">
-**Login to the SCINet HPC cluster** using the [Open OnDemand (OOD)](/computing-skills/command-line/cli-interface/concepts/cli-scinet-hpc#accessing-the-cli-on-the-scinet-hpc) service through your web browser. This provides a terminal interface for easy access to the shell environment. <br>
+**Login to the SCINet HPC cluster** using the [Open OnDemand (OOD)](/computing-skills/command-line/cli-interface/concepts/cli-scinet-hpc#web-based-access-to-hpc-cli) service through your web browser. This provides a terminal interface for easy access to the shell environment. <br>
 **Check built-in Shell Variables:** Use the `echo` command followed by the variable name with a `$` prefix to display its current value (e.g., `echo $PWD`). 
 ![shell_variables_scinet](../assets/img/shell_variables_scinet.png)
 * *How do the values of built-in variables like `$USER` or `$PWD` differ between your session and example results?*
@@ -726,7 +721,7 @@ source ~/.bashrc
 
 ## **Troubleshooting common issues**
 
-When working on HPC clusters, issues related to environment variables can lead to software errors, missing executables, or misconfigured jobs. This section explores common problems reported by users on SCINet clusters and provides practical debugging techniques to diagnose and resolve them effectively.
+When working on HPC clusters, issues related to environment variables can lead to software errors, missing executables or misconfigured jobs. This section explores common problems reported by users on SCINet clusters and provides practical debugging techniques to diagnose and resolve them effectively.
 
 <div class="usa-accordion">
 

@@ -3,7 +3,7 @@
 title: Command history
 description: "A record of previously executed commands that allows users to recall, search and reuse past inputs in the CLI."
 type: interactive tutorial
-order: 3
+order: 2
 tags: [history command, search history, never-ending history, repeatablity, productivity] 
 packages: 
 level: 

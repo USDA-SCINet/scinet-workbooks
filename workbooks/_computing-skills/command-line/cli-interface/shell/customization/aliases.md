@@ -32,7 +32,7 @@ This interactive tutorial introduces the concept of command aliases in Unix-like
 * Grasp the syntax and conventions for creating aliases in a Bash shell.
 * Be able to define both temporary and permanent aliases to improve your command-line experience.
 * Develop an understanding of best practices for managing aliases to avoid conflicts and ensure reliability.
-* Confidently troubleshoot common issues related to aliases, such as path conflicts or shell incompatibilities.
+* Confidently troubleshoot common issues related to aliases, such as path conflicts or quotation errors.
 </div>
 </div>
 
@@ -45,10 +45,10 @@ This tutorial offers a practical, step-by-step guide to creating and managing co
 
 {% include accordion title="Key concepts" class="primary " controls="scope-concepts" %}
 <div id="scope-concepts" class="accordion_content" markdown="1">
-* **Command Aliases:** Shortcuts that allow you to replace long or repetitive commands with simpler, custom-defined keywords.
-* **Alias Persistence:** Techniques for saving aliases permanently using shell configuration files.
-* **Temporary vs. Permanent Aliases:** The difference between session-specific and persistent alias definitions.
-* **Alias Expansion and Nesting:** Handling complex commands or sequences of commands using aliases.
+* **Command aliases:** Shortcuts that allow you to replace long or repetitive commands with simpler, custom keywords.
+* **Alias persistence:** Techniques for saving aliases permanently using shell configuration files.
+* **Temporary vs. permanent aliases:** The difference between session-specific and persistent alias definitions.
+* **Alias expansion and nesting:** Handling complex commands or sequences of commands using aliases.
 </div>
 
 {% include accordion title="Tools/Technologies" class="primary " controls="scope-tools" %} 
@@ -60,10 +60,10 @@ This tutorial offers a practical, step-by-step guide to creating and managing co
 
 {% include accordion title="Applications" class="primary " controls="scope-apps" %} 
 <div id="scope-apps" class="accordion_content" markdown="1">    
-* **Time-saving shortcuts:** Define aliases for long or complex commands, such as data processing or file management sequences.
-* **Automation:** Simplify cluster-specific tasks like job submission (sbatch), monitoring, or file transfers with user-defined shortcuts.
+* **Time-saving shortcuts:** Define aliases for long or complex commands, such as for data processing or file management.
+* **Automation:** Simplify cluster-specific tasks like job submission, monitoring or file transfers with user-defined shortcuts.
 * **Environment setup:** Create startup aliases that load specific modules, set variables or initialize project environments.
-* **Error-prone commands:** Minimize typos and accidental mistakes by using intuitive aliases for potentially dangerous commands (e.g., replacing rm with a safer version).
+* **Error-prone commands:** Minimize typos and accidental mistakes by using intuitive aliases for potentially dangerous commands (e.g., replacing `rm` with a safer version).
 * **Coloring text outputs:** Combine aliases with `echo`, `grep`, `awk` or `tail` commands using ANSI color codes to highlight specific keywords, warnings or errors. *This is particularly useful when exploring log files or quickly detecting issues during interactive debugging sessions on clusters.*
 </div>
 </div>

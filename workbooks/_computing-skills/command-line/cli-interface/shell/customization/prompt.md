@@ -160,7 +160,7 @@ Users can [personalize PS1](#ps1-customization) to better suit their needs by mo
 
 ### *Prompt Colors & Effects*
 
-You can modify text colors and effects in the prompt using [**ANSI escape codes** *(see full list)*](#ansi-escape-codes). These codes use the `\e` (escape) character, followed by a color code. Text placed immediately after an ANSI escape code will take on the desired color or effect, and the sequence should always be terminated with the reset code (`\e[0m`) to revert to normal formatting. 
+You can modify text colors and effects in the prompt using [**ANSI escape codes** *(see full list)*](/computing-skills/command-line/cli-interface/shell/customization/coloring#ansi-escape-codes-reference). These codes use the `\e` (escape) character, followed by a color code. Text placed immediately after an ANSI escape code will take on the desired color or effect, and the sequence should always be terminated with the reset code (`\e[0m`) to revert to normal formatting. 
 
 *You can test ANSI color codes followed by custom text in the terminal using the `echo -e` command (with single quotes `''`) before applying them to your custom `PS1` prompt configuration.*
 
@@ -208,7 +208,7 @@ To analyze this PS1 setting, start by splitting the syntax at every `\e[0m`, whi
 | formatting    | green username | default @ | blue hostname | default : | yellow workdir | default $ |
 | output    | <span style="color:green;">alex.badacz</span> | @ | <span style="color:blue;">atlas-login-2</span> | : | <span style="color:yellow; background-color:black;"> ~ </span> | $ |
 
-Then, within each section, identify the [ANSI color code](#ansi-escape-codes) (e.g., `\e[32m` for green), 
+Then, within each section, identify the [ANSI color code](#prompt-colors--effects) (e.g., `\e[32m` for green), 
 followed by the [placeholder](#prompt-elements) (e.g., `\u` for username), and any literal characters (`@ :`) that separate elements.
 
 ![ps1_multicolor](../../assets/img/ps1_multicolor.png)

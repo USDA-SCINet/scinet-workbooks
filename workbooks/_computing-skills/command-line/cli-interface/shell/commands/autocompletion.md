@@ -3,7 +3,7 @@
 title: Command autocompletion
 description: "A shell feature that predicts and completes commands, filenames and options based on partial input from a user."
 type: interactive tutorial
-order: 2
+order: 1
 tags: [tab autocompletion, command, productivity] 
 packages: 
 level: 

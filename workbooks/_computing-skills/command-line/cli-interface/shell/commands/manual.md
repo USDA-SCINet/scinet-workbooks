@@ -3,7 +3,7 @@
 title: 'Command manual '
 description: "Built-in documentation providing detailed descriptions, usage and options for system commands and utilities."
 type: interactive tutorial
-order: 4
+order: 3
 tags: [command manual, command help, documentation] 
 packages: 
 level: 
