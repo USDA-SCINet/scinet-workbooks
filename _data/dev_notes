@@ -1,4 +1,67 @@
 
+---
+
+# March 4, 2025
+
+- The example SCINet Workbooks module created following the [Contribute](/contribute/) guideline and [Formatting Toolkit](/contribute/format).
+  - the module: [Computing Skills  -> Basics of Command Line Computing](/computing-skills/command-line/)
+    - submodule: **Introduction to Command Line Interface (CLI)**, includes all types of content: introduction, lesson module, interactive tutorial, reference material
+
+
+- Revised [Formatting Toolkit](/contribute/format): minor order rearrangement, improved descriptions, fixed insertion of source code, added internal cross-linking, improved formatting, unified style; re-formatted Front Matter example
+
+
+**TODO:**
+
+1 Fix the source code examples for Formatting Components
+- [   ] [Dropdown or Accordion](/contribute/components/accordion)
+  - replace `<div class="usa-accordion "  markdown="1">` with `<div class="usa-accordion ">` in all accordion examples
+  - `markdown=“1”` should be kept only in `<div id="lorem-ipsum" class="accordion_content"   markdown='1'>`
+```
+<div class="usa-accordion">
+
+{% include accordion title="Example" class="outline " controls="feature-1" %} 
+<div id="feature-1" class="accordion_content" markdown="1">    
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+</div>
+</div>
+```
+  - Automate assignment/naming of `controls` and `id` in accordion cards - it will be more robust. 
+
+- [   ] [Alerts](/contribute/components/alerts)
+  - the source code should be left aligned (no indentation)
+  - `markdown=“1”` should be added to internal div `<div class="highlighted__body" markdown="1">`
+```
+<div id="note-alerts-1" class="highlighted highlighted--note ">
+<div class="highlighted__body markdown="1">
+<h4 class="highlighted__heading"> Example</h4>
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+</div>
+</div>
+```
+
+2 [   ] Fix the backend of `{% include terms %}` as it doesn't link glossary terms properly; it creates links like these:
+  - `/computing-skills/command-line/cli-interface/shell/#:~:text=object%2Doriented%20processing.-,workbooks,-workbooks`
+  - `/computing-skills/command-line/cli-interface/shell/#:~:text=workbooks-,workbooks,-workbooks`
+
+
+3 [   ] Center images in the parent dir by defaul. *(It will look better when images are shorter than page width.)*
+
+
+4 [   ] Left-side navbar (table of content) -> make it sticky to page view; currently navigation is limited when the page is scrolled down;
+
+*Optionally:*
+
+5 [   ] Can we have 2 navigation key assigned to a single page, e.g., `interactive tutorial` and `reference material`? 
+  - Can those tags/icons be also visible in the [Workbooks Index](/computing-skills/) and not only in the [Find a Workbook](/workbooks/)?
+
+6 [   ] It would be better to add target _blank (open in a new tab) `<a href="https://" target="_blank">` as default behavior for all markdown-based links.
+
+7 [   ] Tagging internal/external links could be helpful: for example “G” for glossary, “T” for entire tutorial, “S” for specific section, “W” for scinet website, “I” like instructions for User Guides on scinet website, “E” or “⤴” for all external links *(this works)*.
+
+
+---
+
 # August 15
 
 ## Breaking changes
