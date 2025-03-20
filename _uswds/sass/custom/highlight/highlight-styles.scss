@@ -164,16 +164,16 @@
       }
   
       padding-left: units(
-        $theme-site-margins-mobile-width - $theme-alert-bar-width
-      );
+        $theme-site-margins-mobile-width
+      ) !important;
       @include at-media($theme-site-margins-breakpoint) {
-        padding-left: 2 * $alert-icon-optical-padding;
+        padding-left: units($theme-site-margins-mobile-width) * 2 !important;
       }
     }
 };
 
 .highlighted--no-icon {
-    @include alert-styles-no-icon;
+  @include highlighted-no-icon;
 }
 
 ////////////////////////////////////
