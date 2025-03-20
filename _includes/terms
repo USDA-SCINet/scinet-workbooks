@@ -2,11 +2,11 @@
 {% assign terms = include.terms | default: ttags %}
 {% assign gloss = site.data.glossary['glossary'] %}
 {% assign defined = 0 %}
-{% unless include.terms or page.terms %}
+{% unless include.terms or page.terms or include.taglinks %}
 {% assign defined = 1 %}
 {% endunless %}
 
-<ul>
+<ul class="usa-collection collection">
 {% for _term in terms %}
 {% if _term.definition %}
 {% assign define = _term %}
@@ -20,6 +20,7 @@
 {% endif %}
 {% endif %}
 
+{% comment %}<!--old way of doing this that I don't want to delete yet-->
 <li class="">
     <b>{{ define.term }}</b>
     {% if define.alt %}<span>({{ define.alt }})</span>{% endif %}
@@ -37,10 +38,10 @@
     </li>
     {% endfor %}
     {% endif %}
-    {% if option.wiki or defined == 1 %}
-        {% if option.wiki %}
-        <li >
-            <a href="{{ option.wiki }}">Wikipedia</a>
+    {% if defined == 1 or define.tutorial %}
+        {% if define.tutorial %}
+        <li class="usa-collection__meta-item">
+            <a href="{{ define.tutorial.url }}" class="sm-txt">{{ define.tutorial.title | default: "Related Tutorial"}}</a>
         </li>
         {% endif %}
         {% if defined == 1 %}
@@ -54,5 +55,47 @@
     {% endunless %}
 
 </li>
+{% endcomment %}
+
+
+<li class="usa-collection__item width-full">
+    <div class="padding-x-2 usa-collection__body">
+        <b class="usa-collection__heading">{{ define.term }}</b>
+        {% if define.alt %}<span>({{ define.alt }})</span>{% endif %}
+        {% unless no_summary %}
+        <p class="usa-collection__description">
+        {% if define.definition %}
+        {{ define.definition }}
+        {% elsif define.definitions %}
+        <ul>
+        {% for definition in define.definitions %}
+        <li>
+            {% if definition.context %}<b>{{ definition.context }} - </b>{% endif %}{% if definition.alt %}({{ definition.alt}}) - {% endif %}
+            <ul>
+            <li>{{ definition.definition }}</li>
+            </ul>
+        </li>
+        {% endfor %}
+        </ul>
+        {% endif %}
+        </p>
+        {% if define.tutorial or defined == 1 %}
+        <ul class="usa-collection__meta">
+            {% if define.tutorial %}
+            <li class="usa-collection__meta-item">
+                <a href="{{ define.tutorial.url }}" class="arrow sm-txt">{{ define.tutorial.title | default: "Related Tutorial"}}</a>
+            </li>
+            {% endif %}
+            {% if defined == 1 %}
+            <li class="usa-collection__meta-item">
+                {% include layout/filter-related.html search=define.term attribute='tags' atext=' workbooks' class='sm-txt' %}
+            </li>
+            {% endif %}
+        </ul>
+        {% endif %}
+        {% endunless %}
+    </div>
+</li>
+
 {% endfor %}
 </ul>
