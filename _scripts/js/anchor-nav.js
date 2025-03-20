@@ -176,10 +176,10 @@ const createInPageNav = (inPageNavEl) => {
     const listItem = document.createElement("li");
     const navLinks = document.createElement("a");
     const textContentOfLink = el.textContent;
-    const tag = el.querySelector('.anchorjs-link').getAttribute('href');
+    const tag = el.localName;
     const topHeadingLevel = getTopLevelHeading(sectionHeadings);
     const headingId = el.querySelector('.anchorjs-link').getAttribute('href');
-
+    console.log(topHeadingLevel);
     listItem.classList.add(IN_PAGE_NAV_ITEM_CLASS);
 
     if (tag === topHeadingLevel) {

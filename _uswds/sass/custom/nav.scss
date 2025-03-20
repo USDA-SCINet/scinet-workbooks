@@ -151,3 +151,7 @@
 .wb-in-page-nav__item{
   @extend .usa-in-page-nav__item; 
 }
+
+.wb-in-page-nav__item--primary{
+  @extend .usa-in-page-nav__item--primary; 
+}
