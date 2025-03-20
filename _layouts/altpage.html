@@ -150,7 +150,7 @@ scripts:
 
   {% capture sidenavigation %}
   <nav aria-label="Secondary navigation">
-    {% include layout/sidenav.html html=mycontent class="usa-sidenav" h_max=3 anchor_class="usa-sidenav__item" submenu_class="usa-sidenav__sublist" sidenav=sidenav %}
+    {% include layout/sidenav.html html="" class="usa-sidenav" h_max=3 anchor_class="usa-sidenav__item" submenu_class="usa-sidenav__sublist" sidenav=sidenav %}
   </nav>
   {% endcapture %}
 
@@ -167,12 +167,23 @@ scripts:
   {% include layout/hero.html %}
   {%- endif %}
   <div class="grid-container main-side">
-    <div class="grid-row grid-gap flex-align-start">
+    <div class="grid-row grid-gap flex-align-stretch">
 
     <!-- desktop breakpoint side navigation. --> 
-   <div class="usa-layout-docs__sidenav display-none desktop:display-block desktop:grid-col-3 desktop:padding-y-10">
-    {{ sidenavigation }}
+    <div class="usa-layout-docs__sidenav sidenav_desktop">
+      {{ sidenavigation }}
+      <div class="wb-in-page-nav-container">
+      <aside
+      class="wb-in-page-nav"
+      data-title-text="On this page"
+      data-title-heading-level="h4"
+      data-scroll-offset="0"
+      data-root-margin="0px 0px 0px 0px"
+      data-threshold="1"
+      {{ sidenav-heading-elements }}
+    ></aside>
     </div>
+      </div>
 
       <div class="usa-layout-docs__main desktop:grid-col-9">
           {% include layout/breadcrumb.html %}
@@ -189,8 +200,8 @@ scripts:
           </main>
       </div>
        <!-- mobile breakpoint sidenav -->
-     <div class="usa-layout-docs__sidenav desktop:display-none width-full">
-     {{ sidenavigation }}
+       <div class="usa-layout-docs__sidenav sidenav_mobile">
+        {{ sidenavigation }}
      <br>
      </div>
     </div>
