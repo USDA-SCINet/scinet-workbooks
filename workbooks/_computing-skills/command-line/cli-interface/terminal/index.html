@@ -1,0 +1,361 @@
+---
+
+title: What is a <b>Terminal</b>? The interface tool for the CLI
+description: "A software or hardware environment that provides access to the CLI or shell."
+type: lesson module
+index: 3
+order: 3
+tags: [terminal, CLI, text-based interface]
+packages: 
+level: 3
+author: Aleksandra Badaczewska
+
+---
+
+
+
+## Overview
+
+The [terminal](/glossary/#terminal) is the primary application used to access the <a href="/computing-skills/command-line/cli-interface/concepts/" target="_blank">Command Line Interface (CLI)</a> and communicate with the computer's [operating system](/glossary/#operating-system) by entering commands directly.
+This lesson module examines the unique features of terminal emulators across platforms (Windows, macOS, Linux), 
+highlighting their differences and the role they play in enabling efficient interaction with the CLI of the SCINet HPC clusters for research and advanced computational workflows.
+
+
+<div id="info-alerts-1" class="highlighted highlighted--info ">
+<div class="highlighted__body" markdown="1">
+<h4 class="highlighted__heading">Main Objectives</h4>
+* Understand the terminal's role as a gateway to the CLI.
+* Explore the features of terminals across different operating systems (Windows, macOS, Linux).
+* Demonstrate examples of terminal usage in research projects.
+</div>
+</div>
+
+<div id="success-alerts-1" class="highlighted highlighted--success ">
+<div class="highlighted__body" markdown="1">
+<h4 class="highlighted__heading">Goals</h4>
+By the end of this lesson, you will:
+* Develop a clear understanding of how the terminal functions as a CLI tool.
+* Recognize the differences between terminal emulators on Linux, macOS and Windows.
+* Gain the confidence to leverage terminal capabilities in computational research on SCINet HPC.
+</div>
+</div>
+
+
+### Lesson scope
+
+<p style="margin-bottom: 1em;"> This lesson module focuses on understanding the terminal's functionality as a CLI tool for interacting with computer systems through text-based commands.</p>
+
+<div class="usa-accordion">
+
+{% include accordion title="Key concepts" class="primary " controls="scope-concepts" %}
+<div id="scope-concepts" class="accordion_content" markdown="1">
+* **Terminal application:** The software tool that provides access to the CLI.
+* **Terminal emulators:** Programs that mimic the functionality of a physical terminal for text-based input and output.
+* **Cross-platform behavior:** Differences in terminal emulators across operating systems (Windows, macOS, Linux).
+* **User interaction:** The interface where users enter CLI commands and view output.
+</div>
+
+{% include accordion title="Tools/Technologies" class="primary " controls="scope-tools" %} 
+<div id="scope-tools" class="accordion_content" markdown="1">
+* **Windows:** Windows Terminal, Command Prompt, PowerShell, WSL Terminal
+* **macOS:** Terminal.app, iTerm
+* **Linux:** GNOME Terminal, KDE Konsole, xterm
+</div>
+
+{% include accordion title="Applications" class="primary " controls="scope-apps" %} 
+<div id="scope-apps" class="accordion_content" markdown="1">    
+* Providing a unified interface for CLI commands on various systems.
+* Offering customization options (e.g., themes, shortcuts) for user efficiency.
+* Acting as the primary interface for accessing HPC systems and other advanced computing resources.
+* Enabling seamless interaction with remote systems via SSH. <em>(see the tutorial: <a href="/computing-skills/command-line/cli-interface/concepts/cli-scinet-hpc#command-line-access-to-hpc-cli" target="_blank">Command-line access to CLI on SCINet HPC</a>)</em>
+</div>
+</div>
+
+
+### Nomenclature
+
+**CLI (Command Line Interface):** A text-based interface for interacting with the computer system by typing commands.
+
+**Terminal:** A tool or application that provides access to the CLI.
+
+**Shell:** The command interpreter that processes user commands entered into the CLI.
+
+
+----
+
+## What is a Terminal?
+
+<div id="note-alerts-1" class="highlighted highlighted--note ">
+<div class="highlighted__body" markdown="1">
+The terminal is a **software application** that provides a command line *(text-based)* interface (CLI) for entering and executing commands on a computer. 
+By using predefined text commands (specific words or phrases that instruct the computer to perform tasks) you can navigate the file system, 
+view or edit file content and run programs on your laptop or other computing machines, including high-performance computing (HPC) clusters.
+</div>
+</div>
+
+On any platform, you can open the Terminal (or a terminal emulator) from the graphical interface, just like any other application 
+and it will appear as a window on your screen. By default, terminals often use a well-known dark theme with light text for better readability.
+
+![terminal application - CLI tool](../assets/img/terminal-mac.png) 
+*(Terminal can be launched from the **Applications** on a macOS; terminal window looks similar across platforms)*
+
+### Interface
+
+The terminal interface is a simple, **text-based window** where you can type and execute commands. 
+It typically displays a [prompt](/glossary/#prompt), which indicates that the terminal is ready to receive input. The prompt often includes information like the username, hostname and current directory. 
+*(learn more from the <a href="/computing-skills/command-line/cli-interface/#terminology-explained" target="_blank">Terminology Explained/Terminal interface elements</a>)* <br>
+After you type a command and press `Enter`, the terminal executes it and displays the output or an error message directly below. The interface is minimalist, focusing entirely on text interaction without graphical elements. 
+*(learn more from the <a href="/computing-skills/command-line/cli-interface/terminal/terminal-customization" target="_blank">Terminal customization</a>)*
+
+![terminal application - CLI tool](../assets/img/terminal-interface.gif) 
+
+### Key features
+
+* **Input and Output:** Users type text commands (input), and the terminal displays responses or results (output). *(<a href="/computing-skills/command-line/cli-interface/#terminology-explained" target="_blank">see terms</a>)*
+* **Customization:** Terminals can be customized with themes, fonts and shortcuts for better usability. *(<a href="/computing-skills/command-line/cli-interface/terminal/terminal-customization" target="_blank">see tutorial</a>)*
+* **Command Help:** Learn about commands directly in the terminal by using built-in help tools. *(<a href="/computing-skills/command-line/cli-interface/shell/commands/manual" target="_blank">see tutorial</a>)*
+* **History and editing:** Modern terminals support command history *(<a href="/computing-skills/command-line/cli-interface/shell/commands/history" target="_blank">see tutorial</a>)* 
+and inline editing *(<a href="/computing-skills/command-line/cli-interface/shell/commands/autocompletion" target="_blank">see tutorial</a>)* for efficiency. 
+* **Remote Access:** Terminals enable users to connect to remote resources, such as SCINet HPC systems. *(<a href="/computing-skills/command-line/cli-interface/concepts/cli-scinet-hpc" target="_blank">see tutorial</a>)* 
+
+### Basic terminology
+
+When working in a terminal, understanding basic terminology is essential. It not only helps you use the terminal more effectively but is also crucial when seeking assistance or describing an issue accurately.
+
+| term                | definition | notes |
+|---------------------|------------|-------|
+| Terminal (emulator) | A program that provides a text-based interface to interact with the operating system. | Examples include GNOME Terminal, iTerm or Windows Terminal. |
+| Welcome Message     | The startup message when logging into a remote machine. | It usually tells you about the architecture of available resources and rules for the users. |
+| Prompt              | The text next to where you type your commands. | Prompts can be modified to include additional information like hostname or current folder location. |
+| Command-Line        | The specific place within the terminal interface where commands are entered. | Usually indicated by a blinking cursor next to the **prompt**, where users type commands to execute. |
+| Command             | The program or script you are trying to run. | Built-in commands and aliases are called by name, while custom Bash scripts stored in files can be executed with 'dot syntax' : `. ~/path/script.sh`.
+| Option or Argument  | Added to a command to modify the output. | There is always a space between a command and the argument. |
+| Standard Out        | The text result of a command. | Use `> filename1` to redirect output into the file. Use `>> filename1` to append output to the end of a file. |
+| Standard Error      | The error message of a failed command. | Use `2> filename2` to redirect error message into the file. Use `2>> filename2` to append error message to the end of a file. |
+
+![terminal components](../assets/img/terminal-explained.png)
+
+When you open a **terminal** (emulator, CLI tool), you may first see a **welcome message** providing details like the last login date, system architecture, and user guidelines set by administrators. 
+Below it, the **prompt** appears. This line is where you interact with the system. 
+The **command-line** is the space where you type commands: names of programs, built-in shell processes, aliases or executable scripts. Pressing `Enter` executes these commands, 
+instructing the system to perform a specific task. Many commands accept **arguments**, which are additional inputs or options that modify their behavior or output. 
+Once executed, commands typically produce text output. This information is sent to **standard output** (stdout), usually displayed as text in the terminal. 
+If something goes wrong, error messages are sent to **standard error** (stderr). Both stdout and stderr can be redirected to files for later use, allowing efficient handling of data and error logs.
+
+
+### Why Terminal instead of a GUI?
+
+The GUI provides a visual, user-friendly interface that is intuitive for basic tasks like browsing and managing individual files, 
+while the CLI accessed via Terminal excels in efficiency, especially for complex or repetitive tasks, offering precision and flexibility.
+
+![CLI vs GUI](../assets/img/cli_vs_gui.png) 
+*(Graphical User Interface shows a file manager with icons and folders; Command Line Interface displays the same folder's contents in a text-based terminal using the `ls` command)*
+
+The terminal's CLI provides unique and powerful capabilities that often surpass GUIs for both research-focused and everyday tasks, 
+offering greater flexibility for repetitive steps and advanced computing needs alike.
+
+<div id="success-alerts-1" class="highlighted highlighted--success ">
+<div class="highlighted__body" markdown="1">
+<h4 class="highlighted__heading">Example</h4>
+Renaming thousands of image files manually in a GUI would be a time-consuming and error-prone task. With a single command in the terminal, such as a loop or a batch rename utility, 
+you can quickly and accurately rename all files based on a pattern (e.g., adding a prefix or changing extensions), saving significant time and effort. <br>
+*For example, this command renames all `.jpg` files present in a current directory (i.e., folder) in seconds.*
+```
+for file in *.jpg; do mv "$file" "new_$file"; done
+```
+</div>
+</div>
+
+**Here a few advantages of using CLI tool to support your research:**
+
+<div class="usa-accordion">
+
+{% include accordion title="Efficiency" class="outline " controls="terminal-1" %} 
+<div id="terminal-1" class="accordion_content">    
+<p markdown="1">Perform repetitive tasks or batch operations with fewer steps using commands instead of manual point-and-click interactions within a graphical interface. *(like in the example shown above)*</p>
+</div>
+
+{% include accordion title="Automation through scripting" class="outline " controls="terminal-2" %}
+<div id="terminal-2" class="accordion_content">
+<p>Terminals allow you to write and execute scripts to automate repetitive tasks and streamline complex workflows.</p>
+</div>
+
+{% include accordion title="Access to advanced tools" class="outline " controls="terminal-3" %}
+<div id="terminal-3" class="accordion_content">
+<p markdown="1">Certain powerful tools and utilities, such as text-processing programs (`awk`, `sed`) or high-performance computing job schedulers (e.g., **Slurm**), are only available in the CLI, enabling tasks that GUIs cannot handle.</p>
+</div>
+
+{% include accordion title="Remote access" class="outline " controls="terminal-4" %}
+<div id="terminal-4" class="accordion_content">
+<p>The terminal allows users to securely connect to and manage remote systems using protocols like SSH or browser-based tools like Open OnDemand (OOD), providing efficient interaction with servers, cloud environments or HPC resources from anywhere.</p>
+</div>
+
+{% include accordion title="Remote session persistence" class="outline " controls="terminal-5" %} 
+<div id="terminal-5" class="accordion_content">
+<p markdown="1">In-terminal tools like `tmux` or `screen` allow users to maintain and reattach to terminal sessions, even after disconnecting from a remote system.</p>
+</div>
+
+{% include accordion title="Pipelines and redirection" class="outline " controls="terminal-6" %} 
+<div id="terminal-6" class="accordion_content">    
+<p markdown="1">You can chain commands together using pipelines (`|`) and redirect input/output to or from files, enabling advanced data processing and customization.</p>
+</div>
+
+{% include accordion title="Multitasking and process management" class="outline " controls="terminal-7" %} 
+<div id="terminal-7" class="accordion_content">    
+<p markdown="1">Terminals support running multiple processes simultaneously, including background processes, and provide commands like `top`, `ps` and `kill` to monitor and manage them.</p>
+</div>
+
+{% include accordion title="Integration with version control systems" class="outline " controls="terminal-8" %} 
+<div id="terminal-8" class="accordion_content">    
+<p>Terminals provide seamless interaction with version control tools like <b>Git</b>, essential for collaborative software development and research.</p>
+</div>
+
+{% include accordion title="Cross-platform consistency" class="outline " controls="terminal-9" %} 
+<div id="terminal-9" class="accordion_content">    
+<p>While terminal apps vary by platform, the core command-line experience is consistent, making it easier to transfer skills across systems.</p>
+</div>
+
+</div>
+
+----
+
+## Examples of Terminal emulators
+
+Each operating system has its own set of terminal applications (or terminal emulators), but they all share common behaviors and features, 
+such as text-based command input, output display and support for various **CLI environments**. 
+These terminal apps allow users to interact with the system's CLI, manage files, run commands and connect to remote systems such as SCINet HPC.
+
+<div id="note-alerts-1" class="highlighted highlighted--note ">
+<div class="highlighted__body" markdown="1">
+CLI environments refer to the underlying **shells that interpret and execute the commands** entered in a terminal. 
+These environments, like `Bash`, `Zsh` or `PowerShell`, define the syntax and functionality available for command-line interaction with the specific operating system.
+</div>
+</div>
+
+<div id="highlighted-alerts-1" class="highlighted highlighted--highlighted ">
+<div class="highlighted__body" markdown="1">
+In this lesson module, we focus on CLI tools ([terminal apps](/glossary/#terminal)) that support the **[Unix shell](/glossary/#unix-shell)**, 
+a widely-used CLI environment ([command interpreter](/glossary/#cli-environment)). It is the standard for accessing and operating on HPC systems 
+(including SCINet clusters), making it an essential tool for advancing the computational aspects of your research.
+
+<em>Learn more in the lesson module <a href="/computing-skills/command-line/cli-interface/shell/" target="_blank"><b>What is a Unix Shell?</b> The Command Interpreter for the CLI</a></em>.
+</div>
+</div>
+
+
+
+
+### for Windows 
+
+Windows provides several terminal-like applications, each with its own features and capabilities. 
+
+| CLI tool | description | Features/Limitations | pre-installed |
+|----------|-------------|----------------------|---------------|
+| <a href="https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/windows-commands" target="_blank">Command Prompt</a> | The classic Windows CLI for running batch scripts and **native Windows commands**. | Limited to Windows commands; no native Unix shell support. | Yes |
+| <a href="https://learn.microsoft.com/en-us/powershell/" target="_blank">PowerShell</a> | An advanced scripting environment for automation and system management in Windows. | Supports scripting; **requires WSL for Unix shell**. | Yes |
+| <a href="https://learn.microsoft.com/en-us/windows/terminal/" target="_blank">Windows Terminal</a> | A modern terminal application that supports tabs, customization and integration with WSL. | Fully customizable; supports PowerShell, Command Prompt and WSL for Unix shell. | Yes/No |
+
+
+<div id="info-alerts-1" class="highlighted highlighted--info ">
+<div class="highlighted__body">
+<h4 class="highlighted__heading">SSH to SCINet clusters on Windows</h4>
+<p markdown="1">
+Windows provides a way to access remote SCINet HPC clusters using SSH, and **SSH functionality is directly available in PowerShell** (starting with Windows 10 version 1809 and later) as well as in Command Prompt if `OpenSSH` is installed.
+If your local computing machine meets these requirements, follow the instructions provided in the tutorial 
+<a href="/computing-skills/command-line/cli-interface/concepts/cli-scinet-hpc#command-line-access-to-hpc-cli" target="_blank">Command-line access to SCINet HPC</a>.
+</p>
+</div>
+</div>
+
+<div id="warning-alerts-1" class="highlighted highlighted--warning ">
+<div class="highlighted__body">
+<h4 class="highlighted__heading">Run Bash scripts on Windows</h4>
+<p markdown="1">
+Windows CLI tools, such as `Command Prompt` and `PowerShell`, natively interpret only Windows-specific syntax and commands, 
+making them incompatible with Unix-style commands and scripts *(used on SCINet clusters)*. **PowerShell alone cannot directly execute Bash scripts.** <br>
+To run Unix/Bash scripts on Windows machine, you must use <a href="https://learn.microsoft.com/en-us/windows/wsl/" target="_blank">Windows Subsystem for Linux (WSL)</a> to create a Unix-like environment. 
+**WSL provides full compatibility with Unix tools and scripting.**
+</p>
+</div>
+</div>
+
+#### Recommended Tool for Unix Shell: `PowerShell` with WSL
+
+To get a Unix shell (e.g., Bash) on Windows with minimal effort, you can install <a href="https://learn.microsoft.com/en-us/windows/wsl/" target="_blank">Windows Subsystem for Linux (WSL)</a>.
+
+<div id="question-alerts-1" class="highlighted highlighted--question ">
+<div class="highlighted__body">
+<h4 class="highlighted__heading">Learn more</h4>
+<p markdown="1">
+Follow the <a href="https://datascience.101workbook.org/02-computing-machine/01b-windows-setup/" target="_blank">Unix Command Line Tools on Windows</a> 
+tutorial in the <a href="https://datascience.101workbook.org/sitemap.html" target="_blank">Data Science Workbook</a> to install and set up Windows Subsystem for Linux (WSL). 
+This tutorial also includes practical guides on using the [Unix shell](/glossary/#unix-shell) to run 
+<a href="https://datascience.101workbook.org/02-computing-machine/01b-windows-setup/#task-change-files-structure-and-rename-files-bash-commands-via-wsl" target="_blank">bash scripts</a>, 
+as well as working with <a href="https://datascience.101workbook.org/02-computing-machine/01b-windows-setup/#python/" target="_blank">Python</a> 
+and <a href="https://datascience.101workbook.org/02-computing-machine/01b-windows-setup/#r" target="_blank">R</a> within the WSL environment.
+</p>
+</div>
+</div>
+
+#### Launch Terminal session
+
+In Windows, you can start a terminal session using **Windows Terminal** or **PowerShell** by following these steps:
+
+<div class="usa-accordion">
+
+{% include accordion title="A. From the Start Menu:" class="outline " controls="terminal-win-1" %} 
+<div id="terminal-win-1" class="accordion_content">    
+<p markdown="1">Click the **Start Menu** (Windows icon) in the bottom-left corner of the screen.</p>
+<p markdown="1">Scroll through the list of applications to find `Windows Terminal` or `PowerShell`, typically at the top. <br>Click to launch Terminal window. *The **Windows Terminal** app allows you to have multiple tabs in a single window.*</p>
+<p markdown="1">![Terminal on macOS](../assets/img/terminal-win.png)</p>
+</div>
+
+{% include accordion title="B. Using the Search Icon:" class="outline " controls="terminal-win-2" %}
+<div id="terminal-win-2" class="accordion_content">
+<p markdown="1">Click on the magnifying glass icon (or use the **Windows Key + S** shortcut) to open the search bar.</p>
+<p markdown="1">Type `Windows Terminal` or `PowerShell` in the search bar, and select the desired application from the search results. <br>*The **PowerShell** app allows you to have just a single tab in a window.*</p>
+<p markdown="1">![Terminal on macOS](../assets/img/shell-win.png)</p>
+</div>
+
+</div>
+
+
+----
+
+### for macOS
+
+
+| CLI tool | description | Features/Limitations | pre-installed |
+|----------|-------------|----------------------|---------------|
+| <a href="https://support.apple.com/en-us/guide/terminal/welcome/mac" target="_blank">Terminal.app</a> | The default terminal app in macOS for interacting with the CLI. | Built-in Unix shell (`Zsh` by default); highly stable and lightweight. | Yes |
+| <a href="https://iterm2.com/" target="_blank">iTerm2</a> | A feature-rich replacement for Terminal.app with additional capabilities. | Advanced features like split panes, session persistence and extensive customization. | No |
+
+#### Recommended Tool for Unix Shell: `Terminal.app`
+
+macOS is built on Unix, so its terminal applications naturally support Unix commands and environments, making it easy to use Unix shells such as `Bash` or `Zsh` with no additional setup required.
+
+#### Launch Terminal session
+
+In macOS you can start a terminal session by clicking on the black square **Terminal** icon present in the Dock bar. If the shortcut is not there by default, you can search for `Terminal` or `iTerm` in the Finder or manually browse **Applications**.
+
+![Terminal on macOS](../assets/img/terminal-mac2.png)
+
+----
+
+### for Linux
+
+| CLI tool | description | Features/Limitations | pre-installed |
+|----------|-------------|----------------------|---------------|
+| <a href="https://help.gnome.org/users/gnome-terminal/stable/overview.html.en" target="_blank">GNOME Terminal</a> | The default terminal emulator for GNOME-based Linux distributions. | Fully supports Unix shells; simple and user-friendly. | Yes |
+| <a href="https://konsole.kde.org/" target="_blank">KDE Konsole</a> | The default terminal for KDE-based Linux distributions. | Supports advanced tabbed sessions and customizations. | Yes |
+| <a href="https://en.wikipedia.org/wiki/Xterm" target="_blank">xterm</a> | A lightweight, legacy terminal emulator for Unix-based systems. | Minimalistic; good for lightweight setups but lacks advanced features. | varies |
+
+#### Recommended Tool for Unix Shell: `GNOME Terminal`
+
+Most Linux distributions come with a pre-installed terminal application, such as `GNOME Terminal`, which is fully integrated with Unix environments and requires no additional setup.
+
+#### Launch Terminal session
+
+In Linux you can start a terminal session by clicking on the black square icon **Terminal** present in the Menu bar.
+
+![Terminal on Linux](../assets/img/terminal-linux.png)

@@ -1,0 +1,317 @@
+---
+
+title: What is <b>Command Line Interface</b>? Learn basic concepts
+description: "A concept of text-based interface for interacting with and controlling a computer system."
+type: lesson module
+index: 3
+order: 2
+tags: [command line interface]
+packages: 
+level: 3
+author: Aleksandra Badaczewska
+
+---
+
+
+## Overview
+
+The command line interface (CLI) is a foundational concept for interacting with computer systems through text-based commands, providing a powerful and flexible alternative to graphical interfaces (GUIs).
+This lesson module introduces the core concepts of the CLI, including its definition, purpose and how it differs from graphical user interfaces (GUIs). 
+It also highlights examples of CLI environments across different operating systems, including those utilized in high-performance computing (HPC) systems, such as SCINet infrstructure.
+
+
+<div id="info-alerts-1" class="highlighted highlighted--info ">
+<div class="highlighted__body" markdown="1">
+<h4 class="highlighted__heading">Main Objectives</h4>
+* Understand what the CLI is and its role in system interaction.
+* Differentiate between CLI and GUI approaches  to computer interaction, with user's broader control in CLI.
+* Identify common CLI environments and tools used across platforms.
+</div>
+</div>
+
+<div id="success-alerts-1" class="highlighted highlighted--success ">
+<div class="highlighted__body" markdown="1">
+<h4 class="highlighted__heading">Goals</h4>
+<p>By the end of this lesson, you will:</p>
+* Understand why the CLI is essential for USDA researchers working on computationally advanced projects, including data processing and software development.
+* Gain the confidence to transition from using a GUI to leveraging the CLI effectively.
+* Acquire knowledge of the CLI environments available on the SCINet HPC systems (Atlas, Ceres).
+</div>
+</div>
+
+
+### Lesson scope
+
+<p style="margin-bottom: 1em;">This module focuses on introducing the command line interface as a core concept for interacting with computer systems through text-based commands.</p>
+
+<div class="usa-accordion">
+
+{% include accordion title="Key concepts" class="primary " controls="scope-concepts" %}
+<div id="scope-concepts" class="accordion_content" markdown="1">
+* **Command Line Interface (CLI):** A text-based method to interact with computing systems.
+* **CLI environments:** Platforms where the CLI operates (e.g., Bash, PowerShell).
+* **Text-based interaction:** Direct command entry for performing tasks or controlling systems.
+* **Command execution:** Running instructions or scripts for file management, system configuration or data processing.
+</div>
+
+{% include accordion title="Tools/Technologies" class="primary " controls="scope-tools" %} 
+<div id="scope-tools" class="accordion_content" markdown="1">
+* **Windows:** Command Prompt, PowerShell, Windows Terminal, Windows Subsystem for Linux (WSL)</li>
+* **macOS:** Terminal.app (using Zsh or Bash shells)</li>
+* **Linux:** GNOME Terminal, KDE Konsole, xterm (using Bash or Zsh shells)</li>
+</div>
+
+{% include accordion title="Applications" class="primary " controls="scope-apps" %} 
+<div id="scope-apps" class="accordion_content" markdown="1">    
+* Navigating and managing files vith CLI commands.
+* Automating repetitive tasks.
+* Data wrangling, including Big Data.
+* High-performance computing.
+* Customn code development.
+* Configuring systems efficiently.
+</div>
+</div>
+
+
+### Nomenclature
+
+**CLI (Command Line Interface):** A text-based interface for interacting with the computer system by typing commands.
+
+**GUI (Graphical User Interface):** A visual way to interact with systems, using windows, icons, and menus.
+
+**Terminal:** A tool or application that provides access to the CLI.
+
+**Shell:** The command interpreter that processes user commands entered into the CLI.
+
+
+----
+
+## What is Command Line Interface?
+
+<div id="note-alerts-1" class="highlighted highlighted--note ">
+    <div class="highlighted__body">
+        <p>
+            The command line interface (CLI) is a text-based method of interacting with a computer system. 
+            Instead of using a graphical interface with windows and icons, users type all commands directly into a terminal <i>(the interface tool)</i> to perform tasks. 
+            The CLI offers precise control over the system, making it a powerful tool for customized tasks and automation.
+        </p>
+
+    </div>
+</div>
+
+![GUI vs CLI](../assets/img/scinet_cli.gif)
+
+**The role of the CLI in user-system interaction**
+
+The CLI serves as a direct communication channel between the user and the computer's operating system.
+It is a text-based environment where all interactions happen in a single window. Users type commands to instruct the computer. 
+The computer responds with text messages or outputs. This creates a simple and efficient way to communicate with the system, 
+directly interacting with the computer's core functions without relying on visual, clickable components.
+
+<div id="highlighted-alerts-1" class="highlighted highlighted--highlighted ">
+    <div class="highlighted__body">
+        <p>All actions taken in the CLI are permanent and reflected in the GUI as well. </p>
+        <em>For example, if you create a file using a CLI command, you can see the file appear in the GUI's file manager.</em>
+    </div>
+</div>
+
+
+### The core concepts of the CLI
+
+<div class="usa-accordion">
+
+{% include accordion title="Universal compatibility across systems" class="outline " controls="cli-concept-1" %} 
+<div id="cli-concept-1" class="accordion_content" markdown="1">    
+The CLI is not tied to any specific system or platform. Whether you're using Linux, macOS, Windows or computing cluster, 
+many commands and tools follow similar principles, making CLI knowledge highly transferable. This universality allows users to apply 
+their knowledge on various platforms, from personal laptops to powerful servers and high-performance computing clusters.
+</div>
+
+{% include accordion title="A single window for all tasks" class="outline " controls="cli-concept-2" %}
+<div id="cli-concept-2" class="accordion_content" markdown="1">
+In the CLI, there are no multiple windows, buttons or icons like in a GUI. Everything you do (whether it's navigating directories, 
+managing files or running programs) happens within one text-based interface.
+Think of it as a conversation: you type a command (your input) and the system responds with a result (its output), all in the same window.
+</div>
+
+{% include accordion title="Streamlined user-system interaction" class="outline " controls="cli-concept-3" %} 
+<div id="cli-concept-3" class="accordion_content" markdown="1">    
+While the CLI may appear minimal, it is incredibly powerful. With a few keystrokes, you can perform complex tasks, 
+automate workflows and combine multiple commands, all without switching between windows or menus.
+</div>
+
+{% include accordion title="Text-based input and output in the command-line" class="outline " controls="cli-concept-4" %} 
+<div id="cli-concept-4" class="accordion_content" markdown="1">    
+All interactions in the CLI involve text. You type commands as instructions, and the system replies in text. 
+For example, asking to see the contents of a directory will result in a plain-text list of files. 
+If something goes wrong or needs attention, the system will explain the issue in a text-based message.
+</div>
+
+{% include accordion title="Navigate the file system with commands" class="outline " controls="cli-concept-5" %} 
+<div id="cli-concept-5" class="accordion_content" markdown="1">
+The CLI allows you to move through your computer's file system using simple commands. 
+For example, you can "change location" by typing a `cd` command to switch directories/folders. 
+This is similar to opening and closing folders in a GUI, but it's done entirely through text. 
+</div>
+
+{% include accordion title="Access to hidden system features" class="outline " controls="cli-concept-6" %} 
+<div id="cli-concept-6" class="accordion_content" markdown="1">    
+Many system functionalities, tools and configurations are accessible only through the CLI. 
+This includes advanced tools for process management, system monitoring and administrative tasks, which are often not available in GUI interfaces.
+</div>
+
+{% include accordion title="Error handling and feedback" class="outline " controls="cli-concept-7" %} 
+<div id="cli-concept-7" class="accordion_content" markdown="1">    
+The CLI provides immediate feedback for every command. Errors include helpful messages that guide users to correct mistakes, 
+making it an effective way to learn and troubleshoot.
+</div>
+
+</div>
+
+
+
+### How does CLI differ from GUI?
+
+The primary difference between CLI and GUI lies in how users interact with the system. 
+- GUIs are user-friendly and intuitive, but they can be slower and less flexible for advanced tasks. 
+- In contrast, the CLI is ideal for repetitive actions, scripting and working with large amounts of data.
+
+![GUI vs CLI](../assets/img/cli_vs_gui.png)
+
+| aspect | GUI | CLI |
+|--------|-----|-----|
+| Layout          | Multiple windows and graphical elements, often organized in a layered or desktop-style interface. | Single text-based window where all interactions occur. |
+| Interaction     | Users interact with visual elements like icons, buttons, and menus, primarily using a mouse.      | Commands are typed using a keyboard, requiring familiarity with specific syntax. |
+| User Input      | Combines mouse clicks and keyboard inputs for intuitive interaction.                              | Relies solely on keyboard inputs for navigation and task execution. |
+| Feedback        | Visual feedback is provided through changes in graphics, animations and pop-ups.                  | Responses are displayed as plain text or lists directly in the same window. |
+| Navigation      | Navigation is performed by clicking through hierarchical folders or graphical menus.              | File system and directories are navigated using typed commands like `cd` and `ls`. |
+| Accessibility   | Designed to be more intuitive and accessible to beginners without prior knowledge.                | Requires knowledge of commands and syntax to use effectively. |
+| Customization   | Limited customization, primarily through settings and pre-built themes.                           | Highly customizable with scripts, aliases and configuration files. |
+| Resource Usage  | Resource-intensive due to graphics and multiple active elements.                                  | Lightweight, as it doesn't require graphical processing. |
+| Task Complexity | Best suited for straightforward, one-off tasks that benefit from visual interaction.              | Ideal for handling complex and repetitive tasks through scripting and automation. |
+| Learning Curve  | Shallower learning curve, as visual cues guide the user.                                          | Steeper learning curve due to the need to memorize commands and syntax. |
+
+
+### Why use CLI? Benefits over GUI
+
+The CLI provides several key advantages that make it beneficial for advanced or large-scale tasks:
+
+* **Speed:** Tasks can be performed more quickly by typing commands instead of navigating through menus.
+* **Precision:** Commands offer granular control over system operations. You can customize tasks.
+* **Automation:** Scripts allow repetitive tasks to be automated, saving time and effort.
+* **Scalability:** The CLI is well-suited for managing large-scale operations, such as processing thousands of files.
+* **Remote Accessibility:** The CLI can be connected remotely over secure protocols like SSH, providing access to HPC.
+* **Universality:** Many CLI tools and commands work across platforms, providing a consistent interface.
+* **Lightweight Operation:** Since the CLI doesn't require graphical resources, it's ideal when working remotely on HPC.
+
+### Examples of CLI environments 
+
+Different operating systems provide various tools and shells for working with the Command Line Interface. 
+Each CLI tool serves as the entry point to interact with a shell, which interprets and executes your commands.
+It's important to differentiate between:
+- **CLI tools**, i.e., interfaces you use to enter commands and 
+- **shells**, i.e., command interpreters that process those commands. 
+
+
+| operating system  | CLI tool | Interface for the CLI |
+|-------------|----------------|-----------------------|
+| Windows     | Command Prompt | A basic CLI tool for executing commands on Windows systems. |
+| Windows     | PowerShell     | An advanced CLI tool for Windows, combining traditional CLI capabilities with robust scripting features. |
+| Linux/macOS | Terminal       | A CLI tool used to access the shell on Unix-based systems. |
+
+<div id="question-alerts-1" class="highlighted highlighted--question ">
+<div class="highlighted__body">
+<h4 class="highlighted__heading">Learn more</h4>
+Explore the lesson module on <a href="/computing-skills/command-line/cli-interface/terminal/" target="_blank"><i>What is a Terminal? 
+The interface tool for the CLI</i></a> to learn how terminals serve as the gateway for interacting with the command line.
+</div>
+</div>
+
+
+| shell       | Command interpreter |
+|-------------|-----------------------|
+| Bash        | A widely-used Unix shell, the default for many Linux distributions and macOS versions. |
+| Zsh         | An advanced shell offering additional features like autocomplete, themes and plugins. |
+| Fish        | A user-friendly shell with intuitive syntax and strong customization options.          |
+
+<div id="question-alerts-1" class="highlighted highlighted--question ">
+<div class="highlighted__body">
+<h4 class="highlighted__heading">Learn more</h4>
+Explore the lesson module on <a href="/computing-skills/command-line/cli-interface/shell/" target="_blank"><i>What is a Unix Shell? 
+The Command Interpreter for the CLI</i></a> to discover how Unix shell interprets and executes your commands.
+</div>
+</div>
+
+
+## Why researcher should use CLI?
+
+<div id="note-alerts-1" class="highlighted highlighted--tip ">
+<div class="highlighted__body">
+The CLI is essential for researchers handling advanced computational projects, including data processing, simulations and software development. 
+Its efficiency, automation potential and scripting capabilities, along with the ease of documentation for knowledge retention and reproducibility, 
+make it a critical tool for complex tasks.
+</div>
+</div>
+
+The Command Line Interface is more than just a technical tool - it's a gateway to unlocking efficiency and precision for researchers tackling advanced computational challenges. <br>
+
+<div class="usa-accordion">
+
+{% include accordion title="To get access and benefits of using HPC" class="outline " controls="cli-usage-1" %} 
+<div id="cli-usage-1" class="accordion_content" markdown="1">    
+The CLI is the primary method for accessing HPC systems, which are crucial for large-scale computations. <br>
+For example, researchers can submit batch jobs to analyze terabytes of genomic sequences or simulate soil erosion models, 
+optimizing time and computational resources.
+</div>
+
+{% include accordion title="To efficiently handle large datasets" class="outline " controls="cli-usage-2" %}
+<div id="cli-usage-2" class="accordion_content" markdown="1">
+From organizing directories to parsing through massive text files, the CLI provides tools like `grep`, `awk` and `sed` for handling data efficiently. 
+This is particularly valuable in fields like bioinformatics, where analyzing text-based sequence data is common, or in geospatial research, 
+where structured metadata must be extracted and organized.
+</div>
+
+{% include accordion title="To automate repetitive tasks with custom scripts" class="outline " controls="cli-usage-3" %} 
+<div id="cli-usage-3" class="accordion_content" markdown="1">    
+One of the CLI's greatest strengths is its scripting ability. Repetitive tasks, such as converting file formats, 
+running simulations or applying the same statistical model across multiple datasets, can be automated using shell scripts. 
+For USDA researchers, this means tasks like automating the preprocessing of crop yield data or analyzing climate impact 
+across regions can be performed seamlessly.
+</div>
+
+{% include accordion title="To enhance workflow efficiency" class="outline " controls="cli-usage-4" %} 
+<div id="cli-usage-4" class="accordion_content" markdown="1">
+The CLI allows researchers to process large datasets with minimal overhead. 
+For example, bioinformaticians can use CLI tools like **BLAST** or **FASTQC** to analyze genomic data efficiently, 
+while geospatial researchers can process satellite images or climate models using tools like **GDAL** or **QGIS** processing scripts.
+</div>
+
+</div>
+
+
+### Usage examples in research
+
+Whether working in bioinformatics, geospatial analysis or other agricultural domains, the CLI provides essential capabilities 
+for managing large datasets, automating workflows and leveraging powerful computing resources.
+
+**Bioinformatics:**
+* Running a sequence alignment using `muscle` or `clustal` through the CLI on SCINet HPC.
+* Automating quality control checks across hundreds of genomic files using a shell script.
+
+**Geospatial Analysis:**
+* Batch processing satellite images using CLI tools like `GDAL` on SCINet HPC.
+* Automating the extraction of crop coverage statistics from shapefiles across multiple regions.
+
+
+## CLI on the SCINet HPC (Atlas, Ceres)
+
+Learn about the CLI environments available on the SCINet HPC and how they support USDA projects. <br>
+These tools enable access to high-performance computing resources for large-scale tasks.
+
+<div id="question-alerts-1" class="highlighted highlighted--question ">
+<div class="highlighted__body">
+<h4 class="highlighted__heading">Learn more</h4>
+Explore the interactive tutorial on <a href="/computing-skills/command-line/cli-interface/concepts/cli-scinet-hpc" target="_blank"><i>Accessing the CLI on the SCINet HPC</i></a> 
+to get started with using command line interface in your projects.
+</div>
+</div>

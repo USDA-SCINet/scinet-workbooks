@@ -1,0 +1,466 @@
+---
+
+title: What is a <b>Unix Shell</b>? The Command Interpreter for the CLI
+description: "A command interpreter that processes user commands and passes them to the operating system."
+type: lesson module
+index: 3
+order: 4
+tags: [CLI environment, Unix shell, command interpreter, command line] 
+packages: 
+level: 3
+author: Aleksandra Badaczewska
+
+---
+
+
+## Overview
+
+The [Unix shell](/glossary/#unix-shell) is a command interpreter that bridges the gap between the user and the computer's operating system in a <a href="/computing-skills/command-line/cli-interface/concepts/" target="_blank">Command Line Interface (CLI)</a>. 
+This lesson module delves into the Unix shell's functionality, focusing primarily on Bash (Bourne Again Shell) as the most commonly used shell in Unix-like systems.
+It highlights the shell's role in executing commands, scripting and facilitating efficient computational research, particularly in environments like the SCINet HPC clusters.
+
+
+<div id="info-alerts-1" class="highlighted highlighted--info ">
+<div class="highlighted__body" markdown="1">
+<h4 class="highlighted__heading">Main Objectives</h4>
+* Understand the Unix shell as a critical component of the CLI.
+* Explore Bash as the most commonly used shell in Unix-like systems.
+  * Compare Bash with Windows PowerShell to highlight key differences.
+* Demonstrate examples of shell usage for computational tasks in research.
+</div>
+</div>
+
+<div id="success-alerts-1" class="highlighted highlighted--success ">
+<div class="highlighted__body" markdown="1">
+<h4 class="highlighted__heading">Goals</h4>
+By the end of this lesson, you will:
+* Comprehend the Unix shell's role as a command interpreter in the CLI.
+* Gain a working knowledge of Bash and its essential features.
+* Develop confidence in using shell commands on SCINet HPC systems to perform computational tasks.
+</div>
+</div>
+
+
+### Lesson scope
+
+<p style="margin-bottom: 1em;"> This lesson module emphasizes the Unix shell's functionality as a command interpreter in Unix-like systems, with a focus on Bash. 
+It also touches on PowerShell in Windows to provide a comparative understanding of command interpreters across platforms.</p>
+
+<div class="usa-accordion">
+
+{% include accordion title="Key concepts" class="primary " controls="scope-concepts" %}
+<div id="scope-concepts" class="accordion_content" markdown="1">
+* **Shell:** A command interpreter that processes user commands entered into the CLI.
+  * **PowerShell:** A command-line shell and scripting language designed for Windows environments.
+  * **Unix Shell:** A foundational CLI tool in Unix-like operating systems, including Linux and macOS.
+    * **Bash:** A common Unix shell, being the default in most systems.
+</div>
+
+{% include accordion title="Tools/Technologies" class="primary " controls="scope-tools" %} 
+<div id="scope-tools" class="accordion_content" markdown="1">
+* **Unix/Linux shells:** Bash, Zsh, Fish, tcsh, ksh
+* **macOS:** `Bash` (default until macOS Catalina)*, `Zsh` *(default since macOS Catalina)*
+* **Windows:** PowerShell, Command Prompt, Windows Subsystem for Linux (WSL) with Bash
+</div>
+
+{% include accordion title="Applications" class="primary " controls="scope-apps" %} 
+<div id="scope-apps" class="accordion_content" markdown="1"> 
+* Directly executing operating system commands via the CLI. Enabling cross-platform workflows.
+* Automating repetitive tasks using shell scripts.
+* Interacting with HPC systems and clusters for research workflows.
+* Writing complex scripts for computational research.
+* Managing files, processes and user permissions.
+</div>
+</div>
+
+
+### Nomenclature
+
+**CLI (Command Line Interface):** A text-based interface for interacting with the computer system by typing commands.
+
+**Terminal:** A tool or application that provides access to the CLI.
+
+**Shell:** The command interpreter that processes user commands entered into the CLI.
+
+**Bash:** A widely-used Unix shell known for its scripting and text processing capabilities.
+
+**PowerShell:** A Windows-based shell with object-oriented processing.
+
+
+----
+
+## What is a Shell?
+
+<div id="note-alerts-1" class="highlighted highlighted--note ">
+<div class="highlighted__body" markdown="1">
+A shell is a **command interpreter** that processes user commands entered into the CLI and returns the output. 
+It serves as a bridge between the user and the operating system, converting human-readable commands into a form the computer can understand and execute. 
+Different operating systems use different shells or command interpreters; for example, Windows features PowerShell, while Unix-like systems use the **Unix shell**. 
+Among these, **Bash shell** is the most commonly used, especially in high-performance computing (HPC) systems.
+</div>
+</div>
+
+
+### How the shell works?
+
+The shell is the program running inside a [terminal](/glossary/#terminal) window, which provides a text-based interface for a user-computer interaction. 
+<a href="/computing-skills/command-line/cli-interface/terminal/#examples-of-terminal-emulators/" target="_blank">Terminal emulators</a> automatically load a default shell to process user commands and communicate with the underlying operating system. *For example:*
+- On Linux, `Bash` is often the default.
+- On Windows, `PowerShell` is standard.
+
+<div id="success-alerts-1" class="highlighted highlighted--success ">
+<div class="highlighted__body" markdown="1">
+<h4 class="highlighted__heading">Example</h4>
+When you open a terminal window <a href="/computing-skills/command-line/cli-interface/terminal/#interface" target="_blank">(see tutorial)</a>, you'll see a blinking cursor, waiting for you to type commands. The shell will try to interpret anything you enter there. 
+1. You type a command (e.g., `ls`).
+2. The shell interprets the text-based command and communicates with the operating system.
+3. The operating system executes the corresponding processes and sends the result back to the shell.
+4. The shell displays the text-based result in the terminal window.
+
+![shell command line](../assets/img/shell-command-line.gif)
+</div>
+</div>
+
+
+### Types of shells
+
+Shells come in various types, each offering unique features and capabilities suited to different workflows and operating systems. 
+Each shell type is tailored to different environments, but all perform the fundamental task of processing user commands to interact with the operating system.
+
+| on Windows | in Unix-like systems (Linux, macOS) |
+|------------|-------------------------------------|
+| `PowerShell`, which emphasizes object-oriented processing and system management  | `Bash` (Bourne Again Shell), known for its scripting capabilities and ubiquity |
+| `Command Prompt`, the older shell variant                                        | `Zsh`, known for user-friendly features like auto-completion |
+| *`Bash` can also be used on Windows through the Windows Subsystem for Linux (WSL) | `Fish`, which focuses on simplicity and usability |
+|                                                                                  | other shell options, like `tcsh` and `ksh`, cater to more specific needs |
+
+<div class="usa-accordion">
+
+{% include accordion title="For Windows users: PowerShell vs Bash" class="info " controls="terminal-win-1" %} 
+<div id="terminal-win-1" class="accordion_content">    
+<div id="info-alerts-1" class="highlighted highlighted--info ">
+<div class="highlighted__body">
+<p markdown="1">
+PowerShell is the default shell on Windows systems, offering robust tools for managing Windows environments. 
+However, for cross-platform compatibility and skills that can be applied to high-performance computing (HPC) systems, it's beneficial to **switch to using Bash via the Windows Subsystem for Linux (WSL)** <a href="https://datascience.101workbook.org/02-computing-machine/01b-windows-setup/" target="_blank">(see a tutorial in DataScience workbook)</a>. 
+Bash is the default on most Linux systems, making it essential for interacting with Unix-like operating systems and HPC environments, including SCINet clusters. <br>
+*The table below highlights key differences between PowerShell and Bash environments.*
+</p>
+<div markdown="1">
+
+| feature              | PowerShell | Bash |
+|----------------------|------------|------|
+| platform             | Windows *(but cross-platform supported)* | Unix-like systems (Linux, macOS, also WSL on Windows) |
+| command style        | object-oriented (returns objects) | text-based (returns plain text) |
+| examples of commands | `Get-ChildItem` (list files) | `ls` (list files) |
+|                      | `Set-Location` (change directory) | `cd` (change directory) |
+| scripting            | scripts use `.ps1` extension and object manipulation | Scripts use `.sh` extension and text processing tools |
+| syntax               | verb-noun structure (e.g., `Get-Process`) | short, compact commands (e.g., `ps`) |
+| integration          | tight integration with Windows systems | seamless with Linux and HPC tools |
+| use in HPC           | rarely used | commonly used due to prevalence of Linux-based systems, including SCINet HPC |
+
+</div>
+</div>
+</div>
+</div>
+</div>
+
+----
+
+## **Unix shell:** `Bash`
+
+<div id="note-alerts-1" class="highlighted highlighted--note ">
+<div class="highlighted__body">
+<h4 class="highlighted__heading"> What is the Unix Shell?</h4>
+<li>A <b>command interpreter</b> used to interact with Unix-like operating systems (e.g., Linux, macOS).</li>
+<li>It allows users to control the system, run programs and automate tasks through text commands.</li>
+<li><b>Bash</b> <i>(Bourne Again Shell)</i> is the most widely used Unix shell, known for its scripting capabilities and broad support across systems, including SCINet HPC.</li>
+</div>
+</div>
+
+Bash is a widely used shell in high-performance computing (HPC) environments because most HPC systems are Linux-based. Learning Bash equips you with cross-platform skills that are essential for 
+tasks ranging from everyday system management to advanced computational workflows in HPC environments, including SCINet clusters. Knowing Bash allows you to interact effectively with these systems, 
+automate tasks and leverage powerful text-processing tools like `grep`, `awk` and `sed`. 
+
+
+### Basic terminology
+
+When working with Unix shells, understanding key terms is essential. These terms and concepts form the core of how shells make command-line interaction efficient and powerful.
+
+| term    | definition | notes |
+|---------|------------|-------|
+| shell   | A `command interpreter` that processes user commands and sends them to the OS for execution. | Examples include `Bash`, `Zsh`, `tcsh`, `ksh`. |
+| prompt  | The text displayed by the shell indicating readiness to accept a command. | Often customizable and can include user, host, and current directory information. |
+| environment variable | A key-value pair used to store system or user-specific settings. | Examples include `PATH`, which defines the directories the shell searches for commands. |
+| `PATH`  | An environment variable specifying directories where the shell looks for executable commands. | Example: Adding a directory to `PATH` allows running commands from that directory directly. |
+| command | A text-based instruction given to the shell to perform a specific action. | Common commands include `ls`, `cd` and `echo`. |
+| alias   | A custom shortcut for a command or sequence of commands. | Example: `alias ll="ls -l"` creates a shortcut for `ls -l`. | 
+| script  | A file containing a series of commands that the shell can execute sequentially. | Typically used to automate repetitive tasks. |
+| shebang (`#!`) | A special line at the start of a script file specifying which `code interpreter` (i.e., shell or another scripting language) should execute the script. | Example: `#!/bin/bash` for Bash scripts. |
+| redirection (`>`, `<`) | Redirects the input or output of a command to/from a file or another command. | Example: `ls > files.txt` writes the output of `ls` to *files.txt*. |
+| pipeline (`|`)| A mechanism to pass the output of one command as input to another, enabling complex workflows by chaining commands together. | A feature that allows the output of one command to be used as the input for another. |
+
+When you use a shell within a terminal, you interact with the system through a **prompt**, the starting point for entering commands. 
+A **command** is a specific instruction to the shell, which can refer to a program, a built-in shell function or an **alias** - a custom shortcut for longer commands. 
+For more complex tasks, you might use a **script**, a file containing a series of commands that the shell executes sequentially, automating repetitive workflows. 
+To ensure scripts run with the correct interpreter, the **shebang** at the start of a script specifies the shell or program to execute it.
+Shells rely on **environment variables** to store important configuration data, like the directories listed in the **PATH**, which tells the shell where to look for executables. 
+You can combine commands using **pipelines** to pass the output of one command as input to another, or use **redirection** to send the output of commands to files or other commands. 
+If your workflow involves running multiple tasks, **job control** lets you manage processes in the background or foreground. 
+
+
+### Key features
+
+
+<div class="usa-accordion">
+
+{% include accordion title="Command Interpretation:" class="outline " controls="bash-feature-1" %} 
+<div id="bash-feature-1" class="accordion_content" markdown="1">    
+The shell translates user commands into actions the operating system can execute.
+
+*Example: A single `ls` command interpreted by Bash retrieves and displays the list of files in the current directory.*
+```bash
+ls
+# Output: file1.txt  file2.csv  script.sh
+```
+*Bash processes this input and communicates with the underlying system to retrieve the file list.*
+</div>
+
+{% include accordion title="Interactive mode:" class="outline " controls="bash-feature-2" %}
+<div id="bash-feature-2" class="accordion_content" markdown="1">
+Running commands directly in real-time. Users type commands and the shell executes them immediately.
+![shell command line](../assets/img/shell-command-line.gif)
+</div>
+
+{% include accordion title="Batch mode:" class="outline " controls="bash-feature-3" %} 
+<div id="bash-feature-3" class="accordion_content" markdown="1">    
+Execute multiple commands or a script non-interactively for large-scale automation.
+
+*Example: Create a Bash script to run data analysis on multiple files. (Save the code below into the `analyze_data.sh` file.)*
+```bash
+#!/bin/bash
+for file in *.csv; do
+    python analyze_data.py "$file" > "${file%.csv}_results.txt"
+done
+```
+*Run the script in batch mode:* `bash analyze_data.sh`
+</div>
+
+{% include accordion title="Pipeline and Redirection:" class="outline " controls="bash-feature-4" %} 
+<div id="bash-feature-4" class="accordion_content" markdown="1">    
+Combine commands in a sequence and redirect input/output to create efficient workflows.
+```bash
+# combine commands with a pipe and redirect the output to a file
+ls | grep "file" > output.txt
+```
+</div>
+
+{% include accordion title="Scripting:" class="outline " controls="bash-feature-5" %} 
+<div id="bash-feature-5" class="accordion_content" markdown="1">    
+Automate repetitive tasks by running a series of commands for different inputs from a script file.
+```bash
+# a simple Bash script
+for file in *.txt; do echo "Processing $file"; done
+```
+</div>
+
+{% include accordion title="Command history:" class="outline " controls="bash-feature-6" %} 
+<div id="bash-feature-6" class="accordion_content" markdown="1">    
+Access previously used commands for quick reuse and efficiency. *([see tutorial](/computing-skills/command-line/cli-interface/shell/commands/history))*
+
+*Example: Recall and reuse previous commands with the `up arrow` key or `history` command.*
+</div>
+
+{% include accordion title="Customization:" class="outline " controls="bash-feature-7" %} 
+<div id="bash-feature-7" class="accordion_content" markdown="1">    
+Tailor the shell with aliases, custom prompts and configuration files. *([see tutorial](/computing-skills/command-line/cli-interface/shell/customization/index))*
+```bash
+# create a shortcut for a custom combination of commands
+alias ll="ls -la"
+```
+</div>
+
+{% include accordion title="Job control:" class="outline " controls="bash-feature-8" %} 
+<div id="bash-feature-8" class="accordion_content" markdown="1">    
+Start, stop and manage running processes in the foreground or background.
+```bash
+# run a process in the background and bring it back to the foreground
+sleep 100 &         # Starts the process in the background
+jobs                # Lists background jobs
+fg %1               # Brings job 1 back to the foreground
+```
+</div>
+
+{% include accordion title="Integration with many CLI tools:" class="outline " controls="bash-feature-9" %} 
+<div id="bash-feature-9" class="accordion_content" markdown="1">    
+Work seamlessly with powerful command-line tools like `grep`, `awk` and `sed`.
+```bash
+# use grep or awk tools directly in the shell
+grep "error" *.txt                      # Searches for "error" in all text files
+awk -F ',' '{print $2}' data.csv        # Extract the second column from a CSV file.
+```
+</div>
+
+{% include accordion title="Cross-platform interoperability:" class="outline " controls="bash-feature-10" %} 
+<div id="bash-feature-10" class="accordion_content" markdown="1">    
+Use shells like Bash across Linux, macOS and Windows (via WSL).
+```bash
+# on Windows, install and launch WSL to use Bash
+wsl
+# then use standard Bash commands like:
+ls                                      # Lists files in the current directory
+```
+</div>
+
+</div>
+
+
+
+### Why researcher should use Bash?
+
+<div id="note-alerts-1" class="highlighted highlighted--tip ">
+<div class="highlighted__body" markdown="1">
+By using Bash, you unlock the ability to interact efficiently with SCINet computational resources, 
+automate workflows and handle data with precision, making it a vital skill for advancing your research.
+</div>
+</div>
+
+<div class="usa-accordion">
+
+{% include accordion title="To access HPC systems and submit jobs" class="outline " controls="bash-usage-1" %} 
+<div id="bash-usage-1" class="accordion_content" markdown="1">    
+Bash is the default shell in most HPC environments, essential for running batch jobs, managing resources and automating computational workflows. 
+Researchers can submit jobs to the scheduler, such as SLURM, using Bash scripts to define computational tasks, resource requirements and execution parameters.
+
+*Example: Submitting a job using a SLURM script:*
+```bash
+#!/bin/bash
+#SBATCH --job-name=my_job       # Job name
+#SBATCH --account=projectname   # SCINet account
+#SBATCH --partition=atlas       # Job queue type
+#SBATCH --nodes=1               # Number of nodes
+#SBATCH --ntasks=4              # Number of tasks
+#SBATCH --time=01:00:00         # Time limit (hh:mm:ss)
+#SBATCH --output=output.log     # Output file
+
+module load python              # load required module
+python my_script.py             # execute the Python script
+```
+Submit the job with the `sbatch` command: `sbatch job_script.sh`
+</div>
+
+{% include accordion title="To work across platforms" class="outline " controls="bash-usage-2" %} 
+<div id="bash-usage-2" class="accordion_content">    
+<p>Bash runs on Linux, macOS and Windows (via WSL), providing a consistent interface and tools  across any operating system.</p>
+</div>
+
+{% include accordion title="To customize commands for tasks" class="outline " controls="bash-usage-3" %} 
+<div id="bash-usage-3" class="accordion_content">    
+<p>Researchers can define aliases, functions and reusable scripts, tailoring Bash to their specific project needs.</p>
+</div>
+
+{% include accordion title="To automate repetitive tasks" class="outline " controls="bash-usage-4" %}
+<div id="bash-usage-4" class="accordion_content">
+<p>With its scripting capabilities, Bash simplifies repetitive tasks such as data preprocessing or file conversions and management.</p>
+</div>
+
+{% include accordion title="To process large datasets" class="outline " controls="bash-usage-5" %} 
+<div id="bash-usage-5" class="accordion_content">    
+<p markdown="1">
+Bash integrates with powerful command-line text-processing tools like `grep`, `awk` and `sed`, making it ideal for extracting, 
+filtering and organizing data in bioinformatics, geospatial research and other fields.
+</p>
+</div>
+
+</div>
+
+
+-----
+
+## Checking the current shell
+
+Regardless of the platform, you can change the default shell with some effort, for example, to a Unix shell like Bash.
+Here's how to check which shell is currently in use across different platforms:
+
+|          | in Linux/macOS Terminal | in Windows Terminal/PowerShell | in WSL on Windows |
+|----------|-------------------------|--------------------------------|-------------------|
+| command  |  `echo $SHELL`          |  `$env:SHELL`                  | `wsl echo $SHELL` |
+| output   | The output will display the path to the current shell, such as `/bin/bash` or `/bin/zsh`. | Note that on Windows, this may not always return a value, as shells like Command Prompt or PowerShell may not use the `$SHELL` environment variable. | Once WSL is installed and activated, Bash commands should work as usual, just like in a native Linux environment. |
+
+![check the current shell](../assets/img/shell_check.png)
+
+
+### Shells on SCINet clusters
+
+List all shells installed on SCINet clusters:
+```bash
+cat /etc/shells
+```
+*On Ceres you should see:* <br>
+`/bin/sh`, `/bin/bash`, `/usr/bin/sh`, `/usr/bin/bash`, `/usr/bin/tmux`, `/bin/tmux`, `/usr/bin/zsh`, `/bin/zsh`, `/bin/csh`, `/bin/tcsh`, `/usr/bin/csh`, `/usr/bin/tcsh`, `/bin/ksh`, `/bin/rksh`, `/usr/bin/ksh`, `/usr/bin/rksh`
+
+| Path | Description |
+| --   | --          |
+| `/bin/sh`, `/usr/bin/sh`     | **Bourne Shell** (sh)  - The original Unix shell, basic and minimal, often a symbolic link to other modern shells like `bash` for compatibility purposes. |
+| `/bin/bash`, `/usr/bin/bash` | **Bourne Again Shell** (bash) - A <u>widely used modern shell</u> derived from `sh`, featuring enhanced scripting capabilities, command history and job control. |
+| `/usr/bin/zsh`, `/bin/zsh`   | **Z Shell** (zsh) - An <u>advanced shell</u> with extensive features like powerful auto-completion, plugins, and themes. Often paired with Oh My Zsh for customization. |
+| `/bin/csh`, `/usr/bin/csh`   | **C Shell** (csh) - A shell with C-like syntax, designed for interactive use. Less common for scripting due to syntax limitations. |
+| `/bin/tcsh`, `/usr/bin/tcsh` | **TC Shell** (tcsh) - An enhanced version of `csh` with additional scripting features and better interactive use support. |
+| `/bin/ksh`, `/usr/bin/ksh`   | **Korn Shell** (ksh) - A scripting-focused shell combining features of `sh` and `csh`, widely used in enterprise environments. |
+| `/bin/rksh`, `/usr/bin/rksh` | **Restricted Korn Shell** (rksh) - A restricted version of `ksh` that limits certain features for controlled environments, often for security purposes. |
+| `/usr/bin/tmux`, `/bin/tmux` | **tmux** (Terminal Multiplexer) - A <u>terminal multiplexer</u> allowing multiple terminal sessions in one window, commonly used in HPC environments for session persistence. |
+
+**Key Differences and Uses:**
+- `bash` and `zsh`: Most commonly used for interactive sessions and scripting today. zsh is popular for modern shell customization.
+- `sh`, `csh`, `ksh`: Often found in legacy systems or minimal Unix environments.
+- `rksh`: Used for restricted environments where limited user control is necessary.
+- **tmux**: <u>Not a shell</u> but a terminal multiplexer useful for persistent sessions in HPC environments.
+
+### Switching to Bash shell
+
+
+If Bash is installed on your system, you can switch to it by following these steps:
+
+<div class="usa-accordion">
+
+{% include accordion title="Windows Terminal (PowerShell or Command Prompt)" class="outline " controls="bash-1" %} 
+<div id="bash-1" class="accordion_content" markdown="1">
+1. Open Windows terminal, PowerShell or Command Prompt.
+- If you have Windows Subsystem for Linux (WSL) installed with Bash:
+  - Type `wsl` to access the Bash shell provided by WSL.
+- Otherwise, install the WSL using a command:
+```
+wsl --install -d Ubuntu
+```
+![install WSL](../assets/img/win_install_wsl.png)
+2. To make Bash more accessible, you can set up shortcuts or use a terminal emulator like `Windows Terminal`, which allows you to configure Bash as a profile.
+
+</div>
+
+{% include accordion title="Linux/macOS" class="outline " controls="bash-2" %}
+<div id="bash-2" class="accordion_content" markdown="1">
+1. Simply type `bash` into the terminal and press `Enter` **to start a Bash session**.
+2. To make Bash the default shell (on Terminal startup):
+  - Check available shells with:
+  ```
+  cat /etc/shells
+  ```
+  This should display the list of acceptable shells, something like that:
+  ![available shells](../assets/img/shells_check.png)
+  - Use `chsh` to change the default shell:
+  ```
+  chsh -s /bin/bash
+  ```
+  ![change shell](../assets/img/shell_change.png)
+  *You may need to log out and back in for the change to take effect. You can see the shell name in your prompt and Terminal title.*
+</div>
+
+{% include accordion title="SCINet HPC" class="outline " controls="bash-3" %}
+<div id="bash-3" class="accordion_content" markdown="1">
+On SCINet clusters, `Bash` is the default shell loaded at the start of any login shell access session. <br>
+Simply type `/bin/bash` into the terminal and press `Enter` **to start a fresh Bash subshell**.
+</div>
+
+</div>
+
+

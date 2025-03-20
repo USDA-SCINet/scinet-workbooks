@@ -1,0 +1,293 @@
+---
+
+title: Introduction to Command Line Interface (CLI)
+description: "An interface for interacting with a computer by typing text commands instead of using a graphical interface (GUI)."
+index: 2
+order: 1
+tags: [command line interface]
+packages: 
+level: 2
+author: Aleksandra Badaczewska
+type: introduction
+
+---
+
+
+
+## Overview
+
+The [Command Line Interface](/glossary/#command-line-interface) (**CLI**) is a text-based way to interact with your computer, offering a more powerful 
+and flexible alternative to using a graphical user interface (**GUI**), which relies on mouse-driven point-and-click navigation. To access the CLI, 
+you use a **[terminal](/glossary/#terminal)**, which is the interface tool that provides a space for typing and viewing commands. 
+By typing commands, you can perform tasks like managing files, running programs or configuring the system. Behind the scenes, 
+a **[shell](/glossary/#unix-shell)** interprets these commands and communicates with the [operating system](/glossary/#operating-system) to execute them. 
+Together, the CLI, terminal and shell form a powerful ecosystem for controlling your computer efficiently 
+and performing your computational tasks with precision, speed, automation and a level of flexibility that is often unmatched by graphical user interfaces.
+
+![GUI vs CLI](./assets/img/cli_vs_gui.png)
+
+
+<div id="basic-alerts-1" class="highlighted highlighted--basic ">
+<div class="highlighted__body" markdown="1">
+<h4 class="highlighted__heading">In this submodule</h4>
+Discover the fundamentals of the [Command Line Interface (CLI)](/computing-skills/command-line/cli-interface/concepts/), including its key components: 
+the [Terminal](/computing-skills/command-line/cli-interface/terminal/) *(interface tool)* and the [Unix Shell](/computing-skills/command-line/cli-interface/shell/), which interprets 
+your text instructions *(i.e. commands)* entered in the [command line](/computing-skills/command-line/cli-interface/shell/commands/) input area.
+</div>
+</div>
+
+
+## Terminology Explained
+
+<div class='borderless' markdown='1'>  
+
+| Term                 | Definition | Purpose | Key difference | Example / Appearance |
+|----------------------|------------|---------|----------------|----------------------|
+| **CLI**          <br>[tutorial](/computing-skills/command-line/cli-interface/concepts/)       | Concept of a text-based interface for interacting with the computer system. | Provides a method to execute programs, manage files, or perform system tasks by entering commands. | It’s a concept, not a specific software. CLI describes the environment in which commands are entered and executed. | |
+| **Terminal**     <br>[tutorial](/computing-skills/command-line/cli-interface/terminal/)       | Software/hardware interface tool to access the CLI or shell. | Acts as an interface or "window" to access the CLI. Historically, it referred to physical devices, but now it's mostly software emulators. | A terminal is just the container or access point for the CLI, but it doesn't process the commands itself. | GNOME Terminal, Windows Terminal, iTerm2 |
+| **Shell**        <br>[tutorial](/computing-skills/command-line/cli-interface/shell/)          | A command interpreter that processes user commands and passes them to the operating system. | Provides users with the ability to execute commands, run scripts, and manage processes and files in the systems. | The shell is a program running within the terminal to interpret and execute commands. Different shells have unique features and syntax. | Unix shell: <br>Bash, Zsh, ksh, tcsh |
+| **Command Line** <br>[tutorial](/computing-skills/command-line/cli-interface/shell/commands/) | The input area in the CLI (the actual line) where commands are typed. | Represents the input area (usually a single line) where a user enters text commands. |  The command line is a specific part of the CLI environment. | Usually preceded by a prompt, e.g., `user@host:~$` in Unix/Linux or `C:\>` in Windows. |
+
+</div>
+
+### Terminal interface elements
+
+
+<div class="usa-accordion">
+
+{% include accordion title="Terminal (emulator)" class="outline " controls="terminal-term-1" %} 
+<div id="terminal-term-1" class="accordion_content" markdown="1">
+
+| definition | notes | tutorial |
+|------------|-------|----------|
+| A program that provides a text-based interface to interact with the operating system. | Examples include GNOME Terminal, iTerm or Windows Terminal. | - [What is a Terminal?](/computing-skills/command-line/cli-interface/terminal/) <br> - [Terminal customization](/computing-skills/command-line/cli-interface/terminal/terminal-customization)|
+
+</div>
+
+{% include accordion title="Welcome Message" class="outline " controls="terminal-term-2" %}
+<div id="terminal-term-2" class="accordion_content" markdown="1">
+
+| definition | notes | tutorial |
+|------------|-------|----------|
+| The startup message when logging into a remote machine. | It usually tells you about the architecture of available resources and rules for the users. | - [Basic terminology](/computing-skills/command-line/cli-interface/terminal/#basic-terminology) <br> - [Welcome message](/computing-skills/command-line/cli-interface/concepts/cli-scinet-hpc#welcome-message--cluster-rules--quick-updates) <br> - [Accessing the CLI on the SCINet HPC](/computing-skills/command-line/cli-interface/concepts/cli-scinet-hpc)|  
+
+</div>
+
+{% include accordion title="Prompt" class="outline " controls="terminal-term-3" %}
+<div id="terminal-term-3" class="accordion_content" markdown="1">
+
+| definition | notes | tutorial |
+|------------|-------|----------|
+| The text next to where you type your commands. | Prompts can be modified to include additional information like hostname or current folder location. | [Prompt styling: PS1 variable](/computing-skills/command-line/cli-interface/shell/customization/prompt) | 
+
+</div>
+
+{% include accordion title="Command-Line" class="outline " controls="terminal-term-4" %}
+<div id="terminal-term-4" class="accordion_content" markdown="1">
+
+| definition | notes | tutorial |
+|------------|-------|----------|
+| The specific place within the terminal interface where commands are entered. | Usually indicated by a blinking cursor next to the **prompt**, where users type commands to execute. | [What is command line?](/computing-skills/command-line/cli-interface/shell/commands/) | 
+
+</div>
+
+</div>
+
+----
+
+### Shell (command interpreter)
+
+
+<div class="usa-accordion">
+
+{% include accordion title="Shell" class="outline " controls="shell-term-1" %} 
+<div id="shell-term-1" class="accordion_content" markdown="1">
+
+| definition | notes | tutorial |
+|------------|-------|----------|
+| The command interpreter that processes input and executes commands. | Examples include Bash, Zsh and PowerShell. Shells can be configured to use custom scripts and aliases. | [What is a Unix Shell?](/computing-skills/command-line/cli-interface/shell/) | 
+
+</div>
+
+{% include accordion title="Bash" class="outline " controls="shell-term-2" %} 
+<div id="shell-term-2" class="accordion_content" markdown="1">
+
+| definition | notes | tutorial |
+|------------|-------|----------|
+| A popular Unix shell used for command processing. | Default shell for many Linux distributions; default shell on SCINet HPC. | [Unix shell: Bash](/computing-skills/command-line/cli-interface/shell/#unix-shell-bash) | 
+
+</div>
+
+{% include accordion title="Command" class="outline " controls="shell-term-3" %} 
+<div id="shell-term-3" class="accordion_content" markdown="1">
+
+| definition | notes | tutorial |
+|------------|-------|----------|
+| An instruction issued to the interpreter to perform a specific action. | Commands can be specific to a given shell, interpreter or operating system. | [Command basics](/computing-skills/command-line/cli-interface/shell/commands/#command-basics) | 
+
+</div>
+
+{% include accordion title="Standard Out" class="outline " controls="shell-term-4" %} 
+<div id="shell-term-4" class="accordion_content" markdown="1">
+
+| definition | notes | tutorial |
+|------------|-------|----------|
+| The text result of a command. | Use `> filename1` to redirect output into the file. Use `>> filename1` to append output to the end of a file. | [Handling outputs](/computing-skills/command-line/cli-interface/shell/commands/#handling-outputs) | 
+
+</div>
+
+{% include accordion title="Standard Error" class="outline " controls="shell-term-5" %} 
+<div id="shell-term-5" class="accordion_content" markdown="1">    
+
+| definition | notes | tutorial |
+|------------|-------|----------|
+| The error message of a failed command. | Use `2> filename2` to redirect error message into the file. Use `2>> filename2` to append error message to the end of a file. | [Handling outputs](/computing-skills/command-line/cli-interface/shell/commands/#handling-outputs) | 
+
+</div>
+
+{% include accordion title="Built-in commands" class="outline " controls="shell-term-6" %}
+<div id="shell-term-6" class="accordion_content" markdown="1">
+
+| definition | notes | tutorial |
+|------------|-------|----------|
+| Commands provided by the shell itself, not external executables. | Examples: `cd`, `echo`. These are processed directly by the shell without needing a system call to external binaries. | [Command manual](/computing-skills/command-line/cli-interface/shell/commands/manual) | 
+
+</div>
+
+{% include accordion title="Aliases" class="outline " controls="shell-term-7" %}
+<div id="shell-term-7" class="accordion_content" markdown="1">
+
+| definition | notes | tutorial |
+|------------|-------|----------|
+| Shortcuts for commands or command sequences. | Defined in the shell configuration, e.g., alias `ll='ls -l'`. | [Alias definition and usage](/computing-skills/command-line/cli-interface/shell/customization/aliases) | 
+
+</div>
+
+{% include accordion title="Shell function" class="outline " controls="shell-term-8" %}
+<div id="shell-term-8" class="accordion_content" markdown="1">
+
+| definition | notes | tutorial |
+|------------|-------|----------|
+| Custom commands that group multiple actions into one. | Defined in the shell for immediate use or persisted in script files. | [Shell Functions](/computing-skills/command-line/cli-interface/shell/customization/functions) | 
+
+</div>
+
+{% include accordion title="Startup script" class="outline " controls="shell-term-9" %}
+<div id="shell-term-9" class="accordion_content" markdown="1">
+
+| definition | notes | tutorial |
+|------------|-------|----------|
+| A file containing variables, aliases, functions and commands to be applied when the shell is launched. | Used for persisting configuration and automation of tasks. *For example, `.bashrc`* | [Shell configuration files](/computing-skills/command-line/cli-interface/shell/customization/bashrc) | 
+
+</div>
+
+{% include accordion title="Environment Variable" class="outline " controls="shell-term-10" %}
+<div id="shell-term-10" class="accordion_content" markdown="1">
+
+| definition | notes | tutorial |
+|------------|-------|----------|
+| A dynamic value used by the shell or OS to store information like paths or configurations. | Examples: `PATH`, `HOME` or `USER`. | [Using environment and shell variables](/computing-skills/command-line/cli-interface/shell/variables) | 
+
+</div>
+
+{% include accordion title="Syntax" class="outline " controls="shell-term-11" %}
+<div id="shell-term-11" class="accordion_content" markdown="1">
+
+| definition | notes | tutorial |
+|------------|-------|----------|
+| The structure and rules for writing commands in the CLI environment. | Incorrect syntax often results in error messages. | [Structure of a command](/computing-skills/command-line/cli-interface/shell/commands/#structure-of-a-command) | 
+
+</div>
+
+</div>
+
+----
+
+### Command line (input area)
+
+<div class="usa-accordion">
+
+{% include accordion title="Input Area" class="outline " controls="command-term-1" %} 
+<div id="command-term-1" class="accordion_content" markdown="1">
+
+| definition | notes | tutorial |
+|------------|-------|----------|
+| The section of the CLI where users type commands. | Usually indicated by a blinking cursor. | [How the command line works?](/computing-skills/command-line/cli-interface/shell/commands/#how-the-command-line-works) | 
+
+</div>
+
+{% include accordion title="Cursor" class="outline " controls="command-term-2" %} 
+<div id="command-term-2" class="accordion_content" markdown="1">
+
+| definition | notes | tutorial |
+|------------|-------|----------|
+| A visual indicator of the current typing position in the command line. | It blinks to show readiness for input. | [Navigating the command line](/computing-skills/command-line/cli-interface/shell/commands/#navigating-the-command-line) | 
+
+</div>
+
+{% include accordion title="Command" class="outline " controls="command-term-3" %} 
+<div id="command-term-3" class="accordion_content" markdown="1">
+
+| definition | notes | tutorial |
+|------------|-------|----------|
+| An instruction issued to the interpreter to perform a specific action. | Commands can be specific to a given shell, interpreter or operating system. | [Running commands](/computing-skills/command-line/cli-interface/shell/commands/#running-commands) | 
+
+</div>
+
+{% include accordion title="Argument" class="outline " controls="command-term-4" %} 
+<div id="command-term-4" class="accordion_content" markdown="1">
+
+| definition | notes | tutorial |
+|------------|-------|----------|
+| Custom (user-specified) input provided to a command to specify targets or parameters. | For instance, `ls /home` uses `/home` as an argument to the `ls` command. | [Structure of a command](/computing-skills/command-line/cli-interface/shell/commands/#structure-of-a-command) | 
+
+</div>
+
+{% include accordion title="Flag or Option" class="outline " controls="command-term-5" %} 
+<div id="command-term-5" class="accordion_content" markdown="1">    
+
+| definition | notes | tutorial |
+|------------|-------|----------|
+| A modifier that changes the behavior of a command. | Typically prefixed with a dash (`-`) or double dash (`--`). | [Structure of a command](/computing-skills/command-line/cli-interface/shell/commands/#structure-of-a-command)  | 
+
+</div>
+
+{% include accordion title="Pipes" class="outline " controls="command-term-6" %}
+<div id="command-term-6" class="accordion_content" markdown="1">
+
+| definition | notes | tutorial |
+|------------|-------|----------|
+| A mechanism to send the output of one command as input to another. | Represented by `|`, e.g., `ls | grep "file"` to filter the ls output for "file". | []() | 
+
+</div>
+
+{% include accordion title="Background Process" class="outline " controls="command-term-7" %}
+<div id="command-term-7" class="accordion_content" markdown="1">
+
+| definition | notes | tutorial |
+|------------|-------|----------|
+| A task running independently of the current shell session. | Commands are sent to the background using `&`. | []() | 
+
+</div>
+
+{% include accordion title="Foreground Process" class="outline " controls="command-term-8" %}
+<div id="command-term-8" class="accordion_content" markdown="1">
+
+| definition | notes | tutorial |
+|------------|-------|----------|
+| A task running in the current shell session. | Can be paused with `Ctrl+Z` or stopped with `Ctrl+C`. | []() | 
+
+</div>
+
+{% include accordion title="Exit Code" class="outline " controls="command-term-9" %}
+<div id="command-term-9" class="accordion_content" markdown="1">
+
+| definition | notes | tutorial |
+|------------|-------|----------|
+| A number returned by a command to indicate success or failure. | **0** typically means success, while non-zero codes indicate errors. | [Capturing function output](/computing-skills/command-line/cli-interface/shell/customization/functions#capturing-function-output) | 
+
+</div>
+
+</div>
+
+

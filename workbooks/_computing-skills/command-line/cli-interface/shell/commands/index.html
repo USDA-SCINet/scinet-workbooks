@@ -1,0 +1,346 @@
+---
+
+title: What is <b>command line</b>? The input area for commands
+description: "The interactive line in the CLI where users enter and execute commands to control the system and run applications."
+type: lesson module
+index: 4
+order: 1
+tags: [command line, command] 
+packages: 
+level: 4
+author: Aleksandra Badaczewska
+
+---
+
+## Overview
+
+The [command line](/glossary/#command-line) is the interactive input area within the [Command Line Interface](/glossary/#command-line-interface) (CLI) 
+where users enter text-based [commands](/glossary/#commands) to interact with the operating system. This lesson module introduces the command line 
+as a fundamental component of CLI-based computing, explaining how it processes user typing, interacts with shell features like autocompletion and history 
+and facilitates efficient command execution in HPC environments such as the SCINet clusters.
+
+
+<div id="info-alerts-1" class="highlighted highlighted--info ">
+<div class="highlighted__body"  markdown="1">
+<h4 class="highlighted__heading">Main Objectives</h4>
+* Understand the command line as the input area where users enter commands in the CLI.
+* Learn how commands are processed and executed by the shell.
+* Explore key usability features, including autocompletion, history and manual pages.
+</div>
+</div>
+
+<div id="success-alerts-1" class="highlighted highlighted--success ">
+<div class="highlighted__body"  markdown="1">
+<h4 class="highlighted__heading">Goals</h4>
+<p>By the end of this tutorial, you will:</p>
+* Understand the function of the command line within the shell.
+* Learn how to enter and execute commands efficiently.
+  * Use keyboard shortcuts to navigate and manipulate text within the command line.
+</div>
+</div>
+
+
+### Lesson scope
+
+<p style="margin-bottom: 1em;"> This lesson focuses on the command line as the direct input interface of the Unix shell. 
+It explains how user commands are interpreted, executed, and managed within the shell environment. Additionally, 
+it introduces essential command-line features that enhance efficiency and usability, with examples relevant to HPC computing and research workflows.
+</p>
+
+<div class="usa-accordion">
+
+{% include accordion title="Key concepts" class="primary " controls="scope-concepts" %}
+<div id="scope-concepts" class="accordion_content" markdown="1">
+* **Command Line:** The input area in the CLI where users type and execute commands.
+* **CLI (Command Line Interface):** A text-based interface for interacting with the operating system.*
+* **Terminal:** A software application that provides access to the CLI.
+* **Unix Shell:** A foundational CLI tool in Unix-like operating systems, including Linux and macOS.
+  * **Bash:** A common Unix shell, being the default in most systems.
+</div>
+
+{% include accordion title="Tools/Technologies" class="primary " controls="scope-tools" %} 
+<div id="scope-tools" class="accordion_content" markdown="1">
+* **Bash shell:** A popular shell environment (command interpreter) available on most Unix-like and HPC systems.
+</div>
+
+{% include accordion title="Applications" class="primary " controls="scope-apps" %} 
+<div id="scope-apps" class="accordion_content" markdown="1"> 
+* Executing system commands directly through the CLI.
+* Navigating and managing files and directories efficiently.
+* Automating repetitive tasks using shell scripts.
+* Using CLI tools for software development, data processing and research.
+</div>
+</div>
+
+
+### Nomenclature
+
+**Command Line Interface:** A user interface that allows users to interact with a computer system by typing text commands rather than using a graphical interface (GUI). 
+
+**Shell:** The command interpreter that processes user commands entered into the CLI.
+
+**Bash:** A widely-used Unix shell known for its scripting and text processing capabilities.
+
+**Command Line:** The actual line where commands are typed within the CLI. It represents the input area (usually a single line) where a user enters text commands.
+
+**Commands:** A command is a text-based instruction given to a computer through the Command Line Interface (CLI) to perform a specific task, such as running a program, managing files or processing data. 
+
+---
+
+
+## How the command line works?
+
+<div id="note-alerts-1" class="highlighted highlighted--note ">
+<div class="highlighted__body" markdown="1">
+The command line is part of the [terminal window](/computing-skills/command-line/cli-interface/terminal/) where users enter [commands](/glossary/#commands). 
+It acts as the **interactive text input area** for a direct user interaction, allowing commands to be entered one line at a time. 
+It works in conjunction with the [shell](/computing-skills/command-line/cli-interface/shell/), which processes user input and executes commands on the operating system. 
+So, once a user types a command and presses `Enter`, the shell interpretes the input, executes the command and then refreshes the command line, ready to accept the next text input from a user. <br>
+![shell command line](/computing-skills/command-line/cli-interface/assets/img/shell-command-line.gif)
+This cycle of **user input → command execution → new command line prompt** enables continuous interaction with the system. 
+</div>
+</div>
+
+
+### Navigating the command line
+
+Efficient navigation within the command line allows users to quickly edit and adjust commands before execution. 
+The command line provides several keyboard shortcuts to move the cursor, modify text and streamline input without excessive typing.
+
+
+#### Moving the cursor within a command
+
+When typing a command, the cursor can be repositioned without deleting characters:
+
+| key combination | description |
+|--               |--           |
+| arrows left (`←`) / right (`→`) | Move the cursor left or right one character at a time. |
+| `Ctrl` + `A`    | Jump to the beginning of the command line. |
+| `Ctrl` + `E`    | Move to the end of the command line.       |
+| `Alt` + `B`     | Move backward one word.                    |
+| `Alt` + `F`     | Move forward one word.                     |
+
+<div id="note-alerts-1" class="highlighted highlighted--tip ">
+<div class="highlighted__body" markdown="1">
+On Mac, instead of the `Alt` key combination, use `Option` +  `→ ←` *(right/left arrow)* to move backward or forward by one word in the CLI.
+</div>
+</div>
+
+
+#### Using keyboard shortcuts for efficient command entry
+
+In addition to navigation, several shortcuts help edit commands faster:
+
+| key combination | description | tutorial |
+|--               |--           |--        |
+| `Ctrl` + `U`    | Clear everything before the cursor.        |
+| `Ctrl` + `K`    | Delete everything after the cursor.        |
+| `Ctrl` + `W`    | Delete the previous word.                  |
+| `Ctrl` + `Y`    | Paste back the last deleted text. (`Ctrl` + `U`; `Ctr` + `K` ; `Ctrl` + `W`) |
+| `Ctrl` + `L`    | Clear the terminal screen (equivalent to the `clear` command). |
+| `Tab`           | Autocomplete command names, filenames and paths | [Command autocompletion](/computing-skills/command-line/cli-interface/shell/commands/autocompletion) |
+| arrows up (`↑`) / down (`↓`) | Cycle through previously entered commands. | [Command history](/computing-skills/command-line/cli-interface/shell/commands/history) |
+
+<div id="note-alerts-1" class="highlighted highlighted--tip ">
+<div class="highlighted__body" markdown="1">
+Mastering these shortcuts improves command-line efficiency, reducing the need for excessive retyping and allowing users to correct mistakes or modify commands quickly before execution.
+</div></div>
+
+
+## Command basics
+
+<div id="note-alerts-1" class="highlighted highlighted--note ">
+<div class="highlighted__body" markdown="1">
+*In the broadest sense*, a **command is any instruction typed into the command line** to be executed by the shell. It is the fundamental way users interact with the system through the Command Line Interface (CLI).
+
+*In its most common meaning*, a **command refers to a built-in shell functions** natively provided by the shell itself (e.g., `cd`, `echo`, `export`). 
+These commands do not require external programs to run and are executed directly within the shell environment.
+
+***Beyond built-in commands***, the shell also allows users to run other CLI instructions, including: <br>
+\- **[Aliases](/computing-skills/command-line/cli-interface/shell/customization/aliases)** - custom shortcuts for longer or complex commands. <br>
+\- **[Shell Functions](/computing-skills/command-line/cli-interface/shell/customization/functions)** - user-defined command sequences that can accept arguments. <br>
+\- **[Shell Scripts](https://datascience.101workbook.org/05-programming/02-bash/01-introduction-to-bash-scripting/)** - executable files containing multiple commands for automation. <br>
+\- **[System Executables](https://datascience.101workbook.org/05-programming/00-landing-page-programming/)** - Standalone programs, software binaries located in system directories (`/bin`, `/usr/bin`) and scripts requiring separate interpreters (e.g., python, R).
+</div></div>
+
+The shell determines what type of instruction is being executed by searching for it in a predefined order: 
+built-in commands first, followed by aliases, functions and external executables found in [system paths](/computing-skills/command-line/cli-interface/shell/variables#environment-variables) (`$PATH`).
+
+### Structure of a command
+
+Despite the differences, all CLI instructions (commands, aliases, shell functions, scripts, software executables) follow the same general syntax when executed from the command line. 
+Whether invoking a built-in command, running an alias, calling a function, executing a script or launching an external program, 
+the **structure of a command** and [execution method](#running-commands) remains the same. 
+
+#### Command sytax
+
+```bash
+command-name [options] [arguments]
+```
+
+Commands entered into the command line follow a structured format, consisting of three primary components:
+
+| component | description | example |
+|--         |--           |--       |
+| **command name**   | The built-in shell command, executable program and user defined aliases or functions being run. | `ls` |
+| **options/flags**  | Pre-defined special modifiers (usually prefixed with `-` or `--`) that change how the command operates. | `-l` |
+| **arguments**      | Additional (positional) inputs that modify the behavior of the command or process. | `home/user`|
+
+For example, the `ls` command, which lists files in a directory, follows this structure:
+```bash
+ls -l /home/user
+```
+* `ls` - *the command name (lists directory contents)*
+* `-l` - *a flag (for long format display)*
+* `/home/user` - an argument or option value (specifies which directory to list)
+
+<div id="note-alerts-1" class="highlighted highlighted--note ">
+<div class="highlighted__body" markdown="1">
+While the terms "options" and "flags" are often used interchangeably, they have a subtle distinction:
+* **Flags** are predefined modifiers that toggle a specific behavior of a command *(e.g., `-l` in `ls -l` for long format)*. They usually do not require additional input.
+* **Options** serve a predefined role but require a value to function *(e.g., `-o filename` in `example_command -o output.txt`*, where `-o` specifies an output file).
+</div></div>
+
+### Running commands
+
+Once a command is typed at the command line, pressing `Enter` triggers its execution. The shell then processes the command, interacts with the operating system and returns the output.
+
+#### *Example:* Running a simple command   *(`ls` or `pwd`)*
+
+```bash
+ls           # example output:     dir_1   dir_2   file_1
+```
+1. The user types `ls` (command to list directory content).
+2. After pressing `Enter`, the shell runs the command and returns the list of files and subdirectories in a current working directory.
+3. A new prompt line appears, ready for the next command.
+
+![shell command line](/computing-skills/command-line/cli-interface/assets/img/shell-command-line.gif)
+
+#### *Example:* Command with a positional argument
+
+```bash
+echo "Hello, world!"        # expected output: Hello, world!
+```
+* The `echo` command prints text to the terminal.
+* `"Hello, world!"` is the argument (text to print).
+
+#### *Example:* Using flags and options
+
+```bash
+ls -lh
+```
+* `-l` *(long format)* displays detailed file information.
+* `-h` *(human-readable)* formats file sizes for readability.
+
+
+### Handling outputs
+
+When a command runs in the command line, it produces output that is sent to data streams. By default:
+- **successful command** results appear in the terminal via Standard Output (**stdout**), while 
+- **failed commands** return error messages that are sent separately to Standard Error (**stderr**). 
+
+Understanding how these outputs work allows you to manage command results effectively, whether displaying them on-screen, saving them to a file or redirecting them for further processing.
+
+<div id="note-alerts-1" class="highlighted highlighted--note ">
+<div class="highlighted__body" markdown="1">
+When a command is executed, it communicates with the system using **input and output streams**. These streams define how data flows between the user, the shell and the operating system. 
+The three primary streams in Unix-based systems are:
+
+| stream type     | name       | description | redirection syntax |
+|--               |--          |--           |--                  |
+| Standard Output | **stdout** | The normal command result displayed in the terminal. | `>` or `>>`   |
+| Standard Error  | **stderr** | Error messages returned when a command fails.        | `2>` or `2>>` | 
+| Standard Input  | **stdin**  | User-provided input for commands.                    | `<`          |
+
+Each **stream can be redirected**, allowing users to save output to a file, suppress error messages or provide input from a file instead of the keyboard. 
+By managing these streams, users can redirect outputs, capture error messages or automate tasks efficiently. 
+</div></div>
+<div id="note-alerts-1" class="highlighted highlighted--tip ">
+<div class="highlighted__body" markdown="1">
+***Learn more*** *about [Redirecting standard input, output and error streams](http://127.0.0.1:4000/computing-skills/command-line/commands-and-processes/ioe-streams) 
+from the dedicated hands-on tutorial in section [Command Execution and Process Management](/computing-skills/command-line/commands-and-processes/).*
+</div></div>
+
+#### *Example:* Standard Output
+
+Standard Output (**stdout**) is the default stream where a command sends its normal results. 
+```bash
+pwd         # prints working directory
+```
+Output:
+`/home/user`
+* *By default, this output appears directly in the terminal.*
+
+### *Redirecting `stdout`*
+
+Use `>` to redirect normal command output to a file. ***If the file exists, it will be overwritten.*** <br>To append output instead of overwriting, use `>>`.
+```bash
+pwd > output.txt        # overwrite content in a file
+pwd >> output.txt       # append results at the end of a file
+```
+* *The output of `pwd` (current directory path) is saved to `output.txt`.*
+* *The terminal remains empty because the result is not displayed but written to the file instead.*
+
+
+#### *Example:* Error Output
+
+If a command is entered incorrectly, an error message appears:
+```bash
+ls /nonexistent-directory
+```
+Output:
+<b style="color: #d83933;">ls: cannot access '/nonexistent-directory': No such file or directory</b>
+* *The command fails because the directory does not exist.*
+* *The error message is displayed but does not stop the command line from functioning.*
+
+### *Redirecting `stderr`*
+
+Use `2>` to redirect error messages to a file. ***If the file exists, it will be overwritten.*** <br>To append errors to a file without overwriting, use `2>>`.
+```bash
+ls /nonexistent-directory 2> error.log          # overwrites a file
+ls /nonexistent-directory 2>> error.log         # appends to a file
+ls /nonexistent-directory 2> /dev/null          # suppress unwanted output
+```
+* *Since the directory does not exist, an error message is generated.*
+  * *Instead of displaying the error in the terminal, it is saved to `error.log`.* 
+* *Redirecting stderr to `/dev/null` is useful when you want to suppress unwanted output without saving it to a file or being displayed.*
+
+
+## Enhance your CLI proficiency
+
+While entering commands manually is the foundation of working in the command line, **efficiency becomes crucial**, especially in high-performance computing (HPC) environments, 
+where users frequently run complex commands and repetitive tasks. The shell provides built-in features that **speed up input**, **recall past commands** and **access documentation** without leaving the terminal. 
+
+#### Key features for efficient command-line usage
+
+<div id="note-alerts-1" class="highlighted highlighted--info ">
+<div class="highlighted__body" markdown="1">
+**Command Autocompletion:** Speeding up input with the Tab key
+
+*Automatically completes command names, filenames and arguments using the `Tab` key, reducing typing effort and preventing errors.* 
+*(Reference tutorial: [Command autocompletion](/computing-skills/command-line/cli-interface/shell/commands/autocompletion))*
+
+**Practical use:** Quickly navigate through long directory paths, recall exact filenames, aliases and commands.
+</div></div>
+
+<div id="note-alerts-1" class="highlighted highlighted--info ">
+<div class="highlighted__body" markdown="1">
+**Command History:** Reusing previously entered commands
+
+*Stores previously executed commands, allowing users to reuse or modify past inputs without retyping them.* 
+*(Reference tutorial: [Command history](/computing-skills/command-line/cli-interface/shell/commands/history))*
+
+**Practical use:** Re-run a long data processing command without typing it again, saving time in repetitive tasks.
+</div></div>
+
+<div id="note-alerts-1" class="highlighted highlighted--info ">
+<div class="highlighted__body" markdown="1">
+**Command Manual:** Getting help and documentation 
+
+*Using `man` provides built-in documentation for commands, helping users understand options and proper usage directly in the terminal.* 
+*(Reference tutorial: [Command manual](/computing-skills/command-line/cli-interface/shell/commands/manual))*
+
+**Practical use:** Look up options for scientific computing tools or system utilities directly in a terminal.
+</div></div>
+
+Mastering your efficiency in repetitive tasks improves productivity and minimizes typing errors, particularly when managing large datasets, running simulations or executing batch jobs in SCINet HPC systems.

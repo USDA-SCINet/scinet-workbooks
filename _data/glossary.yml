@@ -1,6 +1,6 @@
 glossary:
   - term: Algorithm
-    cat: Data Science
+    cat: Computing Skills
     definition: A set of rules in problem-solving operations. Creating algorithms is a foundation of programming, where a developer defines a finite sequence of well-defined instructions to perform computations and process data. Among the typical elements of an algorithm, regardless of programming language, are conditionals and loops that enable repetitive actions and logical decisions.
     related: Bash Scripting, Programming, Problem-Solving
   - term: Artificial Intelligence
@@ -18,20 +18,32 @@ glossary:
   - term: Binary
     cat: Data Science
     definition: A numbering system where data is expressed in the base-2. It is a mathematical expression which uses only two symbols, typically 0 and 1 to represent data.
+  - term: CLI Environment
+    cat: Computing Skills
+    definition: A CLI environment serves as a system-wide configuration, providing a command interpreter that processes user inputs, along with environment variables, system utilities, and scripting support for managing tasks and processes.
+    related: Command Line Interface, Unix Shell
   - term: Cluster
     cat: Data Science
     definition: or a computer cluster is a group of computing machines or servers that work together as a single system. Clusters provide high performance computing and parallel processing by distribution of tasks across multiple machines.
     related: Distributed Computing, Big Data
   - term: Code
-    cat: Data Science
+    cat: Computing Skills
     definition: in programming is a set of instructions for the computer. Code is written using programming language(s) and can be used to run a process, task, software, system, etc. on a computer.
     related: Programming 
   - term: Command Line
-    cat: Data Science
-    definition: A text interface for the computer that passes the predefined commands to the operating system. Commands trigger the execution of various processes.
+    cat: Computing Skills
+    definition: The actual line where commands are typed within the CLI. It represents the input area (usually a single line) where a user enters text commands.
     related: Unix Shell, Terminal, Bash
+  - term: Command Line Interface
+    cat: Computing Skills
+    definition: A user interface that allows users to interact with a computer system by typing text commands rather than using a graphical interface (GUI). Provides a method to execute programs, manage files or perform system tasks by entering commands.
+    related: Unix Shell, Terminal, Bash
+  - term: Commands
+    cat: Computing Skills
+    definition: A command is a text-based instruction given to a computer through the Command Line Interface (CLI) to perform a specific task, such as running a program, managing files or processing data. Commands trigger the execution of various processes.
+    related: Unix Shell, Terminal, Bash, Command Line 
   - term: Container
-    cat: Data Science
+    cat: Computing Skills
     definition: A executable package of specific application code and its dependencies. A software container includes all necessary elements needed to run the software such that it can be run in any environment/system.
     related: Programming 
   - term: Data Science
@@ -46,11 +58,11 @@ glossary:
     definition: A collection of observables registered in a computer-readable representation. A single item of data is called a datum. Each datum has assigned the binary value of “false, 0” or “true, 1”, resulting in a bit of information, i.e., one binary digit.
     related: Structured Data, Unstructured Data, Big Data
   - term: Distributed Computing
-    cat: Data Science
+    cat: Computing Skills
     definition: A system of multiple computer machines connected over a network to create a computing cluster that appears as a single computer to the end-user. It provides a unified environment with access to shared resources (software, data, storage) and coordinated computing power. Distributed computing is a technique typically used in the High-Performance Computing (HPC) infrastructures.
     related: Queue, Job Scheduler, High-Performance Computing, HPC
   - term: Environment
-    cat: Data Science
+    cat: Computing Skills
     definitions:
       - definition: A workspace for developers where they create and modify the source code of their application (software, web, etc.). Nowadays, professional developers usually use an Integrated Development Environment (IDE) that is a software suite partially with a graphical interface to make various things easier for the programmer (general code management, tracking and pushing changes, file system browsing, file preview & editing, kernel loading, autocomplete, formatting, etc.);"
         context: Development environment
@@ -58,7 +70,7 @@ glossary:
         context: Programming environment
     related: Programming, Python, High-Performance Computing, HPC
   - term: File System
-    cat: Data Science
+    cat: Computing Skills
     definition: is the organization of data retained in the digital storage on the computing machine. The content consists of hierarchically ordered folders and files. Folders are user-categorized containers for files. Files contain data and consume digital storage space. Some files belong to the operating system and include configurations, source code, and executables of various programs. Each file and folder is assigned an absolute path that defines its location in the file system. Knowing this path is very useful for navigating the file system from the command line.
     related: Operating System, Command Line, Bash Scripting
   - term: Gnuplot
@@ -69,14 +81,14 @@ glossary:
     cat: Data Science
     definition: short for Graphical User Interface, is an interface through which users interact with computers and other electronic devices using icons and other visual elements.
   - term: HPC
-    cat: Data Science
+    cat: Computing Skills
     definition: High-Performance Computing, is to perform computations requiring high computational power not available from a single computer. HPC operates on a dedicated infrastructure in the framework of distributed computing that aggregates computer power in networks, such as computer clusters, supercomputers, and cloud-based services.
     related: Distributed Computing, Queue, Big Data
   - term: HTML
     cat: Data Science
     definition: HyperText Markup Language is the standard language for webpages. HTML is used to display the contents of a website on a web browser.
   - term: IDE
-    cat: Data Science
+    cat: Computing Skills
     definition: Integrated Development Environment is an application for software development that includes a code editor, debugging tools, and version control system. IDE softwares are designed to make the process of writing, testing, and debugging code easier and more efficient.
   - term: Information
     cat: Data Science
@@ -87,11 +99,11 @@ glossary:
     definition: A method for data visualization that enables users to interact with the data on-the-fly, see the details such as numerical values, and freely customize the final plot. That is a modern approach that gives greater insight into the dataset and allows for collaborative work on data analysis.
     related: visualization, Big Data, knowledge
   - term: JupyterLab
-    cat: Data Science
+    cat: Computing Skills
     definition: An integrated development environment (IDE) with an interactive web-based computing interface that supports programming in multiple languages, including Python, Java, R, Julia, Matlab, Octave, etc. The Jupyter interface has a form of a notebook, where you can do it all at once, (i) develop and execute code cells, (ii) write comments and documentation in markdown, and (iii) visualize and analyze results with an interactive graphing.
     related: Programming, Environment, IDE, Python, Interactive Graphing
   - term: Kernel
-    cat: Data Science
+    cat: Computing Skills
     definition: in computing is the core of the operating system. It is the system that connects the hardware with the software. Kernel is responsible for management of memory, tasks, and processes.
     related: operating system 
   - term: Knowledge
@@ -99,19 +111,19 @@ glossary:
     definition: An extracted non-trivial insight from the data classification and analysis of information. Knowledge, while applied, leads to problem-solving, improvements, and steady development.
     related: Digital Data, Big Data, raw data, information
   - term: Library
-    cat: Data Science
+    cat: Computing Skills
     definition: a collection of prewritten code. Programming libraries are made to be used for common tasks, for example, Numpy in Python is used for working with huge arrays of data.
     context: Programming
     related: Programming 
   - term: Linux
-    cat: Data Science
+    cat: Computing Skills
     definition: A family of operating systems that includes Ubuntu, Debian, Fedora, etc. These are open-source operating systems based on the Linux kernel.
   - term: Local Machine
-    cat: Data Science
+    cat: Computing Skills
     definition: is the computer that the user is using with direct access to it. Usually, it is your personal computer.
     related: Distributed Computing, HPC, remote machine
   - term: Loop
-    cat: Data Science
+    cat: Computing Skills
     definition: A set of code that is written in such a way that it performs a task repetitively until a condition is met.
     related: programming 
   - term: Machine Learning
@@ -119,7 +131,7 @@ glossary:
     definition: A field of study focused on developing advanced computer algorithms that search for deeply coupled patterns in massive, disparate data and enable knowledge extraction. Machine learning methods are trained with large sets of data, and they learn from examples to make intelligent decisions without being explicitly programmed.
     related: Big Data, Unstructured Data, data science, artificial intelligence
   - term: Module
-    cat: Data Science
+    cat: Computing Skills
     definition: A small piece of a larger program. Modular programming is a way to design software such that each module is independent and can be used to execute a part of the function.
     related: Programming 
   - term: Nextflow
@@ -127,22 +139,26 @@ glossary:
     definition: A domain specific language used for bioinformatics data analysis. It uses software containers and enables reproducible scientific workflows.
     related: Programming 
   - term: Node (HPC)
-    cat: Data Science
+    cat: Computing Skills
     definition: A unit in an HPC cluster. It can be a single computer or a server in a collection that makes the cluster.
   - term: Operating System
-    cat: Data Science
+    cat: Computing Skills
     definition: OS, is the core software on the computer that manages computing resources, performes installations, and executes available programs. Command-line interface (CLI) and Graphical User Interface (GUI) enable the user directly interact with the operating system to set up, configure, and troubleshoot it. Among the popular operating systems are Windows, Mac OS, and Linux.
     related: Command Line, Bash shell, Programming
+  - term: Prompt
+    cat: Computing Skills 
+    definition: In the command line, a prompt is the text displayed before the cursor, indicating that the system is ready to receive user input (e.g., <code>user@hostname:~$</code> in Linux or <code>C:\Users\Name></code> in Windows).
+    related: Command Line, Command
   - term: Programming
-    cat: Data Science
+    cat: Computing Skills
     definition: means creating a set of instructions for a computer on how to execute operations in order, following the assumptions and logical conditions of the algorithm. Many programming languages facilitate communication between the code developer and the computing machine. Bash enables a shell scripting using a command-line interpreter for automating repetitive tasks by executing pre-defined commands according to requested conditionals and loops. More advanced analytical operations, including mathematical and statistical functions, modifying complex data structures, or processing non-text data, usually require a higher-level programming language such as Python or C++.
     related: Algorithm, Command Line, Bash, Python, R, C++
   - term: Pseudocode
-    cat: Data Science
+    cat: Computing Skills
     definition: A representation of code or algorithm, summarizing the code. It is a readable step by step description of what the program should do.
     related: Programming 
   - term: Queue
-    cat: Data Science
+    cat: Computing Skills
     definition: in distributed computing, it is an organized list (sequence) of tasks submitted to the job scheduler that manages the computational resources and decides to start or stop the task. The queue is ordered by wait time, user priority, and availability of requested resources. When the combination of these factors is advantageous, the submitted task begins executing, and so its status changes from waiting to running. The queuing system is typical for distributed computing, such as a network of computer clusters shared by more users. Some of the most popular workload managers are SLURM and PBS.
     related: HPC, Distributed Computing, SLURM, PBS
   - term: Raw Data
@@ -150,12 +166,12 @@ glossary:
     definition: is the data captured from the source and has not been processed before the use. It usually has a large volume and serves as a primary unfiltered input in Data Science.
     related: Digital Data, Big Data, Data Science
   - term: Remote Machine
-    cat: Data Science
+    cat: Computing Skills
     definition: Any other computer or computing network that the user can access by logging into the external network. Performing actions on a remote machine requires a secure login and often requires the user to have an account created by the network administrator. In scientific projects, we use remote computing machines as part of the HPC infrastructure to access high-performance computing and collaboratively share big data.
     related: Distributed Computing, HPC, Local Machine
   - term: SLURM
     alt: SLURM Workload Manager
-    cat: Data Science
+    cat: Computing Skills
     definition: Simple Linux Utility for Resource Management - a cluster management and job scheduling system. It is used in management of the HPC cluster environments.
     related: Distributed Computing, HPC
   - term: Structured Data
@@ -163,11 +179,11 @@ glossary:
     definition: is highly organized in terms of easy digital deciphering. That includes a standardized format, enduring order, and categorization in a well-determined arrangement that facilitates managing and querying datasets in various combinations. A typical example of an organized data structure is a spreadsheet or relational database.
     related: Digital Data, Unstructured Data, Big Data
   - term: Terminal
-    cat: Data Science
+    cat: Computing Skills
     definition: A program for accessing files on your computer using the command line.
     related: Command Line, Unix Shell, Bash
   - term: Unix Shell
-    cat: Data Science
+    cat: Computing Skills
     definition: A command-line interpreter that provides a command-line user interface for a computer's operating system (OS). The OS uses shell scripts/commands to control the execution of the programs and procedures.
     related: Command Line, Terminal, Bash
   - term: Unstructured Data
@@ -182,7 +198,7 @@ glossary:
     cat: Data Science
     definition: An application used to access internet and browse websites and web pages.
   - term: Workdir
-    cat: Data Science
+    cat: Computing Skills
     definition: A working directory for a project or computational task. It often appears as a variable or instruction that can be assigned a path to a selected location in the file system. That path is then used for all future commands that require a location, such as writing to a file. It is a common variable for workload managers on distributed computing infrastructures. The pathname of the current working directory can be accessed with the 'pwd' command or using the '$PWD' environmental variable.
     related: HPC, Command Line
   - term: Alignment 
