@@ -14,7 +14,7 @@
 <ul class="usa-button-group usa-list--unstyled">
     {%- for _subop in item.sections %}
     <li class="usa-button-group__item" >
-    {% include button class=_subop.class href="#" txt=_subop.txt %}
+    {% include button class=_subop.class href="#" content=_subop.content %}
     </li>
     {% endfor %}
 </ul>
@@ -31,7 +31,7 @@
 {%- else %}
 {%- capture codeblock %}
 {%- for _subop in item.sections %}
-{% include button class=_subop.class href="#" txt=_subop.txt %}
+{% include button class=_subop.class href="#" content=_subop.content %}
 {% endfor %}
 {% endcapture %}
 {%- endif %}
@@ -40,15 +40,15 @@
 {%- capture itemtitle %}{% if item.title %}{{ item.title }}{% else %}{{ item.class | capitalize }}{% endif %}{% endcapture %}
 {%- if include.code %}
 {%- capture codeblock %}
-&#123% include button class="{{item.class}}" txt="{{itemtitle}}" %&#125
+&#123% include button class="{{item.class}}" content="{{itemtitle}}" %&#125
 <!--or-->
-{% include button class=item.class txt=itemtitle %}
+{% include button class=item.class content=itemtitle %}
 {%- endcapture %}
 {%- else %}
 {%- capture codeblock %}{%- if item.noicon %}
-{% include button class=item.class txt=itemtitle %}
+{% include button class=item.class content=itemtitle %}
 {%- else %}
-{% include button class=item.class txt=itemtitle %}
+{% include button class=item.class content=itemtitle %}
 {%- endif %}{% endcapture %}
 {%- endif %}
 {% endif %}

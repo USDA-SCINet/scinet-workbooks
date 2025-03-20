@@ -24,6 +24,10 @@ $highlighted-icons: (
         @include highlighted-styles-other($name, $colval, $spec, $icon)
       } 
     }
+    .emph--#{$name} {
+      @include highlighted-status-wrapper-styles($name, $colval, $spec);
+      @include highlighted-status-styles($name, $colval, $spec);
+    }
     .class--#{$name} {
       @include highlighted-styles;
       * + & {

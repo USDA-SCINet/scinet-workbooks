@@ -1,0 +1,20 @@
+{%- assign _term = include.term %}
+{%- assign defines = gloss | where: "term", _term %}
+{%- if defines.size > 1 %}
+{%- assign capcollection = page.collection | capitalize %}
+{%- assign define = defines | find_exp:"item", "item.cat == capcollection" %}
+{%- else %}
+{%- assign define = defines[0] %}
+{%- endif %}
+{% if define.definition %}
+<li>{{ define.definition }}</li>
+{% elsif define.definitions %}
+{% for definition in define.definitions %}
+<li>
+    {% if definition.context %}<b>{{ definition.context }} - </b>{% endif %}{% if definition.alt %}({{ definition.alt}}) - {% endif %}
+    <ul>
+    <li>{{ definition.definition }}</li>
+    </ul>
+</li>
+{% endfor %}
+{% endif %}

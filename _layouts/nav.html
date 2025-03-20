@@ -40,16 +40,27 @@ wbComp:
 
   {% capture mycontent %}
     {{ content }}
+    <br>
     {%- if page.index %}
-      <br>
+    
       {% include collect/collections.html outer=sortposts inner=subsetposts heading="Workbook Index" %}
-
     {%- endif %}
   {% endcapture %}
 
+  {% assign nodecount = 0 %}
+  {% assign myhtml = content | strip | split: '<h' %}
+  {% for _node in myhtml %}
+  {% assign headerlvl = _node | slice: 0 %}
+  {% if headerlvl == "2" or headerlvl == "3" %}
+  {% assign nodecount = nodecount | plus: 1 %}
+  {% endif %}
+  {% endfor %}
+
+  {% capture sidenav-heading-elements %}{% if nodecount > 8 %}data-heading-elements="h2"{% endif %}{% endcapture %}
+  
   {% capture sidenavigation %}
   <nav aria-label="Secondary navigation">
-    {% include layout/sidenav.html html=mycontent class="usa-sidenav" h_max=3 anchor_class="usa-sidenav__item" submenu_class="usa-sidenav__sublist" sidenav=sidenav %}
+    {% include layout/sidenav.html html="" class="usa-sidenav" h_max=3 anchor_class="usa-sidenav__item" submenu_class="usa-sidenav__sublist" sidenav=sidenav %}
   </nav>
   {% endcapture %}
 
@@ -67,24 +78,39 @@ wbComp:
   {%- endif %}
   <div id="page-contents">
   <div class="grid-container main-side">
-    <div class="grid-row grid-gap flex-align-start">
+    <div class="grid-row grid-gap flex-align-stretch">
 
     <!-- desktop breakpoint side navigation. --> 
-   <div class="usa-layout-docs__sidenav display-none desktop:display-block desktop:grid-col-3 desktop:padding-y-10">
+   <div class="usa-layout-docs__sidenav sidenav_desktop">
     {{ sidenavigation }}
+    {% if nodecount > 1 %}
+    <div class="wb-in-page-nav-container">
+    <aside
+    class="wb-in-page-nav"
+    data-title-text="On this page"
+    data-title-heading-level="h4"
+    data-scroll-offset="0"
+    data-root-margin="0px 0px 0px 0px"
+    data-threshold="1"
+    {{ sidenav-heading-elements }}
+  ></aside>
+  </div>
+  {% endif %}
     </div>
 
       <div class="usa-layout-docs__main desktop:grid-col-9">
           {% include layout/breadcrumb.html %}
+
           <main class="{{ layout.main.class }} margin-bottom-2" id="main-content">
             {% if headertitle or page.subtitle %}
             <h1 class="top-header" >{{ headertitle | default: page.subtitle }}</h1>
             {%- endif -%}
             {{ mycontent }}
           </main>
+
       </div>
      <!-- mobile breakpoint sidenav -->
-     <div class="usa-layout-docs__sidenav desktop:display-none width-full  margin-bottom-2">
+     <div class="usa-layout-docs__sidenav sidenav_mobile">
      {{ sidenavigation }}
      </div>
     </div>

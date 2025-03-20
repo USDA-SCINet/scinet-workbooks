@@ -1,3 +1,17 @@
+&#123% include accordion title="Accordion Content" expanded="true" controls="accordion-content" content="* If you do not have complex markdown in your accordion, you can add the content in the component request.
+* Including a **content** variable generates the accordion_content div automatically" %&#125
+
+&#123% include accordion title="Finer Content Control" controls="finer-control" {% if item.attr %}expanded="true" {% endif %}%&#125
+<div id="finer-control" class="accordion_content"   markdown='1'>
+
+* For more complex content, or finer control over your markdown, include a div element with class `accordion_content`
+* This allows you to add your markdown within the div instead of to a variable
+
+
+&#123% include alert class="warning" content="Ensure the `id` of this div matches the  `controls` variable of your parent accordion." title="ID must match" id="id-alert" %&#125
+
+</div>
+
 &#123% include accordion title="Lorem ipsum" expanded="true" controls="lorem-ipsum" %&#125
 <div id="lorem-ipsum" class="accordion_content"   markdown='1'>
 
@@ -16,12 +30,5 @@ Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliqu
 <div id="duis-aute" class="accordion_content"   markdown='1'>
 
 Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-
-</div>
-
-&#123% include accordion title="Excepteur sint" controls="excepteur-sint" %&#125
-<div id="excepteur-sint" class="accordion_content"   markdown='1'>
-
-Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
 </div>

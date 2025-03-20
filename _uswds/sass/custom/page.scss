@@ -105,3 +105,12 @@ h1, h2, h3{
 .sm-txt{
     @include u-font('body', '2xs') 
 }
+
+.usa-layout-docs__main{
+    @include at-media ($theme-header-min-width) {
+        @include u-maxw('tablet-lg');
+    }
+    @include at-media (100em) {
+        @include u-maxw('widescreen');
+    }
+}

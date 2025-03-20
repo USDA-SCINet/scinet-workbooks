@@ -1,0 +1,4 @@
+<div id="{{ include.controller }}" class="accordion_content" >
+
+    {{ include.contents | markdownify }}
+</div>

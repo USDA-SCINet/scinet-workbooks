@@ -1,4 +1,5 @@
 @use "uswds-core" as *;
+@forward "usa-in-page-navigation";
 
 .guide-nav{
     @include u-border-top('05');
@@ -96,4 +97,57 @@
     }
   }
 
+}
+
+.sidenav_desktop{
+  display: none;
+  @include at-media ($theme-header-min-width) {
+    display: flex;
+    @include grid-col(3);
+    @include u-padding-y(10);
+    @include u-flex('column');
+  }
+}
+.sidenav_mobile{
+  @include at-media ($theme-header-min-width) {
+    display: none;
+  }
+  @include u-width('full');  
+  @include u-margin-bottom(2);
+
+}
+
+/// inpage nav
+/// 
+
+.wb-in-page-nav-container{ 
+  position: sticky;
+  top: 0;
+  //align-items: flex-start;
+  //display: flex;
+  //@include u-height('full')
+  //@include u-flex('align-self-stretch'); 
+
+  // Set main landmark max width to ensure in-page nav will fit
+
+}
+
+.wb-in-page-nav{
+  @extend .usa-in-page-nav;
+}
+
+.wb-in-page-nav__nav{
+  @extend .usa-in-page-nav__nav;
+}
+
+.wb-in-page-nav__heading{
+  @extend .usa-in-page-nav__heading;
+}
+
+.wb-in-page-nav__list{
+  @extend .usa-in-page-nav__list;
+}
+
+.wb-in-page-nav__item{
+  @extend .usa-in-page-nav__item; 
 }
