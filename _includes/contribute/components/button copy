@@ -17,13 +17,13 @@
 {%- else %}
 <ul class="usa-button-group usa-list--unstyled">
 <li class="usa-button-group__item" >
-{% include button class="default" href="#" txt="Default Link" %}
+{% include button class="default" href="#" content="Default Link" %}
 </li>
 <li class="usa-button-group__item" >
-{% include button class="secondary" href="#" txt="Secondary Link" %}
+{% include button class="secondary" href="#" content="Secondary Link" %}
 </li>
 <li class="usa-button-group__item" >
-{% include button class="base" txt="Alternative Attributes" attr="included details" sections="custom information" %}
+{% include button class="base" content="Alternative Attributes" attr="included details" sections="custom information" %}
 </li>
 </ul>
 {%- endif %}
@@ -38,9 +38,9 @@
 {%- endcapture %}
 {%- else %}
 {%- capture codeblock %}
-{% include button class="default" href="#" txt="Default Link" %}
-{% include button class="secondary" href="#" txt="Secondary Link" %}
-{% include button class="base" txt="Alternative Attributes" attr="included details" sections="custom information" %}
+{% include button class="default" href="#" content="Default Link" %}
+{% include button class="secondary" href="#" content="Secondary Link" %}
+{% include button class="base" content="Alternative Attributes" attr="included details" sections="custom information" %}
 {%- endcapture %}
 {%- endif %}
 {% else %}
@@ -48,15 +48,15 @@
 {%- capture itemtitle %}{% if item.title %}{{ item.title }}{% else %}{{ item.class | capitalize }}{% endif %}{% endcapture %}
 {%- if include.code %}
 {%- capture codeblock %}
-&#123% include button class="{{item.class}}" txt="{{itemtitle}}" %&#125
+&#123% include button class="{{item.class}}" content="{{itemtitle}}" %&#125
 <!--or-->
-{% include button class=item.class txt=itemtitle %}
+{% include button class=item.class content=itemtitle %}
 {%- endcapture %}
 {%- else %}
 {%- capture codeblock %}{%- if item.noicon %}
-{% include button class=item.class txt=itemtitle %}
+{% include button class=item.class content=itemtitle %}
 {%- else %}
-{% include button class=item.class txt=itemtitle %}
+{% include button class=item.class content=itemtitle %}
 {%- endif %}{% endcapture %}
 {%- endif %}
 {% endif %}
