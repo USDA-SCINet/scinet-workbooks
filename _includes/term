@@ -1,0 +1,30 @@
+{%- assign _term = include.term %}
+
+{%- assign define = include %}
+{%- capture termatt %}{%- for att in define %}{%- assign att0 = att[0] %}{%- unless att0 == "term" or att0 == "definition" or att0 == "link" %}<li class="usa-collection__meta-item"><b>{{ att0 | replace: "-", " " }}:</b> {{ define[att0] }}</li>{%- endunless %}{%- endfor %}{% if define.link %}<li><a href="{{ define.link }}" class="arrow sm-txt">{{ _term }} Tutorial</a></li>{% endif %}{%- endcapture %}
+
+{%- unless define.definition %}
+{% assign gloss = site.data.glossary['glossary'] %}
+{%- assign defines = gloss | where: "term", _term %}
+{%- if defines.size > 1 %}
+{%- assign capcollection = page.collection | capitalize %}
+{%- assign define = defines | find_exp:"item", "item.cat == capcollection" %}
+{%- else %}
+{%- assign define = defines[0] %}
+{%- endif %}
+{%- endunless %}
+
+<li class="usa-collection__item width-full">
+    <div class="padding-x-2 usa-collection__body">
+        <b class="usa-collection__heading">{{ _term }}</b>
+        {% if define.alt %}<span>({{ define.alt }})</span>{% endif %}
+        <p class="usa-collection__description">
+            {{ define.definition }}
+        </p>
+        {% if termatt.size > 1 %}
+        <ul class="usa-collection__meta">
+            {{ termatt }}
+        </ul>
+        {% endif %}
+    </div>
+</li>

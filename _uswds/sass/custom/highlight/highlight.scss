@@ -1,6 +1,9 @@
-@use './highlight-styles' as *;
+@use "sass:math";
 
-$highlighted-icons: (
+@use "uswds-core" as *;
+@use './highlight-styles' as hl;
+
+$highlighting-icons: (
   "warning" "warning" "lighter" "warning",
   "info" "info" "lighter" "info",
   "question" "accent-warm" "lighter" "help",
@@ -15,28 +18,63 @@ $highlighted-icons: (
   "secondary" "secondary" "dark" "notifications"
 );
 
+.highlighted {
+  @include alert-styles;
+
+  .highlighted__body {
+    @include u-padding-x($theme-alert-padding-x);
+
+    &::before {
+      left: calc(
+        units($theme-alert-padding-x) + $alert-icon-optical-adjust-left
+      );
+    }
+  }
+
+  * + & {
+    margin-top: units(2);
+  }
+}
 
 
-@each $name, $colval, $spec, $icon in $highlighted-icons {
-    .highlighted--#{$name} {
-      @include highlighted-status-wrapper-styles($name, $colval, $spec);
-      .highlighted__body {
-        @include highlighted-styles-other($name, $colval, $spec, $icon)
-      } 
+////
+
+@each $name, $colval, $spec, $icon in $highlighting-icons {
+
+  .highlighted--#{$name} {
+    @include hl.highlighted-status-wrapper-styles($name, $colval, $spec);
+    .highlighted__body {
+      @include hl.highlighted-styles-other($name, $colval, $spec, $icon)
+    } 
+  }
+  .emph--#{$name} {
+    @include hl.highlighted-status-wrapper-styles($name, $colval, $spec);
+    @include hl.highlighted-status-styles($name, $colval, $spec);
+  }
+/*   .class--#{$name} {
+    @include hl.highlighted-styles;
+    @include hl.highlighted-status-styles($name, $colval, $spec);
+    * + & {
+    margin-top: units(2);
+    };
+  } */
+
+  .acc--#{$name} {
+    h4,h5{
+      button{
+        @include hl.accordion-header-styles($name, $colval, $spec);
+      }
+      button[aria-expanded="false"] {
+        @include hl.accordion-header-unopened-styles($name, $colval, $spec);
+      }
     }
-    .class--#{$name} {
-      @include highlighted-styles;
-      * + & {
-      margin-top: units(2);
-      };
-      @include highlighted-status-styles($name, $colval, $spec);
-    }
-    
-    .usa-ac-header--#{$name} {
-      @include accordion-header-styles($name, $colval, $spec);
-    }
-    
-    .usa-ac-header--#{$name}[aria-expanded="false"] {
-      @include accordion-header-unopened-styles($name, $colval, $spec);
-    }
+  }
+
+  .usa-ac-header--#{$name} {
+    @include hl.accordion-header-styles($name, $colval, $spec);
+  }
+  
+  .usa-ac-header--#{$name}[aria-expanded="false"] {
+    @include hl.accordion-header-unopened-styles($name, $colval, $spec);
+  }
 }

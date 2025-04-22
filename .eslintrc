@@ -1,0 +1,21 @@
+{
+    "rules": {
+      "semi": [2, "always"],
+      "comma-dangle": [1, "always-multiline"],
+      "no-undef": [0],
+      "array-bracket-spacing": [2, "always"],
+      "block-spacing": [2, "always"],
+      "computed-property-spacing": [2, "always"],
+      "object-curly-spacing": [2, "always"]
+    },
+    "env": {
+      "node": true,
+      "browser": true,
+      "es6": true
+    },
+    "ignorePatterns": "node_modules/",
+    "plugins": ["import"],
+    "extends": [
+      "eslint:recommended"
+    ]
+  }
