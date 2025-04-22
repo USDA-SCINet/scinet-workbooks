@@ -10,12 +10,11 @@ components:
       noborder: true
       code: accordion
       options: 
-        - label: Multiselectable Accordion
-          class: accordion-bordered
-          attr: 'data-allow-multiple markdown="1"'
         - label: Borderless Accordion
         - label: Bordered Accordion
           class: accordion-bordered
+        - label: Multiselectable Accordion
+          attr: 'data-allow-multiple markdown="1"'
     - title: Accordion Header Colors
       unexpanded: true
       no-code-list: true
@@ -23,7 +22,7 @@ components:
         - label: Header Button Color Options
           titles: Header Color
           sections:
-            - title: Basic Header
+            - title: basic
             - class: info
             - class: warning
             - class: success
@@ -36,31 +35,15 @@ components:
           titles: Header Icon
           icon: true
           sections:
-            - title: Basic - important
-              icon: star
-            - title: Basic - flagged
-              icon: flag
-            - class: info
-            - class: tip
-            - class: note
+            - class: info          
+            - class: tip      
+            - class: note              
             - class: warning     
-            - class: highlighted
-            - class: question
-            - class: success
-            - class: error
+            - class: highlighted      
+            - class: question              
+            - class: success       
+            - class: error          
             - class: emergency
-            - title: Primary - important
-              class: primary
-              icon: star
-            - title: Primary - flagged
-              class: primary
-              icon: flag
-            - title: Outline - important
-              class: outline
-              icon: star
-            - title: Outline - flagged
-              class: outline
-              icon: flag
 
               
 ---

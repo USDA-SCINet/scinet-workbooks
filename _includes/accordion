@@ -1,8 +1,8 @@
 {% capture expanded %}{% if include.expanded %}aria-expanded="true"{% else %}aria-expanded="false"{% endif %}{% endcapture %}
 {% assign controller = include.controls %}
-{% capture buttonprev %}{% if include.class contains "outline" %}usa-button--{% else %}usa-ac-header--{% endif %}{% endcapture %}
+{% capture buttonprev %}{% if include.class == "outline" %}usa-button--{% else %}usa-ac-header--{% endif %}{% endcapture %}
 {% assign buttonclass = include.class | default: "" | prepend: buttonprev %}
-{%- if include.icon %}{% assign icon-name = include.icon %}{%- if icon-name==true %}{% assign inclclass = include.class | strip %}{%- capture icon-name %}
+{%- if include.icon %}{% assign inclclass = include.class | strip %}{%- capture icon-name %}
 {%- if inclclass == "warning" %}
 warning
 {%- elsif inclclass == "info" %}
@@ -21,7 +21,7 @@ flag
 check_circle
 {%- elsif inclclass == "emergency" %}
 error
-{%- else %}info{% endif %}{%- endcapture %}{% endif %}{%- endif %}
+{%- else %}info{% endif %}{%- endcapture %}{%- endif %}
 {% capture acc-icon %}{%- if include.icon %}<svg class="usa-icon margin-right-1" aria-hidden="true" focusable="false" role="img">
     <use xlink:href="/assets/uswds/img/sprite.svg#{{ icon-name | strip }}"></use>
   </svg>
@@ -36,6 +36,3 @@ error
     {{ acc-icon }}{{ include.title }}
     </button>
 </h5>
-{% if include.content %}
-{% include components/auto-accord controller=controller contents=include.content %}
-{% endif %}

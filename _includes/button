@@ -2,7 +2,7 @@
 {%- capture batt %}{%- for att in button %}{%- assign att0 = att[0] %}{%- unless att0 == "class" or att0 == "type" or att0 == "txt" %} {{ att0 }}="{{ button[att0] }}"{%- endunless %}{%- endfor %}{%- endcapture %}
 {%- capture bclass %}{% if button.class %} usa-button--{{ button.class | split: ',' | join: ' usa-button--' }}{% endif %}{%- endcapture %}
 {%- if button.href -%}
-<a{{ batt }} class="usa-button{{ bclass }}">{{ button.content }}</a>
+<a{{ batt }} class="usa-button{{ bclass }}">{{ button.txt }}</a>
 {%- else -%}
-<button class="usa-button{{ bclass }}"{{ batt }} type="{{ button.type | default: 'button' }}">{{ button.content }}</button>
+<button class="usa-button{{ bclass }}"{{ batt }} type="{{ button.type | default: 'button' }}">{{ button.txt }}</button>
 {%- endif -%}

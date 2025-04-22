@@ -89,7 +89,8 @@ use the issue tracker on our GitHub repository:
 3. Download the data
 4. Visualize the results
 
-<div class="process-list" markdown='1'> 
+<ol class="usa-process-list">
+  <li class="usa-process-list__item"  markdown='1'>  
 
 ### Import Libraries
 
@@ -114,7 +115,8 @@ import math
 pygcdl_obj = pygcdl.PyGeoCDL()
 ```
 
-
+  </li>
+  <li class="usa-process-list__item"  markdown='1'>  
 
 ### Specify area and dates of interest 
 
@@ -187,7 +189,8 @@ months = "7:8"
 grain_method = "finer"
 ```
 
-
+  </li>
+  <li class="usa-process-list__item"  markdown='1'>  
 
 ### Select datasets and their variables
 
@@ -223,7 +226,8 @@ dsvars = pd.DataFrame(
 print(dsvars)
 ```
 
-
+  </li>
+  <li class="usa-process-list__item"  markdown='1'>  
 
 ### Download the data
 
@@ -256,7 +260,8 @@ subset_files = pygcdl_obj.download_polygon_subset(
 subset_files
 ```
 
-
+  </li>
+  <li class="usa-process-list__item"  markdown='1'>  
 
 ### Visualize the results
 
@@ -361,5 +366,5 @@ for i in range(num_images):
 fig.colorbar(im)
 ```
 
-
-</div>
+</li>
+</ol>

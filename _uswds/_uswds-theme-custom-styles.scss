@@ -77,7 +77,9 @@ pre {
       h4,
       h5,
       h6 {
-         color: color("white");
+         @if variable-exists(hero-header) {
+            color: color("white");
+         }
       }
    }
 }
