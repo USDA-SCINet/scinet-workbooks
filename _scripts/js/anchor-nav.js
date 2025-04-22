@@ -22,6 +22,8 @@ const IN_PAGE_NAV_ITEM_CLASS = `${IN_PAGE_NAV_CLASS}__item`;
 const IN_PAGE_NAV_PRIMARY_ITEM_CLASS = `${IN_PAGE_NAV_ITEM_CLASS}--primary`;
 const IN_PAGE_NAV_LINK_CLASS = `${IN_PAGE_NAV_CLASS}__link`;
 const IN_PAGE_NAV_TITLE_CLASS = `${IN_PAGE_NAV_CLASS}__heading`;
+const PROCESS_CLASS = "usa-process-list__heading";
+const PROCESS_LIMIT = 8;
 
 /**
  * Set the active link state for the currently observed section
@@ -40,6 +42,18 @@ const setActive = (el) => {
     }
     return false;
   });
+};
+
+/** 
+ * Check process-list length
+*/
+
+const checkPlLength = (plClass) => {
+  if ($(`.${plClass}`).length > `${PROCESS_LIMIT}` ){
+    return "REJECT";
+  } else {
+    return plClass;
+  }
 };
 
 /**
@@ -85,7 +99,8 @@ const createSectionHeadingTypeArray = (
 
 const getVisibleSectionHeadings = (
     selectnavanchors,
-    selectedHeadingTypes
+    selectedHeadingTypes,
+    processClass
 ) => {
 
     const sectionHeadingsTypes = createSectionHeadingTypeArray(
@@ -95,11 +110,12 @@ const getVisibleSectionHeadings = (
   // Find all headings with hidden styling and remove them from the array
   const visibleSectionHeadings = selectnavanchors.filter((heading) => {
     const headingName = heading.localName;
+    const headingClass = heading.classList;
     const headingStyle = window.getComputedStyle(heading);
     const visibleHeading =
       headingStyle.getPropertyValue("display") !== "none" &&
       headingStyle.getPropertyValue("visibility") !== "hidden" &&
-      sectionHeadingsTypes.includes(headingName);
+      (sectionHeadingsTypes.includes(headingName) || headingClass == processClass);
 
     return visibleHeading;
   });
@@ -153,10 +169,15 @@ const createInPageNav = (inPageNavEl) => {
     threshold: [ inPageNavThreshold ],
   };
 
+  const plClass = checkPlLength(`${PROCESS_CLASS}`);
+
   const sectionHeadings = getVisibleSectionHeadings(
     navanchors,
-    inPageNavHeadingSelector
+    inPageNavHeadingSelector,
+    plClass
   );
+
+  if (sectionHeadings.length > 1){
 
   const inPageNav = document.createElement("nav");
   inPageNav.setAttribute("aria-label", inPageNavTitleText);
@@ -179,7 +200,6 @@ const createInPageNav = (inPageNavEl) => {
     const tag = el.localName;
     const topHeadingLevel = getTopLevelHeading(sectionHeadings);
     const headingId = el.querySelector('.anchorjs-link').getAttribute('href');
-    console.log(topHeadingLevel);
     listItem.classList.add(IN_PAGE_NAV_ITEM_CLASS);
 
     if (tag === topHeadingLevel) {
@@ -202,6 +222,7 @@ const createInPageNav = (inPageNavEl) => {
   anchorTags.forEach((tag) => {
     observeSections.observe(tag);
   });
+}
 };
 
 
