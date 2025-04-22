@@ -46,17 +46,6 @@ wbComp:
       {% include collect/collections.html outer=sortposts inner=subsetposts heading="Workbook Index" %}
     {%- endif %}
   {% endcapture %}
-
-  {% assign nodecount = 0 %}
-  {% assign myhtml = content | strip | split: '<h' %}
-  {% for _node in myhtml %}
-  {% assign headerlvl = _node | slice: 0 %}
-  {% if headerlvl == "2" or headerlvl == "3" %}
-  {% assign nodecount = nodecount | plus: 1 %}
-  {% endif %}
-  {% endfor %}
-
-  {% capture sidenav-heading-elements %}{% if nodecount > 8 %}data-heading-elements="h2"{% endif %}{% endcapture %}
   
   {% capture sidenavigation %}
   <nav aria-label="Secondary navigation">
@@ -83,7 +72,6 @@ wbComp:
     <!-- desktop breakpoint side navigation. --> 
    <div class="usa-layout-docs__sidenav sidenav_desktop">
     {{ sidenavigation }}
-    {% if nodecount > 1 %}
     <div class="wb-in-page-nav-container">
     <aside
     class="wb-in-page-nav"
@@ -92,10 +80,9 @@ wbComp:
     data-scroll-offset="0"
     data-root-margin="0px 0px 0px 0px"
     data-threshold="1"
-    {{ sidenav-heading-elements }}
+    data-heading-elements="h2"
   ></aside>
   </div>
-  {% endif %}
     </div>
 
       <div class="usa-layout-docs__main desktop:grid-col-9">
