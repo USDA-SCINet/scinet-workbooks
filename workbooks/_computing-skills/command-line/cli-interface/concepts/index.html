@@ -10,6 +10,8 @@ packages:
 level: 3
 author: Aleksandra Badaczewska
 
+
+terms: [Command Line Interface, GUI, Terminal, Shell]
 ---
 
 
@@ -20,29 +22,12 @@ This lesson module introduces the core concepts of the CLI, including its defini
 It also highlights examples of CLI environments across different operating systems, including those utilized in high-performance computing (HPC) systems, such as SCINet infrstructure.
 
 
-<div id="info-alerts-1" class="highlighted highlighted--info ">
-<div class="highlighted__body" markdown="1">
-<h4 class="highlighted__heading">Main Objectives</h4>
-* Understand what the CLI is and its role in system interaction.
+{% include objectives content="* Understand what the CLI is and its role in system interaction.
 * Differentiate between CLI and GUI approaches  to computer interaction, with user's broader control in CLI.
-* Identify common CLI environments and tools used across platforms.
-</div>
-</div>
-
-<div id="success-alerts-1" class="highlighted highlighted--success ">
-<div class="highlighted__body" markdown="1">
-<h4 class="highlighted__heading">Goals</h4>
-<p>By the end of this lesson, you will:</p>
-* Understand why the CLI is essential for USDA researchers working on computationally advanced projects, including data processing and software development.
-* Gain the confidence to transition from using a GUI to leveraging the CLI effectively.
-* Acquire knowledge of the CLI environments available on the SCINet HPC systems (Atlas, Ceres).
-</div>
-</div>
+* Identify common CLI environments and tools used across platforms." %}
 
 
-### Lesson scope
 
-<p style="margin-bottom: 1em;">This module focuses on introducing the command line interface as a core concept for interacting with computer systems through text-based commands.</p>
 
 <div class="usa-accordion">
 
@@ -56,9 +41,9 @@ It also highlights examples of CLI environments across different operating syste
 
 {% include accordion title="Tools/Technologies" class="primary " controls="scope-tools" %} 
 <div id="scope-tools" class="accordion_content" markdown="1">
-* **Windows:** Command Prompt, PowerShell, Windows Terminal, Windows Subsystem for Linux (WSL)</li>
-* **macOS:** Terminal.app (using Zsh or Bash shells)</li>
-* **Linux:** GNOME Terminal, KDE Konsole, xterm (using Bash or Zsh shells)</li>
+* **Windows:** Command Prompt, PowerShell, Windows Terminal, Windows Subsystem for Linux (WSL)
+* **macOS:** Terminal.app (using Zsh or Bash shells)
+* **Linux:** GNOME Terminal, KDE Konsole, xterm (using Bash or Zsh shells)
 </div>
 
 {% include accordion title="Applications" class="primary " controls="scope-apps" %} 
@@ -70,53 +55,36 @@ It also highlights examples of CLI environments across different operating syste
 * Customn code development.
 * Configuring systems efficiently.
 </div>
+
+{% include accordion title="Nomenclature" class="primary " controls="nomenclature" %} 
+<div id="nomenclature" class="accordion_content" markdown="1">  
+    
+    {% include terms %}
+
 </div>
-
-
-### Nomenclature
-
-**CLI (Command Line Interface):** A text-based interface for interacting with the computer system by typing commands.
-
-**GUI (Graphical User Interface):** A visual way to interact with systems, using windows, icons, and menus.
-
-**Terminal:** A tool or application that provides access to the CLI.
-
-**Shell:** The command interpreter that processes user commands entered into the CLI.
-
+</div>
 
 ----
 
 ## What is Command Line Interface?
 
-<div id="note-alerts-1" class="highlighted highlighted--note ">
-    <div class="highlighted__body">
-        <p>
-            The command line interface (CLI) is a text-based method of interacting with a computer system. 
-            Instead of using a graphical interface with windows and icons, users type all commands directly into a terminal <i>(the interface tool)</i> to perform tasks. 
-            The CLI offers precise control over the system, making it a powerful tool for customized tasks and automation.
-        </p>
 
-    </div>
-</div>
-
-![GUI vs CLI](../assets/img/scinet_cli.gif)
-
-**The role of the CLI in user-system interaction**
+The command line interface (CLI) is a text-based method of interacting with a computer system. 
+Instead of using a graphical interface with windows and icons, users type all commands directly into a terminal <i>(the interface tool)</i> to perform tasks. 
+The CLI offers precise control over the system, making it a powerful tool for customized tasks and automation.
 
 The CLI serves as a direct communication channel between the user and the computer's operating system.
 It is a text-based environment where all interactions happen in a single window. Users type commands to instruct the computer. 
 The computer responds with text messages or outputs. This creates a simple and efficient way to communicate with the system, 
 directly interacting with the computer's core functions without relying on visual, clickable components.
 
-<div id="highlighted-alerts-1" class="highlighted highlighted--highlighted ">
-    <div class="highlighted__body">
-        <p>All actions taken in the CLI are permanent and reflected in the GUI as well. </p>
-        <em>For example, if you create a file using a CLI command, you can see the file appear in the GUI's file manager.</em>
-    </div>
-</div>
+  ![GUI vs CLI](../assets/img/scinet_cli.gif)
+
+{% include alert role="region" class="highlighted" title="All actions taken in the CLI are permanent" content="Any changes made in the CLI are permanent and will be reflected in the GUI.  
+*For example, if you create a file using a CLI command, you can see the file appear in the GUI's file manager.*" %}
 
 
-### The core concepts of the CLI
+### Core concepts of the CLI
 
 <div class="usa-accordion">
 
@@ -178,7 +146,7 @@ The primary difference between CLI and GUI lies in how users interact with the s
 
 ![GUI vs CLI](../assets/img/cli_vs_gui.png)
 
-| aspect | GUI | CLI |
+{% include table content="| aspect | GUI | CLI |
 |--------|-----|-----|
 | Layout          | Multiple windows and graphical elements, often organized in a layered or desktop-style interface. | Single text-based window where all interactions occur. |
 | Interaction     | Users interact with visual elements like icons, buttons, and menus, primarily using a mouse.      | Commands are typed using a keyboard, requiring familiarity with specific syntax. |
@@ -189,7 +157,7 @@ The primary difference between CLI and GUI lies in how users interact with the s
 | Customization   | Limited customization, primarily through settings and pre-built themes.                           | Highly customizable with scripts, aliases and configuration files. |
 | Resource Usage  | Resource-intensive due to graphics and multiple active elements.                                  | Lightweight, as it doesn't require graphical processing. |
 | Task Complexity | Best suited for straightforward, one-off tasks that benefit from visual interaction.              | Ideal for handling complex and repetitive tasks through scripting and automation. |
-| Learning Curve  | Shallower learning curve, as visual cues guide the user.                                          | Steeper learning curve due to the need to memorize commands and syntax. |
+| Learning Curve  | Shallower learning curve, as visual cues guide the user.                                          | Steeper learning curve due to the need to memorize commands and syntax. |" %}
 
 
 ### Why use CLI? Benefits over GUI
