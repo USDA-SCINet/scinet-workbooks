@@ -1,7 +1,7 @@
 ---
 ---
 
-{%- if site.anchor_js_targets -%}
+/* {%- if site.anchor_js_targets -%}
   {%- assign _anchor_js_targets = site.anchor_js_targets -%}
   {%- assign _prepended_targets = '' | split: '' -%}
   {%- for _target in _anchor_js_targets -%}
@@ -11,4 +11,6 @@
 
 // Adding anchor links to headers on docs layouts only
 anchors.add('{{ _prepended_targets | join: ', ' }}');
-{%- endif -%}
+{%- endif -%} */
+
+anchors.add('#main-content h1')

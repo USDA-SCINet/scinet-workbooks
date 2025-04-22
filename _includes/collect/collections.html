@@ -26,11 +26,6 @@
 <div class="grid-row grid-gap align-c margin-y-3">
   {% if include.heading %}<h1 id="{{include.heading | slugify }}">{{ include.heading }}</h1>{% endif %}
   <div class="padding-bottom-2 bg-base-lighter width-full">
-    {% if page.index %}
-    <div class="bg-white border  margin-top-2">
-      {% include layout/nav_icons %}
-    </div>
-    {% endif %}
       
       {% comment %}{% include collect/collect-filter.html %}{% endcomment %}
     <ul class="usa-collection collection bg-white usa-list">

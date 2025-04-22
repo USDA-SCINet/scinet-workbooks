@@ -42,15 +42,10 @@ table {
             @include usa-table-container--scrollable;
         }
     }
-    .usa-table--striped-flex {
-        @include at-media("mobile-lg"){
-            @include usa-table--striped;
-        }
-    }
-    
-    table{
-        @include at-media("tablet-lg"){
-            @include usa-table--sticky-header;
-        }
+}
+
+.usa-table--striped-flex {
+    @include at-media("mobile-lg"){
+        @include usa-table--striped;
     }
 }

@@ -1,14 +1,28 @@
-{%- if include.data %}{% assign summary = include.data %}
-{%- else %}{% assign summary = include %}
-{%- endif %}
-{% capture idstring %}summary-box-{% include layout/components/random %}{% endcapture %}
-<div class="usa-summary-box" role="region" aria-labelledby="{{ idstring }}">
+{% if include.data %}{% assign summary = include.data %}
+{% else %}{% assign summary = include %}
+{% endif %}
+<div class="usa-summary-box" role="region" aria-labelledby="summary-box-key-information">
   <div class="usa-summary-box__body">
-    <h3 class="usa-summary-box__heading" id="{{ idstring }}">
-      {{ summary.header | default: "Learning Objectives" }}
+    {% if summary.header %}
+    <h3 class="usa-summary-box__heading" id="summary-box-key-information">
+      {{ summary.header }}
     </h3>
+    {% endif %}
     <div class="usa-summary-box__text">
-      {{ summary.content | markdownify }}
+      {% if summary.text %}
+      {{ summary.text }}
+      {% endif %}
+      {% if summary.buttons %}
+      <div class="grid-row margin-top-2">
+        {% for _button in summary.buttons %}
+        <div class="grid-col align-c">
+        <a class="usa-button" href="{{ _button.url | relative_url }}">
+          {{ _button.text }}
+        </a>
+      </div>
+        {% endfor %}
+      </div>
+      {% endif %}
     </div>
   </div>
 </div>

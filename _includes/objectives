@@ -1,2 +1,0 @@
-{% assign summarytitle = include.title | default: "Learning Objectives" %}
-{% include components/summary.html content=include.content title=summarytitle %}
