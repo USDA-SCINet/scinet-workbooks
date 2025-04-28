@@ -1,0 +1,25 @@
+{% assign mat = include.material %}
+{% assign size = include.size | default: 0 %}
+
+{% if mat == "packages" %}
+    {% if size == 1 %}
+    {% include packages %}
+    {% elsif forloop.last %}
+    {% assign loopcheck = 1 %}
+    </ul>
+    {% include packages %}
+    {% else %}
+    <li>{% include packages %}</li>
+    {% endif %}
+{% else %}
+    {% unless size == 1 %}<li>{% endunless %}
+
+    {% if mat.Rmd %}
+    {% capture rmd %}{% include rmarkdown file=mat.Rmd folder=folder path=mat.path %}{% endcapture %}
+            {{ rmd | markdownify }}
+    {% else %}
+    {{ mat | markdownify }}
+    {% endif %}
+    {% unless size == 1 %}</li>{% endunless %}
+
+{% endif %}
