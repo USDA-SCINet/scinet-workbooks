@@ -1,0 +1,7 @@
+{% assign lidata = include.data %}
+{%- if lidata.first %}<ul class="usa-list">{% for _obj in lidata %}
+    <li>
+        {{ _obj | markdownify }}
+    </li>{% endfor %}
+</ul>
+{%- else %}{{ lidata | markdownify }}{%- endif %}
