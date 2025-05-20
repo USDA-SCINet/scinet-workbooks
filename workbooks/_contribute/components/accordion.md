@@ -13,9 +13,7 @@ components:
         - label: Multiselectable Accordion
           class: accordion-bordered
           attr: 'data-allow-multiple markdown="1"'
-        - label: Borderless Accordion
-        - label: Bordered Accordion
-          class: accordion-bordered
+        - label: Standard Accordion
     - title: Accordion Header Colors
       unexpanded: true
       no-code-list: true

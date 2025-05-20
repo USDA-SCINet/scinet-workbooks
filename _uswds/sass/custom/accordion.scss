@@ -10,7 +10,6 @@
     overflow:visible;
  }
 
-.accordion-bordered {
-    @extend .usa-accordion;
+ .usa-accordion {
     @extend .usa-accordion--bordered;
 }
