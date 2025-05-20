@@ -1,45 +1,50 @@
-<div class="grid-row bg-base-lighter" >
-    <div class="grid-container margin-y-2 width-full">
+<aside class="rtt-next">
+  <ul class="usa-sidenav">
+    {%- assign siblingarray = include.siblingarray %}
     
-    <h2>Workbook Navigation</h2>
-    <ul class="usa-list">
-      
-      <li class="">
-        <b>Section {{ prevTOC.last.type | default: 'Index' | capitalize }}:</b> <a href="{{ prevTOC.last.url  | relative_url }}" class="">{{ prevTOC.last.title }}</a>
-      </li>
+    {%- assign prevpage == nil %}
+    {%- assign nextpage == nil %}
+    {%- if page.collection %}
+    {%- unless prevTOClength == 0 or page.index==0 %}
+    {% comment %}{% include layout/components/next-prev related=pageparent relation=pageparent.type %}{% endcomment %}
+    {%- if siblingarray.size > 1 %} 
+    {% for _siblings in siblingarray %}
+      {% if _siblings.id == page.id %}
+        {%- if forloop.first %}
+        {% include layout/components/next-prev related=pageparent relation=pageparent.type %}
+        {% else %}
+            {% assign previndex = forloop.index | minus: 2 %}
+            {% assign prevpage = siblingarray[previndex] %}
+        {% endif %}
+        {%- unless forloop.last %}
+            {% assign nextindex = forloop.index %}
+            {% assign nextpage = siblingarray[nextindex] %}
+        {%- endunless %}
+
+      {% endif %}
+    {% endfor %}
+    {% else %}
+    {% include layout/components/next-prev related=pageparent relation=pageparent.type %}
+    {% endif %}
+
+    {% if page.index %}
+    {%- for _next in sortposts limit: 1 %}
+    {% include layout/components/next-prev related=_next relation="Next" icon="navigate_next" class="usa-current" %}
+    {% endfor %}
+    {% include layout/components/next-prev related=nextpage relation="Next" section=true icon="navigate_far_next" %}
+    {% include layout/components/next-prev related=prevpage relation="Previous" section=true icon="navigate_far_before" %}
+    {% else %}
+    {% include layout/components/next-prev related=nextpage relation="Next" icon="navigate_next" class="usa-current" %}
+    {% include layout/components/next-prev related=prevpage relation="Previous" icon="navigate_before" %}
+    {% endif %}
     
-      {% unless page.path contains 'index.html' or page.index or page.previous.url == prevTOC.last.url %}
-      <li class="">
-        <b>Previous {% if page.previous.type %}{{ page.previous.type | capitalize }}{%else %}Lesson{%endif%}:</b> <a href="{{ page.previous.url  | relative_url }}" class="">{{ page.previous.title }}</a>
-      </li>
-      {% endunless %}
-      {%- assign sortpostsize = sortposts | size %}
-      {%- if sortpostsize > 0 %}
-      {%- if page.index %}
-      {%- for _next in sortposts limit: 1 %}
-      <li class="">
-        <b>Next  {% if _next.type %}{{ _next.type | capitalize }}{%else %}Lesson{%endif%}:</b> <a href="{{ _next.url  | relative_url }}" class="">{{ _next.title }}</a>
-      </li>
-      {%- endfor %}
-      {% elsif sortposts contains page %}
+    {%- endunless %}
+    {%- endif %}
 
-            <li class="">
-              <b>Next</b>
-            </li>
-
-    </ul>
-      {%- elsif page.next.index and page.next.index < prevTOC.last.index %}
-    </ul>
-      <b>Next Workbook:</b> <a href="{{ page.next.url  | relative_url }}" class="">{{ page.next.title }}</a>
-      {%- elsif page.next.url == prevTOC.last.url %}
-      {%- else %}
-      <li class="">
-        <b>Next {% if page.next.type %}{{ page.next.type | capitalize }}{%else %}Lesson{%endif%}:</b> <a href="{{ page.next.url  | relative_url }}" class="">{{ page.next.title }}</a>
-      </li>
-    </ul>
-      {%- endif %}
-      {%- else %}
-    </ul>
-      {%- endif %}
-    </div>
-    </div>
+    <li class="usa-sidenav__item">
+      <a href="#"><span class="render-sm">Return to </span>Top <svg class="usa-icon margin-bottom-neg-05" aria-hidden="true" focusable="false" role="img">
+        <use href="/assets/uswds/img/sprite.svg#arrow_upward"></use>
+      </svg></a>
+    </li>
+  </ul>
+</aside>

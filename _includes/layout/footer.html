@@ -11,11 +11,11 @@
   </div>
   {% endif %}
 
-  {%- if footer.top -%}
+  {% comment %}<!--moved to nav component -->{%- if footer.top -%}
   <div class="grid-container usa-footer__return-to-top">
     <a href="{{ footer.top.url | default: '#' }}">{{ footer.top.title | default: 'Return to top' }}</a>
   </div>
-  {%- endif -%}
+  {%- endif -%}{% endcomment %}
 
   {%- assign _footer = footer.links -%}
   {%- assign footer_links = site.data.navigation[_footer] | default: _footer -%}

@@ -123,12 +123,6 @@
 .wb-in-page-nav-container{ 
   position: sticky;
   top: 0;
-  //align-items: flex-start;
-  //display: flex;
-  //@include u-height('full')
-  //@include u-flex('align-self-stretch'); 
-
-  // Set main landmark max width to ensure in-page nav will fit
 
 }
 
@@ -154,4 +148,54 @@
 
 .wb-in-page-nav__item--primary{
   @extend .usa-in-page-nav__item--primary; 
+}
+
+
+
+//// next/prev nav container
+
+.flexnav {
+  display: flex;
+  position: sticky;
+  top: 0;
+  flex-direction: column;
+  height: auto; // Default for smaller screens
+  @include u-padding-y(5);
+
+  @include at-media("desktop-lg") {
+    height: 100vh; // Match viewport height on desktop and larger screens
+  }
+
+  .rtt-next {
+    @include u-width('full');
+
+    // Push nav to the bottom of the container and sticky
+    margin-top: auto;
+    position: sticky;
+
+    // adjust location below text prior to other nav flexing
+    @include at-media ($theme-header-min-width) {
+      @include u-maxw('tablet'); 
+      margin-left: auto; 
+    }
+    
+    @include at-media("desktop-lg") {
+      bottom: 40px; // Stick to the bottom of the parent container
+    }
+  }
+}
+
+.render-sm{
+  display:inline;
+  
+  @include at-media("desktop-lg") {
+    display: none;
+  }
+}
+.render-lg{
+  display: none;
+  
+  @include at-media("desktop-lg") {
+    display:inline;
+  }
 }
