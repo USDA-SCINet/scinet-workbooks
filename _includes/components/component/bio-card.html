@@ -1,10 +1,10 @@
 {% assign authored = include.author %}
 {% assign author = site.data.authors[authored] | default: author %}
 
-<li class="usa-card usa-card--flag card-img-sq width-full">
+<li class="usa-card {% comment %}usa-card--flag card-img-sq{% endcomment %} width-full">
     <div class="usa-card__container">
       <div class="usa-card__header">
-        <h2 class="usa-card__heading no_toc rm-a">{{ author.name }}</h2>
+        <h2 class="usa-card__heading">{{ author.name }}</h2>
         {% if author.pronouns %}<span class="font-body-2xs"><i>{{ author.pronouns }}</i></span>{% endif %}
       </div>
       {% if author.avatar %}
@@ -13,15 +13,17 @@
         {%- else -%}
             {%- assign author_src = author.avatar | relative_url -%}
         {%- endif -%}
+        {% comment %}
       <div class="usa-card__media usa-card__media--inset">
         <div class="usa-card__img">
           <img
-            class="circle-card-lg"
+            class="circle-10"
             src="{{ author_src }}"
             alt="{{ author.name }}"
           />
         </div>
       </div>
+      {% endcomment %}
       {% endif %}
       <div class="usa-card__body">
         {% if author.bio %}
@@ -29,6 +31,7 @@
         {% endif %}
       </div>
       <div class="usa-card__footer mobile-lg:grid-row">
+        {% comment %}
         {% if author.contact %}
         <div class="grid-col">
             {% for _link in author.contact %}
@@ -42,6 +45,7 @@
             {% endfor %}
           </div>
         {% endif %}
+        {% endcomment %}
         <div class="grid-col mobile-lg:text-right">
           {% include layout/filter-related.html search=authored attribute='author' btext='Workbooks by ' %}
         </div>

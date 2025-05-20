@@ -1,0 +1,9 @@
+{% include layout/components/authors %}
+<b>By: </b>{%- for _author in include.author %}
+{%- if authors[_author] %}
+<a href="{{ site.baseurl }}/about/people#{{ _author | slugify }}"><b>{{ _author }}</b></a>
+{%- else %}
+<b>{{ _author }}</b>{%- endif %}{% unless forloop.last %}, {% endunless %}
+{%- endfor %}
+
+
