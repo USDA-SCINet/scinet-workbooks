@@ -8,10 +8,11 @@
 
 {%- if item.attr %}
 {% include accordion title="Finer Content Control" expanded="true" controls=acc4 %}
+<div id="{{ acc4 }}" class="accordion_content"   markdown='1' hidden>
 {%- else %}
 {% include accordion title="Finer Content Control" controls=acc4 %}
-{%- endif %}
 <div id="{{ acc4 }}" class="accordion_content"   markdown='1'>
+{%- endif %}
 
 <ul>
     <li>For more complex content, or finer control over your markdown, include a div element with class <code class="language-plaintext highlighter-rouge">accordion_content</code></li>
@@ -23,14 +24,14 @@
 </div>
 
 {% include accordion title="Lorem ipsum" controls=acc1 %}
-<div id="{{ acc1 }}" class="accordion_content"   markdown='1'>
+<div id="{{ acc1 }}" class="accordion_content"   markdown='1' hidden>
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
 
 </div>
 
 {% include accordion title="Ut enim" controls=acc2 %}
-<div id="{{ acc2 }}" class="accordion_content"   markdown='1'>
+<div id="{{ acc2 }}" class="accordion_content"   markdown='1' hidden>
 
 Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
 

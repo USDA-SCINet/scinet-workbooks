@@ -21,10 +21,11 @@
 {% unless section.no-preview %}
 {% if section.unexpanded %}
 {% include accordion title="Component Preview" class="primary" controls=optionsid %}
+<div id="{{ optionsid }}" class="accordion_content" hidden>
 {% else %}
 {% include accordion title="Component Preview" expanded="true"  class="primary" controls=optionsid %}
-{% endif %}
 <div id="{{ optionsid }}" class="accordion_content">
+{% endif %}
 
 {% unless section.no-comp-list %}
 <ul class="usa-content-list" >

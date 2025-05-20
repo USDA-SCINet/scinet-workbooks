@@ -39,7 +39,7 @@
 <div class="usa-accordion {{ itemclass }}" {{ itemattr }}>
 
 &#123% include accordion title="{{optiontitle}}" class="{{optionclass}}" controls="{{optionid}}" icon={{icons}} %&#125
-<div id="{{ optionid }}" class="accordion_content" markdown='1'>
+<div id="{{ optionid }}" class="accordion_content" markdown='1' >
     
 {{ optiontext }}
 </div>
