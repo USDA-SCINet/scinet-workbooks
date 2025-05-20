@@ -12,14 +12,14 @@
     {% assign oval = _o[0] %}
     {%- if oval == "nomenclature" %}
     {% include accordion title="Nomenclature" class="secondary " controls="nomenclature-acc" %} 
-    <div id="nomenclature-acc" class="accordion_content">  
+    <div id="nomenclature-acc" class="accordion_content" hidden>  
         
         {% include terms %}
 
     </div>
     {% elsif oval == "materials" %}
     {% include accordion title="Materials" class="secondary " controls="materials-acc" %} 
-    <div id="materials-acc" class="accordion_content">
+    <div id="materials-acc" class="accordion_content" hidden> 
         {% assign povo = pov[oval] %}
         {% if povo.size==1 %}
         {% include materials material=povo size=1 %}
@@ -42,7 +42,7 @@
     {% assign accname = oval | append: "-acc" %}
     {%- include accordion title=oname.title class="secondary" controls=accname %}
     {% assign odata = pov[oval] %}
-    <div id="{{ accname }}" class="accordion_content">
+    <div id="{{ accname }}" class="accordion_content" hidden> 
         {% include layout/li-check data=odata %}
     </div>
     {%- endif %}
