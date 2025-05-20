@@ -47,7 +47,7 @@ You only need to include the overview sections applicable to your project.  For 
 <div class="usa-accordion" >
 
 {% include accordion title="Component Preview" class="primary" controls="component-preview" %}
-<div id="component-preview" class="accordion_content" markdown="1">
+<div id="component-preview" class="accordion_content" markdown="1" hidden> 
 
 #### Overview
 
@@ -75,7 +75,7 @@ Learning Objectives
 
 
 {% include accordion title="Component Code" class="outline" controls="component-codes" %}
-<div id="component-codes" class="accordion_content" markdown="1">
+<div id="component-codes" class="accordion_content" markdown="1" hidden> 
 
 ```
 {% raw %}---
@@ -130,7 +130,7 @@ You can choose to place the individual overview components separately to allow f
 <div class="usa-accordion" >
 
 {% include accordion title="Alternative Options - Component Preview" class="primary" controls="subcomponent-options-preview" %}
-<div id="subcomponent-options-preview" class="accordion_content" markdown="1">
+<div id="subcomponent-options-preview" class="accordion_content" markdown="1" hidden> 
 
 <div class="usa-summary-box margin-bottom-2">
 <div class="usa-summary-box__body">
@@ -150,7 +150,7 @@ Learning Objectives
 <div class="usa-accordion" >
 
 {% include accordion title="Concepts, Technology, or Applications Options" class="secondary" controls="list-components" rm-a=true %}
-<div id="list-components" class="accordion_content" markdown="1">
+<div id="list-components" class="accordion_content" markdown="1" hidden> 
 
   *  **Objectives**: Main learning goals the tutorial is aiming to accomplish. Limit to 3 or 4.
   *  **Concepts**: Specific high level concepts that are included in the tutorial
@@ -164,7 +164,7 @@ Learning Objectives
 
 
 {% include accordion title="Nomenclature Options" class="secondary" controls="terms-options" rm-a=true %}
-<div id="terms-options" class="accordion_content">
+<div id="terms-options" class="accordion_content" hidden> 
 <ul class="usa-content-list">
 <li markdown='1'>
 
@@ -189,7 +189,7 @@ Learning Objectives
 </div>
 
 {% include accordion title="Materials Options" class="secondary" controls="mat-components" rm-a=true %}
-<div id="mat-components" class="accordion_content">
+<div id="mat-components" class="accordion_content" hidden> 
 <ul class="usa-content-list">
 <li markdown='1'>
 
@@ -233,7 +233,7 @@ Learning Objectives
 </div>
 
 {% include accordion title="Alternative Components - Code" class="outline" controls="alt-codes" %}
-<div id="alt-codes" class="accordion-content">
+<div id="alt-codes" class="accordion_content" hidden> 
 <ul class="usa-content-list">
 <li markdown='1'>
 

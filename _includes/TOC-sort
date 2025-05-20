@@ -1,93 +1,134 @@
 {% assign blankarray = "" | split: "" %}
-      {% assign prevTOC = blankarray %}
-      {% assign afterTOC = blankarray %}
-      {% assign sortposts = blankarray %}
-      {% assign subsetposts = blankarray %}
-      {% assign nobreadcrumb = 0 %}
-      {% if page.nobreadcrumb %}{% assign nobreadcrumb = 1 %}{% endif %}
+{% assign prevTOC = blankarray %}
+{% assign afterTOC = blankarray %}
+{% assign sortposts = blankarray %}
+{% assign subsetposts = blankarray %}
+{% assign nobreadcrumb = 0 %}
+{% if page.nobreadcrumb %}{% assign nobreadcrumb = 1 %}{% endif %}
+{% assign pagepath1 = pagepath1 | default: nil %}
+{% assign siblingposts = blankarray %}
 
-      {% if page.collection %}
+{% if page.collection %}
 
-        {% if page.index == 0 %}
-          {% assign pTOC = prevTOC | unshift: layout.wbComp %}
-          {% assign wbposts = site.documents | where_exp:"item", "item.subject contains page.subject" %}
-          {% assign subsetposts = site.documents %}
+  {% if page.index == 0 %}
+    {% assign pTOC = prevTOC | unshift: layout.wbComp %}
+    {% assign wbposts = site.documents | where_exp:"item", "item.subject contains page.subject" %}
+    {% assign subsetposts = site.documents %}
 
-          {% assign p_segments = page.url | split: '/' %}
-          {% assign p_l = p_segments | size | minus: 1 %}
+    {% assign p_segments = page.url | split: '/' %}
+    {% assign p_l = p_segments | size | minus: 1 %}
 
-          {% for _ipost in wbposts %}
-            {% assign url_segments = _ipost.url | split: '/' %}
-            {% if _ipost.subject != page.subject or _ipost.slug == 'index' %}
-            {% assign url_trim = url_segments | slice: 1, p_l | join: "/" | prepend: "/" | append: '/index' %}
-            {% else %}
-            {% assign url_trim = url_segments | slice: 1, p_l | join: "/" | prepend: "/" %}
-            {% endif %}
-
-            {% assign parents = subsetposts | where: 'url', url_trim %}
-            {% for _p in parents %}
-            {% endfor %}
-            {% assign sortposts = sortposts | push: parents %}
-
-          {% endfor %}
-          {% assign sortposts = sortposts | uniq %}
-
-        {% else %}
-        {% assign pTOC = prevTOC | unshift: layout.wbComp %}
-
-        {%- assign pagepath = page.slug | append: page.ext %}
-        {% capture pageurl %}{{ page.path | remove: pagepath }}{% endcapture %}
-        {%- assign pagedepthcount = page.index | plus: 1 %}
-
-          {% for _post in site[page.collection] %}
-          {% if _post.ext == '.html' or _post.ext == '.md' %}
-            {%- assign postslug = _post.slug | append: _post.ext %}
-            {% capture postpath %}{{ _post.path | remove: postslug }}{% endcapture %}
-
-            {% unless page.url == _post.url %}
-              {% if page.path contains postpath and _post.index %}
-                {% assign prevTOC = prevTOC | push: _post %}
-              {% endif %}
-
-
-            {% if _post.path contains pageurl %}
-              {% assign subsetposts = subsetposts | push: _post %}
-
-              {%- if postpath == pageurl or _post.index == pagedepthcount %}
-                {% assign sortposts = sortposts | push: _post %}
-              {%- endif %}
-            {% endif %}
-
-            {% endunless %}
-            {% endif %}
-          {% endfor %}
-
-          {% assign prevTOC = prevTOC | sort: "index"  %}
-
-
-
-        {% endif %}
-
-        {% if page.path contains 'index.html' or page.index %}
-          {% assign prevpost = prevTOC.last %}
-        {% else %}
-          {% assign prevpost = page.previous %}
-        {% endif %}
-
-
-
-        {% if page.afterTOC %}
-          {% assign afterTOC = afterTOC | push: page.afterTOC %}
-        {% endif %}
-
-      
-      {% elsif page.afterTOC or page.beforeTOC %}
-        {% if page.afterTOC %}
-            {% assign afterTOC = page.afterTOC %}
-        {% endif %}
-        {% if page.beforeTOC %}
-            {% assign prevTOC = page.beforeTOC %}
-        {% endif %}
-
-        {% assign pTOC = prevTOC  %}
+    {% for _ipost in wbposts %}
+      {% assign url_segments = _ipost.url | split: '/' %}
+      {% if _ipost.subject != page.subject or _ipost.slug == 'index' %}
+      {% assign url_trim = url_segments | slice: 1, p_l | join: "/" | prepend: "/" | append: '/index' %}
+      {% else %}
+      {% assign url_trim = url_segments | slice: 1, p_l | join: "/" | prepend: "/" %}
       {% endif %}
+
+      {% assign parents = subsetposts | where: 'url', url_trim %}
+      {% for _p in parents %}
+      {% endfor %}
+      {% assign sortposts = sortposts | push: parents %}
+
+    {% endfor %}
+    {% assign sortposts = sortposts | uniq %}
+
+  {% else %}
+    {% assign pTOC = prevTOC | unshift: layout.wbComp %}
+
+    {%- assign pagepath = page.slug | append: page.ext %}
+    {% capture pageurl %}{{ page.path | remove: pagepath }}{% endcapture %}
+    {% if page.index %}
+      {%- assign pagedepthcount = page.index | plus: 1 %}
+    {% else %}
+      {%- assign pagedepthcount = page.path | split: '/' | size | minus: 1 %}
+    {% endif %}
+    {% comment %}
+    {% unless pageurl == pagepath1 %}
+      {% assign siblingposts = blankarray %}
+      {% assign ppath_segments = pageurl | split: '/' %}
+      {% if page.index %}
+      {% assign sib_depth = page.index %}
+      {% else %}
+      {% assign sib_depth = ppath_segments.size | minus: 1 %}
+      {% endif %}
+      {% assign shortpath = ppath_segments | slice: 0, sib_depth | join: "/" | append: '/' %}
+    {% endunless %}
+    {% endcomment %}
+
+    {% for _post in site[page.collection] %}
+      {% if _post.ext == '.html' or _post.ext == '.md' %}
+        {%- assign postslug = _post.slug | append: _post.ext %}
+        {% capture postpath %}{{ _post.path | remove: postslug }}{% endcapture %}
+
+        {% if page.index %}
+          {% if _post.index == page.index %}
+            {% assign siblingposts = siblingposts | push: _post %}
+          {% elsif page.path contains postpath and _post.index %}
+            {% assign prevTOC = prevTOC | push: _post %}
+          {% elsif _post.path contains pageurl %}
+            {% assign subsetposts = subsetposts | push: _post %}
+
+            {%- if postpath == pageurl or _post.index == pagedepthcount %}
+              {% assign sortposts = sortposts | push: _post %}
+            {%- endif %}
+          {% endif %}
+
+        {% else %}
+          {% if page.url == _post.url %}
+              {% assign siblingposts = siblingposts | push: _post %}
+          {% elsif page.path contains postpath and _post.index %}
+              {% assign prevTOC = prevTOC | push: _post %}
+          {%- elsif postpath == pageurl %}
+            {% assign siblingposts = siblingposts | push: _post %}
+          {%- elsif _post.path contains pageurl and _post.index == pagedepthcount %}
+            {% assign siblingposts = siblingposts | push: _post %}
+          {%- endif %}
+
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+
+    {% assign pagepath1 = pageurl %}
+
+
+    {% assign prevTOC = prevTOC | sort: "index"  %}
+
+
+
+  {% endif %}
+
+  {% assign pageparent = prevTOC.last %}
+
+  {% if page.path contains 'index.html' or page.index %}
+    {% assign prevpost = prevTOC.last %}
+  {% else %}
+    {% assign prevpost = page.previous %}
+  {% endif %}
+
+
+
+  {% if page.afterTOC %}
+    {% assign afterTOC = afterTOC | push: page.afterTOC %}
+  {% endif %}
+
+  {% if siblingposts.size > 1 %}
+    {% assign siblingposts = siblingposts | sort: "order" %}
+  {% endif %}
+  {% if sortposts.size > 1 %}
+    {% assign sortposts = sortposts | sort: "order" %}
+  {% endif %}
+
+
+{% elsif page.afterTOC or page.beforeTOC %}
+  {% if page.afterTOC %}
+      {% assign afterTOC = page.afterTOC %}
+  {% endif %}
+  {% if page.beforeTOC %}
+      {% assign prevTOC = page.beforeTOC %}
+  {% endif %}
+
+  {% assign pTOC = prevTOC  %}
+{% endif %}
+

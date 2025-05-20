@@ -9,7 +9,7 @@ scripts: ['/assets/js/lib/jquery-3.4.1.min.js', '/assets/js/filter/filternav.js'
     <div class="grid-row">
     <div class="tablet:grid-col-8">
         <div class="usa-collection__body">
-            {% if page.author %}<b>By: <a href="#authors">{% for _author in page.author %}{{ _author }}{% unless forloop.last %}, {% endunless %}{% endfor %}</a></b>{% endif %}
+            {%- if page.author %}{% include layout/author author=page.author %}{%- endif %}
             {% if page.affiliation or page.wgs %}
             <ul class="usa-collection__meta">
                 {% if page.affiliation %}<li class="usa-collection__meta-item">{{ page.affiliation }}</li>{% endif %}

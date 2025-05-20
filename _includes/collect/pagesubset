@@ -1,3 +1,8 @@
+{% if include.post == mpost %}
+{% assign pagesubset = pagesubset %}
+{% assign pwb = pwb %}
+{% assign mypagesubset = mypagesubset %}
+{% else %}
 {%- assign pagesubset = "" | split: "" %}
 {% if include.postpath %}
 {% assign postpath = include.postpath %}
@@ -27,6 +32,4 @@
 {%- assign pssize = pagesubset | size %}
 
 {% assign pwb = mypagesubset | map: 'subject' | uniq %}
-{% assign ptags = mypagesubset | map: 'tags' | uniq %}
-{% assign ptypes = mypagesubset | map: 'type' | uniq %}
-{% assign pdifficulties = mypagesubset | map: 'level' | uniq %}
+{% endif %}

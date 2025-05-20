@@ -7,6 +7,7 @@ wbComp:
   url: /workbooks
   title: All Workbooks
 ---
+
 {% if page.ext == '.ipynb' %}
 {{ content }}
 {% else %}
@@ -26,30 +27,23 @@ wbComp:
   </main>
 
 {% else %}
+
   {% assign headertitle = false %}
   {% include TOC-sort %}
   {% assign prevTOClength = prevTOC | size %}
   {% assign previousTOC = pTOC | default: blankarray %}
   {% unless prevTOClength == 0 or page.index==0 or page.style=='single' %}
-    {% assign previousTOC =  previousTOC | push: prevTOC.last %}
+    {% assign previousTOC =  previousTOC | push: pageparent %}
   {% endunless %}
   {% assign nextTOC = afterTOC | default: blankarray %}
   {% assign sidenav =  previousTOC | push: page %}
   {% assign sidenav = sidenav | concat: nextTOC %}
   {% assign bchome = layout.wbComp %}
 
-  {% capture mycontent %}
-    {{ content }}
-    <br>
-    {%- if page.index %}
-    
-      {% include collect/collections.html outer=sortposts inner=subsetposts heading="Workbook Index" %}
-    {%- endif %}
-  {% endcapture %}
-  
+
   {% capture sidenavigation %}
   <nav aria-label="Secondary navigation">
-    {% include layout/sidenav.html html="" class="usa-sidenav" h_max=3 anchor_class="usa-sidenav__item" submenu_class="usa-sidenav__sublist" sidenav=sidenav %}
+    {% include layout/sidenav.html sidenav=sidenav %}
   </nav>
   {% endcapture %}
 
@@ -57,8 +51,8 @@ wbComp:
     {% if page.index == 0 %}
       {% assign herotitle = page.title %}
     {% else %}
-      {%- assign pageparent = page.parent | default: 0 %}
-      {% capture herotitle %}{{ prevTOC[pageparent].title }}{% endcapture %}
+      {%- assign pageparentindex = page.parent | default: 0 %}
+      {% capture herotitle %}{{ prevTOC[pageparentindex].title }}{% endcapture %}
       {% assign headertitle = page.title %}
     {% endif %}
   {% include layout/hero.html title=herotitle %}
@@ -85,14 +79,19 @@ wbComp:
   </div>
     </div>
 
-      <div class="usa-layout-docs__main desktop:grid-col-9">
+      <div class="usa-layout-docs__main desktop:grid-col-fill">
           {% include layout/breadcrumb.html %}
-
           <main class="{{ layout.main.class }} margin-bottom-2" id="main-content">
             {% if headertitle or page.subtitle %}
             <h1 class="top-header" >{{ headertitle | default: page.subtitle }}</h1>
             {%- endif -%}
-            {{ mycontent }}
+            <div class="{{ layout.main.class }}" id="wb-content">
+            {{ content }}
+            </div>
+            <br>
+            {%- if page.index %}
+              {% include collect/collections.html outer=sortposts inner=subsetposts heading="Workbook Index" %}
+            {%- endif %}
           </main>
 
       </div>
@@ -100,21 +99,22 @@ wbComp:
      <div class="usa-layout-docs__sidenav sidenav_mobile">
      {{ sidenavigation }}
      </div>
+
+     <div class="desktop-lg:grid-col-auto">
+      <div class="flexnav">
+      {% assign siblingposts = siblingposts %}
+      {% include collect/wb-nav.html siblingarray=siblingposts %}
+      </div>
+     </div>
     </div>
   </div>
 
 {% if page.collection %}
-{% if page.ordered %}
-{% unless prevTOClength == 0 or page.index==0 %}
-  {% include collect/wb-nav.html %}
-{% endunless %}
-{% endif %}
-
 {% unless page.index %}
 {% include collect/related-reading.html %}
 {% endunless %}
 
-{% include authors.html %}
+{% comment %{% include authors.html %}{% endcomment %}
 {% endif %}
 </div>
 {% endif %}

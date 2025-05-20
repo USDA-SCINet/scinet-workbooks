@@ -6,7 +6,26 @@
 {% assign defined = 1 %}
 {% endunless %}
 
+{% if include.table %}
+<div class="usa-table-container flex-scroll">
+    <table class="usa-table usa-table--stacked-header width-full">
+        {%- if include.title %}
+        <caption>
+          {{ include.title }}
+        </caption>
+        {%- endif %}
+        <thead>
+          <tr>
+            <th scope="col">Term</th>
+            <th scope="col">Definition</th>
+            {% if include.table == "linked" %}<th scope="col">Related Tutorials</th>{% endif %}
+          </tr>
+        </thead>
+        <tbody>
+{% else %}
 <ul class="usa-collection collection">
+{% endif %}
+
 {% for _term in terms %}
 {% if _term.definition %}
 {% assign define = _term %}
@@ -57,7 +76,37 @@
 </li>
 {% endcomment %}
 
-
+{% if include.table %}
+<tr>
+    <th data-label="Term" scope="row">
+        {{ define.term | markdownify }}{% if define.alt %} ({{ define.alt }}){% endif %}
+    </th>
+    <td data-label="Definition">
+        {% if define.definition %}
+        {{ define.definition | markdownify }}
+        {% elsif define.definitions %}
+        <ul>
+        {% for definition in define.definitions %}
+        <li>
+            {% if definition.context %}<b>{{ definition.context }} - </b>{% endif %}{% if definition.alt %}({{ definition.alt}}) - {% endif %}
+            <ul>
+            <li>{{ definition.definition }}</li>
+            </ul>
+        </li>
+        {% endfor %}
+        {% endif %}
+    </td>
+    {% if include.table == "linked" %}
+    <td data-label="Related Tutorials">
+        {%- if define.tutorial %}
+            <a href="{{ define.tutorial.url }}" class="arrow sm-txt">{{ define.tutorial.title | default: "Related Tutorial"}}</a>
+        {%- elsif defined == 1 %}
+            {% include layout/filter-related.html search=define.term attribute='tags' atext=' workbooks' class='sm-txt' %}
+        {%- endif %}
+    </td>
+    {% endif %}
+</tr>
+{% else %}
 <li class="usa-collection__item width-full">
     <div class="padding-x-2 usa-collection__body">
         <b class="usa-collection__heading">{{ define.term }}</b>
@@ -96,6 +145,13 @@
         {% endunless %}
     </div>
 </li>
+{% endif %}
 
 {% endfor %}
+{% if include.table %}
+</tbody>
+</table>
+</div>
+{% else %}
 </ul>
+{% endif %}

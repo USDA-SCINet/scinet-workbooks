@@ -1,0 +1,10 @@
+{%- if include.related %}
+{%- assign related = include.related %}
+{%- capture relationtype %}{% if include.relation == "Previous" %}<span class="render-lg">Prev</span><span class="render-sm">Previous{% if include.section %} Section{% endif %}:{% elsif include.relation == "introduction" %}Intro<span class="render-sm">:{% else %}{{ include.relation | default: "Index" }}<span class="render-sm">:{% endif %}{%- endcapture %}
+<li class="usa-sidenav__item">
+    <a href="{{ related.url  | relative_url }}" class="{{ include.class | default: '' }}" title="{{ include.relation | default: 'Index' }}{% if include.section %} Section{% endif %}: {{ related.title }}"><svg class="usa-icon margin-bottom-neg-05" aria-hidden="true" focusable="false" role="img">
+        <use href="/assets/uswds/img/sprite.svg#{{ include.icon | default: 'first_page' }}"></use>
+      </svg>{{ relationtype }} {{ related.title }}</span>
+    </a>
+</li>
+{%- endif %}

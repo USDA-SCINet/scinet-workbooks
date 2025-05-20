@@ -9,7 +9,7 @@
             Navigation Key
         </button>
     </h4>
-    <div id="nav_icons" class="usa-accordion__content usa-prose allow-overflow">
+    <div id="nav_icons" class="usa-accordion__content usa-prose allow-overflow" hidden>
         <ul class="icon-ul usa-list">
             {% for _icon in site.data.filter['icons'] %}
             {% unless page.filter-names and _icon.type=='selected' %}

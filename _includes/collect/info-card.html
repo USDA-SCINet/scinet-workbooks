@@ -22,10 +22,7 @@
 {% assign wbtags = post.subject %}
 
 {% unless page.index == 0 and override-display == "remove" %}
-<li class="{% if cal_id %}{{ cal_id }}{% endif %} usa-collection__item fullwidth-i{%- if page.filter-names %} fc{% endif %}" {{ datameta }} {% if sort_list %}
-    wb="{% for wb in pwb %}{{ wb }} {% endfor %} all"
-    tagged="{% for tag in ptags %}{{ tag }} {% endfor %}all" type="{% for types in ptypes %}{{ types }} {% endfor %}all"
-    difficulty="{% for lvl in pdifficulties %}{{ lvl }} {% endfor %}all" {% endif %}
+<li class="{% if cal_id %}{{ cal_id }}{% endif %} usa-collection__item fullwidth-i{%- if page.filter-names %} fc{% endif %}" {{ datameta }}
     {%- if fetchjs %}id="{{ post.id }}"{%- endif %}>
 
     {% if post_type == 'media' %}

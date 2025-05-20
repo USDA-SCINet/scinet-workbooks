@@ -2,7 +2,7 @@
 * Including a **content** variable generates the accordion_content div automatically" %&#125
 
 &#123% include accordion title="Finer Content Control" controls="finer-control" {% if item.attr %}expanded="true" {% endif %}%&#125
-<div id="finer-control" class="accordion_content"   markdown='1'>
+<div id="finer-control" class="accordion_content"   markdown='1'{% unless item.attr %} hidden{% endunless %}>
 
 * For more complex content, or finer control over your markdown, include a div element with class `accordion_content`
 * This allows you to add your markdown within the div instead of to a variable
@@ -20,14 +20,14 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 </div>
 
 &#123% include accordion title="Ut enim" controls="ut-enim" %&#125
-<div id="ut-enim" class="accordion_content"   markdown='1'>
+<div id="ut-enim" class="accordion_content"   markdown='1' hidden>
 
 Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
 
 </div>
 
 &#123% include accordion title="Duis aute" controls="duis-aute" %&#125
-<div id="duis-aute" class="accordion_content"   markdown='1'>
+<div id="duis-aute" class="accordion_content"   markdown='1' hidden>
 
 Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
 

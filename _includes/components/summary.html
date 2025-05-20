@@ -5,7 +5,7 @@
 <div class="usa-summary-box" role="region" aria-labelledby="{{ idstring }}">
   <div class="usa-summary-box__body">
     <h3 class="usa-summary-box__heading" id="{{ idstring }}">
-      {{ summary.header | default: "Learning Objectives" }}
+      {{ summary.title | default: "Learning Objectives" }}
     </h3>
     <div class="usa-summary-box__text">
       {{ summary.content | markdownify }}
