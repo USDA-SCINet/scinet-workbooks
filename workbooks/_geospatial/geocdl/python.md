@@ -11,6 +11,34 @@ packages: pygcdl
 wgs: geospatial
 author: Noa Mills
 updated: 2024-05-29
+
+objectives: Learn how to use the Python package for the SCINet Geospatial Common Data Library
+
+overview:
+  applications:
+    - Inegrate
+    - Matching existing formatting easily
+  nomenclature: terms
+  materials:
+    - "**Download Jupyter Notebook:** [pygcdl_tutorial.ipynb](./assets/pygcdl_tutorial.ipynb)"
+    - packages
+  data:
+    - "**Dataset: MODIS NDVI**  
+
+        * Link: [https://doi.org/10.3334/ORNLDAAC/1299](https://doi.org/10.3334/ORNLDAAC/1299)  
+
+        * Details: This data set provides Moderate Resolution Imaging Spectroradiometer (MODIS) normalized difference vegetation index (NDVI) data, smoothed and gap-filled, for the conterminous US for the period 2000-01-01 through 2015-12-31. The data were generated using the NASA Stennis Time Series Product Tool (TSPT) to generate NDVI data streams from the Terra satellite (MODIS MOD13Q1 product) and Aqua satellite (MODIS MYD13Q1 product) instruments. TSPT produces NDVI data that are less affected by clouds and bad pixels."
+    - "**Dataset: PRISM**  
+
+        * Link: [https://prism.oregonstate.edu/](https://prism.oregonstate.edu/)  
+
+        * Details: The PRISM Climate Group gathers climate observations from a wide range of monitoring networks, applies sophisticated quality control measures, and develops spatial climate datasets to reveal short- and long-term climate patterns. The resulting datasets incorporate a variety of modeling techniques and are available at multiple spatial/temporal resolutions, covering the period from 1895 to the present."
+
+hpc: Ceres
+access: OOD
+setup:
+  srun: "srun --reservation=workshop_reservation_name -p ceres -t 05:00:00 -n 1 -N 2 --pty Bash"
+
 ---
 
 
@@ -50,36 +78,8 @@ If you have any questions, problems, or requests related to the python interface
 use the issue tracker on our GitHub repository: 
 [https://github.com/USDA-SCINet/pygcdl](https://github.com/USDA-SCINet/pygcdl). 
 
-### Materials
+{% include overview %}
 
-* **Download Jupyter Notebook**: [GRWG22_GeoCDL.Rmd](./assets/pygcdl_tutorial.ipynb)
-
-{% include packages %}
-
-### Nomenclature
-
-{% include terms %}
-
-### Data Details
-
-* **Dataset: MODIS NDVI**
-  * Link: [https://doi.org/10.3334/ORNLDAAC/1299](https://doi.org/10.3334/ORNLDAAC/1299)
-  * Details: This data set provides Moderate Resolution Imaging Spectroradiometer 
-  (MODIS) normalized difference vegetation index (NDVI) data, smoothed and gap-filled, 
-  for the conterminous US for the period 2000-01-01 through 2015-12-31. The data 
-  were generated using the NASA Stennis Time Series Product Tool (TSPT) to generate 
-  NDVI data streams from the Terra satellite (MODIS MOD13Q1 product) and Aqua 
-  satellite (MODIS MYD13Q1 product) instruments. TSPT produces NDVI data that 
-  are less affected by clouds and bad pixels.
-
-* **Dataset: PRISM**
-  * Link: [https://prism.oregonstate.edu/](https://prism.oregonstate.edu/)
-  * Details: The PRISM Climate Group gathers climate observations from a 
-  wide range of monitoring networks, applies sophisticated quality control 
-  measures, and develops spatial climate datasets to reveal short- and long-term 
-  climate patterns. The resulting datasets incorporate a variety of modeling 
-  techniques and are available at multiple spatial/temporal resolutions, covering 
-  the period from 1895 to the present.
 
 
 ## Tutorial Steps:

@@ -203,7 +203,7 @@ Learning Objectives
 
 #### R markdown file
 
-{% include rmarkdown file='GRWG22_GeoCDL.Rmd' %}
+{% include layout/setup/rmarkdown file='GRWG22_GeoCDL.Rmd' %}
 
 </li>
 <li markdown='1'>
@@ -342,7 +342,7 @@ Basic list
 Rmd file
 
 ```{% raw %}
-{% include rmarkdown file='GRWG22_GeoCDL.Rmd' %}
+{% include layout/setup/rmarkdown file='GRWG22_GeoCDL.Rmd' %}
 {% endraw %}```
 
 </li>

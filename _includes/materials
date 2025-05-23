@@ -15,7 +15,7 @@
     {% unless size == 1 %}<li>{% endunless %}
 
     {% if mat.Rmd %}
-    {% capture rmd %}{% include rmarkdown file=mat.Rmd folder=folder path=mat.path %}{% endcapture %}
+    {% capture rmd %}{% include layout/setup/rmarkdown file=mat.Rmd folder=folder path=mat.path %}{% endcapture %}
             {{ rmd | markdownify }}
     {% else %}
     {{ mat | markdownify }}
