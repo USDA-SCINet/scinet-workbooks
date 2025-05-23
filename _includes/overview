@@ -38,9 +38,11 @@
     </div>
 
     {%- else %}
-    {% assign oname = povref | find: "val", oval %}
+    {% assign basename = oval | capitalize %}
+    {% assign ofetch = povref | find: "val", oval %}
+    {% assign oname = ofetch.title | default: basename %}
     {% assign accname = oval | append: "-acc" %}
-    {%- include accordion title=oname.title class="secondary" controls=accname %}
+    {%- include accordion title=oname class="secondary" controls=accname %}
     {% assign odata = pov[oval] %}
     <div id="{{ accname }}" class="accordion_content" hidden> 
         {% include layout/li-check data=odata %}

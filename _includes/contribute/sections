@@ -9,7 +9,6 @@
 {% assign pagename = page.title %}
 {% for section in components.sections %}
 {% capture sectiontitle %}{{ section.title }}{% if section.pluralize %}s{% endif %}{% endcapture %}
-{% capture accordionclass %}usa-accordion{% unless section.noborder %} accordion-bordered{% endunless %}{% endcapture %}
 {% assign sectionname = section.title %}
 {% assign optionsid = sectiontitle | slugify | append: "-options" %}
 {% assign codeid = sectiontitle | slugify | append: "-code" %}
@@ -17,7 +16,7 @@
 {% if section.intro %}<p class="site-text-intro">{{ section.intro }}</p>{% endif %}
 {% if section.description %}<p>{{ section.description }}</p>{% endif %}
 
-<div class="{{ accordionclass }}">
+<div class="usa-accordion">
 {% unless section.no-preview %}
 {% if section.unexpanded %}
 {% include accordion title="Component Preview" class="primary" controls=optionsid %}

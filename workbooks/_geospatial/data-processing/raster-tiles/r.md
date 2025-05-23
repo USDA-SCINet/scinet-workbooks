@@ -56,7 +56,7 @@ Atlas:
 
 ### Materials
 
-{% include rmarkdown file='GRWG22_RasterTiles.Rmd' %}
+{% include layout/setup/rmarkdown file='GRWG22_RasterTiles.Rmd' %}
 
 {% include packages %}
 

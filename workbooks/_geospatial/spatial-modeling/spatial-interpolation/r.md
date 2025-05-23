@@ -38,7 +38,7 @@ text.
 
 ### Materials
 
-{% include rmarkdown file='GRWG_SpatialInterpolation.Rmd' %}
+{% include layout/setup/rmarkdown file='GRWG_SpatialInterpolation.Rmd' %}
 
 {% include packages %}
 

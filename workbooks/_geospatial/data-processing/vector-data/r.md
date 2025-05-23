@@ -53,7 +53,7 @@ Atlas:
 
 ### Materials
 
-{% include rmarkdown file='GRWG22_VectorData.Rmd' %}
+{% include layout/setup/rmarkdown file='GRWG22_VectorData.Rmd' %}
 
 {% include packages %}
 
