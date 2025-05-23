@@ -163,7 +163,7 @@
 ///   // Set status styles for accordion buttons
 
 @function accord-button-bg($spec, $colval){
-$holdcolor: if($spec != "dark", "#{$colval}", "#{$colval}-#{$spec}");
+$holdcolor: if($spec == "lighter", "#{$colval}-light", "#{$colval}");
 
 @return $holdcolor;
 }
