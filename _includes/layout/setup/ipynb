@@ -5,10 +5,11 @@
 {% assign folder = include.folder | default: 0 %}
 {%- include file_path folder=folder %}
 {% endif %}
+{% unless include.justbullet %}
 **To download the Jupyter Notebook** for this tutorial within Open on Demand, you can use the following lines in the python console:
 ```python
 import urllib.request
 tutorial_name = '{{ jl.notebook }}'
 urllib.request.urlretrieve('https://geospatial.101workbook.org/tutorials/' + tutorial_name, tutorial_name)
-```
-* [Download Notebook]({{ file_path }}/{{ file }})
+``` 
+* {% endunless %}[Download Jupyter Notebook]({{ file_path }}/{{ file }})

@@ -15,24 +15,17 @@ updated: 2024-05-29
 objectives: Learn how to use the Python package for the SCINet Geospatial Common Data Library
 
 overview:
-  applications:
-    - Inegrate
-    - Matching existing formatting easily
-  nomenclature: terms
+  nomenclature: tags
   materials:
-    - "**Download Jupyter Notebook:** [pygcdl_tutorial.ipynb](./assets/pygcdl_tutorial.ipynb)"
-    - packages
-  data:
-    - "**Dataset: MODIS NDVI**  
-
-        * Link: [https://doi.org/10.3334/ORNLDAAC/1299](https://doi.org/10.3334/ORNLDAAC/1299)  
-
-        * Details: This data set provides Moderate Resolution Imaging Spectroradiometer (MODIS) normalized difference vegetation index (NDVI) data, smoothed and gap-filled, for the conterminous US for the period 2000-01-01 through 2015-12-31. The data were generated using the NASA Stennis Time Series Product Tool (TSPT) to generate NDVI data streams from the Terra satellite (MODIS MOD13Q1 product) and Aqua satellite (MODIS MYD13Q1 product) instruments. TSPT produces NDVI data that are less affected by clouds and bad pixels."
-    - "**Dataset: PRISM**  
-
-        * Link: [https://prism.oregonstate.edu/](https://prism.oregonstate.edu/)  
-
-        * Details: The PRISM Climate Group gathers climate observations from a wide range of monitoring networks, applies sophisticated quality control measures, and develops spatial climate datasets to reveal short- and long-term climate patterns. The resulting datasets incorporate a variety of modeling techniques and are available at multiple spatial/temporal resolutions, covering the period from 1895 to the present."
+    - code: pygcdl_tutorial.ipynb
+  packages: packages
+  resources:
+    packages: packages
+    datasets:
+      - name: MODIS NDVI
+        description: "This data set provides Moderate Resolution Imaging Spectroradiometer (MODIS) normalized difference vegetation index (NDVI) data, smoothed and gap-filled, for the conterminous US for the period 2000-01-01 through 2015-12-31. The data were generated using the NASA Stennis Time Series Product Tool (TSPT) to generate NDVI data streams from the Terra satellite (MODIS MOD13Q1 product) and Aqua satellite (MODIS MYD13Q1 product) instruments. TSPT produces NDVI data that are less affected by clouds and bad pixels."
+        url: https://doi.org/10.3334/ORNLDAAC/1299
+      - name: PRISM 
 
 hpc: Ceres
 access: OOD
@@ -80,6 +73,7 @@ use the issue tracker on our GitHub repository:
 
 {% include overview %}
 
+{% include setup %}
 
 
 ## Tutorial Steps:

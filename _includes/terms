@@ -1,12 +1,22 @@
-{% assign ttags = page.terms | default: page.tags %}
-{% assign terms = include.terms | default: ttags %}
+{% if include.terms %}
+{% if include.terms.first %}
+{%- assign terms = include.terms %}
+{% else %}
+{% assign _termfetch = page[include.terms] %}
+{%- assign terms = _termfetch | default: include.terms %}
+{% endif %}
+{% else %}
+{%- assign terms = page.terms | default: page.tags %}
+{% endif %}
+
 {% assign gloss = site.data.glossary['glossary'] %}
+{% assign glossaryattributes = site.data.filter['glossaryattributes'] %}
 {% assign defined = 0 %}
 {% unless include.terms or page.terms or include.taglinks %}
 {% assign defined = 1 %}
 {% endunless %}
 
-{% if include.table %}
+{% if include.table %}{% assign firstterm = terms.first %}
 <div class="usa-table-container flex-scroll">
     <table class="usa-table usa-table--stacked-header width-full">
         {%- if include.title %}
@@ -17,7 +27,9 @@
         <thead>
           <tr>
             <th scope="col">Term</th>
-            <th scope="col">Definition</th>
+            <th scope="col">Definition</th>{% assign termcolarray = "" | split: "" %}
+            {%- if firstterm.term %}{%- for _fatt in firstterm %}{%- assign fatt0 = _fatt[0] %}{%- unless glossaryattributes contains fatt0 %}{% assign fatt0text = fatt0 | replace "-", " " %}{% include layout/components/hashed label=fatt0 text=fatt0text %}{% assign termcolarray = termcolarray | push: hashed %}
+            <th scope="col">{{ fatt0text }}</th>{% endunless %}{%- endfor %}{%- endif %}
             {% if include.table == "linked" %}<th scope="col">Related Tutorials</th>{% endif %}
           </tr>
         </thead>
@@ -30,7 +42,8 @@
 {% if _term.definition %}
 {% assign define = _term %}
 {% else %}
-{% assign defines = gloss | where: "term", _term %}
+{% assign _myterm = _term.term | default: _term %}
+{% assign defines = gloss | where: "term", _myterm %}
 {% if defines.size > 1 %}
 {% assign capcollection = page.collection | capitalize %}
 {% assign define = defines | find_exp:"item", "item.cat == capcollection" %}
@@ -94,8 +107,14 @@
             </ul>
         </li>
         {% endfor %}
+        </ul>
         {% endif %}
     </td>
+    {%- for _col in termcolarray %}
+    <td data-label="{{ _col.text }}">
+        {{ _term[_col.label] | default: "" }}
+    </td>
+    {% endfor %}
     {% if include.table == "linked" %}
     <td data-label="Related Tutorials">
         {%- if define.tutorial %}
@@ -107,6 +126,8 @@
     {% endif %}
 </tr>
 {% else %}
+{%- capture termatt %}{% if _term.term %}{%- for att in _term %}{%- assign att0 = att[0] %}{%- unless glossaryattributes contains att0 %}<li class="usa-collection__meta-item"><b>{{ att0 | replace: "-", " " }}:</b> {{ _term[att0] }}</li>{%- endunless %}{%- endfor %}{% if _term.link %}<li class="usa-collection__meta-item"><a href="{{ _term.link }}" class="arrow sm-txt">{{ _term.term }} Tutorial</a></li>{% endif %}{% endif %}{%- endcapture %}
+{% if termatt == "" %}{% assign termatts = nil %}{% else %}{% assign termatts = termatt %}{% endif %}
 <li class="usa-collection__item width-full">
     <div class="padding-x-2 usa-collection__body">
         <b class="usa-collection__heading">{{ define.term }}</b>
@@ -128,8 +149,9 @@
         </ul>
         {% endif %}
         </p>
-        {% if define.tutorial or defined == 1 %}
+        {% if define.tutorial or defined == 1 or termatts %}
         <ul class="usa-collection__meta">
+            {{ termatts }}
             {% if define.tutorial %}
             <li class="usa-collection__meta-item">
                 <a href="{{ define.tutorial.url }}" class="arrow sm-txt">{{ define.tutorial.title | default: "Related Tutorial"}}</a>

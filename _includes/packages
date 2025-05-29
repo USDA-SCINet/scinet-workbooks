@@ -1,51 +1,13 @@
-{%- assign terms = include.packages | default: page.packages %}
+{% if include.terms %}
+{% if include.terms.first %}
+{%- assign terms = include.terms %}
+{% else %}
+{% assign _termfetch = page[include.terms] %}
+{%- assign terms = _termfetch | default: include.terms %}
+{% endif %}
+{% else %}
+{%- assign terms = page.packages %}
+{% endif %}
 {%- assign gloss = site.data.packages['packages'] %}
-{%- assign packagearray = "" | split: "" %}<div class="usa-table-container  flex-scroll" tabindex="0">
-    <table class="usa-table usa-table--sticky  usa-table--stacked-header width-full">
-        <caption>
-            {{ include.title | default: 'Primary Libraries/Packages' }}
-        </caption>
-        <thead>
-            <tr>{% if include.sortable %}
-                <th data-sortable scope="col" role="columnheader">Name</th>
-                <th data-sortable scope="col" role="columnheader">Description</th>
-                <th data-sortable scope="col" role="columnheader">Language</th>
-                <th data-sortable scope="col" role="columnheader">Tutorials</th>
-                {% else %}
-                <th role="columnheader">Name</th>
-                <th role="columnheader">Description</th>
-                <th role="columnheader">Tutorials</th>
-                {% endif %}
-            </tr>
-        </thead>
-        <tbody>
-            {% for _term in terms %}
-            <tr>
-                {% assign defines = gloss | where: "name", _term %}
-            {% if defines.size > 0 %}
-                {% if defines.size > 1 and page.language %}
-                        {% assign define = defines | find_exp:"item", "item.lang == page.language" %}
-                {% else %}
-                    {% assign define = defines[0] %}     
-                {% endif %}
-                <th scope="row" {% if include.sortable %} role="rowheader"{% endif %}>
-                    {% if define.url %}<a href="{{ define.url }}">{{ define.name }}</a>{% else %}{{ define.name }}{% endif %}
-                </th>
-                <td>{{ define.description }}</td>
-                {% if include.sortable %}<td>{{ define.lang }}</td>{% endif %}
-                <td>{% include layout/filter-related.html search=define.name attribute='packages' atext=' workbooks' %}</td>
-            {% else %}
-            <th scope="row" {% if include.sortable %} role="rowheader"{% endif %}>
-                {{ _term }}
-            </th>
-            <td></td>
-            {% if include.sortable %}<td></td>{% endif %}
-            <td>{% include layout/filter-related.html search=_term attribute='packages' atext=' workbooks' %}   </td>
-            {% endif %}
-        </tr>
-            {% endfor %}
-
-        </tbody>
-    </table>
-
-    </div>
+{%- assign packagearray = "" | split: "" %}
+{%- include components/datatable.html terms=terms gloss=gloss filter='packages' title="Primary Libraries/Packages" sortable=include.sortable %}

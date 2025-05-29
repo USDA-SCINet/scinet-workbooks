@@ -12,6 +12,19 @@ tags: [Vector, CRS, Spatial join]
 packages: [geopandas, plotnine]
 
 updated: 2022-10-07 
+
+overview:
+  nomenclature: terms
+  materials:
+    - ipynb: GRWG22_VectorData.ipynb
+  packages: packages
+  data:
+    - name: "National Interagency Fire Center's Historic Perimeters dataset"
+      description: The original dataset contains perimeters of wildfires in the US from 2000-2018 as a polygon feature collection. For this tutorial, the wildfire perimeters in CA during 2018 were extracted. 
+      url: https://data-nifc.opendata.arcgis.com/datasets/nifc::historic-perimeters-combined-2000-2018-geomac/explore
+    - name: "US EPA's Air Quality System (AQS) database"
+      description: "PM2.5 concentration data from this database covering CA in 2018 were retrieved and pre-processed for this tutorial."
+      url: https://aqs.epa.gov/aqsweb/documents/data_api.html
 ---
 
 

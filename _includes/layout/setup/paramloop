@@ -1,0 +1,5 @@
+{%- assign parameterloop = include.paramloop %}{%- assign _app = include.app %}
+{%- if parameterloop.session %}{%- for _s in parameterloop.session %}{% include layout/setup/param param=_s app=_app %}
+{%- endfor %}{%- elsif p.hpc %}{% include layout/setup/param param=parameterloop app=_app hpc=p.hpc %}{%- else %}{% include layout/setup/param param=parameterloop app=_app hpc="Atlas" %}
+{% include layout/setup/param param=parameterloop app=_app hpc="Ceres" %}
+{%- endif %}

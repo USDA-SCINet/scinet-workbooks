@@ -5,12 +5,12 @@
 {% assign folder = include.folder | default: 0 %}
 {%- include file_path folder=folder %}
 {% endif %}
-
+{% unless include.justbullet %}
 **To download the Rmarkdown file** for this tutorial within Open on Demand, you can use the following lines:  
 ```r
 library(httr)
 tutorial_name <- '{{ file }}'
 GET(paste0('{{ file_path }}',tutorial_name), 
     write_disk(tutorial_name))
-```
-* [Download RMarkdown]({{ file_path }}/{{ file }})
+``` 
+* {% endunless %}[Download RMarkdown]({{ file_path }}/{{ file }})

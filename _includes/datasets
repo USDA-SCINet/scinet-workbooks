@@ -1,0 +1,12 @@
+{% if include.terms %}
+{% if include.terms.first %}
+{%- assign terms = include.terms %}
+{% else %}
+{% assign _termfetch = page[include.terms] %}
+{%- assign terms = _termfetch | default: include.terms %}
+{% endif %}
+{% else %}
+{%- assign terms = page.datasets %}
+{% endif %}
+{%- assign gloss = site.data.datasets['datasets'] %}
+{%- include components/datatable.html terms=terms title="Datasets" gloss=gloss %}

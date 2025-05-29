@@ -35,7 +35,7 @@ submitting many job submission scripts, see [this tutorial](https://geospatial.1
 
 ### Materials
 
-{% include layout/setup/rmarkdown file='GRWG22_ZonalStats_wSLURM.Rmd' %}
+{% include layout/setup/rmd file='GRWG22_ZonalStats_wSLURM.Rmd' %}
 
 {% include packages %}
 

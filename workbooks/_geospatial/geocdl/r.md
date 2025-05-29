@@ -50,7 +50,7 @@ use the issue tracker on our GitHub repository:
  
 ### Materials
 
-{% include layout/setup/rmarkdown file='GRWG22_GeoCDL.Rmd' %}
+{% include layout/setup/rmd file='GRWG22_GeoCDL.Rmd' %}
 
 {% include packages %}
 

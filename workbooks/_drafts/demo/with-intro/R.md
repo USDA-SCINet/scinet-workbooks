@@ -20,7 +20,7 @@ Tutorial overview
 
 ### Materials
 
-{% include layout/setup/rmarkdown file='demo.Rmd' %}
+{% include layout/setup/rmd file='demo.Rmd' %}
 
 {% include packages %}
 

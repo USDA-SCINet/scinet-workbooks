@@ -64,8 +64,5 @@ icons:
   - type: selected
     icon: /assets/uswds/img/usa-icons/check_circle.svg
 
-overview:
-  - title: Key concepts
-    val: concepts
-  - title: Tools/Technologies
-    val: technologies
+
+glossaryattributes: [term,definition,link,tutorial]

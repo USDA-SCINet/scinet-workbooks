@@ -1,0 +1,25 @@
+{%- assign p = include.p %}
+{%- assign setup = include.setup %}
+{% capture cluster %}{% if p.hpc %}{{ p.hpc }} {% endif %}{%- endcapture %}
+
+{%- if p.access == "OOD" %}
+1. **Login to {% if p.hpc %}[{{ cluster}}Open OnDemand]({% if p.hpc == "Atlas" %)https://atlas-ood.hpc.msstate.edu/{% else %}http://ceres-ood.scinet.usda.gov/{% endif %}).**{% else %}Open OnDemand.** ([Ceres](http://ceres-ood.scinet.usda.gov/), [Atlas](https://atlas-ood.hpc.msstate.edu/)){% endif %} For more information on login procedures for web-based SCINet access, see the [SCINet access user guide](https://scinet.usda.gov/guides/access/web-based-login).  
+{%- if setup.shell or setup.srun %}
+1. **Open a command-line session** by clicking on “Clusters” -> “{{ cluster}}Shell Access” on the top menu. This will open a new tab with a command-line session on the {{ cluster }}login node.   
+{%- endif %}
+{%- endif %}
+{%- if setup.shell or setup.srun %}
+1. **Request resources on a compute node** by running the following command. {% include layout/setup/resources srun=setup.srun %}
+{%- endif %}    
+{% if setup.mkdir %}
+1. {% include layout/setup/mkdir mkdir=setup.mkdir %}
+{%- endif %}
+{%- if setup.conda %}
+1. {% include layout/setup/conda conda=setup.conda %}
+{%- endif %}
+{%- if setup.jupyterlab %}
+{% include layout/setup/jupyterlab jl=setup.jupyterlab %}
+{%- endif %}
+{%- if setup.rstudio %}
+{% include layout/setup/rstudio rs=setup.rstudio %}
+{%- endif %}
