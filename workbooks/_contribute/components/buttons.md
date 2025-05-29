@@ -72,7 +72,8 @@ components:
               txt: "Outlined Button"
               # attr: "included details"
               # sections: "custom information"
-    
+
+published: false   
 ---
 
 Additional guidance can be found on the [USWDS component page](https://designsystem.digital.gov/components/button/)

@@ -25,11 +25,21 @@ overview:
     - Matching existing formatting easily
   nomenclature: terms
   materials:
-    - Rmd: filename.Rmd
+    - code: filename.Rmd
     - "**Download Jupyter Notebook:** [pygcdl_tutorial.ipynb](./assets/pygcdl_tutorial.ipynb)"
     - "[This is a pdf](./assets/demofile.pdf)"
     - Just some text
 
+
+custom-terms:
+  - term: Custom
+    Key-difference: "You can add the definition manually if you do not want to include it in the glossary for some reason." 
+    definition: "This definition was added manually using the 'definition' variable" 
+    Section-titles: "Section titles are automatically derived from the variable names"
+  - term: Terminal
+    link: "/computing-skills/command-line/cli-interface/terminal/"
+    Key-difference: "This definition was automatically generated from the glossary." 
+    Examples: "GNOME Terminal, Windows Terminal, iTerm2"
 ---
 
 *  **When to use the overview component**
@@ -106,7 +116,7 @@ overview:
     - Matching existing formatting easily
   nomenclature: terms
   materials:
-    - Rmd: filename.Rmd
+    - code: filename.Rmd
     - "**Download Jupyter Notebook:** [pygcdl_tutorial.ipynb](./assets/pygcdl_tutorial.ipynb)"
     - "[This is a pdf](./assets/demofile.pdf)"
     - Just some text
@@ -179,8 +189,7 @@ Learning Objectives
 
 <ul class="usa-collection collection" markdown='1'>
 
-    {% include term term="Custom" Key-difference="You can add the definition manually if you do not want to include it in the glossary for some reason." definition="This definition was added manually using the 'definition' variable" section-titles="Section titles are automatically derived from the variable names" %}
-    {% include term term="Terminal" link="/computing-skills/command-line/cli-interface/terminal/" Key-difference="This definition was automatically generated from the glossary." Examples="GNOME Terminal, Windows Terminal, iTerm2" %}
+  {% include terms terms="custom-terms" %}
 
 </ul>
 
@@ -203,7 +212,7 @@ Learning Objectives
 
 #### R markdown file
 
-{% include layout/setup/rmarkdown file='GRWG22_GeoCDL.Rmd' %}
+{% include layout/setup/rmd file='GRWG22_GeoCDL.Rmd' %}
 
 </li>
 <li markdown='1'>
@@ -299,10 +308,18 @@ Basic terms component referencing a custom variable
 ```{% raw %}
 ---
 ## frontmatter
-specified-frontmatter: [Terminal, Welcome Message, Prompt, Command Line]
+specified-frontmatter:
+  - term: Custom
+    Key-difference: "You can add the definition manually if you do not want to include it in the glossary for some reason." 
+    definition: "This definition was added manually using the 'definition' variable" 
+    Section-titles: "Section titles are automatically derived from the variable names"
+  - term: Terminal
+    link: "/computing-skills/command-line/cli-interface/terminal/"
+    Key-difference: "This definition was automatically generated from the glossary." 
+    Examples: "GNOME Terminal, Windows Terminal, iTerm2"
 ---
 
-{% include terms terms=page.specified-frontmatter taglinks="true" %}{% endraw %}
+{% include terms terms=specified-frontmatter taglinks="true" %}{% endraw %}
 ```
 
 </li>
@@ -342,7 +359,7 @@ Basic list
 Rmd file
 
 ```{% raw %}
-{% include layout/setup/rmarkdown file='GRWG22_GeoCDL.Rmd' %}
+{% include layout/setup/rmd file='GRWG22_GeoCDL.Rmd' %}
 {% endraw %}```
 
 </li>
@@ -354,7 +371,7 @@ Materials component
 ---
 ## frontmatter
 materials:
-  - Rmd: filename.Rmd
+  - rmd: filename.Rmd
   - "**Download Jupyter Notebook:** [pygcdl_tutorial.ipynb](./assets/pygcdl_tutorial.ipynb)"
   - "[This is a pdf](./assets/demofile.pdf)"
   - Just some text
