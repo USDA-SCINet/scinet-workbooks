@@ -21,7 +21,7 @@
             <tr>
                 {% if _term.description %}
                 <th scope="row" {% if include.sortable %} role="rowheader"{% endif %}>
-                    {% if _term.url %}<a href="{{ _term.url }}">{{ _term.name }}</a>{% else %}{{ _term.name }}{% endif %}
+                    {% if _term.url %}<a href="{{ _term.url }}">{{ _term.name | default: _term.term }}</a>{% else %}{{ _term.name | default: _term.term }}{% endif %}
                 </th>
                 <td>{{ _term.description }}{% if _term.details %}
                     {% include layout/li-check data=_term.details %}{% endif %}</td>
