@@ -8,9 +8,15 @@ language: Python
 
 tags: [Parallel processing, Raster]
 packages: [rioxarray, rasterio, multiprocessing, dask]
-terms: [Parallel processing, Core, Tile, NDVI]
 
 updated: 2022-10-07 
+
+overview:
+  materials:
+    - code: GRWG22_RasterTiles.ipynb
+  resources:
+    packages: packages
+  nomenclature: [Parallel processing, Core, Tile, NDVI]
 ---
 
 
@@ -29,15 +35,7 @@ allocated to the launched JupyterLab Server session. If you are interested in se
 an example on how to submit your own SLURM job, please see 
 [this tutorial](/data-processing/slurm/job-arrays/python).
 
-### Materials
-
-* **Download Jupyter Notebook**: [GRWG22_RasterTiles.ipynb](./assets/GRWG22_RasterTiles.ipynb)
-
-{% include packages %}
-
-### Nomenclature
-
-{% include terms %}
+{% include overviews %}
 
 ## Analysis Steps
 * Open Imagery and Setup Tiles - Open a GeoTIFF of Landsat 7 imagery and divide
@@ -50,8 +48,7 @@ an example on how to submit your own SLURM job, please see
   * Option 2: using `Dask`
 * Visualize NDVI results - View the NDVI values in tiles as a whole image.
 
-<ol class="usa-process-list">
-  <li class="usa-process-list__item"  markdown='1'>  
+<div class="process-list" markdown='1'>  
 
 ### Import Libraries / Packages
 
@@ -203,8 +200,7 @@ for i in range(num_tiles[0]):
         nir_red_tile.rio.to_raster('tile_{0}_{1}.tif'.format(i,j))
 ```
 
-  </li>
-  <li class="usa-process-list__item"  markdown='1'>  
+ 
 
 ### Defining NDVI function
 
@@ -222,8 +218,7 @@ def normalized_diff_r(fname):
 
 ```
 
-  </li>
-  <li class="usa-process-list__item"  markdown='1'>  
+ 
 
 ### Comparing serial and parallel processing times
 
@@ -279,8 +274,7 @@ print('Processing time: {:.2f} seconds'.format(et - st))
 Processing time: 3.23 seconds
 ```
 
-  </li>
-  <li class="usa-process-list__item"  markdown='1'>  
+ 
 
 ### Visualize results
 
@@ -300,8 +294,7 @@ merged.plot.imshow(cmap='YlGn')
 
 ![png](./assets/img/Session8_Tutorial2_8_1.png)
 
-  </li>
-  <li class="usa-process-list__item"  markdown='1'>  
+ 
 
 ### Parallel - Dask
 
@@ -382,8 +375,7 @@ NDVI.plot.imshow(cmap='YlGn')
 
 ![png](./assets/img/Session8_Tutorial2_14_1.png)
 
-</li>
-</ol>
+</div>
 
 ## Continue to explore
 

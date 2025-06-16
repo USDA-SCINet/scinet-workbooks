@@ -10,6 +10,13 @@ tags: [GeoCDL, SLURM, Zonal statistics]
 packages: [geopandas, rasterstats]
 
 updated: 2022-09-29 
+
+overview:
+  materials:
+    - code: GRWG22_ZonalStats_wSLURM.ipynb
+  nomenclature: tags
+  resources:
+    datasets: [US Census Cartographic Boundary Files, PRISM]
 ---
 
 ## Overview
@@ -28,33 +35,7 @@ across as many cores and run our zonal statistics Python script on each one.
 If you prefer to have a python script handle looping over your data inputs and 
 submitting many job submission scripts, see [this tutorial](../job-arrays/python).
 
-### Materials
-
-* **Download Jupyter Notebook**: [GRWG22_ZonalStats_wSLURM.ipynb](./assets/GRWG22_ZonalStats_wSLURM.ipynb)
-
-{% include packages %}
-
-### Nomenclature
-
-{% include terms %}
-
-### Data Details
-
-* **Data:** US Census Cartographic Boundary Files
-  * Link: https://www.census.gov/geographies/mapping-files/time-series/geo/cartographic-boundary.html
-  * Other Details: The cartographic boundary files are simplified representations 
-    of selected geographic areas from the Census Bureau’s MAF/TIGER geographic 
-    database. These boundary files are specifically designed for small scale 
-    thematic mapping. 
-  
-* **Data:** PRISM
-  * Link: https://prism.oregonstate.edu/
-  * Other Details: The PRISM Climate Group gathers climate observations from a 
-    wide range of monitoring networks, applies sophisticated quality control measures, 
-    and develops spatial climate datasets to reveal short- and long-term climate 
-    patterns. The resulting datasets incorporate a variety of modeling techniques 
-    and are available at multiple spatial/temporal resolutions, covering the period 
-    from 1895 to the present.
+{% include overviews %}
 
 ## Analysis Steps
 
@@ -68,8 +49,7 @@ submitting many job submission scripts, see [this tutorial](../job-arrays/python
 * Check results - Monitor the SLURM queue until your job is complete and then 
   ensure your job executed successfully.
 
-<ol class="usa-process-list">
-  <li class="usa-process-list__item"  markdown='1'>  
+<div class="process-list" markdown='1'>  
 
 ### Install packages and download data
 
@@ -123,8 +103,7 @@ You may now exit python by typing:
 quit()
 ```
 
-  </li>
-  <li class="usa-process-list__item"  markdown='1'>  
+ 
 
 ### Write and save a serial python script that accepts command line arguments
 
@@ -171,8 +150,7 @@ zs_gpd = gpd.GeoDataFrame.from_features(zs_gj)
 zs_gpd.to_file('stats_' + str(args.year) + '.shp')
 ```
 
-  </li>
-  <li class="usa-process-list__item"  markdown='1'>  
+ 
 
 ### Write and save a SLURM job submission script
 
@@ -232,8 +210,7 @@ your own job ID or setting memory requirements. Check out the
 to see more examples on how to populate job submission scripts on Ceres.
 
 
-  </li>
-  <li class="usa-process-list__item"  markdown='1'>  
+ 
 
 ### Submit your job
 
@@ -252,8 +229,7 @@ sbatch zonal_stats.sh
 Submitted batch job 8145006
 ```
 
-  </li>
-  <li class="usa-process-list__item"  markdown='1'>  
+ 
 
 ### Watch the queue
 
@@ -289,8 +265,7 @@ If you do NOT see jobs listed in the queue: you do not have jobs currently in th
 queue. If you submitted jobs but they are not listed, then they completed - either
 successfully or unsuccessfully. 
 
-  </li>
-  <li class="usa-process-list__item"  markdown='1'>  
+ 
 
 ### Check results
 
@@ -314,5 +289,4 @@ result.plot('mean')
 ![png](./assets/img/Session8_Tutorial3_21_1.png)
     
 
-</li>
-</ol>
+</div>

@@ -1,21 +1,20 @@
 ---
 
 title: 'Spatial modeling with machine learning - Python'
-description: "(Page description here)"
+description: "This tutorial will implement and compare machine learning techniques with two approaches to including spatial proximity for spatial modeling tasks"
 type: interactive tutorial
 author: Heather Savoy
 
-tags: [spatial interpolation, Python]
+tags: [Spatial Interpolation, Random Forest]
 packages: [pandas, geopandas, scikit-learn, plotnine]
+code: GRWG23_SpatialInterpolation_python.ipynb
 
 updated: 2024-01-04
 language: Python
+
+overview: [nomenclature, packages, materials]
+
 ---
-
-
-
-**Last Update:** 4 January 2024 <br />
-**Download Jupyter Notebook**: [GRWG23_SpatialInterpolation_python.ipynb](./assets/GRWG23_SpatialInterpolation_python.ipynb)
 
 ## Overview
 
@@ -23,33 +22,20 @@ This tutorial will implement and compare machine learning techniques with two ap
   * Spatial interpolation from point observations
   * Spatial prediction from point observations and gridded covariates
 
-{% include packages %}
-
-## Nomenclature
-
-{% include terms %}
-
-  * *(Spatial) Interpolation*: Using observations of dependent and
-    independent variables to estimate the value of the dependent
-    variable at unobserved independent variable values. For spatial
-    applications, this can be the case of having point observations
-    (i.e., variable observations at known x-y coordinates) and then
-    predicting a gridded map of the variable (i.e., estimating the
-    variable at the remaining x-y cells in the study area).
-  * *Random Forest*: A supervised machine learning algorithm that 
-    uses an ensemble of decision trees for regression or 
-    classification. 
+{% include overviews %}
 
 ## Tutorial Steps
 
-  * 1\. **[Read in and visualize point observations](#step_1)**
-  * 2\. **[Random Forest for spatial interpolation](#step_2)**
-    Use Random Forest to interpolate zinc concentrations across the study area in two ways:
-    * 2.a. *RFsp*: distance to all observations
-    * 2.b. *RFSI*: n observed values and distance to those n observation locations
-  * 3\. **[Bringing in gridded covariates](#step_3)**
+* Read in and visualize point observations
+* Random Forest for spatial interpolation  
+  Use Random Forest to interpolate zinc concentrations across the study area in two ways:
+    * *RFsp*: distance to all observations
+    * *RFSI*: n observed values and distance to those n observation locations
+* Bringing in gridded covariates
 
-## Step 0: Load libraries and define function
+<div class="process-list" markdown='1'> 
+
+### Load libraries and define function
 
 First, we will import required packages and set a large default figure size. We will also define a function to print model metrics.
 
@@ -83,8 +69,7 @@ def print_metrics(y_test, y_pred):
     print("R^2 = {0:3.2f}, RMSE = {1:5.0f}".format(r2,rmse))
 ```
 
-<a id='step_1'></a>
-## Step 1: Read in and visualize point observations
+### Read in and visualize point observations
 
 We will open three vector datasets representing the point observations, the grid across which we want to predict, and the location of the river surrounding the study area. 
 
@@ -123,12 +108,11 @@ Let’s take a quick look at the dataset. Below is a map of the study area grid 
 
 
 
-<a id='step_2'></a>
-## Step 2: Random Forest for spatial interpolation
+### Random Forest for spatial interpolation
 
 We will explore two methods from recent literature that combine spatial proximity information as variables in fitting Random Forest models for spatial interpolation. 
 
-### Step 2a: *RFsp*: distance to all observations
+#### *RFsp*: distance to all observations
 
 First, we will implement the *RFsp* method from [Hengl et al 2018](https://doi.org/10.7717/peerj.5518). This method involves using the distance to every observation as a predictor. For example, if there are 10 observations of the target variable, then there would be 10 predictor variables with the ith predictor variable representing the distance to the ith observation. 
 
@@ -566,7 +550,7 @@ meuse_grid['pred_RFsp'] = tuned_RFsp.predict(grid_distances)
 
 
 
-### 2b: *RFSI*: n observed values and distance to those n observation locations
+#### *RFSI*: n observed values and distance to those n observation locations
 
 Now, we will try the the *RFSI* method from [Sekulić et al 2020](https://doi.org/10.3390/rs12101687). In this method, instead of using distances to *all* observations as our predictors, we will use distances to the _n_ closest observations as well as the observed values at those locations as our predictors.
 
@@ -1000,8 +984,7 @@ meuse_grid_long = pd.melt(meuse_grid, id_vars= 'geometry', value_vars=['pred_RFs
 
 
 
-<a id='step_3'></a>
-## Step 3: Bringing in gridded covariates
+### Bringing in gridded covariates
 
 This dataset has three covariates supplied with the grid and the observations:
 * dist: the distance to the river
@@ -1096,3 +1079,5 @@ meuse_grid_long = pd.melt(meuse_grid, id_vars= 'geometry', value_vars=['pred_RFs
 
 
 Use the covariates to create a `RFsp_wcov` model and add it to the figure. How do the metrics compare to the other results?
+
+</div>

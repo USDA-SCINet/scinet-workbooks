@@ -8,7 +8,6 @@ language: bash
 
 tags: [Raster]
 packages: GDAL
-
 terms:
   - term: Raster
     definition: A system for defining geospatial coordinates. Also known as a spatial reference system.
@@ -17,10 +16,12 @@ terms:
   - term: Data type
     definition: If raster values are stored as integers or floating point numbers, if they are signed, and how many bits are used to store a value.
 
-
 wgs: geospatial 
 
 updated: 2023-09-17 
+
+overview: [packages, nomenclature]
+
 ---
 
 
@@ -33,6 +34,10 @@ are for direct use of the Geospatial Data Abstraction Library (GDAL) which is a
 library that is often used by other geospatial software including R packages, 
 Python packages, QGIS, and ESRI products. 
 
+{% include overviews %}
+
+## Getting Started
+
 Both Atlas and Ceres have GDAL installed as a module. To start 
 using GDAL on either cluster, load the module with the following command:
 
@@ -40,22 +45,14 @@ using GDAL on either cluster, load the module with the following command:
 module load gdal
 ```
 
-{% include packages %}
-
-### Nomenclature
-
-{% include terms %}
-
-
-## Sections
+## Tutorial Sections
 
 * Print file properties of raster datasets
 * Effects of data types on file sizes
 * Effects of tiles on cropping execution time
 * Effects of virtual rasters on cropping execution time
 
-<ol class="usa-process-list">
-  <li class="usa-process-list__item"  markdown='1'>  
+<div class="process-list" markdown='1'> 
 
 ### Print file properties of raster datasets
 
@@ -145,16 +142,16 @@ properties discernable from this output that we will be focusing on are:
 
 Here is a table summarizing these properties from several of the GeoCDL datasets:
 
-| Dataset     | File format | Data type           | X-Y dimensions  | Block size  |
+{% include table content="| Dataset     | File format | Data type           | X-Y dimensions  | Block size  |
 |:--          |:--          |:--                  |:--              |:--          |
-| DaymetV4    | .nc         | Float32             | 7814, 8075      | 1000x1000   | 
-| GTOPO       | .dem        | Int16               | 4800, 6000[^1]  | 4800x1      | 
-| NASS CDL    | .tif        | Byte                | 153811, 96523   | 512x512     | 
-| NLCD        | .img        | Byte                | 161190, 104424  | 512x512     | 
-| PRISM       | .bil        | Float32             | 1405, 621       | 1405x1      | 
-| SMAP-HB 1km | .nc         | Float32             | 6996, 3120      | 1400x624    | 
-| SRTM        | .bil        | Int16               | 3601,3601[^1]   | 3601x1      | 
-| VIP         | .hdf        | Int16, UInt16, Int8 | 3600, 7200      | 512x512     | 
+| DaymetV4    | .nc         | Float32             | 7814, 8075      | 1000x1000   |
+| GTOPO       | .dem        | Int16               | 4800, 6000[^1]  | 4800x1      |
+| NASS CDL    | .tif        | Byte                | 153811, 96523   | 512x512     |
+| NLCD        | .img        | Byte                | 161190, 104424  | 512x512     |
+| PRISM       | .bil        | Float32             | 1405, 621       | 1405x1      |
+| SMAP-HB 1km | .nc         | Float32             | 6996, 3120      | 1400x624    |
+| SRTM        | .bil        | Int16               | 3601,3601[^1]   | 3601x1      |
+| VIP         | .hdf        | Int16, UInt16, Int8 | 3600, 7200      | 512x512     |" %}
 
 
 [^1]: This large dataset is stored in multiple individual files covering different geographic areas. The properties listed here are for one of the individual files. 
@@ -164,8 +161,6 @@ The following sections will explore some file storage implications for data type
 and computation time implications for block sizes.
  
 
-  </li>
-  <li class="usa-process-list__item"  markdown='1'>  
 
 ### Effects of data types on file sizes
 
@@ -223,18 +218,16 @@ this PRISM file. Ultimately, scaling by 100 and saving the result as a `UInt16` 
 the best balance of reducing file size and preventing data loss out of all scenarios
 considered.
 
-| Data type | Writing error | File size (MB)  | Scaling factor -> RMSE from <br />original file (% pixels lost) |
+{% include table content="| Data type | Writing error | File size (MB)  | Scaling factor -> RMSE from original file (% pixels lost) |
 |:--        |:--            |:--              |:--                                                        |
-| `Byte`      | Warning: detected values <br />outside of the limits of datatype <br />INT1U (for all scaling factors)| 0.873 | 1 (None) -> 0.56 (1.2%) <br />10 -> 0.054 (70%) <br />100 -> 0.0042 (92%) |
+| `Byte`      | Warning: detected values outside of the limits of datatype INT1U (for all scaling factors) | 0.873 | 1 (None) -> 0.56 (1.2%) <br />10 -> 0.054 (70%) <br />100 -> 0.0042 (92%) |
 | `UInt16`    |               | 1.7             | 1 (None) -> 0.56 <br />10 -> 0.056 <br />100 -> 0.0057 |
 | `Int16`     | Warning: detected values <br />outside of the limits of datatype <br />INT2S (for scaling factor = 100) | 1.7 | 1 (None) -> 0.56 <br />10 -> 0.056 <br />100 -> 0.0057 (0.3%) |
 | `UInt32`    |               | 3.5             | 1 (None) -> 0.56 <br />10 -> 0.056 <br />100 -> 0.0057 |
 | `Int32`     |               | 3.5             | 1 (None) -> 0.56 <br />10 -> 0.056 <br />100 -> 0.0057 |
-| `Float32` <br />(original data type) | | 3.5  | N/A |
+| `Float32` <br />(original data type) | | 3.5  | N/A |" %}
 
 
-  </li>
-  <li class="usa-process-list__item"  markdown='1'>  
 
 ### Effects of tiles on cropping execution time
 
@@ -273,14 +266,13 @@ amount of the entire raster to cover the small cropping area, a small number of
 local 512x512 tiles instead of many 153811x1 strips across CONUS. So this computation time benefit
 will depend on the relative sizes of the blocks, the cropping area, and the original raster extent. 
 
-| Tile/block size | Computation time (s)  |
+{% include table content="| Tile/block size | Computation time (s)  |
 |:--              |:--                    |
 | 512x512         | ~0.8                  |
-| 153811x1        | ~1.5                  |
+| 153811x1        | ~1.5                  |" %}
 
 
-  </li>
-  <li class="usa-process-list__item"  markdown='1'>  
+  
 
 ### Effects of virtual rasters on cropping execution time
 
@@ -309,12 +301,11 @@ gdalwarp -crop_to_cutline -cutline input.shp interim.vrt output.tif
 This generates the same result as making the interim GeoTIFF instead of the VRT, but the
 VRT method takes less than 1 second instead of minutes. 
 
-| VRT | Task                                    | Computation time (s)  |
+{% include table content="| VRT | Task                                    | Computation time (s)  |
 |:--  |:--                                      |:--                    |
 | N   | Creating the tiled GeoTIFF (several GB) | ~ 4.5 min             |
 | N   | Cropping the tiled GeoTIFF              | < 1 sec               |
 | Y   | Creating the tiled VRT (37 KB)          | < 1 sec               |
-| Y   | Cropping the tiled VRT:                 | < 1 sec               |
+| Y   | Cropping the tiled VRT:                 | < 1 sec               |" %}
 
-</li>
-</ol>
+</div>

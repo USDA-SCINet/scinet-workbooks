@@ -10,8 +10,19 @@ language: R
 
 tags: [Vector,CRS,Spatial join]
 packages: [sf, USAboundaries, ggplot2]
+datasets:
+  - name: "National Interagency Fire Center's Historic Perimeters dataset"
+    description: The original dataset contains perimeters of wildfires in the US from 2000-2018 as a polygon feature collection. For this tutorial, the wildfire perimeters in CA during 2018 were extracted. 
+    url: https://data-nifc.opendata.arcgis.com/datasets/nifc::historic-perimeters-combined-2000-2018-geomac/explore
+  - name: "US EPA's Air Quality System (AQS) database"
+    description: "PM2.5 concentration data from this database covering CA in 2018 were retrieved and pre-processed for this tutorial."
+    url: https://aqs.epa.gov/aqsweb/documents/data_api.html
 
+code: GRWG22_VectorData.Rmd
 updated: 2022-10-07 
+
+overview: [nomenclature, packages-datasets,materials]
+
 ---
 
 
@@ -27,11 +38,14 @@ determine which stations observed unhealthy concentrations of small particulate
 matter (PM2.5) in the atmosphere around the time
 of the Camp Fire in northern CA in 2018. 
 
-### Context
+{% include overviews %}
+
+## Getting Started
 
 This tutorial assumes you are running this Rmarkdown file in RStudio Server. The 
 easiest way to do that is with Open OnDemand (OoD) on [Ceres](http://ceres-ood.scinet.usda.gov/)
 or [Atlas](https://atlas-ood.hpc.msstate.edu/). 
+
 Select the following parameter values when requesting a RStudio Server
 app to be launched depending on which cluster you choose. All other values can 
 be left to their defaults. Note: on Atlas, we are using the development partition
@@ -51,29 +65,6 @@ Atlas:
 * `Number of hours`: 1
 * `Number of tasks`: 2
 
-### Materials
-
-{% include layout/setup/rmd file='GRWG22_VectorData.Rmd' %}
-
-{% include packages %}
-
-## Nomenclature
-
-{% include terms %}
-
-### Data Details
-
-* **Data:** National Interagency Fire Center's Historic Perimeters dataset
-  * Link: [https://data-nifc.opendata.arcgis.com/datasets/nifc::historic-perimeters-combined-2000-2018-geomac/explore](https://data-nifc.opendata.arcgis.com/datasets/nifc::historic-perimeters-combined-2000-2018-geomac/explore)
-  * Other Details: The original dataset contains perimeters of wildfires in the US 
-  from 2000-2018 as a polygon feature collection. For this tutorial, the wildfire
-  perimeters in CA during 2018 were extracted.
-
-* **Data:** US EPA's Air Quality System (AQS) database
-  * Link: [https://aqs.epa.gov/aqsweb/documents/data_api.html](https://aqs.epa.gov/aqsweb/documents/data_api.html)
-  * Other Details: PM2.5 concentration data from this database covering CA in 2018 
-  were retrieved and pre-processed for this tutorial.
-
 ## Analysis Steps
 
 * Fire perimeter data - read in and visualize the wildfire perimeter data
@@ -85,8 +76,7 @@ Atlas:
   fire perimeter
 * Visualize - air quality impact around the Camp Fire
 
-<ol class="usa-process-list">
-  <li class="usa-process-list__item"  markdown='1'>  
+<div class="process-list" markdown='1'>  
 
 ### Import Libraries/Packages
 For this tutorial, we will use the `sf` package for handling vector data,
@@ -108,8 +98,7 @@ library(ggplot2)          # Visualizations
 library(lubridate)        # Date manipulation
 ```
 
-  </li>
-  <li class="usa-process-list__item"  markdown='1'>  
+ 
 
 ### Read in fire perimeter data and visualize
 
@@ -180,8 +169,7 @@ fire_CA2018 %>%
 ![fire_time]({{ images_path }}/R_fire_time-1.png)
 
 
-  </li>
-  <li class="usa-process-list__item"  markdown='1'>  
+ 
 
 ### Read in air quality data
 
@@ -205,8 +193,7 @@ ca_PM25 <- st_read(paste0(aq_base,'.shp')) %>%
   st_transform(st_crs(fire_CA2018))
 ```
 
-  </li>
-  <li class="usa-process-list__item"  markdown='1'>  
+ 
 
 ### Find the air quality stations within 200km of the fire perimeter
 
@@ -222,8 +209,7 @@ camp_zone <- st_buffer(camp_fire, 200000) # meters, buffer is in unit of CRS
 air_fire <- st_join(ca_PM25, camp_zone)
 ```
 
-  </li>
-  <li class="usa-process-list__item"  markdown='1'>  
+ 
 
 ### Visualize air quality around the Camp Fire
 
@@ -301,5 +287,4 @@ unhealthy_air %>%
 
 ![unhealthy]({{ images_path }}/R_unhealthy-1.png)
 
-</li>
-</ol>
+</div>

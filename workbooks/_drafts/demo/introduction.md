@@ -28,13 +28,13 @@ Module scope (100-150 words):discuss main areas of focus and important concepts 
 
 ### Materials (optional)
 
-{% include layout/setup/rmd file='demo.Rmd' %}
+{% include setup/rmd file='demo.Rmd' %}
 
-{% include packages %}
+{% include overview/packages %}
 
 ### Nomenclature (optional)
 
-{% include terms %}
+{% include overview/terms %}
 
 ### Data Details (optional)
 

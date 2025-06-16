@@ -10,21 +10,17 @@ language: Python
 
 tags: [Vector, CRS, Spatial join]
 packages: [geopandas, plotnine]
-
+datasets:
+  - name: "National Interagency Fire Center's Historic Perimeters dataset"
+    description: The original dataset contains perimeters of wildfires in the US from 2000-2018 as a polygon feature collection. For this tutorial, the wildfire perimeters in CA during 2018 were extracted. 
+    url: https://data-nifc.opendata.arcgis.com/datasets/nifc::historic-perimeters-combined-2000-2018-geomac/explore
+  - name: "US EPA's Air Quality System (AQS) database"
+    description: "PM2.5 concentration data from this database covering CA in 2018 were retrieved and pre-processed for this tutorial."
+    url: https://aqs.epa.gov/aqsweb/documents/data_api.html
 updated: 2022-10-07 
+code: GRWG22_VectorData.ipynb
+overview: [nomenclature,packages,datasets,materials]
 
-overview:
-  nomenclature: terms
-  materials:
-    - ipynb: GRWG22_VectorData.ipynb
-  packages: packages
-  data:
-    - name: "National Interagency Fire Center's Historic Perimeters dataset"
-      description: The original dataset contains perimeters of wildfires in the US from 2000-2018 as a polygon feature collection. For this tutorial, the wildfire perimeters in CA during 2018 were extracted. 
-      url: https://data-nifc.opendata.arcgis.com/datasets/nifc::historic-perimeters-combined-2000-2018-geomac/explore
-    - name: "US EPA's Air Quality System (AQS) database"
-      description: "PM2.5 concentration data from this database covering CA in 2018 were retrieved and pre-processed for this tutorial."
-      url: https://aqs.epa.gov/aqsweb/documents/data_api.html
 ---
 
 
@@ -37,45 +33,23 @@ determine which stations observed unhealthy concentrations of small particulate
 matter (PM2.5) in the atmosphere around the time of the Camp Fire in northern CA 
 in 2018.  
 
-### Materials
-
-* **Download Jupyter Notebook**: [GRWG22_VectorData.ipynb](./assets/GRWG22_VectorData.ipynb)
-
-{% include packages %}
-
-### Nomenclature
-
-{% include terms %}
-
-### Data Details
-
-* **Data:** National Interagency Fire Center's Historic Perimeters dataset
-  * Link: [https://data-nifc.opendata.arcgis.com/datasets/nifc::historic-perimeters-combined-2000-2018-geomac/explore](https://data-nifc.opendata.arcgis.com/datasets/nifc::historic-perimeters-combined-2000-2018-geomac/explore)
-  * Other Details: The original dataset contains perimeters of wildfires in the US 
-  from 2000-2018 as a polygon feature collection. For this tutorial, the wildfire
-  perimeters in CA during 2018 were extracted.
-
-* **Data:** US EPA's Air Quality System (AQS) database
-  * Link: [https://aqs.epa.gov/aqsweb/documents/data_api.html](https://aqs.epa.gov/aqsweb/documents/data_api.html)
-  * Other Details: PM2.5 concentration data from this database covering CA in 2018 
-  were retrieved and pre-processed for this tutorial.
+{% include overviews %}
 
 ## Analysis Steps
 
-  1. **Fire perimeter data**
+  * **Fire perimeter data**
     - read in and visualize the wildfire perimeter data
        - Read in geojson file
        - Visualize perimeters on map of CA
        - Visualize non-spatial attributes
-  2. **Air quality data**
+  * **Air quality data**
     - read in the shapefile
-  3. **Buffer and spatial join**
+  * **Buffer and spatial join**
     - find the air quality stations within 200km of the fire perimeter
-  4. **Visualize**
+  * **Visualize**
     -  air quality around the Camp Fire
 
-<ol class="usa-process-list">
-  <li class="usa-process-list__item"  markdown='1'>  
+<div class="process-list" markdown='1'>  
 
 ### Import Libraries / Packages
 
@@ -151,8 +125,7 @@ from plotnine import ggplot, geom_map, aes, theme, geom_histogram, scale_x_datet
 from datetime import datetime, date
 ```
 
-  </li>
-  <li class="usa-process-list__item"  markdown='1'>  
+ 
 
 ### Read in fire perimeter data and visualize
 
@@ -216,8 +189,7 @@ ggplot(fire_CA2018, aes('perimeterdatetime')) + \
 ![png]({{ images_path }}/Session8_Tutorial1_13_1.png)
     
 
-  </li>
-  <li class="usa-process-list__item"  markdown='1'>  
+ 
 
 ### Read in air quality data
 
@@ -233,8 +205,7 @@ a feature collection.
 CA_PM25 = gpd.read_file(dnld_url + 'air_quality_CA2018.zip').to_crs(fire_CA2018.crs)
 ```
 
-  </li>
-  <li class="usa-process-list__item"  markdown='1'>  
+ 
 
 ### Find the air quality stations within 200km of the fire perimeter
 
@@ -251,8 +222,7 @@ camp_zone['geometry'] = camp_fire.buffer(200000) # meters, buffer is in unit of 
 air_fire = CA_PM25.sjoin(camp_zone, how="inner", predicate='intersects')
 ```
 
-  </li>
-  <li class="usa-process-list__item"  markdown='1'>  
+ 
 
 ### Visualize air quality around the Camp Fire
 
@@ -327,5 +297,4 @@ ggplot() + \
     
 ![png]({{ images_path }}/Session8_Tutorial1_21_0.png)
     
-</li>
-</ol>
+</div>

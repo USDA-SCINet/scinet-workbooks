@@ -3,6 +3,9 @@
 title: GeoCDL - Python
 description: "Python Package for USDA-ARS SCINet GeoCDL"
 type: interactive tutorial
+language: Python
+interface: Jupyter
+cluster: Ceres
 
 tags: [GeoCDL, Raster, Vector, CRS]
 language: Python
@@ -12,25 +15,21 @@ wgs: geospatial
 author: Noa Mills
 updated: 2024-05-29
 
+datasets:
+  - name: MODIS NDVI
+    description: "This data set provides Moderate Resolution Imaging Spectroradiometer (MODIS) normalized difference vegetation index (NDVI) data, smoothed and gap-filled, for the conterminous US for the period 2000-01-01 through 2015-12-31. The data were generated using the NASA Stennis Time Series Product Tool (TSPT) to generate NDVI data streams from the Terra satellite (MODIS MOD13Q1 product) and Aqua satellite (MODIS MYD13Q1 product) instruments. TSPT produces NDVI data that are less affected by clouds and bad pixels."
+    url: https://doi.org/10.3334/ORNLDAAC/1299
+  - name: PRISM 
+
+code: pygcdl_tutorial.ipynb
+
 objectives: Learn how to use the Python package for the SCINet Geospatial Common Data Library
 
-overview:
-  nomenclature: tags
-  materials:
-    - code: pygcdl_tutorial.ipynb
-  packages: packages
-  resources:
-    packages: packages
-    datasets:
-      - name: MODIS NDVI
-        description: "This data set provides Moderate Resolution Imaging Spectroradiometer (MODIS) normalized difference vegetation index (NDVI) data, smoothed and gap-filled, for the conterminous US for the period 2000-01-01 through 2015-12-31. The data were generated using the NASA Stennis Time Series Product Tool (TSPT) to generate NDVI data streams from the Terra satellite (MODIS MOD13Q1 product) and Aqua satellite (MODIS MYD13Q1 product) instruments. TSPT produces NDVI data that are less affected by clouds and bad pixels."
-        url: https://doi.org/10.3334/ORNLDAAC/1299
-      - name: PRISM 
+overview: [nomenclature,packages-datasets,materials]
 
-hpc: Ceres
-access: OOD
-setup:
-  srun: "srun --reservation=workshop_reservation_name -p ceres -t 05:00:00 -n 1 -N 2 --pty Bash"
+
+
+srun: "srun --reservation=workshop_reservation_name -p ceres -t 05:00:00 -n 1 -N 2 --pty Bash"
 
 ---
 
@@ -62,6 +61,10 @@ requesting data from two datasets clipped to the boundary of the LTAR site
 with equivalent resolutions and CRSs, and visualizing the resulting 
 maps. We also show how to extract point level information from a gridded layer.
 
+{% include overviews %} 
+
+## Getting Started
+
 This tutorial assumes you are running this notebook in JupyterLab on 
 Ceres. The easiest way to do that is with 
 [Open OnDemand](http://ceres-ood.scinet.usda.gov/). As of this writing, the GeoCDL 
@@ -71,9 +74,8 @@ If you have any questions, problems, or requests related to the python interface
 use the issue tracker on our GitHub repository: 
 [https://github.com/USDA-SCINet/pygcdl](https://github.com/USDA-SCINet/pygcdl). 
 
-{% include overview %}
 
-{% include setup %}
+
 
 
 ## Tutorial Steps:

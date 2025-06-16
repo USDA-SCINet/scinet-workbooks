@@ -10,10 +10,15 @@ tags: [GeoCDL, SLURM, Zonal statistics]
 packages: [rgeocdl, terra]
 
 updated: 2022-09-28 
+
+overview:
+  materials:
+    - code: GRWG22_ZonalStats_wSLURM.Rmd
+  resources:
+    packages: packages
+    datasets: [US Census Cartographic Boundary Files, PRISM]
 ---
 
-**Last Update:** 28 September 2022 <br />
-**Download RMarkdown**: [GRWG22_ZonalStats_wSLURM.Rmd](./assets/GRWG22_ZonalStats_wSLURM.Rmd)
 
 ## Overview
 
@@ -33,33 +38,7 @@ If you prefer to have an R script handle looping over your data inputs and
 submitting many job submission scripts, see [this tutorial](https://geospatial.101workbook.org/ExampleGeoWorkflows/GRWG22_JobPerDataFile_R).
 
 
-### Materials
-
-{% include layout/setup/rmd file='GRWG22_ZonalStats_wSLURM.Rmd' %}
-
-{% include packages %}
-
-### Nomenclature
-
-{% include terms %}
-  
-### Data Details
-
-* Data: US Census Cartographic Boundary Files
-  * Link: https://www.census.gov/geographies/mapping-files/time-series/geo/cartographic-boundary.html
-  * Other Details: The cartographic boundary files are simplified representations 
-    of selected geographic areas from the Census Bureau’s MAF/TIGER geographic 
-    database. These boundary files are specifically designed for small scale 
-    thematic mapping. 
-  
-* Data: PRISM
-  * Link: https://prism.oregonstate.edu/
-  * Other Details: The PRISM Climate Group gathers climate observations from a 
-    wide range of monitoring networks, applies sophisticated quality control measures, 
-    and develops spatial climate datasets to reveal short- and long-term climate 
-    patterns. The resulting datasets incorporate a variety of modeling techniques 
-    and are available at multiple spatial/temporal resolutions, covering the period 
-    from 1895 to the present.
+{% include overviews %}
 
 ## Analysis Steps
 
@@ -73,8 +52,7 @@ submitting many job submission scripts, see [this tutorial](https://geospatial.1
 * Check results - Monitor the SLURM queue until your job is complete and then 
   ensure your job executed successfully.
 
-<ol class="usa-process-list">
-  <li class="usa-process-list__item"  markdown='1'>  
+<div class="process-list" markdown='1'>  
 
 ### Install packages and download data
 
@@ -144,8 +122,7 @@ q()
 ```
 
 
-  </li>
-  <li class="usa-process-list__item"  markdown='1'>  
+ 
 
 ### Write and save a serial R script that accepts command line arguments
 
@@ -188,8 +165,7 @@ my_polygons$mean <- extract(my_raster,
 writeVector(my_polygons, filename = paste0('stats_', args[1], '.shp'))
 ```
 
-  </li>
-  <li class="usa-process-list__item"  markdown='1'>  
+ 
 
 ### Write and save a SLURM job submission script
 
@@ -249,8 +225,7 @@ your own job ID or setting memory requirements. Check out the
 to see more examples on how to populate job submission scripts on Ceres.
 
 
-  </li>
-  <li class="usa-process-list__item"  markdown='1'>  
+ 
 
 ### Submit your job
 
@@ -268,8 +243,7 @@ sbatch zonal_stats.sh
 Submitted batch job 8145006
 ```
 
-  </li>
-  <li class="usa-process-list__item"  markdown='1'>  
+ 
 
 ### Check results
 
@@ -322,6 +296,5 @@ plot(result, 'mean')
 
 ![county_ppt](./assets/R_county_ppt-1.png)
 
-</li>
-</ol>
+</div>
 

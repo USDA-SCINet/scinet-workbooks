@@ -5,15 +5,14 @@ description: "(Page description here)"
 type: interactive tutorial
 author: Heather Savoy
 
-tags: [spatial interpolation, R Project, Random Forest]
-
-packages: [geoR, ranger]
+tags: [spatial interpolation, Random Forest]
 terms: [Spatial Interpolation, Geostatistics, Kriging, Variogram, Random Forest]
+datasets: [meuse]
+packages: [geoR, ranger]
 
-materials:
-  - text: Download RMarkdown
-    url: /GRWG_SpatialInterpolation.Rmd
-    # external: true # use for any links starting with https://
+overview: [nomenclature, packages-datasets,materials]
+
+
 
 language: R
 published: 2023-09-17 # not required, but useful
@@ -36,26 +35,7 @@ limiting the number of examples and re-ordering examples, using more
 up-to-date R packages, and cutting and supplementing the commentary
 text.
 
-### Materials
-
-{% include layout/setup/rmd file='GRWG_SpatialInterpolation.Rmd' %}
-
-{% include packages %}
-
-### Nomenclature
-
-{% include terms %}
-
-### Data Details
-
-* **Data: `meuse` data set**  
-  * Link: [`sp` package](https://cran.r-project.org/web/packages/sp/index.html)  
-  * Other Details: This dataset gives locations and topsoil heavy metal
-      concentrations, along with a number of soil and landscape variables
-      at the observation locations, collected in a flood plain of the
-      river Meuse, near the village of Stein (NL). Heavy metal
-      concentrations are from composite samples of an area of
-      approximately 15 m x 15 m.
+{% include overviews %}
 
 ## Analysis Steps
 
@@ -66,8 +46,7 @@ text.
 -   Compare predictions and prediction error between the two
     interpolation methods
 
-<ol class="usa-process-list">
-  <li class="usa-process-list__item"  markdown='1'>  
+<div class="process-list" markdown='1'> 
 
 ### Import Libraries/Packages
 
@@ -95,8 +74,6 @@ them.
     # visualizations
     library(ggplot2)
 
-  </li>
-  <li class="usa-process-list__item"  markdown='1'>  
 
 ### Pre-process `meuse` dataset
 
@@ -145,8 +122,7 @@ though we will only use it for visualization purposes).
 
 ![](./assets/R_studyarea-1.png)
 
-  </li>
-  <li class="usa-process-list__item"  markdown='1'> 
+
 
 ### Interpolate map from point observations using kriging
 
@@ -246,8 +222,7 @@ To generate predictions and kriging variance using `geoR` we run:
 in this case geoR automatically back-transforms values to the original
 scale, which is a recommended feature.
 
-  </li>
-  <li class="usa-process-list__item"  markdown='1'> 
+
 
 ### Interpolate map from point observations using Random Forest
 
@@ -372,8 +347,7 @@ value. Note that “median” can often be different from the “mean”, so if
 you prefer to derive mean, then the `quantreg=FALSE` needs to be used as
 the Quantile Regression Forests approach can only derive median.
 
-  </li>
-  <li class="usa-process-list__item"  markdown='1'> 
+
 
 ### Compare predictions and prediction error between the two interpolation methods
 
@@ -444,8 +418,7 @@ RFsp, however, are:
     tree-based) will produce patterns that as much as possible match
     data,
 
-  </li>
-</ol>
+</div>
 
 ## Further reading / more complicated examples
 

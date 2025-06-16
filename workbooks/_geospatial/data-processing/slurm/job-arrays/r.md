@@ -9,6 +9,12 @@ tags: [SLURM]
 
 author: Heather Savoy
 updated: 2022-10-07 
+
+overview:
+  materials:
+    - code: GRWG22_JobPerDataFile.Rmd
+  nomenclature: tags
+
 ---
 
 
@@ -23,18 +29,14 @@ during the 10th session of the Geospatial Research Working Group Workshop 2022.
 If you prefer to have a single SLURM submission script iterate over your data 
 inputs, see [this tutorial](https://geospatial.101workbook.org/ExampleGeoWorkflows/GRWG22_ZonalStats_wSLURM_R).
 
+{% include overviews %}
+
+## Getting Started
+
 The instructions below will be mostly the same for both Ceres and Atlas. Choose
 either cluster to work on for the tutorial. There is one line you will need to
 modify in this tutorial and your options depend on which cluster you are currently
 using.
-
-### Materials
-
-* **Download RMarkdown**: [GRWG22_JobPerDataFile.Rmd](./assets/GRWG22_JobPerDataFile.Rmd)
-
-### Nomenclature
-
-{% include terms %}
 
 ## Analysis Steps
 
@@ -43,8 +45,7 @@ using.
 * Write and save a serial R script that lists files and submits jobs
 * Execute the R script for submitting many jobs
 
-<ol class="usa-process-list">
-  <li class="usa-process-list__item"  markdown='1'>  
+<div class="process-list" markdown='1'>  
 
 ### Write and save a serial R script that accepts command line arguments
 
@@ -71,8 +72,7 @@ cat("Processing:", my_file)
 Sys.sleep(120)
 ```
 
-  </li>
-  <li class="usa-process-list__item"  markdown='1'>  
+ 
 
 ### Write and save a SLURM job submission script template
 
@@ -129,8 +129,7 @@ your own job ID or setting memory requirements. Check out the
 [Atlas (scroll down to 'Atlas Job Script Generator' section)](https://www.hpc.msstate.edu/computing/atlas/)
 job script generator to see more examples on how to populate job submission scripts on Ceres.
 
-  </li>
-  <li class="usa-process-list__item"  markdown='1'>  
+ 
 
 ### List files and submit jobs
 
@@ -183,8 +182,7 @@ for(d_f in data_files){
 
 ```
 
-  </li>
-  <li class="usa-process-list__item"  markdown='1'>  
+ 
 
 ### Execute the R script for submitting many jobs
 
@@ -208,8 +206,7 @@ Submitted batch job 8145024
 Submitted batch job 8145025
 ```
 
-  </li>
-  <li class="usa-process-list__item"  markdown='1'>  
+ 
 
 ### Check results
 
@@ -249,5 +246,4 @@ Inside each, there should be a message for each data file, for example:
 
 > Processing: JobPerDataFile_calculate.R
 
-</li>
-</ol>
+</div>

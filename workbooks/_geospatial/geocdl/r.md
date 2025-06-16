@@ -7,9 +7,18 @@ type: interactive tutorial
 tags: [GeoCDL, Raster, CRS]
 packages: [rgeocdl, sf]
 language: R
+datasets: 
+      - name: MODIS NDVI
+        description: "This data set provides Moderate Resolution Imaging Spectroradiometer (MODIS) normalized difference vegetation index (NDVI) data, smoothed and gap-filled, for the conterminous US for the period 2000-01-01 through 2015-12-31. The data were generated using the NASA Stennis Time Series Product Tool (TSPT) to generate NDVI data streams from the Terra satellite (MODIS MOD13Q1 product) and Aqua satellite (MODIS MYD13Q1 product) instruments. TSPT produces NDVI data that are less affected by clouds and bad pixels."
+        url: https://doi.org/10.3334/ORNLDAAC/1299
+      - name: PRISM
 
 author: Heather Savoy
 updated: 2022-10-05
+
+code: GRWG22_GeoCDL.Rmd
+
+overview: [nomenclature,packages-datasets,materials]
 
 ---
 
@@ -39,6 +48,10 @@ The workflows we will cover are uploading a shapefile of an LTAR site, harmonizi
 with common gridded environmental data, downloading and visualizing the resulting 
 maps. We also show how to extract point level information from a gridded layer.
 
+{% include overviews %} 
+
+## Getting Started
+
 This tutorial assumes you are running this Rmarkdown file in RStudio Server on 
 Ceres. The easiest way to do that is with 
 [Open OnDemand](http://ceres-ood.scinet.usda.gov/). As of this writing, the GeoCDL 
@@ -47,37 +60,6 @@ is only available on Ceres and not Atlas.
 If you have any questions, problems, or requests related to the R interface, please 
 use the issue tracker on our GitHub repository: 
 [https://github.com/USDA-SCINet/rgeocdl](https://github.com/USDA-SCINet/rgeocdl). 
- 
-### Materials
-
-{% include layout/setup/rmd file='GRWG22_GeoCDL.Rmd' %}
-
-{% include packages %}
-
-### Nomenclature
-
-{% include terms %} 
-
-### Data Details
-
-* **Dataset: MODIS NDVI**
-  * Link: [https://doi.org/10.3334/ORNLDAAC/1299](https://doi.org/10.3334/ORNLDAAC/1299)
-  * Details: This data set provides Moderate Resolution Imaging Spectroradiometer 
-  (MODIS) normalized difference vegetation index (NDVI) data, smoothed and gap-filled, 
-  for the conterminous US for the period 2000-01-01 through 2015-12-31. The data 
-  were generated using the NASA Stennis Time Series Product Tool (TSPT) to generate 
-  NDVI data streams from the Terra satellite (MODIS MOD13Q1 product) and Aqua 
-  satellite (MODIS MYD13Q1 product) instruments. TSPT produces NDVI data that 
-  are less affected by clouds and bad pixels.
-
-* **Dataset: PRISM**
-  * Link: [https://prism.oregonstate.edu/](https://prism.oregonstate.edu/)
-  * Details: The PRISM Climate Group gathers climate observations from a 
-  wide range of monitoring networks, applies sophisticated quality control 
-  measures, and develops spatial climate datasets to reveal short- and long-term 
-  climate patterns. The resulting datasets incorporate a variety of modeling 
-  techniques and are available at multiple spatial/temporal resolutions, covering 
-  the period from 1895 to the present.
 
 ## Steps
 
@@ -88,8 +70,7 @@ use the issue tracker on our GitHub repository:
 * Visualize results - View the downloaded data and metadata
 * Request variations - Multiple data request examples
 
-<ol class="usa-process-list">
-  <li class="usa-process-list__item"  markdown='1'>  
+<div class="process-list" markdown='1'> 
 
 ### Import Libraries/Packages
 
@@ -129,13 +110,11 @@ library(tidyr)      # General data manipulation
 library(stringr)    # String manipulation
 library(ggplot2)    # Visualizations
 ```
-
-  </li>
-  <li class="usa-process-list__item"  markdown='1'>  
+ 
 
 ### Specify desired data 
 
-#### 2a: Specify area and dates of interest 
+#### Specify area and dates of interest 
 
 We will specify our area of interest as the USDA-ARS Jornada Experimental Range 
 in southern New Mexico. This site is a part of the Long-Term Agricultural Research 
@@ -225,7 +204,7 @@ g_method <- 'finer'
 
 ```
 
-#### 2b: Select datasets and their variables
+#### Select datasets and their variables
 
 The GeoCDL can be queried to return the currently available datasets and their 
 metadata. We will be using the MODIS NDVI Data, Smoothed and Gap-filled, for the 
@@ -300,9 +279,7 @@ dsvars <- tibble(dataset = c("PRISM","MODIS_NDVI"),
                  variables = c("ppt","NDVI"))
 
 ```
-
-  </li>
-  <li class="usa-process-list__item"  markdown='1'>  
+  
 
 ### Download the data
 
@@ -338,8 +315,6 @@ subset_files
  [9] "./subset3a96d3ebd7555-1/PRISM_ppt_2008-07.tif"          "./subset3a96d3ebd7555-1/PRISM_ppt_2008-08.tif"  
 ```
 
-  </li>
-  <li class="usa-process-list__item"  markdown='1'>  
 
 ### Visualize the results
 
@@ -384,8 +359,7 @@ ndvi_df %>%
 ```
 ![JER_NDVI](assets/R_visualize-1.png)
 
-  </li>
-</ol>
+</div>
 
 ## Request variations
 
