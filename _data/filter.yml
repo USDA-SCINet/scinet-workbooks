@@ -11,10 +11,14 @@ filters:
   #   val: 'type'
   #   unsorted: true
   #   values: ['interactive tutorial', 'lesson module', 'reference material']
-  - section: Coding Language
-    title: Select Coding Language
-    type: checkbox
-    val: 'language'
+  - section: Coding Language / Interface
+    subsection:
+      - title: Select Coding Language
+        type: checkbox
+        val: 'language'
+      - title: Select Interface
+        type: select
+        val: 'interface'
   - section: Keywords
     title: Add Keywords to Filter
     select-all: true
@@ -29,11 +33,6 @@ filters:
     subtitle: 'Selected Packages:'
     type: autoselect
     val: 'packages'
-  # - section: Interface
-  #   title: Filter by Interface
-  #   default: Select Interface
-  #   type: select
-  #   val: 'interface'
   - section: Contributors
     subsection:
       - title: Author
@@ -66,3 +65,5 @@ icons:
 
 
 glossaryattributes: [term,definition,link,tutorial]
+
+overview-attributes: [overview,nomenclature,datasets,matierials,objectives,packages,code]
