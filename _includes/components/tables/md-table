@@ -31,16 +31,22 @@
         {% for _node in nodes %}
         {% unless rowcount < 2 %}
         {% assign colcount = 0 %}
-        {% assign rowdata = _node | split: "|" %}
+        {% assign rowdata = _node | split: " |" %}
       <tr>
         {% for _col in rowdata %}
         {% if forloop.first %}
+        {%- if datas.no-row-labels %}
+        <td data-label="{{ titles[colcount] | strip }}">
+          {{ _col | strip | markdownify }}
+        </td>
+        {%- else %}
         <th data-label="{{ titles[colcount] | strip }}" scope="row"{% if datas.sortable %} role="rowheader"{% endif %} >
-          {{ _col | strip | .RenderString }}
+          {{ _col | strip | markdownify }}
         </th>
+        {%- endif %}
         {% else %}
         <td data-label="{{ titles[colcount] | strip }}">
-          {{ _col | strip | .RenderString }}
+          {{ _col | strip | markdownify }}
         </td>
         {% endif %}
         {% assign colcount = colcount | plus: 1 %}

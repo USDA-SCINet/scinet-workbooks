@@ -1,0 +1,6 @@
+{%- assign kernel = page.kernel %}
+1. Create a kernel for Jupyter {% unless kernel.source %}{% if page.conda %}to use your Conda environment {% endif %}{% endunless %}called {{ kernel.name | default: envtitle }}:
+  ```{%-if kernel.source %}
+{{ kernel.source }}{%- endif %}
+ipython kernel install --name={{ kernel.name | default: envtitle }} --user
+```

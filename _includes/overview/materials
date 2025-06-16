@@ -1,0 +1,27 @@
+{% if include.materials %}
+{% if include.materials.first %}
+{%- assign materials = include.materials %}
+{% else %}
+{% assign _materialfetch = page[include.materials] %}
+{%- assign materials = _materialfetch | default: include.materials %}
+{% endif %}
+{% else %}
+{%- assign materials = page.materials %}
+{% endif %}
+<ul class="usa-list">
+{% if materials %}{% for _mat in materials %}
+<li>
+    {%- if _mat == "code" %}
+    {% capture loadfile %}{% include setup/download code=include.code justbullet=include.justbullet %}{% endcapture %}
+    {{ loadfile | markdownify }}
+    {%- else %}
+    {{ _mat | markdownify }}
+    {%- endif %}
+</li>
+{% endfor %}{% endif %}
+{%- if include.code or page.code %}
+<li>
+{% include overview/code code=include.code %}
+</li>
+{%- endif %}
+</ul>

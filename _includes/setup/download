@@ -1,0 +1,7 @@
+{%- assign pagecode = include.code | default: page.code %}{%- if pagecode.path %}
+{%- assign matload = pagecode.code | split: "." %}
+{% include setup/{{ matload.last | downcase }} file=pagecode.code folder=folder path=pagecode.path justbullet=include.justbullet %}
+{%- else %}
+{%- assign matload = pagecode | split: "." %}
+{% include setup/{{ matload.last | downcase }} file=pagecode folder=folder justbullet=include.justbullet %}
+{%- endif %}

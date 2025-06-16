@@ -1,9 +1,0 @@
-{%- assign conda = include.conda %}
-{%- assign cinstall = conda.install | default: page.packages %}
-**Load module `miniconda`** to access Conda commands to create environments, activate them, and install packages.
-    ```
-    module load miniconda
-    conda create --name {{ conda.env }}
-    source activate {{ conda.env }}
-    conda install{% if cinstall.first %}{% for _c in cinstall %} {{ _c }}{% endfor %}{% else %} {{ cinstall }}{% endif %}
-    ```

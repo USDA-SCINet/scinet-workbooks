@@ -1,0 +1,31 @@
+{%- assign overviewatt = site.data.filter.overview-attributes %}
+{%- for _item in include.overviews | default: page.overview %}
+{%- if overviewatt contains _item %}
+{%- assign itemtitle = _item | capitalize %}{%- assign itemslug = _item | slugify | append: "-acc" %}
+{% include accordion title=itemtitle class="secondary " controls=itemslug %}
+<div id="{{ itemslug }}" class="accordion_content" hidden>
+{% include overview/{{ _item }} folder=include.folder %}
+</div>
+{% elsif _item contains "-" %}
+{% assign splittitle = _item | split: "-" %}
+{% capture itemtitle %}{% for _ititle in splittitle %}{{ _ititle | capitalize }}{% unless forloop.last %} / {% endunless %}{% endfor %}{% endcapture %}
+{%- assign itemslug = _item | slugify | append: "-acc" %}
+{% include accordion title=itemtitle class="secondary " controls=itemslug %}
+<div id="{{ itemslug }}" class="accordion_content" hidden>
+    {% for _loopedatt in splittitle %}
+    {%- if overviewatt contains _loopedatt %}
+    {% include overview/{{ _loopedatt }} folder=include.folder %}
+    {% elsif page[_loopedatt] %}{%- assign pageitem = page[_loopedatt] %}
+    {% include layout/li-check data=pageitem %}
+    {% endif %}
+    {% unless forloop.last %}<hr class="usa-section-divider">{% endunless %}
+
+    {% endfor %}
+</div>
+{% elsif page[_item] %}{%- assign pageitem = page[_item] %}
+{%- assign itemtitle = _item | capitalize %}{%- assign itemslug = _item | slugify | append: "-acc" %}
+{% include accordion title=itemtitle class="secondary " controls=itemslug %}
+<div id="{{ itemslug }}" class="accordion_content" hidden>
+{% include layout/li-check data=pageitem %}
+</div>
+{% endif %}{% endfor %}

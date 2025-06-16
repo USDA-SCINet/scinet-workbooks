@@ -1,0 +1,22 @@
+### Create your working directory{% if page.conda or page.kernel %} and environment{% endif %}
+
+If you have completed these steps within the past 90 days, you can skip this section.
+
+{%- unless file_path %}
+{% include file_path folder=include.folder %}
+{%- endunless %}
+1. Request a compute node.
+1. Create your wookbook directory and navigate to it
+    ```bash
+    mkdir -p /90daydata/shared/$USER/{{ envtitle }}
+    cd /90daydata/shared/$USER/{{ envtitle }}
+    ```
+{%- if page.cp %}
+{% include setup/cp %}
+{%- endif %}
+{%- if page.conda %}
+{% include setup/conda %}  
+{%- endif %}
+{%- if page.interface == "Jupyter" and page.kernel %}
+{%- include setup/makekernel %}
+{%- endif %}

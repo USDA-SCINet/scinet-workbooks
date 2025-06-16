@@ -1,10 +1,9 @@
+{% assign pov = include.sections | default: page.overview %}
 {% assign folder = include.folder | default: 0 %}
-{%- if page.objectives %}
+{%- if pov.objectives %}
 {% capture objcontent %}{% include layout/li-check data=page.objectives %}{% endcapture %}
-{% include objectives content=objcontent %}
+{% include overview/objectives content=objcontent %}
 {%- endif %}
-
-{% if page.overview %}{% assign pov = page.overview %}{% assign povref = site.data.filter.overview %}
 
 <div class="usa-accordion">
 
@@ -26,9 +25,9 @@
     {% include accordion title="Nomenclature" class="secondary " controls="nomenclature-acc" %} 
     <div id="nomenclature-acc" class="accordion_content" hidden>  
         {%- if pov.nomenclature.first %}
-        {% include terms terms=pov.nomenclature %}
+        {% include overview/terms terms=pov.nomenclature %}
         {%- else %}
-        {% include terms %}
+        {% include overview/terms %}
         {%- endif %}
     </div>
     {% endif %}
@@ -44,7 +43,7 @@
         {% assign _rterms = _r[_rtitle] %}
             {% capture rtitle %}{{ rtitle }}{{ _rtitle | capitalize }}{% unless forloop.last %} / {% endunless %}{% endcapture %}
             {% capture rsections %}{{ rsections }}
-            {% include {{ _rtitle }} terms=_rterms %}
+            {% include overview/resource terms=_rterms section=_rtitle %}
 
             {% unless forloop.last %}{{ _makelinebreak | markdownify }}{% endunless %}
             {% endcapture %}
@@ -53,7 +52,7 @@
 
             {% capture rtitle %}{{ rtitle }}{{ _resourcesection }}{% unless forloop.last %} / {% endunless %}{% endcapture %}
             {% capture rsections %}{{ rsections }}
-            {% include {{ _resourcesection }} %}
+            {% include overview/resource section=rtitle %}
 
             {% unless forloop.last %}{{ _makelinebreak | markdownify }}{% endunless %}
             {% endcapture %}
@@ -69,7 +68,7 @@
     {% if pov.materials %}
     {% include accordion title="Learning Materials" class="secondary " controls="materials-acc" %} 
     <div id="materials-acc" class="accordion_content" hidden> 
-        {% include materials materials=pov.materials %}        
+        {% include overview/materials materials=pov.materials %}        
     </div>
     {%- endif %}
 
@@ -86,7 +85,3 @@
     {%- endif %}
 
 </div>
-
-{% endif %}
-
------

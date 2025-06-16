@@ -34,7 +34,7 @@ setup:
 {%- endfor %}
 {% raw %}---
 
-{% include setup %}
+{% include setup/mkdir %}
 {% endraw %}
 {% endcapture %}
 {% include contribute/components/codeblock/codeblock code=codeblock %}

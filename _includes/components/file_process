@@ -1,0 +1,6 @@
+{%- assign ref_url = include.url | default: page.url %}
+{%- assign path_segments = ref_url | split: '/' %}
+{%- assign folderdown = include.folder | default: 0 %}
+{%- assign path_l = path_segments | size %}
+{%- assign folderlvl = path_l | minus: 2 | minus: folderdown %}
+{%- assign module_sections = path_segments | slice: 1, folderlvl %}

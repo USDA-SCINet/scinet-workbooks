@@ -1,0 +1,14 @@
+{%- assign overviewatt = site.data.filter.overview-attributes %}
+{% assign overviews = include.sections | default: page.overview %}
+{%- unless file_path %}
+{% include file_path folder=include.folder %}
+{%- endunless %}
+{%- if overviews[1] %}
+<div class="usa-accordion">
+{% include overview/process overviews=overviews folder=include.folder %}
+</div>
+{% else %}
+{% include overview/compile sections=overviews folder=include.folder %}
+{% endif %}
+
+-----

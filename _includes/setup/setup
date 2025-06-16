@@ -1,0 +1,5 @@
+{%- if page.setup %}{%- assign setup = page.setup %}
+{%- else %}{%- unless file_path %}
+{% include file_path folder=include.folder %}
+{%- endunless %}{%- assign setup = module_sections | join: "/" %}{%- endif %}
+If you have not completed the [setup instructions for this section]({{ site.url }}/{{ setup }}), please do so before proceeding.

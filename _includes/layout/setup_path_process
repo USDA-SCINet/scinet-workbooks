@@ -1,0 +1,20 @@
+{%- if page.setup %}
+    {%- assign setup = page.setup %}
+    {%- if page.mkdir %}
+        {% assign envtitle = page.mkdir %}
+    {%- else %}
+        {% include components/file_process folder=include.folder url=setup %}
+        {% assign rev_path = module_sections | reverse %}
+        {% assign envtitle = rev_path.first %}
+    {%- endif %}
+{%- else %}
+    {% include components/file_process folder=include.folder %}
+    {%- assign setup = module_sections | join: "/" %}
+
+    {%- if page.mkdir %}
+        {% assign envtitle = page.mkdir %}
+    {%- else %}
+        {% assign rev_path = module_sections | reverse %}
+        {% assign envtitle = rev_path.first %}
+    {%- endif %}
+{%- endif %}
