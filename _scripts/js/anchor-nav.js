@@ -23,7 +23,7 @@ const IN_PAGE_NAV_PRIMARY_ITEM_CLASS = `${IN_PAGE_NAV_ITEM_CLASS}--primary`;
 const IN_PAGE_NAV_LINK_CLASS = `${IN_PAGE_NAV_CLASS}__link`;
 const IN_PAGE_NAV_TITLE_CLASS = `${IN_PAGE_NAV_CLASS}__heading`;
 const PROCESS_CLASS = "usa-process-list__heading";
-const PROCESS_LIMIT = 8;
+const PROCESS_LIMIT = 13;
 
 /**
  * Set the active link state for the currently observed section
