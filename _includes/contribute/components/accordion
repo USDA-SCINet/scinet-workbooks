@@ -5,7 +5,7 @@
 {%- if include.code %}
 {% assign codefetch = section.code | append: "-code" %}
 {%- capture codeblock %}
-<div class="usa-accordion {{ itemclass }}" {{ itemattr }} markdown="1">
+<div class="usa-accordion {{ itemclass }}" {{ itemattr }}>
 
 {% include contribute/components/codeblock/custom/{{ codefetch }} %}
 </div>
@@ -32,10 +32,11 @@
 {% assign oclass = option.class | default: "" %}
 {% assign optiontext = option.text | default: optiontitle %}
 {% capture optionclass %}{{ oclass }} {{ allclass }}{% endcapture %}
-{% if item.icon or option.icon %}{% assign icons = true %}{% else %}{% assign icons = false %}{% endif %}
+{% if item.icon or option.icon %}{% assign icons = option.icon | default: item.icon %}{% else %}{% assign icons = false %}{% endif %}
 {% if include.code %}
+{% unless icons == true or icons == false %}{% capture icons %}"{{ icons }}"{% endcapture %}{% endunless %}
 {%- capture codeblock %}
-<div class="usa-accordion {{ itemclass }}" {{ itemattr }} markdown="1">
+<div class="usa-accordion {{ itemclass }}" {{ itemattr }}>
 
 &#123% include accordion title="{{optiontitle}}" class="{{optionclass}}" controls="{{optionid}}" icon={{icons}} %&#125
 <div id="{{ optionid }}" class="accordion_content" markdown='1' >

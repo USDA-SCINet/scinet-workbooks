@@ -5,17 +5,31 @@
   "license": "CC0-1.0",
   "scripts": {
     "start": "bundle exec jekyll serve",
-    "dev": "bundle exec jekyll serve & npx gulp watch",
+    "dev": "bundle exec jekyll serve & npx gulp watch & npx gulp watchJS",
     "update-dep": "npm install && bundle install && npx gulp update",
     "start-detached": "bundle exec jekyll serve --detach",
     "setup-jekyll": "bundle",
-    "update-mod": "bash ./_scripts/git-modified-date.sh",
+    "update-mod": "bash ./_scripts/alts/git-modified-date.sh",
     "pa11y-ci": "pa11y-ci --threshold=7"
   },
   "dependencies": {
     "@uswds/uswds": "^3.4.1"
   },
   "devDependencies": {
-    "@uswds/compile": "^1.0.0"
+    "@babel/core": "^7.26.10",
+    "@babel/preset-env": "^7.26.9",
+    "@uswds/compile": "^1.0.0",
+    "babelify": "^10.0.0",
+    "browserify": "^17.0.1",
+    "eslint-plugin-import": "^2.31.0",
+    "fancy-log": "^2.0.0",
+    "gulp": "^5.0.0",
+    "gulp-eslint": "^6.0.0",
+    "gulp-rename": "^2.0.0",
+    "gulp-sourcemaps": "^3.0.0",
+    "gulp-uglify": "^3.0.2",
+    "jquery": "^3.7.1",
+    "vinyl-buffer": "^1.0.1",
+    "vinyl-source-stream": "^2.0.0"
   }
 }

@@ -21,7 +21,7 @@ components:
         - label: Header Button Color Options
           titles: Header Color
           sections:
-            - title: basic
+            - title: Basic Header
             - class: info
             - class: warning
             - class: success
@@ -34,15 +34,31 @@ components:
           titles: Header Icon
           icon: true
           sections:
-            - class: info          
-            - class: tip      
-            - class: note              
+            - title: Basic - important
+              icon: star
+            - title: Basic - flagged
+              icon: flag
+            - class: info
+            - class: tip
+            - class: note
             - class: warning     
-            - class: highlighted      
-            - class: question              
-            - class: success       
-            - class: error          
+            - class: highlighted
+            - class: question
+            - class: success
+            - class: error
             - class: emergency
+            - title: Primary - important
+              class: primary
+              icon: star
+            - title: Primary - flagged
+              class: primary
+              icon: flag
+            - title: Outline - important
+              class: outline
+              icon: star
+            - title: Outline - flagged
+              class: outline
+              icon: flag
 
               
 ---
@@ -66,4 +82,3 @@ Additional guidance can be found on the [USWDS component page](https://designsys
     *  Add the data-allow-multiple attribute to any usa-accordion to create a multiselectable accordion group.
 *  **Default an accordion button to open**: 
     *  Add *expanded="true"* to the accordion include statement to have that section open by default at page load.
-

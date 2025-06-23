@@ -1,5 +1,5 @@
-{% assign author = include.author %}
-{% assign author = site.data.authors[author] | default: author %}
+{% assign authored = include.author %}
+{% assign author = site.data.authors[authored] | default: author %}
 
 <li class="usa-card {% comment %}usa-card--flag card-img-sq{% endcomment %} width-full">
     <div class="usa-card__container">
@@ -47,7 +47,7 @@
         {% endif %}
         {% endcomment %}
         <div class="grid-col mobile-lg:text-right">
-          {% include layout/filter-related.html search=page.wgs attribute='author' btext='Workbooks by ' %}
+          {% include layout/filter-related.html search=authored attribute='author' btext='Workbooks by ' %}
         </div>
       </div>
     </div>

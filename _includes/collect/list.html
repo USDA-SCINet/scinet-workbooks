@@ -6,11 +6,10 @@
 {% endif %}
 
 {%- assign decor = "" %}
-{% unless sort_list %}
+
 {% assign types = tsets.type | default: 'index' %}
 {% assign decortype = site.data.filter['icons'] | where: "type", types %}
 {% assign decor = decortype[0].icon %}
-{% endunless %}
 
 {%- capture override-display %}{%- if page.index == 0 %}
 {%- if pwb contains page.subject %}show{%- else %}remove{%- endif %}{%- else %}show{%- endif %}
@@ -20,7 +19,7 @@
 {% include collect/li.html ttsets=tsets class=include.class aclass=include.aclass decor=decor %}
 {% if tsets.index %}
     {% unless pssize == 0 %}
-<ul class="{%- unless sort_list %}icon-ul usa-list{%- endunless %}">
+<ul class="icon-ul usa-list">
     {% assign _usubset = pagesubset | sort: "order" %}
     {% unless include.loop=="looped" %}{% assign smallersubset=mypagesubset %}{% endunless %}
     {% for _set in _usubset %}

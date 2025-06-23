@@ -208,3 +208,4 @@ exclude:
   - vendor/ruby/
   - package.json
   - gulpfile.js
+  - .eslintrc

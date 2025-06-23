@@ -3,9 +3,6 @@ layout: default
 scripts: 
   - '/assets/js/lib/jquery-3.4.1.min.js'
   - '/assets/js/filter/filternav.js'
-  - '/assets/js/external.js'
-  - '/assets/js/tables.js'
-
 ---
 {% assign hero = page.header %}
 {% assign blankarray = "" | split: "" %}
@@ -170,7 +167,7 @@ scripts:
   {% include layout/hero.html %}
   {%- endif %}
   <div class="grid-container main-side">
-    <div class="grid-row grid-gap flex-align-start">
+    <div class="grid-row grid-gap flex-align-stretch">
 
     <!-- desktop breakpoint side navigation. --> 
     <div class="usa-layout-docs__sidenav sidenav_desktop">
@@ -185,6 +182,7 @@ scripts:
       data-threshold="1"
     ></aside>
     </div>
+      </div>
 
       <div class="usa-layout-docs__main desktop:grid-col-9">
           {% include layout/breadcrumb.html %}
@@ -201,8 +199,8 @@ scripts:
           </main>
       </div>
        <!-- mobile breakpoint sidenav -->
-     <div class="usa-layout-docs__sidenav desktop:display-none width-full">
-     {{ sidenavigation }}
+       <div class="usa-layout-docs__sidenav sidenav_mobile">
+        {{ sidenavigation }}
      <br>
      </div>
     </div>
