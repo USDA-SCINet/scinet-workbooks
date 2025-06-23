@@ -1,9 +1,7 @@
 /* gulpfile.js */
 
 const uswds = require("@uswds/compile");
-const { jsbuild, jslint, jswatch } = require("./_scripts/javascript");
-// Include gulp helpers.
-const { series } = require("gulp");
+
 /**
  * USWDS version
  * Set the version of USWDS you're using (2 or 3)
@@ -34,7 +32,3 @@ uswds.paths.dist.theme = `${mainPath}`;
  exports.compile = uswds.compile;
  exports.watch = uswds.watch;
  exports.update = uswds.updateUswds;
-
- 
- exports.buildJS = series(jslint, jsbuild);
- exports.watchJS = jswatch;

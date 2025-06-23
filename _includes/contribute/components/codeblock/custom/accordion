@@ -1,10 +1,10 @@
 {% capture acc1 %}Lorem ipsum-{% include layout/components/random %}{% endcapture %}
 {% capture acc2 %}ut-enim-{% include layout/components/random %}{% endcapture %}
-{% capture acc3 %}basic-content-{% include layout/components/random %}{% endcapture %}
-{% capture acc4 %}finer-control-{% include layout/components/random %}{% endcapture %}
+{% capture acc3 %}duis-aute-{% include layout/components/random %}{% endcapture %}
+{% capture acc4 %}excepteur-sint-{% include layout/components/random %}{% endcapture %}
 
-{% include accordion title="Basic Content" expanded="true" controls=acc3 content="* If you do not have complex markdown in your accordion, you can add the content in the component request.
-* Including a `content` variable generates the `accordion_content` div automatically" %}
+{% include accordion title="Lorem ipsum" expanded="true" controls=acc1 %}
+<div id="{{ acc1 }}" class="accordion_content"   markdown='1'>
 
 {%- if item.attr %}
 {% include accordion title="Finer Content Control" expanded="true" controls=acc4 %}
@@ -14,25 +14,25 @@
 <div id="{{ acc4 }}" class="accordion_content"   markdown='1'>
 {%- endif %}
 
-<ul>
-    <li>For more complex content, or finer control over your markdown, include a div element with class <code class="language-plaintext highlighter-rouge">accordion_content</code></li>
-    <li>This allows you to add your markdown within the div instead of to a variable</li>
-</ul>
+</div>
 
-{% include alert class="warning" content="Ensure the `id` of this div matches the  `controls` variable of your parent accordion." title="ID must match" id="id-alert" %}
+{% include accordion title="Ut enim" controls=acc2 %}
+<div id="{{ acc2 }}" class="accordion_content"   markdown='1'>
+
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
 
 </div>
 
 {% include accordion title="Lorem ipsum" controls=acc1 %}
 <div id="{{ acc1 }}" class="accordion_content"   markdown='1' hidden>
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
 
 </div>
 
 {% include accordion title="Ut enim" controls=acc2 %}
 <div id="{{ acc2 }}" class="accordion_content"   markdown='1' hidden>
 
-Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
 </div>

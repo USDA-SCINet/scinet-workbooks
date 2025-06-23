@@ -199,7 +199,31 @@ alert:
 
       </div>
       <div class=" bg-white border margin-x-2 margin-top-2">
-          {% include layout/nav_icons %}
+        <div class="usa-accordion usa-accordion--bordered width-full maxw-full">
+              <h4 class="usa-accordion__heading">
+                          <button
+                              type="button"
+                              class="usa-accordion__button"
+                              aria-expanded="false" 
+                              aria-controls="nav_icons"
+                          >
+                          Navigation Key
+                          </button>
+                </h4>
+                <div id="nav_icons" class="usa-accordion__content usa-prose allow-overflow">
+                  
+                    <ul class="icon-ul usa-list">
+                      {% for _icon in site.data.filter['icons'] %}
+                      {% unless page.filter-names and _icon.type=='selected' %}
+                      <li class="capital">
+                        <img class="usa-icon margin-right-05" src="{{ _icon.icon }}" alt="{{ _icon.type }}">{{ _icon.type }}
+                      </li>
+                      {% endunless %}
+                      {% endfor %}
+                    </ul>
+                 
+                </div>
+          </div>
       </div>
 
       </div>
@@ -225,7 +249,7 @@ alert:
                 {%- capture alerttext %}<div><p class="text-base-darker margin-top-1 margin-bottom-0"><span id="component-count" path="json"><strong></strong> workbooks found</span></p>
                 </div>
                 {%- endcapture %}
-                {% include alert content=alerttext id="filter-counting" %}
+                {% include alert txt=alerttext id="filter-counting" %}
                 {%- endif %}
               </div>
 <!--               <div id="nosubject" class="width-full desktop:margin-x-3 margin-bottom-2 no-display">
