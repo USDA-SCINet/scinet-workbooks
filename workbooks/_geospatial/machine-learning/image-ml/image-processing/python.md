@@ -11,9 +11,9 @@ code: Image_Processing_Essentials_Boucheron.ipynb
 
 overview: [nomenclature, packages, code]
 
-setup: geospatial/machine-learning/image-ml#setting-up---python
+introduction: geospatial/machine-learning/image-ml#setting-up---python
 
-getting-started: [intro, setup, download]
+setup: [intro, code]
 ---
 
 ## Overview
@@ -24,7 +24,7 @@ In this tutorial, we present a brief overview of image processing concepts neces
 
 ## Getting Started
 
-{% include getting-started folder=1 %}
+{% include setups folder=1 %}
 
 ## Sections
 

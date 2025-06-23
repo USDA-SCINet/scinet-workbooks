@@ -5,19 +5,15 @@ description: "This tutorial covers creating maps in R using the sf and ggplot2 p
 type: interactive tutorial
 
 tags: [graphic design]
+terms: [Raster, CRS]
 packages: [sf, ggplot2]
 language: R
 wgs: geospatial
 updated: 2023-09-17
 author: Heather Savoy
-
-overview:
-  nomenclature: [Raster, CRS]
-  materials:
-    - code: GRWG_Maps.Rmd
-  resources:
-    packages: packages
-    datasets: [FS National Forests Dataset, 3DEP Bare Earth Digital Elevation Model]
+datasets: [FS National Forests Dataset, 3DEP Bare Earth Digital Elevation Model]
+code: GRWG_Maps.Rmd
+overview: [nomenclature,materials,packages-datasets]
 
 ---
 

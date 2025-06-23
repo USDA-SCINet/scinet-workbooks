@@ -8,15 +8,11 @@ language: R
 
 tags: [Parallel processing, Raster]
 packages: [terra, foreach, doParallel]
-
+terms: [Parallel processing, Core, Tile, NDVI]
+code: GRWG22_RasterTiles.Rmd
 updated: 2022-10-07 
 
-overview:
-  nomenclature: [Parallel processing, Core, Tile, NDVI]
-  materials:
-    - code: GRWG22_RasterTiles.Rmd
-  resources:
-    packages: packages
+overview: [nomenclature,materials,packages]
 
 
 ---

@@ -5,13 +5,10 @@ author: Rowan Gaffney
 updated: 2021-04-13
 language: Python
 packages: [xarray,hvplot,geopandas,stackstac,satsearch]
+terms: [SpatioTemporal Asset Catalog,Lazy loading,Affine transformation,NDVI,Cloud Optimized Geotiff]
 
-overview:
-  resources:
-    packages: packages
-  nomenclature: [SpatioTemporal Asset Catalog,Lazy loading,Affine transformation,NDVI,Cloud Optimized Geotiff]
-  materials:
-    - code: Sentinel2_STAC.ipynb
+overview: [packages,nomenclature,materials]
+code: Sentinel2_STAC.ipynb
 
 ---
 
