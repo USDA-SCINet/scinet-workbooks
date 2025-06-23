@@ -8,24 +8,24 @@
 {%- assign images_path = module_path | append: '/assets/img' | relative_url %}
 {%- endif %}
 
-{%- if page.setup %}
-    {%- assign setup = page.setup %}
+{%- if page.intro %}
+    {%- assign intropath = page.intro %}
     {%- if page.mkdir %}
-        {% assign envtitle = page.mkdir %}
+        {% assign environment = page.mkdir %}
     {%- else %}
-        {% assign setupsplit = setup | split: '#' %}
-        {% include components/file_process url=setupsplit.first %}
+        {% assign introsplit = intropath | split: '#' %}
+        {% include components/file_process url=introsplit.first %}
         {% assign rev_path = module_sections | reverse %}
-        {% assign envtitle = rev_path.first %}
+        {% assign environment = intropath | slugify %}
     {%- endif %}
 {%- else %}
     {% if page.file_path %}{% include components/file_process folder=include.folder %}{% endif %}
-    {%- assign setup = module_sections | join: "/" %}
+    {%- assign intropath = module_sections | join: "/" %}
 
     {%- if page.mkdir %}
-        {% assign envtitle = page.mkdir %}
+        {% assign environment = page.mkdir %}
     {%- else %}
         {% assign rev_path = module_sections | reverse %}
-        {% assign envtitle = rev_path.first %}
+        {% assign environment = rev_path.first %}
     {%- endif %}
 {%- endif %}

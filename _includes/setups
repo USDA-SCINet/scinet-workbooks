@@ -1,0 +1,2 @@
+{% include setup/check_path folder=include.folder %}{%- assign environment = include.environment | default: environment %}{%- assign sections = include.sections | default: page.setup %}{%- if include.bullets %}{%- assign li = "*" %}{%- else %}{%- assign li = "1." %}{%- endif %}{%-for _section in sections %}
+{{ li }} {% include setup/{{ _section }} folder=include.folder %}{% endfor %} 

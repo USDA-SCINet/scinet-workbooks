@@ -1,0 +1,1 @@
+{%- assign pagecode = include.code | default: page.code %}{%- assign matload = pagecode | split: "." %}{% include setup/{{ matload.last | downcase }} file=pagecode folder=folder justbullet=include.justbullet %}

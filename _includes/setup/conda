@@ -1,5 +1,5 @@
-{%- assign conda = page.conda %}
-1. Create your Conda environment:
+{%- assign conda = include.conda | default: page.conda %}{% include setup/check_path folder=include.folder %}{% unless conda %}{% assign conda=environment %}{% endunless %}
+Create your Conda environment:
     * Load Conda.
     {%- if page.cluster %}{%- if page.cluster == "Atlas" %}
         * Atlas: `module load miniconda3`
@@ -10,20 +10,20 @@
         * Ceres: `module load miniconda`
     {%- endif %}
     {%- if conda.first %}
-    * Create and load your new Conda environment for this workbook.
+    * Create and load your new Conda environment:
         ```bash
-conda env create --prefix /90daydata/scinet/$USER/envs/{{ envtitle }}
-source activate /90daydata/scinet/$USER/envs/{{ envtitle }}
+conda env create --prefix /90daydata/scinet/$USER/envs/{{ environment }}
+source activate /90daydata/scinet/$USER/envs/{{ environment }}
 conda install{% for _c in conda %} {{ _c }}{% endfor %}
 ```  
     {%- else %}
-    * Download the environment yml file for this workbook:
+    * Download the environment yml file:
         ```bash
 wget {{ file_path }}/{{ conda }}.yml
 ```
-    * Create and load your new Conda environment for this workbook.
+    * Create and load your new Conda environment:
         ```bash
-conda env create --prefix /90daydata/shared/$USER/envs/{{ envtitle }} -f {{ conda }}.yml
-source activate /90daydata/shared/$USER/envs/{{ envtitle }}
+conda env create --prefix /90daydata/shared/$USER/envs/{{ environment }} -f {{ conda }}.yml
+source activate /90daydata/shared/$USER/envs/{{ environment }}
 ```  
 {%- endif %}

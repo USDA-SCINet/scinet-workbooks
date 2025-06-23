@@ -1,0 +1,12 @@
+{% include setup/check_path folder=include.folder %}{%- assign wgettext = include.text | default: "Copy the tutorial materials into your working directory:" %}{%- assign wgetfiles = include.wget | default: page.wget %}
+{%- if wgetfiles.first %}
+{{ wgettext }}
+```bash{% for _line in wgetfiles %}
+wget {{ site.url }}{{ file_path }}/{{ _line }}{% endfor %}
+```
+{%- else %}
+{{ wgettext }}
+```bash
+{{ wgetfiles }}
+```
+{%- endif %}

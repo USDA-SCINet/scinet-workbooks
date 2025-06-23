@@ -1,1 +1,2 @@
-Repeated introdoctory text?
+{%- if page.intro %}{%- assign intro = page.intro %}{%- else %}{% include setup/check_path folder=include.folder %}{%- endif %}
+If you have not completed the [setup instructions for this section](/{{ intropath }}), please do so before proceeding.
