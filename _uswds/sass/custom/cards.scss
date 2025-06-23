@@ -81,6 +81,7 @@ a.gloss_wb{
    display: inline;
 }
 
+
 .sharp-card {
    @include u-radius(0);
    @include u-border('base-lightest');
@@ -472,94 +473,3 @@ a.gloss_wb{
    //border-bottom: 1px solid;
    padding-bottom: 1rem;
 }
-
-
-
-.wb-filters{
-   display:inline;
- }
- .wb-filters::before{
-   position:absolute;
-   left:-999em;
-   right:auto;
-   content:"External.";
- }
- .wb-filters[target=_blank]::before{
-   position:absolute;
-   left:-999em;
-   right:auto;
-   content:"External, opens in a new tab.";
- }
- .wb-filters::after{
-   background-image:url("../img/icons/filter.svg");
-   background-repeat:no-repeat;
-   background-position:center center;
-   background-size:1.75ex 1.75ex;
-   display:inline-block;
-   height:1.75ex;
-   width:1.75ex;
-   content:"";
-   display:inline;
-   margin-top:0.7ex;
-   margin-left:2px;
-   padding-left:1.75ex;
-   vertical-align:middle;
- }
- @supports ((-webkit-mask: url("")) or (mask: url(""))){
-   .wb-filters::after{
-     background:none;
-     background-color:currentColor;
-     -webkit-mask-image:url("../img/icons/filter.svg"), linear-gradient(transparent, transparent);
-             mask-image:url("../img/icons/filter.svg"), linear-gradient(transparent, transparent);
-     -webkit-mask-position:center center;
-             mask-position:center center;
-     -webkit-mask-repeat:no-repeat;
-             mask-repeat:no-repeat;
-     -webkit-mask-size:1.75ex 1.75ex;
-             mask-size:1.75ex 1.75ex;
-   }
- }
- .wb-filters.usa-link--alt{
-   display:inline;
- }
- .wb-filters.usa-link--alt::before{
-   position:absolute;
-   left:-999em;
-   right:auto;
-   content:"External.";
- }
- .wb-filters.usa-link--alt[target=_blank]::before{
-   position:absolute;
-   left:-999em;
-   right:auto;
-   content:"External, opens in a new tab.";
- }
- .wb-filters.usa-link--alt::after{
-   background-image:url("../img/usa-icons-bg/launch--white.svg");
-   background-repeat:no-repeat;
-   background-position:center center;
-   background-size:1.75ex 1.75ex;
-   display:inline-block;
-   height:1.75ex;
-   width:1.75ex;
-   content:"";
-   display:inline;
-   margin-top:0.7ex;
-   margin-left:2px;
-   padding-left:1.75ex;
-   vertical-align:middle;
- }
- @supports ((-webkit-mask: url("")) or (mask: url(""))){
-   .wb-filters.usa-link--alt::after{
-     background:none;
-     background-color:currentColor;
-     -webkit-mask-image:url("../img/icons/filter.svg"), linear-gradient(transparent, transparent);
-             mask-image:url("../img/icons/filter.svg"), linear-gradient(transparent, transparent);
-     -webkit-mask-position:center center;
-             mask-position:center center;
-     -webkit-mask-repeat:no-repeat;
-             mask-repeat:no-repeat;
-     -webkit-mask-size:1.75ex 1.75ex;
-             mask-size:1.75ex 1.75ex;
-   }
- }

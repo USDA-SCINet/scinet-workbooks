@@ -5,4 +5,4 @@
     <a class="listed {{ include.aclass }}" href="{% include url.html link=fsets %}">{%- unless sort_list %}
         {% unless page.filter-names %}<svg class="usa-icon filtered" alt="selected" role="img">
             <use xlink:href="/assets/uswds/img/sprite.svg#check_circle"></use>
-          </svg>{% endunless %}{%- endunless %}<img class="usa-icon margin-right-05" src="{{ include.decor }}" alt="{{ fsets.type | default: 'index' }}"> {{ fsets.title }}</a>
+          </svg>{% endunless %}<img class="usa-icon margin-right-05" src="{{ include.decor }}" alt="{{ fsets.type | default: 'index' }}"> {%- endunless %}{{ fsets.title }}</a>

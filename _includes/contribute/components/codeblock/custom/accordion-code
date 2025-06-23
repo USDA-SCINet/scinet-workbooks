@@ -32,3 +32,10 @@ Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliqu
 Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
 
 </div>
+
+&#123% include accordion title="Excepteur sint" controls="excepteur-sint" %&#125
+<div id="excepteur-sint" class="accordion_content"   markdown='1'>
+
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+</div>

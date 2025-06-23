@@ -1,5 +1,4 @@
 @use "uswds-core" as *;
-@forward "usa-in-page-navigation";
 
 .guide-nav{
     @include u-border-top('05');
