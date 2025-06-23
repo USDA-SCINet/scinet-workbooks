@@ -77,7 +77,7 @@ This dataset gives locations and topsoil heavy metal concentrations, along with 
 
 
 ```python
-dnld_url = 'https://geospatial.101workbook.org/SpatialModeling/assets/'
+dnld_url = '{{ file_path }}'
 # Point observations and study area grid
 meuse_obs = gpd.read_file(dnld_url + 'meuse_obs.zip')
 meuse_grid = gpd.read_file(dnld_url + 'meuse_grid.zip')

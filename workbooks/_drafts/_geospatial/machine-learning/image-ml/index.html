@@ -1,0 +1,51 @@
+---
+title: "Image Machine Learning"
+author:
+index: 2
+wgs: geospatial
+description: (description of contents)
+interface: [Jupyter, RStudio]
+
+## conda: wb_image_ml
+kernel: true
+
+setup: [mkdir]
+pyenv: image-ml-for-python
+renv: image-ml-for-r
+---
+
+Materials modified from the USDA ARS AI Workshop 2020.
+
+## Getting Started
+
+{% include setup/90daydata %}
+
+### For Python
+
+{% include setups environment=page.pyenv %}
+1. {% include setup/conda %}
+1. {% include setup/kernel %}
+1. Launch JupyterLab
+  * If you are working through a specific tutorial from this module,
+  you can open the notebook you downloaded for that tutorial.
+1. Select the kernel you just made:
+  * Click on the "Switch kernel" button in the top right corner
+  * Select "{{ kernel }}" and click "Select"
+1. Check to make sure the kernel is set up correctly:
+   * In the notebook's empty cell paste:
+     ```python
+     import keras
+     print(keras.backend.backend())
+     ```
+   * The result should tell you you're using TensorFlow backend.
+1. You are set up! You can return to your tutorial now, or get started with [Image Processing Essentials - Python](/geospatial/machine-learning/image-ml/image-processing/python).
+
+
+### For R
+
+{% include setups environment=page.renv %}
+. You are set up! You can return to your tutorial now, or get started with [Image Processing Essentials - R](/geospatial/machine-learning/image-ml/image-processing/r).
+
+
+-----
+
