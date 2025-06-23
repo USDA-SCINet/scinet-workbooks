@@ -29,10 +29,9 @@ terms:
      Key-difference: "The command line is a specific part of the CLI environment." 
      Examples: "Usually preceded by a prompt, e.g., <code>user@host:~$</code> in Unix/Linux or <code>C:\\></code> in Windows."
 
-objective: "The fundamentals of the Command Line Interface (CLI) including its key components: the terminal interface and the Unix shell."
+objectives: "The fundamentals of the Command Line Interface (CLI) including its key components: the terminal interface and the Unix shell."
 
-overview:
-  nomenclature: terms
+overview: [objectives, nomenclature]
 ---
 
 ## Overview
