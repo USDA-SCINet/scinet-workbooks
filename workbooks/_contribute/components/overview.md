@@ -11,17 +11,8 @@ tags: [IDE]
 packages: [GeoCDL]
 code: filename.Rmd
 
-overview: [technologies, applications, nomenclature, datasets-packages, materials]
+overview: [applications, nomenclature, datasets-packages, materials]
 
-concepts:
-  - "**Objectives**: Main learning goals the tutorial is aiming to accomplish. Limit to 3 or 4."
-  - "**Concepts**: Specific high level concepts that are included in the tutorial"
-  - "**Technologies**: Different tools/technologies used in the tutorial."
-  - "**Applications**: Applications for the knowledge learned in the tutorial"
-  - "**Nomenclature**: Terms and definitions"
-  - "**Materials**: Files, pdfs, etc used in the tutorial."
-technologies:
-  - "**Tech:** Description"
 applications:
   - Creating your own tutorial
   - Matching existing formatting easily
@@ -47,7 +38,6 @@ overview2:
     - Matching existing formatting easily
   nomenclature: terms
   materials:
-    - code: filename.Rmd
     - "**Download Jupyter Notebook:** [pygcdl_tutorial.ipynb](./assets/pygcdl_tutorial.ipynb)"
     - "[This is a pdf](./assets/demofile.pdf)"
     - Just some text
@@ -130,23 +120,12 @@ packages: [GeoCDL]
 code: filename.Rmd
 datasets: [PRISM]
 
-overview: [overview, technologies, applications, nomenclature, datasets-packages, materials]
+overview: [objectives, applications, nomenclature, datasets-packages, materials]
 
-
-concepts:
-  - "**Objectives**: Main learning goals the tutorial is aiming to accomplish. Limit to 3 or 4."
-  - "**Concepts**: Specific high level concepts that are included in the tutorial"
-  - "**Technologies**: Different tools/technologies used in the tutorial."
-  - "**Applications**: Applications for the knowledge learned in the tutorial"
-  - "**Nomenclature**: Terms and definitions"
-  - "**Materials**: Files, pdfs, etc used in the tutorial."
-technologies:
-  - "**Tech:** Description"
 applications:
   - Creating your own tutorial
   - Matching existing formatting easily
 materials:
-  - "**Download Jupyter Notebook:** [pygcdl_tutorial.ipynb](./assets/pygcdl_tutorial.ipynb)"
   - "[This is a pdf](./assets/demofile.pdf)"
   - Just some text
 ---
@@ -177,25 +156,15 @@ objectives:
   - Objectives should describe the goals this tutorial or workshop is trying to accomplish.
 
 tags: [IDE]
+code: filename.Rmd
 packages: [GeoCDL]
 
 overview:
-  concepts:
-    - "**Objectives**: Main learning goals the tutorial is aiming to accomplish. Limit to 3 or 4."
-    - "**Concepts**: Specific high level concepts that are included in the tutorial"
-    - "**Technologies**: Different tools/technologies used in the tutorial."
-    - "**Applications**: Applications for the knowledge learned in the tutorial"
-    - "**Nomenclature**: Terms and definitions"
-    - "**Materials**: Files, pdfs, etc used in the tutorial."
-  technologies:
-    - "**Tech:** Description"
   applications:
     - Creating your own tutorial
     - Matching existing formatting easily
   nomenclature: terms
   materials:
-    - code: filename.Rmd
-    - "**Download Jupyter Notebook:** [pygcdl_tutorial.ipynb](./assets/pygcdl_tutorial.ipynb)"
     - "[This is a pdf](./assets/demofile.pdf)"
     - Just some text
 ---
@@ -240,12 +209,10 @@ Learning Objectives
 
 <div class="usa-accordion" >
 
-{% include accordion title="Concepts, Technology, or Applications Options" class="secondary" controls="list-components" rm-a=true %}
+{% include accordion title="Including a custom list" class="secondary" controls="list-components" rm-a=true %}
 <div id="list-components" class="accordion_content" markdown="1" hidden> 
 
   *  **Objectives**: Main learning goals the tutorial is aiming to accomplish. Limit to 3 or 4.
-  *  **Concepts**: Specific high level concepts that are included in the tutorial
-  *  **Technologies**: Different tools/technologies used in the tutorial.
   *  **Applications**: Applications for the knowledge learned in the tutorial
   *  **Nomenclature**: Terms and definitions
   *  **Materials**: Files, pdfs, etc used in the tutorial.
@@ -338,12 +305,10 @@ Learning Objectives
 </li>
 <li markdown='1'>
 
-#### Concepts, Technology, or Applications
+#### Including a custom list
 
 ```{% raw %}
   *  **Objectives**: Main learning goals the tutorial is aiming to accomplish. Limit to 3 or 4.
-  *  **Concepts**: Specific high level concepts that are included in the tutorial
-  *  **Technologies**: Different tools/technologies used in the tutorial.
   *  **Applications**: Applications for the knowledge learned in the tutorial
   *  **Nomenclature**: Terms and definitions
   *  **Materials**: Files, pdfs, etc used in the tutorial."
