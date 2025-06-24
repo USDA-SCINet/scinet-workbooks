@@ -1,1 +1,1 @@
-<div id="{{ include.controller }}" class="accordion_content" {% unless include.expanded == "true" %}hidden{% endunless %}>{{ include.contents | markdownify }}</div>
+<div id="{{ include.controller }}" class="accordion_content" {% unless include.expanded == "true" %}hidden{% endunless %}>{{ include.contents | markdownify }}{%- unless include.removediv %}</div>{% endunless %}
