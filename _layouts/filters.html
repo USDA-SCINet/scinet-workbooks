@@ -19,7 +19,7 @@ alert:
 {% elsif page.filter=='all' %}
   {% assign inner = site.documents | where: 'variety', 'workbook' %}
   {%- assign outers = inner | where_exp: "item", "item.ext == '.md' or item.type == 'introduction'" %}
-  {%- assign clips = outers | where: "type", "introduction" %}
+  {%- assign clips = outers | where_exp: "item", "item.ext == '.html'" %}
   {% assign clipped = "" | split: "" %}
   {% assign outer = "" | split: "" %}
   {%- for _clip in clips %}
@@ -246,9 +246,15 @@ alert:
                   
                   
                 <ul class="usa-collection collection bg-white margin-x-2">
+                  {%- if page.filter=='all' %}
+                  {% for _page in outer %}
+                  {% include collect/info-card.html option=_page subset=inner alt-intro=true %}
+                  {% endfor %}
+                  {%- else %}
                   {% for _page in outer %}
                     {% include collect/info-card.html option=_page subset=inner %}
                   {% endfor %}
+                  {%- endif %}
                 </ul>
               </div>
             </div>

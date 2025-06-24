@@ -1,0 +1,8 @@
+{%- assign gs = include.getting-started | default: page.getting-started %}
+{%- unless file_path %}{% include file_path folder=include.folder %}{%- endunless %}{%- if gs.first %}
+{%- for _item in gs %}
+
+{% include setup/{{ _item }} folder=include.folder %}
+
+{%- endfor %}
+{%- endif %}

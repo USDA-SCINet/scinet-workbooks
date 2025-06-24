@@ -77,3 +77,27 @@ packages:
     lang: Python
     description: Summarizes geospatial raster datasets based on vector geometries
     url: https://pythonhosted.org/rasterstats/
+  - name: xarray
+    lang: Python
+    description: Labelled multi-dimensional arrays in Python
+    url: http://xarray.pydata.org/en/stable/
+  - name: hvplot
+    url: https://hvplot.holoviz.org
+    description: High-level plotting API built on HoloViews
+    lang: Python
+  - name: HoloViews
+    url: https://holoviews.org/
+    lang: Python
+  - name: geopandas
+    lang: Python
+    url: https://geopandas.org/
+    description: Extends Pandas to allow spatial operations on geometric types
+    lang: Python
+  - name: stackstac
+    url: https://stackstac.readthedocs.io/en/latest/
+    description: Turns a STAC collection into a lazy xarray.DataArray, backed by dask.
+    lang: Python
+  - name: satsearch
+    url: https://github.com/sat-utils/sat-search
+    description: Discovering/downloading satellite imagery using a STAC compliant API
+    lang: Python

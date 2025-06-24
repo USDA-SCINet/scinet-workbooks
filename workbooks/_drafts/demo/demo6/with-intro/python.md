@@ -22,11 +22,11 @@ Tutorial overview
 
 * **Download Jupyter Notebook**: [demo.ipynb](./assets/demo.ipynb)
 
-{% include packages %}
+{% include overview/packages %}
 
 ### Nomenclature
 
-{% include terms %}
+{% include overview/terms %}
 
 ### Data Details
 

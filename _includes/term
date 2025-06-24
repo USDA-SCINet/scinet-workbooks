@@ -1,5 +1,5 @@
 {%- assign _term = include.term %}
-
+{% assign glossaryattributes = site.data.filter['glossaryattributes'] %}
 {%- assign define = include %}
 {%- capture termatt %}{%- for att in define %}{%- assign att0 = att[0] %}{%- unless att0 == "term" or att0 == "definition" or att0 == "link" %}<li class="usa-collection__meta-item"><b>{{ att0 | replace: "-", " " }}:</b> {{ define[att0] }}</li>{%- endunless %}{%- endfor %}{% if define.link %}<li><a href="{{ define.link }}" class="arrow sm-txt">{{ _term }} Tutorial</a></li>{% endif %}{%- endcapture %}
 

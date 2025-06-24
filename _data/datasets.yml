@@ -1,0 +1,28 @@
+datasets:
+  - name: PRISM  
+    url: https://prism.oregonstate.edu/
+    description: "The PRISM Climate Group gathers climate observations from a wide range of monitoring networks, applies sophisticated quality control measures, 
+      and develops spatial climate datasets to reveal short- and long-term climate patterns. The resulting datasets incorporate a variety of modeling techniques 
+      and are available at multiple spatial/temporal resolutions, covering the period from 1895 to the present."
+  - name: FS National Forests Dataset
+    url: https://www.geoplatform.gov/metadata/bd04f8d8-96cc-5eac-96af-566bea975ba3
+    description: "The FS National Forests Dataset (US Forest Service Proclaimed Forests) is a depiction of the boundaries encompassing the National Forest System (NFS) lands."
+  - name: 3DEP Bare Earth Digital Elevation Model
+    url: https://www.usgs.gov/3d-elevation-program
+    description: "To respond to growing needs for high-quality elevation data, the goal of 3DEP is to complete acquisition of nationwide lidar (IfSAR in AK) to provide the first-ever national baseline of consistent high-resolution topographic elevation data - both bare earth and 3D point clouds."
+  - name: meuse
+    url: https://cran.r-project.org/web/packages/sp/index.html
+    description: "This dataset gives locations and topsoil heavy metal
+      concentrations, along with a number of soil and landscape variables
+      at the observation locations, collected in a flood plain of the
+      river Meuse, near the village of Stein (NL). Heavy metal
+      concentrations are from composite samples of an area of
+      approximately 15 m x 15 m."
+  - name: US Census Cartographic Boundary Files
+    url: https://www.census.gov/geographies/mapping-files/time-series/geo/cartographic-boundary.html
+    description: "The cartographic boundary files are simplified representations of selected geographic areas from the Census Bureau's MAF/TIGER geographic database. These boundary files are specifically designed for small scale thematic mapping."
+  - name: CalTech101
+    url: https://data.caltech.edu/records/mzrjq-6wc02
+    description: Pictures of objects belonging to 101 categories. About 40 to 800 images per category. Most categories have about 50 images
+  - name: MNIST
+    url: hhttps://keras.io/datasets/

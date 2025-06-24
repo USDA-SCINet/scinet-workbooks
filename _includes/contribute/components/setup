@@ -1,0 +1,47 @@
+{%- assign opt = include.opt %}
+{%- assign opts = opt.setup %}
+{% if include.code %}
+{% capture codeblock %}
+{% raw %}---
+## other frontmatter code
+{% endraw %}
+{%- for _set in opt %}
+{%- unless _set[0] == "label" %}
+{%- if _set[0] == "setup" %}
+{{ _set[0] }}
+setup:
+  {%- for _sset in opt.setup %}
+  {{ _sset[0] }}: {%- if _sset[1].first %}
+  {%- assign setf = _sset[1] %}
+  {%- for _fset in setf %}
+    {%- if _fset.first[0] %}
+    - {{ _fset.first[0] }}: "{{ _fset.first[1] }}"
+    {%- elsif _fset[1].first %}
+        {%- for _sfset in _fset %}
+        {{ _sfset[0] }}: {{ _sfset[1] }}
+        {%- endfor %}
+    {%- else %}
+    - "{{ _fset }}"
+    {%- endif %}
+  {%- endfor %}
+    {%- else %} {% if _sset[1] == true %}true{% else %}"{{ _sset[1] }}"{% endif %}
+  {%- endif %}
+  {%- endfor %}
+{%- else %}
+{{ _set[0] }}: {{ _set[1] }}
+{%- endif %}
+{%- endunless %}
+{%- endfor %}
+{% raw %}---
+
+{% include setup/mkdir %}
+{% endraw %}
+{% endcapture %}
+{% include contribute/components/codeblock/codeblock code=codeblock %}
+
+{% else %}
+{% capture compiledsetup %}{% include layout/setup/compile p=opt setup=opts %}{% endcapture %}
+<h4>Tutorial Setup Instructions</h4>
+
+{{ compiledsetup | markdownify }}
+{% endif %}

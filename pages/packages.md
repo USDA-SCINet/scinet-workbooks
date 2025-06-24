@@ -12,4 +12,4 @@ beforeTOC:
 
 {% assign inner = site.documents | where: 'variety', 'workbook' %}
 {% assign valued = inner | map: 'packages' | uniq | compact %}
-{% include packages packages=valued sortable=true title='Packages and Libraries' %}
+{% include overview/packages packages=valued sortable=true title='Packages and Libraries' %}

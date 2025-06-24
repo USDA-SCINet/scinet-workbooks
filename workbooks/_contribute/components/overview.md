@@ -9,8 +9,21 @@ objectives-manual:
 
 tags: [IDE]
 packages: [GeoCDL]
+code: filename.Rmd
 
-overview:
+overview: [applications, nomenclature, datasets-packages, materials]
+
+applications:
+  - Creating your own tutorial
+  - Matching existing formatting easily
+materials:
+  - "**Download Jupyter Notebook:** [pygcdl_tutorial.ipynb](./assets/pygcdl_tutorial.ipynb)"
+  - "[This is a pdf](./assets/demofile.pdf)"
+  - Just some text
+datasets: [PRISM]
+
+
+overview2:
   concepts:
     - "**Objectives**: Main learning goals the tutorial is aiming to accomplish. Limit to 3 or 4."
     - "**Concepts**: Specific high level concepts that are included in the tutorial"
@@ -25,11 +38,20 @@ overview:
     - Matching existing formatting easily
   nomenclature: terms
   materials:
-    - Rmd: filename.Rmd
     - "**Download Jupyter Notebook:** [pygcdl_tutorial.ipynb](./assets/pygcdl_tutorial.ipynb)"
     - "[This is a pdf](./assets/demofile.pdf)"
     - Just some text
 
+
+custom-terms:
+  - term: Custom
+    Key-difference: "You can add the definition manually if you do not want to include it in the glossary for some reason." 
+    definition: "This definition was added manually using the 'definition' variable" 
+    Section-titles: "Section titles are automatically derived from the variable names"
+  - term: Terminal
+    link: "/computing-skills/command-line/cli-interface/terminal/"
+    Key-difference: "This definition was automatically generated from the glossary." 
+    Examples: "GNOME Terminal, Windows Terminal, iTerm2"
 ---
 
 *  **When to use the overview component**
@@ -68,7 +90,7 @@ Learning Objectives
 </div>
 </div>
 
-{% include overview %}
+{% include overviews %}
 
 </div>
 
@@ -76,6 +98,11 @@ Learning Objectives
 
 {% include accordion title="Component Code" class="outline" controls="component-codes" %}
 <div id="component-codes" class="accordion_content" markdown="1" hidden> 
+
+<ul class="usa-content-list">
+<li markdown='1'>
+
+#### Standard Implementation
 
 ```
 {% raw %}---
@@ -90,24 +117,54 @@ objectives:
 
 tags: [IDE]
 packages: [GeoCDL]
+code: filename.Rmd
+datasets: [PRISM]
+
+overview: [objectives, applications, nomenclature, datasets-packages, materials]
+
+applications:
+  - Creating your own tutorial
+  - Matching existing formatting easily
+materials:
+  - "[This is a pdf](./assets/demofile.pdf)"
+  - Just some text
+---
+
+## Overview
+
+Introduce your tutorial or lesson with a short paragraph to give the reader context to what they are looking at.  Then provide the overview component.
+
+{% include overviews %}{% endraw %}
+
+```
+
+</li>
+<li markdown='1'>
+
+#### Nested Implementation
+Nesting the yml allows for more customized sourcing of data within your frontmatter
+
+```
+{% raw %}---
+title: Overview
+## other frontmatter variables here
+## everything below is used in the overview component
+
+objectives: 
+  - Understand what the Overview component is and how to implement it.
+  - Show alternative code that will accomplish the same formatting but allow further flexibility.
+  - Objectives should describe the goals this tutorial or workshop is trying to accomplish.
+
+tags: [IDE]
+code: filename.Rmd
+packages: [GeoCDL]
 
 overview:
-  concepts:
-    - "**Objectives**: Main learning goals the tutorial is aiming to accomplish. Limit to 3 or 4."
-    - "**Concepts**: Specific high level concepts that are included in the tutorial"
-    - "**Technologies**: Different tools/technologies used in the tutorial."
-    - "**Applications**: Applications for the knowledge learned in the tutorial"
-    - "**Nomenclature**: Terms and definitions"
-    - "**Materials**: Files, pdfs, etc used in the tutorial."
-  technologies:
-    - "**Tech:** Description"
   applications:
     - Creating your own tutorial
     - Matching existing formatting easily
   nomenclature: terms
   materials:
-    - Rmd: filename.Rmd
-    - "**Download Jupyter Notebook:** [pygcdl_tutorial.ipynb](./assets/pygcdl_tutorial.ipynb)"
     - "[This is a pdf](./assets/demofile.pdf)"
     - Just some text
 ---
@@ -116,9 +173,12 @@ overview:
 
 Introduce your tutorial or lesson with a short paragraph to give the reader context to what they are looking at.  Then provide the overview component.
 
-{% include overview %}{% endraw %}
+{% include overviews %}{% endraw %}
 
 ```
+
+</li>
+</ul>
 
 </div>
 </div>
@@ -149,12 +209,10 @@ Learning Objectives
 
 <div class="usa-accordion" >
 
-{% include accordion title="Concepts, Technology, or Applications Options" class="secondary" controls="list-components" rm-a=true %}
+{% include accordion title="Including a custom list" class="secondary" controls="list-components" rm-a=true %}
 <div id="list-components" class="accordion_content" markdown="1" hidden> 
 
   *  **Objectives**: Main learning goals the tutorial is aiming to accomplish. Limit to 3 or 4.
-  *  **Concepts**: Specific high level concepts that are included in the tutorial
-  *  **Technologies**: Different tools/technologies used in the tutorial.
   *  **Applications**: Applications for the knowledge learned in the tutorial
   *  **Nomenclature**: Terms and definitions
   *  **Materials**: Files, pdfs, etc used in the tutorial.
@@ -170,7 +228,7 @@ Learning Objectives
 
 #### Basic terms component
 
-{% include terms %}
+{% include overview/terms %}
 
 </li>
 <li markdown='1'>
@@ -179,8 +237,7 @@ Learning Objectives
 
 <ul class="usa-collection collection" markdown='1'>
 
-    {% include term term="Custom" Key-difference="You can add the definition manually if you do not want to include it in the glossary for some reason." definition="This definition was added manually using the 'definition' variable" section-titles="Section titles are automatically derived from the variable names" %}
-    {% include term term="Terminal" link="/computing-skills/command-line/cli-interface/terminal/" Key-difference="This definition was automatically generated from the glossary." Examples="GNOME Terminal, Windows Terminal, iTerm2" %}
+  {% include overview/terms terms="custom-terms" %}
 
 </ul>
 
@@ -203,7 +260,7 @@ Learning Objectives
 
 #### R markdown file
 
-{% include layout/setup/rmarkdown file='GRWG22_GeoCDL.Rmd' %}
+{% include setup/rmd file='GRWG22_GeoCDL.Rmd' %}
 
 </li>
 <li markdown='1'>
@@ -213,7 +270,7 @@ Learning Objectives
 <ul class="usa-list" markdown="1">
 
 {% for _m in page.overview.materials %}
-{% include materials material=_m size=0 %}
+{% include overview/materials material=_m size=0 %}
 {% endfor %}
 
 </ul>
@@ -223,7 +280,7 @@ Learning Objectives
 
 #### Packages component
 
-{% include packages %}
+{% include overview/packages %}
 
 </li>
 </ul>
@@ -248,12 +305,10 @@ Learning Objectives
 </li>
 <li markdown='1'>
 
-#### Concepts, Technology, or Applications
+#### Including a custom list
 
 ```{% raw %}
   *  **Objectives**: Main learning goals the tutorial is aiming to accomplish. Limit to 3 or 4.
-  *  **Concepts**: Specific high level concepts that are included in the tutorial
-  *  **Technologies**: Different tools/technologies used in the tutorial.
   *  **Applications**: Applications for the knowledge learned in the tutorial
   *  **Nomenclature**: Terms and definitions
   *  **Materials**: Files, pdfs, etc used in the tutorial."
@@ -275,7 +330,7 @@ Basic terms component referencing "tags"
 ## frontmatter
 tags: [IDE]
 ---
-{% include terms %}{% endraw %}
+{% include overview/terms %}{% endraw %}
 ```
 
 </li>
@@ -288,7 +343,7 @@ Basic terms component referencing "terms"
 tags: [IDE]
 terms: [IDE, Artificial Intelligence] #including terms variable makes it the default term source
 ---
-{% include terms %}{% endraw %}
+{% include overview/terms %}{% endraw %}
 ```
 
 </li>
@@ -299,10 +354,18 @@ Basic terms component referencing a custom variable
 ```{% raw %}
 ---
 ## frontmatter
-specified-frontmatter: [Terminal, Welcome Message, Prompt, Command Line]
+specified-frontmatter:
+  - term: Custom
+    Key-difference: "You can add the definition manually if you do not want to include it in the glossary for some reason." 
+    definition: "This definition was added manually using the 'definition' variable" 
+    Section-titles: "Section titles are automatically derived from the variable names"
+  - term: Terminal
+    link: "/computing-skills/command-line/cli-interface/terminal/"
+    Key-difference: "This definition was automatically generated from the glossary." 
+    Examples: "GNOME Terminal, Windows Terminal, iTerm2"
 ---
 
-{% include terms terms=page.specified-frontmatter taglinks="true" %}{% endraw %}
+{% include overview/terms terms=specified-frontmatter taglinks="true" %}{% endraw %}
 ```
 
 </li>
@@ -342,7 +405,7 @@ Basic list
 Rmd file
 
 ```{% raw %}
-{% include layout/setup/rmarkdown file='GRWG22_GeoCDL.Rmd' %}
+{% include setup/rmd file='GRWG22_GeoCDL.Rmd' %}
 {% endraw %}```
 
 </li>
@@ -354,7 +417,7 @@ Materials component
 ---
 ## frontmatter
 materials:
-  - Rmd: filename.Rmd
+  - rmd: filename.Rmd
   - "**Download Jupyter Notebook:** [pygcdl_tutorial.ipynb](./assets/pygcdl_tutorial.ipynb)"
   - "[This is a pdf](./assets/demofile.pdf)"
   - Just some text
@@ -363,7 +426,7 @@ materials:
 <ul class="usa-list" markdown="1">
 
 {% for _m in page.materials %}
-{% include materials material=_m size=0 %}
+{% include overview/materials material=_m size=0 %}
 {% endfor %}
 
 </ul>
@@ -379,7 +442,7 @@ Packages component
 ## frontmatter
 packages: [GeoCDL]
 ---
-{% include packages %}
+{% include overview/packages %}
 {% endraw %}```
 
 </li>

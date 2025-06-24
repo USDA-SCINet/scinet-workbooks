@@ -1,8 +1,14 @@
 {% assign post = include.option %}
 {% assign subset = include.subset %}
 
+{% if include.alt-intro and post.ext == '.md' %}
+{% assign iflag = false %}
+{% else %}
+{% assign iflag = true %}
+{% endif %}
+
 {% assign pposttags = post.tags %}
-{% if post.index %}
+{% if post.index and iflag %}
     {% include collect/pagesubset subset=subset post=post %}
 {% else %}
     {% assign pwb = post.subject %}
@@ -50,7 +56,7 @@
         </p>
         {% endif %}
         {% endunless %}
-        {% if post.index %}
+        {% if post.index and iflag %}
         {% unless pssize == 0 %}
         <ul class="usa-collection__meta">
             <li class="usa-collection__meta-item">

@@ -1,5 +1,5 @@
 {%- assign p = include.p %}
-{%- if p.path contains 'index.html' %}
+{%- if p.path contains 'index.' %}
 {%- assign pageurl = p.url | remove: "/index" %}
 {%- else %}
 {%- assign path_depth = p.url | split: '/' | size | minus: 2 %}

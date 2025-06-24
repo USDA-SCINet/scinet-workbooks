@@ -1,0 +1,29 @@
+{% assign resource = include.section | default: "packages" %}
+{% if include.terms %}
+{% if include.terms.first %}
+{%- assign terms = include.terms %}
+{% else %}
+{% assign _termfetch = page[include.terms] %}
+{%- assign terms = _termfetch | default: include.terms %}
+{% endif %}
+{% else %}
+{%- assign terms = page[resource] %}
+{% endif %}
+{% if site.data[resource] %}
+{% assign gp = site.data[resource] %}
+{%- assign gloss = gp[resource] %}
+{% if resource == "packages" %}
+{%- include components/datatable.html terms=terms gloss=gloss filter=resource title="Primary Libraries/Packages" sortable=include.sortable %}
+{% else %}{% assign rcapital = resource | capitalize %}
+{%- include components/datatable.html terms=terms title=rcapital gloss=gloss %}
+{% endif %}
+{% else %}{% assign rcapital = resource | capitalize %}
+{% assign firstterm = terms.first %}
+{% if firsterm.description %}
+{% assign blankarray = "" | split: "" %}
+{%- include components/datatable.html terms=terms title=rcapital gloss=blankarray %}
+{% else %}
+{% unless forloop.first and forloop.last %}<h4>{{ rcapital }}</h4>{% endunless %}
+{% include layout/li-check data=terms %}
+{% endif %}
+{% endif %}

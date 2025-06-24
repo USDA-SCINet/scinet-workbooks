@@ -1,0 +1,59 @@
+<div class="usa-table-container  flex-scroll" tabindex="0">
+    <table class="usa-table usa-table--sticky  usa-table--stacked-header width-full">
+        <caption>
+            {{ include.title | default: 'Primary Libraries/Packages' }}
+        </caption>
+        <thead>
+            <tr>{% if include.sortable %}
+                <th data-sortable scope="col" role="columnheader">Name</th>
+                <th data-sortable scope="col" role="columnheader">Description</th>
+                <th data-sortable scope="col" role="columnheader">Language</th>
+                <th data-sortable scope="col" role="columnheader">Tutorials</th>
+                {% else %}
+                <th role="columnheader">Name</th>
+                <th role="columnheader">Description</th>
+                {% if include.filter %}<th role="columnheader">Tutorials</th>{% endif %}
+                {% endif %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for _term in include.terms %}
+            <tr>
+                {% if _term.description %}
+                <th scope="row" {% if include.sortable %} role="rowheader"{% endif %}>
+                    {% if _term.url %}<a href="{{ _term.url }}">{{ _term.name | default: _term.term }}</a>{% else %}{{ _term.name | default: _term.term }}{% endif %}
+                </th>
+                <td>{{ _term.description }}{% if _term.details %}
+                    {% include layout/li-check data=_term.details %}{% endif %}</td>
+                    {% if include.sortable %}<td>{{ _term.lang }}</td>{% endif %}
+                    {% if include.filter %}<td>{% include layout/filter-related.html search=define.name attribute=include.filter atext=' workbooks' %}</td>{% endif %}
+                {% else %}
+                {% assign defines = include.gloss | where: "name", _term %}
+            {% if defines.size > 0 %}
+                {% if defines.size > 1 and page.language %}
+                        {% assign define = defines | find_exp:"item", "item.lang == page.language" %}
+                {% else %}
+                    {% assign define = defines[0] %}     
+                {% endif %}
+                <th scope="row" {% if include.sortable %} role="rowheader"{% endif %}>
+                    {% if define.url %}<a href="{{ define.url }}">{{ define.name }}</a>{% else %}{{ define.name }}{% endif %}
+                </th>
+                <td>{{ define.description }}</td>
+                {% if include.sortable %}<td>{{ define.lang }}</td>{% endif %}
+                {% if include.filter %}<td>{% include layout/filter-related.html search=define.name attribute=include.filter atext=' workbooks' %}</td>{% endif %}
+            {% else %}
+            <th scope="row" {% if include.sortable %} role="rowheader"{% endif %}>
+                {{ _term }}
+            </th>
+            <td></td>
+            {% if include.sortable %}<td></td>{% endif %}
+            {% if include.filter %}<td>{% include layout/filter-related.html search=_term attribute=include.filter atext=' workbooks' %}   </td>{% endif %}
+            {% endif %}
+            {% endif %}
+        </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+
+    </div>

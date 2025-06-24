@@ -1,0 +1,3 @@
+This workbook is set up to run in [90daydata](https://scinet.usda.gov/guides/data/storage#large-short-term-storage).  If you would like to use your project directory instead, modify the instructions below by substituting `/project/your_project_name/` wherever you see `/90daydata/shared/`.
+
+If you have run these commands within the last 90 days, you can skip this section.

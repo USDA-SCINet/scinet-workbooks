@@ -1,0 +1,13 @@
+{% if include.terms %}
+{% if include.terms.first %}
+{%- assign terms = include.terms %}
+{% else %}
+{% assign _termfetch = page[include.terms] %}
+{%- assign terms = _termfetch | default: include.terms %}
+{% endif %}
+{% else %}
+{%- assign terms = page.packages %}
+{% endif %}
+{%- assign gloss = site.data.packages['packages'] %}
+{%- assign packagearray = "" | split: "" %}
+{%- include components/datatable.html terms=terms gloss=gloss filter='packages' title="Primary Libraries/Packages" sortable=include.sortable %}

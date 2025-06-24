@@ -1,0 +1,87 @@
+{% assign pov = include.sections | default: page.overview %}
+{% assign folder = include.folder | default: 0 %}
+{%- if pov.objectives %}
+{% capture objcontent %}{% include layout/li-check data=page.objectives %}{% endcapture %}
+{% include overview/objectives content=objcontent %}
+{%- endif %}
+
+<div class="usa-accordion">
+
+    {% if pov.applications %}
+    {% include accordion title="Applications" class="secondary " controls="applications-acc" %}
+    <div id="applications-acc" class="accordion_content" hidden> 
+        {% include layout/li-check data=pov.applications %}
+    </div>
+    {% endif %}
+
+    {% if pov.concepts %}
+    {% include accordion title="Concepts" class="secondary " controls="concepts-acc" %}
+    <div id="concepts-acc" class="accordion_content" hidden> 
+        {% include layout/li-check data=pov.concepts %}
+    </div>
+    {% endif %}
+
+    {% if pov.nomenclature %}
+    {% include accordion title="Nomenclature" class="secondary " controls="nomenclature-acc" %} 
+    <div id="nomenclature-acc" class="accordion_content" hidden>  
+        {%- if pov.nomenclature.first %}
+        {% include overview/terms terms=pov.nomenclature %}
+        {%- else %}
+        {% include overview/terms %}
+        {%- endif %}
+    </div>
+    {% endif %}
+
+    {% if pov.resources %}{% capture _makelinebreak %}-----{% endcapture %}
+
+    {% assign _r = pov.resources %}
+    {% for _resourcesection in _r %}
+        {% if forloop.first %}{% assign rtitle = "" %}{% assign rsections = "" %}{% endif %}
+    
+        {% if _resourcesection[1] %}
+        {% assign _rtitle = _resourcesection[0] %}
+        {% assign _rterms = _r[_rtitle] %}
+            {% capture rtitle %}{{ rtitle }}{{ _rtitle | capitalize }}{% unless forloop.last %} / {% endunless %}{% endcapture %}
+            {% capture rsections %}{{ rsections }}
+            {% include overview/resource terms=_rterms section=_rtitle %}
+
+            {% unless forloop.last %}{{ _makelinebreak | markdownify }}{% endunless %}
+            {% endcapture %}
+    
+        {% else %}
+
+            {% capture rtitle %}{{ rtitle }}{{ _resourcesection }}{% unless forloop.last %} / {% endunless %}{% endcapture %}
+            {% capture rsections %}{{ rsections }}
+            {% include overview/resource section=rtitle %}
+
+            {% unless forloop.last %}{{ _makelinebreak | markdownify }}{% endunless %}
+            {% endcapture %}
+        {% endif %}
+    {% endfor %}
+    
+    {% include accordion title=rtitle class="secondary" controls="resources-acc" %}
+    <div id="resources-acc" class="accordion_content" hidden> 
+        {{ rsections }}
+    </div>
+    {% endif %}
+
+    {% if pov.materials %}
+    {% include accordion title="Learning Materials" class="secondary " controls="materials-acc" %} 
+    <div id="materials-acc" class="accordion_content" hidden> 
+        {% include overview/materials materials=pov.materials %}        
+    </div>
+    {%- endif %}
+
+    {% if pov.custom %}
+    {% for oval in pov.custom %}
+    {% assign basename = oval | capitalize %}
+    {% assign accname = oval | append: "-acc" %}
+    {%- include accordion title=basename class="secondary" controls=accname %}
+    {% assign odata = pov[oval] %}
+    <div id="{{ accname }}" class="accordion_content" hidden> 
+        {% include layout/li-check data=odata %}
+    </div>
+    {% endfor %}
+    {%- endif %}
+
+</div>

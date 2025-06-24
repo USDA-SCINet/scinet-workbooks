@@ -1,15 +1,31 @@
-{% if page.file_path %}{% assign file_path = page.file_path %}
-{% else %}
-  {% if include.folder %}
-  {% assign folderdown = include.folder %}
-  {% else %}
-  {% assign folderdown = 0 %}
-  {% endif %}
-  {% assign path_segments = page.url | split: '/' %}
-  {% assign path_l = path_segments | size %}
-  {% assign folderlvl = path_l | minus: 2 | minus: folderdown %}
-  
-  {% assign module_path = path_segments | slice: 1, folderlvl | join: "/" %}
-  {% assign file_path = module_path | append: '/assets' | relative_url %}
-  {% assign images_path = module_path | append: '/assets/img' | relative_url %}
-{% endif %}
+{%- assign ref_url = include.url | default: page.url %}
+{%- assign path_segments = ref_url | split: '/' %}
+{%- if page.file_path %}{% assign file_path = page.file_path %}
+{%- else %}
+{% include components/file_process folder=include.folder %}
+{%- assign module_path = module_sections | join: "/" %}
+{%- assign file_path = module_path | append: '/assets' | relative_url %}
+{%- assign images_path = module_path | append: '/assets/img' | relative_url %}
+{%- endif %}
+
+{%- if page.intro %}
+    {%- assign intropath = page.intro %}
+    {%- if page.mkdir %}
+        {% assign environment = page.mkdir %}
+    {%- else %}
+        {% assign introsplit = intropath | split: '#' %}
+        {% include components/file_process url=introsplit.first %}
+        {% assign rev_path = module_sections | reverse %}
+        {% assign environment = intropath | slugify %}
+    {%- endif %}
+{%- else %}
+    {% if page.file_path %}{% include components/file_process folder=include.folder %}{% endif %}
+    {%- assign intropath = module_sections | join: "/" %}
+
+    {%- if page.mkdir %}
+        {% assign environment = page.mkdir %}
+    {%- else %}
+        {% assign rev_path = module_sections | reverse %}
+        {% assign environment = rev_path.first %}
+    {%- endif %}
+{%- endif %}

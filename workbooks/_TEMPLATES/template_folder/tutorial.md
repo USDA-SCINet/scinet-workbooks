@@ -32,11 +32,11 @@ Introduction to your tutorial and what the tutorial aims to accomplish.
 
 * **Download Jupyter Notebook**: [filename.Rmd](./assets/filename.ipynb)
 
-{% include packages %}
+{% include overview/packages %}
 
 ### Nomenclature
 
-{% include terms %}
+{% include overview/terms %}
 
 ### Data Details
 

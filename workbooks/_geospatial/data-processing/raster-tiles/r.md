@@ -9,8 +9,12 @@ language: R
 tags: [Parallel processing, Raster]
 packages: [terra, foreach, doParallel]
 terms: [Parallel processing, Core, Tile, NDVI]
-
+code: GRWG22_RasterTiles.Rmd
 updated: 2022-10-07 
+
+overview: [nomenclature,materials,packages]
+
+
 ---
 
 
@@ -30,11 +34,14 @@ allocated to the launched RStudio Server session. If you are interested in seein
 an example on how to submit your own SLURM job, please see 
 [this tutorial](/data-processing/slurm/job-arrays/r).
 
-### Context
+{% include overviews %}
+
+## Getting Started
 
 This tutorial assumes you are running this Rmarkdown file in RStudio Server. The 
 easiest way to do that is with Open OnDemand (OoD) on [Ceres](http://ceres-ood.scinet.usda.gov/)
 or [Atlas](https://atlas-ood.hpc.msstate.edu/). 
+
 Select the following parameter values when requesting a RStudio Server
 app to be launched depending on which cluster you choose. All other values can 
 be left to their defaults. Note: on Atlas, we are using the development partition
@@ -54,15 +61,7 @@ Atlas:
 * `Number of tasks`: 16
 * `Additional Slurm Parameters`: --mem=24G
 
-### Materials
 
-{% include layout/setup/rmarkdown file='GRWG22_RasterTiles.Rmd' %}
-
-{% include packages %}
-
-### Nomenclature
-
-{% include terms %}
 
 ## Analysis Steps
 
@@ -76,8 +75,7 @@ Atlas:
   * Option 2: using the `parallel` package
 * Visualize NDVI results - View the NDVI values in tiles as a whole image.
 
-<ol class="usa-process-list">
-  <li class="usa-process-list__item"  markdown='1'>  
+<div class="process-list" markdown='1'>  
 
 ### Import Libraries/Packages
 
@@ -104,8 +102,7 @@ library(foreach)
 library(doParallel)
 ```
 
-  </li>
-  <li class="usa-process-list__item"  markdown='1'>  
+ 
 
 ### Open Imagery and Setup Tiles
 
@@ -171,8 +168,7 @@ nr_tiles <- makeTiles(nir_red_fine,
                       overwrite=TRUE)
 ```
 
-  </li>
-  <li class="usa-process-list__item"  markdown='1'>  
+ 
 
 ### Defining NDVI function
 
@@ -191,8 +187,7 @@ normalized_diff_r <- function(fname){
 }
 ```
 
-  </li>
-  <li class="usa-process-list__item"  markdown='1'>  
+ 
 
 ### Comparing serial and parallel processing times
 
@@ -317,8 +312,7 @@ system.time({
 ```
 
 
-  </li>
-  <li class="usa-process-list__item"  markdown='1'>  
+ 
 
 ### Visualize NDVI results
 
@@ -336,8 +330,7 @@ plot(virtual_ndvi)
 ```
 ![vrt_ndvi]({{ images_path }}/R_vrt_ndvi-1.png)
 
-</li>
-</ol>
+</div>
 
 ## Continue to explore
 

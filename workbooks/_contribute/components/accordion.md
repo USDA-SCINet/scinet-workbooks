@@ -82,4 +82,3 @@ Additional guidance can be found on the [USWDS component page](https://designsys
     *  Add the data-allow-multiple attribute to any usa-accordion to create a multiselectable accordion group.
 *  **Default an accordion button to open**: 
     *  Add *expanded="true"* to the accordion include statement to have that section open by default at page load.
-

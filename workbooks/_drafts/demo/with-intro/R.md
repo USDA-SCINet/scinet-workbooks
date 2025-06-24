@@ -20,13 +20,13 @@ Tutorial overview
 
 ### Materials
 
-{% include layout/setup/rmarkdown file='demo.Rmd' %}
+{% include setup/rmd file='demo.Rmd' %}
 
-{% include packages %}
+{% include overview/packages %}
 
 ### Nomenclature
 
-{% include terms %}
+{% include overview/terms %}
 
 ### Data Details
 
