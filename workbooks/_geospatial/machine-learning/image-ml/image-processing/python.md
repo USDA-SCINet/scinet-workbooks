@@ -9,9 +9,9 @@ tags: [machine learning]
 packages: [numpy, matplotlib, imageio, skimage, ndimag]
 code: Image_Processing_Essentials_Boucheron.ipynb
 
-overview: [nomenclature, packages, code]
+overview: [packages, code]
 
-introduction: geospatial/machine-learning/image-ml#setting-up---python
+intro: geospatial/machine-learning/image-ml#for-python
 
 setup: [intro, code]
 ---
@@ -136,6 +136,7 @@ We can check on important characteristics of `I_camera` using the `%whos` magic 
 %whos
 ```
 
+{:.no-copy}
     Variable   Type       Data/Info
     -------------------------------
     INFILE     str        data/cameraman.png
@@ -163,6 +164,7 @@ print('The minimum value of I_camera is ' + str(I_camera.min()))
 print('The maximum value of I_camera is ' + str(I_camera.max()))
 ```
 
+{:.no-copy}
     The minimum value of I_camera is 7
     The maximum value of I_camera is 253
 
@@ -180,6 +182,7 @@ It is also important to remember that the computer "sees" only an array of value
 print(I_camera[100:110,100:110])       # Print subregion that is 11 x 11 pixels
 ```
 
+{:.no-copy}
     [[  9  11  13  11  11  11  16 106 178  68]
      [ 12  12  12  11  12  11  69 181  62  15]
      [ 13  12  12  11  12  82 168  60  14  13]
@@ -293,6 +296,7 @@ We can check on important characteristics of `I_pepper`.
 %whos
 ```
 
+{:.no-copy}
     Variable   Type       Data/Info
     -------------------------------
     INFILE     str        data/cameraman.png
@@ -331,6 +335,7 @@ print('    Min: ' + str(I_pepper[:,:,2].min()))
 print('    Max: ' + str(I_pepper[:,:,2].max()))
 ```
 
+{:.no-copy}
     Max and min values of the image:
         Min: 0
         Max: 255
@@ -366,6 +371,7 @@ print('Blue')
 print(I_pepper[100:110,100:110,2])
 ```
 
+{:.no-copy}
     Red:
     [[ 62  60  60  61  61  61  60  57  61  67]
      [ 64  61  59  60  59  56  55  56  59  64]
@@ -641,6 +647,7 @@ print('    Min: ' + str(I_camera_dx.min()))
 print('    Max: ' + str(I_camera_dx.max()))
 ```
 
+{:.no-copy}
     Max and min values of the Original image:
         Min: 7
         Max: 253

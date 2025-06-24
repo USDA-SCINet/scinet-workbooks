@@ -1,26 +1,38 @@
 ---
-title: Image Processing Fundamentals
-layout: single
+title: Image Processing Essentials - R
+type: interactive tutorial
+language: R
+code: R_Image_Processing.Rmd
 author: Jennifer Chang
-author_profile: true
-header:
-  overlay_color: "444444"
-  overlay_image: /assets/images/margaret-weir-GZyjbLNOaFg-unsplash_dark.jpg
+updated: 2021-01-14
+description: "A brief overview of image processing concepts necessary to understand machine learning and deep learning."
+setup: [intro, code]
+tags: [machine learning]
+packages: [imager]
+
+
+overview: [packages, code]
+
+intro: geospatial/machine-learning/image-ml#for-r
 ---
 
-
-**Last Update:** 14 Jan 2021 <br /> **RMarkdown:**
-[R\_Image\_Processing.Rmd](https://geospatial.101workbook.org/tutorials/R_Image_Processing.Rmd)
 
 ## Overview
 
 In this tutorial, we present a brief overview of image processing
 concepts necessary to understand machine learning and deep learning.
-This walk through was originally written in python: [link to python
-version](https://geospatial.101workbook.org/Workshops/Tutorial1_Image_Processing_Essentials_Boucheron.html).
+This walk through was [originally written in python](./python).
 We have tried to maintain functionality across both languages but
 certain libraries/features may only be available in one or the other.
 The basics of image processing should be the same across both.
+
+{% include overviews folder=1 %}
+
+## Getting Started
+
+{% include setups folder=1 %}
+
+## Sections
 
 This tutorial explores:
 
@@ -29,43 +41,39 @@ This tutorial explores:
 -   Converting an image between color and grayscale
 -   Identifying features (edges) within an image
 
-## Downloading Images
+
+<div class="process-list" markdown='1'>
+
+### Downloading Images
 
 <!-- TODO: replace these with landsat images. This should be a geospatial tutorial. -->
 
-We will be using two images which can be downloaded from the following
-links:
+WFirst, we need to download images to work with in this tutorial.  Download `cameraman.png` and `peppers.png` and save them to the same directory as this notebook.  Both of these images are common example images used in image processing and are often included as part of the distribution of image processing toolboxes.
 
--   [cameraman.png](https://geospatial.101workbook.org/Workshops/Tutorial1_Image_Processing_Essentials_Boucheron.html)
--   [peppers.png]()
 
-|                                cameraman.png                                |                                peppers.png                                |
-|:---------------------------------------------------------------------------:|:-------------------------------------------------------------------------:|
-| <img src="https://geospatial.101workbook.org/tutorials/data/cameraman.png"> | <img src="https://geospatial.101workbook.org/tutorials/data/peppers.png"> |
+{% include table caption="Tutorial Images" no-row-labels=true fixed=true content="| cameraman.png |  peppers.png |
+| :-------------------------: | :-------------------------: |
+| <img src='../assets/img/cameraman.png'>   | <img src='../assets/img/peppers.png'> |" %}
 
-From a terminal, we could have used the `wget` or `curl` commands to
-download the images.
+You can download the images by right clicking the images above and saving to your computer. If you are working from an HPC or terminal, you can also use the `wget` or `curl` commands.
 
-``` bash
-wget https://geospatial.101workbook.org/tutorials/data/cameraman.png
-wget https://geospatial.101workbook.org/tutorials/data/peppers.png
+```bash
+wget {{ site.url }}{{ images_path }}/cameraman.png
+wget {{ site.url }}{{ images_path }}/peppers.png
 
 ls -1 *.png
 #> cameraman.png
 #> peppers.png
 ```
 
+
+
 The `cameraman.png` on the left is in grayscale and the `peppers.png` on
 the right is in color. Processing color or grayscale images is slightly
 different, which we will explore in the following tutorial.
 
-## Loading images into R
+### Loading images into R
 
-We will assume you have a working R environment; however, see the
-following for a tutorial on setting up an R environment:
-
--   [Set up R and R
-    Environment](https://bioinformaticsworkbook.org/dataWrangling/R/r-setup.html#gsc.tab=0)
 
 The nice thing about scripting languages is the fact that many tools are
 published as libraries. Which means you do not have to write your own
@@ -91,7 +99,7 @@ I_camera = load.image('data/cameraman.png')   # <= path to input image here
 plot(I_camera)
 ```
 
-![](images/R_I_camera-1.png)<!-- -->
+![]({{ images_path }}/R_I_camera-1.png)<!-- -->
 
 Here, we have read in the image and stored it as `I_camera`. To verify
 that the image was successfully loaded into R, we have displayed the
@@ -112,9 +120,9 @@ I_peppers = load.image('data/peppers.png')   # <= path to input image here
 plot(I_peppers)
 ```
 
-![](images/R_I_peppers-1.png)<!-- -->
+![]({{ images_path }}/R_I_peppers-1.png)<!-- -->
 
-## Properties of an image
+### Properties of an image
 
 Now that we’ve loaded and plotted the images. What is an image object
 and its properties?
@@ -160,7 +168,7 @@ dim(I_peppers)
 #> [1] 512 384   1   3
 ```
 
-## Subregions of the image
+### Subregions of the image
 
 Since an image object is really an R matrix, the matrix sub setting
 functions work to subset an image. Here, we pull out a subregion near
@@ -172,7 +180,7 @@ sub_I_camera = as.cimg(I_camera[100:110,100:110,,] )
 plot(sub_I_camera)
 ```
 
-![](images/R_sub_I_camera-1.png)<!-- -->
+![]({{ images_path }}/R_sub_I_camera-1.png)<!-- -->
 
 From this smaller `sub_I_camera`, we can print out the pixel values, get
 the minimum value and maximum value.
@@ -212,7 +220,7 @@ max(sub_I_camera[,,,1])
 See if you can subset and explore the `I_peppers` color image. Try to
 pull out a subimage that only contains one pepper.
 
-## Convert to Color Images to Grayscale
+### Convert to Color Images to Grayscale
 
 There are many reasons why we might want to convert a color image to a
 grayscale image. For one thing, it results in a reduction in image size
@@ -227,7 +235,7 @@ I_peppers = load.image('data/peppers.png')       # <= path to peppers.png
 plot(I_peppers)
 ```
 
-![](images/R_I_pepper-1.png)<!-- -->
+![]({{ images_path }}/R_I_pepper-1.png)<!-- -->
 
 The `imager` package provides a convenient `grayscale` function.
 
@@ -236,7 +244,7 @@ gray_I_peppers = grayscale(I_peppers)
 plot(gray_I_peppers)
 ```
 
-![](images/R_gray_I_peppers-1.png)<!-- -->
+![]({{ images_path }}/R_gray_I_peppers-1.png)<!-- -->
 
 Recall that an image is really a matrix of numbers. Let’s compare the
 dimensions of the original with the new image.
@@ -250,7 +258,7 @@ dim(gray_I_peppers)     # Grayscale Transformed
 
 The only difference should be the 4th entry.
 
-## Identify edge features in an image.
+### Identify edge features in an image.
 
 In order to identify objects in an image, it is often necessary to
 identify edges. While humans can intuitively identify edges to an
@@ -264,7 +272,7 @@ grad.mag <- sqrt(dx^2 + dy^2)
 plot(grad.mag, main="Gradient magnitude")
 ```
 
-![](images/R_edge_I_camera-1.png)<!-- -->
+![]({{ images_path }}/R_edge_I_camera-1.png)<!-- -->
 
 This particular function is called a Sobal Filter. To read more about
 Sobal filters, see this link: [wikipedia - sobel
@@ -279,7 +287,7 @@ grad.mag <- sqrt(dx^2 + dy^2)
 plot(grad.mag, main="Gradient magnitude")
 ```
 
-![](images/R_edge_I_peppers-1.png)<!-- -->
+![]({{ images_path }}/R_edge_I_peppers-1.png)<!-- -->
 
 What happens if we convert the color image to a gray scale image first?
 
@@ -291,9 +299,12 @@ grad.mag <- sqrt(dx^2 + dy^2)
 plot(grad.mag, main="Gradient magnitude")
 ```
 
-![](images/R_edge2_I_peppers-1.png)<!-- -->
+![]({{ images_path }}/R_edge2_I_peppers-1.png)<!-- -->
 
-# In Summary
+
+</div>
+
+## In Summary
 
 Hopefully, you have learned how to:
 

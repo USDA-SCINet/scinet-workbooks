@@ -1,73 +1,50 @@
 ---
 title: "Classical Machine Learning Fundamentals"
-layout: single
+description: "A brief overview of classical machine learning concepts as applicable to image classification applications."
 author: Laura Boucheron
-author_profile: true
-header:
-  overlay_color: "444444"
-  overlay_image: /assets/images/margaret-weir-GZyjbLNOaFg-unsplash_dark.jpg
+type: interactive tutorial
+order: 20
+updated: 2020-10
+objectives: "Develop a classical machine learning algorithm capable of discriminating between objects present in an image."
+overview: [objectives, datasets]
+code: Tutorial2_Classical_Machine_Learning_Boucheron.ipynb
+datasets: [CalTech101]
+
+intro: geospatial/machine-learning/image-ml#for-python
+
+setup: [intro, code]
+
+conda: [python=3.7 numpy matplotlib imageio scikit-image ipykernel -y]
 ---
 
-# Tutorial 2: Classical Machine Learning Fundamentals
-
-## Laura E. Boucheron, Electrical & Computer Engineering, NMSU
-
-### October 2020
-
-> Copyright (C) 2020  Laura E. Boucheron
-> 
-> This information is free; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
-> 
-> This work is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
-> 
-> You should have received a copy of the GNU General Public License along with this work in a file `COPYING.TXT`; if not, If not, see <https://www.gnu.org/licenses/>.
-
 ## Overview
-In this tutorial, we present a brief overview of classical machine learning concepts as applicable to image classification applications.  Completion of this tutorial should give participants the basic background and terminology necessary for an understanding of the basics of classical machine learning as applied to image classification.  In this tutorial, we will develop a classical machine learning algorithm capable of discriminating between objects present in an image.
+In this tutorial, we present a brief overview of classical machine learning concepts as applicable to image classification applications.  Completion of this tutorial should give participants the basic background and terminology necessary for an understanding of the basics of classical machine learning as applied to image classification.  
 
-This tutorial contains 5 sections:
+{% include overviews %}
 
-  * **Section 0: Preliminaries**: some notes on using this notebook, how to download the image dataset that we will use for this tutorial, and import commands for the libraries necessary for this tutorial
-  * **Section 1: Working with the CalTech101 Dataest**: how to traverse and use the directory structure and files provided in the CalTech101 Dataset
-  * **Section 2: Feature Extraction**: examples of extraction of different feature categories from images, including color, region, and texture features
-    * **Section 2.1: Color Features**: statistics of the color within an image object
-    * **Section 2.2: Region Features**: measures of the size and shape of the image object
-    * **Section 2.3: Texture Features**: measures of the distribution of intensities within the image object
-  * **Section 3: Setting up a Feature Matrix and Label Vector**: aggregating features into a feature matrix in the format expected by machine learning algorithms along with definition of a label vector
-  * **Section 4: Classification**: examples of common classification methods, including training and testing on the CalTech101 dataset
+## Getting Started
 
-There are subsections with the heading "**<span style='color:Green'> Your turn: </span>**" throughout this tutorial in which you will be asked to apply what you have learned.
+{% include setups %}
+1. Make sure the tutorial kernel is selected:
+  * Kernel > Change Kernel > select `{{ kernel }}` from the drop down menu
 
-# Section 0: Preliminaries
-## Section 0.1: A Note on Jupyter Notebooks
 
-There are two main types of cells in this notebook: code and markdown (text).  You can add a new cell with the plus sign in the menu bar above and you can change the type of cell with the dropdown menu in the menu bar above.  As you complete this tutorial, you may wish to add additional code cells to try out your own code and markdown cells to add your own comments or notes.
 
-A jupyter notebook with code and markdown (text) sections is provided for your convenience. 
+**This tutorial contains 5 sections:**
 
- * [Tutorial2\_Classical\_Machine\_Learning\_Boucheron.ipynb](https://geospatial.101workbook.org/tutorials/Tutorial2_Classical_Machine_Learning_Boucheron.ipynb)
+  * **Downloading Images**: how to download the image dataset that we will use for this tutorial
+  * **Working with the CalTech101 Dataest**: how to traverse and use the directory structure and files provided in the CalTech101 Dataset
+  * **Feature Extraction**: examples of extraction of different feature categories from images, including color, region, and texture features
+    * **Color Features**: statistics of the color within an image object
+    * **Region Features**: measures of the size and shape of the image object
+    * **Texture Features**: measures of the distribution of intensities within the image object
+  * **Setting up a Feature Matrix and Label Vector**: aggregating features into a feature matrix in the format expected by machine learning algorithms along with definition of a label vector
+  * **Classification**: examples of common classification methods, including training and testing on the CalTech101 dataset
 
-See [Introduction to JupyterHub](intro-to-jupyterhub.md) for a review on how to use Jupyter notebooks.
 
-<!--
+## Downloading Images
 
-Markdown cells can be augmented with a number of text formatting features, including
-  - bulleted
-  - lists
-
-embedded $\LaTeX$, monotype specification of `code syntax`, **bold font**, and *italic font*.  There are many other features of markdown cells--see the jupyter documentation for more information.
-
-You can edit a cell by double clicking on it.  If you double click on this cell, you can see how to implement the various formatting referenced above.  Code cells can be run and markdown cells can be formatted using Shift+Enter or by selecting the Run button in the toolbar above.
-
-Once you have completed (all or part) of this notebook, you can share your results with colleagues by sending them the `.ipynb` file.  Your colleagues can then open the file and will see your markdown and code cells as well as any results that were printed or displayed at the time you saved the notebook.  If you prefer to send a notebook without results displayed (like this notebook appeared when you downloaded it), you can select ("Restart & Clear Output") from the Kernel menu above.  You can also export this notebook in a non-executable form, e.g., `.pdf` through the File, Save As menu.
-
--->
-
-## Section 0.2 Downloading Images
-
-In this tutorial, we will use the CalTech101 dataset, which is a standard dataset used for image classification. Please read through the description of the dataset.
-
-* [http://www.vision.caltech.edu/Image_Datasets/Caltech101/](http://www.vision.caltech.edu/Image_Datasets/Caltech101/)
+In this tutorial, we will use the CalTech101 dataset, which is a standard dataset used for image classification. 
 
 You will need the dataset of images and the annoations
 
@@ -117,44 +94,9 @@ mv Annotations/Faces_3 Annotations/Faces_easy
 mv Annotations/Motorbikes_16 Annotations/Motorbikes
 ```
 
-## Section 0.3a Import Necessary Libraries (For users using a local machine)
-Here, at the top of the code, we import all the libraries necessary for this tutorial.  We will introduce the functionality of any new libraries throughout the tutorial, but include all import statements here as standard coding practice.  We include a brief comment after each library here to indicate its main purpose within this tutorial.
 
-It would be best to run this next cell before the workshop starts to make sure you have all the necessary packages installed on your machine.
+## Working with the CalTech101 Dataset
 
-
-```python
-import matplotlib.pyplot as plt # visualization
-import numpy as np # mathematical and scientific functions
-import os # interaction with OS for file manipulation
-import glob # a nice unix-style interface for path and file manipulation
-import imageio # image I/O
-import skimage.measure # measure region properties
-import skimage.feature # measure region properties
-import scipy.io as spio # ability to load Matlab .mat files
-import sklearn # common classifiers
-import sklearn.metrics # classification metrics
-from sklearn import svm # the support vector machine classifier
-
-# format matplotlib options
-%matplotlib inline
-plt.rcParams.update({'font.size': 20})
-```
-
-## Section 0.3b Build the Conda Environment (For users using the ARS HPC Ceres with JupyterLab)
-Open a terminal from inside JupyterLab (File > New > Terminal) and type the following commands
-```
-source activate
-conda create --name NMSU-AI-Workshop_image-processing python=3.7 numpy matplotlib imageio scikit-image ipykernel -y
-```
-It may take 5 minutes to build the Conda environment.
-
-When the environment finishes building, select this environment as your kernel in your Jupyter Notebook (click top right corner where you see Python 3, select your new kernel from the dropdown menu, click select)
-
-You will want to do this BEFORE the workshop starts.
-
-# Section 1: Working with the CalTech101 Dataset
-## Section 1.1: Exploring the Images
 In the previous tutorial, we were working with only two images.  There are more than 8000 images in 101 different directories in the CalTech101 dataset.  We thus need to develop ways to efficiently loop over larger image datasets and access the images without hard coding the image filenames.  
 
 Here, we will use the `glob` library to store directory names and filenames in a list.  You can store the directory names of the CalTech101 dataset in a list with `categories=sorted(glob.glob('101_ObjectCategories/*')`.  This list now gives you a means to loop over the 101 different categories of objects in that `categories[k]` is the `k`-th category name as a string (including the string `101_ObjectCategories/` prepended to the category name).  A few other notes:
@@ -184,9 +126,9 @@ for k, category in enumerate(categories):
 ![png](images/Tutorial2_Classical_Machine_Learning_Boucheron_7_0.png)
 
 
+<div class="process-list" markdown='1'>
 
-## Section 1.2 Exploring the Annotations
-### Section 1.2.1 Plotting the annotations as a boundary over the image
+### Plotting the annotations as a boundary over the image
 The annotations are stored in Matlab's `.mat` format, which the `scipy.io` library in python can load.  Above, we have imported `scipy.io` as `spio`.  The image annotations can be read in with the `spio.loadmat` function, e.g., `ann=spio.loadmat('filename.mat')`.  The `spio.loadmat` function returns a dictionary with variable names as keys.  In the CalTech101 annotations, dictionary entry `ann['box_coord']` is a $1\times4$ vector of bounding box coordinates and `ann['obj_contour']` is a $2\times K$ vector of pixel locations which outline the contour of the object, where $K$ will be different for different annotations.  
 
 As an example, we read in `Annotations/emu/annotation_0001.mat` and display `box_coord` and `obj_contour`.  The object contour points `obj_contour` are (for reasons unbeknownst to us) offset by the upper left `box_coord` coordinates.  
@@ -224,6 +166,7 @@ plt.title('Annotated Emu')
 plt.show()
 ```
 
+{:.no-copy}
     box_coord
     [[  7 247  72 293]]
     obj_contour
@@ -249,7 +192,7 @@ plt.show()
 
 
 
-### Section 1.2.2 Some common coordinate issues that may be encountered with annotations
+#### Some common coordinate issues that may be encountered with annotations
 We noted above that since we first displayed the image using `plt.imshow`, the axes for the figure are assumed to have the origin in the top left.  The `plt.plot` command will use the plotting coordinate conventions of x-axis, y-axis, but will follow the origin set up by the image visualization.  We further explore this issue by using the same plotting command `plt.plot(ann['obj_contour'][0,:]+ann['box_coord'][0,2]-1,ann['obj_contour'][1,:]+ann['box_coord'][0,0]-1,'r')` as above, but without first visualizing the image.  This means that the `plt.plot` command is expected to use the plotting coordinate conventions of x-axis, y-axis and have the origin in the bottom left.
 
 
@@ -268,7 +211,7 @@ plt.show()
 
 
 
-#### Reversing coordinates
+### Reversing coordinates
 A very common mistake in plotting (x,y) coordinates on top of images is accidentally reversing the order of the coordinates.  Given the rotated coordinate system used for images, this can cause a common "rotation" of expected results.  If we accidentally plotted the annotation in row, column order, we would achieve something like follows.
 
 
@@ -288,7 +231,7 @@ plt.show()
 
 
 
-### Section 1.2.3 Computing a binary object mask from the annotation data
+### Computing a binary object mask from the annotation data
 You can use the object contour outline to define a binary image image mask with `r,c = skimage.draw.polygon(ann['obj_contour'][1,:]+ann['box_coord'][0,0]-1,ann['obj_contour'][0,:]+ann['box_coord'][0,2]-1,(M,N)); A=np.zeros(M,N); A[r,c]=1;` (note that the object contour indices are swapped here versus the plot command used above due to the difference in coordinate systems of image versus plot) where `M`, `N` are the dimensions of the image.
 
 
@@ -316,8 +259,7 @@ plt.show()
 
 
 
-## <span style='color:Green'> Your turn: </span>
-Using what you have learned about using lists to loop over categories, load the first annotation (`annotation_0001.mat`) from each of the 101 categories, use the corresponding `obj_contour` to define an object mask, and display that mask in one location of an $11\times10$  subplot.  Title each of those locations of the subplot with the category name.  You might find it handy to read in the image corresponding to the annotation in order to easily get the dimensions.  The visualizations from the previous part can be used here to spot-check the correctness of the annotations.
+{% include alert class="question" title="Your turn" content="Using what you have learned about using lists to loop over categories, load the first annotation (`annotation_0001.mat`) from each of the 101 categories, use the corresponding `obj_contour` to define an object mask, and display that mask in one location of an $11\times10$  subplot.  Title each of those locations of the subplot with the category name.  You might find it handy to read in the image corresponding to the annotation in order to easily get the dimensions.  The visualizations from the previous part can be used here to spot-check the correctness of the annotations." %}
 
 
 ```python
@@ -349,14 +291,17 @@ for k, im_category in enumerate(im_categories):
 
 ![png](images/Tutorial2_Classical_Machine_Learning_Boucheron_17_1.png)
 
+</div>
 
-## Section 2: Feature Extraction
+## Feature Extraction
 In this section we will define several functions designed to extract different categories of features from images.  These functions will span several common categories of features, but are by no means a comprehensive list.  These feature extraction methods are illustration of so-called "hand-designed" features.  These are features that are specifically implemented as features that are expected to be helpful for discriminating between different image categories.
 
-### Section 2.1 Color Features
+<div class="process-list" markdown='1'>
+
+### Color Features
 In this section, we will extract a set of features designed to charaterize the colors present in an image.  We use the annotation mask as defined above to focus our attention on features only within the object of interest rather than features of the entire image.
 
-### Section 2.1.1 Defining color statistics
+#### Defining color statistics
 Here we create a function `f,fnames=extract_color_features_rgb(im,mask)` with inputs `im`, the image from which to extract features, and the binary annotation mask, `mask`.  Outputs will be a length-15 feature vector `f` describing statistics of the colors within the image object and a length-15 list `fnames` with the feature names.  We extract statistics from the red, green, and blue channels of the image.  From each channel, we compute the mean, standard deviation, median, min, and max value of pixels *within the object mask*.  We order the features by channel first in the order given above and by statistic second in the order given above (i.e., the first and second features will be mean and standard deviation of the red channel).  We assign brief, descriptive strings for each feature and store those in `fnames` (e.g., `'R_mean'`, and `'R_std'` as names for the first two features).  Note that we also need to take care of the situation in which the image is a grayscale image, i.e., only one channel by using the `skimage.color.gray2rgb` function to convert to an RGB image.
 
 
@@ -382,7 +327,7 @@ def extract_color_features_rgb(im,mask):
     return f, fnames
 ```
 
-### Section 2.1.2 Extracting color statistics
+#### Extracting color statistics
 Using `101_ObjectCategories/emu/image_0001.jpg` as the input image `im` and `Annotations/emu/annotation_0001.mat` as the annotation mask `mask`, we use the `extract_color_features_rgb` function and print out the `f` vector and the `fnames` list.  These features may not mean much to us as printed, but such a printed output can be used as a sanity check.
 
 
@@ -403,6 +348,7 @@ print('feature names')
 print(fnames)
 ```
 
+{:.no-copy}
     feature vector
     [ 89.66263904  41.77544731  85.           3.         255.
       60.43520174  36.47920188  53.           0.         250.
@@ -411,8 +357,7 @@ print(fnames)
     ('R_mean', 'R_std', 'R_median', 'R_min', 'R_max', 'G_mean', 'G_std', 'G_median', 'G_min', 'G_max', 'B_mean', 'B_std', 'B_median', 'B_min', 'B_max')
 
 
-## <span style='color:Green'> Your turn: </span>
-Create a feature extraction function `f,fnames=extract_color_features_hsv(im,mask)` with inputs `im`, the image from which to extract features, and the binary annotation mask, `mask`.  Outputs will be a length-15 feature vector `f` describing statistics of the colors in HSV space within the image object and a length-15 list `fnames` with the feature names.  Extract statistics from the hue, saturation, and value channels of the image.  From each channel, compute the mean, standard deviation, median, min, and max value of pixels within the object mask.  In order to convert between the RGB and HSV color space, use the command `skimage.color.rgb2hsv`.  Order the features by channel first in the order given above and by statistic second in the order given above (i.e., the first and second features will be mean and standard deviation of the hue channel).  Assign brief, descriptive strings for each feature and store those in `fnames` (e.g., `'H_mean'`, and `'H_std'` as names for the first two features).  
+{% include alert class="question" title="Your turn" content="Create a feature extraction function `f,fnames=extract_color_features_hsv(im,mask)` with inputs `im`, the image from which to extract features, and the binary annotation mask, `mask`.  Outputs will be a length-15 feature vector `f` describing statistics of the colors in HSV space within the image object and a length-15 list `fnames` with the feature names.  Extract statistics from the hue, saturation, and value channels of the image.  From each channel, compute the mean, standard deviation, median, min, and max value of pixels within the object mask.  In order to convert between the RGB and HSV color space, use the command `skimage.color.rgb2hsv`.  Order the features by channel first in the order given above and by statistic second in the order given above (i.e., the first and second features will be mean and standard deviation of the hue channel).  Assign brief, descriptive strings for each feature and store those in `fnames` (e.g., `'H_mean'`, and `'H_std'` as names for the first two features)." %}  
 
 
 ```python
@@ -456,6 +401,7 @@ print('feature names')
 print(fnames)
 ```
 
+{:.no-copy}
     feature vector
     [0.93191605 0.07237925 0.94736842 0.         0.99666667 0.36125379
      0.11130164 0.34951456 0.01960784 1.         0.35243261 0.16304442
@@ -464,10 +410,10 @@ print(fnames)
     ('H_mean', 'H_std', 'H_median', 'H_min', 'H_max', 'S_mean', 'S_std', 'S_median', 'S_min', 'S_max', 'V_mean', 'V_std', 'V_median', 'V_min', 'V_max')
 
 
-### Section 2.2 Region features
+### Region features
 In this section, we will extract a set of features designed to characterize the size and shape of an image object.  We use the annotation mask as defined above to define the object of interest.
 
-### Section 2.2.1: Defining region features
+#### Defining region features
 We will use the `skimage.measure.regionprops` function to compute a list of region-based features in the `extract_region_features` function below.  We will not use all of the features available in `skimage.measure.regionprops` because some of those features may not be useul in our image classification situation.  For example, the centroid of the object or the orientation of the object may bias the classifier to translation or rotation variance.  In all subsequent discussion, the term "region" is used to denote the annotated region in an image.  The 19 features extracted below are measures of region characteristics of a region, including:
  - `'area'`: the number of pixels in the region
  - `'bbox_area'`: the number of pixels in the bounding box that contains the region
@@ -502,7 +448,7 @@ def extract_region_features_try1(mask):
     return f,fnames
 ```
 
-### Section 2.2.2: Extracting region features
+#### Extracting region features
 Using `101_ObjectCategories/emu/image_0001.jpg` as the input image `im` and `Annotations/emu/annotation_0001.mat` as the annotation mask `mask`, we use the `extract_region_features_try1` function and print out the `f` vector and the `fnames` list. Depending on your version of python, you may get a deprecation warning when running the following code.  That deprecation warning is related to the issue that you will explore in the next **<span style='color:Green'> Your turn: </span>** block.
 
 
@@ -523,6 +469,7 @@ print('feature names')
 print(fnames)
 ```
 
+{:.no-copy}
     feature vector
     [22925 49742 28789 0.86209198262317 170.8479340321492 1
      0.46087813115676896 22925 270.70752758375147 137.18153400649817
@@ -533,18 +480,19 @@ print(fnames)
     ('area', 'bbox_area', 'convex_area', 'eccentricity', 'equivalent_diameter', 'euler_number', 'extent', 'filled_area', 'major_axis_length', 'minor_axis_length', 'moments_hu', 'perimeter', 'solidity')
 
 
+{:.no-copy}
     /Users/jenchang/miniconda/envs/geo_env/lib/python3.7/site-packages/ipykernel_launcher.py:8: VisibleDeprecationWarning: Creating an ndarray from ragged nested sequences (which is a list-or-tuple of lists-or-tuples-or ndarrays with different lengths or shapes) is deprecated. If you meant to do this, you must specify 'dtype=object' when creating the ndarray
 
 
 
-## <span style='color:Green'> Your turn: </span>
-We are designing functions that can extract a vector of features from image regions.  What issue do you note with the feature vector that is returned by `extract_region_features_try1`?
+{% include alert class="question" title="Your turn" content="We are designing functions that can extract a vector of features from image regions.  What issue do you note with the feature vector that is returned by `extract_region_features_try1`?" %}
 
 
 ```python
 whos
 ```
 
+{:.no-copy}
     Variable                       Type        Data/Info
     ----------------------------------------------------
     A                              ndarray     334x290x3: 290580 elems, type `float64`, 2324640 bytes (2.216949462890625 Mb)
@@ -579,8 +527,7 @@ whos
 
 The feature vector is of type "object" indicating that it is not a simple feature vector.  The vector feature from the Hu moments have not been appended to the feature vector as individual elements.
 
-## <span style='color:Green'> Your turn: </span>
-Here is a modification to the region feature extraction code called simply `extract_region_features`.  Use this function to compare and contrast the output to the output from `extract_region_features_try1`.
+{% include alert class="question" title="Your turn" content="Here is a modification to the region feature extraction code called simply `extract_region_features`.  Use this function to compare and contrast the output to the output from `extract_region_features_try1`." %}
 
 
 ```python
@@ -623,6 +570,7 @@ print('feature names')
 print(fnames)
 ```
 
+{:.no-copy}
     feature vector
     [2.29250000e+04 4.97420000e+04 2.87890000e+04 8.62091983e-01
      1.70847934e+02 1.00000000e+00 4.60878131e-01 2.29250000e+04
@@ -635,10 +583,10 @@ print(fnames)
 
 Now we notice that the feature vector is a true vector since we have individually appended each of the 7 Hu moments.  Since there were only 7, we expicitly typed out all seven vector elements and feature names, but note that we could use iteration for longer feature vectors.
 
-### Section 2.3: Texture features
+### Texture features
 In this section, we will extract a set of features designed to characterize the textures of intensities in an image.  Texture measures characterize the spatial distribution of intensities in an image.  If we think of a grayscale image as a surface where the lighter regions are raised higher than the darker regions, the distribution of those intensities would manifest as different texures if you were to run your finger across the image.  Again, we use the annotation mask as defined above to focus our attention on features only within the object of interest rather than features of the entire image.
 
-### Section 2.3.1: Defining texture features
+#### Defining texture features
 We create a function `f,fnames=extract_texture_features(im,mask)` with inputs `im`, the image from which to extract features, and the binary annotation mask, `mask`.  This function makes use of the gray-level co-occurrence matrix (GLCM) which is a common method to extract texture features from an image.  The outputs are a length-48 feature vector `f` of co-occurrence matrix features within the image object and a length-48 list `fnames` with the feature names.
  - The GLCM is computed for a set of four different orientations $\theta=[0,45,90,135]$ and four different distances $d=[1,2,3,4]$ pixels and for intensities quantized to 32 levels.  
  - The average and standard deviation of GLCM features are computed across the four orientations for each distance, resulting in features that are reasonably invariant to orientation.
@@ -673,7 +621,7 @@ def extract_texture_features(im,mask):
     return f, fnames
 ```
 
-### Section 2.3.2: Extracting texture features
+#### Extracting texture features
 Using `101_ObjectCategories/emu/image_0001.jpg` as in the input image `im` and `Annotations/emu/annotation_0001.mat` as the annotation mask `mask`, we use the `extract_texture_features` function and print out the `f` vector and the `fnames` list.
 
 
@@ -694,6 +642,7 @@ print('feature names')
 print(fnames)
 ```
 
+{:.no-copy}
     feature vector
     [6.11324265e-01 5.59225027e-01 4.79792054e-01 4.29846997e-01
      4.12875202e-02 2.94518620e-02 1.22013521e-02 1.04584654e-02
@@ -710,13 +659,16 @@ print(fnames)
     feature names
     ['GLCM_correlation_d1_mean', 'GLCM_correlation_d2_mean', 'GLCM_correlation_d3_mean', 'GLCM_correlation_d4_mean', 'GLCM_correlation_d1_std', 'GLCM_correlation_d2_std', 'GLCM_correlation_d3_std', 'GLCM_correlation_d4_std', 'GLCM_ASM_d1_mean', 'GLCM_ASM_d2_mean', 'GLCM_ASM_d3_mean', 'GLCM_ASM_d4_mean', 'GLCM_ASM_d1_std', 'GLCM_ASM_d2_std', 'GLCM_ASM_d3_std', 'GLCM_ASM_d4_std', 'GLCM_energy_d1_mean', 'GLCM_energy_d2_mean', 'GLCM_energy_d3_mean', 'GLCM_energy_d4_mean', 'GLCM_energy_d1_std', 'GLCM_energy_d2_std', 'GLCM_energy_d3_std', 'GLCM_energy_d4_std', 'GLCM_dissimilarity_d1_mean', 'GLCM_dissimilarity_d2_mean', 'GLCM_dissimilarity_d3_mean', 'GLCM_dissimilarity_d4_mean', 'GLCM_dissimilarity_d1_std', 'GLCM_dissimilarity_d2_std', 'GLCM_dissimilarity_d3_std', 'GLCM_dissimilarity_d4_std', 'GLCM_homogeneity_d1_mean', 'GLCM_homogeneity_d2_mean', 'GLCM_homogeneity_d3_mean', 'GLCM_homogeneity_d4_mean', 'GLCM_homogeneity_d1_std', 'GLCM_homogeneity_d2_std', 'GLCM_homogeneity_d3_std', 'GLCM_homogeneity_d4_std', 'GLCM_contrast_d1_mean', 'GLCM_contrast_d2_mean', 'GLCM_contrast_d3_mean', 'GLCM_contrast_d4_mean', 'GLCM_contrast_d1_std', 'GLCM_contrast_d2_std', 'GLCM_contrast_d3_std', 'GLCM_contrast_d4_std']
 
+</div>
 
-## Section 3: Setting up a Feature Matrix and Label Vector
+## Setting up a Feature Matrix and Label Vector
 Now that we have defined functions that compute several different categories of features from an image object, we need to aggregate those features into a feature matrix.  This feature matrix will be  $N\times M$ where $N$ is the total number of images that we use as input and $M$ is the total number of features that we extract from each of the $N$ images. If we use all features from above we have a total of 97 features for each image (97 = 15 RGB features + 15 HSV features + 19 region features + 48 texture features).  This feature matrix is used as input to the classification algorithm to describe the image objects.
 
 The classification algorithm, however, also needs to be told what the label of each image is so that it can learn to discriminate the different objects.  The label vector will be an $N\times 1$ vector.  Note that the number of rows $N$ in the feature matrix must correspond to the length $N$ of the label vector and there must be a one-to-one correspondence, i.e., the first row of the feature matrix must correspond to the first element in the label vector.  This label vector provides the identity (label) of each image.  There are different means to define labels for machine learning algorithms.  This example will be specific to the `sklearn` package in python, but will be similar in flavor to necessary format for other frameworks.  We will learn a different formulation of the label vector for deep learning in Tutorial 3.
 
-### Section 3.1: Setting up a matrix to discriminate between flamingos and emus
+<div class="process-list" markdown='1'>
+
+### Setting up a matrix to discriminate between flamingos and emus
 In this part, we use what we learned from Section 1 above about looping over the directory structure of the CalTech101 dataset.  We will loop over multiple images, extract features, and build a feature matrix and label vector.  We write this code so that the user can specify the categories of interest as a list of strings.  Those strings are used to navigate into the directories of images from which to extract features.  Feature vectors `f_rgb`, `f_hsv`, `f_region`,  and `f_texture` are extracted from each image and stacked in an $N\times97$ feature matrix, where $N$ is the total number of images, and 97 is the feature vector dimensionality.  At the same time, we create a corresponding $N\times1$ label vector (actually a list in python).  
 
 While we loop over all images in the specified categories, we split the data into a training set consisting of 90% of the data and a test set consisting of the remaining 10%.  We call the two feature matrices `X_train` and `X_test` and the  two label vectors, `y_train` and `y_test`, consistent with common notation in machine learning.  In this case, the label vectors `y_train` and `y_test` are actually lists of the class strings (e.g., `'emu'`).  
@@ -762,8 +714,7 @@ for category in categories: # loop over categories
             filenames_test.append(im_filename)
 ```
 
-## <span style='color:Green'> Your turn: </span>
-Explore the dimensionalities and values of `X_train`, `X_test`, `y_train`, and `y_test`.
+{% include alert class="question" title="Your turn" content="Explore the dimensionalities and values of `X_train`, `X_test`, `y_train`, and `y_test`." %}
 
 
 ```python
@@ -773,6 +724,7 @@ print('y_train is length '+str(len(y_train)))
 print('y_test is length '+str(len(y_test)))
 ```
 
+{:.no-copy}
     X_train is shape (107, 97)
     X_test is shape (13, 97)
     y_train is length 107
@@ -787,6 +739,7 @@ filenames_train
 
 
 
+{:.no-copy}
     ['101_ObjectCategories/emu/image_0001.jpg',
      '101_ObjectCategories/emu/image_0002.jpg',
      '101_ObjectCategories/emu/image_0003.jpg',
@@ -905,6 +858,7 @@ y_test
 
 
 
+{:.no-copy}
     ['emu',
      'emu',
      'emu',
@@ -921,7 +875,7 @@ y_test
 
 
 
-### Section 3.2: Normalizing the feature matrices
+### Normalizing the feature matrices
 Some of the features have a larger range than others.  We don’t want those features to have undue influence on the classification.  We will thus normalize the feature matrices to have range [0,1].  There will be two slightly different procedures for normalizing `X_train` and `X_test`.  
 
 To normalize `X_train`, from each column we subtract the minimum of the column and divide by the maximum of the column. Additionally, we save the maximum values for each column in a $1\times97$ vector `mx` and the minimum values for each column in a $1\times97$ vector `mn`.  
@@ -952,8 +906,7 @@ def normalize_feature_columns(*argv):
         return X
 ```
 
-## <span style='color:Green'> Your turn: </span>
-For the same `X_train`, `X_test` as in Section 3.1, compute the normalized matrices `Xn_train`, `Xn_test`.  Explore the dimensionalities and values of `Xn_train` and `Xn_test` and compare to what you found above for `X_train` and `X_test`.
+{% include alert class="question" title="Your turn" content="For the same `X_train`, `X_test` as in Section 3.1, compute the normalized matrices `Xn_train`, `Xn_test`.  Explore the dimensionalities and values of `Xn_train` and `Xn_test` and compare to what you found above for `X_train` and `X_test`." %}
 
 
 ```python
@@ -963,6 +916,7 @@ print(mn[0::10])
 print(Xn_train,0)
 ```
 
+{:.no-copy}
     [1.62585068e+02 1.49270702e+02 6.62355494e-01 4.11760000e+04
      4.94653353e-01 7.29980052e-01 4.11441678e-02 7.78317514e-03
      7.58791574e-01 1.14100275e+02]
@@ -986,6 +940,7 @@ Xn_train.min()
 
 
 
+{:.no-copy}
     0.0
 
 
@@ -998,6 +953,7 @@ Xn_train.max()
 
 
 
+{:.no-copy}
     1.0
 
 
@@ -1008,6 +964,7 @@ Xn_test = normalize_feature_columns(X_test,mx,mn)
 print(Xn_test[:,0].T)
 ```
 
+{:.no-copy}
     [0.3936947  0.12898959 0.37507987 0.25596447 0.49204136 0.30238921
      0.54268833 0.88367621 0.5326359  0.7839688  0.59299773 0.39906093
      0.92917099]
@@ -1021,6 +978,7 @@ Xn_test.min()
 
 
 
+{:.no-copy}
     -0.5476190476190478
 
 
@@ -1033,16 +991,19 @@ Xn_test.max()
 
 
 
+{:.no-copy}
     1.980450033113281
 
+</div>
 
-
-## Section 4: Classification
+## Classification
 In this section we will use the support vector machine (SVM) classifier from `sklearn` as an example for how you can use the training data in `X_train` and `y_train` to train a classifier.  We we also use other supporting functions from `sklearn` to assess the performance of the SVM on the test data `X_test`.  The basic setup of the training and testing process for the SVM will be easily transferred to application of other common classifiers available in `sklearn`.  
 
 We will also explore modifications to the training process to explore some of the discriminative capabilities of the features we have extracted.  Finally, you will explore other standard classifiers available in `sklearn`.
 
-### Section 4.1: Training the SVM Classifier
+<div class="process-list" markdown='1'>
+
+### Training the SVM Classifier
 The commands here assume that we will be training a binary (two-class) classifier `svm.SVC`.  We first declare the SVM which is the step where we can configure various parameters of the SVM.  Next, we fit the SVM to the data.  You will notice that the fitting routine prints out a bunch of information about the classifier that was trained. That information gives us some idea about the different configuration parameters available in the SVM classifier.
 
 
@@ -1054,6 +1015,7 @@ clf.fit(Xn_train,y_train)
 
 
 
+{:.no-copy}
     SVC(kernel='linear')
 
 
@@ -1063,6 +1025,7 @@ clf.fit(Xn_train,y_train)
 help(svm.SVC)
 ```
 
+{:.no-copy}
     Help on class SVC in module sklearn.svm._classes:
 
     class SVC(sklearn.svm._base.BaseSVC)
@@ -1514,7 +1477,7 @@ help(svm.SVC)
 
 
 
-### Section 4.2: Testing the SVM Classifier
+### Testing the SVM Classifier
 Now that we have trained the classifier by showing it the training data, we will test your classifier by predicting the labels for the test data.  We call the predicted labels `y_test_hat` where the `_hat` is in nod to the typical mathematical notation for an estimate.  Now that we have the predicted class labels `y_test_hat`, we compare them to the known class labels in `y_test`.  Here, we use two metrics to help us interpret the performance: the confusion matrix and the accuracy.  There are many other metrics available, see the documentation for `sklearn` at  https://scikit-learn.org/stable/user_guide.html.  
 
 The confusion matrix is a matrix of $L\times L$ where $L$ is the number of classes.  The $(i,j)$-th entry is a count of the number of times an actual class $i$ is predicted to be class $j$.  Thus, a perfect prediction will have a diagonal confusion matrix.  We also send in the list of category names to specify the order in which the classes appear in the confusion matrix.  
@@ -1531,12 +1494,14 @@ acc = np.diag(C).sum().astype(float)/C.sum()
 print('The overall accuracy is: '+ str(acc))
 ```
 
+{:.no-copy}
     The confusion matrix is:
     [[6 0]
      [0 7]]
     The overall accuracy is: 1.0
 
 
+{:.no-copy}
     /Users/jenchang/miniconda/envs/geo_env/lib/python3.7/site-packages/sklearn/utils/validation.py:70: FutureWarning: Pass labels=('emu', 'flamingo') as keyword args. From version 0.25 passing these as positional arguments will result in an error
       FutureWarning)
 
@@ -1551,12 +1516,14 @@ acc = np.diag(C).sum().astype(float)/C.sum()
 print('The overall accuracy is: '+ str(acc))
 ```
 
+{:.no-copy}
     The confusion matrix is:
     [[46  1]
      [ 0 60]]
     The overall accuracy is: 0.9906542056074766
 
 
+{:.no-copy}
     /Users/jenchang/miniconda/envs/geo_env/lib/python3.7/site-packages/sklearn/utils/validation.py:70: FutureWarning: Pass labels=('emu', 'flamingo') as keyword args. From version 0.25 passing these as positional arguments will result in an error
       FutureWarning)
 
@@ -1573,6 +1540,7 @@ for i in misclass_idx[0]:
     plt.show()
 ```
 
+{:.no-copy}
     The image 101_ObjectCategories/emu/image_0017.jpg is misclassified
 
 
@@ -1582,16 +1550,14 @@ for i in misclass_idx[0]:
 
 
 
-## <span style='color:Green'> Your turn: </span>
-What does this confusion matrix and accuracy tell you about the performance of the SVM classifier?
+{% include alert class="question" title="Your turn" content="What does this confusion matrix and accuracy tell you about the performance of the SVM classifier?" %}
 
 
 
-### Section 4.3 Training a multi-class classifier
+### Training a multi-class classifier
 We can use the same `svm.SVC` classifier for a multi-class (more than two classes) classification problem.  Many, but not all classifiers can be applied to binary and multi-class problems.  
 
-## <span style='color:Green'> Your turn: </span>
-Use what you learned above to create a three-class classifier using input from the CalTech101 dataset.  The basic two-class code is copied into the cell below for ease of editing.
+{% include alert class="question" title="Your turn" content="Use what you learned above to create a three-class classifier using input from the CalTech101 dataset.  The basic two-class code is copied into the cell below for ease of editing." %}
 
 
 ```python
@@ -1641,17 +1607,19 @@ acc = np.diag(C).sum().astype(float)/C.sum()
 print('The overall accuracy is: '+ str(acc))
 ```
 
+{:.no-copy}
     The confusion matrix is:
     [[6 0]
      [0 7]]
     The overall accuracy is: 1.0
 
 
+{:.no-copy}
     /Users/jenchang/miniconda/envs/geo_env/lib/python3.7/site-packages/sklearn/utils/validation.py:70: FutureWarning: Pass labels=('emu', 'flamingo') as keyword args. From version 0.25 passing these as positional arguments will result in an error
       FutureWarning)
 
 
-### Section 4.4 Exploring discriminative capabilities of different features
+### Exploring discriminative capabilities of different features
 We can train an SVM using only a subset of the features that we have defined.  This is essentially an exploration of the discriminatory potential of different individual features or sets of features via ablation.  In the code below, we re-compute the feature matrices and label vectors for the `'emu'` versus `'flamingo'` problem.  Since we will be using subsets of features, we extract all features here and will use slicing to send a subset of features to the SVM classifier.
 
 
@@ -1693,9 +1661,7 @@ Xn_test = normalize_feature_columns(X_test,mx,mn)
 ```
 
 
-```python
-
-```
+-----
 
 
 ```python
@@ -1710,6 +1676,7 @@ acc = np.diag(C).sum().astype(float)/C.sum()
 print('The overall accuracy is: '+ str(acc))
 ```
 
+{:.no-copy}
     Color features only:
     The confusion matrix is:
     [[4 2]
@@ -1730,6 +1697,7 @@ acc = np.diag(C).sum().astype(float)/C.sum()
 print('The overall accuracy is: '+ str(acc))
 ```
 
+{:.no-copy}
     Region features only:
     The confusion matrix is:
     [[6 0]
@@ -1750,6 +1718,7 @@ acc = np.diag(C).sum().astype(float)/C.sum()
 print('The overall accuracy is: '+ str(acc))
 ```
 
+{:.no-copy}
     Texture features only:
     The confusion matrix is:
     [[4 2]
@@ -1757,8 +1726,7 @@ print('The overall accuracy is: '+ str(acc))
     The overall accuracy is: 0.7692307692307693
 
 
-## <span style='color:Green'> Your turn: </span>
-Choose two or more categories from the CalTech101 dataset that you think might be more or less amenable to discrimination using certain feature subsets.  Using those categories, explore the discriminative capabilities of different feature subsets.  The basic code for using color features only for the `'emu'` versus `'flamingo'` classification problem is copied into the cell below for ease of editing.
+{% include alert class="question" title="Your turn" content="Choose two or more categories from the CalTech101 dataset that you think might be more or less amenable to discrimination using certain feature subsets.  Using those categories, explore the discriminative capabilities of different feature subsets.  The basic code for using color features only for the `'emu'` versus `'flamingo'` classification problem is copied into the cell below for ease of editing." %}
 
 
 ```python
@@ -1808,6 +1776,7 @@ acc = np.diag(C).sum().astype(float)/C.sum()
 print('The overall accuracy is: '+ str(acc))
 ```
 
+{:.no-copy}
     Color features only:
     The confusion matrix is:
     [[4 2]
@@ -1815,14 +1784,13 @@ print('The overall accuracy is: '+ str(acc))
     The overall accuracy is: 0.6923076923076923
 
 
-### Section 4.5 Other Classifiers
+### Other Classifiers
 There are many other classifiers available in the `sklearn` package, see https://scikit-learn.org/stable/user_guide.html for documentation.  
 
-## <span style='color:Green'> Your turn: </span>
-Explore the capabilities of other classifiers.  If you don't know where to start, some commonly referenced classifiers in the literature are
+{% include alert class="question" title="Your turn" content="Explore the capabilities of other classifiers.  If you don't know where to start, some commonly referenced classifiers in the literature are
  - Linear Discriminant Analysis (LDA) available in `sklearn.discriminant_analysis` (Do a `from sklearn import discriminant_analysis` and then use `discriminant_analysis.LinearDiscriminantAnalysis`)
  - k-Nearest Neighbors (KNN) available in `sklearn.neighbors` (Do a `from sklearn import neighbors` and then use `neighbors.KNeighborsClassifier`)
- - Random Forest available in `sklearn.ensemble` (Do a `from sklearn import ensemble` and then use `ensemble.RandomForestClassifier`
+ - Random Forest available in `sklearn.ensemble` (Do a `from sklearn import ensemble` and then use `ensemble.RandomForestClassifier`" %}
 
 
 ```python
@@ -1872,6 +1840,7 @@ acc = np.diag(C).sum().astype(float)/C.sum()
 print('The overall accuracy is: '+ str(acc))
 ```
 
+{:.no-copy}
     The confusion matrix is:
     [[5 1]
      [3 4]]
@@ -1926,6 +1895,7 @@ acc = np.diag(C).sum().astype(float)/C.sum()
 print('The overall accuracy is: '+ str(acc))
 ```
 
+{:.no-copy}
     The confusion matrix is:
     [[6 0]
      [1 6]]
@@ -1981,6 +1951,7 @@ print('The overall accuracy is: '+ str(acc))
 
 ```
 
+{:.no-copy}
     The confusion matrix is:
     [[6 0]
      [0 7]]
@@ -1988,6 +1959,5 @@ print('The overall accuracy is: '+ str(acc))
 
 
 
-```python
-
-```
+-----
+</div>

@@ -6,8 +6,14 @@ wgs: geospatial
 description: (description of contents)
 interface: [Jupyter, RStudio]
 
-conda: wb_image_ml
 kernel: true
+
+pythonenv: image-ml-for-python
+renv: image-ml-for-r
+
+setup: [mkdir]
+
+conda: [python=3.7 numpy matplotlib imageio scikit-image ipykernel -y]
 ---
 
 Materials modified from the USDA ARS AI Workshop 2020.
@@ -16,15 +22,29 @@ Materials modified from the USDA ARS AI Workshop 2020.
 
 {% include setup/90daydata %}
 
-### Setting up - Python
+### For Python
 
-{% include getting-started %}
+{% include setups environment=page.pythonenv %}
+1. {% include setup/conda %}
+1. {% include setup/kernel %}
+1. Launch JupyterLab in OoD and open a terminal
+  * File > New > Terminal
+1. Make sure the tutorial kernel is selected:
+  * Kernel > Change Kernel > select `{{ kernel }}` from the drop down menu
+1. In the notebook's empty cell paste this:
+  ```
+  import keras
+  print(keras.backend.backend())
+  ```
+1. Run the cell: 
+  * Click Run > Run All Cells or with your cursor inside the cell type Shift+Enter. 
+  * The result should tell you you're using TensorFlow backend.
 
-{% include setup/90daydata %}
+### For R
 
-{% include setup/mkdir %}
+{% include setups environment=page.renv %}
 
-## Creating an Environment for this Module
+<!--## Creating an Environment for this Module
 
 The tutorial code uses 90daydata, but you can use your own project directory by substituting `/project/your_project_name/` wherever you see `/90daydata/scinet/your_name/`.
 
@@ -40,7 +60,7 @@ Setup for this tutorial assumes you know how to access your HPC of choice and se
     source activate /90daydata/scinet/your_name/envs/wb_image_ml
     ```
 
-### Setting up - R
+
 
 
 1. Launch Ceres OoD and open
@@ -84,4 +104,4 @@ in the notebook’s empty cell paste this:
 import keras
 print(keras.backend.backend())
 
-run the cell: click Run > Run All Cells or with your cursor inside the cell type Shift+Enter. The result should tell you you’re using TensorFlow backend.
+run the cell: click Run > Run All Cells or with your cursor inside the cell type Shift+Enter. The result should tell you you’re using TensorFlow backend.-->

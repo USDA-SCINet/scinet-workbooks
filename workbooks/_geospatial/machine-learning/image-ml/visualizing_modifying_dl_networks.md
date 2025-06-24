@@ -1,26 +1,72 @@
 ---
-title: Premeeting
-layout: single
+title: Visualizing and Modifying DL Networks
 author: Laura Boucheron
-author_profile: true
-header:
-  overlay_color: "444444"
-  overlay_image: /assets/images/margaret-weir-GZyjbLNOaFg-unsplash_dark.jpg
+description: "In this tutorial, we explore some ways of probing the characteristics of the trained network to help us debug common pitfalls in adapting network architectures."
+type: interactive tutorial
+order: 40
+updated: 2020-10
+objectives: "Develop a classical machine learning algorithm capable of discriminating between objects present in an image."
+overview: [objectives, datasets]
+code: Tutorial2_Classical_Machine_Learning_Boucheron.ipynb
+datasets: [CalTech101]
+
+intro: geospatial/machine-learning/image-ml#for-python
+
+setup: [intro, code]
+
+conda: [python=3.7 numpy matplotlib imageio scikit-image ipykernel -y]
+
+references:
+  - "Portions of this tutorial have been taken or adapted from this [Machine Learning Mastery tutorial](https://machinelearningmastery.com/how-to-visualize-filters-and-feature-maps-in-convolutional-neural-networks/) and the [keras documentation](https://keras.io)."
 ---
 
-# Tutorial 4: Visualizing and Modifying DL Networks
-## Laura E. Boucheron, Electrical & Computer Engineering, NMSU
-### October 2020
-Copyright (C) 2020  Laura E. Boucheron
-
-This information is free; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 3 of the License, or (at your option) any later version.
-
-This work is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License along with this work; if not, If not, see <https://www.gnu.org/licenses/>.
 
 ## Overview
 In this tutorial, we pick up with the trained MNIST Network from Tutorial 2 and explore some ways of probing the characteristics of the trained network to help us debug common pitfalls in adapting network architectures. 
+
+{% include overviews %}
+
+## Getting Started
+
+{% include setups %}
+1. Download the image files used in the later sections of this tutorial. 
+    ```bash
+    wget {{ site.url }}{{ images_path }}/my_digits1_compressed.jpg
+    wget {{ site.url }}{{ images_path }}/latest_256_0193.jpg
+    ```
+1. We will also use the image files that we used in [Deep Learning for Images](./image-processing/python) and the CalTech101 dataset that we used in [Classical Machine Learning Fundamentals](./classical-machine-learning).  If you have not downloaded those files within the past 90 days, please do so now.
+    ```bash
+    wget {{ site.url }}{{ images_path }}/cameraman.png
+    wget {{ site.url }}{{ images_path }}/peppers.png
+    ```
+1. Load Your Trained MNIST Model
+    * At the end of [Deep Learning for Images](./deep_learning_for_images) we saved the trained MNIST model `model1` in `model1.h5`.  Here will load that model and we can pick up right where we left off.
+    * {% include accordion-wrapped title="If you do not have the model"  controls="dlfi-model-code" content="If you were not able to save the model at the end of [Deep Learning for Images](./deep_learning_for_images), you can re-run the training of the MNIST model here before we start the rest of the tutorial.  For your convenience, below is the complete code that will load and preprocess the MNIST data and define and train the model.  You can cut and paste the code here into a code cell in this notebook and run it.  
+    from keras.datasets import mnist
+    from keras.utils import np_utils
+    (X_train, y_train), (X_test, y_test) = mnist.load_data()
+    X_train = X_train.reshape(X_train.shape[0], 28, 28, 1)
+    X_test = X_test.reshape(X_test.shape[0], 28, 28, 1)
+    X_train = X_train.astype('float32')
+    X_test = X_test.astype('float32')
+    X_train /= 255
+    X_test /= 255
+    Y_train = np_utils.to_categorical(y_train, 10)
+    Y_test = np_utils.to_categorical(y_test, 10)
+    from keras.models import Sequential
+    from keras.layers import Dense, Flatten, Convolution2D, MaxPooling2D
+    model1 = Sequential()
+    model1.add(Convolution2D(32, (3, 3), activation='relu', input_shape=(28,28,1)))
+    model1.add(Convolution2D(32, (3, 3), activation='relu'))
+    model1.add(MaxPooling2D(pool_size=(2,2)))
+    model1.add(Flatten())
+    model1.add(Dense(128, activation='relu'))
+    model1.add(Dense(10, activation='softmax'))
+    model1.compile(loss='categorical_crossentropy', optimizer='adam',metrics=['accuracy'])
+    model1.fit(X_train, Y_train, batch_size=64, epochs=1, verbose=1)" %} 
+
+         
+
 
 This tutorial contains 5 sections:
   - **Section 0: Preliminaries**: some notes on using this notebook, how to download the image dataset that we will use for this tutorial, and import commands for the libraries necessary for this tutorial
@@ -34,24 +80,8 @@ There are a few subsections with the heading "**<span style='color:Green'> Your 
 Portions of this tutorial have been taken or adapted from https://machinelearningmastery.com/how-to-visualize-filters-and-feature-maps-in-convolutional-neural-networks/ and the documentation at https://keras.io.
 
 # Section 0: Preliminaries
-## A Note on Jupyter Notebooks
 
-There are two main types of cells in this notebook: code and markdown (text).  You can add a new cell with the plus sign in the menu bar above and you can change the type of cell with the dropdown menu in the menu bar above.  As you complete this tutorial, you may wish to add additional code cells to try out your own code and markdown cells to add your own comments or notes.
 
-Markdown cells can be augmented with a number of text formatting features, including
-  - bulleted
-  - lists
-
-embedded $\LaTeX$, monotype specification of `code syntax`, **bold font**, and *italic font*.  There are many other features of markdown cells--see the jupyter documentation for more information.
-
-You can edit a cell by double clicking on it.  If you double click on this cell, you can see how to implement the various formatting referenced above.  Code cells can be run and markdown cells can be formatted using Shift+Enter or by selecting the Run button in the toolbar above.
-
-Once you have completed (all or part) of this notebook, you can share your results with colleagues by sending them the `.ipynb` file.  Your colleagues can then open the file and will see your markdown and code cells as well as any results that were printed or displayed at the time you saved the notebook.  If you prefer to send a notebook without results displayed (like this notebook appeared when you downloaded it), you can select ("Restart & Clear Output") from the Kernel menu above.  You can also export this notebook in a non-executable form, e.g., `.pdf` through the File, Save As menu.
-
-## Section 0.1 Downloading Images
-Download the `my_digits1_compressed.jpg` and `latest_256_0193.jpg` files available on the workshop webpage.  We will use those images in Sections 3 and 4 of this tutorial.  
-
-We will also use the `cameraman.png` and `peppers.png` files that we used in Tutorial 1 and the CalTech101 dataset that we used in Tutorial 2.
 
 ## Section 0.2a Import Necessary Libraries (For users using a local machine)
 Here, at the top of the code, we import all the libraries necessary for this tutorial.  We will introduce the functionality of any new libraries throughout the tutorial, but include all import statements here as standard coding practice.  We include a brief comment after each library here to indicate its main purpose within this tutorial.
@@ -100,20 +130,7 @@ from keras.applications import vgg16 # the VGG network
 model_vgg16 = vgg16.VGG16(include_top=True,weights='imagenet') # download the ImageNet weights for VGG16
 ```
 
-## Section 0.2b Build the Conda Environment (For users using the ARS HPC Ceres with JupyterLab)
-Open a terminal from inside JupyterLab (File > New > Terminal) and type the following commands
-```
-source activate
-wget https://kerriegeil.github.io/NMSU-USDA-ARS-AI-Workshops/aiworkshop.yml
-conda env create --prefix /project/your_project_name/envs/aiworkshop -f aiworkshop.yml
-```
-This will build the environment in one of your project directories. It may take 5 minutes to build the Conda environment.
 
-See https://kerriegeil.github.io/NMSU-USDA-ARS-AI-Workshops/setup/ for more information.
-
-When the environment finishes building, select this environment as your kernel in your Jupyter Notebook (click top right corner where you see Python 3, select your new kernel from the dropdown menu, click select)
-
-You will want to do this BEFORE the workshop starts.
 
 ## Section 0.4 Load Your Trained MNIST Model
 At the end of Tutorial 3 we saved the trained MNIST model `model1` in `model1.h5`.  Here will load that model and we can pick up right where we left off.
