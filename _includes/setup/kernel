@@ -1,4 +1,4 @@
-{%- assign kernelfetch = include.kernel | default: page.kernel %}{%- capture kernel %}{%- if kernelfetch.name %}{{ kernelfetch.name %}}{%- else %}{{ environment }}_kernel{%- endif %}{%- endcapture %}
+{%- include setup/kernelname kernel=include.kernel %}
 Create a kernel for Jupyter {% unless kernelfetch.source %}{% if page.conda %}to use your Conda environment {% endif %}{% endunless %}called {{ kernel }}:
 ```{%-if kernel.source %}
 {{ kernelfetch.source }}{%- endif %}

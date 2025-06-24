@@ -1,4 +1,4 @@
-{%- assign conda = include.conda | default: page.conda %}{% include setup/check_path folder=include.folder %}{% unless conda %}{% assign conda=environment %}{% endunless %}
+{%- assign conda = include.conda | default: page.conda %}{% unless conda %}{% assign conda=environment %}{% endunless %}
 Create your Conda environment:
     * Load Conda.
     {%- if page.cluster %}{%- if page.cluster == "Atlas" %}
@@ -19,7 +19,7 @@ conda install{% for _c in conda %} {{ _c }}{% endfor %}
     {%- else %}
     * Download the environment yml file:
         ```bash
-wget {{ file_path }}/{{ conda }}.yml
+wget {{ site.url }}{{ file_path }}/{{ conda }}.yml
 ```
     * Create and load your new Conda environment:
         ```bash

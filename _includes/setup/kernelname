@@ -1,0 +1,1 @@
+{%- assign kernelfetch = include.kernel | default: page.kernel %}{%- capture kernel %}{%- if kernelfetch.name %}{{ kernelfetch.name %}}{%- else %}{{ environment }}_kernel{%- endif %}{%- endcapture %}
