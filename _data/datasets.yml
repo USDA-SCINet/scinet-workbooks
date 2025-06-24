@@ -20,5 +20,9 @@ datasets:
       approximately 15 m x 15 m."
   - name: US Census Cartographic Boundary Files
     url: https://www.census.gov/geographies/mapping-files/time-series/geo/cartographic-boundary.html
-    description: "The cartographic boundary files are simplified representations of selected geographic areas from the Census Bureau’s MAF/TIGER geographic database. These boundary files are specifically designed for small scale thematic mapping."
-  
+    description: "The cartographic boundary files are simplified representations of selected geographic areas from the Census Bureau's MAF/TIGER geographic database. These boundary files are specifically designed for small scale thematic mapping."
+  - name: CalTech101
+    url: https://data.caltech.edu/records/mzrjq-6wc02
+    description: Pictures of objects belonging to 101 categories. About 40 to 800 images per category. Most categories have about 50 images
+  - name: MNIST
+    url: hhttps://keras.io/datasets/
