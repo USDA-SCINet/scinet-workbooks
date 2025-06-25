@@ -45,7 +45,7 @@ GET(paste0('https://geospatial.101workbook.org/tutorials/',tutorial_name),
 | sf | Simple Features for R | https://r-spatial.github.io/sf/ |
 | ggplot2 | Create Elegant Data Visualizations Using the Grammar of Graphics | https://ggplot2.tidyverse.org/ |
 
-## Nomenclature
+## Terminology
 
 * *Raster:* Data defined on a grid of geospatial coordinates
 * *CRS:* Coordinate Reference System, also known as a spatial reference system. A

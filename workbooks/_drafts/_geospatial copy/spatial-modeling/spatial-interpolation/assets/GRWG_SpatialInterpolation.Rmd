@@ -55,7 +55,7 @@ GET(paste0('https://geospatial.101workbook.org/tutorials/',tutorial_name),
 | geoR | Analysis of Geostatistical Data | https://cran.r-project.org/web/packages/geoR/index.html |
 | ranger | A Fast Implementation of Random Forests | https://cran.r-project.org/web/packages/ranger/index.html |
 
-## Nomenclature
+## Terminology
 
 * *(Spatial) Interpolation:*  Using observations of dependent and independent 
   variables to estimate the value of the dependent variable at unobserved 

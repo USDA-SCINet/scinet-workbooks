@@ -12,7 +12,7 @@ code: GRWG23_SpatialInterpolation_python.ipynb
 updated: 2024-01-04
 language: Python
 
-overview: [nomenclature, packages, materials]
+overview: [terminology, packages, materials]
 
 ---
 

@@ -73,7 +73,7 @@ GET(paste0('https://geospatial.101workbook.org/tutorials/',tutorial_name),
 | `USAboundaries` | Historical and Contemporary Boundaries of the United States of America | https://cran.r-project.org/web/packages/USAboundaries/index.html |
 | `ggplot2` | Create Elegant Data Visualisations Using the Grammar of Graphics | https://cran.r-project.org/web/packages/ggplot2/index.html |
 
-## Nomenclature
+## Terminology
 
 * *Vector data:* Spatial data defined by simple geometry types (points, lines, 
   and polygons) where each geometry feature can be assigned non-spatial attributes.

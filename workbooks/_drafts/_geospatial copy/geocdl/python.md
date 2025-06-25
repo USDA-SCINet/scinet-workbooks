@@ -25,7 +25,7 @@ code: pygcdl_tutorial.ipynb
 
 objectives: Learn how to use the Python package for the SCINet Geospatial Common Data Library
 
-overview: [nomenclature,packages-datasets,materials]
+overview: [terminology,packages-datasets,materials]
 
 
 

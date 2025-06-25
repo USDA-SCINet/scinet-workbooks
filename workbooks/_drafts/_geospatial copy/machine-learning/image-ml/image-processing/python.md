@@ -9,7 +9,7 @@ tags: [machine learning]
 packages: [numpy, matplotlib, imageio, skimage, ndimag]
 code: Image_Processing_Essentials_Boucheron.ipynb
 
-overview: [nomenclature, packages, code]
+overview: [terminology, packages, code]
 
 introduction: geospatial/machine-learning/image-ml#setting-up---python
 

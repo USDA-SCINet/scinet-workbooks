@@ -11,7 +11,7 @@ tags: [IDE]
 packages: [GeoCDL]
 code: filename.Rmd
 
-overview: [applications, nomenclature, datasets-packages, materials]
+overview: [applications, terminology, datasets-packages, materials]
 
 applications:
   - Creating your own tutorial
@@ -29,14 +29,14 @@ overview2:
     - "**Concepts**: Specific high level concepts that are included in the tutorial"
     - "**Technologies**: Different tools/technologies used in the tutorial."
     - "**Applications**: Applications for the knowledge learned in the tutorial"
-    - "**Nomenclature**: Terms and definitions"
+    - "**Terminology**: Terms and definitions"
     - "**Materials**: Files, pdfs, etc used in the tutorial."
   technologies:
     - "**Tech:** Description"
   applications:
     - Creating your own tutorial
     - Matching existing formatting easily
-  nomenclature: terms
+  terminology: terms
   materials:
     - "**Download Jupyter Notebook:** [pygcdl_tutorial.ipynb](./assets/pygcdl_tutorial.ipynb)"
     - "[This is a pdf](./assets/demofile.pdf)"
@@ -120,7 +120,7 @@ packages: [GeoCDL]
 code: filename.Rmd
 datasets: [PRISM]
 
-overview: [objectives, applications, nomenclature, datasets-packages, materials]
+overview: [objectives, applications, terminology, datasets-packages, materials]
 
 applications:
   - Creating your own tutorial
@@ -163,7 +163,7 @@ overview:
   applications:
     - Creating your own tutorial
     - Matching existing formatting easily
-  nomenclature: terms
+  terminology: terms
   materials:
     - "[This is a pdf](./assets/demofile.pdf)"
     - Just some text
@@ -214,14 +214,14 @@ Learning Objectives
 
   *  **Objectives**: Main learning goals the tutorial is aiming to accomplish. Limit to 3 or 4.
   *  **Applications**: Applications for the knowledge learned in the tutorial
-  *  **Nomenclature**: Terms and definitions
+  *  **Terminology**: Terms and definitions
   *  **Materials**: Files, pdfs, etc used in the tutorial.
 
 </div>
 
 
 
-{% include accordion title="Nomenclature Options" class="secondary" controls="terms-options" rm-a=true %}
+{% include accordion title="Terminology Options" class="secondary" controls="terms-options" rm-a=true %}
 <div id="terms-options" class="accordion_content" hidden> 
 <ul class="usa-content-list">
 <li markdown='1'>
@@ -310,7 +310,7 @@ Learning Objectives
 ```{% raw %}
   *  **Objectives**: Main learning goals the tutorial is aiming to accomplish. Limit to 3 or 4.
   *  **Applications**: Applications for the knowledge learned in the tutorial
-  *  **Nomenclature**: Terms and definitions
+  *  **Terminology**: Terms and definitions
   *  **Materials**: Files, pdfs, etc used in the tutorial."
 {% endraw %}
 ```
@@ -318,7 +318,7 @@ Learning Objectives
 </li>
 <li markdown='1'>
 
-#### Nomenclature
+#### Terminology
 
 <ul class="usa-list">
 <li markdown='1'>

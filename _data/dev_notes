@@ -238,7 +238,7 @@ Workbook banners
 
 3. [ ✓ ] update css/sass solutions to directly modify the default USWDS styles
 
-4. [ ✓ ] change backend nomenclature:
+4. [ ✓ ] change backend terminology:
   - **workbooks** are the files in `_compiled` (including bioinformatics.md, data-science.md, geospatial.md, structure-dynamics.md, core-skills.md, environment-ecosystem.md, integrative-biology.md)
   - **modules** are all sections/categories established within each workbook; currently stored all together in `_workbooks`
 

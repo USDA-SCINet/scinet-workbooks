@@ -30,7 +30,7 @@ overview:
     - "**Reusing long commands:** Quickly recall and modify frequently used HPC job submission commands."
     - "**Enhanced productivity:** Use shortcuts to speed up navigation through command history."
     - "**Efficient troubleshooting:** Retrieve and inspect previous commands instead of manually retyping them."
-  nomenclature: terms
+  terminology: terms
 
 ---
 

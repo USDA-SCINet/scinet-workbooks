@@ -13,7 +13,7 @@ updated: 2023-09-17
 author: Heather Savoy
 datasets: [FS National Forests Dataset, 3DEP Bare Earth Digital Elevation Model]
 code: GRWG_Maps.Rmd
-overview: [nomenclature,materials,packages-datasets]
+overview: [terminology,materials,packages-datasets]
 
 ---
 

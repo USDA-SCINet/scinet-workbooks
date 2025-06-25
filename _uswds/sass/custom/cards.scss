@@ -118,6 +118,11 @@ a.gloss_wb{
    padding-right: 0;
 }
 
+.ext-none.usa-link--external::after{
+   content: none;
+   box-sizing: inherit;
+}
+
 //intro card
 
 .rounded-box {

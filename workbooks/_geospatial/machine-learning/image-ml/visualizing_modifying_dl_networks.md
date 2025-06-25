@@ -1,14 +1,19 @@
 ---
 title: Visualizing and Modifying DL Networks
 author: Laura Boucheron
+language: Python
+interface: Jupyter
 description: "In this tutorial, we explore some ways of probing the characteristics of the trained network to help us debug common pitfalls in adapting network architectures."
 type: interactive tutorial
 order: 40
 updated: 2020-10
 objectives: "Develop a classical machine learning algorithm capable of discriminating between objects present in an image."
-overview: [objectives, datasets]
-code: Tutorial2_Classical_Machine_Learning_Boucheron.ipynb
+overview: [objectives, datasets, materials]
+code: Tutorial4_Vizualizing_and_Modifying_DL_Networks_Boucheron.ipynb
 datasets: [CalTech101]
+
+materials:
+  - "Images in tutorial: [Cameraman Image](./assets/img/cameraman.png), [Peppers image](./assets/img/peppers.png), [Compressed image](./assets/img/my_digits1_compressed.jpg), [Small image](./assets/img/latest_256_0193.jpg)"
 
 intro: geospatial/machine-learning/image-ml#for-python
 

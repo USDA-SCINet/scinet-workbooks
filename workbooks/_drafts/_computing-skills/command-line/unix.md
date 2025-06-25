@@ -49,7 +49,7 @@ objectives: "By the end of this tutorial, you will be able to:
 
   - Modify file permissions"
 
-overview: [objectives, nomenclature]
+overview: [objectives, terminology]
 
 order: 5
 ---

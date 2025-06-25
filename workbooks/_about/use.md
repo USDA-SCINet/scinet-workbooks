@@ -7,6 +7,7 @@ updated: 2025-06-24
 
 objectives: "You can write out your objectives in markdown, or put them in a list."
 overview: [objectives]
+survey: true
 ---
 
 

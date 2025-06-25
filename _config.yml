@@ -50,6 +50,7 @@ anchor_js_targets: [h1, h2, h3]
 # Your search_site_handle value is from the search.gov settings page.
 # search_site_handle: scinet-usda
 
+survey: 5zZb7e4BvE6GfuA8-g1Gl15GV1fHkAlEg32tF30tLG9UOExURFI5QlhWQzVJOFNLSTJJWjk3RDNROC4u
 newline: >
   :
 
@@ -106,6 +107,7 @@ defaults:
       subject: "data-science"
       order: 200
       ordered: true
+      survey: true
   -
     scope:
       path: ""
@@ -119,6 +121,7 @@ defaults:
         image: /assets/img/computing_banner.png
         overlay_color: "transparent"
       ordered: true
+      survey: true
   -
     scope:
       path: ""
@@ -130,6 +133,7 @@ defaults:
       bin: "specialization"
       order: 200
       ordered: true
+      survey: true
   -
     scope:
       path: ""
@@ -140,6 +144,7 @@ defaults:
       subject: geospatial
       bin: "specialization"
       order: 200
+      survey: true
   -
     scope:
       path: ""

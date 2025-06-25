@@ -21,11 +21,11 @@
     </div>
     {% endif %}
 
-    {% if pov.nomenclature %}
-    {% include accordion title="Nomenclature" class="secondary " controls="nomenclature-acc" %} 
-    <div id="nomenclature-acc" class="accordion_content" hidden>  
-        {%- if pov.nomenclature.first %}
-        {% include overview/terms terms=pov.nomenclature %}
+    {% if pov.terminology %}
+    {% include accordion title="Terminology" class="secondary " controls="terminology-acc" %} 
+    <div id="terminology-acc" class="accordion_content" hidden>  
+        {%- if pov.terminology.first %}
+        {% include overview/terms terms=pov.terminology %}
         {%- else %}
         {% include overview/terms %}
         {%- endif %}

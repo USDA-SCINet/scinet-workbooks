@@ -25,9 +25,9 @@ code: pygcdl_tutorial.ipynb
 
 objectives: Learn how to use the Python package for the SCINet Geospatial Common Data Library
 
-overview: [nomenclature,packages-datasets,materials]
+overview: [terminology,packages-datasets,materials]
 
-
+setup: [code]
 
 srun: "srun --reservation=workshop_reservation_name -p ceres -t 05:00:00 -n 1 -N 2 --pty Bash"
 
@@ -75,7 +75,7 @@ use the issue tracker on our GitHub repository:
 [https://github.com/USDA-SCINet/pygcdl](https://github.com/USDA-SCINet/pygcdl). 
 
 
-
+{% include setup/code %}
 
 
 ## Tutorial Steps:

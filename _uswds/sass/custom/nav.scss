@@ -180,7 +180,13 @@
     }
     
     @include at-media("desktop-lg") {
-      bottom: 40px; // Stick to the bottom of the parent container
+      bottom: 35px; // Stick to the bottom of the parent container
+    }
+    @include at-media("widescreen") {
+      bottom: 100px; // Stick to the bottom of the parent container
+    }
+    @media screen and (min-width: 1750px) {
+      bottom: 35px; // Stick to the bottom of the parent container
     }
   }
 }

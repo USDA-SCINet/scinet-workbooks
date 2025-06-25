@@ -9,9 +9,12 @@ tags: [machine learning]
 packages: [numpy, matplotlib, imageio, skimage, ndimag]
 code: Image_Processing_Essentials_Boucheron.ipynb
 
-overview: [packages, code]
+overview: [packages, materials]
 
 intro: geospatial/machine-learning/image-ml#for-python
+
+materials:
+  - "Images in tutorial: [Cameraman Image](../assets/img/cameraman.png), [Peppers image](../assets/img/peppers.png)"
 
 setup: [intro, code]
 ---
@@ -26,7 +29,7 @@ In this tutorial, we present a brief overview of image processing concepts neces
 
 {% include setups folder=1 %}
 
-## Sections
+### Sections
 
   * **Preliminaries**: Download the two images that we will use for this tutorial.
   * **Working with Grayscale Images**: how to read, query characteristics, intepret, and display grayscale images.

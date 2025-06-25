@@ -34,7 +34,7 @@ Introduction to your tutorial and what the tutorial aims to accomplish.
 
 {% include overview/packages %}
 
-### Nomenclature
+### Terminology
 
 {% include overview/terms %}
 

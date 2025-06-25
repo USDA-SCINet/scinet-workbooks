@@ -12,7 +12,7 @@ packages: [terra, foreach, doParallel]
 updated: 2022-10-07 
 
 overview:
-  nomenclature: [Parallel processing, Core, Tile, NDVI]
+  terminology: [Parallel processing, Core, Tile, NDVI]
   materials:
     - code: GRWG22_RasterTiles.Rmd
   resources:

@@ -7,7 +7,7 @@ language: Python
 packages: [xarray,hvplot,geopandas,stackstac,satsearch]
 terms: [SpatioTemporal Asset Catalog,Lazy loading,Affine transformation,NDVI,Cloud Optimized Geotiff]
 
-overview: [packages,nomenclature,materials]
+overview: [packages,terminology,materials]
 code: Sentinel2_STAC.ipynb
 
 ---
@@ -31,7 +31,7 @@ Accessing, downloading, stacking, and working with earth observations (EO) data 
 |[stackstac](https://stackstac.readthedocs.io/en/latest/)|Turns a STAC collection into a lazy xarray.DataArray, backed by dask.
 |[satsearch](https://github.com/sat-utils/sat-search)|Discovering/downloading satellite imagery using a STAC compliant API.|
 
-## Nomenclature
+## Terminology
 
   * *SpatioTemporal Asset Catalog (STAC)*: A ~json catalog to standardize the way geospatial asset metadata is structured and queried.
   * *Lazy Loading*: Delaying the loading of data until the object is called/computed. This can improve performance and reduce system resource use.

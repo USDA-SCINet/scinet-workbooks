@@ -32,7 +32,7 @@ Module scope (100-150 words):discuss main areas of focus and important concepts 
 
 {% include overview/packages %}
 
-### Nomenclature (optional)
+### Terminology (optional)
 
 {% include overview/terms %}
 
