@@ -12,7 +12,7 @@ updated: 2023-09-17
 author: Heather Savoy
 
 overview:
-  nomenclature: [Raster, CRS]
+  terminology: [Raster, CRS]
   materials:
     - code: GRWG_Maps.Rmd
   resources:

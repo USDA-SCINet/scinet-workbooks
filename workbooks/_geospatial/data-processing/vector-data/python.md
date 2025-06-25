@@ -19,7 +19,7 @@ datasets:
     url: https://aqs.epa.gov/aqsweb/documents/data_api.html
 updated: 2022-10-07 
 code: GRWG22_VectorData.ipynb
-overview: [nomenclature,packages,datasets,materials]
+overview: [terminology,packages,datasets,materials]
 
 ---
 

@@ -18,7 +18,7 @@ updated: 2022-10-05
 
 code: GRWG22_GeoCDL.Rmd
 
-overview: [nomenclature,packages-datasets,materials]
+overview: [terminology,packages-datasets,materials]
 
 ---
 

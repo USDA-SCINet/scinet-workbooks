@@ -14,7 +14,7 @@ updated: 2022-09-29
 overview:
   materials:
     - code: GRWG22_ZonalStats_wSLURM.ipynb
-  nomenclature: tags
+  terminology: tags
   resources:
     datasets: [US Census Cartographic Boundary Files, PRISM]
 ---

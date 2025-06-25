@@ -10,7 +10,7 @@ terms: [Spatial Interpolation, Geostatistics, Kriging, Variogram, Random Forest]
 datasets: [meuse]
 packages: [geoR, ranger]
 
-overview: [nomenclature, packages-datasets,materials]
+overview: [terminology, packages-datasets,materials]
 
 
 

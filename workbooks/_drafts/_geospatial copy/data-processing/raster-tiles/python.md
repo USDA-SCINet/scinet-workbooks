@@ -16,7 +16,7 @@ overview:
     - code: GRWG22_RasterTiles.ipynb
   resources:
     packages: packages
-  nomenclature: [Parallel processing, Core, Tile, NDVI]
+  terminology: [Parallel processing, Core, Tile, NDVI]
 ---
 
 

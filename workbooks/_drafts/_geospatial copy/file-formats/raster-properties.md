@@ -20,7 +20,7 @@ wgs: geospatial
 
 updated: 2023-09-17 
 
-overview: [packages, nomenclature]
+overview: [packages, terminology]
 
 ---
 

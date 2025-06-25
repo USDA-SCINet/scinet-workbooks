@@ -49,7 +49,7 @@ submitting many job submission scripts, see [this tutorial](https://geospatial.1
 | `rgeocdl` | R interface for SCINet GeoCDL API | https://github.com/USDA-SCINet/rgeocdl |
 | `terra` | Methods for spatial data analysis with raster and vector data | https://rspatial.org/terra/pkg/index.html |
 
-## Nomenclature
+## Terminology
 
 * *GeoCDL:* [Geospatial Common Data Library](https://geospatial.101workbook.org/ExampleGeoWorkflows/GRWG22_GeoCDL_R), 
   a collection of commonly used raster datasets accessible from an API running 

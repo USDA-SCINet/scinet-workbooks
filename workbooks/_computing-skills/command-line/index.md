@@ -31,7 +31,7 @@ terms:
 
 objectives: "The fundamentals of the Command Line Interface (CLI) including its key components: the terminal interface and the Unix shell."
 
-overview: [objectives, nomenclature]
+overview: [objectives, terminology]
 ---
 
 ## Overview

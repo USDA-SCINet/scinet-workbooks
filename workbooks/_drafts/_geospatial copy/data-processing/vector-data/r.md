@@ -21,7 +21,7 @@ datasets:
 code: GRWG22_VectorData.Rmd
 updated: 2022-10-07 
 
-overview: [nomenclature, packages-datasets,materials]
+overview: [terminology, packages-datasets,materials]
 
 ---
 

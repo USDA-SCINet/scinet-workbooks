@@ -12,7 +12,7 @@ code: GRWG22_RasterTiles.ipynb
 updated: 2022-10-07 
 terms: [Parallel processing, Core, Tile, NDVI]
 
-overview: [materials,packages,nomenclature]
+overview: [materials,packages,terminology]
 ---
 
 

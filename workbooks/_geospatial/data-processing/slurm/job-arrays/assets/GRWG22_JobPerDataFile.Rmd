@@ -39,7 +39,7 @@ using.
 
 *Language:* `R`
 
-## Nomenclature
+## Terminology
 
 * *SLURM Workload Manager:* The software on Ceres and Atlas that allocates 
   compute cores to users for their submitted jobs. 

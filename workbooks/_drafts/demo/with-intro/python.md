@@ -24,7 +24,7 @@ Tutorial overview
 
 {% include overview/packages %}
 
-### Nomenclature
+### Terminology
 
 {% include overview/terms %}
 
