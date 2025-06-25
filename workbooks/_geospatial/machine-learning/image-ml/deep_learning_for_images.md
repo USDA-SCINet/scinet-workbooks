@@ -1,5 +1,7 @@
 ---
 title: Deep Learning for Images
+language: Python
+interface: Jupyter
 author: Laura Boucheron
 description: Basic structure and common components of deep learning networks
 type: interactive tutorial
@@ -33,7 +35,7 @@ In this tutorial, we will introduce the basic structure and common components (c
         tensorflow
 
 
-This tutorial contains 7 sections:
+### Sections
   - **Section 1: The MNIST Dataset** how to load the MNIST dataset and some ideas for visualization of the dataset
   - **Section 2: Data Preprocessing (Dimensionality Wrangling)** how to preprocess the MNIST dataset in preparation for using it to train a deep network, including dimensionality and intensity scaling of the images and coding of the labels
   - **Section 3: Building a CNN for MNIST** how to build a basic 2-layer CNN for classification of MNIST digits including definition of the network architecture, compilation, and training
@@ -177,7 +179,7 @@ plt.show()
 
 
 
-![png](images/Tutorial3_Deep_Learning_for_Images_Boucheron_22_0.png)
+![handwritten number five]({{ images_path }}/Tutorial3_Deep_Learning_for_Images_Boucheron_22_0.png)
 
 
 
@@ -235,7 +237,7 @@ plt.show()
 
 
 
-![png](images/Tutorial3_Deep_Learning_for_Images_Boucheron_26_0.png)
+![images of numbers 1-9 in mixed order]({{ images_path }}/Tutorial3_Deep_Learning_for_Images_Boucheron_26_0.png)
 
 
 
@@ -270,7 +272,7 @@ plt.show()
 
 
 
-![png](images/Tutorial3_Deep_Learning_for_Images_Boucheron_32_0.png)
+![correctly labeled images of handwritten numbers]({{ images_path }}/Tutorial3_Deep_Learning_for_Images_Boucheron_32_0.png)
 
 
 
@@ -297,7 +299,7 @@ for d in range(0,10): # loop over the digits 0 through 9
 
 
 
-![png](images/Tutorial3_Deep_Learning_for_Images_Boucheron_34_0.png)
+![grid of handwritten numbers 1-9, in order, with 10 of each number]({{ images_path }}/Tutorial3_Deep_Learning_for_Images_Boucheron_34_0.png)
 
 
 
@@ -356,7 +358,7 @@ plt.show()
 
 
 
-![png](images/Tutorial3_Deep_Learning_for_Images_Boucheron_43_0.png)
+![images of numbers 1-9 in mixed order]({{ images_path }}/Tutorial3_Deep_Learning_for_Images_Boucheron_43_0.png)
 
 
 
@@ -380,7 +382,7 @@ plt.show()
 
 
 
-![png](images/Tutorial3_Deep_Learning_for_Images_Boucheron_46_0.png)
+![images of numbers 1-9 in mixed order]({{ images_path }}/Tutorial3_Deep_Learning_for_Images_Boucheron_46_0.png)
 
 
 
@@ -1207,7 +1209,7 @@ for k in range(0,9): # choose 10 examples
 
 
 
-![png](images/Tutorial3_Deep_Learning_for_Images_Boucheron_123_0.png)
+![grid of handwritten numbers with actual content and incorrect predicted numbers]({{ images_path }}/Tutorial3_Deep_Learning_for_Images_Boucheron_123_0.png)
 
 
 
@@ -1347,7 +1349,7 @@ print('This image is class '+str(y_test[0])+' in the Fashion-MNIST dataset')
 
 
 
-![png](images/Tutorial3_Deep_Learning_for_Images_Boucheron_134_0.png)
+![shoe]({{ images_path }}/Tutorial3_Deep_Learning_for_Images_Boucheron_134_0.png)
 
 
 

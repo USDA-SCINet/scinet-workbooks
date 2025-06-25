@@ -3,6 +3,8 @@ title: "Classical Machine Learning Fundamentals"
 description: "A brief overview of classical machine learning concepts as applicable to image classification applications."
 author: Laura Boucheron
 type: interactive tutorial
+language: Python
+interface: Jupyter
 order: 20
 updated: 2020-10
 objectives: "Develop a classical machine learning algorithm capable of discriminating between objects present in an image."
@@ -30,7 +32,7 @@ In this tutorial, we present a brief overview of classical machine learning conc
 
 
 
-**This tutorial contains 5 sections:**
+### Sections
 
   * **Downloading Images**: how to download the image dataset that we will use for this tutorial
   * **Working with the CalTech101 Dataest**: how to traverse and use the directory structure and files provided in the CalTech101 Dataset
@@ -123,7 +125,7 @@ for k, category in enumerate(categories):
 
 
 
-![png](images/Tutorial2_Classical_Machine_Learning_Boucheron_7_0.png)
+![mosaic of images and labels]({{ images_path }}/Tutorial2_Classical_Machine_Learning_Boucheron_7_0.png)
 
 
 <div class="process-list" markdown='1'>
@@ -188,7 +190,7 @@ plt.show()
 
 
 
-![png](images/Tutorial2_Classical_Machine_Learning_Boucheron_9_1.png)
+![annotated emu, upright with head in top left corner]({{ images_path }}/Tutorial2_Classical_Machine_Learning_Boucheron_9_1.png)
 
 
 
@@ -207,7 +209,7 @@ plt.show()
 
 
 
-![png](images/Tutorial2_Classical_Machine_Learning_Boucheron_11_0.png)
+![Flipped outline of emu, with head in bottom left corner]({{ images_path }}/Tutorial2_Classical_Machine_Learning_Boucheron_11_0.png)
 
 
 
@@ -227,7 +229,7 @@ plt.show()
 
 
 
-![png](images/Tutorial2_Classical_Machine_Learning_Boucheron_13_0.png)
+![upright emu overlayed with emu outline that has been rotated incorrectly]({{ images_path }}/Tutorial2_Classical_Machine_Learning_Boucheron_13_0.png)
 
 
 
@@ -255,7 +257,7 @@ plt.show()
 
 
 
-![png](images/Tutorial2_Classical_Machine_Learning_Boucheron_15_0.png)
+![original emu image next to binary emu mask]({{ images_path }}/Tutorial2_Classical_Machine_Learning_Boucheron_15_0.png)
 
 
 
@@ -289,7 +291,7 @@ for k, im_category in enumerate(im_categories):
     plt.title(os.path.basename(im_category)) # strip off basename for title
 ```
 
-![png](images/Tutorial2_Classical_Machine_Learning_Boucheron_17_1.png)
+![binary mask of image mosaic]({{ images_path }}/Tutorial2_Classical_Machine_Learning_Boucheron_17_1.png)
 
 </div>
 
@@ -1546,7 +1548,7 @@ for i in misclass_idx[0]:
 
 
 
-![png](images/Tutorial2_Classical_Machine_Learning_Boucheron_65_1.png)
+![misclassified emu image]({{ images_path }}/Tutorial2_Classical_Machine_Learning_Boucheron_65_1.png)
 
 
 

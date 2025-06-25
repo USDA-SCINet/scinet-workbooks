@@ -9,9 +9,11 @@ description: "A brief overview of image processing concepts necessary to underst
 setup: [intro, code]
 tags: [machine learning]
 packages: [imager]
+materials:
+  - "[Cameraman Image]({{ images_path }}/cameraman.png)"
+  - "[Peppers image]({{ images_path }}/peppers.png)"
 
-
-overview: [packages, code]
+overview: [packages, materials]
 
 intro: geospatial/machine-learning/image-ml#for-r
 ---
@@ -99,7 +101,7 @@ I_camera = load.image('data/cameraman.png')   # <= path to input image here
 plot(I_camera)
 ```
 
-![]({{ images_path }}/R_I_camera-1.png)<!-- -->
+![The cameraman image with grayscale colormap]({{ images_path }}/R_I_camera-1.png)<!-- -->
 
 Here, we have read in the image and stored it as `I_camera`. To verify
 that the image was successfully loaded into R, we have displayed the
@@ -120,7 +122,7 @@ I_peppers = load.image('data/peppers.png')   # <= path to input image here
 plot(I_peppers)
 ```
 
-![]({{ images_path }}/R_I_peppers-1.png)<!-- -->
+![Peppers - RGB]({{ images_path }}/R_I_peppers-1.png)<!-- -->
 
 ### Properties of an image
 
@@ -132,7 +134,7 @@ multiple layers. The diagram from
 <https://media.geeksforgeeks.org/wp-content/uploads/Pixel.jpg> is a good
 illustration of the concept of image layers.
 
-![image](https://media.geeksforgeeks.org/wp-content/uploads/Pixel.jpg)
+![Overlapping red, green, and blue image planes that form a pixel](https://media.geeksforgeeks.org/wp-content/uploads/Pixel.jpg)
 
 From R, we can look at the structure (`str`) of a variable (`I_camera`)
 by the following:
@@ -180,7 +182,7 @@ sub_I_camera = as.cimg(I_camera[100:110,100:110,,] )
 plot(sub_I_camera)
 ```
 
-![]({{ images_path }}/R_sub_I_camera-1.png)<!-- -->
+![Isolated subregion]({{ images_path }}/R_sub_I_camera-1.png)<!-- -->
 
 From this smaller `sub_I_camera`, we can print out the pixel values, get
 the minimum value and maximum value.
@@ -235,7 +237,7 @@ I_peppers = load.image('data/peppers.png')       # <= path to peppers.png
 plot(I_peppers)
 ```
 
-![]({{ images_path }}/R_I_pepper-1.png)<!-- -->
+![Peppers - RGB]({{ images_path }}/R_I_pepper-1.png)<!-- -->
 
 The `imager` package provides a convenient `grayscale` function.
 
@@ -244,7 +246,7 @@ gray_I_peppers = grayscale(I_peppers)
 plot(gray_I_peppers)
 ```
 
-![]({{ images_path }}/R_gray_I_peppers-1.png)<!-- -->
+![Peppers - greyscale]({{ images_path }}/R_gray_I_peppers-1.png)<!-- -->
 
 Recall that an image is really a matrix of numbers. Let’s compare the
 dimensions of the original with the new image.
@@ -272,7 +274,7 @@ grad.mag <- sqrt(dx^2 + dy^2)
 plot(grad.mag, main="Gradient magnitude")
 ```
 
-![]({{ images_path }}/R_edge_I_camera-1.png)<!-- -->
+![Cameraman image with edge detection]({{ images_path }}/R_edge_I_camera-1.png)<!-- -->
 
 This particular function is called a Sobal Filter. To read more about
 Sobal filters, see this link: [wikipedia - sobel
@@ -287,7 +289,7 @@ grad.mag <- sqrt(dx^2 + dy^2)
 plot(grad.mag, main="Gradient magnitude")
 ```
 
-![]({{ images_path }}/R_edge_I_peppers-1.png)<!-- -->
+![Peppers image with edge detection]({{ images_path }}/R_edge_I_peppers-1.png)<!-- -->
 
 What happens if we convert the color image to a gray scale image first?
 
@@ -299,7 +301,7 @@ grad.mag <- sqrt(dx^2 + dy^2)
 plot(grad.mag, main="Gradient magnitude")
 ```
 
-![]({{ images_path }}/R_edge2_I_peppers-1.png)<!-- -->
+![Greyscale peppers image with edge detection]({{ images_path }}/R_edge2_I_peppers-1.png)<!-- -->
 
 
 </div>
