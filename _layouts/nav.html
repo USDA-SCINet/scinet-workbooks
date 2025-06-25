@@ -109,6 +109,10 @@ wbComp:
     </div>
   </div>
 
+{% if site.survey and page.survey %}
+  {% include layout/survey %}
+{% endif %}
+
 {% if page.collection %}
 {% unless page.index %}
 {% include collect/related-reading.html %}

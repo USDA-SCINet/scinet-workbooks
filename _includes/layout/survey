@@ -1,0 +1,6 @@
+{% assign surveyLabel = "Provide feedback about this page" %}
+{% assign surveyText = "Was this page helpful?" %}
+{% assign surveyClasses = "usa-button site-button usa-button--outline ext-none" %}
+<section class="survey__container" role="complementary" aria-label="Page feedback">
+   <a href="https://forms.office.com/Pages/ResponsePage.aspx?id={{ page.surveyid | default: site.survey }}&rb112eac271e54837b2d11b6ff5b750f7={{ page.url | | remove: '/index' }}" target="_blank" class="{{ surveyClasses }}" aria-label="{{ surveyLabel }}">{{ surveyText }}</a>
+</section>
