@@ -12,8 +12,8 @@ Create your Conda environment:
     {%- if conda.first %}
     * Create and load your new Conda environment:
         ```bash
-conda env create --prefix /90daydata/scinet/$USER/envs/{{ environment }}
-source activate /90daydata/scinet/$USER/envs/{{ environment }}
+conda env create --prefix /90daydata/shared/$USER/envs/{{ environment }}
+source activate /90daydata/shared/$USER/envs/{{ environment }}
 conda install{% for _c in conda %} {{ _c }}{% endfor %}
 ```  
     {%- else %}
