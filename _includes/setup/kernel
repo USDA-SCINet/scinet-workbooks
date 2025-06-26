@@ -1,5 +1,5 @@
 {%- include setup/kernelname kernel=include.kernel %}
-Create a kernel for Jupyter {% unless kernelfetch.source %}{% if page.conda %}to use your Conda environment {% endif %}{% endunless %}called {{ kernel }}:
+Create a kernel for Jupyter {% unless kernelfetch.source %}{% if page.conda %}to use your Conda environment {% endif %}{% endunless %}called `{{ kernel }}`:
 ```{%-if kernel.source %}
 {{ kernelfetch.source }}{%- endif %}
 ipython kernel install --name={{ kernel }} --user

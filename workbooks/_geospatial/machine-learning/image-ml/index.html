@@ -46,7 +46,7 @@ Materials modified from the USDA ARS AI Workshop 2020.
 
 <!--## Creating an Environment for this Module
 
-The tutorial code uses 90daydata, but you can use your own project directory by substituting `/project/your_project_name/` wherever you see `/90daydata/scinet/your_name/`.
+The tutorial code uses 90daydata, but you can use your own project directory by substituting `/project/your_project_name/` wherever you see `/90daydata/shared/your_name/`.
 
 Setup for this tutorial assumes you know how to access your HPC of choice and set up a Conda environment.
 
@@ -55,9 +55,9 @@ Setup for this tutorial assumes you know how to access your HPC of choice and se
 2. Create and load your new Conda environment for this workbook.
     The build may take up to 10 minutes.
     ```bash
-    conda env create --prefix /90daydata/scinet/your_name/envs/wb_image_ml -f wb_image_ml.yml
+    conda env create --prefix /90daydata/shared/your_name/envs/wb_image_ml -f wb_image_ml.yml
 
-    source activate /90daydata/scinet/your_name/envs/wb_image_ml
+    source activate /90daydata/shared/your_name/envs/wb_image_ml
     ```
 
 
@@ -69,7 +69,7 @@ Setup for this tutorial assumes you know how to access your HPC of choice and se
 Node Type: short
 Number of Cores: 4
 Job Duration: 02:00:00
-Working Directory: /90daydata/scinet/your_name
+Working Directory: /90daydata/shared/your_name
 leave all other fields blank
 3) Create or edit the .condarc file in your home directory
 
@@ -77,12 +77,12 @@ open or create .condarc with
   nano .condarc 
 Paste the following somewhere near the bottom:
   pkgs_dirs:
-    - /90daydata/scinet/yourname/envs
+    - /90daydata/shared/yourname/envs
 This allows you to direct your package installs using --prefix in the next step.
 
 4) Build the workshop Conda environment
 
-If using /90daydata/scinet, create a new folder there mkdir /90daydata/scinet/yourname, then modify the instructions below by substituting /90daydata/scinet/yourname/ wherever you see /project/your_project_name/.
+If using /90daydata/shared, create a new folder there mkdir /90daydata/shared/yourname, then modify the instructions below by substituting /90daydata/shared/yourname/ wherever you see /project/your_project_name/.
 
 open a terminal in JupyterLab with File > New > Terminal
 
