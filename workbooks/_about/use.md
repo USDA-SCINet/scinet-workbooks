@@ -5,8 +5,10 @@ order: 1
 author: The SCINet Office
 updated: 2025-06-24 
 
-objectives: "You can write out your objectives in markdown, or put them in a list."
+objective: "objective of this tutorial"
 overview: [objectives]
+
+mkdir: getting-started_dir
 survey: true
 ---
 
@@ -17,71 +19,172 @@ Introduction to your tutorial and what the tutorial aims to accomplish.
 
 {% include overviews %}
 
+### Tutorial Steps:
+1. **Accessing SCINet**
+    1. Request a SCINet account
+    1. Log in to SCINet
+1. **Setting up your workspace**
+1. **Accessing interfaces on SCINet**
+    1. Using the Shell
+    1. RStudio
+    1. JupyterLab
+    1. VS Code
+1. **Request compute resources and submit jobs on SCINet**
 
-## Tutorial Steps:
-1. Request a SCINet account
-1. Log in to SCINet
-1. Decide on your workspace for the tutorials
-1. Launch the Shell on SCINet
-1. Request compute resources and submit jobs on SCINet
-1. Access GUI interfaces on SCINet
-
+## Accessing SCINet
 
 <div class="process-list" markdown="1">
 
 ### Request a SCINet account
 
 A SCINet account is required to access SCINet. You can [request a SCINet account by visiting here](https://scinet.usda.gov/about/signup#sign-up-for-a-scinet-account).
-A SCINet account provides access to two high performance computing clusters, Ceres and Atlas and long-term storage device, Juno. For more information on our compute resources, see our [Computing Resources guide](https://scinet.usda.gov/guides/resources/#scinet-computing-resources).
+A SCINet account provides access to two high performance computing clusters - Ceres and Atlas - as well as the long-term storage device, Juno. For more information on our compute resources, see our [Computing Resources guide](https://scinet.usda.gov/guides/resources/#scinet-computing-resources).
 
 ### Log in to SCINet
 
 Once your SCINet account has been approved, you will be able to login to SCINet and gain access to our computing resources. If you encounter issues with your account, please email scinet_vrsc@usda.gov.
 You can log in to SCINet via our web-based Open OnDemand interface or via ssh. Most of the tutorials are designed for Open OnDemand, and unless otherwise specified you do not need to use a direct SSH connection to SCINet clusters. 
 * Log in to [Ceres Open OnDemand](http://ceres-ood.scinet.usda.gov/). 
-* Log in to [Atlas Open OnDemand](https://atlas-ood.hpc.msstate.edu/) 
-For more information on login procedures for web-based SCINet access, see the [SCINet access user guide](https://scinet.usda.gov/guides/access/web-based-login). 
+* Log in to [Atlas Open OnDemand](https://atlas-ood.hpc.msstate.edu/).  
+
+For more information on login procedures for SCINet access, including our SSH access instructions, see the [SCINet access user guide](https://scinet.usda.gov/guides/access/). 
+
+</div>
+
+## Setting up your workspace
+
+You will need to decide where files will be stored for the tutorials.  Most tutorials default to using `/90daydata/shared/$USER/tutorial_subdirectory` for consistancy; however, with a SCINet account you have access to multiple options: 
+* **Home directory:** small storage quota and recommended for configuration and login files.  
+* **Project space:** large workspace recommended for installs, research data, and analysis results. [Click here to request a project directory](https://scinet.usda.gov/guides/data/storage#project-directories)  
+* **90daydata:** temporary workspace for large, short-term data where files will be deleted after 90 days. `90daydata/shared` is a space where data can be shared among users or teams, but each user still has a dedicated folder. Read our [Storage Guides](https://scinet.usda.gov/guides/data/storage#large-short-term-storage) for more information on 90daydata.  
 
 
-### Decide on your workspace for the tutorials
+<div class="process-list" markdown="1">
 
-You will need to decide where you'll work and store your files for the tutorials. With a SCINet account, you have access to a: 
-* Home directory: small storage quota and recommended for configuration and login files
+### Making your workspace directory in 90daydata 
 
-* Project space: large workspace recommended for installs, research data and analysis results. [Click here to request a project directory](https://scinet.usda.gov/guides/data/storage#project-directories)
+If you are beginning a tutorial for the first time, or haven't used your directory in 90 days, you will need to create a new working directory for the tutorial.
 
-* 90daydata: temporary workspace for large, short-term data where files will be deleted after 90 days. 90daydata/shared, is a space where data can be shared among users or teams, but each user still has a dedicated folder. Read our [Storage Guides](https://scinet.usda.gov/guides/data/storage#large-short-term-storage) for more information on 90daydata. 
+To create a working directory:
+1. Open the Shell - if you are not sure how, see the below [instructions on how to launch the shell](using-the-shell).
+1. Request a compute node, replacing `<project_name>` with the name of a project you have access to:
+    ```
+    srun -A <project_name> -t 01:00:00 --pty bash
+    ```
+1. {% include setup/mkdir %}
 
-We recommend not using your home directory since you will quickly run out of space due to the small storage quota. Instead, we recommend either using /90daydata/shared/$USER/whatever_subdirectory, or a /project/project_group_name/whatever_subdirectory directory if you have one. Once you determine what directory you would like to work in for these tutorials, each tutorial will provide specific details on how to create a directory for the tutorial and transfer the needed files to this directory. 
+### Creating a Conda environment
 
-### Launch the Shell on SCINet
-After logging in to SCINet via Open OnDemand, you will be directed to the Open OnDemand homepage associated with the cluster (Ceres or Atlas) you are accessing: 
+Many tutorials use [Conda](https://scinet.usda.gov/guides/software/conda), which allows SCINet users to create reproducible scientific software environments.
+
+If your tutorial uses a Conda environment, it will specify how to load it. You can either create it in the shell when you create your working directory, or if your tutorial is using a specific IDE you can execute the code in your IDE's terminal.
+
+Most tutorials that use Conda environments default to creating the environment in 90daydata.  If you would like to save the virtual environment for later use, you can modify the workflow to [set up the environment in your Project directory](#modifying-workflows-to-use-project).  
+
+{% include alert class="warning" title="It is not reccomended to use your Home directory for Conda" content="Software installs that require a lot of space, such as Conda virtual environments, can quickly max out your quota.  It is reccomended to use `/project` or `90daydata` instead." %}
+
+#### Example Conda workflow
+1. Load Conda.
+    * Atlas: `module load miniconda3`
+    * Ceres: `module load miniconda`
+1. Create your environment:
+    * If you are using an environment yml file:
+        * Download the environment yml file:  
+            ```bash
+            wget {{ site.url }}{{ file_path }}/{{ environment }}.yml
+            ```
+        * Create and load your new Conda environment:  
+            ```bash
+            conda env create --prefix /90daydata/shared/$USER/envs/{{ environment }} -f {{ environment }}.yml
+            source activate /90daydata/shared/$USER/envs/{{ environment }}
+            ```  
+    * If you are creating your environment from scratch:  
+        ```bash
+        conda env create --prefix /90daydata/scinet/$USER/envs/{{ environment }}
+        source activate /90daydata/scinet/$USER/envs/{{ environment }}
+        conda install nodejs ruby=3.4.4 compilers
+        ```  
+    * If you are using an existing environment, you just need to load it:  
+        ```bash
+        source activate /90daydata/scinet/$USER/envs/{{ environment }}
+        ```
+1. If you are using Jupyter:
+    1. {% include setup/kernel %}
+    1. In JupyterLab, make sure the tutorial kernel is selected:
+        * Kernel > Change Kernel > select "{{ kernel }}" from the drop down menu
+
+
+### Modifying workflows to use /Project
+
+If you would like to use your Project space instead of 90daydata, you can modify the tutorial instructions by substituting `/project/your_project_name/` wherever you see `/90daydata/shared/$USER/`.
+
+For example, to modify the instructions above for creating a directory and Conda environment in a project named "your_project_name", you would:
+1. Open the Shell
+1. Request a compute node:
+    ```
+    srun -A your_project_name -t 01:00:00 --pty bash
+    ```
+1. Create your wookbook directory and navigate to it:
+    ```
+    mkdir -p /project/your_project_name/{{ environment }}
+    cd /project/your_project_name/{{ environment }}
+    ```
+1. Load Conda.
+    * Atlas: `module load miniconda3`
+    * Ceres: `module load miniconda`
+1. Create your environment from a yml file
+    * Download the environment yml file:  
+        ```bash
+        wget {{ site.url }}{{ file_path }}/{{ environment }}.yml
+        ```
+    * Create and load your new Conda environment:  
+        ```bash
+        conda env create --prefix /project/your_project_name/envs/{{ environment }} -f {{ environment }}.yml
+        source activate /project/your_project_name/envs/{{ environment }}
+        ```  
+
+</div>
+
+## Accessing interfaces on SCINet
+
+There are multiple different interfaces available on SCINet.  In this section, we provide template instructions for launching these interfaces and provide an overview of each input parameter.
+
+Note: Each tutorial may have specific inputs depending on the resource needs and objectives of the tutorial.  Use the parameters specified by the tutorial if they differ from these demo instructions.
+
+<div class="process-list" markdown="1">
+
+### Using the Shell
+
+Most tutorials will assume you are using [Open OnDemand (OOD)](https://scinet.usda.gov/guides/use/open-ondemand).  
+* Log in to [Ceres Open OnDemand](http://ceres-ood.scinet.usda.gov/). 
+* Log in to [Atlas Open OnDemand](https://atlas-ood.hpc.msstate.edu/).  
+
+After logging in to SCINet via OOD, you will be directed to the OOD homepage associated with the cluster (Ceres or Atlas) you are accessing: 
 
 [placeholder for image]
 
 While on the home page of your cluster, you can open a command-line session by clicking on "Clusters" -> "Ceres/Atlas Shell Access" on the top menu. This will open a new tab with a command-line session on Ceres'/Atlas' login node.  
 
+From here, your tutorial may have specific instructions for you to execute.  One of the first steps is often to [request a compute note and create a working directory in 90daydata](#making-your-workspace-directory-in-90daydata), as explained above.
 
-### Accessing GUI interfaces on SCINet
-SCINet has GUI interfaces available through Open OnDemand including RStudio, JupyterNotebook, and VSCode. In this section, we provide template instructions for launching these GUI interfaces and provide an overview each input parameter. 
-Note: Each tutorial that uses one of our GUI interfaces will have specific inputs depending on the resource needs and objectives of the tutorial.   
+Requesting a compute node keeps all the intense computation off the login nodes, so that login nodes can have all the resources necessary for managing the cluster. **Please do not run your applications on the login nodes**.   For more information, see our [SLURM guide](https://scinet.usda.gov/guides/use/slurm). 
 
-#### Demo for launching RStudio: 
+### Launching RStudio: 
 Back on the main Atlas/Ceres OOD tab, click on the top or side navigation bar: "Interactive Apps" > "RStudio Server".
 Fill the input fields with the following: 
 * If using Ceres
-    * Account: scinet_workshop2 (replace with your project account name)
+    * Account: your_project_name (replace with your project account name)
     * Queue: ceres
     * QOS: 400thread
     * R Version: 4.4.1
     * Number of hours: 1
-    *Number of cores: 1
+    * Number of cores: 1
     * Memory required: 8GB
     * Optional Slurm Arguments: (leave empty for demo purposes)
 
 * If using Atlas:
     * R Version: 4.4.0
-    * Account name: scinet_workshop2 (replace with your project account name)
+    * Account name: your_project_name (replace with your project account name)
     * Partition:atlas 
     * QOS:normal
     * Number of hours: 1
@@ -93,11 +196,11 @@ Fill the input fields with the following:
 * Wait a moment for the job card to update from "Queued" to "Running".
 * Click on the "Connect to RStudio Server" button to open a new tab with the RStudio Server interface.
 
-#### Demo for launching JupyterLab:
+### Launching JupyterLab:
 Back on the main Atlas/Ceres OOD tab, click on the top or side navigation bar: “Interactive Apps” > “JupyterLab Server”.
 Fill the input fields with the following:
 * If using Ceres:
-    * Account: scinet_workshop2 (replace with your project account name)
+    * Account: your_project_name (replace with your project account name)
     * Queue: ceres
     * QOS: 400 thread
     * Number of hours: 1
@@ -108,7 +211,7 @@ Fill the input fields with the following:
     * Working Directory defaults to $HOME
 
 * If using Atlas: 
-    * Account: scinet_workshop2 (replace with your project account name)
+    * Account: your_project_name (replace with your project account name)
     * Partition: atlas
     * QOS: normal
     * Number of hours: 1
@@ -122,12 +225,12 @@ Fill the input fields with the following:
 * Click on the “Connect to JupyterLab Server” button to open a new tab with the JupyterLab Server interface.
 
 
-#### Demo for Launching VS Code (Only available on Ceres)
+### Launching VS Code (Only available on Ceres)
 Back on the main Ceres OOD tab, click on the top or side navigation bar: “Interactive Apps” > “VSCode Server”.
 
 Fill the input fields with the following:
 
-* Account: scinet_workshop2 (replace with your project account name)
+* Account: your_project_name (replace with your project account name)
 * Queue: ceres
 * QOS: 400 thread
 * Number of cores: 1
@@ -145,8 +248,8 @@ Fill the input fields with the following:
 
 ## Where to get help?
 
-[SCINet FAQs](https://scinet.usda.gov/support/faq#faqs)
-[SCINet user guides](https://scinet.usda.gov/guides/#scinet-guides-list)
-[Contact the VRSC](mailto:scinet_vrsc@iastate.edu)
+* [SCINet FAQs](https://scinet.usda.gov/support/faq#faqs)
+* [SCINet user guides](https://scinet.usda.gov/guides/#scinet-guides-list)
+* [Contact the VRSC](mailto:scinet_vrsc@iastate.edu)
 
 You're now ready to tackle our workbooks! 
