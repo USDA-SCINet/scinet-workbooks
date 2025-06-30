@@ -559,10 +559,6 @@ Examples:
 * `chmod u=rwx, g=rx,o=` : user full, group read/execute, others none
 * `chmod +x script.sh` : add execute permission  
 
-To change ownership, we use the command `chown`
-
-* `sudo chown username file1.txt` - changes owner to username 
-
 
 {% include alert class="question" title="You try" content="1. Make a file readable and writable only by you
 2. Remove write access from group and others" %}
