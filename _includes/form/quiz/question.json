@@ -1,0 +1,12 @@
+{% assign _q = include.question %}{% capture qnewline %}
+{% endcapture %}
+{    {%- if _q.type %}
+    "type": "{{ _q.type }}",{% endif %}{%- if _q.solution %}
+    "solution": "{{ _q.solution | markdownify | replace: qnewline, "" | escape | strip }}",{% endif %}{%- if _q.responses %}
+    "responses": [  
+        {%- for _resp in _q.responses %}
+        "{{ _resp | markdownify | replace: qnewline, "" | escape | strip }}"{%- unless forloop.last %},{% endunless -%}{%- endfor %}
+    ],{%- endif -%}{%- if _q.answer %}
+    "answer":{% if _q.answer[1] %} [{% for _sol in _q.answer %}{{ _sol | default: 0 }}{%- unless forloop.last %},{% endunless -%}{% endfor %}]{% else %} {{ _q.answer | default: 0 }}{% endif %},{% endif %}
+    "qid": {% if _q.qid %}{{ _q.qid }}{%- else %}{{ forloop.index0 | plus: 1 }}{%- endif %}
+}

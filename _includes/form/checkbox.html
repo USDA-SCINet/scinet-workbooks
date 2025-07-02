@@ -22,7 +22,7 @@
         {% assign option_formmatted = _option %}
         {% assign classname = "" %}
         {%- endif %}
-    <div class="usa-checkbox">
+    <div class="usa-checkbox {{ include.classname }}">
         <input
           class="usa-checkbox__input {{ sectionslug }}-filters"
           id="check-{{ include.title }}-{{ option }}"
