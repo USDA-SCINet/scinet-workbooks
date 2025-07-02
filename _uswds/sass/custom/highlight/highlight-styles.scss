@@ -1,4 +1,4 @@
-@use "uswds-core" as *;
+@use "uswds-core" as *; 
 @use "usa-accordion" as accord;
 
 
@@ -60,6 +60,15 @@
         @include typeset($theme-alert-font-family, "md", 1);
       };
     }
+
+}
+
+@mixin highlighted-bg-styles($name, $colval, $spec) {
+  $bgcolor: highlight-bg($spec, $colval);
+  $bordercolor: highlight-border($spec, $colval);
+
+  background-color: color($bgcolor);
+  border-color: color($bordercolor);
 
 }
 

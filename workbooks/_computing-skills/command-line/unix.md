@@ -52,6 +52,37 @@ objectives: "By the end of this tutorial, you will be able to:
 overview: [objectives, terminology]
 
 order: 5
+
+quiztitles:  Exercise
+
+questions:
+  - question: Try printing your own message
+    qid: 1
+    solution: "Include code to print your own message"
+  - question: Write a command that prints your name and the current date together. 
+    qid: 2
+    solution: "Example output: `name=\"ARS SCINet\"`
+
+  * `echo '$name  $(date)'`
+
+  * OR `echo \"My name is $name and today's date is $(date).\"`"
+  - question: "What does the shell do when a variable has not been defined?  Observe what happens when you run `echo $variable_notset`"
+    qid: 3    
+    answer: 3
+    answers: 
+      - An error message saying the variable is not defined
+      - Prints the variable name, `$variable_notset`
+      - An empty line (no output)
+      - Prints null
+  - question: How should you correctly call or use a variable in Bash to display its value?
+    qid: 4
+    answer: 2
+    answers: 
+      - "Type `$my_var` on its own in the terminal"
+      - "`echo \"$my_var\"`"
+      - "`run ($my_var)`"
+      - "`($my_var)`"
+
 ---
 
 ## Overview
@@ -107,13 +138,15 @@ Run the following command:
 This will print the text to the screen. 
 
 
-{% include alert class="question" title="Exercise: Try printing your own message" content="The shell will also notify you if you are using unknown commands by displaying `command not found`.
+{% include assessment qid=1 %}
+
+The shell will also notify you if you are using unknown commands by displaying `command not found`.
 
 Run the command `loading`. 
 
 `loading`
 
-You will see an error message that says `loading: command not found`." %}
+You will see an error message that says `loading: command not found`.
 
 ### Shell Variables
 You can store values to variables in the Unix shell which can be used to execute commands. To reference the value of a variable, use a dollar sign `($)`. 
@@ -130,10 +163,11 @@ Note that there are no spaces between the `=` when assigning the value to a vari
 For example: 
 `echo "His name is $(name)"`
 
-{% include alert class="question" title="Exercise" content="Now that we've looked at some basic system commands in the shell. 
-* Write a command that prints your name and the current date together. 
-* What does the shell do when a variable has not been defined? Observe what happens when you run `echo $variable_notset`
-* Thought question: Why might variables be useful in longer scripts or complex command sequences?" %}
+
+{% include assessment qid=2 %}
+{% include assessment qid=3 %}
+{% include alert class="question" title="Thought Question" content="Why might variables be useful in longer scripts or complex command sequences?" %}
+{% include assessment qid=4 %}
 
 ### Command History
 Most Unix-like shells, including Bash, keep a history of past commands you've typed. You can access them with a command:

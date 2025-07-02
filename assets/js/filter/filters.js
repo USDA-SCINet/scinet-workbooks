@@ -1,43 +1,46 @@
 ---
 ---
-
+// load workbook data
 const packaged = [{% include packages.js sect='workbooks' %}]
 
+
+// saves filter state and calls sorting function
 function submitFilters(form){
   // get form data
   var fdata = new FormData(form)
   var formstring = new URLSearchParams(fdata).toString();
 
+  // store filters
   sessionStorage.setItem('lastsearch', formstring);
   sortForm(fdata); 
 
+  // do not reload
   return false
   
 }
 
-
+// loads filters from session storage
 function loadFilters(form, clear = "nope"){
   // get form data
   var savedData = sessionStorage.getItem('lastsearch'),
       fdata = (new URLSearchParams(savedData)).entries();
   //set clear as key, value pair to remove from URLParams, then resubmit form
 
+  // loop through saved session information
    for(const [key, val] of fdata) {
-    
     if(key === clear[0] && val === clear[1]){
-      //do nothing
+      // skip filter
     } else {
       if( val === "" ){}else{
       const input = form.elements[key];
       if( input.id === key){
-
+        // set checkbox
           switch(input.type) {
             case 'checkbox': input.checked = !!val; 
             default:         input.value = val;     
-          }
-        
-        
+          }       
       } else if (input instanceof RadioNodeList) {
+        // set radio button
           rlength = input.length
           for (var i = 0; i < rlength; i++) {
             if(input[i].value === val){
@@ -47,7 +50,7 @@ function loadFilters(form, clear = "nope"){
         } 
     }}
   }
-
+  // submit loaded form
   submitFilters(form)
 }
 
@@ -70,8 +73,7 @@ function sortForm(fdata){
         } else {
           var mykey = key 
         }
-          // Reflect.has in favor of: formvalues.hasOwnProperty(key)
-
+        // Add pill for new filter value
         if(!Reflect.has(formvalues, mykey)){
           pillvalues.append(makePill(key,value));
           formvalues[mykey] = value;
@@ -90,7 +92,7 @@ function sortForm(fdata){
 
   var formobject = Object.entries(formvalues);
 
-  //check if formdata has a selction
+  // If no filters, clear search; otherwise, filter workbooks
   if(formobject.length === 0){
     clearSearch()
   } else {
@@ -101,6 +103,7 @@ function sortForm(fdata){
   
 }
 
+// clears all filters and reloads page
 function clearSearch(){
   sessionStorage.clear();
   // Refresh the page
@@ -108,14 +111,15 @@ function clearSearch(){
 
 }
 
-  function filterWBs(formobject, inclusive){
 
+function filterWBs(formobject, inclusive){
+// Split filters into inclusive and exclusive
     var obj1 = Object.fromEntries(formobject.filter(([k]) => inclusive.includes(k)));
     var obj2 = Object.fromEntries(formobject.filter(([k]) => !inclusive.includes(k)));
-
+// Helper functions for inclusive/exclusive matching
     var c_exclusive = (arr, target) => target.every(v => arr.includes(v));
     var c_inclusive = (arr, target) => target.some(v => arr.includes(v));
-
+  // Build filter conditions
     var incConditions = search => a => Object.keys(search).every(k => 
       (Array.isArray(search[k]) && ((Array.isArray(a[k]) && c_inclusive(a[k], search[k])) || search[k].includes(a[k]) )) ||
       a[k] === search[k] ||
@@ -126,7 +130,7 @@ function clearSearch(){
       a[k] === search[k] ||
       Array.isArray(a[k]) && a[k].includes(search[k])
     );
-
+  // Filter packaged data
     if(Object.keys(obj1).length===0){
       var exclude = packaged.filter(exclConditions(obj2));
     } else {
@@ -142,21 +146,20 @@ function clearSearch(){
     checkWBs(idarray,selarray)
   }
 
-  function checkWBs(idarray,selarray){
+// check for matches
+function checkWBs(idarray,selarray){
 
     // display error message if no workbooks found
     if(idarray.length===0){
       noWBsFound()
     } else {
-      // sessionStorage.setItem('showWBs', JSON.stringify(idarray));
       showWBs(idarray,selarray)
     }
     
   }
 
+// show "no results" if no matches found
   function noWBsFound(){
-    //$("#nosubject").removeClass('no-display');
-    //$(".wb").removeClass('no-display');
     $(".wb").addClass('no-display').removeClass('wb-select');;
     $("#search-placeholder").removeClass('no-display');
     
@@ -186,7 +189,8 @@ function clearSearch(){
     
   }
 
-  function filterComp(e){
+// Title search box - Filters components by search input 
+function filterComp(e){
     search = e.value.toLowerCase();
     document.querySelectorAll('.fc').forEach(function(row){
         text = row.getAttribute("datameta").toLowerCase();
@@ -199,6 +203,7 @@ function clearSearch(){
     classCount($("#component-count"));
 }
 
+// Updates the count of filtered workbooks
 function filterCounts(num){
   var div = $("#component-count");
   if (div.attr("path") == "json"){
@@ -208,6 +213,7 @@ function filterCounts(num){
   }
 };
 
+// 
 function jsonCount(div, num){
     var word = (num === 1) ? "workbook" : "workbooks";
     div.html(`<strong>${num}</strong> ${word} found`);
@@ -250,19 +256,15 @@ function classCount(div){
       '</span>'
       )))
 
+  // Bind click to remove filter
     mypill.bind('click', function() {
-      let ent = $(this),
-        k = ent.attr("keyID"),
-        v = ent.attr("value");
-    var myform = document.getElementById("workbook-array");
-    myform.reset();
-    loadFilters(myform, [k,v])
+      removeFilter(this);
     });
-
     return mypill;
 
   }
 
+  // Removes a filter pill
   function removeFilter(me){
     let ent = $(me),
         k = ent.attr("keyID"),
@@ -274,7 +276,7 @@ function classCount(div){
 
   $(document).ready(function() {
     var myform = document.getElementById("workbook-array");
-      
+      // Toggle all checkboxes in a section
       $('.filter-toggle').prop("checked", false).click(function() {
   
           let sectfilter = $(this).attr("toggles"),
@@ -287,7 +289,7 @@ function classCount(div){
           togs.prop("checked", !togs.prop("checked"));
           $('.'+sectfilter).prop('checked', this.checked);                
       });
-  
+  // Handle select-multiple dropdowns with confirmation
       $('.selectmultiple').on('change', function (e) {
         let selectedO = $("option:selected", this),
           selectV = this.value;
@@ -303,7 +305,7 @@ function classCount(div){
           }      
         }
       });
-
+// Toggle inclusive/exclusive filter mode
       $('.inclusive-toggle').prop("checked", false).click(function() {
         let tog = $(this),
             togv = $("#"+tog.attr("value")+"-hint");
@@ -313,13 +315,13 @@ function classCount(div){
         } else { togv.text('Results match tag 1 AND tag 2') };
       })
   
-      
+      // Tooltip toggles
       $('.tooltip-toggle').click(function(){
         let tog = $(this).attr("toggles")
         $("#"+tog).toggleClass( "no-display" )
   
       });
-  
+  // Load filters from session storage if present
       if ('lastsearch' in sessionStorage) {
         loadFilters(myform)
   

@@ -1,12 +1,12 @@
 @use "sass:math";
 
 @use "uswds-core" as *;
-@use './highlight-styles' as hl;
+@use 'highlight-styles' as hl;
 
 $highlighting-icons: (
   "warning" "warning" "lighter" "warning",
   "info" "info" "lighter" "info",
-  "question" "accent-warm" "lighter" "help",
+  "question" "base" "lighter" "help",
   "tip" "info" "lighter" "star",
   "error" "error" "lighter" "error",
   "note" "info" "lighter" "push_pin",
@@ -40,6 +40,10 @@ $highlighting-icons: (
 ////
 
 @each $name, $colval, $spec, $icon in $highlighting-icons {
+
+  .bg--#{$name} {
+    @include hl.highlighted-bg-styles($name, $colval, $spec);
+  }
 
   .highlighted--#{$name} {
     @include hl.highlighted-status-wrapper-styles($name, $colval, $spec);

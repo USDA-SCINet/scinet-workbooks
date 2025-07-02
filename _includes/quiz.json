@@ -1,0 +1,20 @@
+{%- assign docs = site.documents | where: 'variety', 'workbook' -%}
+{%- assign hasquiz = docs | where_exp: "post", "post.questions or post.quiz" -%}
+
+{%- assign postpath1 = "" %}
+{%- assign subset1 = "" | split: "" %}
+{%- for _quiz in hasquiz %}
+{
+    "ref": "{{ _quiz.id | replace_first: "/index", "/" }}",{%- if _quiz.questions %}
+    "questions": [ {% for _question in _quiz.questions %}
+            {% include form/quiz/question.json question=_question %}{%- unless forloop.last %},
+        {%- endunless -%}{% endfor %}
+    ]
+    {%- endif %}{%- if _quiz.quiz %}
+    "quiz": [ {% for _question in _quiz.questions %}
+            {% include form/quiz/question.json question=_question %}{%- unless forloop.last %},
+        {%- endunless -%}{% endfor %}
+    ]
+    {%- endif %} 
+}{%- unless forloop.last %},
+{%- endunless -%}{% endfor %}
