@@ -4,7 +4,31 @@ const quizdata = [{% include quiz.json  %}];
 // Get the quiz questions for the current page and store globally
 const questions = getQuizQuestions(quizdata);
 
+// handler for quizzes
 function submitQuiz(form){
+  // get form data
+  var fdata = new FormData(form);
+
+  var formid = form.getAttribute("id");
+
+  var uniqueKeys = new Set();
+
+  // get only unique keys
+  // avoid duplicate submissions on multiple choice questions
+  for (const key of fdata.keys()) {
+    if (!(uniqueKeys.has(key))) {
+      let thisquestionid = formid + "-" + key;
+      quizSuccess(thisquestionid, key, fdata);
+      uniqueKeys.add(key);
+    }
+  }
+
+  return false
+  
+}
+
+// handler for single question forms
+function submitQuestion(form){
   // get form data
   var fdata = new FormData(form)
   var dataqid = form.getAttribute("data-qid");
@@ -23,13 +47,13 @@ function quizSuccess(formid, idval, myResponses) {
   var displayDiv = $('#' + displayDivId);
 
   // Find the question by qid (ensure idval is number if needed)
-  var mySolutions = questions.find(q => String(q.qid) === String(idval));
+  var mySolutions = questions ? questions.find(q => String(q.qid) === String(idval)) : null;
   var myAnswer = mySolutions ? mySolutions.answer : null;
   var mySolution =  mySolutions ? mySolutions.solution : null;
   var myCorrections = mySolutions ? mySolutions.responses : null;
   
   // Get the user's response(s) as array or value
-  var userResponse = myResponses.getAll(formid+'-'+idval);
+  var userResponse = myResponses.getAll(idval);
   
   // If multiple checkboxes, FormData returns array, else string
   // Normalize for comparison
@@ -102,25 +126,6 @@ function quizSuccess(formid, idval, myResponses) {
     
     displayDiv.html(alertHtml)
 
-
-
-
-
-
-  // Wrap the result in a USWDS Alert
-/*   const alertHtml = `
-    <div class="${alertClass} margin-x-4">
-      <div class="usa-alert__body">
-      <h4 class="usa-alert__heading">${resultMsg}</h4>
-        <div class="usa-alert__text">${solHtml}</div>
-      </div>
-    </div>
-  `;  */
-
-  // Display the result in the result div
-/*   if (displayDiv) {
-    displayDiv.innerHTML = alertHtml;
-  }  */
 }
 
 // Returns the "questions" array from quizdata

@@ -1,5 +1,4 @@
-{%- assign docs = site.documents | where: 'variety', 'workbook' -%}
-{%- assign hasquiz = docs | where_exp: "post", "post.questions or post.quiz" -%}
+{%- assign hasquiz = site.documents | where_exp: "post", "post.questions or post.quiz" -%}
 
 {%- assign postpath1 = "" %}
 {%- assign subset1 = "" | split: "" %}
