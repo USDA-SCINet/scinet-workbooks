@@ -74,8 +74,11 @@ questions:
       - Prints the variable name, `$variable_notset`
       - An empty line (no output)
       - Prints null
-  - question: How should you correctly call or use a variable in Bash to display its value?
+  - question: "Why might variables be useful in longer scripts or complex command sequences?"
+    title: "Thought Question" 
     qid: 4
+  - question: How should you correctly call or use a variable in Bash to display its value?
+    qid: 5
     answer: 2
     answers: 
       - "Type `$my_var` on its own in the terminal"
@@ -138,7 +141,7 @@ Run the following command:
 This will print the text to the screen. 
 
 
-{% include assessment qid=1 %}
+{% include question qid=1 %}
 
 The shell will also notify you if you are using unknown commands by displaying `command not found`.
 
@@ -163,11 +166,7 @@ Note that there are no spaces between the `=` when assigning the value to a vari
 For example: 
 `echo "His name is $(name)"`
 
-
-{% include assessment qid=2 %}
-{% include assessment qid=3 %}
-{% include alert class="question" title="Thought Question" content="Why might variables be useful in longer scripts or complex command sequences?" %}
-{% include assessment qid=4 %}
+{% include question qid="2,3,4,5" %}
 
 ### Command History
 Most Unix-like shells, including Bash, keep a history of past commands you've typed. You can access them with a command:

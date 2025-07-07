@@ -1,8 +1,8 @@
-{%- assign questions = page.questions %}{% assign qid = include.qid %}
-{%- assign q = questions | find: "qid", include.qid %}
-{%- capture htitle %}{% if include.title or q.title %}{{ include.title | default: q.title }}{% else %}{{ page.quiztitles | default: "You Try!" }}{% endif %}{%- endcapture %}
+{% assign q=include.q %}{% assign qid = include.qid %}
+{%- capture htitle %}{% if include.title or q.title %}{{ q.title | default: include.title }}{% else %}{{ page.quiztitles | default: "You Try!" }}{% endif %}{%- endcapture %}
 {%- capture idstring %}{{ page.id | slugify }}-{{ qid | default: 0 }}{% endcapture %}
 <div id="{{ idstring }}-box" class="highlighted highlighted--question padding-bottom-1">
+{% if q.answers or q.solution %}
 <form id="{{ idstring }}" class="highlighted__body" data-qid="{{ qid | default: 0 }}" onsubmit="return submitQuiz(this);">
 
 <h4 class="highlighted__heading" id="{{ idstring }}-header">{{ htitle }}</h4>
@@ -25,5 +25,13 @@
 <div id="{{ idstring }}-result">
 
 </div>
+{% else %}
+<div id="{{ idstring }}" class="highlighted__body">
+<h4 class="highlighted__heading" id="{{ idstring }}-header">{{ htitle }}</h4>
+
+{{ q.question | markdownify }}
+
+</div>
+{% endif %}
 
 </div>

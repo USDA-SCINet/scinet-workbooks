@@ -144,6 +144,6 @@ for managing large datasets, automating workflows, and leveraging powerful compu
 
 {INCLUDE - Information about CLI options on SCINet, including link to the Access section on the SCINet website}
 
-{% include assessment qid=1 %}
-{% include assessment qid=2 %}
-{% include assessment qid=3 %}
+{% include question qid=1 %}
+{% include question qid=2 %}
+{% include question qid=3 %}
