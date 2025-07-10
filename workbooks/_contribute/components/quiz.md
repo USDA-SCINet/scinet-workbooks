@@ -37,7 +37,13 @@ questions:
       - answer3
     answer: 2  
     solution: "This is printed if the user gets the answer correct. If this is not included, and there is no \"Response\" attribute, the result will just show \"Success!\" instead"
+  - question: "This question has code in the solution.  You can specify that code should be copiable or not."
+    qid: 6
+    solution: "The code for this component will look something like:  
 
+    <code class='copy'>This code can be copied</code>  
+    
+    <code class='nocopy'>This code can not be copied</code>"
 ---
 
 ## Component Examples
@@ -51,6 +57,7 @@ Each question can be used in a "question" component **one time**.
 
 {% include question qid=1 %} 
 {% include question qid=5 %}
+{% include question qid=6 %}
 
 You can put a question by itslf, or you can call it in a group.
 
@@ -105,6 +112,13 @@ questions:
       - answer3
     answer: 2  
     solution: "This is printed if the user gets the answer correct. If this is not included, and there is no \"Response\" attribute, the result will just show \"Success!\" instead"
+  - question: "This question has code in the solution.  You can specify that code should be copiable or not."
+    qid: 6
+    solution: "The code for this component will look something like:  
+
+    <code class='copy'>This code can be copied</code>  
+    
+    <code class='nocopy'>This code can not be copied</code>"
 ```
 
 #### Using the components
@@ -113,6 +127,7 @@ questions:
 
 {% include question qid=1 %} 
 {% include question qid=5 %}
+{% include question qid=6 %}
 
 You can put a question by itslf, or you can call it in a group.
 
