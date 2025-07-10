@@ -121,7 +121,7 @@ function quizSuccess(formid, idval, myResponses) {
 
   // Wrap the result in a USWDS Alert
    const alertHtml = $("<div/>", {
-      "class": alertClass + " margin-2",
+      "class": alertClass + " margin-2 shadow-3",
     }).append($('<div/>',{
       "class": "usa-alert__body",
     }).append($("<h4/>", {
@@ -133,7 +133,6 @@ function quizSuccess(formid, idval, myResponses) {
 
     processCodeBlocks(alertHtml);
 
-    //alertHtml.querySelectorAll("div.highlighter-rouge:not(.no-copy)");
     displayDiv.html(alertHtml);
 
   }

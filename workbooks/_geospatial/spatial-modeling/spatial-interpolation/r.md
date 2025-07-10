@@ -4,6 +4,7 @@ author: Heather Savoy
 description: "(Page description here)"
 type: interactive tutorial
 author: Heather Savoy
+interface: RStudio
 
 tags: [spatial interpolation, Random Forest]
 terms: [Spatial Interpolation, Geostatistics, Kriging, Variogram, Random Forest]
@@ -11,8 +12,7 @@ datasets: [meuse]
 packages: [geoR, ranger]
 
 overview: [terminology, packages-datasets,materials]
-
-
+code: GRWG_SpatialInterpolation.Rmd
 
 language: R
 published: 2023-09-17 # not required, but useful
@@ -36,6 +36,10 @@ up-to-date R packages, and cutting and supplementing the commentary
 text.
 
 {% include overviews %}
+
+## Getting Started
+
+{% include setup/code %}
 
 ## Analysis Steps
 

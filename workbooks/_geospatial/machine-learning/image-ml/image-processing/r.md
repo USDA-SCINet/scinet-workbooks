@@ -5,6 +5,7 @@ language: R
 code: R_Image_Processing.Rmd
 author: Jennifer Chang
 updated: 2021-01-14
+interface: RStudio
 description: "A brief overview of image processing concepts necessary to understand machine learning and deep learning."
 setup: [intro, code]
 tags: [machine learning]

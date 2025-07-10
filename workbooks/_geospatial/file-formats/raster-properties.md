@@ -4,7 +4,7 @@ title: 'Raster file properties: computation time and storage implications'
 description: "Raster file properties, how those properties affect file sizes, and how they affect geospatial processing execution times."
 type: interactive tutorial
 author: Heather Savoy
-language: bash
+language: Bash
 
 tags: [Raster]
 packages: GDAL

@@ -33,6 +33,10 @@ an example on how to submit your own SLURM job, please see
 
 {% include overviews %}
 
+## Getting Started
+
+{% include setup/code %}
+
 ## Analysis Steps
 * Open Imagery and Setup Tiles - Open a GeoTIFF of Landsat 7 imagery and divide
   it into multiple smaller images.

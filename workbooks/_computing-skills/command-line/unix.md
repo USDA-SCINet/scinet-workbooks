@@ -58,7 +58,7 @@ questions:
     qid: 2
     solution: "Example output: `name=\"ARS SCINet\"`
 
-  * `echo '$name  $(date)'`
+  * `echo \"$name  $(date)\"`
 
   * OR `echo \"My name is $name and today's date is $(date).\"`"
   - question: "What does the shell do when a variable has not been defined?  Observe what happens when you run `echo $variable_notset`"
@@ -82,17 +82,17 @@ questions:
       - "`($my_var)`"
   - question: "Run `ls -la` and look at the first column of each line. What does the starting character (- or d) tell you?"
     qid: 6
-    solution: "What does it tell you?"
+    solution: "A dash indicates a file and the d indicates a directory"
   - question: "*	Use `pwd` to see where you are. 
 
 *	If you are not in `unix_tutorial`, navigate to `unix_tutorial`
 
 *	Create two subdirectories: `raw_data` and `logs` and then confirm they exist. 
 
-*	Navigate to the `logs` folder, then return to the `unix_tutorial` folder using `cd ..` and `cd -`. 
+*	Navigate to the `logs` folder, then return to the `unix_tutorial` folder using `cd ..` and `cd -`.  
+
 
 What's the difference in behavior?"
-    solution: "What is the difference?"
     title: "Exercise"
     qid: 7
   - question: "What is the output of this command: `echo \"Current user: $(whoami)\"`?"
@@ -119,6 +119,9 @@ What's the difference in behavior?"
       - "Displays help options for a command"
       - "Shows environment variables"
       - "Repeats the previous command"
+  - question: "How could you confirm the files were created?"
+    qid: 11
+    solution: "You can run `ls` to see what is in this directory and confirm your files were added."
   
 
 ---
@@ -168,10 +171,14 @@ Now that we understand the structure of commands in the shell, let us explore so
 * `clear` : clears the terminal window
 * `env` : prints a list of environment variables
 
-To display a message, we use `echo`. `echo` is a command that prints out text users type in quotes.  
+#### Echo
+
+To display a message, we use `echo`. Echo prints quoted text.  This can be useful for tasks such as printing values of variables, displaying error messages, or showing script progress.
 Run the following command:   
-`echo "Hello, $USER"`  
-`echo "It is very rainy today."`  
+```
+echo "Hello, $USER"  
+echo "It is very rainy today."
+```  
 
 This will print the text to the screen. 
 
@@ -180,13 +187,14 @@ This will print the text to the screen.
 
 
 
+#### Unknown commands
+The shell will notify you if you are using unknown commands by displaying `command not found`.
 
-The shell will also notify you if you are using unknown commands by displaying `command not found`.
+To demonstrated this, run the command `loading`.   
 
-Run the command `loading`.   
-
-
-`loading`  
+```
+loading
+```  
 
 You will see an error message that says `loading: command not found`  
 
@@ -196,15 +204,19 @@ You can store values to variables in the Unix shell which can be used to execute
 For example: `echo $USER`  
 
 You can also create your own variables, for example:
-`name="Jim"`
-`echo $name`
+```
+name="Jim"
+echo $name
+```
 
 Note that there are no spaces between the `=` when assigning the value to a variable. 
 
 **Command substitution** : You can also insert the result of a command inside another command using `$(…)`. 
 
 For example: 
-`echo "His name is $(name)"`
+```
+echo "His name is $(name)"
+```
 
 {% include question qid="2,3,4,5" title="Exercise" %}
 
@@ -214,8 +226,9 @@ Most Unix-like shells, including Bash, keep a history of past commands you've ty
 
 This displays a numbered list of previous commands, with the most recent ones at the bottom.  
 To explore this output, you can scroll up the page. If the list is long, limit the output to show only the last N=20 commands:
-
-`history 20`
+```
+history 20
+```
 
 ### Navigating history with keyboard
 Besides using history command to display the entire command history or showing a specific number of recent entries, you can also browse past commands one at a time using keyboard shortcuts. 
@@ -247,37 +260,25 @@ The shell provides built-in resources to help you understand command syntax and 
 *	`--help`: gives a quick summary of options for many commands
 
 
-To learn more about the command, `echo`, use `--help`. This shows options for the command. 
-`echo --help`  
-`date --help`  
+To learn more about the command, `echo`, use `--help`. This shows options for the command.  
+```
+echo --help  
+date --help  
+```
 
 The `man` command will provide a description of a unix command and list the parameters that can be used to modify its behavior. To exit the manual for a command you press `q` on your keyboard.
 Run:
-`man whoami`  
-`man ls`  
-`man less`  
+```
+man whoami  
+man ls  
+man less  
+```
 
 {% include alert class="question" title="Exercise" content="Use `man` to look up a command you haven't tried yet" %}
 
 
 ###  Self-check: 
 {% include quiz qid="8,9,10" %}
-
-1.	What is the output of this command: `echo "Current user: $(whoami)"`?
-  a. Displays Current user: whoami
-  b. Displays Current user: followed by your username
-  c. Syntax error
-  d. Login time of the current user 
-2.	Which of the following is the correct way to access a manual for the command?
-  a. `man -ls`
-  b. `ls -man`
-  c. `help man`
-  d. `man ls`
-3.	What is the purpose of the up-arrow key in the shell?
-  a. Deletes the last command 
-  b. Displays help options for a command
-  c. Shows environment variables
-  d. Repeats the previous command 
 
 
 </div>
@@ -295,15 +296,24 @@ When working in the Unix file system, it is always important to understand where
 `pwd` gives the absolute path of your current location.   
 
 Example output:  
-`/home/username`  
+
+{:.no-copy}
+    /home/username  
+
+
 It is always a good idea to check where you are before running file operations or navigating the file system. 
 
 Run `pwd` in your terminal. 
+```
+pwd
+```
 
 ### List Directory Contents
 To see what is in this directory (folder), you will use the command `ls` which list contents of the current directory.
 
-`ls`
+```
+ls
+```
 
 As mentioned earlier in this tutorial, commands have options. Here are some `ls` options: 
 * To view file details (permissions, owner, size, time of creation): `ls -l`
@@ -322,32 +332,42 @@ Note that you can combine options for a desired result:
 The make directory (mkdir) command allows you to make new directories/folders in Unix. 
 
 Let's run the following command to create a directory named `unix_tutorial` in your current location:  
-`mkdir unix_tutorial `
+```
+mkdir unix_tutorial 
+```
 
 You will not see anything printed on the screen after you run this command. If you try to run it again you will see the following error:  
 `mkdir: cannot create directory 'unix_tutorial': File exists`
 
 To check to see if the directory was made, we will use `ls` to list the contents of the current directory where you created the folder.   
-Run `ls`  
+```
+ls
+```  
 
 ### Moving around with the command cd (change directory)
 We can change to the `unix_tutorial` directory using the `cd` command.
 Run:
-* `cd unix_tutorial` #change to a different directory 
-* `pwd` #to see our current location
+```
+cd unix_tutorial #change to a different directory 
+pwd #to see our current location
+```
 
 We are now in a directory called `unix_tutorial` which is a subdirectory of home.
 
-#### cd shortcuts:
+**cd shortcuts:**
 * `cd ..`: move up one directory (parent)
-* `cd .`: (stay in the current directory)
-* `cd ~`: or cd (go to home directory)
-* `cd /`: (go to the root directory)
+* `cd .`: stay in the current directory
+* `cd ~`: (or cd) go to home directory
+* `cd /`: go to the root directory
 
 To change back to the directory, you created:
-* `cd /home/unix_tutorial`
+```
+cd /home/unix_tutorial
+```
 
-**TIP: You can type in first few letters of the directory name and then press Tab to auto complete rest of the name (especially useful when the file/directory name is long). This only works when there are unique matches for the starting letters you have typed. If there is more than one matching files/directories, pressing Tab twice will list all the matching names.**
+{% include alert class="tip" content="You can type in first few letters of the directory name and then press Tab to auto complete rest of the name. This only works when there are unique matches for the starting letters you have typed.  
+
+If there are more than one matching files/directories, pressing Tab twice will list all the matching names." %}
 
 {% include question qid=7 %}
 
@@ -365,18 +385,24 @@ Relative path begins from your current location:
 Let's say your current directory is: 
 `/home/user`  
 Inside your user directory is a folder called `unix_tutorial`.  Let's use a relative path to navigate to logs:
-`cd unix_tutorial/logs`
+```
+cd unix_tutorial/logs
+```
 
 Now, let's do the same thing using an absolute path:   
-`cd /home/user/unix_tutorial/logs`
+```
+cd /home/user/unix_tutorial/logs
+```
 
 {% include alert class="question" title="Exercise" content="From within the `raw_data` folder, use a relative path to move to the `logs` folder. Try using an absolute path to return to your `home` directory." %}
 
 ### Visualize directory structure with tree
 The tree command shows your current directory and its structure in a tree-like format. 
 
-`cd /home/user/unix_tutorial/logs`
-`tree`
+```
+cd /home/user/unix_tutorial/logs
+tree
+```
 
 
 You've learned how to check your location, view file contents and how to move between directories. Next, we'll explore how to create and manage files and directories. 
@@ -392,14 +418,18 @@ In this section of the tutorial, we learn how to create, modify and organize fil
 ### Create empty files with `touch` 
 The `touch` command is used to create empty files for scripts, data or text files:
 
-To create one file:   
-Run: `touch file1.txt`
+To create one file, run: 
+```
+touch file1.txt
+```
 
 You can also create multiple files at once:  
-Run: `touch file2.txt file3.txt file4.txt `
+```
+touch file2.txt file3.txt file4.txt 
+```
 
-To confirm the files were created:  
-Run: `ls`
+
+{% include question qid="11" %}
 
 ### Copying Files
 The cp command makes a copy of files or directories. 
@@ -407,10 +437,14 @@ The cp command makes a copy of files or directories.
 Examples: 
 
 To copy a file:  
-`cp file3.txt copy_of_file3.txt`
+```
+cp file3.txt copy_of_file3.txt
+```
 
 To copy a directory and all its contents we add the option (`-r`: recursive):  
-`cp -r directory1 directory2`
+```
+cp -r directory1 directory2
+```
 
 This will copy the folder directory1 and all its contents to directory2. 
 
@@ -426,19 +460,26 @@ At this point, we will move into the `/90daydata/shared/$USER` workspace, or a `
 
 Let's navigate to `/90daydata/shared/$USER`:  
 
-`cd /90daydata/shared/$USER/`
+```
+cd /90daydata/shared/$USER/
+```
 
 We already created a directory called unix_tutorial, let's copy that directory to our shared folder in `90daydata`:  
-`cp -r /home/unix_tutorial .`   
+```
+cp -r /home/unix_tutorial .
+```   
+
 The `.` tells the copy command to copy the directory and it contents to the current directory. 
 
 Now, let's change directories:  
-`cd unix_tutorial`
+```
+cd unix_tutorial
+```
 
 We are now ready to practice in our working directory safely!
 
 Let's copy some practice files to unix_tutorial: 
-```
+````
 cp /project/scinet_workshop2/unix_tutorial/numSeq.txt .
 cp /project/scinet_workshop2/unix_tutorial/readme.txt .
 ```
@@ -453,10 +494,14 @@ The `rm` command is used to delete files and directories.
 
 Examples: 
 To delete a file:
-`rm file.txt` 
+```
+rm file.txt
+``` 
 
 To delete a folder/directory: 
-`rm -r oldfolder`
+```
+rm -r oldfolder
+```
 
 Common `rm` command options: 
 *	`-i`: prompt before delete
@@ -465,8 +510,7 @@ Common `rm` command options:
 *	`-rf`: recursively force delete directories (be careful with this)
 *	`-v`: verbose (shows what's being deleted)
 
-WARNING: about deleting files and directories
-In Unix there is no undo command. If you delete a file, it is gone. There is no trash bin, so use `rm` with care. Additionally, you can only delete files you have created, so it is impossible to delete someone else files without permission.
+{% include alert class="warning" content="In Unix there is no undo command. If you delete a file, it is gone. There is no trash bin, so use `rm` with care. Additionally, you can only delete files you have created, so it is impossible to delete someone else files without permission." %}
 
 
 {% include alert class="question" title="You try" content="1. Create and delete a test file 
@@ -477,22 +521,33 @@ In Unix there is no undo command. If you delete a file, it is gone. There is no 
 ### Moving Files
 Before we practice moving and deleting files, let's check our current location: 
 
-`pwd`
+```
+pwd
+```
 
 Are you in the `unix_tutorial` folder? If not, navigate there. 
 
 Let's make another directory:  
-`mkdir cl_practice`
+```
+mkdir cl_practice
+```
 
 The `mv` command is used to move files from one directory to another:  
 `mv [file] [destination]`
 
-Run: `mv file1.txt cl_practice`
+Run: 
+```
+mv file1.txt cl_practice
+```
 
 You can also use `mv` to rename files: 
 `mv [filename] [newfilename]`
 
-Run: `mv file2.txt notes.txt`  
+Run: 
+```
+mv file2.txt notes.txt
+```  
+
 Run: `ls` to see changes
 
 
@@ -510,15 +565,15 @@ A cat has a head and a tail, more or less.
 | seq | write a sequence of numbers | `seq 1 1 10` |" %}
 
 
-
-
-Use the `more` command to step through a file one screen length at a time using the spacebar.
-Hit `q` to quit the file before reaching the end.
-
-`more numSeq.txt`
-
-`less` is similar to the `more` command, but let's you scroll backwards as well.  
-`less numSeq.txt`
+* Use the `more` command to step through a file one screen length at a time using the spacebar.
+  ```
+  more numSeq.txt
+  ```
+    * Hit `q` to quit the file before reaching the end.
+* `less` is similar to the `more` command, but lets you scroll backwards as well.  
+  ```
+  less numSeq.txt
+  ```
 
 {% include table caption="less navigation" content="| Command | Description |
 | `q` | quit |
@@ -527,31 +582,40 @@ Hit `q` to quit the file before reaching the end.
 | `g NUM` | go to line NUM |" %}
 
 ### Streaming file content
+
 `cat` is used to concatenate and print files
-This command will print out the entire file. Try it out with the numSeq.txt file. You should see all 100 numbers print to the screen.
-Note: It is recommended that you use `cat` if the file is small.
+* This command will print out the entire file. If you use it on the numSeq.txt file, you should see all 100 numbers print to the screen.
+  ```
+  cat numSeq.txt
+  ```
+* Note: It is recommended that you use `cat` if the file is small.
 
 `head`: prints the head of the file.
-This command will give you the first 10 lines of a file. Try it out with the `numSeq.txt` file.
-
-`head numSeq.txt`
-`head -n 5 numSeq.txt`
-
-The `-n` parameter tells the head function to printout in this case 5 lines instead of the default 10 lines.
+* By default, head will give you the first 10 lines of a file. Try it out with the `numSeq.txt` file.
+  ```
+  head numSeq.txt
+  ```
+* If you want an alternative number of lines, you can specify with the `-n` parameter.  For example, if we wanted five instead of the default ten, we would run:
+  ```
+  head -n 5 numSeq.txt
+  ```
 
 `tail`: prints the tail of the file
+* This command will give you the last 10 lines of a file. Try it out with the numSeq.txt file.
+  ```
+  tail numSeq.txt
+  tail -n 5 numSeq.txt
+  ```
+</div>
 
-This command will give you the last 10 lines of a file. Try it out with the numSeq.txt file.
-
-`tail numSeq.txt`
-`tail -n 5 numSeq.txt`
-
-### Editing files
+## Editing files
 There are a few ways to edit files in the shell. Unix has built in text editors that allow you to create and edit files directly from the command line. 
 
 Common Text Editors: 
 * Nano
 * Vim
+
+<div class="process-list" markdown="1">
 
 ### Using nano
 * `nano [filename]`
@@ -562,7 +626,7 @@ Common Text Editors:
 
 {% include alert class="question" title="You try" content="* Open readme.txt with nano and write a 5 line message
 * Save and confirm edit 
-* Use cat, head or tail to see the edits you made to readme.txt" %}
+* Use cat, head, or tail to see the edits you made to readme.txt" %}
 
 ### Using vim
 * `vim [filename]`
@@ -639,36 +703,37 @@ Many script files begin with this line of code `#!/bin/bash`. This line of code 
 Additionally, execute permission is needed so that you can run scripts.
 
 1. Let's create an empty file:  
-`touch test_run.sh`
-
+  ```
+  touch test_run.sh
+  ```
 2. Open a text editor:  
-
-`nano test_run.sh`
-
+  ```
+  nano test_run.sh
+  ```
 3. Edit the `test_run` by typing: 
+  ```
+  #!/bin/bash
 
-```
-#!/bin/bash
-
-echo "Just another day of learning the basics of Unix on SCINet!"
-```
-
+  echo "Just another day of learning the basics of Unix on SCINet!"
+  ```
 4. Save the file and exit the editor. This creates a script. 
-
 5. View the file to confirm edits were made. 
-
 6. Let's look at the current permissions:
-`ls -lh test_run.sh` 
-
+  ```
+  ls -lh test_run.sh
+  ``` 
 7. To make the script executable:  
-   `chmod u+x test_run.sh`
-
+   ```
+   chmod u+x test_run.sh
+   ```
 9. Let's look at the change in permissions. Do you notice the difference?  
-`ls -lh test_run.sh` 
-
+  ```
+  ls -lh test_run.sh
+  ``` 
 10. To run the script:   
-
-`srun test_run.sh` 
+  ```
+  srun test_run.sh
+  ``` 
 
 {% include alert class="question" title="Thought Question" content="Why do you think the system does not let any file be executed by default?" %}
 
@@ -676,5 +741,5 @@ echo "Just another day of learning the basics of Unix on SCINet!"
 
 ## Summary
 
-This tutorial introduced basic Unix commands for interacting with the shell, navigating the file system, managing files and directories, viewing files and editing file content from the terminal, and interpreting file permissions. These sections provided foundational skills for working confidently in Unix-based environments. 
+This tutorial introduced basic Unix commands for interacting with the shell, navigating the file system, managing files and directories, viewing files and editing file content from the terminal, and interpreting file permissions. These sections covered foundational skills for working confidently in Unix-based environments. 
 

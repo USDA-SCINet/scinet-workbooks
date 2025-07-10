@@ -139,27 +139,6 @@ $mobile-process-counter-size: 3;
     }
 }
 
-/* .wb-section{
-  &:not(:first-child){
-  margin-top: units(2);
-  @include at-media ($theme-site-margins-breakpoint) {
-    margin-top: units(4);
-  }
-  };
-  .wb-subsection{
-    margin-top: units(2);
-    @include at-media ($theme-site-margins-breakpoint) {
-      margin-top: units(4);
-    };
-    .wb-subsection-content{
-      padding-left: calc(#{$process-list-counter-content-padding} / 2);
-      @include at-media ($theme-site-margins-breakpoint) {
-          padding-left: $process-list-counter-content-padding;
-      }
-    }
-  }
-} */
-
 .wb-subsection-content{
   padding-left: calc(#{$process-list-counter-content-padding} / 2);
   @include at-media ($theme-site-margins-breakpoint) {
@@ -188,20 +167,6 @@ $mobile-process-counter-size: 3;
         color($theme-process-list-connector-color);
     }
   }
-
-  /*   .usa-process-list__item {
-    @extend .section-bordered;
-    border-left: calc((#{units($theme-process-list-connector-width)} / 2)) solid
-      color($theme-process-list-connector-color);
-    font-size: size(
-      $theme-process-list-font-family,
-      $theme-process-list-font-size
-    );
-    @include at-media ($theme-site-margins-breakpoint) {
-      border-left: units($theme-process-list-connector-width) solid
-        color($theme-process-list-connector-color);
-    }
-  } */
 }
 
 .usa-process-list__item {
@@ -273,18 +238,10 @@ $mobile-process-counter-size: 3;
   }
 }
 
-/* .usa-process-list__heading {
-  @include typeset(
-    $theme-process-list-heading-font-family,
-    $theme-process-list-heading-font-size,
-    2
-  );
-  color: color($theme-process-list-heading-color);
-  font-family: family($theme-process-list-heading-font-family);
-  font-weight: font-weight("bold");
-  margin: 0;
+.usa-process-list__item > h4 ~ *:not(h4) {
+  margin-left: calc(#{$process-list-counter-content-padding} / 2);
 
-  & + * {
-    margin-top: units(0.5);
+  @include at-media ($theme-site-margins-breakpoint) {
+    margin-left: $process-list-counter-content-padding;
   }
-} */
+}
