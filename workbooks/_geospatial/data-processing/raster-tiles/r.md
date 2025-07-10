@@ -5,6 +5,7 @@ description: "Speed up raster calculations by creating tiles and then distributi
 author: Heather Savoy
 type: interactive tutorial
 language: R
+interface: RStudio
 
 tags: [Parallel processing, Raster]
 packages: [terra, foreach, doParallel]
@@ -62,6 +63,8 @@ Atlas:
 * `Additional Slurm Parameters`: --mem=24G
 
 
+
+{% include setup/code %}
 
 ## Analysis Steps
 

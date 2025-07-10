@@ -24,6 +24,10 @@ This tutorial will implement and compare machine learning techniques with two ap
 
 {% include overviews %}
 
+## Getting Started
+
+{% include setup/code %}
+
 ## Tutorial Steps
 
 * Read in and visualize point observations

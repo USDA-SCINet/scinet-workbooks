@@ -19,6 +19,10 @@ Accessing, downloading, stacking, and working with earth observations (EO) data 
 
 {% include overviews %}
 
+## Getting Started
+
+{% include setup/code %}
+
 <!--
 
 ## Primary Libraries/Packages:
