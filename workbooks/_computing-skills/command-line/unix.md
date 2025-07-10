@@ -53,12 +53,7 @@ overview: [objectives, terminology]
 
 order: 5
 
-quiztitles:  Exercise
-
 questions:
-  - question: Try printing your own message
-    qid: 1
-    solution: "Include code to print your own message"
   - question: Write a command that prints your name and the current date together. 
     qid: 2
     solution: "Example output: `name=\"ARS SCINet\"`
@@ -74,14 +69,57 @@ questions:
       - Prints the variable name, `$variable_notset`
       - An empty line (no output)
       - Prints null
-  - question: How should you correctly call or use a variable in Bash to display its value?
+  - question: "Why might variables be useful in longer scripts or complex command sequences?"
+    title: "Thought Question" 
     qid: 4
+  - question: How should you correctly call or use a variable in Bash to display its value?
+    qid: 5
     answer: 2
     answers: 
       - "Type `$my_var` on its own in the terminal"
       - "`echo \"$my_var\"`"
       - "`run ($my_var)`"
       - "`($my_var)`"
+  - question: "Run `ls -la` and look at the first column of each line. What does the starting character (- or d) tell you?"
+    qid: 6
+    solution: "What does it tell you?"
+  - question: "*	Use `pwd` to see where you are. 
+
+*	If you are not in `unix_tutorial`, navigate to `unix_tutorial`
+
+*	Create two subdirectories: `raw_data` and `logs` and then confirm they exist. 
+
+*	Navigate to the `logs` folder, then return to the `unix_tutorial` folder using `cd ..` and `cd -`. 
+
+What's the difference in behavior?"
+    solution: "What is the difference?"
+    title: "Exercise"
+    qid: 7
+  - question: "What is the output of this command: `echo \"Current user: $(whoami)\"`?"
+    qid: 8
+    answer: 2
+    answers: 
+      - "Displays Current user: whoami"
+      - "Displays Current user: followed by your username"
+      - "Syntax error"
+      - "Login time of the current user" 
+  - question: "Which of the following is the correct way to access a manual for the command?"
+    qid: 9
+    answer: 4
+    answers: 
+      - "`man -ls`"
+      - "`ls -man`"
+      - "`help man`"
+      - "`man ls`"
+  - question: "What is the purpose of the up-arrow key in the shell?"
+    qid: 10
+    answer: 4
+    answers:
+      - "Deletes the last command"
+      - "Displays help options for a command"
+      - "Shows environment variables"
+      - "Repeats the previous command"
+  
 
 ---
 
@@ -138,10 +176,8 @@ Run the following command:
 This will print the text to the screen. 
 
 
-
 {% include alert class="question" title="Exercise: Using `echo`" content="Try printing your own message using `echo`" %}
 
-{% include assessment qid=1 %}
 
 
 
@@ -170,11 +206,7 @@ Note that there are no spaces between the `=` when assigning the value to a vari
 For example: 
 `echo "His name is $(name)"`
 
-
-{% include assessment qid=2 %}
-{% include assessment qid=3 %}
-{% include alert class="question" title="Thought Question" content="Why might variables be useful in longer scripts or complex command sequences?" %}
-{% include assessment qid=4 %}
+{% include question qid="2,3,4,5" title="Exercise" %}
 
 ### Command History
 Most Unix-like shells, including Bash, keep a history of past commands you've typed. You can access them with a command:
@@ -229,6 +261,8 @@ Run:
 
 
 ###  Self-check: 
+{% include quiz qid="8,9,10" %}
+
 1.	What is the output of this command: `echo "Current user: $(whoami)"`?
   a. Displays Current user: whoami
   b. Displays Current user: followed by your username
@@ -281,7 +315,7 @@ Note that you can combine options for a desired result:
 * To view long format and human readable file sizes: `ls -lh`
 
 
-{% include alert class="question" title="You try" content="Run `ls -la` and look at the first column of each line. What does the starting character (- or d) tell you?" %}
+{% include question qid=6 %}
 
 ### Create a working directory:
 
@@ -315,10 +349,7 @@ To change back to the directory, you created:
 
 **TIP: You can type in first few letters of the directory name and then press Tab to auto complete rest of the name (especially useful when the file/directory name is long). This only works when there are unique matches for the starting letters you have typed. If there is more than one matching files/directories, pressing Tab twice will list all the matching names.**
 
-{% include alert class="question" title="Exercise" content="*	Use `pwd` to see where you are. 
-*	If you are not in `unix_tutorial`, navigate to `unix_tutorial`
-*	Create two subdirectories: `raw_data` and `logs` and then confirm they exist. 
-*	Navigate to the `logs` folder, then return to the `unix_tutorial` folder using `cd ..` and `cd -`. What's the difference in behavior?" %}
+{% include question qid=7 %}
 
 ### Absolute vs relative paths 
 Absolute path begins from the root and shows the full path to a location:   

@@ -1,5 +1,5 @@
 <fieldset class="usa-fieldset">
-    {% unless include.nolegend %}<legend class="usa-legend text-bold {{ include.labelclass }}">{{ include.title }}</legend>{% endunless %}
+    {% unless include.nolegend %}<legend class="usa-legend text-bold {{ include.labelclass }} margin-top-0">{{ include.title }}</legend>{% endunless %}
     {% for _option in include.options %}
         {%- if include.checked=='checked' or _option==include.checked %}
             {% capture checked %}checked = 'checked'{% endcapture %}
@@ -12,7 +12,7 @@
           class="usa-checkbox__input "
           id="check-{{ idstring }}-{{ option }}"
           type="checkbox"
-          name="{{ idstring }}-{{ qid | default: 0 }}"
+          name="{{ qid | default: 0 }}"
           value="{{ option }}"
           {{ checked }}
         />

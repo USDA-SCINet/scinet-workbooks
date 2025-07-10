@@ -33,28 +33,7 @@ objectives: "The fundamentals of the Command Line Interface (CLI) including its 
 
 overview: [objectives, terminology]
 
-questions:
-  - question: this is a question
-    qid: 1
-    solution: This is a solution to the question 
-  - question: "this is a second question"
-    qid: 2
-    answers: 
-      - answer1
-      - answer2
-      - answer3
-    responses:
-      - This shows up if you select answer 1
-      - This shows up if you select answer 2
-      - This is response 3
-    answer: 3
-  - question: "this is a third question"
-    qid: 3
-    answers: 
-      - answer1
-      - answer2
-      - answer3
-    answer: [2,3]
+
 
 ---
 
@@ -144,6 +123,3 @@ for managing large datasets, automating workflows, and leveraging powerful compu
 
 {INCLUDE - Information about CLI options on SCINet, including link to the Access section on the SCINet website}
 
-{% include assessment qid=1 %}
-{% include assessment qid=2 %}
-{% include assessment qid=3 %}

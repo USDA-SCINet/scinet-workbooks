@@ -1,4 +1,3 @@
 ---
 ---
-
-const packaged = [{% include packages.js sect='workbooks' %}]
+[{% include packages.js sect='workbooks' %}]

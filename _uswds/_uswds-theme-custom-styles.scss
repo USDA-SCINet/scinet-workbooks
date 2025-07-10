@@ -176,3 +176,10 @@ pre {
      }
    }
  }
+
+ ol.quiz {
+   @include u-margin-y(2);
+   li::marker {
+      font-weight: 900;
+    }
+ }

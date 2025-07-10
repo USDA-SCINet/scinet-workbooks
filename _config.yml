@@ -36,6 +36,11 @@ site_width: 100%
 # Uncomment to enable AnchorJS functionality on docs layout.
 # See https://github.com/bryanbraun/anchorjs for more information.
 anchor_js_targets: [h1, h2, h3]
+scripts:
+  - '/assets/uswds/js/uswds.min.js'
+  - '/assets/js/lib/jquery-3.4.1.min.js'
+  - '/assets/js/vendor/anchor.min.js'
+  - '/assets/js/main.js'
 
 # Enables Private Eye functionality.
 # See https://github.com/18F/private-eye for more information.

@@ -1,0 +1,38 @@
+{%- assign questions = page.questions %}{% assign qids = include.qid | split: "," %}
+{%- capture quiztitle %}{% if include.title %}{{ include.title }}{% else %}{{ page.quiztitles | default: "Self-assessment" }}{% endif %}{%- endcapture %}
+{%- capture quizstring %}{{ page.id | slugify }}-quiz-{{ include.qid | slugify | default: 0 }}{% endcapture %}
+<div id="{{ quizstring }}-box" class="highlighted highlighted--question padding-bottom-1">
+<form id="{{ quizstring }}" class="highlighted__body sn-quiz" data-qid="{{ include.qid | slugify | default: 0 }}" >
+
+    <h4 class="highlighted__heading" id="{{ quizstring }}-header">{{ quiztitle }}</h4>
+
+    <ol class="quiz">
+    {% for qid in qids %}{%- assign q = questions | find: "qid", qid %}{%- capture idstring %}{{ quizstring }}-{{ qid }}{% endcapture %}
+    <li class="margin-bottom-2 padding-bottom-05 border-bottom">{{ q.question | markdownify }}
+        {% if q.answers or q.solution %}{% include form/quiz/solutions q=q idstring=idstring %}
+        <div id="{{ idstring }}-result">
+
+        </div>{% endif %}
+    </li>
+    {% endfor %}
+    </ol>
+
+    <div id="{{ quizstring }}-button" class="display-flex flex-column flex-align-end padding-top-2 border-top bg--question" >
+        <button type="submit" class="usa-button usa-button--secondary quiz-submit" id="{{ quizstring }}-submit">Submit</button>
+    </div>
+
+</form>
+</div>
+
+{% comment %}
+{%- assign q = questions | find: "qid", qid %}
+{% if q %}
+{% include form/quiz/questions q=q title=include.title qid=qid %}
+{% else %}
+{% assign qids = qid | split: "," %}
+{% for _ids in qids %}
+{%- assign qu = questions | find: "qid", _ids %}
+{% include form/quiz/questions q=qu title=include.title qid=_ids %}
+{% endfor %}
+{% endif %}
+{% endcomment %}

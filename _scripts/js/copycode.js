@@ -118,24 +118,17 @@ function copycode(){
   });
 }
 
-module.exports = copycode; 
-/* 
-const copycode = behavior(
-  {
-    init(root) {
-      select(COPY_CODE_STRING, root).forEach((copyCodeElement) => {
-        const copyWrapper = createWrapper();
-        const copyButton = createCopyButton();
-        const labelSROnly = createSRStatus();
-    
-        copyCodeElement.classList.add("copy-code");
-        copyWrapper.append(labelSROnly, copyButton);
-        copyCodeElement.appendChild(copyWrapper);
+function codeProcess(copydiv){
 
-        copyButton.addEventListener("click", copyOnClick);
-      });
-    },
-  }
-);
+    const copyWrapper = createWrapper();
+    const copyButton = createCopyButton();
+    const labelSROnly = createSRStatus();
 
-module.exports = copycode; */
+    copydiv.classList.add("copy-code");
+    copyWrapper.append(labelSROnly, copyButton);
+    copydiv.appendChild(copyWrapper);
+
+    copyButton.addEventListener("click", copyOnClick);
+}
+
+module.exports = { copycode, codeProcess }; 
