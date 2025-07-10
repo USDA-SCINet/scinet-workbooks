@@ -11,6 +11,7 @@ glossary:
     cat: Data Science
     definition: A command language in the Unix shell that allows users to execute various processes by writing text commands in the terminal window.
     related: Unix Shell, Terminal, Command Line
+    att: language
   - term: Big Data
     cat: Data Science
     definition: focuses on the large size of data, its variety, and the velocity of generating and processing. These parameters continually expand and become a bottleneck on existing computational approaches. It also integrates modern (i) analytical techniques (e.g., machine learning), (ii) technologies (e.g., distributed computing), and (iii) visualization solutions (e.g., interactive graphing and infographics), applied during the life cycle of Big Data.

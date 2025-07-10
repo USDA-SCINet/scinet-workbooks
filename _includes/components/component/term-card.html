@@ -71,7 +71,7 @@
             {% endif %}
             {% if definedoption==1 %}
             <li class="usa-collection__meta-item">
-                {% include layout/filter-related.html search=option.term attribute='tags' atext=' workbooks' class='sm-txt' %}
+                {% include layout/filter-related.html search=option.term attribute=option.att atext=' workbooks' class='sm-txt' %}
             </li>
             {% endif %}
         </ul>
