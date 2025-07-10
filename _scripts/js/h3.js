@@ -1,7 +1,4 @@
-const jQuery = require('jquery'); 
-window.$ = window.jQuery = jQuery; 
-
-function h3divs() { 
+function h3divs() {  
     $('#pagecontent > h3:not(.rm-a)').each(function() {  
         let thish3 = $(this);
         thish3.nextUntil('h3, h2')

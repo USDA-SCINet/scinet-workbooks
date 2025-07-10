@@ -2,7 +2,7 @@
 {%- capture quiztitle %}{% if include.title %}{{ include.title }}{% else %}{{ page.quiztitles | default: "Self-assessment" }}{% endif %}{%- endcapture %}
 {%- capture quizstring %}{{ page.id | slugify }}-quiz-{{ include.qid | slugify | default: 0 }}{% endcapture %}
 <div id="{{ quizstring }}-box" class="highlighted highlighted--question padding-bottom-1">
-<form id="{{ quizstring }}" class="highlighted__body" data-qid="{{ include.qid | slugify | default: 0 }}" onsubmit="return submitQuiz(this);">
+<form id="{{ quizstring }}" class="highlighted__body sn-quiz" data-qid="{{ include.qid | slugify | default: 0 }}" >
 
     <h4 class="highlighted__heading" id="{{ quizstring }}-header">{{ quiztitle }}</h4>
 

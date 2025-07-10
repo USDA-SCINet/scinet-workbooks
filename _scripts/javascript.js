@@ -1,5 +1,7 @@
 // process js
 const gulp = require("gulp");
+const merge = require('merge-stream');
+const es = require('event-stream');
 const log = require("fancy-log");
 const browserify = require("browserify");
 const buffer = require("vinyl-buffer");
@@ -9,8 +11,6 @@ const sourcemaps = require("gulp-sourcemaps");
 const rename = require("gulp-rename");
 const linter = require("gulp-eslint");
 
-
-
 function jslint() {
   return gulp
     .src(["./_scripts/js/**/*.js"])
@@ -19,26 +19,37 @@ function jslint() {
 }
 
 function jsbuild() {
-  var minifiedStream = browserify({
-    entries: "_scripts/entry.js",
-    debug: true,
-  });
+  var entryArray = ["main","quiz"]
 
-  return minifiedStream
-    .bundle()
-    .pipe(source("entry.js"))
-    .pipe(buffer())
-    .pipe(sourcemaps.init({ loadMaps: true }))
-    .pipe(uglify())
-    .on("error", log)
-    .pipe(
-      rename({
-        basename: "main",
-      }),
-    )
-    .pipe(sourcemaps.write("."))
+  var tasks = entryArray.map(function(packagename) {
+    log(packagename);
+    var minifiedStream = browserify({
+      entries: "_scripts/" + packagename + ".js",
+      debug: true,
+    });
+  
+    return minifiedStream
+      .bundle()
+      .pipe(source(packagename + ".js"))
+      .pipe(buffer())
+      .pipe(sourcemaps.init({ loadMaps: true }))
+      .pipe(uglify())
+      .on("error", log)
+      .pipe(
+        rename({
+          basename: packagename,
+        }),
+      )
+      .pipe(sourcemaps.write("."))
+      
+    });
+
+  let mergedstreams = es.merge.apply(null, tasks)
     .pipe(gulp.dest("assets/js"));
-}
+
+  return mergedstreams;
+
+};
 
 function jswatch(done) {
   return gulp.watch(["./_scripts/js/*.js"], gulp.series(jslint, jsbuild));

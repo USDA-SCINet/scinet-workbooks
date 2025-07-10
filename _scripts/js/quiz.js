@@ -1,8 +1,6 @@
----
----
-const quizdata = [{% include quiz.json  %}];
-// Get the quiz questions for the current page and store globally
-const questions = getQuizQuestions(quizdata);
+const { codeProcess } = require("./copycode");
+
+var questions = [];
 
 // handler for quizzes
 function submitQuiz(form){
@@ -23,20 +21,32 @@ function submitQuiz(form){
     }
   }
 
-  //return false
+  //return false;
   
 }
 
 // handler for single question forms
 function submitQuestion(form){
   // get form data
-  var fdata = new FormData(form)
+  var fdata = new FormData(form);
   var dataqid = form.getAttribute("data-qid");
   var formid = form.getAttribute("id");
 
   quizSuccess(formid, dataqid, fdata); 
-  //return false
+  //return false;
   
+}
+
+function processCodeBlocks (solutionhtml){
+  let copyingcode = solutionhtml.find( "code.copy" );
+  solutionhtml.find( "code.nocopy" ).wrap("<div class='language-plaintext highlighter-rouge'><div class='highlight'><pre class='highlight'></pre></div></div>");
+  
+  if (copyingcode.length > 0) {
+    copyingcode.wrap("<div class='language-plaintext copy-code highlighter-rouge'><div class='highlight'><pre class='highlight'></pre></div></div>");
+    // add the copycode section here.
+    let copycodediv = solutionhtml.find( "div.copy-code" );
+    codeProcess(copycodediv[ 0 ] );
+  }
 }
 
 // Get answers and responses from json
@@ -46,7 +56,9 @@ function quizSuccess(formid, idval, myResponses) {
   var displayDiv = $('#' + displayDivId);
 
   // Find the question by qid (ensure idval is number if needed)
+  console.log(questions);
   var mySolutions = questions ? questions.find(q => String(q.qid) === String(idval)) : null;
+  console.log(mySolutions);
   var myAnswer = mySolutions ? mySolutions.answer : null;
   var mySolution =  mySolutions ? mySolutions.solution : null;
   var myCorrections = mySolutions ? mySolutions.responses : null;
@@ -56,9 +68,9 @@ function quizSuccess(formid, idval, myResponses) {
   
   // If multiple checkboxes, FormData returns array, else string
   // Normalize for comparison
-  let responseArr = Array.isArray(userResponse) ? userResponse.map(String) : (userResponse !== undefined ? [String(userResponse)] : []);
-  let solutionArr = Array.isArray(myAnswer) ? myAnswer.map(String) : (myAnswer !== undefined ? [String(myAnswer)] : []);
-  let correctionArr = Array.isArray(myCorrections) ? myCorrections.map(String) : (myCorrections !== undefined ? [String(myCorrections)] : []);
+  let responseArr = Array.isArray(userResponse) ? userResponse.map(String) : (userResponse !== undefined ? [ String(userResponse) ] : [ ]);
+  let solutionArr = Array.isArray(myAnswer) ? myAnswer.map(String) : (myAnswer !== undefined ? [ String(myAnswer) ] : [ ]);
+  let correctionArr = Array.isArray(myCorrections) ? myCorrections.map(String) : (myCorrections !== undefined ? [ String(myCorrections) ] : [ ]);
   let resultMsg = "";
   let solutionMsg = "";
   let alertClass = "";
@@ -75,41 +87,37 @@ function quizSuccess(formid, idval, myResponses) {
     alertClass = "usa-alert usa-alert--error";
   } else if (responseArr.length > 1 && solutionArr.length > 1) {
     // Compare arrays (order-insensitive)
-    const sortedResp = [...responseArr].sort();
-    const sortedSol = [...solutionArr].sort();
-    const isMatch = sortedResp.length === sortedSol.length && sortedResp.every((v, i) => v === sortedSol[i]);
+    const sortedResp = [ ...responseArr ].sort();
+    const sortedSol = [ ...solutionArr ].sort();
+    const isMatch = sortedResp.length === sortedSol.length && sortedResp.every((v, i) => v === sortedSol[ i ]);
     if (isMatch) {
       resultMsg = "Success!";
       solutionMsg = mySolution ? mySolution : "";
       alertClass = "usa-alert usa-alert--success";
     } else {
       resultMsg = "Incorrect";
-      solutionMsg = "Please try again";
+      solutionMsg = "<p>Please try again</p>";
       alertClass = "usa-alert usa-alert--error";
     }
   } else if (responseArr.length === 1 && solutionArr.length === 1) {
     // Compare single values
-    if (String(responseArr[0]) === String(solutionArr[0])) {
+    if (String(responseArr[ 0 ]) === String(solutionArr[ 0 ])) {
       resultMsg = "Success!";
-      solutionMsg = myCorrections ? correctionArr[userResponse-1] : (mySolution ? mySolution : "");
+      solutionMsg = myCorrections ? correctionArr[ userResponse-1 ] : (mySolution ? mySolution : "");
       alertClass = "usa-alert usa-alert--success";
     } else {
       resultMsg = "Incorrect";
-      solutionMsg = myCorrections ? correctionArr[userResponse-1] : "Please try again";
+      solutionMsg = myCorrections ? correctionArr[ userResponse-1 ] : "<p>Please try again</p>";
       alertClass = "usa-alert usa-alert--error";
     }
   } else {
     resultMsg = "Incorrect";
-    solutionMsg = "Please try again";
+    solutionMsg = "<p>Please try again</p>";
     alertClass = "usa-alert usa-alert--error";
   }
 
-  //const solProcess = $.parseHTML( solutionMsg );
-  //const solHtml = solProcess[0] ? solProcess[0].data : "";
-
   var htmlSolution = solutionMsg ? $.parseHTML( solutionMsg ) : null;
-  var solPrint = solutionMsg ? htmlSolution[0].data : " ";
-
+  var solPrint = solutionMsg ? htmlSolution[ 0 ].data : " ";
 
   // Wrap the result in a USWDS Alert
    const alertHtml = $("<div/>", {
@@ -120,34 +128,42 @@ function quizSuccess(formid, idval, myResponses) {
       "class":"usa-alert__heading",
       text:resultMsg,
     })).append($("<div/>", {
-      "class":"usa-alert__text"
+      "class":"usa-alert__text",
     }).html(solPrint))); 
-    let copyingcode = alertHtml.find( "code.copy" )
-    alertHtml.find( "code.nocopy" ).wrap("<div class='language-plaintext highlighter-rouge'><div class='highlight'><pre class='highlight'></pre></div></div>");
-    
-    if (copyingcode.length > 0) {
-      copyingcode.wrap("<div class='language-plaintext copy-code highlighter-rouge'><div class='highlight'><pre class='highlight'></pre></div></div>");
-      // add the copycode section here.
-      let copycodediv = alertHtml.find( "div.copy-code" );
-      codeButton(copycodediv[0]);
-    }
 
-    
+    processCodeBlocks(alertHtml);
 
-    
-    displayDiv.html(alertHtml)
+    //alertHtml.querySelectorAll("div.highlighter-rouge:not(.no-copy)");
+    displayDiv.html(alertHtml);
 
-}
+  }
 
 // Returns the "questions" array from quizdata
-function getQuizQuestions(quizdata) {
-  const path = window.location.pathname;
-  console.log(quizdata);
-  const entry = quizdata.find(q => q.ref === path);
-  return entry ? entry.questions : null;
+function getQuizQuestions() {  
+  const baseURL = window.location.origin;
+  var path = window.location.pathname;
+  $.ajax({
+      type: 'GET',
+      url: baseURL + '/assets/js/quiz/quiz.json',
+      data: { get_param: 'value' },
+      dataType: 'json',
+      success: function (data) {
+        
+        var entry = data.find(q => q.ref === path);
+        console.log(entry.questions);
+        var questionsarray = entry ? entry.questions : null;
+        questions = questionsarray;
+      },
+      error: function () {
+        console.log("Failed to fetch quiz questions");
+      },
+  });
 }
 
 function quizload(){
+
+  getQuizQuestions();
+
   document.querySelectorAll('.sn-quiz').forEach(quiz => {
     //quiz.addEventListener("submit", () => submitQuiz(quiz));
     quiz.addEventListener("submit", function (e) {
@@ -164,6 +180,4 @@ function quizload(){
   });
 }
 
-$(document).ready(function() {
-  quizload();
-});
+module.exports = quizload;

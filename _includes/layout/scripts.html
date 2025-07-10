@@ -22,7 +22,7 @@
     | push: _pi_conf_js -%}
 {%- endif -%}
 {%- if page.questions %}
-{%- assign _quiz_js = '/assets/js/quiz/quiz.js' %}
+{%- assign _quiz_js = '/assets/js/quiz.js' %}
 {%- assign _site_scripts = _site_scripts | push: _quiz_js -%}
 {%- endif %}
 {%- assign _scripts = _scripts

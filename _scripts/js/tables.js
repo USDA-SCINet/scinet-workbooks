@@ -1,6 +1,3 @@
-const jQuery = require('jquery'); 
-window.$ = window.jQuery = jQuery; 
-
 function buildtables() {
   $(".load-table").each(function(){
       

@@ -5,7 +5,8 @@
   "license": "CC0-1.0",
   "scripts": {
     "start": "bundle exec jekyll serve",
-    "dev": "bundle exec jekyll serve & npx gulp watch & npx gulp watchJS",
+    "dev": "bundle exec jekyll serve",
+    "full-dev": "bundle exec jekyll serve & npx gulp watch & npx gulp watchJS",
     "update-dep": "npm install && bundle install && npx gulp update",
     "start-detached": "bundle exec jekyll serve --detach",
     "setup-jekyll": "bundle",
@@ -22,13 +23,15 @@
     "babelify": "^10.0.0",
     "browserify": "^17.0.1",
     "eslint-plugin-import": "^2.31.0",
+    "event-stream": "^4.0.1",
     "fancy-log": "^2.0.0",
-    "gulp": "^5.0.0",
+    "gulp": "^5.0.1",
     "gulp-eslint": "^6.0.0",
     "gulp-rename": "^2.0.0",
     "gulp-sourcemaps": "^3.0.0",
     "gulp-uglify": "^3.0.2",
     "jquery": "^3.7.1",
+    "merge-stream": "^2.0.0",
     "vinyl-buffer": "^1.0.1",
     "vinyl-source-stream": "^2.0.0"
   }

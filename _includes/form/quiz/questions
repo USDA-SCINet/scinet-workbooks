@@ -3,7 +3,7 @@
 {%- capture idstring %}{{ page.id | slugify }}-{{ qid | default: 0 }}{% endcapture %}
 <div id="{{ idstring }}-box" class="highlighted highlighted--question padding-bottom-1">
 {% if q.answers or q.solution %}
-<form id="{{ idstring }}" class="highlighted__body" data-qid="{{ qid | default: 0 }}" onsubmit="return submitQuestion(this);">
+<form id="{{ idstring }}" class="highlighted__body sn-question" data-qid="{{ qid | default: 0 }}" >
 
 <h4 class="highlighted__heading" id="{{ idstring }}-header">{{ htitle }}</h4>
 {{ q.question | markdownify }}
