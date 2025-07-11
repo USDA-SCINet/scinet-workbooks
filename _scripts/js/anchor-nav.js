@@ -49,7 +49,7 @@ const setActive = (el) => {
 */
 
 const checkPlLength = (plClass) => {
-  if ($(`.${plClass}`).length > `${PROCESS_LIMIT}` ){
+  if ($(`h3.${plClass}`).length > `${PROCESS_LIMIT}` ){
     return "REJECT";
   } else {
     return plClass;

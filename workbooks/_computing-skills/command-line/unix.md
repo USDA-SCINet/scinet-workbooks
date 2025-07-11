@@ -1,7 +1,7 @@
 ---
 
 title: Unix Basics
-description: Short and informative description of your tutorial
+description: Getting started with Bash on SCINet
 type: interactive tutorial 
 
 tags: [unix, bash, command line] 
@@ -51,7 +51,7 @@ objectives: "By the end of this tutorial, you will be able to:
 
 overview: [objectives, terminology]
 
-order: 5
+order: 1
 
 questions:
   - question: Write a command that prints your name and the current date together. 
@@ -275,7 +275,11 @@ man ls
 man less  
 ```
 
+
+
 {% include alert class="question" title="Exercise" content="Use `man` to look up a command you haven't tried yet" %}
+
+For more in-depth information about navigating the built-in documentation for system commands and utilities, see our tutorial for [Command manual](./manual).
 
 
 ###  Self-check: 
@@ -366,9 +370,11 @@ To change back to the directory, you created:
 cd /home/unix_tutorial
 ```
 
-{% include alert class="tip" content="You can type in first few letters of the directory name and then press Tab to auto complete rest of the name. This only works when there are unique matches for the starting letters you have typed.  
+{% include alert class="tip" content="You can type in first few letters of the directory name and then press Tab to autocomplete rest of the name. This only works when there are unique matches for the starting letters you have typed.  
 
-If there are more than one matching files/directories, pressing Tab twice will list all the matching names." %}
+If there are more than one matching files/directories, pressing Tab twice will list all the matching names.
+
+For a more in-depth tutorial on autocomplete, including how to incorporate it into your own scripts, see [Command autocompletion](./autocompletion)" %}
 
 {% include question qid=7 %}
 
