@@ -135,14 +135,15 @@ This tutorial introduces important command-line skills for navigating and managi
 
 
 ## Getting Started
-To complete this tutorial, you will need to launch the shell on SCINet. If you are unsure how to do this, please refer to the Getting Started with SCINet Workbooks for instructions.  
+To complete this tutorial, you will need to launch the shell on SCINet. If you are unsure how to do this, please refer to [Getting Started with SCINet Workbooks](/about/use#using-the-shell) for instructions.  
 
 
 
-## Tutorial Steps:
+### Tutorial Steps:
 1. Interacting with the Shell
 1. Navigating the Unix file system
 1. File management
+1. Editing Files
 1. Understanding and changing file permissions
 
 

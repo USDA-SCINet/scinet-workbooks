@@ -48,9 +48,7 @@ By typing commands, you can perform tasks like managing files, running programs 
 a shell interprets these commands and communicates with the operating system to execute them. 
 
 Together, the CLI, terminal and shell form a powerful ecosystem for controlling your computer efficiently 
-and performing your computational tasks with precision, speed, automation and a level of flexibility that is often unmatched by graphical user interfaces.
-
-![GUI vs CLI](./assets/img/cli_vs_gui.png)  
+and performing your computational tasks with precision, speed, automation, and flexibility.
 
 {% include overviews %}
 
