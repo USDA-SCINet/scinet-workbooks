@@ -10,7 +10,17 @@ function h3divs() {
             $(this).addClass("usa-process-list__heading");
             $(this).nextUntil('h3, h2')
             .addBack()
-            .wrapAll("<li class='usa-process-list__item usa-prose' />");
+            .wrapAll("<li class='usa-process-list__item h3list usa-prose' />");
+        });
+        processList.children().wrapAll("<ol class='usa-process-list' />");
+    });
+    $('.process-sublist').each(function() {
+        let processList = $(this);
+        processList.find('> h4:not(.rm-a)').each(function() {
+            $(this).addClass("usa-process-list__heading");
+            $(this).nextUntil('h4, h3, h2')
+            .addBack()
+            .wrapAll("<li class='usa-process-list__item h4list usa-prose' />");
         });
         processList.children().wrapAll("<ol class='usa-process-list' />");
     });
