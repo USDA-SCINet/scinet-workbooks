@@ -193,7 +193,7 @@ If you are writing this as a member of a working group, add your working group s
 wgs: omics
 ```
 
-<div class="usa-accordion accordion-bordered"  markdown="1">
+<div class="usa-accordion"  markdown="1">
 
 {% include accordion title="List of current Working Groups" class="outline"  controls="wg-list-acc" icon=false %}
 <div id="wg-list-acc" class="accordion_content" markdown='1'>
@@ -242,7 +242,7 @@ tags: [command line, separated by commas, contained in brackets]
 
 **Use existing tags** whenever possible rather than creating new ones.
 
-<div class="usa-accordion accordion-bordered"  markdown="1">
+<div class="usa-accordion"  markdown="1">
 
 {% include accordion title="List of current Keywords" class="outline"  controls="tag-list-acc" icon=false %}
 <div id="tag-list-acc" class="accordion_content" markdown='1'>
@@ -298,7 +298,7 @@ If your tutorial is focused on the use of a specific programming language, use t
 ```
 language: Python
 ```
-<div class="usa-accordion accordion-bordered"  markdown="1">
+<div class="usa-accordion"  markdown="1">
 
 {% include accordion title="List of current Coding Languages" class="outline"  controls="lang-list-acc" icon=false %}
 <div id="lang-list-acc" class="accordion_content" markdown='1'>
@@ -307,7 +307,7 @@ language: Python
 </div>
 </div>
 
-<div class="usa-accordion accordion-bordered"  markdown="1">
+<div class="usa-accordion"  markdown="1">
 
 
 ### Packages
