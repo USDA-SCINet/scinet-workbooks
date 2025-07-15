@@ -3,7 +3,7 @@
 title: Using environment and shell variables
 description: "An in-depth guide to environment and shell variables in SCINet CLI"
 type: interactive tutorial
-order: 2
+order: 5
 language: Bash
 packages: 
 level: 

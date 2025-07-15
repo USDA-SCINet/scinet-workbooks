@@ -7,8 +7,8 @@ import requests as r
 url = '{{ site.url }}{{ fpath }}/{{ file }}'
 response = r.get(url)
 filename = "{{ file }}"
-\n
-\# Save the file locally.
+#
+# Save the file locally.
 with open(filename, mode="wb") as file:
     file.write(response.content)
 ```      

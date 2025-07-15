@@ -43,7 +43,7 @@ questions:
 
     <code class='copy'>This code can be copied</code>  
     
-    <code class='nocopy'>This code can not be copied</code>"
+    <code class='no-copy'>This code can not be copied</code>"
 ---
 
 ## Component Examples
@@ -118,7 +118,7 @@ questions:
 
     <code class='copy'>This code can be copied</code>  
     
-    <code class='nocopy'>This code can not be copied</code>"
+    <code class='no-copy'>This code can not be copied</code>"
 ```
 
 #### Using the components

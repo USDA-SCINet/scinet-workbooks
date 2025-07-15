@@ -82,9 +82,11 @@ keywords:
   label: "Common Keywords"
   #collect: tags
   cards:
-    - term: R Project
+    - term: R
+      att: language
       color: secondary
     - term: Python
+      att: language
       color: secondary
     - term: graphing
       color: secondary
