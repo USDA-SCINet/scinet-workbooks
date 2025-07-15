@@ -3,8 +3,13 @@
 {%- unless include.justbullet %}
 **To download the Jupyter Notebook** for this tutorial within Open on Demand, you can use the following lines in the python console:
 ```python
-import urllib.request
-tutorial_name = '{{ file }}'
-urllib.request.urlretrieve('{{ site.url }}{{ fpath }}/'  + tutorial_name, tutorial_name)
+import requests as r
+url = '{{ site.url }}{{ fpath }}/{{ file }}'
+response = r.get(url)
+filename = "{{ file }}"
+
+# Save the file locally.
+with open(filename, mode="wb") as file:
+    file.write(response.content)
 ```    
   * {%- endunless %} [Download Jupyter Notebook]({{ fpath }}/{{ file }})
