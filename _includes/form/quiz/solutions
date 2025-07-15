@@ -4,11 +4,11 @@
 {% include form/{{ q.type | default: 'quiz-checkbox' }}.html title=answertitle options=q.answers tname=idstring classname="bg--question" %}
 </div>
 {% if include.button %}<div class="display-flex flex-column flex-align-end padding-top-2 bg--question">
-<button type="submit" class="usa-button usa-button--secondary quiz-submit" id="{{ idstring }}-submit">Submit</button>
+<button type="submit" class="usa-button usa-button--outline quiz-submit" id="{{ idstring }}-submit">Submit</button>
 </div>{% endif %}
 {% elsif q.solution and include.button %}
 <div id="{{ idstring }}-button" class="display-flex flex-column flex-align-end padding-top-2 border-top bg--question" >
-<button type="submit" class="usa-button usa-button--secondary quiz-submit" id="{{ idstring }}-submit">Show answer</button>
+<button type="submit" class="usa-button usa-button--outline quiz-submit" id="{{ idstring }}-submit">Show answer</button>
 </div>
 {% else %}<div class="display-flex flex-column flex-align-end border-top bg--question" >
 <input style="display: none;" id="default-{{ idstring }}-{{ qid | default: 0 }}" name="{{ qid | default: 0 }}" type="default" value="Default" />

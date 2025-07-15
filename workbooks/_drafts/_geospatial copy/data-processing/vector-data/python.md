@@ -35,7 +35,7 @@ in 2018.
 
 {% include overviews %}
 
-## Analysis Steps
+## Tutorial Steps
 
   * **Fire perimeter data**
     - read in and visualize the wildfire perimeter data

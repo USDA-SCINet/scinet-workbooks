@@ -37,7 +37,7 @@ an example on how to submit your own SLURM job, please see
 
 {% include overviews %}
 
-## Analysis Steps
+## Tutorial Steps
 * Open Imagery and Setup Tiles - Open a GeoTIFF of Landsat 7 imagery and divide
   it into multiple smaller images.
 * Define NDVI function - Write a function to calculate Normalized Difference 

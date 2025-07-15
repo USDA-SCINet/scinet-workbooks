@@ -38,7 +38,7 @@ either cluster to work on for the tutorial. There is one line you will need to
 modify in this tutorial and your options depend on which cluster you are currently
 using.
 
-## Analysis Steps
+## Tutorial Steps
 
 * Write and save a serial R script that accepts command line arguments 
 * Write and save a SLURM job submission script template

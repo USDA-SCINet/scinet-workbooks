@@ -84,7 +84,7 @@ GET(paste0('https://geospatial.101workbook.org/tutorials/',tutorial_name),
   Heavy metal concentrations are from composite samples of an area of approximately 
   15 m x 15 m.
 
-## Analysis Steps
+## Tutorial Steps
 
 * Pre-process the `meuse` data set to be `sf` and `raster` objects
 * Use kriging to interpolate zinc concentrations across the study area 

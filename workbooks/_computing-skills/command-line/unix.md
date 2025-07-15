@@ -1,27 +1,30 @@
 ---
 
 title: Unix Basics
+order: 1
 description: Getting started with Bash on SCINet
 type: interactive tutorial 
 
 tags: [unix, bash, command line] 
 
 terms:
-  - term: Command Line Interface
-    link: "/computing-skills/command-line/cli-interface/concepts/" 
-    Key-difference: "It's a concept, not a specific software. CLI describes the environment in which commands are entered and executed."
-  - term: Terminal
-    link: "/computing-skills/command-line/cli-interface/terminal/"
-    Key-difference: "A terminal is just the container or access point for the CLI, but it doesn't process the commands itself."
-    Examples: "GNOME Terminal, Windows Terminal, iTerm2"
-  - term: Shell
-    link: "/computing-skills/command-line/cli-interface/shell/"
-    Key-difference: "The shell is a program running within the terminal to interpret and execute commands. Different shells have unique features and syntax." 
-    Examples: "Unix shell: Bash, Zsh, ksh, tcsh"
-  - term: Command Line
-    link: "/computing-skills/command-line/cli-interface/shell/commands/" 
-    Key-difference: "The command line is a specific part of the CLI environment." 
-    Examples: "Usually preceded by a prompt, e.g., <code>user@host:~$</code> in Unix/Linux or <code>C:\\></code> in Windows."
+  - Shell
+  - Prompt  
+  - term: Environment Variable 
+    definition: A key-value pair used to store system or user-specific settings. Examples include `PATH`, which defines the directories the shell searches for commands.
+  - term: PATH
+    definition: "An environment variable specifying directories where the shell looks for executable commands. Adding a directory to `PATH` allows running commands from that directory directly."
+  - Command
+  - term: alias
+    definition: A custom shortcut for a command or sequence of commands.
+  - term: script
+    definition: A file containing a series of commands that the shell can execute sequentially. Typically used to automate repetitive tasks.
+  - term: shebang 
+    definition: A special line at the start of a script file specifying which code interpreter should execute the script.
+  - term: "redirection (`>`, `<`)"
+    definition: "Redirects the input or output of a command to/from a file or another command. Example: `ls > files.txt` writes the output of `ls` to `files.txt`."
+  - term: "pipeline (`|`)"
+    definition: A mechanism to pass the output of one command as input to another, enabling complex workflows by chaining commands together.
 
 language: Bash
 
@@ -50,8 +53,6 @@ objectives: "By the end of this tutorial, you will be able to:
   - Modify file permissions"
 
 overview: [objectives, terminology]
-
-order: 1
 
 questions:
   - question: Write a command that prints your name and the current date together. 
@@ -140,11 +141,11 @@ To complete this tutorial, you will need to launch the shell on SCINet. If you a
 
 
 ### Tutorial Steps:
-1. Interacting with the Shell
-1. Navigating the Unix file system
-1. File management
-1. Editing Files
-1. Understanding and changing file permissions
+* Interacting with the Shell
+* Navigating the Unix file system
+* File management
+* Editing Files
+* Understanding and changing file permissions
 
 
 ## Interacting with the Shell
@@ -153,7 +154,7 @@ In this section, you will learn the structure of Unix commands and basic command
 
 The shell accepts text input in the form of commands and returns an output. Shell commands often have options (flags) and arguments which are used to modify the behavior of shell commands. 
 
-<div class="process-list" markdown="1">
+<div class="process-list ul" markdown="1">
 
 ### Basic commands
 

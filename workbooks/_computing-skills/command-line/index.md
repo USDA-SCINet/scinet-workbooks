@@ -8,33 +8,22 @@ tags: [command line]
 author: Aleksandra Badaczewska
 type: introduction
 
-##terminal-terms: [Terminal, Welcome Message, Prompt, Command Line]
-##shell-terms: [Shell, Bash, Command, Standard Out, Standard Error, Built-in commands, Aliases, Shell function, Startup script, Environment Variable, Syntax]
-##cl-terms: [Input Area, Cursor, Argument, Flag or Option, Pipes, Background Process, Foreground Process, Exit Code]
-
 terms:
    - term: Command Line Interface
-     link: "/computing-skills/command-line/cli-interface/concepts/" 
      Key-difference: "It's a concept, not a specific software. CLI describes the environment in which commands are entered and executed."
    - term: Terminal
-     link: "/computing-skills/command-line/cli-interface/terminal/"
      Key-difference: "A terminal is just the container or access point for the CLI, but it doesn't process the commands itself."
-     Examples: "GNOME Terminal, Windows Terminal, iTerm2"
    - term: Shell
-     link: "/computing-skills/command-line/cli-interface/shell/"
      Key-difference: "The shell is a program running within the terminal to interpret and execute commands. Different shells have unique features and syntax." 
      Examples: "Unix shell: Bash, Zsh, ksh, tcsh"
+     link: "/computing-skills/command-line/unix" 
    - term: Command Line
-     link: "/computing-skills/command-line/cli-interface/shell/commands/" 
      Key-difference: "The command line is a specific part of the CLI environment." 
      Examples: "Usually preceded by a prompt, e.g., <code>user@host:~$</code> in Unix/Linux or <code>C:\\></code> in Windows."
 
 objectives: "The fundamentals of the Command Line Interface (CLI) including its key components: the terminal interface and the Unix shell."
 
 overview: [objectives, terminology]
-
-
-
 ---
 
 ## Overview
@@ -60,8 +49,6 @@ The command line interface (CLI) serves as a direct communication channel betwee
 It is a text-based environment where all interactions happen in a single window. Users type and submit commands to instruct the computer and the computer responds with text messages or outputs. This creates a simple and efficient way to communicate with the system, 
 directly interacting with the computer's core functions without relying on visual, clickable components.
 
-  ![Altas CLI](./assets/img/atlas-cli.png)
-
 {% include alert role="region" class="highlighted" title="All actions taken in the CLI are permanent" content="Any changes made in the CLI are permanent and will be reflected in the GUI.  
 For example, if you create a file using a CLI command, you can see the file appear in the GUI's file manager." %}
 
@@ -72,7 +59,7 @@ The primary difference between CLI and GUI lies in how users interact with the s
 - GUIs are user-friendly and intuitive, but they can be slower and less flexible for advanced tasks. 
 - In contrast, the CLI is ideal for repetitive actions, scripting, and working with large amounts of data.
 
-![GUI vs CLI](./assets/img/cli_vs_gui.png)
+![GUI vs CLI]({{ images_path }}/cli_vs_gui.png)
 
 {% include table content="| aspect | GUI | CLI |
 |--------|-----|-----|
@@ -114,10 +101,11 @@ for managing large datasets, automating workflows, and leveraging powerful compu
     * Batch processing satellite images using CLI tools like `GDAL` on SCINet HPC.
     * Automating the extraction of crop coverage statistics from shapefiles across multiple regions.
 
-
-{INCLUDE - table of the terminology noting the specific differences between the terms}
-
 ## CLI on the SCINet HPC
 
-{INCLUDE - Information about CLI options on SCINet, including link to the Access section on the SCINet website}
+You can access the command line interface in multiple ways on SCINet.
+
+1. **Most of the tutorials can be completed using the Open OnDemand interface to launch the shell.**  If you are unsure how to do this, please refer to [Getting Started with SCINet Workbooks](/about/use#using-the-shell) for instructions.
+2. If you are using the OOD [desktop interface](/about/use#launching-the-desktop), you can open a terminal by clicking the terminal icon at the bottom of the desktop screen.  If this option is expected, it will be specified in the tutorial.
+3. You can also [access SCINet systems via SSH](https://scinet.usda.gov/guides/access/ssh-login), which allows you to connect to SCINet systems via the command-line terminal.  Please note that for most use cases, you do not need to do this! We recommend Open OnDemand as a simpler, more versatile alternative to SSH.
 

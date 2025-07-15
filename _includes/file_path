@@ -11,21 +11,22 @@
 {%- if page.intro %}
     {%- assign intropath = page.intro %}
     {%- if page.mkdir %}
-        {% assign environment = page.mkdir %}
+        {% assign mkdir = page.mkdir %}
     {%- else %}
         {% assign introsplit = intropath | split: '#' %}
         {% include components/file_process url=introsplit.first %}
         {% assign rev_path = module_sections | reverse %}
-        {% assign environment = intropath | slugify %}
+        {% assign mkdir = intropath | slugify %}
     {%- endif %}
 {%- else %}
     {% if page.file_path %}{% include components/file_process folder=include.folder %}{% endif %}
     {%- assign intropath = module_sections | join: "/" %}
 
     {%- if page.mkdir %}
-        {% assign environment = page.mkdir %}
+        {% assign mkdir = page.mkdir %}
     {%- else %}
         {% assign rev_path = module_sections | reverse %}
-        {% assign environment = rev_path.first %}
+        {% assign mkdir = rev_path.first %}
     {%- endif %}
 {%- endif %}
+{% assign environment = page.environment | default: mkdir %}

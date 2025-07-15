@@ -67,7 +67,7 @@ Atlas:
 
 
 
-## Analysis Steps
+## Tutorial Steps
 
 * Open Imagery and Setup Tiles - Open a GeoTIFF of Landsat 7 imagery and divide
   it into multiple smaller images.

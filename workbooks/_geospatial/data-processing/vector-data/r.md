@@ -65,7 +65,7 @@ Atlas:
 * `Number of hours`: 1
 * `Number of tasks`: 2
 
-## Analysis Steps
+## Tutorial Steps
 
 * Fire perimeter data - read in and visualize the wildfire perimeter data
   * Read in geojson file
