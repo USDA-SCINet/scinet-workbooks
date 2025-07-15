@@ -56,7 +56,7 @@ Accessing, downloading, stacking, and working with earth observations (EO) data 
 
 -->
 
-## Analysis Steps
+## Tutorial Steps
 * Import Libraries / Packages
 * Define the ROI
     - Read a shapefile of the USDA ARS LTAR Central Plains Experimental Range. This will be the region of interest (ROI) for this tutorial

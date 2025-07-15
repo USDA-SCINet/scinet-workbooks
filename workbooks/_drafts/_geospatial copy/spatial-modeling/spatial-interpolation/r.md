@@ -37,7 +37,7 @@ text.
 
 {% include overviews %}
 
-## Analysis Steps
+## Tutorial Steps
 
 -   Pre-process the `meuse` data set to be `sf` and `raster` objects
 -   Use kriging to interpolate zinc concentrations across the study area

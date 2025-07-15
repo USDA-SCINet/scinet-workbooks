@@ -44,7 +44,7 @@ using.
 * *SLURM Workload Manager:* The software on Ceres and Atlas that allocates 
   compute cores to users for their submitted jobs. 
 
-## Analysis Steps
+## Tutorial Steps
 
 * Write and save a serial R script that accepts command line arguments 
 * Write and save a SLURM job submission script template

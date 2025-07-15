@@ -40,7 +40,7 @@ submitting many job submission scripts, see [this tutorial](https://geospatial.1
 
 {% include overviews %}
 
-## Analysis Steps
+## Tutorial Steps
 
 * Write serial R script - this script will accept a year argument, open the 
   raster file associated with that year, open the polygon dataset, calculate 

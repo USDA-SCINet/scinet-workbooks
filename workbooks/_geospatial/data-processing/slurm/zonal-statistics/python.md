@@ -37,7 +37,7 @@ submitting many job submission scripts, see [this tutorial](../job-arrays/python
 
 {% include overviews %}
 
-## Analysis Steps
+## Tutorial Steps
 
 * Write serial python script - this script will accept a year argument, open the 
   raster file associated with that year, open the polygon dataset, calculate 
