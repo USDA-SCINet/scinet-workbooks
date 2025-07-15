@@ -24,6 +24,9 @@ Introduction to your tutorial and what the tutorial aims to accomplish.
     1. Request a SCINet account
     1. Log in to SCINet
 * **Setting up your workspace**
+    * Making your workspace directory in /90daydata
+    * Creating a Conda environment
+    * Modifying workflows to use /project
 * **Accessing interfaces on SCINet**
     * Using the Shell
     * RStudio
@@ -56,12 +59,12 @@ For more information on login procedures for SCINet access, including our SSH ac
 You will need to decide where files will be stored for the tutorials.  Most tutorials default to using `/90daydata/shared/$USER/tutorial_subdirectory` for consistancy; however, with a SCINet account you have access to multiple options: 
 * **Home directory:** small storage quota and recommended for configuration and login files.  
 * **Project space:** large workspace recommended for installs, research data, and analysis results. [Click here to request a project directory](https://scinet.usda.gov/guides/data/storage#project-directories)  
-* **90daydata:** temporary workspace for large, short-term data where files will be deleted after 90 days. `90daydata/shared` is a space where data can be shared among users or teams, but each user still has a dedicated folder. Read our [Storage Guides](https://scinet.usda.gov/guides/data/storage#large-short-term-storage) for more information on 90daydata.  
+* **90daydata:** temporary workspace for large, short-term data where files will be deleted after 90 days. `/90daydata/shared` is a space where data can be shared among users or teams, but each user still has a dedicated folder. Read our [Storage Guides](https://scinet.usda.gov/guides/data/storage#large-short-term-storage) for more information on 90daydata.  
 
 
 <div class="process-list ul" markdown="1">
 
-### Making your workspace directory in 90daydata 
+### Making your workspace directory in /90daydata 
 
 If you are beginning a tutorial for the first time, or haven't used your directory in 90 days, you will need to create a new working directory for the tutorial.
 
@@ -79,9 +82,9 @@ Many tutorials use [Conda](https://scinet.usda.gov/guides/software/conda), which
 
 If your tutorial uses a Conda environment, it will specify how to load it. You can either create it in the shell when you create your working directory, or if your tutorial is using a specific IDE you can execute the code in your IDE's terminal.
 
-Most tutorials that use Conda environments default to creating the environment in 90daydata.  If you would like to save the virtual environment for later use, you can modify the workflow to [set up the environment in your Project directory](#modifying-workflows-to-use-project).  
+Most tutorials that use Conda environments default to creating the environment in `/90daydata`.  If you would like to save the virtual environment for later use, you can modify the workflow to [set up the environment in your /project directory](#modifying-workflows-to-use-project).  
 
-{% include alert class="warning" title="It is not reccomended to use your Home directory for Conda" content="Software installs that require a lot of space, such as Conda virtual environments, can quickly max out your quota.  It is reccomended to use `/project` or `90daydata` instead." %}
+{% include alert class="warning" title="It is not reccomended to use your Home directory for Conda" content="Software installs that require a lot of space, such as Conda virtual environments, can quickly max out your quota.  It is reccomended to use `/project` or `/90daydata` instead." %}
 
 #### Example Conda workflow
 1. Load Conda.
@@ -114,9 +117,9 @@ Most tutorials that use Conda environments default to creating the environment i
         * Kernel > Change Kernel > select "{{ kernel }}" from the drop down menu
 
 
-### Modifying workflows to use /Project
+### Modifying workflows to use /project
 
-If you would like to use your Project space instead of 90daydata, you can modify the tutorial instructions by substituting `/project/your_project_name/` wherever you see `/90daydata/shared/$USER/`.
+If you would like to use your project space instead of `/90daydata`, you can modify the tutorial instructions by substituting `/project/your_project_name/` wherever you see `/90daydata/shared/$USER/`.
 
 For example, to modify the instructions above for creating a directory and Conda environment in a project named "your_project_name", you would:
 1. Open the Shell
@@ -155,7 +158,7 @@ Note: Each tutorial may have specific inputs depending on the resource needs and
 
 ### Using the Shell
 
-Most tutorials will assume you are using [Open OnDemand (OOD)](https://scinet.usda.gov/guides/use/open-ondemand).  
+Most of the tutorials can be completed using the [Open OnDemand interface (OOD)](https://scinet.usda.gov/guides/use/open-ondemand).  
 * Log in to [Ceres Open OnDemand](http://ceres-ood.scinet.usda.gov/). 
 * Log in to [Atlas Open OnDemand](https://atlas-ood.hpc.msstate.edu/).  
 
@@ -165,7 +168,7 @@ After logging in to SCINet via OOD, you will be directed to the OOD homepage ass
 
 While on the home page of your cluster, you can open a command-line session by clicking on "Clusters" -> "Ceres/Atlas Shell Access" on the top menu. This will open a new tab with a command-line session on Ceres'/Atlas' login node.  
 
-From here, your tutorial may have specific instructions for you to execute.  One of the first steps is often to [request a compute note and create a working directory in 90daydata](#making-your-workspace-directory-in-90daydata), as explained above.
+From here, your tutorial may have specific instructions for you to execute.  One of the first steps is often to [request a compute note and create a working directory in /90daydata](#making-your-workspace-directory-in-90daydata), as explained above.
 
 Requesting a compute node keeps all the intense computation off the login nodes, so that login nodes can have all the resources necessary for managing the cluster. **Please do not run your applications on the login nodes**.   For more information, see our [SLURM guide](https://scinet.usda.gov/guides/use/slurm). 
 
