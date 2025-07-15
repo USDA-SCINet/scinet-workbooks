@@ -6,23 +6,26 @@ function h3divs() {
     });
     $('.process-list').each(function() {
         let processList = $(this);
-        processList.find('> h3:not(.rm-a)').each(function() {
+        var header_fetch = '> h3:not(.rm-a)';
+        var hlist_depth = 'h3list';
+        var ending_header = 'h3, h2';
+        var list_tag = 'ol';
+        if (processList.hasClass( "h4" )){
+            header_fetch = '> h4:not(.rm-a)';
+            hlist_depth = 'h4list';
+            ending_header = 'h4, h3, h2';
+        }
+        if (processList.hasClass( "ul" )){
+            list_tag = 'ul';
+        }
+
+        processList.find(header_fetch).each(function() {
             $(this).addClass("usa-process-list__heading");
-            $(this).nextUntil('h3, h2')
+            $(this).nextUntil(ending_header)
             .addBack()
-            .wrapAll("<li class='usa-process-list__item h3list usa-prose' />");
+            .wrapAll(`<li class='usa-process-list__item' ${hlist_depth} usa-prose' />`);
         });
-        processList.children().wrapAll("<ol class='usa-process-list' />");
-    });
-    $('.process-sublist').each(function() {
-        let processList = $(this);
-        processList.find('> h4:not(.rm-a)').each(function() {
-            $(this).addClass("usa-process-list__heading");
-            $(this).nextUntil('h4, h3, h2')
-            .addBack()
-            .wrapAll("<li class='usa-process-list__item h4list usa-prose' />");
-        });
-        processList.children().wrapAll("<ol class='usa-process-list' />");
+        processList.children().wrapAll(`<${list_tag} class='usa-process-list' />`);
     });
 }
 

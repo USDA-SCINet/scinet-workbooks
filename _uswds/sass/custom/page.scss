@@ -187,13 +187,9 @@ $mobile-process-counter-size: 3;
     @include u-flex("row", "align-center", "justify-center");
     @include u-circle($mobile-process-counter-size);
     background-color: color($theme-process-list-counter-background-color);
-    border: 3px solid
-      color($theme-process-list-counter-border-color);
     box-shadow: 0 0 0 3px
       color($theme-process-list-counter-gap-color);
     color: color($theme-process-list-counter-text-color);
-    content: counter(usa-numbered-list, decimal);
-    counter-increment: usa-numbered-list;
     display: flex;
     font-family: family($theme-process-list-counter-font-family);  
     font-size: size(
@@ -213,8 +209,6 @@ $mobile-process-counter-size: 3;
 
     @include at-media ($theme-site-margins-breakpoint) {
       @include u-circle($theme-process-list-counter-size);
-      border: units($theme-process-list-counter-border-width) solid
-        color($theme-process-list-counter-border-color);
       box-shadow: 0 0 0 units($theme-process-list-counter-gap-width)
         color($theme-process-list-counter-gap-color);
       font-size: size(
@@ -249,6 +243,35 @@ $mobile-process-counter-size: 3;
     margin-bottom: 0;
   }
 }
+
+ol > .usa-process-list__item {
+  &::before {
+    content: counter(usa-numbered-list, decimal);
+    counter-increment: usa-numbered-list;
+    border: 3px solid
+    color($theme-process-list-counter-border-color);
+
+    @include at-media ($theme-site-margins-breakpoint) {
+      border: units($theme-process-list-counter-border-width) solid
+        color($theme-process-list-counter-border-color);
+    }
+  }
+}
+
+ul > .usa-process-list__item {
+  &::before {
+    content: " ";
+    border: 3px solid
+    color($theme-process-list-connector-color);
+
+    @include at-media ($theme-site-margins-breakpoint) {
+      border: units($theme-process-list-counter-border-width) solid
+        color($theme-process-list-connector-color);
+    }
+  }
+}
+
+
 
 .h3list > h4 ~ *:not(h4) {
   margin-left: calc(#{$process-list-counter-content-padding} / 2);

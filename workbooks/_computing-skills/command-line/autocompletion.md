@@ -212,7 +212,7 @@ chmod +x myscript.sh
 Our `myscript.sh` file accepts specific arguments such as `start`, `stop`, `restart` and `status`.  
 You can create a custom completion function to suggest these options when pressing `Tab`.
 
-<div class="process-sublist" markdown="1">
+<div class="process-list h4" markdown="1">
 
 #### Create an autocompletion function
 
@@ -276,7 +276,7 @@ This can be useful for quickly recalling frequently used settings without needin
 * Speeds up command entry with autocompletion.
 * Ensures consistency, preventing forgotten arguments.
 
-<div class="process-sublist" markdown="1">
+<div class="process-list h4" markdown="1">
 
 #### OPTION 1: Define an alias returning options
 

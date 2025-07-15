@@ -33,6 +33,10 @@ $code-error: color("red-20"); */
     color: color('ink');
 } */
 
+li > div.highlighter-rouge{
+    margin-top: .5em;
+}
+
 code.highlighter-rouge.language-plaintext{
     background: $code-bg;
     border: 2px solid $code-bg;

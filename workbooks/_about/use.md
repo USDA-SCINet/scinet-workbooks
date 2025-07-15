@@ -20,16 +20,16 @@ Introduction to your tutorial and what the tutorial aims to accomplish.
 {% include overviews %}
 
 ### Tutorial Steps:
-1. **Accessing SCINet**
+* ***Accessing SCINet**
     1. Request a SCINet account
     1. Log in to SCINet
-1. **Setting up your workspace**
-1. **Accessing interfaces on SCINet**
-    1. Using the Shell
-    1. RStudio
-    1. JupyterLab
-    1. VS Code
-1. **Request compute resources and submit jobs on SCINet**
+* **Setting up your workspace**
+* **Accessing interfaces on SCINet**
+    * Using the Shell
+    * RStudio
+    * JupyterLab
+    * VS Code
+* **Request compute resources and submit jobs on SCINet**
 
 ## Accessing SCINet
 
@@ -59,7 +59,7 @@ You will need to decide where files will be stored for the tutorials.  Most tuto
 * **90daydata:** temporary workspace for large, short-term data where files will be deleted after 90 days. `90daydata/shared` is a space where data can be shared among users or teams, but each user still has a dedicated folder. Read our [Storage Guides](https://scinet.usda.gov/guides/data/storage#large-short-term-storage) for more information on 90daydata.  
 
 
-<div class="process-list" markdown="1">
+<div class="process-list ul" markdown="1">
 
 ### Making your workspace directory in 90daydata 
 

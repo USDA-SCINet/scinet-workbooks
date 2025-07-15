@@ -162,6 +162,11 @@ function getQuizQuestions() {
 function quizload(){
 
   getQuizQuestions();
+  
+  $( "code.nocopy" ).wrap("<div class='language-plaintext highlighter-rouge'><div class='highlight'><pre class='highlight'></pre></div></div>");
+  
+  $( "code.copy" ).wrap("<div class='language-plaintext copy-code highlighter-rouge'><div class='highlight'><pre class='highlight'></pre></div></div>");
+
 
   document.querySelectorAll('.sn-quiz').forEach(quiz => {
     //quiz.addEventListener("submit", () => submitQuiz(quiz));
