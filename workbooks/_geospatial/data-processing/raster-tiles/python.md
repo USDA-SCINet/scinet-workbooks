@@ -12,7 +12,13 @@ code: GRWG22_RasterTiles.ipynb
 updated: 2022-10-07 
 terms: [Parallel processing, Core, Tile, NDVI]
 
-overview: [materials,packages,terminology]
+overview: [packages,terminology, materials]
+
+environment: geoenv
+
+
+setup: [shell, mkdir,conda,kernel]
+conda: [geopandas rioxarray rasterstats plotnine ipython ipykernel dask dask-jobqueue -c conda-forge]
 ---
 
 
@@ -35,7 +41,42 @@ an example on how to submit your own SLURM job, please see
 
 ## Getting Started
 
-{% include setup/code %}
+{% include setup/90daydata %}
+
+{% include setups %}
+1. Launch JupyterLab in OoD.  
+  Select the following parameter values when requesting a JupyterLab app to be launched depending on which cluster you choose. All other values can be left to their defaults.  
+    * **Ceres:**  
+        * `Slurm Partition`: short  
+        * `Number of hours`: 1  
+        * `Number of cores`: 16  
+        * `Memory required`: 24G  
+        * `Jupyer Notebook vs Lab`: Lab  
+    * **Atlas:**  
+        * `Partition Name`: development   
+        * `QOS`: normal  
+        * `Number of hours`: 1  
+        * `Number of tasks`: 16  
+        * `Additional Slurm Parameters`: --mem=24G  
+1. Open a terminal in JupyterLab
+  * File > New > Terminal
+1. {% include setup/code %}
+1. Make sure the tutorial kernel is selected:
+  * Kernel > Change Kernel > select `{{ kernel }}` from the drop down menu
+1. Import Libraries / Packages:
+  ```python
+  import time
+  import xarray
+  import rioxarray
+  import glob
+  import os
+  import rasterio
+  from rasterio.enums import Resampling
+  import multiprocessing as mp
+  from dask.distributed import Client
+  from dask_jobqueue import SLURMCluster
+  ```
+
 
 ## Tutorial Steps
 * Open Imagery and Setup Tiles - Open a GeoTIFF of Landsat 7 imagery and divide
@@ -50,89 +91,8 @@ an example on how to submit your own SLURM job, please see
 
 <div class="process-list" markdown='1'>  
 
-### Import Libraries / Packages
 
-Below are commands to run to create a new Conda environment named 'geoenv' that contains the packages used in this tutorial series. To learn more about using Conda environments on Ceres, see [this guide](https://scinet.usda.gov/guides/software/conda). NOTE: If you have used other Geospatial Workbook tutorials from the SCINet Geospatial Research Working Group Workshop 2022, you may have aleady created this environment and may skip to launching JupyterHub.
-
-First, we allocate resources on a compute (Ceres) or development (Atlas) node so we do not burden the login node with the conda installations. 
-
-On Ceres:
-```bash
-salloc
-```
-
-On Atlas (you will need to replace `yourProjectName` with one of your project's name):
-```bash
-srun -A yourProjectName -p development --pty --preserve-env bash
-```
-
-Then we load the `miniconda` conda module available on Ceres and Atlas to access the `Conda` commands to create environments, activate them, and install Python and packages.
-
-```bash
-salloc
-module load miniconda
-conda create --name geoenv
-source activate geoenv
-conda install geopandas rioxarray rasterstats plotnine ipython ipykernel dask dask-jobqueue -c conda-forge
-```
-
-To have JupyterLab use this conda environment, we will make a kernel.
-
-
-```bash
-ipython kernel install --user --name=geo_kernel
-```
-
-This tutorial assumes you are running this python notebook in JupyterLab. The 
-easiest way to do that is with Open OnDemand (OoD) on [Ceres](http://ceres-ood.scinet.usda.gov/)
-or [Atlas](https://atlas-ood.hpc.msstate.edu/). 
-Select the following parameter values when requesting a JupyterLab
-app to be launched depending on which cluster you choose. All other values can 
-be left to their defaults. Note: on Atlas, we are using the development partition
-so that we have internet access to download files since the regular compute nodes
-on the `atlas` partition do not have internet access.
-
-Ceres:
-* `Slurm Partition`: short
-* `Number of hours`: 1
-* `Number of cores`: 16
-* `Memory required`: 24G
-* `Jupyer Notebook vs Lab`: Lab
-
-Atlas:
-* `Partition Name`: development 
-* `QOS`: normal
-* `Number of hours`: 1
-* `Number of tasks`: 16
-* `Additional Slurm Parameters`: --mem=24G
-
-To download the python notebook file for this tutorial to either cluster within OoD, 
-you can use the following lines in the python console:
-
-```python
-import urllib.request
-tutorial_name = 'GRWG22_RasterTiles.ipynb'
-urllib.request.urlretrieve('{{file_path}}/' + tutorial_name, 
-                           tutorial_name)
-```
-
-
-Once you are in JupyterLab with this notebook open, select your kernel by clicking on the *Switch kernel* button in the top right corner of the editor. A pop-up will appear with a dropdown menu containing the *geo_kernel* kernel we made above. Click on the *geo_kernel* kernel and click the *Select* button. 
-
-```python
-import time
-import xarray
-import rioxarray
-import glob
-import os
-import rasterio
-from rasterio.enums import Resampling
-import multiprocessing as mp
-from dask.distributed import Client
-from dask_jobqueue import SLURMCluster
-```
-
-#### 1a: Open imagery
+### Open imagery
 
 The imagery file we will use is available from the `stars` R package. It is an 
 example image from Landsat 7. In its documentation, it indicates that the first three bands are 
@@ -179,7 +139,7 @@ nir_red_fine = L7_ETMs[[2,3]].rio.reproject(
 nir_red_fine.rio.to_raster('nr_fine.tif')
 ```
 
-#### 1b: Making tiles
+#### Making tiles
 
 First, we will specify how many tiles we want. This example
 will use 4 tiles in each directions for a total of 16 tiles. Next, we will use
