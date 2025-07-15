@@ -39,13 +39,14 @@ function submitQuestion(form){
 
 function processCodeBlocks (solutionhtml){
   let copyingcode = solutionhtml.find( "code.copy" );
-  solutionhtml.find( "code.nocopy" ).wrap("<div class='language-plaintext highlighter-rouge'><div class='highlight'><pre class='highlight'></pre></div></div>");
+  solutionhtml.find( "code.no-copy" ).wrap("<div class='language-plaintext highlighter-rouge'><div class='highlight'><pre class='highlight'></pre></div></div>");
   
   if (copyingcode.length > 0) {
     copyingcode.wrap("<div class='language-plaintext copy-code highlighter-rouge'><div class='highlight'><pre class='highlight'></pre></div></div>");
     // add the copycode section here.
-    let copycodediv = solutionhtml.find( "div.copy-code" );
-    codeProcess(copycodediv[ 0 ] );
+    solutionhtml.find( "div.copy-code" ).each(function(){
+      codeProcess(this);
+    });
   }
 }
 
@@ -56,9 +57,7 @@ function quizSuccess(formid, idval, myResponses) {
   var displayDiv = $('#' + displayDivId);
 
   // Find the question by qid (ensure idval is number if needed)
-  console.log(questions);
   var mySolutions = questions ? questions.find(q => String(q.qid) === String(idval)) : null;
-  console.log(mySolutions);
   var myAnswer = mySolutions ? mySolutions.answer : null;
   var mySolution =  mySolutions ? mySolutions.solution : null;
   var myCorrections = mySolutions ? mySolutions.responses : null;
@@ -149,7 +148,6 @@ function getQuizQuestions() {
       success: function (data) {
         
         var entry = data.find(q => q.ref === path);
-        console.log(entry.questions);
         var questionsarray = entry ? entry.questions : null;
         questions = questionsarray;
       },
@@ -163,10 +161,11 @@ function quizload(){
 
   getQuizQuestions();
   
-  $( "code.nocopy" ).wrap("<div class='language-plaintext highlighter-rouge'><div class='highlight'><pre class='highlight'></pre></div></div>");
-  
-  $( "code.copy" ).wrap("<div class='language-plaintext copy-code highlighter-rouge'><div class='highlight'><pre class='highlight'></pre></div></div>");
-
+  $( "code.no-copy" ).wrap("<div class='language-plaintext highlighter-rouge'><div class='highlight'><pre class='highlight'></pre></div></div>");
+  $( "code.copy" ).wrap("<div class='language-plaintext quiz-copy-code highlighter-rouge'><div class='highlight'><pre class='highlight'></pre></div></div>");
+  /* $("div.quiz-copy-code").each(function(){
+    codeProcess(this);
+  }); */
 
   document.querySelectorAll('.sn-quiz').forEach(quiz => {
     //quiz.addEventListener("submit", () => submitQuiz(quiz));
