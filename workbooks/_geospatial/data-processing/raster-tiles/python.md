@@ -15,8 +15,6 @@ terms: [Parallel processing, Core, Tile, NDVI]
 overview: [packages,terminology, materials]
 
 environment: geoenv
-
-
 setup: [shell, mkdir,conda,kernel]
 conda: [geopandas rioxarray rasterstats plotnine ipython ipykernel dask dask-jobqueue -c conda-forge]
 ---
