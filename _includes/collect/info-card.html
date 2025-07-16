@@ -37,7 +37,7 @@
     <div class="padding-x-2 usa-collection__body">
         <h3 class="usa-collection__heading rm-a no_toc">
             <a class="usa-link" href="{% include url.html link=post %}">
-                {%- if page.filter-names %}
+                {%- if page.filter-names or page.index %}
                 {% assign types = post.type | default: 'index' %}
                 {% assign decortype = site.data.filter['icons'] | where: "type", types %}
                 {% assign decor = decortype[0].icon %}
@@ -48,7 +48,7 @@
                   </svg>{%- endif %} -->
             </a>
         </h3>
-        {% if page.filter-names %}<div class="mobile-lg:margin-left-3">{% endif %}
+        {% if page.filter-names or page.index %}<div class="mobile-lg:margin-left-3">{% endif %}
         {% unless no_summary %}
         {% if post.description %}
         <p class="usa-collection__description">
@@ -75,13 +75,14 @@
         {% endif %}
 
         {% unless page.no-tags %}
-        {% if post.tags or post.type %}
+        {% if post.tags or post.type or post.language %}
         <ul class="usa-collection__meta padding-top-1" aria-label="Tags">
             {% if post.subject and wbtags != "" %}
             {% for wbtag in wbtags %}
             <a class="gloss_wb" href="{{ base_url }}/{{ wbtag }}/" ><li class="usa-collection__meta-item usa-tag listed">{{ wbtag | replace: "-", " " }}</li></a>
             {% endfor %}
             {% endif %}
+            {% if post.language %}<li class="usa-collection__meta-item usa-tag">{{ post.language }}</li>{% endif %}
             {% if post.tags %}
             {% for tag in post.tags %}
             <li class="usa-collection__meta-item usa-tag">{{ tag | replace: "-", " " }}</li>

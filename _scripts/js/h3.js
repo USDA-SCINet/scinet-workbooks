@@ -23,7 +23,7 @@ function h3divs() {
             $(this).addClass("usa-process-list__heading");
             $(this).nextUntil(ending_header)
             .addBack()
-            .wrapAll(`<li class='usa-process-list__item' ${hlist_depth} usa-prose' />`);
+            .wrapAll(`<li class='usa-process-list__item ${hlist_depth} usa-prose' />`);
         });
         processList.children().wrapAll(`<${list_tag} class='usa-process-list' />`);
     });
