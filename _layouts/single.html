@@ -10,10 +10,11 @@ scripts: ['/assets/js/lib/jquery-3.4.1.min.js', '/assets/js/filter/filternav.js'
     <div class="tablet:grid-col-8">
         <div class="usa-collection__body">
             {%- if page.author %}{% include layout/author author=page.author %}{%- endif %}
-            {% if page.affiliation or page.wgs %}
+            {% if page.affiliation or page.wgs or page.references %}
             <ul class="usa-collection__meta">
                 {% if page.affiliation %}<li class="usa-collection__meta-item">{{ page.affiliation }}</li>{% endif %}
                 {% if page.wgs %}<li class="usa-collection__meta-item">{% include layout/components/wgs wg=page.wgs %}</li>{% endif %}
+                {% if page.references %}<li class="usa-collection__meta-item"><a href="#related-reading">References</a></li>{% endif %}
             </ul>
             {% endif %}
         </div>
