@@ -1,0 +1,19 @@
+{% assign page = include.page %}
+<ul class="usa-collection__meta">
+    {%- if page.updated %}
+    {%- assign pagedate = page.updated %}
+    {%- else %}
+    {%- assign _modifed = site.data.modified["modified"] -%}
+    {% capture ppath %}{% if page.collection %}workbooks/{% endif %}{{ page.path }}{% endcapture %}{%- assign modifieddate = _modifed | where_exp: "commit", "commit.filename == ppath" -%}
+    {%- for _mdate in modifieddate limit:1 %}{% assign pagedate = _mdate.modified %}{%- endfor %}
+    {%- endif %}
+    {% if page.published %}
+    <li class="usa-collection__meta-item"><b>Published:</b> {{ pagedate | date: '%B %d, %Y' }}</li>
+    {% endif %}
+    {% unless page.published and page.published == pagedate %}{% if pagedate %}
+    <li class="usa-collection__meta-item"><b>Last Update:</b> {{ pagedate | date: '%B %d, %Y' }}</li>
+    {% endif %}{% endunless %}
+    {% if page.language %}
+    <li class="usa-collection__meta-item"><b>Language:</b> {{ page.language }}</li>
+    {% endif %}
+</ul>
