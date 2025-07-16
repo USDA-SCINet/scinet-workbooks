@@ -1,21 +1,23 @@
 {%- assign footer = site.data.footer -%}
 {%- assign _modifed = site.data.modified["modified"] -%}
-{% capture ppath %}{% if page.collection %}sn_collections/{% endif %}{{ page.path }}{% endcapture %}
+{% capture ppath %}{% if page.collection %}workbooks/{% endif %}{{ page.path }}{% endcapture %}
 {%- assign modifieddate = _modifed | where_exp: "commit", "commit.filename == ppath" -%}
 {% if footer %}
 <footer class="usa-footer usa-footer--big">
 
-  {% if footer.last_updated %}
+  {%- if footer.last_updated %}{% for _mdate in modifieddate limit:1 %}{% assign pmdate = _mdate.modified | date: '%B %d, %Y at %I:%M %p' %}{% endfor %}
+  {%- if pmdate %}
   <div class="grid-container">
-    <p>Last updated: {% for _mdate in modifieddate limit:1 %}{{ _mdate.modified | date: '%B %d, %Y at %I:%M %p' }} {% endfor %} </p>
+    <p>Last updated: {{ pmdate }} </p>
   </div>
-  {% endif %}
+  {%- endif %}
+  {%- endif %}
 
-  {% comment %}<!--moved to nav component -->{%- if footer.top -%}
+  {%- if footer.top -%}
   <div class="grid-container usa-footer__return-to-top">
     <a href="{{ footer.top.url | default: '#' }}">{{ footer.top.title | default: 'Return to top' }}</a>
   </div>
-  {%- endif -%}{% endcomment %}
+  {%- endif -%}
 
   {%- assign _footer = footer.links -%}
   {%- assign footer_links = site.data.navigation[_footer] | default: _footer -%}

@@ -299,9 +299,13 @@ function getPages() {
 }
 
 $(document).ready(function() {
-  document.getElementById('icon-filter').addEventListener('keyup', function () {
-    filterComp(this); 
-  });
+
+  let iconfilter = document.getElementById('icon-filter');
+  if(iconfilter){
+    iconfilter.addEventListener('keyup', function () {
+      filterComp(this); 
+    });
+  }
   
   var myform = document.getElementById("workbook-array");
 

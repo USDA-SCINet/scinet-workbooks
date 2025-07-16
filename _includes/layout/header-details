@@ -1,0 +1,43 @@
+{% assign page = include.page %}
+<div class="grid-row">
+<div class="tablet:grid-col-8">
+    <div class="usa-collection__body">
+        {%- if page.author %}{% include layout/author author=page.author %}{%- endif %}
+        {% if page.affiliation or page.wgs or page.references %}
+        <ul class="usa-collection__meta">
+            {% if page.affiliation %}<li class="usa-collection__meta-item">{{ page.affiliation }}</li>{% endif %}
+            {% if page.wgs %}<li class="usa-collection__meta-item">{% include layout/components/wgs wg=page.wgs %}</li>{% endif %}
+            {% if page.references %}<li class="usa-collection__meta-item"><a href="#related-reading">References</a></li>{% endif %}
+        </ul>
+        {% endif %}
+    </div>
+</div>
+
+{% if page.type %}
+<div class="tablet:grid-col-4 tablet-text-right">
+    {%- if page.ext == '.html' %}
+    {% assign contentstrip = page.content | strip_newlines %}
+    {% unless contentstrip == null or content == "" %}
+    {% include layout/components/date-list page=page %}
+    {% endunless %}
+    {%- else %}
+    <div class="usa-collection__body">
+        {% case page.type %}
+        {% when 'interactive tutorial' %}
+        <b>Interactive Tutorial</b>
+        {% when 'lesson module' %}
+        <b>Lesson Module</b>
+        {% when 'reference material' %}
+        <b>Reference Material</b>
+        {% else %}
+        <b>{{ page.type | capitalize }}</b>
+        {% endcase %}
+        {% include layout/components/date-list page=page %}
+
+    </div>
+    {%- endif %}
+</div>
+{% endif %}
+{% if page.prereq %}
+{% endif %}
+</div>

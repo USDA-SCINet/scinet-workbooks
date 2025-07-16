@@ -9,7 +9,78 @@
 {% endfor %}
 
 {% assign subtags = subtags | uniq | compact | join: "," %}
-{% if subtags != empty or page.wgs or page.reccs %}
+{% if subtags != empty or page.wgs or page.related or page.language or page.references %}
+
+<div id="related-reading" class="highlighted highlighted--reading">
+  <div class="highlighted__body">
+  
+  <h4 class="highlighted__heading">Related Reading</h4>
+  <ul class="usa-list">
+    {% unless subtags == empty %}
+  <li class="">
+    {% include layout/filter-related.html search=subtags attribute='tags' text='Find similar workbooks' %}
+  </li>
+  {% endunless %}
+  {% if page.language %}
+  <li class="">
+    {% include layout/filter-related.html search=page.language attribute='language' btext='Other ' atext=' workbooks' %}
+  </li>
+  {% endif %}
+  {% if page.wgs %}
+  {%- assign wg-full = site.data.workinggroups['wgs'] | where: "shorthand", page.wgs %}
+  {%- assign wgname = wg-full[0].title | prepend: 'Other workbooks developed by the ' %}
+  <li>
+    {% include layout/filter-related.html search=page.wgs attribute='wgs' text=wgname %}
+  </li>
+  {% endif %}
+  {% if page.related %}
+  <li class="">
+    You may also be interested in:
+    <ul class="usa-list">
+        {% for _rec in page.related %}
+        {% if _rec.url %}
+          <li><a href="{{ _rec.url }}">{{ _rec.title }}</a></li>
+        {% else %}
+        <li>{{ _rec | markdownify }}</li>
+        {% endif %}
+        {% endfor %}
+    </ul>
+  </li>
+  {% endif %}
+  {% if page.references %}
+  <li class="">
+    References for this page:
+    <ul class="usa-list">
+        {% for _rec in page.references %}
+        {% if _rec.url %}
+          <li><a href="{{ _rec.url }}">{{ _rec.title }}</a></li>
+        {% else %}
+        <li>{{ _rec | markdownify }}</li>
+        {% endif %}
+        {% endfor %}
+    </ul>
+  </li>
+  {% endif %}
+  {% if page.external-related %}
+  <li class="">
+    <a href="/about/disclaimer#external">External resources</a> you may find helpful:
+    <ul class="usa-list">
+      {% for _rec in page.external-related %}
+      {% if _rec.url %}
+      <li><a href="{{ _rec.url }}">{{ _rec.title }}</a></li>
+      {% else %}
+      <li>{{ _rec | markdownify }}</li>
+      {% endif %}
+      {% endfor %}
+    </ul>
+  </li>
+  {% endif %}
+  </ul>
+  
+  </div>
+</div>
+
+{% comment %}<!--
 <div class="grid-row bg-base-lighter" >
     <div class="grid-container margin-y-2 width-full">
     
@@ -32,22 +103,22 @@
         {% include layout/filter-related.html search=page.wgs attribute='wgs' text=wgname %}
       </li>
       {% endif %}
-      {% if page.reccs %}
+      {% if page.related %}
       <li class="">
         You may also be interested in:
         <ul class=".usa-list">
-            {% for _rec in page.reccs %}
+            {% for _rec in page.related %}
                 {% assign recpost = site[page.collection]  | where:"url", _rec  | first %}
                 <li><a href="{{ _rec.url | relative_url }}">{{ recpost.title }}</a></li>
             {% endfor %}
         </ul>
       </li>
       {% endif %}
-      {% if page.external-reccs %}
+      {% if page.external-related %}
       <li class="">
         <a href="/about/disclaimer#external">External resources</a> you may find helpful:
         <ul class=".usa-list">
-            {% for _rec in page.external-reccs %}
+            {% for _rec in page.external-related %}
                 <li><a href="{{ _rec.url }}">{{ _rec.title }}</a></li>
             {% endfor %}
         </ul>
@@ -55,5 +126,6 @@
       {% endif %}
       </ul>
     </div>
-</div>
+</div>-->
+{% endcomment %}
 {% endif %}
