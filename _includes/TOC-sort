@@ -41,10 +41,12 @@
     {% capture pageurl %}{{ page.path | remove: pagepath }}{% endcapture %}
     {% if page.index %}
       {%- assign pagedepthcount = page.index | plus: 1 %}
+      {% assign ppath_segments = pageurl | split: '/' %}
+      {% assign shortpath = ppath_segments | slice: 0, page.index | join: "/" | append: '/' %}
     {% else %}
       {%- assign pagedepthcount = page.path | split: '/' | size | minus: 1 %}
     {% endif %}
-    {% comment %}
+    <!--{% comment %}
     {% unless pageurl == pagepath1 %}
       {% assign siblingposts = blankarray %}
       {% assign ppath_segments = pageurl | split: '/' %}
@@ -55,7 +57,7 @@
       {% endif %}
       {% assign shortpath = ppath_segments | slice: 0, sib_depth | join: "/" | append: '/' %}
     {% endunless %}
-    {% endcomment %}
+    {% endcomment %}-->
 
     {% for _post in site[page.collection] %}
       {% if _post.ext == '.html' or _post.ext == '.md' %}
@@ -63,7 +65,7 @@
         {% capture postpath %}{{ _post.path | remove: postslug }}{% endcapture %}
 
         {% if page.index %}
-          {% if _post.index == page.index %}
+          {% if _post.index == page.index and postpath contains shortpath %}
             {% assign siblingposts = siblingposts | push: _post %}
           {% elsif page.path contains postpath and _post.index %}
             {% assign prevTOC = prevTOC | push: _post %}
@@ -73,6 +75,8 @@
             {%- if postpath == pageurl or _post.index == pagedepthcount %}
               {% assign sortposts = sortposts | push: _post %}
             {%- endif %}
+          {% elsif postpath == shortpath %}
+          {% unless _post.index %}{% assign siblingposts = siblingposts | push: _post %}{% endunless %}
           {% endif %}
 
         {% else %}
