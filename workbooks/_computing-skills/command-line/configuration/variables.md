@@ -220,7 +220,7 @@ Shell variables can be categorized as either static or dynamic based on how thei
   ```
 * Storing a File Path for quick access to directories and tools:
   ```bash
-  project_dir="/home/user/projects"  # Stores a custom path in a file system
+  project_dir="/home/$USER/projects"  # Stores a custom path in a file system
   echo $project_dir
   cd $project_dir
   ```
