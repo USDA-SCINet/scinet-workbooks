@@ -5,7 +5,7 @@ order: 1
 description: Getting started with Bash on SCINet
 type: interactive tutorial 
 
-tags: [unix, bash, command line] 
+tags: [unix, command line] 
 
 terms:
   - Shell
