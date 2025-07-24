@@ -28,14 +28,14 @@
     {% endif %}
 
     {% if page.index %}
+    {% include layout/components/next-prev related=prevpage relation="Previous" section=true icon="navigate_far_before" %}
     {%- for _next in sortposts limit: 1 %}
     {% include layout/components/next-prev related=_next relation="Next" icon="navigate_next" class="usa-current" %}
     {% endfor %}
     {% include layout/components/next-prev related=nextpage relation="Next" section=true icon="navigate_far_next" %}
-    {% include layout/components/next-prev related=prevpage relation="Previous" section=true icon="navigate_far_before" %}
     {% else %}
-    {% include layout/components/next-prev related=nextpage relation="Next" icon="navigate_next" class="usa-current" %}
     {% include layout/components/next-prev related=prevpage relation="Previous" icon="navigate_before" %}
+    {% include layout/components/next-prev related=nextpage relation="Next" icon="navigate_next" class="usa-current" %}
     {% endif %}
     
     {%- endunless %}
