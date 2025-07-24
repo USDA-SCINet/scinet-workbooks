@@ -51,6 +51,8 @@ Efficiently accessing built-in documentation allows you to:
 
 
 **Why use built-in documentation instead of searching online?**  
+
+{:.fancy-ul--green}
 * **Immediate access:** No need for internet connectivity, which may be restricted in some HPC environments.
 * **Version-specific information:** Online resources may not match the specific software versions installed on an HPC system.
 * **Detailed and authoritative:** Built-in manuals are maintained by the developers of the command or system.
@@ -71,14 +73,14 @@ Unix-based systems provide multiple ways to access help, each with different lev
 | `tldr`    | Community-driven, simplified examples of command usage. | Quickly learning common use cases of a command. | `tldr tar` |" %}
 
 
-## **Explore Command Manuals**: `man`
+## Explore Command Manuals: `man`
 
 The `man` (manual) command is a powerful tool that allows users to access comprehensive documentation directly from the terminal.  It provides structured information, including syntax, available options and examples.  
 
 {% include table content="| command syntax | description | example usage |
 | --       | --           | --             |
 | `man <command>` | Opens the complete manual page for a command. | `man grep` |
-| `/keyword`      | Searches for a term inside a man page. | `/-i` <br>*(inside man grep)* |
+| `/keyword`      | Searches for a term inside a man page. | `/-i` <br>(inside man grep) |
 | `man <section><command>` | Opens a specific manual section. | `man 5 passwd` |
 | `man -k <keyword>` | Lists commands related to a keyword. | `man -k passwd` |" %}
 
@@ -86,14 +88,14 @@ For HPC users, understanding how to efficiently use man pages can greatly improv
 
 {% include table caption="Structure of man pages" content="| section | purpose |
 | --               | --       |
-| **NAME**        | The command name and a brief one-line description. |
-| **SYNOPSIS**    | Basic usage and syntax. |
-| **DESCRIPTION** | Detailed explanation of what the command does. |
-| **OPTIONS**     | Available command flags and their functions. |
-| **EXAMPLES**    | Practical examples of usage. |
-| **SEE ALSO**    | References to related commands or documentation. |" %}
+| NAME        | The command name and a brief one-line description. |
+| SYNOPSIS    | Basic usage and syntax. |
+| DESCRIPTION | Detailed explanation of what the command does. |
+| OPTIONS     | Available command flags and their functions. |
+| EXAMPLES    | Practical examples of usage. |
+| SEE ALSO    | References to related commands or documentation. |" %}
 
-<div class="process-list" markdown="1">
+<div class="process-list ul" markdown="1">
 
 ### Opening a `man` page
 
@@ -101,12 +103,10 @@ To access the manual for any command, simply use `man` keyword followed by a com
 ```bash
 man ls
 ```
-*This shows the manual page for `ls` command.*
+This shows the manual page for `ls` command.
 
 
 Scroll through the page and observe the NAME, SYNOPSIS and OPTIONS sections.
-
-![manual pages man](../../assets/img/manual_pages_man.gif)
 
 
 ### Navigating man pages
@@ -126,15 +126,15 @@ Once inside a `man` page, you can navigate efficiently using the following short
 <div class="highlighted highlighted--question ">
 <div class="highlighted__body"  markdown="1">
 <h4 class="highlighted__heading">Exercise: Try it yourself!</h4>
+
 1. Open the manual page for the `grep` command:
-```bash
-man grep
-```
-
-2. Search for the `-i` option (case-insensitive search). <br>
-*Press `/`, type `-i` and hit `Enter`.*
-
+  ```bash
+  man grep
+  ```
+2. Search for the `-i` option (case-insensitive search).  
+  Press `/`, type `-i` and hit `Enter`.
 3. Exit the manual using `q`.
+
 </div>
 </div>
 
@@ -156,15 +156,15 @@ Unix manual pages are divided into sections based on command types
 The most common sections for HPC users are in bold:
 
 {% include table content="| section | description |
-|--       |--           |
-| **1** | User commands *(most relevant for general users)* |
-| **2** | System calls *(kernel functions)* |
-| **3** | Library functions *(e.g., `C` library functions)* |
-| `4` | Special files *(devices)* |
-| **5** | File formats and configuration files |
+| --    | --           |
+| `1` | User commands (most relevant for general users) |
+| `2` | System calls (kernel functions) |
+| `3` | Library functions (e.g., `C` library functions) |
+| `4` | Special files (devices) |
+| `5` | File formats and configuration files |
 | `6` | Games & screensavers |
-| `7` | Miscellaneous *(protocols, conventions, etc.)* |
-| `8` | System administration commands *(e.g., `mount` filesystems)* |" %}
+| `7` | Miscellaneous (protocols, conventions, etc.) |
+| `8` | System administration commands (e.g., `mount` filesystems) |" %}
 
 
 #### Checking all available `man` sections
@@ -177,7 +177,7 @@ man -k passwd
 ```
 This will list all available manual pages related to passwd, showing their section numbers.
 
-![manual page sections](../../assets/img/manual_page_sections.png)
+![manual page sections]({{ images_path }}/manual/manual_page_sections.png)
 
 To access the correct page, specify the section number:
 ```bash
@@ -187,7 +187,7 @@ man 5 passwd
 ```
 This opens the documentation for the `passwd` file format rather than the `passwd` command.
 
-![manual page category](../../assets/img/manual_page_category.png)
+![manual page category]({{ images_path }}/manual/manual_page_category.png)
 
 <div class="highlighted highlighted--question ">
 <div class="highlighted__body"  markdown="1">
@@ -217,7 +217,7 @@ whatis mkdir
 ```
 This returns a one-line description of the command.
 
-![manual whatis](../../assets/img/manual_whatis.png)
+![manual whatis]({{ images_path }}/manual/manual_whatis.png)
 
 
 ### Find related commands: `apropos`
@@ -231,7 +231,7 @@ apropos "archive"
 ```
 This lists commands related to the keyword "archive" along with their short descriptions.
 
-![manual apropos](../../assets/img/manual_apropos.png)
+![manual apropos]({{ images_path }}/manual/manual_apropos.png)
 
 <div class="highlighted highlighted--question ">
 <div class="highlighted__body"  markdown="1">
@@ -252,7 +252,7 @@ apropos "text"
 The `help` command provides brief descriptions and usage details for shell built-in commands. 
 Unlike `man`, which documents external programs, `help` is specific to commands that are built into the shell, such as `cd`, `echo` or `alias`.
 
-![help for shell built-in commands](../../assets/img/manual_shell_help.png)
+![help for shell built-in commands]({{ images_path }}/manual/manual_shell_help.png)
 
 * To display help for a shell built-in, use:
     ```bash
@@ -278,7 +278,7 @@ ls --help
 ```
 This shows a brief explanation of the cd command and its options.
 
-![command help flag](../../assets/img/manual_help_flag.png)
+![command help flag]({{ images_path }}/manual/manual_help_flag.png)
 
 
 ### Online documentation
