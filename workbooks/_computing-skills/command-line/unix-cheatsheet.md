@@ -3,7 +3,7 @@ title: Basic Unix Commands
 description: Basic Unix commands reference lists
 type: reference material 
 
-tags: [unix, bash] 
+tags: [unix] 
 
 language: Bash
 
