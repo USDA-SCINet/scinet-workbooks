@@ -593,7 +593,7 @@ This creates an archive of logs with the current directory name and date, useful
 
 <div class="usa-accordion">
 
-{% include accordion title="Check names of available partitions" class="overview" controls="alias-set5-0" icon="flag" %}
+{% include accordion title="Check names of available partitions" class="overview" controls="alias-set5-0" %}
 <div id="alias-set5-0" class="accordion_content" markdown="1" hidden> 
 
 Alias to display partitions available on each SCINet cluster:
@@ -617,10 +617,10 @@ For more detailed partition information, you can preview the full command using:
 ```bash
 type -a show_partitions
 ```
-![alias reveal command]({{ images_path }}/alias/alias_reveal_command.png)
-This reveals the real command behind the alias, allowing you to skip the `grep` part and see the complete partition details without searching through notes or user guides.
+![alias reveal command]({{ images_path }}/alias/alias_reveal_command.png)  
+This reveals the real command behind the alias, allowing you to skip the `grep` part and see the complete partition details without searching through notes or user guides.  
 ![partition details]({{ images_path }}/partition_details.png)
-</div></div>
+
 
 </div>
 
