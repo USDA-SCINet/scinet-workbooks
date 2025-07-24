@@ -593,7 +593,7 @@ This creates an archive of logs with the current directory name and date, useful
 
 <div class="usa-accordion">
 
-{% include accordion title="Check names of available partitions" class="overview" controls="alias-set5-0" %}
+{% include accordion title="Check names of available partitions" class="overview" controls="alias-set5-0"  icon="flag" %}
 <div id="alias-set5-0" class="accordion_content" markdown="1" hidden> 
 
 Alias to display partitions available on each SCINet cluster:
@@ -678,7 +678,7 @@ This alias is particularly useful when troubleshooting or cleaning up large data
 </div></div>
 
 </div>
-
+</div>
 
 ## Troubleshooting common issues
 
