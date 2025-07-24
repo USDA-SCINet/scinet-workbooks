@@ -3,7 +3,7 @@
 title: Using environment and shell variables
 description: "An in-depth guide to environment and shell variables in SCINet CLI"
 type: interactive tutorial
-order: 5
+order: 1
 language: Bash
 packages: 
 level: 
@@ -80,15 +80,11 @@ This interactive tutorial focuses on teaching you how to distinguish and effecti
 {% include overviews %}
 
 ## Getting Started
+
 To complete this tutorial, you will need to launch the shell on SCINet. If you are unsure how to do this, please refer to [Getting Started with SCINet Workbooks](/about/use#using-the-shell) for instructions.  
 
 
-## Configuring your shell environment
-
-Shell configuration involves managing the behavior and settings of a command-line session. In practice, it involves defining and managing environment variables, setting aliases, and adjusting shell settings to control how the command-line interface behaves. 
-
-On HPC systems, configuring the shell environment is particularly crucial, as it directly impacts the efficiency and correctness of settings for jobs submitted to computing nodes. 
-By understanding the environment components and customizing these settings, you can create a streamlined and robust environment for high-performance computing tasks on SCINet clusters.
+## Environment vs Shell Variables
 
 Your shell environment is managed using variables, which can be categorized mainly into `environment variables` and `shell variables`. 
 The primary difference lies in scope and persistence. Environment variables affect both the current shell and its child processes, while shell variables are limited to the current shell unless exported. 
@@ -182,7 +178,7 @@ The value assigned reflects the result of the command at the moment the variable
 For example, using the `unique_tag="sample_$RANDOM"` demonstration above:  
 If you create the variable `unique_tag` outside of the for loop and then call it, the result will be the same each time it is used.  If you assign and run it within the for loop, you will get a different result for each loop.  
   
-![variable as command result]({{ images_path }}/variable_unique_tag.png)
+![variable as command result]({{ images_path }}/variable/variable_unique_tag.png)
 </div>
 </div>  
 
@@ -203,7 +199,7 @@ unset my_var
 
 Use the `echo` command followed by the variable name with a `$` prefix to display its current value (e.g., `echo $PWD`). 
 
-![using echo to display variables]({{ images_path }}/shell_variables_scinet.png)
+![using echo to display variables]({{ images_path }}/variable/shell_variables_scinet.png)
 
 {% include question qid="1,2,3" %}
 
@@ -247,7 +243,7 @@ echo "Current Date: $current_date"
 touch file_$current_date
 ```
 
-![variable_timestamp]({{ images_path }}/variable_timestamp.png)
+![variable_timestamp]({{ images_path }}/variable/variable_timestamp.png)
 
 </div>
 
@@ -591,14 +587,14 @@ When working on HPC clusters, issues related to environment variables can lead t
 ```bash
 echo $TMPDIR        # outputs an empty line
 ```
-![empty-variable](../assets/img/empty-variable.png)
+![empty-variable]({{ images_path }}/variable/empty-variable.png)
 
 **SOLUTIONS:** <br>
 **A.** Some variables (e.g., `TMPDIR`) are set on a **compute node** but not on a **login node**. Check the hostname to confirm your working environment. Also, review the list of [HPC-specific environment variables](#hpc-specific-env-variables).
 ```bash
 hostname
 ```
-![check_hostname](../assets/img/check_hostname.png)
+![check_hostname]({{ images_path }}/variable/check_hostname.png)
 
 **B.** Ensure your custom variable is defined and exported:
 ```bash
@@ -615,12 +611,12 @@ my_executable
 #ERROR: bash: command not found
 ```
 First, ensure that your executable file exist and find its location in the file system.
-![missing_executable_path](../assets/img/missing_executable_path.png)
+![missing_executable_path]({{ images_path }}/variable/missing_executable_path.png)
 **Common Cause:** If the executable file exists, the `PATH` variable may not include the directory where the executable resides.
 ```bash
 echo $PATH        # tool's path not present among listed locations
 ```
-![missing_executable_path](../assets/img/missing_executable_path2.png)
+![missing_executable_path]({{ images_path }}/variable/missing_executable_path2.png)
 
 **SOLUTIONS:** <br>
 Extend the `PATH` variable by adding a path to a directory with your executable:
@@ -633,7 +629,7 @@ export PATH=/custom-path/bin:$PATH      # replace /custom-path/bin with an absol
 By adding a tool's directory to the `PATH` variable, the shell automatically searches that location when a command is called, allowing the tool to be launched without specifying its full path. This provides a convenient way to run executables by its name from any working directory.
 </div>
 </div>
-![custom_path_included](../assets/img/custom_path_included.png)
+![custom_path_included]({{ images_path }}/variable/custom_path_included.png)
 </div>
 
 {% include accordion title="Error while loading shared libraries: $LD_LIBRARY_PATH" class="outline" controls="var-debug-3" %} 
@@ -642,7 +638,7 @@ By adding a tool's directory to the `PATH` variable, the shell automatically sea
 library path issues caused by missing (or not linked) required libraries in the specified search paths. 
 Typically, the concern is a missing `.so` (shared object) file, which should first be located on the system, 
 and its directory path checked for inclusion in the `LD_LIBRARY_PATH` variable.
-![missing_shared_library](../assets/img/missing_shared_library.png)
+![missing_shared_library]({{ images_path }}/variable/missing_shared_library.png)
 
 **SOLUTIONS:** <br>
 Locate the missing library:
@@ -663,7 +659,7 @@ export LD_LIBRARY_PATH=/path/to/lib:$LD_LIBRARY_PATH        # replace /path/to/l
 <div id="var-debug-4" class="accordion_content" hidden markdown="1">    
 **SYMPTOMS:** Multiple log files being generated unintentionally when using dynamic variables like `$SECONDS` and `$RANDOM` to create temporary files. 
 The typical cause is that built-in dynamic variables generate a new value each time they are referenced, resulting in different filenames on every call. As a result, when log file creation is misplaced (e.g., inside a loop where logs should be written continuously), a new file is generated on each iteration.
-![dynamic_variables_usage](../assets/img/dynamic_variables_usage.png)
+![dynamic_variables_usage]({{ images_path }}/variable/dynamic_variables_usage.png)
 
 **SOLUTIONS:** <br>
 Capture the dynamic value once and store it in a static variable before using it repeatedly:
@@ -674,7 +670,7 @@ for i in `seq 10`; do
   echo "Current analysis step: "$i >> $LOGFILE; 
 done
 ```
-![dynamic_variable_tag]({{ images_path }}/dynamic_variable_tag.png)
+![dynamic_variable_tag]({{ images_path }}/variable/dynamic_variable_tag.png)
 </div>
 
 {% include accordion title="Variable works interactively but fails in batch jobs or scripts" class="outline" controls="var-debug-5" %} 
@@ -751,7 +747,7 @@ to reset the affected built-in variables to their default state.
 
 **SOLUTIONS:** <br>
 On SCINet clusters, all compute nodes have 1.5 TB of fast local temporary data file storage space. A scheduled job or interactive session on a compute node sets up automatically a unique local space (e.g., `/local/bgfs/alex.badacz/13968447`) accessible only with the job script via the environmental `$TMPDIR` variable. You can use this for any scratch space disk space you need. You must copy any output data you need to keep back to permanent storage before the job ends, since `$TMPDIR` will be erased upon job exit. 
-![temporary_storage](../assets/img/temporary_storage.png)
+![temporary_storage]({{ images_path }}/variable/temporary_storage.png)
 
 <div id="note-alerts-1" class="highlighted highlighted--tip ">
 <div class="highlighted__body" markdown="1">

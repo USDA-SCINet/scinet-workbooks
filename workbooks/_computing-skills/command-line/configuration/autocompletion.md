@@ -39,8 +39,6 @@ Ccommand autocompletion is a powerful shell feature that enhances efficiency by 
 Command autocompletion is a shell feature that helps users predict and complete commands, filenames, directories, tool names, and options. 
 Instead of typing long commands / program names or remembering complex file paths, you can simply press `Tab` to let the shell complete the input for you.
 
-![autocompletion](../../assets/img/autocompletion.gif)
-
 **How Does It Work?**
 
 1. The shell looks at what you've typed so far.
@@ -48,7 +46,7 @@ Instead of typing long commands / program names or remembering complex file path
 * If a unique match exists, it completes automatically.
 * If multiple matches exist, press `Tab` the second time and suggestions will be displayed to choose from.
 
-<div class="process-list" markdown="1">
+<div class="process-list ul" markdown="1">
 
 ### Basic `Tab` completion
 
@@ -73,8 +71,6 @@ It also works with relative and absolute paths:
 cd /home/user/D<Tab>   →   cd /home/user/Documents
 ```
 
-![basic autocompletion using Tab](../../assets/img/basic_autocompletion.gif)
-
 
 ### Handling multiple matches `TabTab`
 
@@ -87,7 +83,7 @@ cd D<Tab><Tab>
 ```
 Use more characters *(e.g., `Do`, `Dow`)* to indicate your selection and press `Tab` again for autocompletion.
 
-![autocompletion multi match](../../assets/img/autocompletion_multi_match.png)
+![autocompletion multi match]({{ images_path }}/autocomplete/autocompletion_multi_match.png)
 
 
 ### Complete tool names from $PATH
@@ -132,7 +128,7 @@ Try this feature by typing `ls --` and pres `Tab` twice:
 ```bash
 ls --<Tab><Tab>  
 ```
-![autocompletion for command options](../../assets/img/autocompletion_options.png)
+![autocompletion for command options]({{ images_path }}/autocomplete/autocompletion_options.png)
 
 If you know the beginning of the option name, type one letter or more to narrow down the match. Pres `Tab` twice:
 
@@ -141,7 +137,7 @@ If you know the beginning of the option name, type one letter or more to narrow 
 ls --h<Tab><Tab>  
 ```
 
-![autocompletion narrow match](../../assets/img/autocompletion_narrow_match.png)
+![autocompletion narrow match]({{ images_path }}/autocomplete/autocompletion_narrow_match.png)
 
 
 
@@ -156,7 +152,7 @@ For example, when using `git`:
 git chec<Tab>   →   checkout   # unique match completed with a single Tab
 git st<Tab><Tab>  →   stage    stash    status      # list of matches displayed with Tab pressed twice
 ```
-![autocompletion of tool options](../../assets/img/autocompletion_tool_options.png)
+![autocompletion of tool options]({{ images_path }}/autocomplete/autocompletion_tool_options.png)
 
 Besides `git`, many CLI-based tools support option autocompletion, including `ssh`, `module`, `awk`.
 </div>
@@ -252,7 +248,7 @@ After defining the function and registering it, test the autocompletion:
 ./myscript.sh <Tab><Tab>
 ```
 If everything is set up correctly, `Tab` should suggest pre-defined options.  
-![autocompletion for custom scripts](../../assets/img/autocompletion_custom_scripts.png)
+![autocompletion for custom scripts]({{ images_path }}/autocomplete/autocompletion_custom_scripts.png)
 
 #### Persist the setup for all future shells
 
@@ -276,7 +272,7 @@ This can be useful for quickly recalling frequently used settings without needin
 * Speeds up command entry with autocompletion.
 * Ensures consistency, preventing forgotten arguments.
 
-<div class="process-list h4" markdown="1">
+<div class="process-list h4 ul" markdown="1">
 
 #### OPTION 1: Define an alias returning options
 
@@ -286,7 +282,7 @@ alias myscript_opts='echo "start stop restart status"'
 ```
 Now, running `myscript_opts` will print: *start stop restart status*.
 
-![autocompletion options stored in the alias](../../assets/img/autocompletion_options_in_alias.png)
+![autocompletion options stored in the alias]({{ images_path }}/autocomplete/autocompletion_options_in_alias.png)
 
 This is useful for quickly listing valid options before running the actual command. It requires that you manually create an alias with available options once.
 
@@ -312,7 +308,7 @@ complete -W "start stop restart status" myscript
 Now, after typing `myscript` and pressing `Tab` twice, you will see all options suggested: *start stop restart status*.  
 You can always narrow down options using the filtering based on matched pattern.
 
-![autocompletion: preview options using an alias](../../assets/img/autocompletion_preview_options_alias.png)
+![autocompletion: preview options using an alias]({{ images_path }}/autocomplete/autocompletion_preview_options_alias.png)
 
 {% include alert class="warning" content="This alias does not execute the actual script. It only provides informational autocompletion, meaning you can see and filter options with `Tab`.  
 
