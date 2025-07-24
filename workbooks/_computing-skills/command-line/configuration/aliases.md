@@ -79,7 +79,7 @@ While both aliases and variables play a role in simplifying tasks on the command
 
 {% include table caption="Differences between shell variables and aliases" classes="striped" sticky="true" fixed="true" no-row-labels="true" content="| shell variables   | aliases |
 | --                 | --       |
-| Variables store data or values, e.g., strings, numbers or file paths. <br>For example, `mydir=\"/home/user/project\"`. | Aliases act as shortcuts that store command sequences, making it easier to execute repetitive tasks. <br>For example, `alias ll='ls -l'`. |
+| Variables store data or values, e.g., strings, numbers or file paths. <br>For example, `mydir=\"/project/my_project/subfolder\"`. | Aliases act as shortcuts that store command sequences, making it easier to execute repetitive tasks. <br>For example, `alias ll='ls -l'`. |
 | When a variable is referenced (e.g., `$mydir`), the shell replaces it with its assigned value before execution. | When an alias is referenced (e.g., `ll`), the shell expands it into the original command (e.g., `ls -l`) before execution. |
 | Variables are used for dynamic content like user input, configuration values or temporary storage. | Aliases provide static command substitutions and are not meant to hold or manipulate dynamic data. |
 | Variables are flexible and can be used in scripting and programming logic, such as loops and conditionals. | Aliases are limited to simple command substitutions and are not suited for conditional or complex logic. |

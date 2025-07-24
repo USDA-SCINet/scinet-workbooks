@@ -68,7 +68,7 @@ It also works with relative and absolute paths:
 
 {:.no-copy}
 ```bash
-cd /home/user/D<Tab>   →   cd /home/user/Documents
+cd /home/$USER/D<Tab>   →   cd /home/$USER/Documents
 ```
 
 

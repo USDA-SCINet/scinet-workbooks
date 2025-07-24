@@ -381,7 +381,7 @@ For a more in-depth tutorial on autocomplete, including how to incorporate it in
 
 ### Absolute vs relative paths 
 Absolute path begins from the root and shows the full path to a location:   
-`cd /home/user/Documents`
+`cd /home/$USER/Documents`
 *	Starts from the root
 *	Works from any location
 
@@ -399,7 +399,7 @@ cd unix_tutorial/logs
 
 Now, let's do the same thing using an absolute path:   
 ```
-cd /home/user/unix_tutorial/logs
+cd /home/$USER/unix_tutorial/logs
 ```
 
 {% include alert class="question" title="Exercise" content="From within the `raw_data` folder, use a relative path to move to the `logs` folder. Try using an absolute path to return to your `home` directory." %}
@@ -408,7 +408,7 @@ cd /home/user/unix_tutorial/logs
 The tree command shows your current directory and its structure in a tree-like format. 
 
 ```
-cd /home/user/unix_tutorial/logs
+cd /home/$USER/unix_tutorial/logs
 tree
 ```
 
