@@ -1,0 +1,29 @@
+@use "uswds-core" as *;
+
+$lists-icons: (
+  "green" "secondary-darker" "\2714",
+);
+
+.fancy-ul > li{
+    @include u-padding-bottom(1);
+    @include u-padding-left('05');
+    &::marker {
+        content: "\2714"; 
+    }
+}
+
+@each $name, $colval, $icon in $lists-icons {
+    .fancy-ul--#{$name}{
+        & > li{
+            @include u-padding-bottom(1);
+            @include u-padding-left('05');
+            strong:first-of-type {
+                color: color($colval);
+              }
+            &::marker {
+                content: $icon; 
+                color: color($colval);
+            }
+        }
+    }
+}
