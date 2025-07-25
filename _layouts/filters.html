@@ -18,8 +18,9 @@ alert:
     {% assign inner = site['pathways'] %}
 {% elsif page.filter=='all' %}
   {% assign inner = site.documents | where: 'variety', 'workbook' %}
-  {%- assign outers = inner | where_exp: "item", "item.ext == '.md' or item.type == 'introduction'" %}
-  {%- assign clips = outers | where_exp: "item", "item.ext == '.html'" %}
+  {%- assign outers = inner | where_exp: "item", "item.ext == '.md' or item.type" %}
+  {%- assign clips = outers | where_exp: "item", "item.index" %}
+  {%- assign clips = clips | where_exp: "item", "item.ext == '.html' or item.type != 'introduction'" %}
   {% assign clipped = "" | split: "" %}
   {% assign outer = "" | split: "" %}
   {%- for _clip in clips %}
@@ -30,7 +31,7 @@ alert:
   {% for _set in outers %}
     {%- assign sslug = _set.slug | append: _set.ext %}
     {%- assign clippath = _set.path | remove: sslug %}
-    {% if _set.type == "introduction" %}
+    {% if _set.index %}
       {% assign outer = outer | push: _set %}
     {% elsif clipped contains clippath %}
     {% else %}

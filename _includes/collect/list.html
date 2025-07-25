@@ -7,9 +7,7 @@
 
 {%- assign decor = "" %}
 
-{% assign types = tsets.type | default: 'index' %}
-{% assign decortype = site.data.filter['icons'] | where: "type", types %}
-{% assign decor = decortype[0].icon %}
+{% include layout/components/decor p=tsets %}
 
 {%- capture override-display %}{%- if page.index == 0 %}
 {%- if pwb contains page.subject %}show{%- else %}remove{%- endif %}{%- else %}show{%- endif %}

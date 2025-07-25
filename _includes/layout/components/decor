@@ -1,0 +1,5 @@
+{%- assign iconarray = site.data.filter['icons'] %}
+{%- assign ipage = include.p %}
+{%- assign types = ipage.type | default: 'index' %}
+{%- assign decortype = iconarray | find: "type", types %}
+{%- assign decor = decortype.icon %}
