@@ -1,7 +1,7 @@
 {% assign post = include.option %}
 {% assign subset = include.subset %}
 
-{% if include.alt-intro and post.ext == '.md' %}
+{% if include.alt-intro and post.type == 'introduction' and post.ext == '.md' %}
 {% assign iflag = false %}
 {% else %}
 {% assign iflag = true %}

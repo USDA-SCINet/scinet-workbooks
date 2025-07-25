@@ -4,7 +4,7 @@ title: Unix Basics
 order: 1
 description: Getting started with Bash on SCINet
 type: interactive tutorial 
-
+index: 2
 tags: [unix, command line] 
 
 terms:

@@ -16,7 +16,6 @@ concepts:
   - "**ANSI escape codes:** Special sequences used in the terminal to control text appearance (color, bold, underline)."
   - "**Shell prompt (PS1):** A customizable string displayed in the terminal, commonly showing the user, hostname and current directory."
   - "**Prompt Customization:** Modifying `PS1` to create a visually engaging and functional shell prompt."
-  - "**Variable Persistence:** Techniques for storing customizations across sessions using configuration files like `.bashrc` or `.zshrc`."
 
 terms:
   - term: Bash shell
@@ -40,7 +39,7 @@ To complete this tutorial, you will need to launch the shell on SCINet. If you a
 ## Prompt styling basics
 
 The shell prompt is the text that appears before you type a command in the terminal. It updates dynamically with user actions, such as changing directories. Personalizing it allows you to display helpful system information directly to improve clarity and usability, especially in advanced computing environments like HPC clusters.  
-![default prompt](./assets/img/default_prompt.png)
+![default prompt]({{ images_path }}/default_prompt.png)
 
 Its behavior and appearance are controlled by the PS1 variable (Prompt String 1) in most Unix shells like Bash and Zsh. This variable is composed of colored elements that dynamically update with information like the `username`, `hostname` and `current directory`, using a combination of placeholders and ANSI escape codes for customization.
 
@@ -135,7 +134,7 @@ You can test ANSI color codes followed by custom text in the terminal using the 
 | `\e[1m`     | **Bold text**  | `\e[1mImportant!` | `echo -e '\e[1mImportant!\e[0m'` |
 | `\e[0m`     | Reset (clears all styling) | `\e[0m` *(back to normal)* | - |" %}
 
-![Simple ANSI code examples](./assets/img/ansi-simple-examples.png)
+![Simple ANSI code examples]({{ images_path }}/ansi-simple-examples.png)
 
 #### Example of single-colored PS1
 
@@ -146,7 +145,7 @@ PS1="\e[32m\u@\h:\w\$ \e[0m"
 - ANSI escape sequences `\e[32m` for green text and `\e[0m` to resets text formatting at the end of the prompt syntax
 
 Output: Green prompt string including username, hostname and working directory, with a default `$` prompt marker.
-![green prompt example](./assets/img/green-prompt-example.png)
+![green prompt example]({{ images_path }}/green-prompt-example.png)
 
 
 Inserting escape codes start formatting from the point they appear and continue until they are explicitly reset using the reset code (`\e[0m`). 
@@ -157,7 +156,7 @@ or command output.
 ```
 PS1="\e[32m\u@\h:\w\$ "     # missing \e[0m at the end of the syntax
 ```
-![ps1 missing reset code](./assets/img/ps1_missing_reset_code.png)
+![ps1 missing reset code]({{ images_path }}/ps1_missing_reset_code.png)
 
 
 #### Example of multi-colored PS1
@@ -182,7 +181,7 @@ Then, within each section, identify the ANSI color code (e.g., `\e[32m` for gree
 
 
 
-![ps1_multicolor](./assets/img/ps1_multicolor.png)
+![ps1_multicolor]({{ images_path }}/ps1_multicolor.png)
 
 
 ### Practical PS1 customization examples
@@ -207,7 +206,7 @@ Learn built-in placeholders to include essential elements:
   ```
 
 OUTPUT: basic, colorless prompt built with various elements.
-![basic prompt examples](./assets/img/basic_prompt_example.png)
+![basic prompt examples]({{ images_path }}/basic_prompt_example.png)
 
 </div>
 
@@ -227,7 +226,7 @@ PS1="\u\h\W\$"              # alex.badaczatlas-login-2geo_data$
 PS1="\u@\h:\W\$ "           # alex.badacz@atlas-login-2:geo_data$ 
 ```
 These customizations help create a prompt that is both informative and easy to read.
-![ps1_custom_text](./assets/img/ps1_custom_text.png)
+![ps1_custom_text]({{ images_path }}/ps1_custom_text.png)
 
 * use visual aids to make your prompt more intuitive:
   - Unicode symbols for better visibility
@@ -239,7 +238,7 @@ PS1="\u@\h:\w 🔥 "
 PS1="👨‍💻 @\h 📂 \W \$ "
 ```
 These customizations improve the user experience by making it easier to quickly locate relevant information.
-![ps1_custom_engaging](./assets/img/ps1_custom_engaging.png)
+![ps1_custom_engaging]({{ images_path }}/ps1_custom_engaging.png)
 </div>
 
 {% include accordion title="Personalize the prompt marker ::: (use any symbol or emoji)" class="outline" controls="ps1-custom-3" %}
@@ -253,7 +252,7 @@ PS1="\u: \W 🎯 "             # using emoji as prompt marker
 PS1="\u: \W  ✅ "            # using checkmark as prompt marker
 ```
 Custom prompt markers can personalize your shell and enhance readability or distinguish between different environments.
-![ps1_custom_marker](./assets/img/ps1_custom_marker.png)
+![ps1_custom_marker]({{ images_path }}/ps1_custom_marker.png)
 </div>
 
 {% include accordion title="Enhance prompt with colors ::: (apply ANSI escape codes to style text)" class="outline" controls="ps1-custom-4" %}
@@ -271,7 +270,7 @@ PS1="\e[32m\u\e[0m@\e[34m\h\e[0m:\e[33m\w\e[0m\$ "
 PS1="\e[35m[\t]\e[0m \e[92m\u\e[0m@\e[94m\h\e[0m:\e[93m\W\e[0m\$ "
 ```
 These color customizations make the prompt visually appealing and help improve efficiency by quickly identifying information.
-![ps1_custom_marker](./assets/img/ps1_custom_colors.png)
+![ps1_custom_marker]({{ images_path }}/ps1_custom_colors.png)
 </div>
 
 </div>
@@ -297,7 +296,7 @@ For example, show details about HPC environment, such as $CLUSTER (system-wide) 
 PS1='[$CLUSTER] \u:\W\$ '                     # [atlas] alex.badacz:DSW_tutorials$
 PS1='[Job: $SLURM_JOB_ID] \u:\W\$ '           # [Job: 16786549] alex.badacz:DSW_tutorials$
 ```
-![ps1_shell_variable](./assets/img/ps1_shell_variable.png)
+![ps1_shell_variable]({{ images_path }}/ps1_shell_variable.png)
 </div>
 
 {% include accordion title="Display custom aliases, like the number of active jobs in the queue" class="outline" controls="ps1-advanced-2" %}
@@ -311,7 +310,7 @@ alias jobcount='squeue -u $USER --noheader | wc -l'
 PS1="[\$(jobcount) jobs] \u@\h:\W$ "
 ```
 *This prompt displays the number of your jobs in a queue dynamically.*
-![ps1_alias_job_counter](./assets/img/ps1_alias_job_counter.png)
+![ps1_alias_job_counter]({{ images_path }}/ps1_alias_job_counter.png)
 </div>
 
 {% include accordion title="Display Git status indicators" class="outline" controls="ps1-advanced-3" %}
@@ -322,7 +321,7 @@ You can display the current Git branch and its status directly in your prompt fo
 PS1='\u@\h:\W $(git branch 2>/dev/null | grep "*" | sed "s/* //")\$ '
 ```
 *This prompt shows the current branch when inside a Git repository.*
-![ps1_git_branch](./assets/img/ps1_git_branch.png)
+![ps1_git_branch]({{ images_path }}/ps1_git_branch.png)
 </div>
 
 {% include accordion title="Indicate failed commands using exit codes" class="outline" controls="ps1-advanced-4" %}
@@ -341,7 +340,7 @@ PS1='$(if [ $? -eq 0 ]; then echo "✔"; else echo "✖"; fi) \u@\h:\W\$ '
 - This indicator is followed by the standard `username@hostname:current_directory$` prompt.
 
 *This PS1 variable display a different color indicator depending on whether the last command was successful (exit code 0) or failed (non-zero exit code).*
-![ps1_exit_code](./assets/img/ps1_exit_code.png)
+![ps1_exit_code]({{ images_path }}/ps1_exit_code.png)
 </div>
 
 </div>

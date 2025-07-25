@@ -7,6 +7,8 @@ order: 7
 tags: [unix, customization, bashrc]
 author: Aleksandra Badaczewska
 
+index: 4
+
 objectives:
   - Understand the role of `.bashrc` in the shell startup process and how it affects your session.
   - Learn to define permanent aliases, environment variables and functions to streamline repetitive tasks.
@@ -28,6 +30,8 @@ terms:
 overview: [objectives, applications, terminology]
 
 ##setup: [intro]
+
+published: false
 ---
 
 ## Overview
@@ -36,7 +40,7 @@ This tutorial offers a comprehensive, hands-on guide to customizing shell enviro
 
 The tutorial is designed for regular users without administrative privileges.
 
-{% include overviews %}
+{% include overviews folder=1 %}
 
 
 ## Getting Started
@@ -173,7 +177,7 @@ When to restart the shell?
 
 ### Restoring from backup
 
-If something breaks, open a new shell and revert `~/.bashrc` from your backup or create a new one and copy-paste the [default `.bashrc` content](./startup-scripts).
+If something breaks, open a new shell and revert `~/.bashrc` from your backup or create a new one and copy-paste the [default `.bashrc` content](./default-scripts).
 
 
 </div>
@@ -198,7 +202,7 @@ export MY_PROJECT_DIR=/projects/<scinet-project>/$USER    # Define project direc
 ```
 *`source ~/.bashrc` or open a new shell to have changes applied.*
 
-{% include alert class="tip" content="For an in-depth tutorial on variables, see [Using environment and shell variables](./variables)" %}
+{% include alert class="tip" content="For an in-depth tutorial on variables, see [Using environment and shell variables](../variables)" %}
 
 ### Modifying $PATH for local binaries
 
@@ -248,7 +252,7 @@ For example:
   ```
 *`source ~/.bashrc` or open a new shell to have changes applied.*
 
-{% include alert class="tip" content="For an in-depth tutorial on aliases, see [Alias definition and usage](./aliases)" %}
+{% include alert class="tip" content="For an in-depth tutorial on aliases, see [Alias definition and usage](../aliases/)" %}
 
 ### Creating simple shell functions
 
@@ -274,7 +278,7 @@ For example:
   ```
 *`source ~/.bashrc` or open a new shell to have changes applied.*
 
-{% include alert class="tip" content="For an in-depth tutorial on functions, see [Shell Functions](./functions)" %}
+{% include alert class="tip" content="For an in-depth tutorial on functions, see [Shell Functions](../functions/)" %}
 
 ### Enhancing shell usability 
 
@@ -472,7 +476,7 @@ In high-performance computing (HPC) environments, job scheduling with SLURM is e
 Customizing SLURM-related settings in your `~/.bashrc` file can streamline job submissions, optimize resource allocation and simplify the starting of an interactive session on a compute node. 
 
 To get started with custom configurations, check out:
-- **[Practical Aliases for HPC](./aliases#practical-aliases-for-hpc)** provided in the Aliases tutorial, including:
+- **[Practical Aliases for HPC](../aliases#practical-aliases-for-hpc)** provided in the Aliases tutorial, including:
   - Load module and check module list:
     ```bash
     alias load_python='module load python_3 && module list'
@@ -494,11 +498,11 @@ To get started with custom configurations, check out:
     # usage: node_usage
     ```
 
-- **[Practical Shell Functions](./functions#practical-shell-functions-for-hpc)** provided in the Functions tutorial, including:
-  - [Check quota on any SCINet cluster](./functions#practical-shell-2)
-  - [Quick stats on queued jobs](./functions#practical-shell-3)
-  - [GPU resources check](./functions#practical-shell-6)
-  - [CPU and memory on a node](./functions#practical-shell-7)
+- **[Practical Shell Functions](../functions#practical-shell-functions-for-hpc)** provided in the Functions tutorial, including:
+  - [Check quota on any SCINet cluster](../functions#practical-shell-2)
+  - [Quick stats on queued jobs](../functions#practical-shell-3)
+  - [GPU resources check](../functions#practical-shell-6)
+  - [CPU and memory on a node](../functions#practical-shell-7)
 
 These resources offer ready-to-use shortcuts and functions that streamline job management, making your HPC workflow more efficient right from the start.
 
@@ -524,7 +528,7 @@ function sbatch_quick {
 # usage: sbatch_quick my_script.sh
 ```
 
-![function sbatch_quick](./assets/img/function/function_sbatch_quick.png)
+![function sbatch_quick]({{ images_path }}/function/function_sbatch_quick.png)
 
 #### Quick SLURM job submission with custom request for memory, CPU and partition
 
@@ -558,7 +562,7 @@ function sbatch_flex {
 # usage:  sbatch_flex my_script.sh 8 bigmem 8G    # specify all prior arguments to request custom memory
 ```
 
-![function sbatch_flex_submit](./assets/img/function/function_sbatch_flex_submit.png)
+![function sbatch_flex_submit]({{ images_path }}/function/function_sbatch_flex_submit.png)
 
 <div class="highlighted highlighted--note ">
 <div class="highlighted__body" markdown="1">
@@ -604,7 +608,7 @@ esac
 
 If the shell is interactive, it prints a message but can be enhanced to load any interactive-specific settings required by your tasks. If not interactive (e.g., running in batch mode), it exits early, skipping unnecessary commands.
 
-![conditional interactive shell](./assets/img/conditional_interactive_shell.png)
+![conditional interactive shell]({{ images_path }}/conditional_interactive_shell.png)
 
 <div class="highlighted highlighted--info ">
 <div class="highlighted__body" markdown="1">
@@ -647,7 +651,7 @@ fi
 ```
 Prevents resource-intensive scripts from running on login nodes, ensuring compliance with HPC policies.
 
-![conditional hostname](./assets/img/conditional_hostname.png)
+![conditional hostname]({{ images_path }}/conditional_hostname.png)
 
 ### Lazy-loading: avoid heavy setup
 

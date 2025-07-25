@@ -10,8 +10,9 @@
     {%- if siblingarray.size > 1 %} 
     {% for _siblings in siblingarray %}
       {% if _siblings.id == page.id %}
-        {%- if forloop.first %}
-        {% include layout/components/next-prev related=pageparent relation=pageparent.type %}
+        {%- if forloop.first %}{% capture shortparenttype %}{% if pageparent.type == "introduction" %}Intro{% elsif pageparent.type %}Back{% else %}Index{% endif %}{% endcapture %}
+        {%- assign lparenttype = pageparent.type | capitalize %}
+        {% include layout/components/next-prev related=pageparent shortrel=shortparenttype relation=lparenttype %}
         {% else %}
             {% assign previndex = forloop.index | minus: 2 %}
             {% assign prevpage = siblingarray[previndex] %}
@@ -23,18 +24,26 @@
 
       {% endif %}
     {% endfor %}
-    {% else %}
-    {% include layout/components/next-prev related=pageparent relation=pageparent.type %}
+    {% else %}{% capture shortparenttype %}{% if pageparent.type == "introduction" %}Intro{% elsif pageparent.type %}Back{% else %}Index{% endif %}{% endcapture %}
+    {%- assign lparenttype = pageparent.type | capitalize %}
+    {% include layout/components/next-prev related=pageparent shortrel=shortparenttype relation=lparenttype %}
     {% endif %}
 
     {% if page.index %}
-    {% include layout/components/next-prev related=prevpage relation="Previous" section=true icon="navigate_far_before" %}
+    {% include layout/components/next-prev related=prevpage shortrel="Prev" icon="navigate_far_before" relation="Previous Section" %}
     {%- for _next in sortposts limit: 1 %}
-    {% include layout/components/next-prev related=_next relation="Next" icon="navigate_next" class="usa-current" %}
-    {% endfor %}
-    {% include layout/components/next-prev related=nextpage relation="Next" section=true icon="navigate_far_next" %}
+    {% if page.type and page.type != "introduction" %}
+    {%- assign nexttype = _next.type | capitalize %}
+    {% include layout/components/next-prev related=_next shortrel="More" relation=nexttype icon="trending_up" %}
+    {% assign inclass = "usa-current" %}
     {% else %}
-    {% include layout/components/next-prev related=prevpage relation="Previous" icon="navigate_before" %}
+    {% include layout/components/next-prev related=_next relation="Next" icon="trending_up" class="usa-current" %}
+    {% assign inclass = nil %}
+    {% endif %}
+    {% endfor %}
+    {% include layout/components/next-prev related=nextpage shortrel="Next" icon="navigate_far_next" relation="Next Section" class=inclass %}
+    {% else %}
+    {% include layout/components/next-prev related=prevpage shortrel="Prev" icon="navigate_before" relation="Previous" %}
     {% include layout/components/next-prev related=nextpage relation="Next" icon="navigate_next" class="usa-current" %}
     {% endif %}
     
@@ -42,9 +51,9 @@
     {%- endif %}
 
     <li class="usa-sidenav__item">
-      <a href="#"><span class="render-sm">Return to </span>Top <svg class="usa-icon margin-bottom-neg-05" aria-hidden="true" focusable="false" role="img">
+      <a href="#"><svg class="usa-icon margin-bottom-neg-2px margin-right-05" aria-hidden="true" focusable="false" role="img">
         <use href="/assets/uswds/img/sprite.svg#arrow_upward"></use>
-      </svg></a>
+      </svg><span class="render-sm">Return to </span>Top </a>
     </li>
   </ul>
 </aside>

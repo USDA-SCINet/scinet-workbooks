@@ -7,6 +7,9 @@ order: 8
 tags: [bashrc]
 
 ---
+
+{% include file_path folder=1 %}
+
 ## Overview
 
 Below are copies of the default content for the startup scripts as set on the SCINet clusters.
