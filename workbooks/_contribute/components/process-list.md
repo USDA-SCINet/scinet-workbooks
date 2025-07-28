@@ -92,7 +92,7 @@ Additional guidance can be found on the [USWDS component page](https://designsys
 </div>
 
 {% include accordion title="Component Code" class="outline" controls="component-codes" %}
-<div id="component-codes" class="accordion_content" markdown='1'>
+<div id="component-codes" class="accordion_content" hidden markdown='1'>
 
 <ul class="usa-content-list">
 <li markdown="1">

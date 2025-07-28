@@ -21,10 +21,6 @@ terms:
     definition: Key-value pairs that define system-wide settings and influence the behavior of processes.
   - term: Shell variables
     definition: Local variables used within the shell session for temporary configurations and scripting purposes.
-  - term: Variable persistence
-    definition: Techniques to save variables across sessions by editing configuration files like `.bashrc`.
-  - term: Configuration file
-    definition: Text file like `.bashrc` or `.bash_profile` that define environment variables and other shell settings.
 
 applications: 
   - "**Using built-in variables:** Understanding and utilizing global pre-defined variables such as `PATH`, `HOME`, `USER` and SCINet-specific variables."
@@ -153,7 +149,7 @@ These shell variables can be categorized as either static or dynamic based on ho
 
 ### Define a custom variable
 
-**Users can create their own variables to store custom data**, such as `filenames`, commonly used `paths`, `counters`, or configuration options for scripts, making it easier to automate tasks and customize the shell experience. These variables help control how commands run, manage data flow and simplify repetitive tasks.
+Users can create their own variables to store custom data, such as `filenames`, commonly used `paths`, `counters`, or configuration options for scripts, making it easier to automate tasks and customize the shell experience. These variables help control how commands run, manage data flow and simplify repetitive tasks.
 ```bash
 my_name="Alice"          # Stores a static string value (any temporary data)
 my_age=30                # Stores a numeric value (no quotes needed)
@@ -291,15 +287,15 @@ These variables simplify automation, ensure consistent behavior across sessions 
 
 ### List all environment variables
 
-1. **Check built-in Environment Variables on a login node:** Use the `printenv` command to display all variables along with their values available on SCINet cluster. 
-  ```bash
-  printenv
-  ```  
-1. **Check built-in Environment Variables on a compute node:** Start an interactive session on a compute node and print environment variables again:
-  ```bash
-  salloc -N1 -n1 -t 1:00:00 -A <scinet-account>   # request an interactive session
-  printenv
-  ```
+1.  **Check built-in Environment Variables on a login node:** Use the `printenv` command to display all variables along with their values available on SCINet cluster. 
+    ```bash
+    printenv
+    ```  
+1.  **Check built-in Environment Variables on a compute node:** Start an interactive session on a compute node and print environment variables again:
+    ```bash
+    salloc -N1 -n1 -t 1:00:00 -A <scinet-account>   # request an interactive session
+    printenv
+    ```
 
 {% include alert class="question" content="* Are there differences in the values for variables such as `PATH`, `LD_LIBRARY_PATH` or `MODULEPATH`?  
 * Do you notice variables set for temporary directories (`TMPDIR`) or cache directories (`CACHEDIR`) that are commonly used for job isolation on compute nodes?  
@@ -379,9 +375,29 @@ You can add a custom software directory to your `PATH` using the `export` statem
 
 </div>
 
+<div  class="highlighted highlighted--tip">
+<div class="highlighted__body" markdown="1">
+
+<h4 class="highlighted__heading">HPC-specific Environment Variables</h4>
+
+In High-Performance Computing (HPC) environments, specialized environment variables are essential for efficient resource management and job scheduling on shared, multi-user systems. These variables help the job scheduler (e.g., SLURM) and system software coordinate how resources like CPU cores, memory, and nodes are allocated to different users' jobs.  
 
 
-## HPC-specific Environment Variables
+There are many HPC-specific environment variables available outside the job scheduler that can be useful for regular users in the interactive shell on a computing node. These variables help manage software environments, resource paths, and session state, even when not running a job. Specifically, these variables can be useful for [module management](#), [software execution](#), [temporary file storage](#), and [system information](#) in HPC environments.  
+
+
+For example, using the SLURM variable `JOB_ID`, you can monitor live resource consumption for optimization and troubleshooting.  
+```bash
+sstat -j <SLURM_JOB_ID> --format=JobID   # Running Jobs Only
+sacct -j <SLURM_JOB_ID> --format=JobID   # After Job Completion
+```  
+
+See our [SLURM tutorial](#) for more information about SLURM variables.
+</div>
+</div>
+
+<!--
+### HPC-specific Environment Variables
 
 {:.text-page-intro}
 Environment variables for optimized resource management and job scheduling on multi-user computing infrastructure.
@@ -440,7 +456,7 @@ Most users will not need to modify any of these variables, but may benefit from 
 
 <div class="usa-accordion">
 
-{% include accordion title="Libraries, Software and Module Management" class="outline" controls="hpc-variables-2" %} 
+{% include accordion title="Libraries, Software, and Module Management" class="outline" controls="hpc-variables-2" %} 
 <div id="hpc-variables-2" class="accordion_content" markdown="1">
 
 {% include table caption="Library and module variables" content="| variable           | definition | notes |
@@ -455,7 +471,7 @@ These variables control how software modules are managed and loaded on the HPC s
 
 The `LD_LIBRARY_PATH` variable specifies directories where the dynamic linker searches for shared libraries when running executables. It ensures the system can locate necessary libraries for both pre-installed and user-compiled software. This variable is often predefined by system administrators for standard software libraries but can be modified by regular users when working with custom software builds or locally installed libraries.
 
-<div id="note-alerts-1" class="highlighted highlighted--tip ">
+<div  class="highlighted highlighted--tip ">
 <div class="highlighted__body" markdown="1">
 Avoid overwriting the entire path (`LD_LIBRARY_PATH=/path/to/lib`) and instead extend it using `LD_LIBRARY_PATH=/custom/path:$LD_LIBRARY_PATH`. This prevents breaking essential system tools while ensuring your custom libraries are available.
 </div>
@@ -502,7 +518,7 @@ These variables provide details about the platform architecture, current session
 
 </div>
 
-
+-->
 
 ## Exporting variables for subprocesses
 
@@ -510,9 +526,11 @@ Shell variables normally exist only within the current shell session where they 
 
 To make a variable available in child processes, it must be registered as an environment variable using the `export` command. Exporting a variable to environment (`export VAR="value"`) makes it accessible to subprocesses but still limited to the lifetime of the current shell session — once the session ends, the variable is cleared unless persisted in a shell configuration file.
 
-<div id="note-alerts-1" class="highlighted highlighted--note">
+<div  class="highlighted highlighted--note">
 <div class="highlighted__body" markdown="1">
+
 <h4 class="highlighted__heading">How are scripts and subprocesses related to the current Shell?</h4>
+
 * A **script** is a file containing a sequence of shell commands that can be executed in a shell session. When you run a script (e.g., `bash my_script.sh`), a new subshell is created, separate from the current shell.
 * A **subprocess** is any command or program started from the current shell, including scripts. Running a command like `ls | grep "file"`, both `ls` and `grep` run in their own subprocesses created from the current shell.
 
@@ -550,15 +568,16 @@ export VAR2="passed_value"          # Exporting ensures availability to child pr
 echo "Running with VAR2=$VAR2"
 ```
 
+<!--
 
-## Persisting variables in Config Files
+## Persisting variables
 
 To make variable definitions permanent across sessions, they need to be added to shell configuration files. These files are read and executed when a shell starts.
 
-{% include table caption="Config Files" content="| Bash Shell | Zsh Shell | description |
-| --                | --        | --          |
-| `~/.bashrc`       | `~/.zshrc` | For interactive non-login shells and customizing the prompt or aliases. |
-| `~/.bash_profile` | `~/.zprofile` | For login shells (e.g., SSH sessions). |" %}
+{% include table caption="Config Files" content="| Bash Shell |  description |
+| --                |  --          |
+| `~/.bashrc`       |  For interactive non-login shells and customizing the prompt or aliases. |
+| `~/.bash_profile` | For login shells (e.g., SSH sessions). |" %}
 
 Example: 
 To permanently add a custom path for executables, add an `export` statement to a selected configuration file and save changes:
@@ -574,6 +593,7 @@ and refresh the current shell session by applying changes from the configuration
 ```
 source ~/.bashrc
 ```
+-->
 
 ## Troubleshooting common issues
 
@@ -618,13 +638,13 @@ echo $PATH        # tool's path not present among listed locations
 ```
 ![missing_executable_path]({{ images_path }}/variable/missing_executable_path2.png)
 
-**SOLUTIONS:** <br>
+**SOLUTIONS:**  
 Extend the `PATH` variable by adding a path to a directory with your executable:
 ```bash
 export PATH=/custom-path/bin:$PATH      # replace /custom-path/bin with an absolute path to your tool
 ```
 
-<div id="note-alerts-1" class="highlighted highlighted--tip ">
+<div  class="highlighted highlighted--tip ">
 <div class="highlighted__body" markdown="1">
 By adding a tool's directory to the `PATH` variable, the shell automatically searches that location when a command is called, allowing the tool to be launched without specifying its full path. This provides a convenient way to run executables by its name from any working directory.
 </div>
@@ -633,14 +653,15 @@ By adding a tool's directory to the `PATH` variable, the shell automatically sea
 </div>
 
 {% include accordion title="Error while loading shared libraries: $LD_LIBRARY_PATH" class="outline" controls="var-debug-3" %} 
-<div id="var-debug-3" class="accordion_content" hidden markdown="1">    
+<div id="var-debug-3" class="accordion_content" hidden markdown="1">  
+
 **SYMPTOMS:** Errors such as `error while loading shared libraries` or `unable to load shared object` often indicate 
 library path issues caused by missing (or not linked) required libraries in the specified search paths. 
 Typically, the concern is a missing `.so` (shared object) file, which should first be located on the system, 
 and its directory path checked for inclusion in the `LD_LIBRARY_PATH` variable.
 ![missing_shared_library]({{ images_path }}/variable/missing_shared_library.png)
 
-**SOLUTIONS:** <br>
+**SOLUTIONS:**  
 Locate the missing library:
 ```bash
 find /usr -name "lib_my_lib.so"
@@ -657,11 +678,12 @@ export LD_LIBRARY_PATH=/path/to/lib:$LD_LIBRARY_PATH        # replace /path/to/l
 
 {% include accordion title="Multiple logfiles when using dynamic variables: $SECONDS, $RANDOM" class="outline" controls="var-debug-4" %} 
 <div id="var-debug-4" class="accordion_content" hidden markdown="1">    
+
 **SYMPTOMS:** Multiple log files being generated unintentionally when using dynamic variables like `$SECONDS` and `$RANDOM` to create temporary files. 
 The typical cause is that built-in dynamic variables generate a new value each time they are referenced, resulting in different filenames on every call. As a result, when log file creation is misplaced (e.g., inside a loop where logs should be written continuously), a new file is generated on each iteration.
 ![dynamic_variables_usage]({{ images_path }}/variable/dynamic_variables_usage.png)
 
-**SOLUTIONS:** <br>
+**SOLUTIONS:**  
 Capture the dynamic value once and store it in a static variable before using it repeatedly:
 ```bash
 LOGFILE="log_$RANDOM.txt"
@@ -675,45 +697,49 @@ done
 
 {% include accordion title="Variable works interactively but fails in batch jobs or scripts" class="outline" controls="var-debug-5" %} 
 <div id="var-debug-5" class="accordion_content" hidden markdown="1">    
+
 **SYMPTOMS:** A variable works correctly when defined in an interactive session in the command line but fails to persist in batch jobs or scripts, 
 often leading to errors like `variable not defined` or unexpected empty values during execution. <br>
 **CAUSE:** This occurs when the variable is defined locally in the shell but not exported to the environment, 
 preventing it from being inherited by subshells or child processes.
 
-**SOLUTIONS:** <br>
+**SOLUTIONS:**  
 Use `export` to make a variable available to child processes:
 
-**A.** Passed to all subshells, including scripts executed in a current shell: *(learn more: [Exporting variables for subprocesses](#exporting-variables-for-subprocesses))*
-```bash
-MY_VAR="my_value"             # only visible in the current shell
-export MY_VAR="my_value"      # available to all subshells, including child processes and scripts executed from a current shell
-```
-
-**B.** Persisted for all future shell sessions and scheduled SLURM jobs: *(learn more: [Persisting variables in Config Files](#persisting-variables-in-config-files))*
-```bash
-echo "export MY_VAR='my_value' >> ~/.bashrc"
-source ~/.bashrc
-```
+1.  Passed to all subshells, including scripts executed in a current shell: *(learn more: [Exporting variables for subprocesses](#exporting-variables-for-subprocesses))*
+  ```bash
+  MY_VAR="my_value"             # only visible in the current shell
+  export MY_VAR="my_value"      # available to all subshells, including child processes and scripts executed from a current shell
+  ```
+1.  Persisted for all future shell sessions and scheduled SLURM jobs: *(learn more: [Shell configuration persistance](./persistance))*
+  ```bash
+  echo "export MY_VAR='my_value' >> ~/.bashrc"
+  source ~/.bashrc
+  ```
 </div>
 
+<!--
 {% include accordion title="Variables not persisting across sessions" class="outline" controls="var-debug-6" %} 
-<div id="var-debug-6" class="accordion_content" hidden markdown="1">    
+<div id="var-debug-6" class="accordion_content" hidden markdown="1">   
+
 **SYMPTOMS:** Custom variables work as expected during a shell session but need to be redefined after logging out or 
-starting a new terminal session, causing repeated manual configuration. <br>
+starting a new terminal session, causing repeated manual configuration.  
 **CAUSE:** This happens because variables set in the current shell are temporary and not saved in the user's startup files, 
 preventing them from being automatically available in new sessions.
 
-**SOLUTIONS:** <br>
+**SOLUTIONS:**  
 Add the `export` statement to your shell startup file (`~/.bashrc`) to perist a variable for future shell sessions:
 ```bash
 echo "export MY_VAR='my_value' >> ~/.bashrc"
 source ~/.bashrc
 ```
-*(learn more: [Persisting variables in Config Files](#persisting-variables-in-config-files))*
+(learn more: [Persisting variables in Config Files](#persisting-variables-in-config-files))
 </div>
+-->
 
 {% include accordion title="Standard commands stop working after modifying $PATH or $LD_LIBRARY_PATH" class="outline" controls="var-debug-7" %} 
-<div id="var-debug-7" class="accordion_content" hidden markdown="1">    
+<div id="var-debug-7" class="accordion_content" hidden markdown="1">  
+
 **SYMPTOMS:** Standard commands like `ls`, `grep` or `python` fail with errors such as `command not found` or 
 behave unexpectedly after modifying the `PATH` or `LD_LIBRARY_PATH` variables. This issue occurs when the original system paths 
 are overwritten instead of extended, causing essential system directories to be excluded from the search path.
@@ -724,7 +750,7 @@ are overwritten instead of extended, causing essential system directories to be 
 | `export PATH=/custom/bin` | `export PATH=/custom/bin:$PATH` |
 | `export LD_LIBRARY_PATH=/custom/lib` | `export LD_LIBRARY_PATH=/custom/lib:$LD_LIBRARY_PATH` |
 
-**SOLUTIONS:** <br>
+**SOLUTIONS:**  
 **A.** Restore defaults manually: Reset the variables to standard defaults typical for HPC clusters.
 ```bash
 export PATH=/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin
@@ -738,6 +764,7 @@ to reset the affected built-in variables to their default state.
 
 {% include accordion title="Jobs failing with disk space errors due to temporary storage $TMPDIR" class="outline" controls="var-debug-8" %} 
 <div id="var-debug-8" class="accordion_content" hidden markdown="1">    
+
 **SYMPTOMS:** Jobs fail with disk space errors, warnings about insufficient storage or unexpected job terminations when handling large datasets or temporary files. This issue commonly occurs when your job writes temorary files to a wrong location or the selected location is either full or too small for job data.
 ```bash
 # ERROR: No space left on device
@@ -745,12 +772,13 @@ to reset the affected built-in variables to their default state.
 # ERROR: cannot create tempfile '/tmp/Rtmp12345', reason 'No space left on device'
 ```
 
-**SOLUTIONS:** <br>
+**SOLUTIONS:**  
 On SCINet clusters, all compute nodes have 1.5 TB of fast local temporary data file storage space. A scheduled job or interactive session on a compute node sets up automatically a unique local space (e.g., `/local/bgfs/alex.badacz/13968447`) accessible only with the job script via the environmental `$TMPDIR` variable. You can use this for any scratch space disk space you need. You must copy any output data you need to keep back to permanent storage before the job ends, since `$TMPDIR` will be erased upon job exit. 
 ![temporary_storage]({{ images_path }}/variable/temporary_storage.png)
 
-<div id="note-alerts-1" class="highlighted highlighted--tip ">
+<div  class="highlighted highlighted--tip ">
 <div class="highlighted__body" markdown="1">
+
 If you plan to compute on an existing large data set (such as a sequence assembly job) it might be beneficial to copy all your input data to scratch space at the beginning of your job, and then do all your computation on `$TMPDIR`. Follow instructions provided in the [SCINet User Guide: Scratch Space](https://scinet.usda.gov/guides/use/scratch#scratch-space).
 </div>
 </div>
@@ -760,6 +788,7 @@ If you plan to compute on an existing large data set (such as a sequence assembl
 
 {% include accordion title="Best practices for debugging" class="outline" controls="var-debug-10" %} 
 <div id="var-debug-10" class="accordion_content" hidden markdown="1">    
+
 - Check a variable's Value: `echo $VAR`
 - List all environment variables: `printenv`
 - List all (local) shell variables: `set`

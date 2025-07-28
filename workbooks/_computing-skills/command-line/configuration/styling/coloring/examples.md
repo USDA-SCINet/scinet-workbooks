@@ -43,7 +43,6 @@ This command searches for ERROR and WARNING and color-codes them (red for errors
 
 You can create shell aliases to quickly filter and colorize logs.
 ```bash
-# Add this to your .bashrc file to make settings persistent
 alias logcheck='grep -E "ERROR|Warning" | awk '\''/ERROR/ {print "\033[31m" $0 "\033[0m"} /Warning/ {print "\033[33m" $0 "\033[0m"}'\'''
 ```  
 
@@ -61,7 +60,6 @@ Your custom `logcheck` command will instantly highlight errors (red) and warning
 <div id="grep-coloring-solution2" class="accordion_content" markdown="1" hidden>
 
 ```bash
-# Add this to your .bashrc file to make settings persistent
 logscan() {
   A=$(echo "$1" | awk -F"|" '{print $1}')
   B=$(echo "$1" | awk -F"|" '{print $2}')
@@ -211,7 +209,6 @@ tail -f slurm-16364729.out
 
 You can create a custom alias like `taildebug` to filter and highlight only errors and warnings in real time from a log file, allowing you to skip all irrelevant lines and focus on critical debug information.
 ```bash
-# Add this to your .bashrc file to make settings persistent
 alias tailgrep='tail -f | grep --color=always -E "ERROR|WARNING"'
 ```
 **How to use it:**  

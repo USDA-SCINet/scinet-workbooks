@@ -127,13 +127,13 @@ Once inside a `man` page, you can navigate efficiently using the following short
 <div class="highlighted__body"  markdown="1">
 <h4 class="highlighted__heading">Exercise: Try it yourself!</h4>
 
-1. Open the manual page for the `grep` command:
-  ```bash
-  man grep
-  ```
-2. Search for the `-i` option (case-insensitive search).  
+1.  Open the manual page for the `grep` command:
+    ```bash
+    man grep
+    ```
+2.  Search for the `-i` option (case-insensitive search).  
   Press `/`, type `-i` and hit `Enter`.
-3. Exit the manual using `q`.
+3.  Exit the manual using `q`.
 
 </div>
 </div>
@@ -191,14 +191,16 @@ This opens the documentation for the `passwd` file format rather than the `passw
 
 <div class="highlighted highlighted--question ">
 <div class="highlighted__body"  markdown="1">
-<h4 class="highlighted__heading">Exercise: Try it yourself!</h4>
-1. Compare the following:
-```bash
-man 1 passwd
-man 5 passwd
-```
 
-2. Notice how they provide different information!
+<h4 class="highlighted__heading">Exercise: Try it yourself!</h4>
+
+1.  Compare the following:
+    ```bash
+    man 1 passwd
+    man 5 passwd
+    ```
+
+2.  Notice how they provide different information!
 </div>
 </div>
 
@@ -235,14 +237,15 @@ This lists commands related to the keyword "archive" along with their short desc
 
 <div class="highlighted highlighted--question ">
 <div class="highlighted__body"  markdown="1">
-<h4 class="highlighted__heading">Exercise: Try it yourself!</h4>
-<p>Find Commands Related to Text Processing</p>
-1. Run:
-```bash
-apropos "text"
-```
 
-2. Identify useful commands related to text manipulation.
+<h4 class="highlighted__heading">Exercise: Try it yourself!</h4>
+
+Find Commands Related to Text Processing
+1.  Run:
+    ```bash
+    apropos "text"
+    ```
+2.  Identify useful commands related to text manipulation.
 </div>
 </div>
 

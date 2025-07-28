@@ -1,6 +1,6 @@
 ---
 title: Alerts
-description: "An alert keeps users informed of important and sometimes time-sensitive changes."
+description: "An alert keeps users informed of important information and changes."
 
 components:
   name: alert
@@ -50,5 +50,17 @@ components:
     
 ---
 
+Alerts allow for emphasis of important information and context.
+
+*  **When to use the alert component**
+    * Short, important callouts of information.
+    * Warnings or error messages
+
+*  **When to consider something else**
+    * Your content is a standard continuation of the lesson.  Consider paragraph or list formatting instead.
+    * The content is long.  Important long-form content should have its own section.
+    * The alert content is longer, but only applies to a subset of users.  Consider an [accordion](./accordion) with an appropriate icon. 
+
+{% include alert class="error" title="Do not overuse!" content="Overuse of alerts, highlighting, and font decoration leads to attention fatigue.  This results in decreased attention and comprehension of the tutorial's content rather than the desired emphasis." %}
 
 Additional guidance can be found on the [USWDS component page](https://designsystem.digital.gov/components/alert/)
