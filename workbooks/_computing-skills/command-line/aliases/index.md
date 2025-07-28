@@ -3,7 +3,7 @@
 title: "Alias definition and usage: create shortcuts for repetitive commands"
 description: "Simplify complex or frequently used commands with user-defined abbreviations."
 type: lesson module
-order: 2
+order: 7
 tags: [unix, customization, bashrc]
 author: Aleksandra Badaczewska
 

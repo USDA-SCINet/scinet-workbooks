@@ -3,7 +3,7 @@
 title: "Shell Functions"
 description: "Group command sequences and enable argument passing with shell functions."
 type: interactive tutorial
-order: 3
+order: 6
 tags: [unix, customization]
 author: Aleksandra Badaczewska
 
