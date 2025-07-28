@@ -84,16 +84,31 @@ questions:
   - question: "Run `ls -la` and look at the first column of each line. What does the starting character (- or d) tell you?"
     qid: 6
     solution: "A dash indicates a file and the d indicates a directory"
-  - question: "*	Use `pwd` to see where you are. 
+  - question: "1. Check your current directory.
 
-*	If you are not in `unix_tutorial`, navigate to `unix_tutorial`
+1.	If you are not in `unix_tutorial`, navigate to `unix_tutorial`
 
-*	Create two subdirectories: `raw_data` and `logs` and then confirm they exist. 
+1.	Create two subdirectories: `raw_data` and `logs` and then confirm they exist. 
 
-*	Navigate to the `logs` folder, then return to the `unix_tutorial` folder using `cd ..` and `cd -`.  
+1.	Navigate to the `logs` folder, then return to the `unix_tutorial` folder using `cd ..` and `cd -`.  
+
 
 
 What's the difference in behavior?"
+    solution: "1. To check your current directory, use `pwd`.
+
+1. To change directory:  
+   <code class='copy'>cd /home/$USER/unix_tutorial   ## or ~/unix_tutorial</code>
+
+1. Create subdirectories:  
+   <code class='copy'>mkdir raw_data logs</code>
+
+
+**What's the difference in behavior?**
+
+* `cd ..` : goes up one level in the directory tree (back to the parent folder)
+
+* `cd -` : goes back to the previous directory you were in"
     title: "Exercise"
     qid: 7
   - question: "What is the output of this command: `echo \"Current user: $(whoami)\"`?"
@@ -129,8 +144,21 @@ What's the difference in behavior?"
   - question: "Use `man` to look up a command you haven't tried yet"
     qid: 13
     solution: "Example: `man cp`"
+  - question: From within the raw_data folder, use a relative path to move to the logs folder. Try using an absolute path to return to your home directory.
+    solution: "* To check your current directory: pwd
 
+* To change to the raw_data folder:  
+  <code class='copy'>cd ~/unix_tutorial/raw_data ## An absolute path</code>
+
+* Relative path to move to the logs folder: 
+  <code class='copy'>cd ../logs   ## OR cd unix_tutorial/logs</code>
+
+* Absolute path to return to your home directory: 
+  <code class='copy'>cd /home/$USER     ## OR cd ~/</code>"
+    qid: 14
 ---
+
+
 
 ## Overview
 
@@ -415,7 +443,7 @@ Relative path begins from your current location:
 *	Shorter path 
 
 Let's say your current directory is: 
-`/home/user`  
+`/home/username`  
 Inside your user directory is a folder called `unix_tutorial`.  Let's use a relative path to navigate to logs:
 ```
 cd unix_tutorial/logs
@@ -477,8 +505,7 @@ To copy a directory and all its contents we add the option (`-r`: recursive):
 ```
 cp -r directory1 directory2
 ```
-
-This will copy the folder directory1 and all its contents to directory2. 
+* This will copy the folder directory1 and all its contents to directory2. 
 
 Common `cp` command options: 
 * `-r` : recursive (used for copying directories)
