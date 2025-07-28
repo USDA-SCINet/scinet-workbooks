@@ -1,7 +1,7 @@
 ---
 title: Shell configuration persistance
 description: "Persisting your custom shell configuration with scripts."
-order: 7
+order: 1
 index: 3
 type: lesson module
 

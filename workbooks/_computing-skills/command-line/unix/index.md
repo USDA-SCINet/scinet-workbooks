@@ -322,7 +322,7 @@ Example output:
 
 <div class="usa-accordion">
 
-{% include accordion title="If you do not see your home directory" class="warning" icon="true" controls="homedirectory-1" %}
+{% include accordion title="If you do not see your home directory" class="warning" icon=true controls="homedirectory-1" %}
 <div id="homedirectory-1" class="accordion_content" hidden markdown="1">
 
 If you do not see your home directory, you will need to navigate to it for this tutorial. 
@@ -387,10 +387,13 @@ We are now in a directory called `unix_tutorial` which is a subdirectory of home
 * `cd ~`: (or cd) go to home directory
 * `cd /`: go to the root directory
 
-To change back to the directory, you created:
-```
-cd /home/unix_tutorial
-```
+To change back to the directory you created, you could run either of the following: 
+* ```
+  cd /home/$USER/unix_tutorial
+  ```
+* ```
+  cd ~/unix_tutorial
+  ```
 
 {% include alert class="tip" content="You can type in first few letters of the directory name and then press Tab to autocomplete rest of the name. This only works when there are unique matches for the starting letters you have typed.  
 
