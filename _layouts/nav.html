@@ -108,9 +108,9 @@ wbComp:
      </div>
     </div>
     {% if page.collection %}
-    {% unless page.index %}
+    {% if page.type and page.ext == '.md' %}
     {% include collect/related-reading.html %}
-    {% endunless %}
+    {% endif %}
   </div>
 
 {% if site.survey and page.survey %}

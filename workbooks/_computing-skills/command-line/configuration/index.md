@@ -1,6 +1,6 @@
 ---
 title: "Shell customization"
-description: "Advanced configuration of the shell environment through variables, functions, aliases, prompt styling, and startup scripts."
+description: "Advanced configuration of the shell environment through prompt styling and startup scripts."
 language: Bash
 index: 2
 order: 7

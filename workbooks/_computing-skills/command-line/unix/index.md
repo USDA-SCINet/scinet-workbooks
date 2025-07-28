@@ -123,7 +123,12 @@ What's the difference in behavior?"
   - question: "How could you confirm the files were created?"
     qid: 11
     solution: "You can run `ls` to see what is in this directory and confirm your files were added."
-  
+  - question: "Use `history` to re-run your third command"
+    qid: 12
+    solution: "`history 3`"
+  - question: "Use `man` to look up a command you haven't tried yet"
+    qid: 13
+    solution: "Example: `man cp`"
 
 ---
 
@@ -253,7 +258,8 @@ The shell will dynamically display the most recent matching command:
 * Press Ctrl + R again to cycle through older matches.
 * Press Ctrl + G to exit the search without selecting a command.
 
-{% include alert class="question" title="Exercise" content="Use `history` to re-run your third command" %}
+
+{% include question qid="12" title="Exercise" %}
 
 
 ### Learning more about commands with help and man:
@@ -277,8 +283,7 @@ man less
 ```
 
 
-
-{% include alert class="question" title="Exercise" content="Use `man` to look up a command you haven't tried yet" %}
+{% include question qid=13 %}
 
 For more in-depth information about navigating the built-in documentation for system commands and utilities, see our tutorial for [Command manual](./manual).
 
@@ -301,18 +306,34 @@ When working in the Unix file system, it is always important to understand where
 
 `pwd` gives the absolute path of your current location.   
 
-Example output:  
-
-{:.no-copy}
-    /home/username  
-
-
 It is always a good idea to check where you are before running file operations or navigating the file system. 
 
 Run `pwd` in your terminal. 
 ```
 pwd
 ```
+
+Example output:  
+
+{:.no-copy}
+    /home/username  
+
+* `username` should be your SCINet user name
+
+<div class="usa-accordion">
+
+{% include accordion title="If you do not see your home directory" class="warning" icon="true" controls="homedirectory-1" %}
+<div id="homedirectory-1" class="accordion_content" hidden markdown="1">
+
+If you do not see your home directory, you will need to navigate to it for this tutorial. 
+You can run `cd ~` to quickly navigate to your home directory.
+
+```
+cd ~
+pwd
+```
+
+</div></div>
 
 ### List Directory Contents
 To see what is in this directory (folder), you will use the command `ls` which list contents of the current directory.
