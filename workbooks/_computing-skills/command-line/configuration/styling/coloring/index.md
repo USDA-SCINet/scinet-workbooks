@@ -16,8 +16,6 @@ objectives:
 terms:
   - term: ANSI escape codes
     definition: Special sequences used in the terminal to control text appearance (color, bold, underline).
-  - term: Variable Persistence
-    definition: Techniques for storing customizations across sessions using configuration files like `.bashrc` or `.zshrc`.
   - term: Configuration file
     definition: Text file like `.bashrc` or `.bash_profile` that define environment variables and other shell settings, including text coloring and prompt styles.
 
@@ -152,6 +150,8 @@ that overwrites the default behavior of `ls` command or define a new one.
 
 ### Create an alias
 
+{% include alert class="emergency" title=".bashrc content" %}
+
 * To create an alias that overwrites the default `ls` behavior, add the following line to your shell configuration file (i.e., `~/.bashrc`):
   ```bash
   alias ls='ls --color=auto'
@@ -237,6 +237,7 @@ This allows you to easily distinguish between different file types and prioritiz
 
 ### Customize LS_COLORS
 
+{% include alert class="emergency" title=".bashrc content" %}
 To customize colors, you can define them directly by modifying the `LS_COLORS` variable in your startup script (`~/.bashrc`).
 
 <div id="note-alerts-1" class="highlighted highlighted--warning ">
@@ -284,7 +285,7 @@ automatically enabling color when outputting to a terminal.
 </div>
 </div>
 
-<div class="process-list ul">
+<div class="process-list ul" markdown="1">
 
 
 ### Useful grep flags for coloring
@@ -364,34 +365,36 @@ This command is looking for occurrences of "pattern" in the log file, showing 2 
 
 #### Customize GREP_COLORS
 
+{% include alert class="emergency" title=".bashrc content" %}
+
 To take full control of the colors, set the `GREP_COLORS` variable.
 
-1. Define it in your terminal for a current session only:
-  ```bash
-  export GREP_COLORS='mt=1;33:fn=3;31:ln=46:se=36'
-  ```
-  This setting customizes grep output by highlighting matched text in bold yellow (`mt=1;33`), filenames in italic red (`fn=3;31`), line numbers in cyan background (`ln=46`) and context separators (--) in cyan text (se=36).*
-2. Test it with `grep` command:
-  ```bash
-  grep --color=always "pattern" filename
-  ```
-  The `--color=always` forces colors even when the output is piped.  
-  ![grep coloring customized]({{ images_path }}/grep_coloring_custom.png)
-
-3. Make it permanent by adding the variable to your shell config (`~/.bashrc`):
-  - Check if it is already defined in your `~/.bashrc` to avoid duplicated definitions.
-    ```bash
-    grep "GREP_COLORS" ~/.bashrc
-    ``` 
-  - edit your config file using nano (`nano ~/.bashrc`)
-  - assign a new settings to `GREP_COLORS` variable and export it:
+1.  Define it in your terminal for a current session only:
     ```bash
     export GREP_COLORS='mt=1;33:fn=3;31:ln=46:se=36'
     ```
-  - reload the shell configuration (to apply changes also in a current shell):
+  This setting customizes grep output by highlighting matched text in bold yellow (`mt=1;33`), filenames in italic red (`fn=3;31`), line numbers in cyan background (`ln=46`) and context separators (--) in cyan text (se=36).*
+1.  Test it with `grep` command:
     ```bash
-    source ~/.bashrc
-    ``` 
+    grep --color=always "pattern" filename
+    ```
+  The `--color=always` forces colors even when the output is piped.  
+  ![grep coloring customized]({{ images_path }}/grep_coloring_custom.png)
+
+1.  Make it permanent by adding the variable to your shell config (`~/.bashrc`):
+    - Check if it is already defined in your `~/.bashrc` to avoid duplicated definitions.
+      ```bash
+      grep "GREP_COLORS" ~/.bashrc
+      ``` 
+    - edit your config file using nano (`nano ~/.bashrc`)
+    - assign a new settings to `GREP_COLORS` variable and export it:
+      ```bash
+      export GREP_COLORS='mt=1;33:fn=3;31:ln=46:se=36'
+      ```
+    - reload the shell configuration (to apply changes also in a current shell):
+      ```bash
+      source ~/.bashrc
+      ``` 
 
 </div>
 
@@ -402,10 +405,8 @@ To take full control of the colors, set the `GREP_COLORS` variable.
 
 <div class="usa-accordion">
 
-{% include accordion title="Solutions for common grep issues" class="outline" controls="coloring-custom-1" %}
+{% include accordion title="No color in grep output" class="outline" controls="coloring-custom-1" %}
 <div id="coloring-custom-1" class="accordion_content" markdown="1" hidden>
-
-**SYMPTOMS:** No color in grep output.
 
 **SOLUTIONS:** Ensure your terminal supports [ANSI color codes](../ansi).
 ```bash
@@ -413,13 +414,19 @@ To take full control of the colors, set the `GREP_COLORS` variable.
 echo -e "\033[31mRed Text\033[0m"
 ```
 
-**SYMPTOMS:** Color disappears when grep output is piped.
+</div>
+{% include accordion title="Color disappears when grep output is piped" class="outline" controls="coloring-custom-2" %}
+<div id="coloring-custom-2" class="accordion_content" markdown="1" hidden>
 
 **SOLUTIONS:** Use `--color=always` when you pipe grep:
 ```bash
 grep --color=always "pattern" file.txt | less -R
 ```
-*The `-R` option in `less` preserves color codes.*
+The `-R` option in `less` preserves color codes.
+
+</div>
+
+</div>
 
 <div id="note-alerts-1" class="highlighted highlighted--tip ">
 <div class="highlighted__body" markdown="1">
@@ -427,8 +434,4 @@ grep --color=always "pattern" file.txt | less -R
 Avoid conflicting grep settings, for example, ensure no existing aliases like  
 `alias grep="grep --color=never"` are disabling color.
 </div>
-</div>
-
-</div>
-
 </div>

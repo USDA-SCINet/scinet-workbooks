@@ -93,7 +93,7 @@ While both can be used to execute actions within the shell, functions offer uniq
 
 {% include table caption="Differences between commands and functions" classes="striped" sticky="true" fixed="true" no-row-labels="true" content="| built-in commands | custom shell functions |
 | --                 | --                      |
-| Commands are part of the system's core utilities or external binaries and have global scope, accessible across sessions without needing to redefine them. | Functions are defined within the shell session and have a limited scope, typically tied to the session or script in which they are defined, unless persisted in configuration files like `.bashrc`. |
+| Commands are part of the system's core utilities or external binaries and have global scope, accessible across sessions without needing to redefine them. | Functions are defined within the shell session and have a limited scope, typically tied to the session or script in which they are defined, unless persisted in configuration files. |
 | Commands are often fixed in behavior, though they can take arguments to alter their output. | Fully customizable, allowing users to encapsulate multiple steps and apply logic, loops and conditions. |
 | Commands are persistent as long as the relevant binaries or shell built-ins exist. | Functions exist only within the context of a session unless saved to `.bashrc.` |
 | Commands are either built-in (`cd`, `echo`) or external programs (`ls`, `grep`). | Can be user-defined with custom argument handling and logic (using `function_name() { ... }`). |" %}
@@ -907,12 +907,14 @@ log_function() { echo "Executing task at $(date)" >> ~/function.log 2>> ~/functi
 
 ### Organize functions in configuration files
 
-1. Keep frequently used functions in shell configuration files (i.e., `~/.bashrc`, `~/.bash_profile`) or separate script files (e.g., `~/bin/functions.sh`). 
-1. Source them using:
-  ```bash 
-  source ~/.bashrc
-  source ~/bin/functions.sh 
-  ```
+{% include alert class="emergency" title=".bashrc content" %}
+
+1.  Keep frequently used functions in shell configuration files (i.e., `~/.bashrc`, `~/.bash_profile`) or separate script files (e.g., `~/bin/functions.sh`). 
+1.  Source them using:
+    ```bash 
+    source ~/.bashrc
+    source ~/bin/functions.sh 
+    ```
 
 ### Document your functions to keep a reference for future use
 
@@ -977,7 +979,7 @@ process_file
 ```
 Once your project is finished, you don’t need this function anymore, so defining it permanently would be unnecessary.
 
-
+<!--
 ### Permanent functions
 
 Permanent functions are stored in shell configuration files, making them available across multiple sessions and logins. 
@@ -1078,7 +1080,7 @@ By following this modular and project-specific approach, you keep your HPC work 
 </div>
 </div>
 
-
+-->
 
 ## Troubleshooting common issues
 
@@ -1124,6 +1126,8 @@ Below are common issues and effective ways to troubleshoot them.
 <div id="shell-function-4" class="accordion_content" markdown="1">
 
 **SYMPTOMS:** Functions disappear after logging out.
+
+{% include alert class="emergency" title=".bashrc content" %}
 
 **SOLUTIONS:** Persist functions by defining them in a sourced script (`~/.bashrc` or custom `~/bin/functions.sh`) instead of just in a temporary session.
 </div>

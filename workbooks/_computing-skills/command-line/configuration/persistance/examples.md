@@ -514,16 +514,6 @@ esac
 ```
 This adjusts the MY_PROJECT_DIR path dynamically based on the cluster hostname.
 
-### Experiment and refine setups
 
-Customizing `~/.bashrc` is an iterative process — it's good practice to test and refine changes before making them permanent.
-
-#### Safe testing in a temporary shell
-
-Instead of modifying ~/.bashrc directly and risking shell issues, create a separate script (e.g., `~/.bashrc-test`)`, introduce your changes there, and test them in a subshell before applying them permanently. 
-```bash
-bash --rcfile ~/.bashrc-test
-```
-*This runs a new Bash instance with the test file. Once you `exit`, all changes are gone, leaving your original shell unchanged.*
 
 </div>

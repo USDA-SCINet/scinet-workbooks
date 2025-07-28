@@ -20,8 +20,7 @@ Examples of practical functions you may wish to use in your scripts.
 
 
 When working on a cluster you need to repeatedly check job statuses and derive statistics to monitor progress and identify any bottlenecks. Instead of typing multiple commands each time, 
-you can create a function that encapsulates this entire routine and executes it with a single call. Once saved and stored in a configuration file (e.g., `~/.bashrc`), 
-it can be reused indefinitely by calling its name.
+you can create a function that encapsulates this entire routine and executes it with a single call. Once saved and stored in a project bash script or configuration file, it can be reused indefinitely by calling its name.
 
 
 Example shell function to quickly derive statistics on jobs in the queue:

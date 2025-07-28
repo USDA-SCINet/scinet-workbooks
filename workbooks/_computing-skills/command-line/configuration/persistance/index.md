@@ -35,7 +35,14 @@ overview: [objectives, applications, terminology]
 
 ## Overview
 
-This tutorial offers a comprehensive, hands-on guide to persisting your customized shell environments. The focus is on real-world applications that make daily tasks on SCINet HPC clusters more efficient and user-friendly. From persisting aliases to configuring environment variables for installed software, this tutorial provides practical techniques for optimizing and automating your HPC settings.
+This tutorial offers a comprehensive, hands-on guide to persisting your customized shell environments across sessions. The focus is on real-world applications that make daily tasks on SCINet HPC clusters more efficient and user-friendly. From persisting aliases to configuring environment variables for installed software, this tutorial provides practical techniques for optimizing and automating your HPC settings.
+
+By using customized configuration files, users can:  
+  * Set environment variables (e.g., `PATH`, `EDITOR`)  
+  * Create aliases for quicker command execution  
+  * Define shell functions to automate repetitive tasks  
+  * Load modules and software automatically  
+  * Configure shell behavior for an optimized workflow 
 
 {% include overviews folder=1 %}
 
@@ -44,44 +51,46 @@ This tutorial offers a comprehensive, hands-on guide to persisting your customiz
 To complete this tutorial, you will need to launch the shell on SCINet. If you are unsure how to do this, please refer to [Getting Started with SCINet Workbooks](/about/use#using-the-shell) for instructions.  
 
 
-## Loading configurations from a file
+**There are two main ways to persist your shell customizations:**
+* [Project-specific configuration files](#project-specific-configuration-files)
+  * Ideal for project-specific functions and customization
+  * Needs to be loaded in every shell
+* [Modifying .bashrc](#global-configuration-files-bashrc)
+  * Allows for custom configurations to persist between interactive sessions.
+  * Any modification must be done carefully to ensure your system-wide settings remain intact.
+
+**Both of these methods work best with [modular configuration files](#modular-configuration-files):**
+  * Keeps your main configuration files minimal and easy to manage.
+  * Allows for quick modifications without affecting the entire configuration.
+
+
+## Modular configuration files  
+
+A cluttered configuration file can slow down shell startup and make maintenance difficult. The best approach is to modularize configurations by splitting them into separate files.
+
+Instead of filling your main configuration file with aliases, functions, and environment variables, load them into it from separate files.
+```bash
+[[ -f ~/.aliases.sh ]] && source ~/.aliases.sh
+[[ -f ~/.functions.sh ]] && source ~/.functions.sh
+[[ -f ~/.env_variables.sh ]] && source ~/.env_variables.sh    # user-defined environment variables such as paths
+```
+
+This keeps your main configuration file minimal and easy to manage, while allowing quick modifications without affecting the entire configuration.
+
+
+Separating out important settings, such as any custom SLURM-related settings, will make them much easier to maintain as needed.
+```bash
+[[ -f ~/.my_slurm.sh ]] && source ~/.my_slurm.sh
+```
+
+
+## Project-specific configuration files
 
 When working on multiple HPC projects, maintaining a clean and organized environment is essential. 
 
-Instead of cluttering your `~/.bashrc` with all permanent functions, a project-specific approach allows you to load only the functions you need for a given project. 
+Instead of cluttering your global environment with all of your persisting customizations, a project-specific approach allows you to load only the custom resources you need for a given project. 
 
-This keeps your environment lightweight and prevents unnecessary function definitions from overwhelming your shell session.
-
-<div id="note-alerts-1" class="highlighted highlighted--tip ">
-<div class="highlighted__body" markdown="1">
-
-When working with complex scripts or multiple reusable functions, it's best to organize them into separate files and load them into your session dynamically.
-</div>
-</div>
-
-### Organizing functions by project
-
-A better approach than defining all functions in `.bashrc` is to store them in separate function files per project and load them dynamically when needed.
-
-For example, create a `bin` directory (if not present) and add a functions file for each project separately:
-```
-~/bin/
-│── functions_projectA.sh
-│── functions_projectB.sh
-│── functions_projectC.sh
-```
-
-1. Create a new function file for your project.
-2. Define reusable functions inside the file. *Save the file and exit edition mode.*
-3. Manually load functions for a project when needed.
-```bash
-source ~/bin/functions_projectA.sh
-```
-Now, all functions defined in the sourced file are available in your current shell.
-
-<div id="note-alerts-1" class="highlighted highlighted--tip ">
-<div class="highlighted__body" markdown="1">
-<h4 class="highlighted__heading">Why Use a Project-Specific Approach?</h4>
+This keeps your environment lightweight and prevents unnecessary definitions from overwhelming your shell session.
 
 {:.fancy-ul}
 * **Avoids clutter:** Your `.bashrc` remains clean, keeping only essential configurations.
@@ -89,31 +98,41 @@ Now, all functions defined in the sourced file are available in your current she
 * **Prevents function overload:**  You only load what you need, avoiding unnecessary commands in your environment.
 * **Supports multiple projects:** Easily switch between different function sets as required.
 
-By following this modular and project-specific approach, you keep your HPC work organized, scalable and efficient while ensuring that functions remain relevant and manageable across different projects.
-</div>
-</div>
 
-## Customizing bashrc
+
+For example, create a `bin` directory (if not present) and add a definitions file for each project separately:
+```
+~/bin/
+│── definitions_projectA.sh
+│── definitions_projectB.sh
+│── definitions_projectC.sh
+```
+
+Once you have defined the desired definitions (functions, aliases, variables) inside your configuration file, or loaded them into it from modular files, you can manually load your custom shell and all that is defined within it for a project when needed.
+  
+```bash
+source ~/bin/definitions_projectA.sh
+```
+
+Now, everything defined in the sourced file is available in your current shell.
+
+
+By following this project-specific approach, you keep your HPC work organized, scalable, and efficient while ensuring that your customizations remain relevant and manageable across different projects.
+
+
+## Global configuration files - bashrc
 
 The `.bashrc` file is a user-specific shell startup script that automatically executes when opening a new interactive shell session. 
 It allows users to customize their command-line environment, automate frequently performed tasks and define personalized configurations without requiring administrative privileges.  By leveraging this startup script, you can create a highly efficient and personalized CLI environment that works seamlessly across sessions.
 
-By editing `.bashrc`, users can:  
-  * Set environment variables (e.g., `PATH`, `EDITOR`)  
-  * Create aliases for quicker command execution  
-  * Define shell functions to automate repetitive tasks  
-  * Load modules and software automatically  
-  * Configure shell behavior for an optimized workflow, for example: 
-      * Set never ending history to track all past commands across sessions.  
-      * Optimize apptainer usage by setting up paths and default bind mounts.  
-      * Set default text editor for system-wide consistency.  
-
 
 `.bashrc` is executed every time you start an interactive shell that is not a login shell.
-  * **interactive shell:** A shell session where you type commands manually 
-    *(e.g., opening a terminal, opening SCINet shell access via OOD, starting Bash in an existing session).*
-  * **non-interactive shell:** A shell session used for executing scripts 
-    *(e.g., running a job script on HPC)*.
+  * **interactive shell:** A shell session where you type commands manually.  
+    (e.g., opening a terminal, opening SCINet shell access via OOD, starting Bash in an existing session)
+  * **non-interactive shell:** A shell session used for executing scripts.  
+    (e.g., running a job script on HPC)
+
+
 
 <div class="usa-accordion" markdown="1">
 {% include accordion title=".bashrc vs. .bash_profile" class="note" controls="bash-profile-acc" icon=true %}
@@ -146,7 +165,6 @@ Customizing `.bashrc` requires careful editing to avoid errors that might disrup
 
 **Before making changes, always create a backup to restore previous settings if needed.**" %}
 
-<div class="process-list" markdown="1">
 
 ### Locating .bashrc
 
@@ -165,9 +183,19 @@ If the file is missing, you can create one using:
 touch ~/.bashrc
 ```
 
-### Backing up configuration files
+## Customizing your configuration files
+
+
+### Best Practices
+
+Regardless of the configuration files you choose to edit, there are several best practices you should follow.
+
+<div class="process-list ul h4" markdown="1">
+
+#### Back up configuration files
 
 Before making changes, always create a backup to restore previous settings if needed:
+
 ```bash
 cp ~/.bashrc ~/.bashrc.backup      # Copy current .bashrc as a backup with a new filename
 ```
@@ -192,47 +220,75 @@ git commit -m "Initial backup of .bashrc"
 </div> </div>
 
 
-### Editing
+#### Checking for errors
 
-Use a command-line text editor like nano or vim to modify `.bashrc`:
+Before applying changes to your configuration files, it's crucial to check for syntax errors to avoid breaking your shell.
+**This is extremely important when editing .bashrc**, but if you are checking other configuration files you can replace `~./bashrc` with the path to your desired file.
+
+* To check for syntax errors without executing the file, run:
+  ```bash
+  bash -n ~/.bashrc           # syntax check
+  ```
+  This ensures there are no typos, misplaced quotes or missing brackets. If errors exist, they will be reported without applying the changes.
+
+* To track where a script is failing, enable debug mode:
+  ```bash
+  bash -x ~/.bashrc
+  ```
+  This prints each command before execution, helping identify where .bashrc is failing.
+
+#### Experiment and refine setups
+
+Customizing configuration files is an iterative process — it's good practice to test and refine changes before making them permanent.
+
+
+Instead of modifying existing configuration files directly and risking shell issues, create a separate script (e.g., `~/.bashrc-test`)`, introduce your changes there, and test them in a subshell before moving them to your configuration file and applying them permanently. 
+
 ```bash
-nano ~/.bashrc       # easy-to-use text editor
+bash --rcfile ~/.bashrc-test
 ```
-or
+* This runs a new Bash instance with the test file. Once you `exit`, all changes are gone, leaving your original shell unchanged.
+
+#### Use modular configuration files
+
+Where possible, using [modular configuration files](#modular-configuration-files) allows for safer, more efficient customization.
+
+</div>
+
+### Editing the files
+
+<div class="process-list ul h4" markdown="1">
+
+#### Editing
+
+Use a command-line text editor like nano or vim to modify your configuration file:
 ```bash
-vim ~/.bashrc        # advanced editor (if you're comfortable with Vim)
+nano ~/.bashrc       # or ~/bin/your-project-config.sh
 ```
 
 
-### Applying changes 
+#### Applying changes 
 
-After modifying `.bashrc`, you can apply the changes immediately without starting a new terminal:
+After modifying your configuration files, you can apply the changes immediately without starting a new terminal:
 ```bash
-source ~/.bashrc
+source ~/.bashrc     # or ~/bin/your-project-config.sh
 ```
 
 Alternatively, you can restart your shell by closing and reopening the terminal.
 
-When to use `source ~/.bashrc`?
+* **When to use `source <config>`?**
   * If you added aliases, functions or variable exports and want to apply them in a curent session.
   * Useful for testing small changes without opening a new session.
-
-When to restart the shell?
+* **When to restart the shell?**
   * If the changes involve `PATH` modifications or environment variables, a fresh session ensures they are applied consistently.
 
-### Restoring from backup
+#### Restoring from backup
 
-If something breaks, open a new shell and revert `~/.bashrc` from your backup or create a new one and copy-paste the [default `.bashrc` content](./default-scripts).
+If something breaks, open a new shell and revert your configuration file from your backup.  
 
+If you are using `.bashrc`, you can create a new one and copy-paste the [default `.bashrc` content](./startup-scripts).
 
 </div>
-
-
-
-## Troubleshooting common issues
-
-A well-configured .bashrc can significantly improve productivity in an HPC environment, but misconfigurations can lead to login issues, broken environments or unexpected behavior. 
-This section covers error detection, organization tips, common mistakes and best practices to help keep your setup clean and reliable.
 
 ### Common mistakes
 
@@ -241,37 +297,81 @@ This section covers error detection, organization tips, common mistakes and best
 - Infinite Loops due to sourcing `~/.bashrc` inside itself
   - **NOTE:** Running `source ~/.bashrc` inside `.bashrc` creates an infinite recursion, causing the shell to hang.
 
-### Best practices
 
-#### Check for errors
+## Custom configuration demo
 
-Before applying changes to .bashrc, it's crucial to check for syntax errors to avoid breaking your shell.
+Here we will set up a demo custom environment in your home directory.
 
-*To check for syntax errors without executing the file, run:*
+### Demo project configuration
+
+Ideal for project-specific functions and customization.
+
+<div class="process-list h4" markdown="1">
+
+#### Set up configuration files
+
+1.  Make your directory and required files 
+    ```
+    mkdir -p ~/bin/configs
+    touch ~/bin/demo-config.sh  ## create your main configuration file
+    touch ~/bin/configs/demo-aliases.sh ~/bin/configs/demo-functions.sh ~/bin/configs/demo-variables.sh
+    ```
+1.  Open your main configuration file in nano 
+    ```bash
+    nano ~/bin/demo-config.sh
+    ```
+1.  Paste the following into the file:  
+    ```bash
+    [[ -f ~/bin/configs/demo-aliases.sh ]] && source ~/bin/configs/demo-aliases.sh
+    [[ -f ~/bin/configs/demo-functions.sh ]] && source ~/bin/configs/demo-functions.sh
+    [[ -f ~/bin/configs/demo-variables.sh ]] && source ~/bin/configs/demo-variables.sh
+    ```
+    * When you run your main config file, this code will check to make sure your indicated configuration files exist before loading them. 
+1.  Save the file (CTRL + X, then Y) and load the configuration:  
+    ```bash
+    source ~/bin/configs
+    ```
+
+#### Add variables to modular configuration
+
+If your install software in a local directory (e.g., `$HOME/software`), you must update your `PATH` so that the system can locate and execute these programs.  The program executable is typically stored in a bin subdirectory of installed software
+
 ```bash
-bash -n ~/.bashrc           # syntax check
+echo "export PATH=$HOME/software/bin:$PATH >> ~/bin/configs/variables.sh"
+source ~/bin/configs
 ```
-*This ensures there are no typos, misplaced quotes or missing brackets. If errors exist, they will be reported without applying the changes.*
+* This adds `~/software/bin` to the system's search path for executables, ensuring that binaries in this directory 
+  can be run without specifying their full path.
+* It then reloads your main configuration script.
 
-*To track where a script is failing, enable debug mode:*
-```bash
-bash -x ~/.bashrc
-```
-*This prints each command before execution, helping identify where .bashrc is failing.*
 
-#### Keep .bashrc clean & modular
+#### Add functions to modular configuration
 
-A cluttered `~/.bashrc` can slow down shell startup and make maintenance difficult. The best approach is to modularize configurations by splitting them into separate files.
+If you frequently use specific software, you can ensure it loads when you load your project configuration.  
+To prevent errors, you should conditionally load modules only when on a compute node.
 
-Instead of filling `~/.bashrc` with aliases, functions and environment variables, load them in your .bashrc from separate files:
-```bash
-[[ -f ~/.aliases.sh ]] && source ~/.aliases.sh
-[[ -f ~/.functions.sh ]] && source ~/.functions.sh
-[[ -f ~/.env_variables.sh ]] && source ~/.env_variables.sh    # user-defined environment variables such as paths
-```
-*This keeps .bashrc minimal and easy to manage, while allowing quick modifications without affecting the entire configuration.*
+1.  Open your function configuration file in nano
+1.  Paste the following into the file  
+    ```bash
+    if [[ $(hostname) =~ "compute" ]]; then
+      module load python_3/3.9.18 gcc/12.2.0
+    fi
+    ```  
+  This ensures that Python 3.9 and GCC 12.2 are always available when you load your project configuration script.
+1.  Save the file (CTRL + X, then Y) and load the configuration: 
+    ```bash
+    source ~/bin/configs
+    ```
 
-For HPC environments, it's useful to separate SLURM-related settings:
-```bash
-[[ -f ~/.my_slurm.sh ]] && source ~/.my_slurm.sh
-```
+</div>
+
+
+### Demo bashrc customization
+
+This method allows for custom configurations to persist between interactive sessions, but must be done carefully!
+
+<div class="process-list h4" markdown="1">
+
+#### First step
+
+</div>

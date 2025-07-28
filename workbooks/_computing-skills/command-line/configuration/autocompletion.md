@@ -41,10 +41,10 @@ Instead of typing long commands / program names or remembering complex file path
 
 **How Does It Work?**
 
-1. The shell looks at what you've typed so far.
-2. It searches for possible completions based on context.
-* If a unique match exists, it completes automatically.
-* If multiple matches exist, press `Tab` the second time and suggestions will be displayed to choose from.
+1.  The shell looks at what you've typed so far.
+1.  It searches for possible completions based on context.
+    * If a unique match exists, it completes automatically.
+    * If multiple matches exist, press `Tab` the second time and suggestions will be displayed to choose from.
 
 <div class="process-list ul" markdown="1">
 
@@ -99,6 +99,8 @@ If a binary of a desired tool is in $PATH, pressing `Tab` completes it:
 pyt<Tab>  →  python3
 ```
 
+
+{% include alert class="emergency" title=".bashrc content" %}
 {% include alert class="tip" content="To make a custom-installed tool available in the command line by its name, you must ensure its directory is included in the `$PATH` environment variable.  
 
 For example, if the tool is installed in `~/software/`, you can add it to `$PATH` by adding the following line to your `~/.bashrc`:
@@ -212,23 +214,23 @@ You can create a custom completion function to suggest these options when pressi
 
 #### Create an autocompletion function
 
-1. Define a function in a dedicated sourced script, e.g., `~/.my_tab_completion`, that provides the completion behavior:
-  ```bash
-  _myscript_complete() {
-    local cur prev opts
-    COMPREPLY=()
-    cur="${COMP_WORDS[COMP_CWORD]}"         # stores the current word being typed
-    prev="${COMP_WORDS[COMP_CWORD-1]}"
-    opts="start stop restart status"
-    
-    COMPREPLY=( $(compgen -W "$opts" -- "$cur") )    # generates completions based on predefined options
-    return 0
-  }
-  ```
-1. Source the configuration file:
-  ```
-  source ~/.my_tab_completion
-  ```
+1.  Define a function in a dedicated sourced script, e.g., `~/.my_tab_completion`, that provides the completion behavior:
+    ```bash
+    _myscript_complete() {
+      local cur prev opts
+      COMPREPLY=()
+      cur="${COMP_WORDS[COMP_CWORD]}"         # stores the current word being typed
+      prev="${COMP_WORDS[COMP_CWORD-1]}"
+      opts="start stop restart status"
+      
+      COMPREPLY=( $(compgen -W "$opts" -- "$cur") )    # generates completions based on predefined options
+      return 0
+    }
+    ```
+1.  Source the configuration file:
+    ```
+    source ~/.my_tab_completion
+    ```
 
 #### Register the completion function 
 
@@ -250,6 +252,7 @@ After defining the function and registering it, test the autocompletion:
 If everything is set up correctly, `Tab` should suggest pre-defined options.  
 ![autocompletion for custom scripts]({{ images_path }}/autocomplete/autocompletion_custom_scripts.png)
 
+<!--
 #### Persist the setup for all future shells
 
 To keep autocompletion active in future sessions, add these lines to your `~/.bashrc`:
@@ -261,7 +264,7 @@ complete -F _myscript_complete ./myscript.sh    # same here
 ```
 
 `source ~/.bashrc` to apply changes in a current shell.
-
+-->
 </div>
 
 ### Define an alias to preview options

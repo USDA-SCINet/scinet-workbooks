@@ -4,7 +4,7 @@ title: "Shell prompt styling"
 description: "Adjusting the shell prompt appearance to display dynamic information such as the user, working directory and more."
 type: interactive tutorial
 order: 2
-tags: [unix, customization, bashrc]
+tags: [unix, customization]
 author: Aleksandra Badaczewska
 
 objectives:
@@ -20,8 +20,6 @@ concepts:
 terms:
   - term: Bash shell
     definition: A popular shell environment (command interpreter) available on most Unix-like and HPC systems.
-  - term: Configuration file
-    definition: Text file like `.bashrc` or `.bash_profile` that define environment variables and other shell settings, including text coloring and prompt styles.
 
 overview: [objectives,concepts,terminology]
 ---
@@ -385,6 +383,7 @@ This level of persistence is useful when you need the custom prompt to be availa
 </div>
 </div>
 
+<!--
 ### Permanent change in future shells
 
 Adding the `PS1` assignment to your `~/.bashrc` file makes the customization permanent, applying it automatically in every new shell sessions.   
@@ -437,7 +436,7 @@ source ~/.bashrc
   ```bash
   source ~/.bashrc
   ```
-
+-->
 </div>
 
 ## Troubleshooting common issues
