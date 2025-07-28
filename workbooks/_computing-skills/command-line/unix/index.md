@@ -28,7 +28,7 @@ terms:
 
 language: Bash
 
-author: [Andrew Severin, Aleksandra Badaczewska, Moe Richert, Lavida Rogers]
+author: [Andrew Severin, Aleksandra Badaczewska, Lavida Rogers]
 ## author name
 
 updated: 2025-06-17 
