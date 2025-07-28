@@ -7,7 +7,7 @@ order: 6
 tags: [unix, customization]
 author: Aleksandra Badaczewska
 
-index: 3
+index: 2
 
 objectives:
   - Understand key differences between shell functions, aliases and built-in shell commands.
