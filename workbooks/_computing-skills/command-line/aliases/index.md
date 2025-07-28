@@ -7,7 +7,7 @@ order: 7
 tags: [unix, customization, bashrc]
 author: Aleksandra Badaczewska
 
-index: 3
+index: 2
 
 objectives:
   - Grasp the syntax and conventions for creating aliases in a Bash shell.
