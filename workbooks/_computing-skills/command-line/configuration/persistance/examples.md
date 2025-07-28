@@ -32,7 +32,7 @@ export MY_PROJECT_DIR=/projects/<scinet-project>/$USER    # Define project direc
 ```
 *`source ~/.bashrc` or open a new shell to have changes applied.*
 
-{% include alert class="tip" content="For an in-depth tutorial on variables, see [Using environment and shell variables](../variables)" %}
+{% include alert class="tip" content="For an in-depth tutorial on variables, see [Using environment and shell variables](../../variables)" %}
 
 ### Modifying $PATH for local binaries
 
@@ -82,7 +82,7 @@ For example:
   ```
 *`source ~/.bashrc` or open a new shell to have changes applied.*
 
-{% include alert class="tip" content="For an in-depth tutorial on aliases, see [Alias definition and usage](../aliases/)" %}
+{% include alert class="tip" content="For an in-depth tutorial on aliases, see [Alias definition and usage](../../aliases/)" %}
 
 ### Creating simple shell functions
 
@@ -108,7 +108,7 @@ For example:
   ```
 *`source ~/.bashrc` or open a new shell to have changes applied.*
 
-{% include alert class="tip" content="For an in-depth tutorial on functions, see [Shell Functions](../functions/)" %}
+{% include alert class="tip" content="For an in-depth tutorial on functions, see [Shell Functions](../../functions/)" %}
 
 ### Enhancing shell usability 
 
@@ -306,7 +306,7 @@ In high-performance computing (HPC) environments, job scheduling with SLURM is e
 Customizing SLURM-related settings in your `~/.bashrc` file can streamline job submissions, optimize resource allocation and simplify the starting of an interactive session on a compute node. 
 
 To get started with custom configurations, check out:
-- **[Practical Aliases for HPC](../aliases#practical-aliases-for-hpc)** provided in the Aliases tutorial, including:
+- **[Practical Aliases for HPC](../../aliases#practical-aliases-for-hpc)** provided in the Aliases tutorial, including:
   - Load module and check module list:
     ```bash
     alias load_python='module load python_3 && module list'
@@ -328,11 +328,11 @@ To get started with custom configurations, check out:
     # usage: node_usage
     ```
 
-- **[Practical Shell Functions](../functions#practical-shell-functions-for-hpc)** provided in the Functions tutorial, including:
-  - [Check quota on any SCINet cluster](../functions#practical-shell-2)
-  - [Quick stats on queued jobs](../functions#practical-shell-3)
-  - [GPU resources check](../functions#practical-shell-6)
-  - [CPU and memory on a node](../functions#practical-shell-7)
+- **[Practical Shell Functions](../../functions#practical-shell-functions-for-hpc)** provided in the Functions tutorial, including:
+  - [Check quota on any SCINet cluster](../../functions#practical-shell-2)
+  - [Quick stats on queued jobs](../../functions#practical-shell-3)
+  - [GPU resources check](../../functions#practical-shell-6)
+  - [CPU and memory on a node](../../functions#practical-shell-7)
 
 These resources offer ready-to-use shortcuts and functions that streamline job management, making your HPC workflow more efficient right from the start.
 
@@ -358,7 +358,7 @@ function sbatch_quick {
 # usage: sbatch_quick my_script.sh
 ```
 
-![function sbatch_quick]({{ images_path }}/function/function_sbatch_quick.png)
+![function sbatch_quick]({{ images_path }}/function_sbatch_quick.png)
 
 #### Quick SLURM job submission with custom request for memory, CPU and partition
 
@@ -392,7 +392,7 @@ function sbatch_flex {
 # usage:  sbatch_flex my_script.sh 8 bigmem 8G    # specify all prior arguments to request custom memory
 ```
 
-![function sbatch_flex_submit]({{ images_path }}/function/function_sbatch_flex_submit.png)
+![function sbatch_flex_submit]({{ images_path }}/function_sbatch_flex_submit.png)
 
 <div class="highlighted highlighted--note ">
 <div class="highlighted__body" markdown="1">
@@ -421,7 +421,7 @@ Below are a few practical examples of advanced `~/.bashrc` configurations to opt
 ***Quick recap:*** <br>
 Conditional execution in Bash allows scripts to make decisions based on conditions like the hostname, user or environment variables, enabling more dynamic and efficient behavior.
 
-For a deeper dive into practical use cases, check out [Conditionals and loops](./functions#conditionals-and-loops) section in the tutorial about Shell Functions.
+For a deeper dive into practical use cases, check out [Conditionals and loops](../../functions#conditionals-and-loops) section in the tutorial about Shell Functions.
 </div> </div>
 
 #### Distinguishing between interactive and non-interactive shells
