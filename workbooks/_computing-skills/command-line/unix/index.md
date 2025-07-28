@@ -710,38 +710,38 @@ Here, we will briefly look at scripting to show how permissions control executio
 Many script files begin with this line of code `#!/bin/bash`. This line of code tells the system which program to use to run the script and in this example, it will use the Bash shell. 
 Additionally, execute permission is needed so that you can run scripts.
 
-1. Let's create an empty file:  
-  ```
-  touch test_run.sh
-  ```
-2. Open a text editor:  
-  ```
-  nano test_run.sh
-  ```
-3. Edit the `test_run` by typing: 
-  ```
-  #!/bin/bash
+1.  Let's create an empty file:  
+    ```
+    touch test_run.sh
+    ```
+1.  Open a text editor:  
+    ```
+    nano test_run.sh
+    ```
+1.  Edit the `test_run` by typing: 
+    ```
+    #!/bin/bash
 
-  echo "Just another day of learning the basics of Unix on SCINet!"
-  ```
-4. Save the file and exit the editor. This creates a script. 
-5. View the file to confirm edits were made. 
-6. Let's look at the current permissions:
-  ```
-  ls -lh test_run.sh
-  ``` 
-7. To make the script executable:  
-   ```
-   chmod u+x test_run.sh
-   ```
-9. Let's look at the change in permissions. Do you notice the difference?  
-  ```
-  ls -lh test_run.sh
-  ``` 
-10. To run the script:   
-  ```
-  srun test_run.sh
-  ``` 
+    echo "Just another day of learning the basics of Unix on SCINet!"
+    ```
+1.  Save the file and exit the editor. This creates a script. 
+1.  View the file to confirm edits were made. 
+1.  Let's look at the current permissions:
+    ```
+    ls -lh test_run.sh
+    ``` 
+1.  To make the script executable:  
+    ```
+    chmod u+x test_run.sh
+    ```
+1.  Let's look at the change in permissions. Do you notice the difference?  
+    ```
+    ls -lh test_run.sh
+    ``` 
+1.  To run the script:   
+    ```
+    srun test_run.sh
+    ``` 
 
 {% include alert class="question" title="Thought Question" content="Why do you think the system does not let any file be executed by default?" %}
 

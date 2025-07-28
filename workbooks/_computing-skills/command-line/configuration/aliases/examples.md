@@ -103,25 +103,25 @@ Enhance your aliases by using ANSI escape codes to colorize outputs and highligh
 For a deeper dive, check out tutorials on [shell text coloring](../styling) with `echo`, `grep`, `awk` and other commands.
 
 For example:
-1. Alias to automatically enable colored output with grep:
-  ```bash
-  alias grep='grep --color=auto'        
-  # usage: grep "pattern" file
-  ```
+1.  Alias to automatically enable colored output with grep:
+    ```bash
+    alias grep='grep --color=auto'        
+    # usage: grep "pattern" file
+    ```
   Makes it easier to spot matches in command-line outputs, especially when filtering large log files.
-1. Create an alias to quickly filter and colorize log files:
-  ```bash
-  # Add this to your .bashrc file to make settings persistent
-  alias logcheck='grep -E "ERROR|WARNING" | awk '\''/ERROR/ {print "\033[31m" $0 "\033[0m"} /WARNING/ {print "\033[33m" $0 "\033[0m"}'\'''
-  # usage: cat job_output.log | logcheck
-  ```
+1.  Create an alias to quickly filter and colorize log files:
+    ```bash
+    # Add this to your .bashrc file to make settings persistent
+    alias logcheck='grep -E "ERROR|WARNING" | awk '\''/ERROR/ {print "\033[31m" $0 "\033[0m"} /WARNING/ {print "\033[33m" $0 "\033[0m"}'\'''
+    # usage: cat job_output.log | logcheck
+    ```
   Your custom `logcheck` command will instantly highlight errors (red) and warnings (yellow) without retyping the full command.
-1. Create an alias to catch errors in log files in real time:
-  ```bash
-  # Add this to your .bashrc file to make settings persistent
-  alias tailgrep='tail -f | grep --color=always -E "ERROR|WARNING"'
-  # usage: tailgrep slurm-16364729.out
-  ```
+1.  Create an alias to catch errors in log files in real time:
+    ```bash
+    # Add this to your .bashrc file to make settings persistent
+    alias tailgrep='tail -f | grep --color=always -E "ERROR|WARNING"'
+    # usage: tailgrep slurm-16364729.out
+    ```
   This highlights errors and warnings in real-time while continuously monitoring new information added to a log file.
 
 </div>

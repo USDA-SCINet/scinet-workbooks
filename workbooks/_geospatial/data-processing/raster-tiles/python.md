@@ -42,38 +42,38 @@ an example on how to submit your own SLURM job, please see
 {% include setup/90daydata %}
 
 {% include setups %}
-1. Launch JupyterLab in OoD.  
+1.  Launch JupyterLab in OoD.  
   Select the following parameter values when requesting a JupyterLab app to be launched depending on which cluster you choose. All other values can be left to their defaults.  
-    * **Ceres:**  
-        * `Slurm Partition`: short  
-        * `Number of hours`: 1  
-        * `Number of cores`: 16  
-        * `Memory required`: 24G  
-        * `Jupyer Notebook vs Lab`: Lab  
-    * **Atlas:**  
-        * `Partition Name`: development   
-        * `QOS`: normal  
-        * `Number of hours`: 1  
-        * `Number of tasks`: 16  
-        * `Additional Slurm Parameters`: --mem=24G  
-1. Open a terminal in JupyterLab
-  * File > New > Terminal
-1. {% include setup/code %}
-1. Make sure the tutorial kernel is selected:
-  * Kernel > Change Kernel > select `{{ kernel }}` from the drop down menu
-1. Import Libraries / Packages:
-  ```python
-  import time
-  import xarray
-  import rioxarray
-  import glob
-  import os
-  import rasterio
-  from rasterio.enums import Resampling
-  import multiprocessing as mp
-  from dask.distributed import Client
-  from dask_jobqueue import SLURMCluster
-  ```
+    *  **Ceres:**  
+        *  `Slurm Partition`: short  
+        *  `Number of hours`: 1  
+        *  `Number of cores`: 16  
+        *  `Memory required`: 24G  
+        *  `Jupyer Notebook vs Lab`: Lab  
+    *  **Atlas:**  
+        *  `Partition Name`: development   
+        *  `QOS`: normal  
+        *  `Number of hours`: 1  
+        *  `Number of tasks`: 16  
+        *  `Additional Slurm Parameters`: --mem=24G  
+1.  Open a terminal in JupyterLab
+  *  File > New > Terminal
+1.  {% include setup/code %}
+1.  Make sure the tutorial kernel is selected:
+  *  Kernel > Change Kernel > select `{{ kernel }}` from the drop down menu
+1.  Import Libraries / Packages:
+    ```python
+    import time
+    import xarray
+    import rioxarray
+    import glob
+    import os
+    import rasterio
+    from rasterio.enums import Resampling
+    import multiprocessing as mp
+    from dask.distributed import Client
+    from dask_jobqueue import SLURMCluster
+    ```
 
 
 ## Tutorial Steps

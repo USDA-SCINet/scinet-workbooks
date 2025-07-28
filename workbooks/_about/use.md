@@ -20,7 +20,7 @@ Introduction to your tutorial and what the tutorial aims to accomplish.
 {% include overviews %}
 
 ### Tutorial Steps:
-* ***Accessing SCINet**
+* **Accessing SCINet**
     1. Request a SCINet account
     1. Log in to SCINet
 * **Setting up your workspace**
@@ -69,12 +69,12 @@ You will need to decide where files will be stored for the tutorials.  Most tuto
 If you are beginning a tutorial for the first time, or haven't used your directory in 90 days, you will need to create a new working directory for the tutorial.
 
 To create a working directory:
-1. Open the Shell - if you are not sure how, see the below [instructions on how to launch the shell](using-the-shell).
-1. Request a compute node, replacing `<project_name>` with the name of a project you have access to:
+1.  Open the Shell - if you are not sure how, see the below [instructions on how to launch the shell](using-the-shell).
+1.  Request a compute node, replacing `<project_name>` with the name of a project you have access to:
     ```
     srun -A <project_name> -t 01:00:00 --pty bash
     ```
-1. {% include setup/mkdir %}
+1.  {% include setup/mkdir %}
 
 ### Creating a Conda environment
 
@@ -87,33 +87,33 @@ Most tutorials that use Conda environments default to creating the environment i
 {% include alert class="warning" title="It is not reccomended to use your Home directory for Conda" content="Software installs that require a lot of space, such as Conda virtual environments, can quickly max out your quota.  It is reccomended to use `/project` or `/90daydata` instead." %}
 
 #### Example Conda workflow
-1. Load Conda.
+1.  Load Conda.
     * Atlas: `module load miniconda3`
     * Ceres: `module load miniconda`
-1. Create your environment:
+1.  Create your environment:
     * If you are using an environment yml file:
         * Download the environment yml file:  
-            ```bash
-            wget {{ site.url }}{{ file_path }}/{{ environment }}.yml
-            ```
+          ```bash
+          wget {{ site.url }}{{ file_path }}/{{ environment }}.yml
+          ```
         * Create and load your new Conda environment:  
-            ```bash
-            conda env create --prefix /90daydata/shared/$USER/envs/{{ environment }} -f {{ environment }}.yml
-            source activate /90daydata/shared/$USER/envs/{{ environment }}
-            ```  
+          ```bash
+          conda env create --prefix /90daydata/shared/$USER/envs/{{ environment }} -f {{ environment }}.yml
+          source activate /90daydata/shared/$USER/envs/{{ environment }}
+          ```  
     * If you are creating your environment from scratch:  
-        ```bash
-        conda env create --prefix /90daydata/scinet/$USER/envs/{{ environment }}
-        source activate /90daydata/scinet/$USER/envs/{{ environment }}
-        conda install nodejs ruby=3.4.4 compilers
-        ```  
+      ```bash
+      conda env create --prefix /90daydata/scinet/$USER/envs/{{ environment }}
+      source activate /90daydata/scinet/$USER/envs/{{ environment }}
+      conda install nodejs ruby=3.4.4 compilers
+      ```  
     * If you are using an existing environment, you just need to load it:  
-        ```bash
-        source activate /90daydata/scinet/$USER/envs/{{ environment }}
-        ```
-1. If you are using Jupyter:
-    1. {% include setup/kernel %}
-    1. In JupyterLab, make sure the tutorial kernel is selected:
+      ```bash
+      source activate /90daydata/scinet/$USER/envs/{{ environment }}
+      ```
+1.  If you are using Jupyter:
+    1.  {% include setup/kernel %}
+    1.  In JupyterLab, make sure the tutorial kernel is selected:
         * Kernel > Change Kernel > select "{{ kernel }}" from the drop down menu
 
 
@@ -122,29 +122,29 @@ Most tutorials that use Conda environments default to creating the environment i
 If you would like to use your project space instead of `/90daydata`, you can modify the tutorial instructions by substituting `/project/your_project_name/` wherever you see `/90daydata/shared/$USER/`.
 
 For example, to modify the instructions above for creating a directory and Conda environment in a project named "your_project_name", you would:
-1. Open the Shell
-1. Request a compute node:
+1.  Open the Shell
+1.  Request a compute node:
     ```
     srun -A your_project_name -t 01:00:00 --pty bash
     ```
-1. Create your wookbook directory and navigate to it:
+1.  Create your wookbook directory and navigate to it:
     ```
     mkdir -p /project/your_project_name/{{ environment }}
     cd /project/your_project_name/{{ environment }}
     ```
-1. Load Conda.
+1.  Load Conda.
     * Atlas: `module load miniconda3`
     * Ceres: `module load miniconda`
-1. Create your environment from a yml file
+1.  Create your environment from a yml file
     * Download the environment yml file:  
-        ```bash
-        wget {{ site.url }}{{ file_path }}/{{ environment }}.yml
-        ```
+      ```bash
+      wget {{ site.url }}{{ file_path }}/{{ environment }}.yml
+      ```
     * Create and load your new Conda environment:  
-        ```bash
-        conda env create --prefix /project/your_project_name/envs/{{ environment }} -f {{ environment }}.yml
-        source activate /project/your_project_name/envs/{{ environment }}
-        ```  
+      ```bash
+      conda env create --prefix /project/your_project_name/envs/{{ environment }} -f {{ environment }}.yml
+      source activate /project/your_project_name/envs/{{ environment }}
+      ```  
 
 </div>
 

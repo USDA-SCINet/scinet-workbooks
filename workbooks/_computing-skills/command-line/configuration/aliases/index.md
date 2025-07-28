@@ -152,19 +152,19 @@ Permanent aliases are stored in configuration files, allowing them to persist ac
 Working on HPC, you frequently submit jobs, so you repeatedly need to check their status, making it a common task. A permanent alias can help streamline this process and ensure quick access across sessions.
 
 **To create a permanent alias:**
-1. Open your `~/.bashrc` configuration file:
-```bash
-nano ~/.bashrc
-```
-2. Add the alias definition:
-```bash
-alias my_jobs='qstat -u $USER'      # usage: my_jobs
-```
-*This alias helps you quickly check the status of all jobs submitted under your username in an HPC environment. By defining a permanent alias, you ensure that you can monitor your job submissions efficiently across multiple sessions without additional configuration.*
-3. Save the file (`CTRL + X`, then `Y`) and reload the configuration:
-```bash
-source ~/.bashrc 
-```
+1.  Open your `~/.bashrc` configuration file:
+    ```bash
+    nano ~/.bashrc
+    ```
+1.  Add the alias definition:
+    ```bash
+    alias my_jobs='qstat -u $USER'      # usage: my_jobs
+    ```
+  *This alias helps you quickly check the status of all jobs submitted under your username in an HPC environment. By defining a permanent alias, you ensure that you can monitor your job submissions efficiently across multiple sessions without additional configuration.*
+1.  Save the file (`CTRL + X`, then `Y`) and reload the configuration:
+    ```bash
+    source ~/.bashrc 
+    ```
 
 
 ## Creating aliases
