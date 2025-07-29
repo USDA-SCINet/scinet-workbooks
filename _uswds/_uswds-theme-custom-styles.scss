@@ -126,10 +126,9 @@ pre {
   }
 
   .usa-button {
-    margin-bottom: units(2);
+    margin: units(2) units(2) units(4);
     @include at-media("desktop") {
       @include u-bg('white');
-      margin: units(2) units(2) units(4);
     }
 
     @include at-media("widescreen") {
