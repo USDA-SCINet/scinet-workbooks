@@ -471,10 +471,10 @@ These tools are very useful for quickly inspecting the contents of a file and ca
 ### HEAD
 
 {% include table content="| TASK                               | COMMAND SYNTAX     | EXAMPLE             |
-| ---------------------------------- | ------------------ | ------------------- |
-| Print the first 10 lines of a file.| `head <FILE>`      | `head file.txt`     |
-| Print the first N lines of a file. | `head -n N <FILE>` | head -n 5 file.txt  |
-| Print the first N bytes of a file. | `head -c N <FILE>` | head -c 10 file.txt |" %}
+| ----------------------------------- | ------------------ | ------------------- |
+| Print the first 10 lines of a file. | `head <FILE>`      | `head file.txt`     |
+| Print the first N lines of a file.  | `head -n N <FILE>` | head -n 5 file.txt  |
+| Print the first N bytes of a file.  | `head -c N <FILE>` | head -c 10 file.txt |" %}
 
 
 
@@ -482,10 +482,10 @@ These tools are very useful for quickly inspecting the contents of a file and ca
 
 ### TAIL
 
-{% include table content="| TASK                                    | COMMAND SYNTAX     | EXAMPLE              |
+{% include table content="| TASK                                    | COMMAND SYNTAX     | EXAMPLE |
 | --------------------------------------- | ------------------ | -------------------- |
-| Print the last 10 lines of a file.      | `tail <FILE>`      | `tail file.txt`      |
-| Print the last N lines of a file.       | `tail -n N <FILE>` | `tail -n 5 file.txt` |
-| Print the last N bytes of a file.       | `tail -c N <FILE>` | `tail -c N file.txt` |
-| Continuously monitor the end of a file. | `tail -f <FILE>`   | `tail -f file.txt`   |" %}
+| Print the last 10 lines of a file.      | `tail <FILE>`      | `tail file.txt`      |
+| Print the last N lines of a file.       | `tail -n N <FILE>` | `tail -n 5 file.txt` |
+| Print the last N bytes of a file.       | `tail -c N <FILE>` | `tail -c N file.txt` |
+| Continuously monitor the end of a file. | `tail -f <FILE>`   | `tail -f file.txt`   |" %}
 
