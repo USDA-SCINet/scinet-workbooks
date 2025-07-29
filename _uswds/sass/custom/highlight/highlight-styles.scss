@@ -119,13 +119,12 @@
     $theme-alert-text-color,
     $context: "Highlight (#{$name})"
   );
-  padding-left: units($theme-alert-icon-size) + ($alert-icon-optical-adjust-left);
+  padding-left: units($theme-site-margins-width) * 2;
   
   @include add-alert-icon($icon, $banner-text-color-token, $bgcolor);
   @include set-text-and-bg($bgcolor);
 
   @include at-media($theme-site-margins-breakpoint) {
-    padding-left: units($theme-site-margins-width) * 2;
     padding-right: units($theme-site-margins-width) * 2;
   }
 
