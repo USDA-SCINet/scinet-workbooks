@@ -42,9 +42,7 @@ wbComp:
 
 
   {% capture sidenavigation %}
-  <nav aria-label="Secondary navigation">
     {% include layout/sidenav.html sidenav=sidenav %}
-  </nav>
   {% endcapture %}
 
   {%- if page.collection %}
@@ -76,6 +74,13 @@ wbComp:
     data-threshold="1"
     data-heading-elements="h2"
   ></aside>
+  {% if page.index and page.index != 0 %}
+  <nav class="margin-top-1" aria-label="Workbook Index">
+    <ul class="usa-sidenav">
+    <li class=" usa-sidenav__item "><a href="#workbook-index">Workbook Index</a></li>
+    </ul>
+  </nav>
+  {% endif %}
   </div>
     </div>
 
