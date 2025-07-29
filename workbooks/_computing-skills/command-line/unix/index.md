@@ -1,5 +1,5 @@
 ---
-
+published: false
 title: Unix Basics
 order: 1
 description: Getting started with Bash on SCINet

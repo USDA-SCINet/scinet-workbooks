@@ -1,8 +1,8 @@
 ---
-title: Basic Unix Commands
-description: Basic Unix commands reference lists
-type: reference material 
-
+title: Unix Commands
+description: Exploration of useful commands in the CLI.
+type: introduction
+index: 2
 tags: [unix] 
 
 language: Bash
@@ -13,12 +13,21 @@ author: [Andrew Severin, Aleksandra Badaczewska, Lavida Rogers]
 updated: 2025-06-17 
 ## last date updated - not required but useful
 
-order: 2
+order: 1
 ---
 
 ## Overview
 
-Basic Unix commands for interacting with the shell, navigating the file system, managing files and directories, viewing files and editing file content from the terminal, and interpreting file permissions. 
+The Unix Shell has several built-in text commands, which once executed force the computing machine to perform specific tasks.
+
+In [Introduction to Introduction to Command Line Computing](../) we touched on many basic commands. 
+
+This section aims to improve your skills and independence in the command line - covering subjects such as how to access a command's manual, using autocomplete, and commands useful for text manipulation in the command line.
+
+<div class="usa-accordion">
+
+{% include accordion title="Basic command reference tables" class="info " controls="command-ref" icon=true %}
+<div id="command-ref" class="accordion_content" markdown='1' hidden>
 
 {% include table caption="Unix basics cheat sheet" content='| Command | Description | Example |
 | `pwd` | prints working directory | `pwd` |
@@ -43,6 +52,7 @@ Basic Unix commands for interacting with the shell, navigating the file system, 
 | seq | write a sequence of numbers | `seq 1 1 10` |" %}
 
 
+
 {% include table caption="Keyboard shortcuts for command entry" content="| key combination | description |
 | --               | --           |
 | arrows left (`←`) / right (`→`) | Move the cursor left or right one character at a time. |
@@ -57,3 +67,5 @@ Basic Unix commands for interacting with the shell, navigating the file system, 
 | `Ctrl` + `L`    | Clear the terminal screen (equivalent to the `clear` command). |
 | `Tab`           | Autocomplete command names, filenames and paths. [Command autocompletion](./autocompletion) |
 | arrows up (`↑`) / down (`↓`) | Cycle through previously entered commands. |" %}
+
+</div></div>
