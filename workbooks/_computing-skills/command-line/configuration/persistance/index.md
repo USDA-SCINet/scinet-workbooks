@@ -50,6 +50,8 @@ By using customized configuration files, users can:
 
 To complete this tutorial, you will need to launch the shell on SCINet. If you are unsure how to do this, please refer to [Getting Started with SCINet Workbooks](/about/use#using-the-shell) for instructions.  
 
+This tutorial assumes you are familiar with [Unix basics](../../unix), and are comfortable with customizing your shell using [variables](../../variables), [functions](../../functions), and [aliases](../../aliases).
+
 
 **There are two main ways to persist your shell customizations:**
 * [Project-specific configuration files](#project-specific-configuration-files)

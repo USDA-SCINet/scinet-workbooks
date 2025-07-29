@@ -1,6 +1,6 @@
 ---
 
-title: "Alias definition and usage: create shortcuts for repetitive commands"
+title: "Alias definition and usage"
 description: "Simplify complex or frequently used commands with user-defined abbreviations."
 type: lesson module
 order: 7
