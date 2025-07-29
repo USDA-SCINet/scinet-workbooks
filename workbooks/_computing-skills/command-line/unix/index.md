@@ -234,27 +234,6 @@ loading
 You will see an error message that says `loading: command not found`  
 
 
-### Shell Variables
-You can store values to variables in the Unix shell which can be used to execute commands. To reference the value of a variable, use a dollar sign `($)`.  
-For example: `echo $USER`  
-
-You can also create your own variables, for example:
-```
-name="Jim"
-echo $name
-```
-
-Note that there are no spaces between the `=` when assigning the value to a variable. 
-
-**Command substitution** : You can also insert the result of a command inside another command using `$(…)`. 
-
-For example: 
-```
-echo "His name is $(name)"
-```
-
-{% include question qid="2,3,4,5" title="Exercise" %}
-
 ### Command History
 Most Unix-like shells, including Bash, keep a history of past commands you've typed. You can access them with a command:
 `history`.
@@ -265,7 +244,7 @@ To explore this output, you can scroll up the page. If the list is long, limit t
 history 20
 ```
 
-### Navigating history with keyboard
+#### Navigating history with keyboard
 Besides using history command to display the entire command history or showing a specific number of recent entries, you can also browse past commands one at a time using keyboard shortcuts. 
 *	Press ↑ (Up Arrow) to go to the previous command.
 *	Press ↓ (Down Arrow) to move forward in history.
@@ -313,11 +292,33 @@ man less
 
 {% include question qid=13 %}
 
-For more in-depth information about navigating the built-in documentation for system commands and utilities, see our tutorial for [Command manual](./manual).
+{% include alert class="tip" content="For more in-depth information about navigating the built-in documentation for system commands and utilities, see our tutorial for [Command manual](./manual)." %}
 
+### Shell Variables
+You can store values to variables in the Unix shell which can be used to execute commands. To reference the value of a variable, use a dollar sign `($)`.  
+For example: `echo $USER`  
+
+You can also create your own variables, for example:
+```
+name="Jim"
+echo $name
+```
+
+Note that there are no spaces between the `=` when assigning the value to a variable. 
+
+**Command substitution** : You can also insert the result of a command inside another command using `$(…)`. 
+
+For example: 
+```
+echo "His name is $(name)"
+```
+
+{% include question qid="3,4" title="Exercise" %}
+
+{% include alert class="tip" content="For more information on variables, see our [variables tutorial](./variables).  You can also further customize your shell with [functions](./functions) and [aliases](./aliases)." %}
 
 ###  Self-check: 
-{% include quiz qid="8,9,10" %}
+{% include quiz qid="2,5,8,9,10" %}
 
 
 </div>
@@ -327,7 +328,7 @@ For more in-depth information about navigating the built-in documentation for sy
 
 This section introduces a variety of commands necessary for moving through directories in the Unix shell. You will learn how the file system is structured, how to view the contents of folders and how to use both absolute (begins with the root /) and relative paths (relative to your working directory). This section will introduce the most important navigation commands: `pwd`, `ls` and `cd`.
 
-<div class="process-list" markdown="1">
+<div class="process-list ul" markdown="1">
 
 ### Print Working Directory (pwd)
 When working in the Unix file system, it is always important to understand where you are. The `pwd` command shows your current location in the file system. 
@@ -473,7 +474,7 @@ You've learned how to check your location, view file contents and how to move be
 
 In this section of the tutorial, we learn how to create, modify and organize files and directories using shell. 
 
-<div class="process-list" markdown="1">
+<div class="process-list ul" markdown="1">
 
 ### Create empty files with `touch` 
 The `touch` command is used to create empty files for scripts, data or text files:
@@ -494,18 +495,23 @@ touch file2.txt file3.txt file4.txt
 ### Copying Files
 The cp command makes a copy of files or directories. 
 `cp [options] source destination `
-Examples: 
 
-To copy a file:  
+For example, to copy a file you would run:  
 ```
 cp file3.txt copy_of_file3.txt
 ```
 
-To copy a directory and all its contents we add the option (`-r`: recursive):  
-```
-cp -r directory1 directory2
-```
-* This will copy the folder directory1 and all its contents to directory2. 
+To copy a directory and all its contents we add the option (`-r`: recursive).
+To try this, lets make a directory and add files to it:
+* Make your directory and create files in it:
+  ```
+  mkdir directory1 directory2
+  touch /directory1/file5.txt /directory1/file6.txt
+  ```
+* Now copy the folder directory1 and all its contents to directory2.
+  ```
+  cp -r directory1 directory2
+  ```
 
 Common `cp` command options: 
 * `-r` : recursive (used for copying directories)
@@ -525,7 +531,7 @@ cd /90daydata/shared/$USER/
 
 We already created a directory called unix_tutorial, let's copy that directory to our shared folder in `90daydata`:  
 ```
-cp -r /home/unix_tutorial .
+cp -r ~/unix_tutorial .
 ```   
 
 The `.` tells the copy command to copy the directory and it contents to the current directory. 
@@ -665,18 +671,18 @@ A cat has a head and a tail, more or less.
   tail numSeq.txt
   tail -n 5 numSeq.txt
   ```
-</div>
 
-## Editing files
+
+### Editing files
 There are a few ways to edit files in the shell. Unix has built in text editors that allow you to create and edit files directly from the command line. 
 
 Common Text Editors: 
 * Nano
 * Vim
 
-<div class="process-list" markdown="1">
 
-### Using nano
+
+#### Using nano
 * `nano [filename]`
 * Type directly in window to edit
 * `Control + O` to save
@@ -687,7 +693,7 @@ Common Text Editors:
 * Save and confirm edit 
 * Use cat, head, or tail to see the edits you made to readme.txt" %}
 
-### Using vim
+#### Using vim
 * `vim [filename]`
 * Press I to enter inset mode
 * Type your content
@@ -698,15 +704,15 @@ Common Text Editors:
 * Enter insert mode and write 2-3 lines 
 * Save and exit 
 * Inspect the file for your edits" %}
-</div>
 
 
-## Understanding and changing file permissions
+
+### Understanding and changing file permissions
 In Unix systems, every file and directory have permissions that describe who can read, write or execute them. In this part of the tutorial, you will learn how to view, interpret and change file permissions. 
 
-<div class="process-list" markdown="1">
 
-### Viewing file permissions
+
+#### Viewing file permissions
 
 We use `ls -l` to view file permissions.
 `ls -l` shows permission string, ownership and modification details of files/directories.
@@ -756,7 +762,7 @@ Examples:
 {% include alert class="question" title="You try" content="1. Make a file readable and writable only by you
 2. Remove write access from group and others" %}
 
-### Execute permissions to a file
+#### Execute permissions to a file
 Here, we will briefly look at scripting to show how permissions control execution. A script is a plain text file that has a sequence of shell commands.
 Many script files begin with this line of code `#!/bin/bash`. This line of code tells the system which program to use to run the script and in this example, it will use the Bash shell. 
 Additionally, execute permission is needed so that you can run scripts.
