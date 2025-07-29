@@ -340,7 +340,7 @@ man less
 
 {% include question qid=13 %}
 
-{% include alert class="tip" content="For more in-depth information about navigating the built-in documentation for system commands and utilities, see our tutorial for [Command manual](./manual)." %}
+{% include alert class="tip" content="For more in-depth information about navigating the built-in documentation for system commands and utilities, see our tutorial for [Command manual](./commands/manual)." %}
 
 ### Shell Variables
 You can store values to variables in the Unix shell which can be used to execute commands. To reference the value of a variable, use a dollar sign `($)`.  
@@ -476,7 +476,7 @@ To change back to the directory you created, you could run either of the followi
 
 If there are more than one matching files/directories, pressing Tab twice will list all the matching names.
 
-For a more in-depth tutorial on autocomplete, including how to incorporate it into your own scripts, see [Command autocompletion](./autocompletion)" %}
+For a more in-depth tutorial on autocomplete, including how to incorporate it into your own scripts, see [Command autocompletion](./command/autocompletion)" %}
 
 {% include question qid=7 %}
 
