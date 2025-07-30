@@ -10,7 +10,6 @@ function submitFilters(form){
   var fdata = new FormData(form);
   var formstring = new URLSearchParams(fdata).toString();
 
-  console.log(formstring);
   // store filters
   sessionStorage.setItem('lastsearch', formstring);
   sortForm(fdata); 
@@ -289,7 +288,6 @@ function getPages() {
       dataType: 'json',
       success: function (data) {
         var entries = data;
-        console.log(entries);
         packaged = entries;
       },
       error: function () {

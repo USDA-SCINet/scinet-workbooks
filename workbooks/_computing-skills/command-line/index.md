@@ -75,9 +75,9 @@ questions:
     qid: 2
     solution: "Example output: `name=\"ARS SCINet\"`
 
-  * `echo \"$name  $(date)\"`
+  * <code class='copy'>echo \"$name  $(date)\"</code>
 
-  * OR `echo \"My name is $name and today's date is $(date).\"`"
+  * OR <code class='copy'>echo \"My name is $name and today's date is $(date).\"</code>"
   - question: "What does the shell do when a variable has not been defined?  Observe what happens when you run `echo $variable_notset`"
     qid: 3    
     answer: 3

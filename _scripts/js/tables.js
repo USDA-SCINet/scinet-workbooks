@@ -26,9 +26,9 @@ function buildtables() {
                 flagfirst = true;
 
                 headers.forEach(header => { if (!flagfirst){
-                  $tr.append(`<td scope="row"  data-label="${header}">${row[ header ]}</td>`);
+                  $tr.append(`<td data-label="${header}">${row[ header ]}</td>`);
                 }else{
-                  $tr.append(`<th scope="row"  role="rowheader" data-label="${header}">${row[ header ]}</th>`); }
+                  $tr.append(`<th scope="row" role="rowheader" data-label="${header}">${row[ header ]}</th>`); }
                   flagfirst=false;
                 });
               flagfirst = 1;

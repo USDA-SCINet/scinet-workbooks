@@ -1,8 +1,8 @@
-| Table Type | Description | Implementation Notes |
-|---------|---------|---------|
-| Standard Sticky | Default table with sticky headers. | Wrap in div with class='sticky' |
-| Standard Nonsticky | Default table without sticky headers. | Use default markdown |
-| Striped Table | Striped table with or without sticky headers | Wrap in div with class='striped' |
-| Borderless Table | Borderless table with or without sticky headers | Wrap in div with class='borderless' |
-| Scrollable Table | Table permits scrolling data on resize | Wrap table in div with class='scrollable-table' and tabindex='0' |
-| Sortable Table | Simple sorting for basic markdown tables | Wrap table in div with class='simple-sorted-table' |
+| Table Type         | Description                                     | Implementation Notes |
+|------------------- | ----------------------------------------------- |-------------------------------- |
+| Standard Sticky    | Default table with sticky headers.              | Wrap in div with class='sticky' |
+| Standard Nonsticky | Default table without sticky headers.           | Use default markdown |
+| Striped Table      | Striped table with or without sticky headers    | Wrap in div with class='striped' |
+| Borderless Table   | Borderless table with or without sticky headers | Wrap in div with class='borderless' |
+| Scrollable Table   | Table permits scrolling data on resize          | Wrap table in div with class='scrollable-table' and tabindex='0' |
+| Sortable Table     | Simple sorting for basic markdown tables        | Wrap table in div with class='simple-sorted-table' |
