@@ -74,7 +74,7 @@ If you want to include a question that does not require an answer, and do not wa
 
 </div>
 {% include accordion title="Component Code" class="outline" controls="component-codes" %}
-<div id="component-codes" class="accordion_content" markdown='1'>
+<div id="component-codes" class="accordion_content" markdown='1' hidden>
 
 #### Frontmatter example
 ```bash
