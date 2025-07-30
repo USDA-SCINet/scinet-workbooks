@@ -45,13 +45,13 @@ With options, syntax is
 grep [OPTIONS] PATTERN FILENAME
 ```
 
-{% include table caption="grep task examples" content="| TASK | COMMAND SYNTAX | EXAMPLE |
-| ----------- | -------------- | ------- |
-| Search for a pattern in a file. | `grep <PATTERN> <FILE>` | `grep 'version' file.txt` |
-| Search for a pattern in multiple files. | `grep <PATTERN> <FILE1> <FILE2>` | `grep 'version' file1.txt file2.txt` |
-| Search recursively in all files in a directory. | `grep -r <PATTERN> <DIR>` | `grep -r 'version' THIS_FOLDER` |
-| Show line numbers for matches. | `grep -n <PATTERN> <FILE>` | `grep -n 'version' file.txt` |
-| Show only the matching portion of the line. | `grep -o <PATTERN> <FILE>` | `grep -o 'version' file.txt` |" %}
+{% include table caption="grep task examples" content="| COMMAND SYNTAX | TASK | EXAMPLE |
+| -------------- | ----------- | ------- |
+| `grep <PATTERN> <FILE>` | Search for a pattern in a file. | `grep 'version' file.txt` |
+| `grep <PATTERN> <FILE1> <FILE2>` | Search for a pattern in multiple files. | `grep 'version' file1.txt file2.txt` |
+| `grep -r <PATTERN> <DIR>` | Search recursively in all files in a directory. | `grep -r 'version' THIS_FOLDER` |
+| `grep -n <PATTERN> <FILE>` | Show line numbers for matches. | `grep -n 'version' file.txt` |
+| `grep -o <PATTERN> <FILE>` | Show only the matching portion of the line. | `grep -o 'version' file.txt` |" %}
 
 Now let's use `grep` command to do some simple jobs with the sequences:
 
@@ -255,11 +255,11 @@ grep -B 10 -A 10 "PATTERN" FILENAME
 
 The  streamline editor,  or `sed` command, is a stream editor that reads one or more text files, makes changes or edits according to editing script, and writes the results to standard output. First, we will discuss `sed` command with respect to search and replace function. Other uses for the `sed` can also be found in [this official sed guide](http://www.grymoire.com/Unix/Sed.html#uh-47).
 
-{% include table content="| TASK | COMMAND SYNTAX | EXAMPLE |
-| ----------- | -------------- | ------- |
-| Replace all occurrences of a pattern in a file. | `sed 's/<PATTERN>/<REPLACEMENT>/g' FILE` | `sed 's/version/V/g' ` |
-| Delete all occurrences of a pattern in a file. | `sed 's/<PATTERN>//g' FILE` | `sed 's/version//g'` |
-| Replace the nth occurrence of a pattern in a line. | `sed 's/<PATTERN>/<REPLACEMENT>/N' FILE` | `sed 's/version/V/2'` |" %}
+{% include table content="| COMMAND SYNTAX | TASK | EXAMPLE |
+| -------------- | ----------- | ------- |
+| `sed 's/<PATTERN>/<REPLACEMENT>/g' FILE` | Replace all occurrences of a pattern in a file. | `sed 's/version/V/g' ` |
+| `sed 's/<PATTERN>//g' FILE` | Delete all occurrences of a pattern in a file. | `sed 's/version//g'` |
+| `sed 's/<PATTERN>/<REPLACEMENT>/N' FILE` | Replace the nth occurrence of a pattern in a line. | `sed 's/version/V/2'` |" %}
 
 
 <div class="usa-accordion">
@@ -396,12 +396,12 @@ sed '2 i line to insert' FILENAME
 
 ## AWK - manage order
 
-{% include table content="| TASK | COMMAND SYNTAX | EXAMPLE |
-| ----------- | -------------- | ------- |
-| Print the first and third column of a file. | `awk '{print $1, $3}' <FILE>` | `awk '{print $1, $3}' file.txt' ` |
-| Print only the lines with more than 3 fields (columns). | `awk 'NF > 3' <FILE>` | `awk 'NF > 3' file.txt` |
-| Print the sum of all numbers in the second column. | `awk '{sum+=$2} END {print sum}' <FILE>` | `awk '{sum+=$2} END {print sum}' file.txt` |
-| Format the output. | `awk '{printf \"%-10s %s\n\", $1, $2}' <FILE>` | `awk '{printf \"%-10s %s\n\", $1, $2}' file.txt` |" %}
+{% include table content="| COMMAND SYNTAX | TASK | EXAMPLE |
+| -------------- | ----------- | ------- |
+| `awk '{print $1, $3}' <FILE>` | Print the first and third column of a file. | `awk '{print $1, $3}' file.txt' ` |
+| `awk 'NF > 3' <FILE>` | Print only the lines with more than 3 fields (columns). | `awk 'NF > 3' file.txt` |
+| `awk '{sum+=$2} END {print sum}' <FILE>` | Print the sum of all numbers in the second column. | `awk '{sum+=$2} END {print sum}' file.txt` |
+| `awk '{printf \"%-10s %s\n\", $1, $2}' <FILE>` | Format the output. | `awk '{printf \"%-10s %s\n\", $1, $2}' file.txt` |" %}
 
 {% include alert class="tip" content="See our other tutorials for more in-depth information about [AWK](./awk) and [BIOAWK](./bioawk)" %}
 
@@ -409,43 +409,43 @@ sed '2 i line to insert' FILENAME
 
 
 
-{% include table content="| TASK | COMMAND SYNTAX | EXAMPLE |
-| ----------- | -------------- | ------- |
-| Print the first and third column of a file. | `awk '{print $1, $3}' <FILE>` | `awk '{print $1, $3}' file.txt' ` |
-| Print only the lines with more than 3 fields (columns). | `awk 'NF > 3' <FILE>` | `awk 'NF > 3' file.txt` |" %}
+{% include table content="| COMMAND SYNTAX | TASK | EXAMPLE |
+| -------------- | ----------- | ------- |
+| `cut -f 1 <FILE>` | Cut out the first and 3rd to 5th columns from a file. | `cut -f 1,3-5 file.txt' ` |
+| `cut -c 1-3 <FILE>` | Cut out the first three characters from each line. | `cut -c 1-3 file.txt` |" %}
 
 
 ## SORT - sort lines
 
 
-{% include table content="| TASK | COMMAND SYNTAX | EXAMPLE |
-| ----------- | -------------- | ------- |
-| Sort the lines of a file. | `sort <FILE>` | `sort file.txt` |
-| Sort the lines of a file in reverse order. | `sort -r <FILE>` | `sort -r file.txt` |
-| Sort the lines of a file based on the second field (column). | `sort -k 2 <FILE>` | `sort -k 2 file.txt` |
-| Sort the lines of a file numerically. | `sort -n <FILE>` | `sort -n file.txt` |" %}
+{% include table content="| COMMAND SYNTAX | TASK | EXAMPLE |
+| -------------- | ----------- | ------- |
+| `sort <FILE>` | Sort the lines of a file. | `sort file.txt` |
+| `sort -r <FILE>` | Sort the lines of a file in reverse order. | `sort -r file.txt` |
+| `sort -k 2 <FILE>` | Sort the lines of a file based on the second field (column). | `sort -k 2 file.txt` |
+| `sort -n <FILE>` | Sort the lines of a file numerically. | `sort -n file.txt` |" %}
 
 
 ## UNIQ - unique lines
 
 
 
-{% include table content="| TASK | COMMAND SYNTAX | EXAMPLE |
-| ----------- | -------------- | ------- |
-| Remove duplicated lines from a file. | `uniq <FILE>` | `uniq file.txt` |
-| Show only the duplicates in a file. | `uniq -d <FILE>` | uniq -d file.txt |
-| Show only the unique lines in a file. | `uniq -u <FILE>` | `uniq -u file.txt` |" %}
+{% include table content="| COMMAND SYNTAX | TASK | EXAMPLE |
+| -------------- | ----------- | ------- |
+| `uniq <FILE>` | Remove duplicated lines from a file. | `uniq file.txt` |
+| `uniq -d <FILE>` | Show only the duplicates in a file. | `uniq -d file.txt`  |
+| `uniq -u <FILE>` | Show only the unique lines in a file. | `uniq -u file.txt` |" %}
 
 
 ## TR - swap characters
 
 
 
-{% include table content="| TASK | COMMAND SYNTAX | EXAMPLE |
-| ----------- | -------------- | ------- |
-| Translate all uppercase letters to lowercase. | `tr '[:upper:]' '[:lower:]' < <FILE>` | `tr '[:upper:]' '[:lower:]' < file.txt` |
-| Translate all spaces to tabs. | `tr ' ' '\t' < <FILE>` | `tr ' ' '\t' < file.txt` |
-| Delete all vowels from a file. | `tr -d '[AEIOUaeiou]' < <FILE>` | `tr -d '[AEIOUaeiou]' < file.txt` |" %}
+{% include table content="| COMMAND SYNTAX | TASK | EXAMPLE |
+| -------------- | ----------- | ------- |
+| `tr '[:upper:]' '[:lower:]' < <FILE>` | Translate all uppercase letters to lowercase. | `tr '[:upper:]' '[:lower:]' < file.txt` |
+| `tr ' ' '\t' < <FILE>` | Translate all spaces to tabs. | `tr ' ' '\t' < file.txt` |
+| `tr -d '[AEIOUaeiou]' < <FILE>` | Delete all vowels from a file. | `tr -d '[AEIOUaeiou]' < file.txt` |" %}
 
 
 
@@ -453,12 +453,12 @@ sed '2 i line to insert' FILENAME
 
 
 
-{% include table content="| TASK | COMMAND SYNTAX | EXAMPLE |
-| ----------- | -------------- | ------- |
-| Count the number of lines, words, and characters in a file. | `wc <FILE>` | `wc file.txt` |
-| Count the number of lines in a file. | `wc -l <FILE>` | `wc -l file.txt` |
-| Count the number of words in a file. | `wc -w <FILE>` | `wc -w file.txt` |
-| Count the number of characters in a file. | `wc -m <FILE>` | `wc -m file.txt` |" %}
+{% include table content="| COMMAND SYNTAX | TASK | EXAMPLE |
+| -------------- | ----------- | ------- |
+| `wc <FILE>` | Count the number of lines, words, and characters in a file. | `wc file.txt` |
+| `wc -l <FILE>` | Count the number of lines in a file. | `wc -l file.txt` |
+| `wc -w <FILE>` | Count the number of words in a file. | `wc -w file.txt` |
+| `wc -m <FILE>` | Count the number of characters in a file. | `wc -m file.txt` |" %}
 
 
 
@@ -470,11 +470,11 @@ These tools are very useful for quickly inspecting the contents of a file and ca
 
 ### HEAD
 
-{% include table content="| TASK                               | COMMAND SYNTAX     | EXAMPLE             |
-| ----------------------------------- | ------------------ | ------------------- |
-| Print the first 10 lines of a file. | `head <FILE>`      | `head file.txt`     |
-| Print the first N lines of a file.  | `head -n N <FILE>` | head -n 5 file.txt  |
-| Print the first N bytes of a file.  | `head -c N <FILE>` | head -c 10 file.txt |" %}
+{% include table content="| COMMAND SYNTAX  | TASK | EXAMPLE |
+| ------------------ | ----------------------------------- | ------------------- |
+| `head <FILE>` | Print the first 10 lines of a file. | `head file.txt` |
+| `head -n N <FILE>` | Print the first N lines of a file.  | head -n 5 file.txt  |
+| `head -c N <FILE>` | Print the first N bytes of a file.  | head -c 10 file.txt |" %}
 
 
 
@@ -482,10 +482,10 @@ These tools are very useful for quickly inspecting the contents of a file and ca
 
 ### TAIL
 
-{% include table content="| TASK                                    | COMMAND SYNTAX     | EXAMPLE |
-| --------------------------------------- | ------------------ | -------------------- |
-| Print the last 10 lines of a file.      | `tail <FILE>`      | `tail file.txt`      |
-| Print the last N lines of a file.       | `tail -n N <FILE>` | `tail -n 5 file.txt` |
-| Print the last N bytes of a file.       | `tail -c N <FILE>` | `tail -c N file.txt` |
-| Continuously monitor the end of a file. | `tail -f <FILE>`   | `tail -f file.txt`   |" %}
+{% include table content="| COMMAND SYNTAX | TASK | EXAMPLE |
+| ------------------ | --------------------------------------- | -------------------- |
+| `tail <FILE>` | Print the last 10 lines of a file. | `tail file.txt` |
+| `tail -n N <FILE>` | Print the last N lines of a file. | `tail -n 5 file.txt` |
+| `tail -c N <FILE>` | Print the last N bytes of a file. | `tail -c N file.txt` |
+| `tail -f <FILE>`   | Continuously monitor the end of a file. | `tail -f file.txt` |" %}
 

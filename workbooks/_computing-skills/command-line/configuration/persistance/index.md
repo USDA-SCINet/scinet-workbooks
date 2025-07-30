@@ -374,6 +374,62 @@ This method allows for custom configurations to persist between interactive sess
 
 <div class="process-list h4" markdown="1">
 
-#### First step
+#### Create a backup of your current .bashrc before personalizing:
+
+```
+cp ~/.bashrc ~/.bashrc.backup
+```
+
+#### Edit your .bashrx using a file editor
+
+```
+nano ~/.bashrc
+```
+
+#### Create an alias 
+
+Let's create an alias to go up one directory 
+
+```
+alias up= 'cd ..'
+```
+
+Note: Instead of typing `cd ..` every time, you can now just type `up`. 
+
+#### Add an environmental variable 
+
+We can create a variable that goes to a specific path
+
+```
+export PROJECT_DIR=/90daydata/shared/$USER
+```
+
+This would later be used like: 
+```
+cd $PROJECT_DIR
+```
+
+#### Apply changes to your .bashrc file
+
+```
+source ~/.bashrc
+```
+
+#### Test your changes
+
+```
+mkdir -p ~/unix_tutorial/logs ## make the directory if it doesn't exist
+cd ~/unix_tutorial/logs
+up  #should take you to unix_tutorial 
+```
+
+Then try the project directory:
+```
+cd $PROJECT_DIR
+```
 
 </div>
+
+### Useful customizations
+
+We have compiled many useful ways you can customize your startup scripts in [Shell customization applications](./examples).

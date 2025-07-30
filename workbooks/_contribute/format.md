@@ -98,11 +98,6 @@ tags: [R Project, Raster, GeoCDL]
 ## index: 3                # only needed for intro and index pages
 ## order: 1                # only needed if order of tutorials within a folder is important
 
-# materials:               # if you want to include materials at the top of the page
-  - text: Material description
-    url: /filename.ext 
-    # external: true       # use for any links starting with https://
-
 # published: 2023-09-17    # not required, but useful
 # updated: 2023-09-17      # not required, but useful
 ---
@@ -254,7 +249,7 @@ tags: [command line, separated by commas, contained in brackets]
 
 #### Insert automated terminology definitions
 
-To define keywords within your page, insert {% raw %}`{% include overview/terms %}`{% endraw %} at the desired location in your markdown file. 
+To define keywords within your page, insert an [overview component](./components/overview) with terminology specified or include {% raw %}`{% include overview/terms %}`{% endraw %} at the desired location in your markdown file. 
 This will automatically use your specified tags to identify terms in the glossary and insert their definitions into your page during rendering. 
 * Keyword definitions are stored in the `_data/glossary.yml` file. You can add new terms to this file.
 
@@ -266,7 +261,7 @@ Optional
 
 ***Terms are case-sensitive.***
 
-If you want to provide definitions for glossary terms that are not used as filters for your tutorial, use `terms` variable in the front matter. This will override the default use of "tags" for the {% raw %}`{% include overview/terms %}`{% endraw %} component, ensuring only the specified `terms` (but not `tags`) are defined in the page content.
+If you want to provide definitions for glossary terms that are not used as filters for your tutorial, use `terms` variable in the front matter. This will override the default use of "tags" for the [overview component](./components/overview), ensuring only the specified `terms` (but not `tags`) are defined in the page content.
 
 * If more than one term has the same name, it will grab the term definition associated with your workbook's [Subject Area](#subject).
 * Multiple terms can be listed using the format: [Term 1, Term 2] 
@@ -282,7 +277,7 @@ terms: [glossary terms, separated by commas, contained in brackets]
 
 #### Insert automated terminology definitions
 
-For your selected `terms` to be defined in the text of your page, include {% raw %}`{% include overview/terms %}`{% endraw %} in your file where you would like them defined. 
+For your selected `terms` to be defined in the text of your page, insert an [overview component](./components/overview) with terminology specified or include {% raw %}`{% include overview/terms %}`{% endraw %} in your file where you would like them defined. 
 * Term definitions are stored in the `_data/glossary.yml` file. You can add new terms to this file.
 
 
@@ -328,7 +323,7 @@ packages: [Package 1, Package2]
 
 #### Insert an automated package definition
 
-To define packages within your text, insert {% raw %}`{% include overview/packages %}`{% endraw %} at the desired location in your file. 
+To define packages within your text, insert an [overview component](./components/overview) with terminology specified or insert {% raw %}`{% include overview/packages %}`{% endraw %} at the desired location in your file. 
 This will automatically add definitions for the specified packages during rendering.
 * Package definitions are stored in the `_data/packages.yml` file
 
@@ -340,13 +335,24 @@ This will automatically add definitions for the specified packages during render
 {:.header-note .t-warning}
 *Required
 
-This variable **identifies [index files](#file-names)**, which serve as the main entry point for a folder. 
-**Each folder should have only one index file**, and it must be named `index.html`. 
+This variable identifies [index files](#file-names), which serve as the main entry point for a folder. 
+**Each folder should have only one index file**
+
+They usually have no type (display type index) or have type *introduction*.
+* Exception: If a lesson module or interative tutorial has specific associated reference materials that should not be separated from that particular file, you can put all of the associated files and the tutorial/lesson into a folder.  Then the tutorial/lesson would be named `index.md` and recieve the `index` variable.
+
+It should almost always be named `index.html`.
+* Exceptions where it should be named `index.md` instead: 
+  * If the index is a lesson or tutorial as described above.
+  * If the `introduction` file should be included **separately** from the directory contents on the [Find a Workbook](/workbooks/) page.
+
+
 If a file is not an *index* or *introduction* type, it should not include the `index` variable.
 
 <div id="note-alerts-1" class="highlighted highlighted--highlighted ">
 <div class="highlighted__body" markdown="1">
-If your *index* or *introduction* file is not named `index.html`, provide a reason in a comment after the variable (e.g., `index: 2 ## explanation`). This ensures clarity and prevents unintended changes by editors.
+
+If your *index* or *introduction* file is not named `index`, provide a reason in a comment after the variable (e.g., `index: 2 ## explanation`). This ensures clarity and prevents unintended changes by editors.
 </div>
 </div>
 

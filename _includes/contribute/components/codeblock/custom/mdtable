@@ -1,0 +1,9 @@
+| Table Type | Description | Attribute |
+| --------- | --------- | --------- |
+| Standard Sticky                   | Default flex table with sticky headers.        | Default component |
+| Nonsticky                         | Default table without sticky headers.          | `unsticky=true` |
+| Striped/Borderless/Compact Tables | Tables formatted with classes.                 | `classes='striped borderless compact'` |
+| Fixed Table                       | Table does not flex.                           | `fixed='scrollable'` |
+| Sortable Table                    | Simple sorting for basic markdown tables       | `sortable=true` |
+| Merged Row Headers                | Merged row headers for complex data.           | `grouped=true` |
+| No row headers                    | Removes row header indication.  Use sparingly. | `no-row-labels=true` |

@@ -75,9 +75,9 @@ questions:
     qid: 2
     solution: "Example output: `name=\"ARS SCINet\"`
 
-  * `echo \"$name  $(date)\"`
+  * <code class='copy'>echo \"$name  $(date)\"</code>
 
-  * OR `echo \"My name is $name and today's date is $(date).\"`"
+  * OR <code class='copy'>echo \"My name is $name and today's date is $(date).\"</code>"
   - question: "What does the shell do when a variable has not been defined?  Observe what happens when you run `echo $variable_notset`"
     qid: 3    
     answer: 3
@@ -592,7 +592,7 @@ cd unix_tutorial
 We are now ready to practice in our working directory safely!
 
 Let's copy some practice files to unix_tutorial: 
-````
+```
 cp /project/scinet_workshop2/unix_tutorial/numSeq.txt .
 cp /project/scinet_workshop2/unix_tutorial/readme.txt .
 ```

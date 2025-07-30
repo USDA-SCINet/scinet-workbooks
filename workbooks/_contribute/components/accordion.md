@@ -11,7 +11,7 @@ components:
       code: accordion
       options: 
         - label: Multiselectable Accordion
-          attr: 'data-allow-multiple markdown="1"'
+          attr: 'data-allow-multiple'
         - label: Standard Accordion
     - title: Accordion Header Colors
       unexpanded: true

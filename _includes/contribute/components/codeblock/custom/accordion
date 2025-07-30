@@ -8,10 +8,10 @@
 
 {%- if item.attr %}
 {% include accordion title="Finer Content Control" expanded="true" controls=acc4 %}
-<div id="{{ acc4 }}" class="accordion_content"   markdown='1' hidden>
+<div id="{{ acc4 }}" class="accordion_content"   markdown='1'>
 {%- else %}
 {% include accordion title="Finer Content Control" controls=acc4 %}
-<div id="{{ acc4 }}" class="accordion_content"   markdown='1'>
+<div id="{{ acc4 }}" class="accordion_content"   markdown='1' hidden>
 {%- endif %}
 
 <ul>
