@@ -1,16 +1,15 @@
 {%- assign item = include.item %}
 {%- capture itemtitle %}{% if item.title %}{{ item.title }}{% else %}{{ item.class | capitalize }} {{ include.ptitle }}{% endif %}{% endcapture %}
-{%- capture itemid %}{{ itemtitle | slugify }}-{{ include.count }}{% endcapture %}
 {%- capture itemtext %}{% if item.text %}{{ item.text %}}{% else %}{{ item.class | capitalize }} {{ include.stitle }}{% endif %}{% endcapture %}
 {%- if section.liquid and include.code %}
 {%- capture codeblock %}
-&#123% include alert class="{{item.class}}" content="{{itemtext}}"{%- if item.noicon %} noicon=true{%- endif %} title="{{itemtitle}}" id="{{itemid}}" %&#125
+&#123% include alert class="{{item.class}}" content="{{itemtext}}"{%- if item.noicon %} noicon=true{%- endif %} title="{{itemtitle}}" %&#125
 {%- endcapture %}
 {%- else %}
 {%- capture codeblock %}{%- if item.noicon %}
-{% include alert class=item.class content=itemtext noicon=true title=itemtitle id=itemid contributors=true %}
+{% include alert class=item.class content=itemtext noicon=true title=itemtitle contributors=true %}
 {%- else %}
-{% include alert class=item.class content=itemtext title=itemtitle id=itemid contributors=true %}
+{% include alert class=item.class content=itemtext title=itemtitle contributors=true %}
 {%- endif %}{% endcapture %}
 {%- endif %}
 

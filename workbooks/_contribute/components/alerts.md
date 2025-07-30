@@ -61,6 +61,6 @@ Alerts allow for emphasis of important information and context.
     * The content is long.  Important long-form content should have its own section.
     * The alert content is longer, but only applies to a subset of users.  Consider an [accordion](./accordion) with an appropriate icon. 
 
-{% include alert class="error" title="Do not overuse!" content="Overuse of alerts, highlighting, and font decoration leads to attention fatigue.  This results in decreased attention and comprehension of the tutorial's content rather than the desired emphasis." %}
+{% include alert class="error" title="Do not overuse!" content="Overuse of alerts, highlighting, and font decoration leads to attention fatigue.  This results in decreased attention and comprehension of the tutorial's content." %}
 
 Additional guidance can be found on the [USWDS component page](https://designsystem.digital.gov/components/alert/)
