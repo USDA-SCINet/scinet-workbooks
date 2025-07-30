@@ -592,7 +592,7 @@ cd unix_tutorial
 We are now ready to practice in our working directory safely!
 
 Let's copy some practice files to unix_tutorial: 
-````
+```
 cp /project/scinet_workshop2/unix_tutorial/numSeq.txt .
 cp /project/scinet_workshop2/unix_tutorial/readme.txt .
 ```
