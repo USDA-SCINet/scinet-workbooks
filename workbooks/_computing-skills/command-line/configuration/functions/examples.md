@@ -95,9 +95,9 @@ monitor_cpu() {
 ![function to monitor cpu]({{ images_path }}/function/function_monitor_cpu.png)
 
 This example demonstrates:
-* **[Argument handling](#passing-arguments-to-functions):** Accepts optional CPU thresholds via positional argument ($1).
-* **[Error handling](#returning-an-exit-status-code-for-error-handling):** Basic, but detects missing arguments and defaults thresholds to safe values if not provided.
-* **[Logic and Conditions](#conditionals-and-loops):** Uses `if` conditions to determine output based on warning thresholds.
+* **[Argument handling](./functions#passing-arguments-to-functions):** Accepts optional CPU thresholds via positional argument ($1).
+* **[Error handling](./functions#error-handling):** Basic, but detects missing arguments and defaults thresholds to safe values if not provided.
+* **[Logic and Conditions](./functions#conditionals-and-loops):** Uses `if` conditions to determine output based on warning thresholds.
 * **Workflow integration:*** *Integrates system commands like `top` to extract real-time system data.
 
 </div>
@@ -348,10 +348,10 @@ This example demonstrates:
 <div id="practical-shell-8" class="accordion_content" markdown="1" hidden> 
 
 Explore an example function depending on your needs:
-- [`tar` based (hard-coded) backup:](#redirecting-function-output-to-a-file)  compress a specific file/dir using its absolute path
-- [`cp` based (dynamic) backup:](#managing-arguments-effectively) copy any directory from source path (`$1`) to the destination path (`$2`)
-- [`tar` based (dynamic) backup:](#defining-a-multi-line-function) compress any directory in a current location to .tar.gz format
-- [`tar` based (dynamic) backup with timestamp:](#document-your-functions-to-keep-a-reference-for-future-use) compress any directory and add a date & time tag to the backup name to distinguish historical versions
+- [`tar` based (hard-coded) backup:](./functions#redirecting-function-output-to-a-file)  compress a specific file/dir using its absolute path
+- [`cp` based (dynamic) backup:](./functions#managing-arguments-effectively) copy any directory from source path (`$1`) to the destination path (`$2`)
+- [`tar` based (dynamic) backup:](./functions#defining-functions) compress any directory in a current location to .tar.gz format
+- [`tar` based (dynamic) backup with timestamp:](./functions#document-your-functions-to-keep-a-reference-for-future-use) compress any directory and add a date & time tag to the backup name to distinguish historical versions
 
 
 
@@ -375,7 +375,7 @@ process_files() {
 ```
 
 
-Explore [Using shift for processing variable-length arguments](#using-shift-for-processing-variable-length-arguments) to process a list of aruments one at a time. 
+Explore {% include nav-hidden text="Using shift for processing variable-length arguments" url="./functions#argument-examples-1" %} to process a list of aruments one at a time. 
 This is useful when you want to perform the same task on all items in the argument list within a single function call.
 
 
@@ -384,10 +384,10 @@ This is useful when you want to perform the same task on all items in the argume
 {% include accordion title="Function with named arguments" controls="practical-shell-10" %} 
 <div id="practical-shell-10" class="accordion_content" markdown="1" hidden> 
 
-Explore [Example: while loop and case](#example-while-loop-and-case), 
+Explore [Example: while loop and case](./functions#example-while-loop-and-case), 
 if you create a function to provide an interactive menu options for executing different scenarios based on user input. 
 
-You can also create [labeled options/arguments](#argument-examples-3) instead of relying on positional parameters for better readability and maintenance.
+You can also create {% include nav-hidden text="labeled options/arguments" url="./functions#argument-examples-3" %} instead of relying on positional parameters for better readability and maintenance.
 
 
 
