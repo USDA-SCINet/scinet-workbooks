@@ -476,7 +476,7 @@ To change back to the directory you created, you could run either of the followi
 
 If there are more than one matching files/directories, pressing Tab twice will list all the matching names.
 
-For a more in-depth tutorial on autocomplete, including how to incorporate it into your own scripts, see [Command autocompletion](./command/autocompletion)" %}
+For a more in-depth tutorial on autocomplete, including how to incorporate it into your own scripts, see [Command autocompletion](./commands/autocompletion)" %}
 
 {% include question qid=7 %}
 
@@ -737,6 +737,11 @@ Common Text Editors:
 * `Enter` to confirm
 * `Ctrl + X` to exit
 
+Nano will also prompt you to save if you hit `Ctrl + X` without saving first.  At this point, you can type:
+* `Y` to save
+* `N` to exit without saving
+* `Ctrl + C` to cancel and return to the editor  
+
 {% include alert class="question" title="You try" content="* Open readme.txt with nano and write a 5 line message
 * Save and confirm edit 
 * Use cat, head, or tail to see the edits you made to readme.txt" %}
@@ -829,7 +834,7 @@ Additionally, execute permission is needed so that you can run scripts.
 
     echo "Just another day of learning the basics of Unix on SCINet!"
     ```
-1.  Save the file and exit the editor. This creates a script. 
+1.  Save the file and exit the editor (`CTRL + X`, then `Y`). This creates a script. 
 1.  View the file to confirm edits were made. 
 1.  Let's look at the current permissions:
     ```
