@@ -350,7 +350,7 @@ You can add a custom software directory to your `PATH` using the `export` statem
   ```
   * This ensures the change is permanent across future shell sessions. The use of `echo` combined with appending (`>>`) and immediately sourcing the `.bashrc` is a common and effective approach.
 
-{% include alert class="tip" content="For more information on persisting variables for all future shells, including best practices, see the [Shell configuration persistence tutorial](../persistence/)" %}
+{% include alert class="tip" content="For more information on persisting variables for all future shells, including best practices, see the [Shell configuration persistence tutorial](./persistence/)" %}
 
 #### Check or change a default $SHELL
 
@@ -594,7 +594,7 @@ and refresh the current shell session by applying changes from the configuration
 ```
 source ~/.bashrc
 ```
-{% include alert class="tip" content="For more information on persisting variables for all future shells, including best practices, see the [Shell configuration persistence tutorial](../persistence/)" %}
+{% include alert class="tip" content="For more information on persisting variables for all future shells, including best practices, see the [Shell configuration persistence tutorial](./persistence/)" %}
 
 ## Troubleshooting common issues
 
@@ -712,7 +712,7 @@ Use `export` to make a variable available to child processes:
   MY_VAR="my_value"             # only visible in the current shell
   export MY_VAR="my_value"      # available to all subshells, including child processes and scripts executed from a current shell
   ```
-1.  Persisted for all future shell sessions and scheduled SLURM jobs: *(learn more: [Shell configuration persistence](../persistence))*
+1.  Persisted for all future shell sessions and scheduled SLURM jobs: *(learn more: [Shell configuration persistence](./persistence))*
   ```bash
   echo "export MY_VAR='my_value' >> ~/.bashrc"
   source ~/.bashrc
