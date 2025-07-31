@@ -160,12 +160,13 @@ Working on HPC, you frequently submit jobs, so you repeatedly need to check thei
     ```bash
     alias my_jobs='qstat -u $USER'      # usage: my_jobs
     ```
-  *This alias helps you quickly check the status of all jobs submitted under your username in an HPC environment. By defining a permanent alias, you ensure that you can monitor your job submissions efficiently across multiple sessions without additional configuration.*
+  * This alias helps you quickly check the status of all jobs submitted under your username in an HPC environment. By defining a permanent alias, you ensure that you can monitor your job submissions efficiently across multiple sessions without additional configuration.
 1.  Save the file (`CTRL + X`, then `Y`) and reload the configuration:
     ```bash
     source ~/.bashrc 
     ```
 
+{% include alert class="tip" content="For more information on persisting aliases for all future shells, including best practices, see the [Shell configuration persistence tutorial](../persistence/)" %}
 
 ## Creating aliases
 
@@ -364,7 +365,7 @@ alias dev_start='cd /path/to/project/dev'   # usage: dev_start
 ### Test new aliases before making them permanent
 
 When defining a new alias, test it as a temporary alias first to ensure it works as expected and does not cause issues. 
-If successful, then you can make it permanent by [adding it to your project scripts or configuration file](../persistance).
+If successful, then you can make it permanent by [adding it to your project scripts or configuration file](../persistence).
 
 ### Document your aliases
 

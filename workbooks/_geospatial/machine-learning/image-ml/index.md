@@ -5,7 +5,7 @@ index: 2
 wgs: geospatial
 description: (description of contents)
 interface: [Jupyter, RStudio]
-
+type: introduction
 kernel: true
 
 pythonenv: image-ml-for-python

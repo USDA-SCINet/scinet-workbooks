@@ -11,7 +11,7 @@ $(document).ready(function() {
         arr = conts.map(i => att + i).join("&").replace(/ /g,"+");
 
       //console.log(arr)
-      sessionStorage.setItem('lastsearch', arr);
+      sessionStorage.setItem('sciwbLastsearch', arr);
       window.location.href = "{{ '/workbooks/' | relative_url }}";
   })
 });

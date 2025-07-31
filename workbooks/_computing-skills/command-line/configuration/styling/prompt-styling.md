@@ -383,7 +383,7 @@ This level of persistence is useful when you need the custom prompt to be availa
 </div>
 </div>
 
-<!--
+
 ### Permanent change in future shells
 
 Adding the `PS1` assignment to your `~/.bashrc` file makes the customization permanent, applying it automatically in every new shell sessions.   
@@ -436,8 +436,10 @@ source ~/.bashrc
   ```bash
   source ~/.bashrc
   ```
--->
+
 </div>
+
+{% include alert class="tip" content="For more information on persisting variables for all future shells, including best practices, see the [Shell configuration persistence tutorial](../../persistence/)" %}
 
 ## Troubleshooting common issues
 

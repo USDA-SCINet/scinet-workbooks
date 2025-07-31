@@ -916,6 +916,8 @@ log_function() { echo "Executing task at $(date)" >> ~/function.log 2>> ~/functi
     source ~/bin/functions.sh 
     ```
 
+{% include alert class="tip" content="For more information on persisting functions for all future shells, including best practices, see the [Shell configuration persistence tutorial](../persistence/)" %}
+
 ### Document your functions to keep a reference for future use
 
 If you define multiple functions, document them in your configuration file or a separate script (e.g., `~/bin/functions.sh`).
@@ -979,7 +981,7 @@ process_file
 ```
 Once your project is finished, you don’t need this function anymore, so defining it permanently would be unnecessary.
 
-<!--
+
 ### Permanent functions
 
 Permanent functions are stored in shell configuration files, making them available across multiple sessions and logins. 
@@ -1005,7 +1007,7 @@ For example, if you frequently check space usage in different directories, a fun
   check_disk_usage() {
       local dir="${1:-$HOME}"         # First argument: directory (defaults to $HOME)
       local size_threshold="${2:-0}"  # Second argument: file size threshold (defaults to 0)
-      du -sh "$dir"
+      du -sh "$dir"bashrc
       if [[ "$size_threshold" -gt 0 ]]; then
           find "$dir" -type f -size +"${size_threshold}M" -exec ls -lh {} + | awk '{print $9, $5}'
       fi
@@ -1031,6 +1033,8 @@ For example, if you frequently check space usage in different directories, a fun
 
 This is particularly useful for managing project directories, detecting storage issues, and optimizing disk space.
 ![function flexible disk check]({{ images_path }}/function/function_flexible_disk_check.png)
+
+{% include alert class="tip" content="For more information on persisting functions for all future shells, including best practices, see the [Shell configuration persistence tutorial](../persistence/)" %}
 
 
 ## Loading functions from a file
@@ -1080,7 +1084,7 @@ By following this modular and project-specific approach, you keep your HPC work 
 </div>
 </div>
 
--->
+
 
 ## Troubleshooting common issues
 

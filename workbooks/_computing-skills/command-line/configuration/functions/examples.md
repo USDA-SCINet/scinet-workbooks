@@ -9,6 +9,8 @@ author: Aleksandra Badaczewska
 
 ---
 
+
+
 {% include file_path folder=1 %}
 
 Examples of practical functions you may wish to use in your scripts.

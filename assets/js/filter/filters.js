@@ -11,7 +11,7 @@ function submitFilters(form){
   var formstring = new URLSearchParams(fdata).toString();
 
   // store filters
-  sessionStorage.setItem('lastsearch', formstring);
+  sessionStorage.setItem('sciwbLastsearch', formstring);
   sortForm(fdata); 
 
   // do not reload
@@ -22,7 +22,7 @@ function submitFilters(form){
 // loads filters from session storage
 function loadFilters(form, clear = "nope"){
 // get form data
-var savedData = sessionStorage.getItem('lastsearch'),
+var savedData = sessionStorage.getItem('sciwbLastsearch'),
     fdata = (new URLSearchParams(savedData)).entries();
 //set clear as key, value pair to remove from URLParams, then resubmit form
 
@@ -358,7 +358,7 @@ $(document).ready(function() {
   
       });
   // Load filters from session storage if present
-      if ('lastsearch' in sessionStorage) {
+      if ('sciwbLastsearch' in sessionStorage) {
         loadFilters(myform)
   
       } else { classCount($("#component-count")); }

@@ -150,8 +150,6 @@ that overwrites the default behavior of `ls` command or define a new one.
 
 ### Create an alias
 
-{% include alert class="emergency" title=".bashrc content" %}
-
 * To create an alias that overwrites the default `ls` behavior, add the following line to your shell configuration file (i.e., `~/.bashrc`):
   ```bash
   alias ls='ls --color=auto'
@@ -165,6 +163,8 @@ that overwrites the default behavior of `ls` command or define a new one.
   source ~/.bashrc
   ls                      # or lsc
   ```
+
+{% include alert class="tip" content="For more information on persisting aliases for all future shells, including best practices, see the [Shell configuration persistence tutorial](../../persistence/)" %}
 
 ### View current LS_COLORS
 
@@ -237,7 +237,6 @@ This allows you to easily distinguish between different file types and prioritiz
 
 ### Customize LS_COLORS
 
-{% include alert class="emergency" title=".bashrc content" %}
 To customize colors, you can define them directly by modifying the `LS_COLORS` variable in your startup script (`~/.bashrc`).
 
 <div id="note-alerts-1" class="highlighted highlighted--warning ">
@@ -259,6 +258,9 @@ grep "LS_COLORS" ~/.bashrc
   ```bash
   source ~/.bashrc
   ```
+
+{% include alert class="tip" content="For more information on persisting variables for all future shells, including best practices, see the [Shell configuration persistence tutorial](../../persistence/)" %}
+
 </div>
 
 ## Coloring `grep` with `GREP_COLORS`
@@ -301,7 +303,7 @@ The `--color` flag works in combination with `GREP_COLORS` to customize the colo
 
 <div class="usa-accordion">
 
-{% include accordion title="Many other flags can enhance the colored output or provide context for colored matches" class="tip" controls="grep-coloring-1" icon="true" %}
+{% include accordion title="Many other flags can enhance the colored output or provide context for colored matches" class="tip" controls="grep-coloring-1" icon=true %}
 <div id="grep-coloring-1" class="accordion_content" markdown="1" hidden>
 
 {% include table caption="grep flags" content="| flag           | description                                                      | example                                    |
@@ -365,8 +367,6 @@ This command is looking for occurrences of "pattern" in the log file, showing 2 
 
 #### Customize GREP_COLORS
 
-{% include alert class="emergency" title=".bashrc content" %}
-
 To take full control of the colors, set the `GREP_COLORS` variable.
 
 1.  Define it in your terminal for a current session only:
@@ -395,6 +395,7 @@ To take full control of the colors, set the `GREP_COLORS` variable.
       ```bash
       source ~/.bashrc
       ``` 
+{% include alert class="tip" content="For more information on persisting variables for all future shells, including best practices, see the [Shell configuration persistence tutorial](../../persistence/)" %}
 
 </div>
 

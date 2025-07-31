@@ -12,12 +12,14 @@ tags: [bashrc]
 
 ## Overview
 
-Example scripts and use cases for persistant customization in the shell.
+Customizing your shell settings with scripts allows you to create a more efficient, user-friendly and automated by default command-line experience. 
+By defining variables, aliases, shell functions, and modifying system paths, you can significantly speed up your daily routine and repetitive tasks on SCINet clusters.
+
+This page contains example scripts and use cases for persistant customization in the shell.
 
 ## Shell customization
 
-Customizing your shell settings with scripts allows you to create a more efficient, user-friendly and automated by default command-line experience. 
-By defining variables, aliases, shell functions, and modifying system paths, you can significantly speed up your daily routine and repetitive tasks on SCINet clusters.
+<div class="process-list ul" markdown="1">
 
 ### Setting environment and shell variables
 
@@ -34,7 +36,7 @@ export MY_PROJECT_DIR=/projects/<scinet-project>/$USER    # Define project direc
 
 {% include alert class="tip" content="For an in-depth tutorial on variables, see [Using environment and shell variables](../variables)" %}
 
-### Modifying $PATH for local binaries
+#### Modifying $PATH for local binaries
 
 
 The `$PATH` variable determines where the shell looks for executable programs when you type a command. 
@@ -43,11 +45,12 @@ To add a new directory (`/your/custom/path`) to your `$PATH`, ensure that each p
 ```bash
 export PATH="$HOME/bin:/your/custom/path:$PATH"
 ```
+* `:$PATH` at the end of the script ensures existing directories remain in the search path and the new ones are appended.
+
 `$HOME/bin` is a commonly used directory for user scripts and binaries, but you can add a path (`/your/custom/path`) to any custom directory with executables to make them directly accessible in the command line.
-* `:$PATH` at the end, ensures existing directories remain in the search path and the new ones are appended.
 
 
-#### Adding ~/bin to $PATH 
+##### Adding ~/bin to $PATH 
 
 If you have custom software in `~/bin`, adding it to `$PATH` lets you run it from anywhere without specifying its full path.
 ```bash
@@ -61,9 +64,9 @@ Verify changes using:
 echo $PATH
 ```
 
+
+
 ### Defining useful aliases
-
-
 
 
 Aliases allow you to create shortcuts for frequently used commands, reducing typing and preventing errors.
@@ -81,6 +84,7 @@ For example:
   alias myjobs='squeue -u $USER'      # Show only your running jobs
   ```
 *`source ~/.bashrc` or open a new shell to have changes applied.*
+
 
 {% include alert class="tip" content="For an in-depth tutorial on aliases, see [Alias definition and usage](../aliases/)" %}
 
@@ -118,7 +122,7 @@ This section covers tweaks that can enhance usability, reduce repetitive typing,
 
 <div class="usa-accordion">
 
-{% include accordion title="Improve tab completion" controls="tab-completion" class="outline" %}
+{% include accordion title="Improve tab completion" controls="tab-completion" %}
 <div id="tab-completion" class="accordion_content"   markdown='1' hidden>
 
 Tab completion is a powerful feature that helps you auto-complete file names, directories and commands with the `Tab` key. 
@@ -131,7 +135,7 @@ shopt -s autocd         # Change directories by typing their name without `cd`
 
 </div>
 
-{% include accordion title="Enable command auto-correction" controls="auto-correction" class="outline" %}
+{% include accordion title="Enable command auto-correction" controls="auto-correction" %}
 <div id="auto-correction" class="accordion_content"   markdown='1' hidden>
 
 To make navigation easier, you can enable automatic correction for minor typos when changing directories.
@@ -141,7 +145,7 @@ shopt -s cdspell        # Correct minor directory name typos automatically
 
 </div>
 
-{% include accordion title="Automatically adjust window size" controls="window-size" class="outline" %}
+{% include accordion title="Automatically adjust window size" controls="window-size" %}
 <div id="window-size" class="accordion_content"   markdown='1' hidden>
 
 The following setting ensures the terminal updates its display correctly after resizing, preventing visual glitches when working in SSH sessions or with resizable terminal windows.
@@ -152,7 +156,7 @@ shopt -s checkwinsize   # Automatically adjust window size after resizing termin
 </div>
 
 
-{% include accordion title="Enhance command history" controls="history" class="outline" %}
+{% include accordion title="Enhance command history" controls="history" %}
 <div id="history" class="accordion_content"   markdown='1' hidden>
 
 The shell's history feature allows you to revisit and reuse previously typed commands, making it a crucial tool for productivity. 
@@ -184,7 +188,7 @@ This is useful when working with multiple terminals to keep the command history 
 
 </div>
 
-{% include accordion title="Set default text editor" controls="text-editor" class="outline" %}
+{% include accordion title="Set default text editor" controls="text-editor" %}
 <div id="text-editor" class="accordion_content"   markdown='1' hidden>
 
 Many programs, such as `git` or `visudo`, rely on a default text editor when opening files. 
@@ -198,7 +202,7 @@ export EDITOR=nano  # Use nano (or replace with vim/emacs)
 
 </div>
 
-{% include accordion title="Improve `less` and `grep` formatting" controls="less-grep" class="outline" %}
+{% include accordion title="Improve `less` and `grep` formatting" controls="less-grep" %}
 <div id="less-grep" class="accordion_content"   markdown='1' hidden>
 
 By tweaking settings for commonly used commands like `less` and `grep`, you make output more readable and visually distinct.
@@ -218,8 +222,6 @@ export LESS='-R'                    # Enable raw control characters for color ou
 
 </div>
 </div>
-
-
 </div>
 
 ## Manage software accessibility
@@ -234,7 +236,10 @@ Instead, software is managed through environment modules, allowing users to load
 HPC systems typically use module systems to dynamically configure the software environment. 
 Instead of manually setting environment variables, users can load specific software versions with the `module` command.
 
-#### Automatically loading frequently used modules
+<div class="usa-accordion">
+
+{% include accordion title="Automatically loading frequently used modules" controls="freq-modules" %}
+<div id="freq-modules" class="accordion_content"   markdown='1' hidden>
 
 If you frequently use specific software, you can ensure it loads automatically when you start a new session by adding the following command to your `~/.bashrc` file:
 ```bash
@@ -255,6 +260,8 @@ fi
 ```
 
 </div></div>
+</div>
+</div>
 
 
 ### Custom user installations
@@ -266,7 +273,10 @@ software must be installed in `/home` directories or allocated storage locations
 To make custom installations accessible, you need to properly configure environment variables such as <br> `PATH` and `LD_LIBRARY_PATH`.
 
 
-#### Setting `PATH` for locally installed software
+<div class="usa-accordion">
+
+{% include accordion title="Setting PATH for locally installed software" controls="set-path" %}
+<div id="set-path" class="accordion_content"   markdown='1' hidden>
 
 If you install software in a local directory (e.g., `$HOME/software`), you must update your `PATH` so that the system can locate and execute these programs.
 ```bash
@@ -274,8 +284,10 @@ export PATH=$HOME/software/bin:$PATH            # the executable is typically st
 ```
 This adds `~/software/bin` to the system's search path for executables, ensuring that binaries in this directory can be run without specifying their full path.
 
+</div>
 
-#### Setting `LD_LIBRARY_PATH` for custom library locations
+{% include accordion title="Setting LD_LIBRARY_PATH for custom library locations" controls="set-lib-path" %}
+<div id="set-lib-path" class="accordion_content"   markdown='1' hidden>
 
 Some software depends on custom-built libraries stored outside standard system locations. <br>(e.g., `/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/usr/local/cuda/bin:/usr/local/cuda/lib64`) <br>
 If an application complains about missing shared libraries (`.so` files), you need to extend `LD_LIBRARY_PATH`:
@@ -299,6 +311,7 @@ ldd /path/to/binary         # Lists the shared libraries used by a program
 ```
 </div></div>
 
+</div></div>
 
 ### Customize SLURM tasks
 
@@ -328,19 +341,21 @@ To get started with custom configurations, check out:
     # usage: node_usage
     ```
 
-- **[Practical Shell Functions](../functions#practical-shell-functions-for-hpc)** provided in the Functions tutorial, including:
-  - [Check quota on any SCINet cluster](../functions#practical-shell-2)
-  - [Quick stats on queued jobs](../functions#practical-shell-3)
-  - [GPU resources check](../functions#practical-shell-6)
-  - [CPU and memory on a node](../functions#practical-shell-7)
+- **[Practical Shell Functions](../functions/examples)** provided in the Functions tutorial, including:
+  - {% include nav-hidden text="Check quota on any SCINet cluster" url="../functions/examples#practical-shell-2" %}
+  - {% include nav-hidden text="Quick stats on queued jobs" url="../functions/examples#practical-shell-3" %}
+  - {% include nav-hidden text="GPU resources check" url="../functions/examples#practical-shell-6" %}
+  - {% include nav-hidden text="CPU and memory on a node" url="../functions/examples#practical-shell-7" %}
 
 These resources offer ready-to-use shortcuts and functions that streamline job management, making your HPC workflow more efficient right from the start.
 
 Here, you'll find a few more practical examples to further streamline your daily work with SLURM tasks, helping you save time and manage jobs more efficiently.
 
 
-#### Quick SLURM job submission for any script
+<div class="usa-accordion">
 
+{% include accordion title="Quick SLURM job submission for any script" controls="slurm1" %}
+<div id="slurm1" class="accordion_content"   markdown='1' hidden>
 
 Any Bash script (`.sh`) can be submitted with sbatch, even if it does not contain #SBATCH directives inside the script itself. 
 Instead of embedding `#SLURM` directives in the script, you can specify all SLURM options directly in the command line when submitting the job.  
@@ -360,7 +375,10 @@ function sbatch_quick {
 
 ![function sbatch_quick]({{ images_path }}/function_sbatch_quick.png)
 
-#### Quick SLURM job submission with custom request for memory, CPU and partition
+</div>
+
+{% include accordion title="Submission with custom request for memory, CPU, and partition" controls="slurm2" %}
+<div id="slurm2" class="accordion_content"   markdown='1' hidden>
 
 This version allows users to specify memory (in GB) CPU cores and partition as arguments to enable more flexible applications:
 ```bash
@@ -403,7 +421,7 @@ It's best to order arguments from most essential to least frequently changed. Th
 - **fixed values**, the default determined will always be used *(e.g., `<scinet-account>`)*
 </div></div>
 
-</div>
+</div></div></div>
 
 ## Advanced .bashrc configurations
 
@@ -424,7 +442,10 @@ Conditional execution in Bash allows scripts to make decisions based on conditio
 For a deeper dive into practical use cases, check out [Conditionals and loops](../functions#conditionals-and-loops) section in the tutorial about Shell Functions.
 </div> </div>
 
-#### Distinguishing between interactive and non-interactive shells
+<div class="usa-accordion">
+
+{% include accordion title="Distinguishing between interactive and non-interactive shells" controls="conditional1" %}
+<div id="conditional1" class="accordion_content"   markdown='1' hidden>
 
 Some commands (e.g., prompts, aliases) are only needed for interactive shells, while non-interactive shells (e.g., batch jobs submitted via sbatch) should avoid unnecessary processing.
 
@@ -444,12 +465,11 @@ If the shell is interactive, it prints a message but can be enhanced to load any
 <div class="highlighted__body" markdown="1">
 
 To use this snippet effectively, place it in your `~/.bashrc` before executing commands that should only run in an interactive shell. 
-You can use it standalone to load modules, set up environment variables or call functions conditionally, 
+You can use it standalone to load modules, set up environment variables, or call functions conditionally, 
 ensuring that non-interactive shells (such as SLURM batch jobs) skip unnecessary processing.
 </div> </div> 
 
-<div class="highlighted highlighted--tip ">
-<div class="highlighted__body" markdown="1">
+
 
 To ensure that certain configurations or commands only run in batch jobs (non-interactive shells), you can use the opposite logic of the interactive shell check. 
 This is particularly useful for loading specific modules, setting environment variables (e.g., software/library paths) or configuring SLURM-specific settings only when running a batch job.
@@ -463,12 +483,12 @@ case $- in
     ;;
 esac
 ```
+* Batch jobs now automatically load Python and set PYTHONPATH, ensuring the correct environment is available.
 
-Batch jobs automatically load Python and set PYTHONPATH, ensuring the correct environment is available.
-</div> </div>
+</div>
 
-
-#### Prevent running scripts in certain cases
+{% include accordion title="Prevent running scripts in certain cases" controls="conditional2" %}
+<div id="conditional2" class="accordion_content"   markdown='1' hidden>
 
 Sometimes, you might want to avoid running scripts on login nodes or specific hosts.
 
@@ -482,6 +502,8 @@ fi
 Prevents resource-intensive scripts from running on login nodes, ensuring compliance with HPC policies.
 
 ![conditional hostname]({{ images_path }}/conditional_hostname.png)
+
+</div></div>
 
 ### Lazy-loading: avoid heavy setup
 

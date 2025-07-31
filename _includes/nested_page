@@ -1,0 +1,16 @@
+{%- include layout/components/dotnotate myurl=include.nest %}
+
+{%- comment %}<!--Find nested page by id-->{%- endcomment %}
+{% assign nestpage = site.documents | find: "id", nesturl %}
+
+{%- if nestpage %}
+
+{%- assign startclip = include.startclip | default: "<!--page start-->" %}
+{%- assign endclip = include.endclip | default: "<!--page end-->" %}
+{% assign nestclip1 = nestpage | split: startclip | last %}
+{% assign nestclip = nestclip1 | split: endclip | first %}
+{{ nestclip }}
+
+{%- else %}
+<script>console.log("{{ nesturl }} is not an existing workbook id. Check to make sure you included the file name")</script>
+{%- endif %}

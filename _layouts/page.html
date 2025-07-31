@@ -4,4 +4,9 @@ main:
   class: usa-layout-docs usa-layout-docs__main usa-prose 
 ---
 
+<div id="pagecontent" class="{% if page.sidenav  == false %}sci-container main-side{% endif %} usa-prose">
+  {% include layout/header-details page=page %}
+
 {{ content }}
+
+</div>
