@@ -476,7 +476,7 @@ To change back to the directory you created, you could run either of the followi
 
 If there are more than one matching files/directories, pressing Tab twice will list all the matching names.
 
-For a more in-depth tutorial on autocomplete, including how to incorporate it into your own scripts, see [Command autocompletion](./command/autocompletion)" %}
+For a more in-depth tutorial on autocomplete, including how to incorporate it into your own scripts, see [Command autocompletion](./commands/autocompletion)" %}
 
 {% include question qid=7 %}
 
