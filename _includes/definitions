@@ -1,0 +1,2 @@
+{% assign _terms = include.terms | split: "," %}
+{% include overview/terms terms=_terms table=include.table defined=include.filters %}

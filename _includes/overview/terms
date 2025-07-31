@@ -12,9 +12,13 @@
 {% assign gloss = site.data.glossary['glossary'] %}
 {% assign glossaryattributes = site.data.filter['glossaryattributes'] %}
 {% assign defined = 0 %}
+{% if include.defined %}
+{% assign defined = 1 %}
+{% else %}
 {% unless include.terms or page.terms or include.taglinks %}
 {% assign defined = 1 %}
 {% endunless %}
+{% endif %}
 
 {% if include.table %}{% assign firstterm = terms.first %}
 <div class="usa-table-container flex-scroll">
@@ -29,7 +33,7 @@
             <th scope="col">Term</th>
             <th scope="col">Definition</th>{% assign termcolarray = "" | split: "" %}
             {%- if firstterm.term %}{%- for _fatt in firstterm %}{%- assign fatt0 = _fatt[0] %}{%- unless glossaryattributes contains fatt0 %}{% assign fatt0text = fatt0 | replace "-", " " %}{% include layout/components/hashed label=fatt0 text=fatt0text %}{% assign termcolarray = termcolarray | push: hashed %}
-            <th scope="col">{{ fatt0text }}</th>{% endunless %}{%- endfor %}{%- endif %}
+            <th scope="col">{{ fatt0text | replace: "-", " " }}</th>{% endunless %}{%- endfor %}{%- endif %}
             {% if include.table == "linked" %}<th scope="col">Related Tutorials</th>{% endif %}
           </tr>
         </thead>
@@ -42,7 +46,7 @@
 {% if _term.definition %}
 {% assign define = _term %}
 {% else %}
-{% assign _myterm = _term.term | default: _term %}
+{% assign _myterm = _term.term | default: _term | strip %}
 {% assign defines = gloss | where: "term", _myterm %}
 {% if defines.size > 1 %}
 {% assign capcollection = page.collection | capitalize %}
