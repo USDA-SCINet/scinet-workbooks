@@ -22,6 +22,7 @@ error
         class="usa-accordion__button {{ buttonclass }}"
         {{ expanded }}
         aria-controls="{{ controller }}"
+        id="{{ controller }}-accordbutton"
     >
     {{ acc-icon }}{{ include.title }}
     </button></h5>{% if include.content %}{% include components/auto-accord controller=controller contents=include.content expanded=include.expanded removediv=include.removediv %}{% endif %}
