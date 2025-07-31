@@ -49,21 +49,10 @@ export PATH="$HOME/bin:/your/custom/path:$PATH"
 
 `$HOME/bin` is a commonly used directory for user scripts and binaries, but you can add a path (`/your/custom/path`) to any custom directory with executables to make them directly accessible in the command line.
 
-
-##### Adding ~/bin to $PATH 
-
-If you have custom software in `~/bin`, adding it to `$PATH` lets you run it from anywhere without specifying its full path.
-```bash
-# paste these lines into your ~/.bashrc 
-export PATH=$HOME/bin:$PATH
-```
-*`source ~/.bashrc` or open a new shell to have changes applied.*
-
 Verify changes using:
 ```bash
 echo $PATH
 ```
-
 
 
 ### Defining useful aliases
