@@ -350,6 +350,7 @@ You can add a custom software directory to your `PATH` using the `export` statem
   ```
   * This ensures the change is permanent across future shell sessions. The use of `echo` combined with appending (`>>`) and immediately sourcing the `.bashrc` is a common and effective approach.
 
+{% include alert class="tip" content="For more information on persisting variables for all future shells, including best practices, see the [Shell configuration persistence tutorial](../persistence/)" %}
 
 #### Check or change a default $SHELL
 
@@ -375,17 +376,17 @@ You can add a custom software directory to your `PATH` using the `export` statem
 
 </div>
 
-<div  class="highlighted highlighted--tip">
+<div  class="highlighted highlighted--note">
 <div class="highlighted__body" markdown="1">
 
 <h4 class="highlighted__heading">HPC-specific Environment Variables</h4>
 
-In High-Performance Computing (HPC) environments, specialized environment variables are essential for efficient resource management and job scheduling on shared, multi-user systems. These variables help the job scheduler (e.g., SLURM) and system software coordinate how resources like CPU cores, memory, and nodes are allocated to different users' jobs.  
-
-
+In High-Performance Computing (HPC) environments, specialized environment variables are essential for efficient resource management and job scheduling on shared, multi-user systems. These variables help the job scheduler (e.g., SLURM) and system software coordinate how resources like CPU cores, memory, and nodes are allocated to different users' jobs.    
+    
+    
 There are many HPC-specific environment variables available outside the job scheduler that can be useful for regular users in the interactive shell on a computing node. These variables help manage software environments, resource paths, and session state, even when not running a job. Specifically, these variables can be useful for [module management](#), [software execution](#), [temporary file storage](#), and [system information](#) in HPC environments.  
-
-
+    
+    
 For example, using the SLURM variable `JOB_ID`, you can monitor live resource consumption for optimization and troubleshooting.  
 ```bash
 sstat -j <SLURM_JOB_ID> --format=JobID   # Running Jobs Only
@@ -568,7 +569,7 @@ export VAR2="passed_value"          # Exporting ensures availability to child pr
 echo "Running with VAR2=$VAR2"
 ```
 
-<!--
+
 
 ## Persisting variables
 
@@ -593,7 +594,7 @@ and refresh the current shell session by applying changes from the configuration
 ```
 source ~/.bashrc
 ```
--->
+{% include alert class="tip" content="For more information on persisting variables for all future shells, including best practices, see the [Shell configuration persistence tutorial](../persistence/)" %}
 
 ## Troubleshooting common issues
 
@@ -711,14 +712,14 @@ Use `export` to make a variable available to child processes:
   MY_VAR="my_value"             # only visible in the current shell
   export MY_VAR="my_value"      # available to all subshells, including child processes and scripts executed from a current shell
   ```
-1.  Persisted for all future shell sessions and scheduled SLURM jobs: *(learn more: [Shell configuration persistance](./persistance))*
+1.  Persisted for all future shell sessions and scheduled SLURM jobs: *(learn more: [Shell configuration persistence](../persistence))*
   ```bash
   echo "export MY_VAR='my_value' >> ~/.bashrc"
   source ~/.bashrc
   ```
 </div>
 
-<!--
+
 {% include accordion title="Variables not persisting across sessions" class="outline" controls="var-debug-6" %} 
 <div id="var-debug-6" class="accordion_content" hidden markdown="1">   
 
@@ -735,7 +736,7 @@ source ~/.bashrc
 ```
 (learn more: [Persisting variables in Config Files](#persisting-variables-in-config-files))
 </div>
--->
+
 
 {% include accordion title="Standard commands stop working after modifying $PATH or $LD_LIBRARY_PATH" class="outline" controls="var-debug-7" %} 
 <div id="var-debug-7" class="accordion_content" hidden markdown="1">  

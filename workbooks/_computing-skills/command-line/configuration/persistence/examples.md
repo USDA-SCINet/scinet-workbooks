@@ -61,6 +61,9 @@ Verify changes using:
 echo $PATH
 ```
 
+
+
+
 ### Defining useful aliases
 
 
@@ -219,8 +222,6 @@ export LESS='-R'                    # Enable raw control characters for color ou
 </div>
 </div>
 
-
-</div>
 
 ## Manage software accessibility
 

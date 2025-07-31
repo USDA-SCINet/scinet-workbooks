@@ -1,5 +1,5 @@
 ---
-title: Shell configuration persistance
+title: Shell configuration persistence
 description: "Persisting your custom shell configuration with scripts."
 order: 7
 index: 3
@@ -103,6 +103,8 @@ This keeps your environment lightweight and prevents unnecessary definitions fro
 
 
 For example, create a `bin` directory (if not present) and add a definitions file for each project separately:
+
+{:.no-copy}
 ```
 ~/bin/
 │── definitions_projectA.sh
@@ -267,7 +269,7 @@ Use a command-line text editor like nano or vim to modify your configuration fil
 ```bash
 nano ~/.bashrc       # or ~/bin/your-project-config.sh
 ```
-
+When you are finished with your edits, save the file (`CTRL + X`, then `Y`).
 
 #### Applying changes 
 
@@ -331,25 +333,28 @@ Ideal for project-specific functions and customization.
     * When you run your main config file, this code will check to make sure your indicated configuration files exist before loading them. 
 1.  Save the file (CTRL + X, then Y) and load the configuration:  
     ```bash
-    source ~/bin/configs
+    source ~/bin/demo-config.sh
     ```
 
 #### Add variables to modular configuration
 
-If your install software in a local directory (e.g., `$HOME/software`), you must update your `PATH` so that the system can locate and execute these programs.  The program executable is typically stored in a bin subdirectory of installed software
+We can create a variable that goes to your specific project directory.
 
 ```bash
-echo "export PATH=$HOME/software/bin:$PATH >> ~/bin/configs/variables.sh"
-source ~/bin/configs
+echo "export PROJECT_DIR=/90daydata/shared/$USER >> ~/bin/configs/demo-variables.sh"
+source ~/bin/demo-config.sh
 ```
-* This adds `~/software/bin` to the system's search path for executables, ensuring that binaries in this directory 
-  can be run without specifying their full path.
-* It then reloads your main configuration script.
 
+This would later be used like: 
+```
+cd $PROJECT_DIR
+```
 
 #### Add functions to modular configuration
 
 If you frequently use specific software, you can ensure it loads when you load your project configuration.  
+By specifying them in project-specific configuration files, you can ensure you are loading the correct software for your particular project.  
+
 To prevent errors, you should conditionally load modules only when on a compute node.
 
 1.  Open your function configuration file in nano
@@ -362,7 +367,7 @@ To prevent errors, you should conditionally load modules only when on a compute 
   This ensures that Python 3.9 and GCC 12.2 are always available when you load your project configuration script.
 1.  Save the file (CTRL + X, then Y) and load the configuration: 
     ```bash
-    source ~/bin/configs
+    source ~/bin/demo-config.sh
     ```
 
 </div>
@@ -388,29 +393,30 @@ nano ~/.bashrc
 
 #### Create an alias 
 
-Let's create an alias to go up one directory 
+Lets create an alias that allows you to quickly check the status of all jobs submitted under your username in an HPC environment.  
+By defining this as a permanent alias, you ensure that you can monitor your job submissions efficiently across multiple sessions without additional configuration.
 
-```
-alias up= 'cd ..'
+```bash
+# Aliases for job monitoring
+alias my_jobs='qstat -u $USER'      # usage: my_jobs
 ```
 
-Note: Instead of typing `cd ..` every time, you can now just type `up`. 
+Note: Documenting the purpose of your alias in comments helps with long-term maintenence and usability of your files. 
 
 #### Add an environmental variable 
 
-We can create a variable that goes to a specific path
+If your install software in a local directory (e.g., `$HOME/software`), you must update your `PATH` so that the system can locate and execute these programs.  The program executable is typically stored in a bin subdirectory of installed software.
 
+```bash
+export PATH=\"$HOME/software/bin:$PATH\"
 ```
-export PROJECT_DIR=/90daydata/shared/$USER
-```
-
-This would later be used like: 
-```
-cd $PROJECT_DIR
-```
+* This adds `~/software/bin` to the system's search path for executables, ensuring that binaries in this directory 
+  can be run without specifying their full path.
+* It then reloads your main configuration script.
 
 #### Apply changes to your .bashrc file
 
+Save the file (`CTRL + X`, then `Y`) and reload the configuration:
 ```
 source ~/.bashrc
 ```
@@ -418,15 +424,9 @@ source ~/.bashrc
 #### Test your changes
 
 ```
-mkdir -p ~/unix_tutorial/logs ## make the directory if it doesn't exist
-cd ~/unix_tutorial/logs
-up  #should take you to unix_tutorial 
+my_jobs
 ```
 
-Then try the project directory:
-```
-cd $PROJECT_DIR
-```
 
 </div>
 

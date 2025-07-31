@@ -99,15 +99,14 @@ If a binary of a desired tool is in $PATH, pressing `Tab` completes it:
 pyt<Tab>  →  python3
 ```
 
-
-{% include alert class="emergency" title=".bashrc content" %}
 {% include alert class="tip" content="To make a custom-installed tool available in the command line by its name, you must ensure its directory is included in the `$PATH` environment variable.  
 
 For example, if the tool is installed in `~/software/`, you can add it to `$PATH` by adding the following line to your `~/.bashrc`:
 ```bash
 export PATH=\"$HOME/software:$PATH\"
-```
-" %}
+```  
+
+For more information on persisting your configurations, see the [Shell configuration persistence tutorial](../configuration/persistence/)" %}
 
 
 
@@ -252,7 +251,8 @@ After defining the function and registering it, test the autocompletion:
 If everything is set up correctly, `Tab` should suggest pre-defined options.  
 ![autocompletion for custom scripts]({{ images_path }}/autocomplete/autocompletion_custom_scripts.png)
 
-<!--
+
+
 #### Persist the setup for all future shells
 
 To keep autocompletion active in future sessions, add these lines to your `~/.bashrc`:
@@ -264,7 +264,10 @@ complete -F _myscript_complete ./myscript.sh    # same here
 ```
 
 `source ~/.bashrc` to apply changes in a current shell.
--->
+
+
+{% include alert class="tip" content="For more information on persisting your setup for all future shells, see the [Shell configuration persistence tutorial](../configuration/persistence/)" %}
+
 </div>
 
 ### Define an alias to preview options
