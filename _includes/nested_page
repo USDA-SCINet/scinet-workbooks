@@ -1,0 +1,41 @@
+{%- assign nest = include.nest %}
+{%- comment %}<!--Get file id-->{%- endcomment %}
+{%- assign first_char = nest | slice: 0, 1 %}
+{%- if first_char == "/" %}
+{%- comment %}<!--If path is from site url, just use url-->{%- endcomment %}
+    {% assign nesturl = nest %}
+{%- elsif first_char == "." %}
+{%- comment %}<!--If path uses dot notation, get folder level-->{%- endcomment %}
+    {% assign nestingarray = nest | split: "." %}
+    {% assign nestingsize = nestingarray | size %}
+    {% if nestingsize == 2 %}
+        {% assign folderup = 0 %}
+    {% else %}
+        {% assign nsize = nestingsize | minus: 1 %}
+        {% assign folderup = nsize | divided_by: 2 | round %}
+    {% endif %}
+    {% assign currenturlarray = page.url | split: "/" %}
+    {%- assign path_arrl = currenturlarray | size %}
+    {%- assign nestfolderlvl =  path_arrl | minus: 2 | minus: folderup %}
+    {%- assign nest_sections = currenturlarray | slice: 1, nestfolderlvl %}
+    {% assign nestedfolders = nestingarray | last %}
+    {%- assign nesturl = nest_sections | join: "/" | prepend: "/" | append: nestedfolders %}
+{%- else %}
+{%- comment %}<!--File path is relative to current file-->{%- endcomment %}
+{% capture nesturl %}{{ page.url | remove: "/index" }}/{{ nest }}{% endcapture %}
+{%- endif %}
+
+{%- comment %}<!--Find nested page by id-->{%- endcomment %}
+{% assign nestpage = site.documents | find: "id", nesturl %}
+
+{%- if nestpage %}
+
+{%- assign startclip = include.startclip | default: "<!--page start-->" %}
+{%- assign endclip = include.endclip | default: "<!--page end-->" %}
+{% assign nestclip1 = nestpage | split: startclip | last %}
+{% assign nestclip = nestclip1 | split: endclip | first %}
+{{ nestclip }}
+
+{%- else %}
+<script>console.log("{{ nesturl }} is not an existing workbook id. Check to make sure you included the file name")</script>
+{%- endif %}
