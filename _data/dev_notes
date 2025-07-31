@@ -15,6 +15,7 @@ Components and layouts:
   - [Quiz](contribute/components/quiz)
   - Improved [table accessibility](/contribute/components/table)
   - Updated [alerts documentation](/contribute/components/alerts)
+  - Added nav-hidden button (as used in [Persistence Examples - SLURM](/computing-skills/command-line/configuration/persistence/examples#customize-slurm-tasks) to make it possible to navigate directly to accordions
 - Added [tutorial template](/contribute/template)
 - Revised Index section of [Formatting Tookit](/contribute/format#index)
 - Revised page structure
@@ -27,7 +28,8 @@ Module edits
 - Rewrote Introduction and streamlined section purpose
 - Revised formatting
 - Edited for repetition 
-- Revised .bashrc and startup scripts - still in progress
+- Revised .bashrc and startup scripts
+- Added command documentation
 
 # March 4, 2025
 
