@@ -44,10 +44,7 @@
       @include u-padding-x($theme-site-margins-mobile-width);
       @include at-media($theme-site-margins-breakpoint) {
         padding-left: 2 * $alert-icon-optical-adjust-left;
-      }  
-      p{
-        @include u-margin-y(0);
-      };
+      } 
 
       h4, .highlighted__heading {
         margin-top: 0;
