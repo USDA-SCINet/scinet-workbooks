@@ -9,7 +9,7 @@ author: Aleksandra Badaczewska
 
 ---
 
-<!--clips-->
+
 
 {% include file_path folder=1 %}
 
