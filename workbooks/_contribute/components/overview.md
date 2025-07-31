@@ -383,6 +383,20 @@ Custom terms component using variable names as column names.
 ```
 
 </li>
+<li markdown='1'>
+
+Custom term list that does not need to be in the frontmatter. 
+Terms need to be defined in the glossary for this to function.
+
+```{% raw %}
+{% include definitions terms="Algorithm, Bash" filters=true %}
+
+{% include definitions terms="Binary" %}
+
+{% include definitions terms="Binary, Algorithm, Bash" table=true %}{% endraw %}
+```
+
+</li>
 </ul>
 </li>
 <li markdown='1'>
