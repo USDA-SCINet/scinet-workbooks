@@ -907,8 +907,6 @@ log_function() { echo "Executing task at $(date)" >> ~/function.log 2>> ~/functi
 
 ### Organize functions in configuration files
 
-{% include alert class="emergency" title=".bashrc content" %}
-
 1.  Keep frequently used functions in shell configuration files (i.e., `~/.bashrc`, `~/.bash_profile`) or separate script files (e.g., `~/bin/functions.sh`). 
 1.  Source them using:
     ```bash 
@@ -1130,8 +1128,6 @@ Below are common issues and effective ways to troubleshoot them.
 <div id="shell-function-4" class="accordion_content" markdown="1">
 
 **SYMPTOMS:** Functions disappear after logging out.
-
-{% include alert class="emergency" title=".bashrc content" %}
 
 **SOLUTIONS:** Persist functions by defining them in a sourced script (`~/.bashrc` or custom `~/bin/functions.sh`) instead of just in a temporary session.
 </div>
