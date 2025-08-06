@@ -124,7 +124,7 @@ If you would like to use your project space instead of `/90daydata`, you can mod
 <div class="usa-accordion">
 
 {% include accordion title="Check what projects you have available" class="note" icon=true controls="find-projects" %}
-<div class="accordion-content" id="find-projects" markdown='1' hidden>
+<div class="accordion_content" id="find-projects" markdown='1' hidden>
 
 If you don't know what projects you have available, you can check by running:
 ```bash
