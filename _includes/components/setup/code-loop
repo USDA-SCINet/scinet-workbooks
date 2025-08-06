@@ -1,0 +1,9 @@
+{%- assign codeloop = include.loop %}{%- if codeloop.first %}
+```bash{% for _line in codeloop %}
+{{ include.function }} {{ include.prefix }}{{ _line }}{% endfor %}
+```
+{%- else %}
+```bash
+{{ codeloop }}
+```
+{%- endif %}

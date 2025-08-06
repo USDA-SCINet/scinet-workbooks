@@ -69,7 +69,7 @@ You will need to decide where files will be stored for the tutorials.  Most tuto
 If you are beginning a tutorial for the first time, or haven't used your directory in 90 days, you will need to create a new working directory for the tutorial.
 
 To create a working directory:
-1.  Open the Shell - if you are not sure how, see the below [instructions on how to launch the shell](using-the-shell).
+1.  Open the Shell - if you are not sure how, see the below [instructions on how to launch the shell](#using-the-shell).
 1.  Request a compute node, replacing `<project_name>` with the name of a project you have access to:
     ```
     srun -A <project_name> -t 01:00:00 --pty bash
@@ -120,6 +120,20 @@ Most tutorials that use Conda environments default to creating the environment i
 ### Modifying workflows to use /project
 
 If you would like to use your project space instead of `/90daydata`, you can modify the tutorial instructions by substituting `/project/your_project_name/` wherever you see `/90daydata/shared/$USER/`.
+
+<div class="usa-accordion">
+
+{% include accordion title="Check what projects you have available" class="note" icon=true controls="find-projects" %}
+<div class="accordion_content" id="find-projects" markdown='1' hidden>
+
+If you don't know what projects you have available, you can check by running:
+```bash
+sacctmgr -Pns show user format=account,defaultaccount
+```
+
+</div>
+</div>
+
 
 For example, to modify the instructions above for creating a directory and Conda environment in a project named "your_project_name", you would:
 1.  Open the Shell

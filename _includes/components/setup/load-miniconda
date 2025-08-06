@@ -1,0 +1,8 @@
+{%- if page.cluster %}{%- if page.cluster == "Atlas" %}
+  * Atlas: `module load miniconda3`  
+{%- else %} 
+  * Ceres: `module load miniconda`  
+{%- endif %}{%- else %}
+  * Atlas: `module load miniconda3`  
+  * Ceres: `module load miniconda`  
+{%- endif %}
