@@ -1,0 +1,2 @@
+{%- if kernel or include.kernel %}Make sure the tutorial kernel is selected:  
+  * Kernel > Change Kernel > select `{{ include.kernel | default: kernel }}` from the drop down menu  {%- endif %}

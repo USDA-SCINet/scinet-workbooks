@@ -1,2 +1,3 @@
-{% include setup/check_path folder=include.folder %}{%- assign environment = include.environment | default: environment %}{% unless kernel %}{%- include setup/kernelname kernel=include.kernel %}{% endunless %}{%- assign sections = include.sections | default: page.setup %}{%- if include.bullets %}{%- assign li = "*" %}{%- else %}{%- assign li = "1." %}{%- endif %}{%-for _section in sections %}
-{{ li }} {% include setup/{{ _section }} folder=include.folder %}{% endfor %} 
+{% include setup/check_path folder=include.folder %}{%- assign environment = include.environment | default: environment %}{% unless kernel %}{%- include components/setup/kernelname kernel=include.kernel %}{% endunless %}{%- assign sections = include.sections | default: page.setup %}{%- if include.bullets %}{%- assign li = "*" %}{%- else %}{%- assign li = "1. " %}{%- endif %}{%-for _section in sections %}{% assign followup = nil %}
+{{ li }} {% include setup/{{ _section }} folder=include.folder ol=true %}{%- if followup and followup != "" %}  
+{{ li }} {% include setup/{{ followup }} folder=include.folder %}{%- endif %}{% endfor %} 

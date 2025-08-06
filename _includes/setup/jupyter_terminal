@@ -1,0 +1,4 @@
+Launch JupyterLab in OoD and open a terminal  
+  * File > New > Terminal  {%- if kernel %}{%- if include.ol %}{% assign followup = "jupyter_kernel" %}{%- else %}
+
+{% include setup/jupyter_kernel %}{%- endif %}{%- endif %}

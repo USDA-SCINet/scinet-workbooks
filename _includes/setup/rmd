@@ -5,7 +5,7 @@
 ```r
 library(httr)
 tutorial_name <- '{{ file }}'
-GET(paste0('{{ site.baseurl }}{{ fpath }}/',tutorial_name), 
+GET(paste0('{{ site.url }}{{ fpath }}/',tutorial_name), 
     write_disk(tutorial_name))
 ```    
   * {%- endunless %} [Download RMarkdown]({{ fpath }}/{{ file }})
