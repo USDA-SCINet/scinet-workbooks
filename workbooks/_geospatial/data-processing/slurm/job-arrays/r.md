@@ -1,7 +1,7 @@
 ---
 
 title: SLURM Job Arrays for Many Data Input Files - R
-description: "(Page description here)"
+description: "This tutorial covers how to use an R script to list many input files and submit a SLURM job script to apply another R script to the input files."
 type: interactive tutorial
 language: R
 
@@ -10,11 +10,9 @@ tags: [SLURM]
 author: Heather Savoy
 updated: 2022-10-07 
 
-overview:
-  materials:
-    - code: GRWG22_JobPerDataFile.Rmd
-  terminology: tags
+code: GRWG22_JobPerDataFile.Rmd
 
+overview: [materials,terminology]
 ---
 
 
@@ -27,7 +25,7 @@ geospatial analyses are applied in this example as it was a generic request
 during the 10th session of the Geospatial Research Working Group Workshop 2022. 
 
 If you prefer to have a single SLURM submission script iterate over your data 
-inputs, see [this tutorial](https://geospatial.101workbook.org/ExampleGeoWorkflows/GRWG22_ZonalStats_wSLURM_R).
+inputs, see [the Parallel Zonal Statistics tutorial](../zonal-statistics/r).
 
 {% include overviews %}
 
@@ -37,6 +35,9 @@ The instructions below will be mostly the same for both Ceres and Atlas. Choose
 either cluster to work on for the tutorial. There is one line you will need to
 modify in this tutorial and your options depend on which cluster you are currently
 using.
+
+1.  {% include setup/workdir %}
+1.  {% include setup/code %}
 
 ## Tutorial Steps
 

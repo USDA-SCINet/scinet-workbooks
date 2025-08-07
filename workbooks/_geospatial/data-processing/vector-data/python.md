@@ -7,6 +7,7 @@ type: interactive tutorial
 author: Heather Savoy
 
 language: Python
+interface: Jupyter
 
 tags: [Vector, CRS, Spatial join]
 packages: [geopandas, plotnine]
@@ -19,8 +20,11 @@ datasets:
     url: https://aqs.epa.gov/aqsweb/documents/data_api.html
 updated: 2022-10-07 
 code: GRWG22_VectorData.ipynb
-overview: [terminology,packages,datasets,materials]
+overview: [terminology,packages-datasets,materials]
 
+
+intro: geospatial/data-processing
+environment: geoenv
 ---
 
 
@@ -34,6 +38,30 @@ matter (PM2.5) in the atmosphere around the time of the Camp Fire in northern CA
 in 2018.  
 
 {% include overviews %}
+
+## Getting Started
+
+1.  {% include setup/intro %}
+1.  Open JupyterLab in Open OnDemand with the following settings, leaving all others as the default:
+    * Ceres:
+      * `Slurm Partition`: short
+      * `Number of hours`: 1
+      * `Number of cores`: 2
+      * `Jupyer Notebook vs Lab`: Lab
+    * Atlas:
+      * `Partition Name`: development 
+      * `QOS`: normal
+      * `Number of hours`: 1
+      * `Number of tasks`: 2
+1.  {% include setup/code %}
+1.  {% include setup/jupyter_kernel %}
+1.  Import libraries/packages
+    ```python
+    import geopandas as gpd
+    import numpy as np
+    from plotnine import ggplot, geom_map, aes, theme, geom_histogram, scale_x_datetime, geom_line, ylab, xlab, annotate, geom_vline
+    from datetime import datetime, date
+    ```
 
 ## Tutorial Steps
 
@@ -51,6 +79,7 @@ in 2018.
 
 <div class="process-list" markdown='1'>  
 
+<!--{% comment %}
 ### Import Libraries / Packages
 
 Below are commands to run to create a new Conda environment named 'geoenv' that contains the packages used in this tutorial series. To learn more about using Conda environments on Ceres, see [this guide](https://scinet.usda.gov/guide/conda/). NOTE: If you have used other Geospatial Workbook tutorials from the SCINet Geospatial Research Working Group Workshop 2022, you may have aleady created this environment and may skip to launching JupyterHub.
@@ -125,6 +154,7 @@ from plotnine import ggplot, geom_map, aes, theme, geom_histogram, scale_x_datet
 from datetime import datetime, date
 ```
 
+{% endcomment %}-->
  
 
 ### Read in fire perimeter data and visualize

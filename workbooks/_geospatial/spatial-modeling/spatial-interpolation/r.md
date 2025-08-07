@@ -17,9 +17,16 @@ code: GRWG_SpatialInterpolation.Rmd
 language: R
 published: 2023-09-17 # not required, but useful
 updated: 2023-09-17 # not required, but useful
+
+related: 
+  - "Please see the [original tutorial](https://github.com/thengl/GeoMLA) if
+    you would like to see more coding examples of these two techniques that
+    include:  
+      - additional gridded covariates (e.g., elevation)  
+      - categorical target variables  
+      - temporally-variable target variables  
+      - and more!"
 ---
-
-
 
 ## Overview
 
@@ -39,28 +46,16 @@ text.
 
 ## Getting Started
 
-{% include setup/code %}
-
-## Tutorial Steps
-
--   Pre-process the `meuse` data set to be `sf` and `raster` objects
--   Use kriging to interpolate zinc concentrations across the study area
--   Use Random Forest to interpolate zinc concentrations across the
-    study area
--   Compare predictions and prediction error between the two
-    interpolation methods
-
-<div class="process-list" markdown='1'> 
-
-### Import Libraries/Packages
-
-For this tutorial, we will use several packages for processing spatial
-data. The `sf` and `raster` packages help us store the `meuse`
-observations and grid in spatial data structures. `geoR` contains
-functions for fitting variograms and performing kriging. `ranger`
-contains functions to fit Random Forest models and make predictions from
-them.
-
+1.  {% include setup/workdir %}
+1.  Open your directory in RStudio
+1.  {% include setup/code %}
+1.  For this tutorial, we will use several packages for processing spatial 
+    data. The `sf` and `raster` packages help us store the `meuse`
+    observations and grid in spatial data structures. `geoR` contains
+    functions for fitting variograms and performing kriging. `ranger`
+    contains functions to fit Random Forest models and make predictions from
+    them.
+    ```r
     # spatial data
     library(sf)     # vector data
     library(raster) # raster data
@@ -77,7 +72,18 @@ them.
 
     # visualizations
     library(ggplot2)
+    ```
 
+## Tutorial Steps
+
+-   Pre-process the `meuse` data set to be `sf` and `raster` objects
+-   Use kriging to interpolate zinc concentrations across the study area
+-   Use Random Forest to interpolate zinc concentrations across the
+    study area
+-   Compare predictions and prediction error between the two
+    interpolation methods
+
+<div class="process-list" markdown='1'> 
 
 ### Pre-process `meuse` dataset
 
@@ -424,13 +430,3 @@ RFsp, however, are:
 
 </div>
 
-## Further reading / more complicated examples
-
-Please see the [original tutorial](https://github.com/thengl/GeoMLA) if
-you would like to see more coding examples of these two techniques that
-include:
-
--   additional gridded covariates (e.g., elevation)
--   categorical target variables
--   temporally-variable target variables
--   and more!

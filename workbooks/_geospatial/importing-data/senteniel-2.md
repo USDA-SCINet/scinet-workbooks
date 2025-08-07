@@ -3,11 +3,42 @@ title: "Importing Data From Santeniel 2 Satellite"
 type: interactive tutorial
 author: Rowan Gaffney
 updated: 2021-04-13
+description: How to leverage a SpatioTemporal Asset Catalog to streamline the process of working with earth observations data
 language: Python
+interface: Jupyter
 packages: [xarray,hvplot,geopandas,stackstac,satsearch]
-terms: [SpatioTemporal Asset Catalog,Lazy loading,Affine transformation,NDVI,Cloud Optimized Geotiff]
+terms: 
+  - term: SpatioTemporal Asset Catalog 
+    alt: STAC
+    definition: A ~json catalog to standardize the way geospatial asset metadata is structured and queried.
+  - term: Lazy Loading
+    definition: Delaying the loading of data until the object is called/computed. This can improve performance and reduce system resource use.
+  - term: Transform
+    alt: Affine
+    definition: A matrix that maps the pixels in a raster to physical coordiantes (x, y). This consists of six elements, upper-left x coordinate, upper-left y coordinate, w-e pixel resolution, n-s pixel resolution, row rotation (typically zero), and the column rotation (typically zero).
+  - term: Amazon Web Services 
+    alt: AWS
+    definition: Cloud computing platform by Amazon.
+  - term: Sentinel 2
+    definition: Two polar-orbiting satellites monitoring variability in land surface conditions. The revisit freqency is 5-days at the equator and 2-3 days at mid-latitudes.
+  - term: Central Plains Experimental Range 
+    alt: CPER
+    definition: A research station in the Long Term Agro-ecosystem Research (LTAR) network operated by the USDA ARS.
+  - term: Military Grid Reference System 
+    alt: MGRS
+    definition: Grid system used to tile Sentinel 2 data products.
+  - NDVI
+  - term: Cloud Optimized Geotiff 
+    alt: COG
+    definition: A GeoTiff file that has a specialized internal organization that enables cloud computing workflows.
 
-overview: [packages,terminology,materials]
+data_details:
+  - "Repository: [AWS](https://registry.opendata.aws/)"
+  - "Data: [Sentinel 2 L2A](https://sentinel.esa.int/web/sentinel/user-guides/sentinel-2-msi/product-types/level-2a)"
+  - "Link: [https://registry.opendata.aws/sentinel-2-l2a-cogs/](https://registry.opendata.aws/sentinel-2-l2a-cogs/)"
+  - "[STAC Catalog Viewer](https://stacindex.org/catalogs/earth-search#/Cnz1sryATwWudkxyZekxWx6356v9RmvvCcLLw79uHWJUDvt2)"
+
+overview: [packages-data_details,terminology,materials]
 code: Sentinel2_STAC.ipynb
 
 ---
@@ -21,7 +52,23 @@ Accessing, downloading, stacking, and working with earth observations (EO) data 
 
 ## Getting Started
 
-{% include setup/code %}
+1.  {% include setup/workdir %}
+1.  Launch JupyterLab in Open OnDemand
+1.  {% include setup/code %}
+1.  Import Libraries / Packages
+    ```python
+    import warnings
+    warnings.filterwarnings('ignore')
+    import holoviews as hv
+    hv.extension('bokeh')
+    import hvplot.xarray,hvplot.pandas,stackstac
+    import xarray as xr
+    import numpy as np
+    import geopandas as gpd
+    from rasterio import features,transform
+    from pprint import pprint
+    from satsearch import Search
+    ```
 
 <!--
 
@@ -37,16 +84,29 @@ Accessing, downloading, stacking, and working with earth observations (EO) data 
 
 ## Terminology
 
-  * *SpatioTemporal Asset Catalog (STAC)*: A ~json catalog to standardize the way geospatial asset metadata is structured and queried.
-  * *Lazy Loading*: Delaying the loading of data until the object is called/computed. This can improve performance and reduce system resource use.
-  * *Transform/Affine*: A matrix that maps the pixels in a raster to physical coordiantes (x, y). This consists of six elements, upper-left x coordinate, upper-left y coordinate, w-e pixel resolution, n-s pixel resolution, row rotation (typically zero), and the column rotation (typically zero).
-  * *Amazon Web Services (AWS)*: Cloud computing platform by Amazon.
-  * Amazon Simple Storage Service (S3): The AWS object storage service.
-  * *Sentinel 2*: Two polar-orbiting satellites monitoring variability in land surface conditions. The revisit freqency is 5-days at the equator and 2-3 days at mid-latitudes.
-  * *Central Plains Experimental Range (CPER)*: A research station in the Long Term Agro-ecosystem Research (LTAR) network operated by the USDA ARS.
-  * *Military Grid Reference System (MGRS)*: Grid system used to tile Sentinel 2 data products.
-  * *Normalized Difference Vegetation Index (NDVI)*: A spectral index using the Red and Near Infrared spectra to estimate green (photosynthetically active) vegetation.
-  * *Cloud Optimized Geotiff (COG)*: A GeoTiff file that has a specialized internal organization that enables cloud computing workflows.
+  - term: SpatioTemporal Asset Catalog 
+    alt: STAC
+    definition: A ~json catalog to standardize the way geospatial asset metadata is structured and queried.
+  - term: Lazy Loading
+    definition: Delaying the loading of data until the object is called/computed. This can improve performance and reduce system resource use.
+  - term: Transform
+    alt: (Affine)
+    definition: A matrix that maps the pixels in a raster to physical coordiantes (x, y). This consists of six elements, upper-left x coordinate, upper-left y coordinate, w-e pixel resolution, n-s pixel resolution, row rotation (typically zero), and the column rotation (typically zero).
+  - term: Amazon Web Services 
+    alt: AWS
+    definition: Cloud computing platform by Amazon.
+  - term: Sentinel 2
+    definition: Two polar-orbiting satellites monitoring variability in land surface conditions. The revisit freqency is 5-days at the equator and 2-3 days at mid-latitudes.
+  - term: Central Plains Experimental Range 
+    alt: CPER
+    definition: A research station in the Long Term Agro-ecosystem Research (LTAR) network operated by the USDA ARS.
+  - term: Military Grid Reference System 
+    alt: MGRS
+    definition: Grid system used to tile Sentinel 2 data products.
+  - NDVI
+  - term: Cloud Optimized Geotiff 
+    alt: COG
+    definition: A GeoTiff file that has a specialized internal organization that enables cloud computing workflows.
 
 ## Data Details
 
@@ -58,7 +118,6 @@ Accessing, downloading, stacking, and working with earth observations (EO) data 
 -->
 
 ## Tutorial Steps
-* Import Libraries / Packages
 * Define the ROI
     - Read a shapefile of the USDA ARS LTAR Central Plains Experimental Range. This will be the region of interest (ROI) for this tutorial
 * STAC Search Query Function
@@ -87,23 +146,6 @@ Accessing, downloading, stacking, and working with earth observations (EO) data 
     - Calculate the average NDVI per time step and plot the time series.
 
 <div class="process-list" markdown='1'> 
-
-### Import Libraries / Packages
-
-
-```python
-import warnings
-warnings.filterwarnings('ignore')
-import holoviews as hv
-hv.extension('bokeh')
-import hvplot.xarray,hvplot.pandas,stackstac
-import xarray as xr
-import numpy as np
-import geopandas as gpd
-from rasterio import features,transform
-from pprint import pprint
-from satsearch import Search
-```
 
 ### Define the ROI
 

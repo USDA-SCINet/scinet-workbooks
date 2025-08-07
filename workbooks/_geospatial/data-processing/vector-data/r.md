@@ -42,28 +42,39 @@ of the Camp Fire in northern CA in 2018.
 
 ## Getting Started
 
-This tutorial assumes you are running this Rmarkdown file in RStudio Server. The 
-easiest way to do that is with Open OnDemand (OoD) on [Ceres](http://ceres-ood.scinet.usda.gov/)
-or [Atlas](https://atlas-ood.hpc.msstate.edu/). 
-
-Select the following parameter values when requesting a RStudio Server
-app to be launched depending on which cluster you choose. All other values can 
-be left to their defaults. Note: on Atlas, we are using the development partition
-so that we have internet access to download files since the regular compute nodes
-on the `atlas` partition do not have internet access.
-
-Ceres:
-* `Slurm Partition`: short
-* `R Version`: 4.2.0
-* `Number of hours`: 1
-* `Number of cores`: 2
-
-Atlas:
-* `R Version`: 4.1.0
-* `Partition Name`: development 
-* `QOS`: normal
-* `Number of hours`: 1
-* `Number of tasks`: 2
+1.  {% include setup/workdir %}
+1.  Open RStudio in Open OnDemand with the following settings, leaving all others as the default:
+    * Ceres:
+      * `Slurm Partition`: short
+      * `R Version`: 4.2.0
+      * `Number of hours`: 1
+      * `Number of cores`: 2
+    * Atlas:
+      * `R Version`: 4.1.0
+      * `Partition Name`: development 
+      * `QOS`: normal
+      * `Number of hours`: 1
+      * `Number of tasks`: 2
+1.  {% include setup/code %}
+1.  For this tutorial, we will use the `sf` package for handling vector data,
+    the `USAboundaries` for including state boundaries in our maps, 
+    `dplyr` for general tabular data manipulations, `ggplot2` for creating
+    visuals, and `lubridate` for handling dates.  
+    * Each package except `USAboundaries` is available from the site libraries 
+      accessible to RStudio Server on OoD for both clusters.  
+    * If you have not used `USAboundaries` before, you may install it 
+      from CRAN with `install.packages(USAboundaries)` from within RStudio Server on OoD.  
+    * To learn more about installing packages on Ceres, see 
+      [our package installation guide](https://scinet.usda.gov/guide/packageinstall/#installing-r-packages).  
+    
+    ```r
+    library(sf)               # Handling vector data
+    library(USAboundaries)    # Mapping administrative boundaries
+    library(dplyr)            # General data manipulation
+    library(ggplot2)          # Visualizations
+    library(lubridate)        # Date manipulation
+    ```
+ 
 
 ## Tutorial Steps
 
@@ -78,27 +89,6 @@ Atlas:
 
 <div class="process-list" markdown='1'>  
 
-### Import Libraries/Packages
-For this tutorial, we will use the `sf` package for handling vector data,
-the `USAboundaries` for including state boundaries in our maps, 
-`dplyr` for general tabular data manipulations, `ggplot2` for creating
-visuals, and `lubridate` for handling dates. Each package except `USAboundaries`
-is available from the site libraries accessible to RStudio Server on OoD for 
-both clusters. If you have not used `USAboundaries` before, you may install it 
-from CRAN with `install.packages(USAboundaries)` from within RStudio Server on OoD.
-To learn more about installing packages on Ceres, see 
-[this guide](https://scinet.usda.gov/guide/packageinstall/#installing-r-packages). 
-
-
-```r
-library(sf)               # Handling vector data
-library(USAboundaries)    # Mapping administrative boundaries
-library(dplyr)            # General data manipulation
-library(ggplot2)          # Visualizations
-library(lubridate)        # Date manipulation
-```
-
- 
 
 ### Read in fire perimeter data and visualize
 

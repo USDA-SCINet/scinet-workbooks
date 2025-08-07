@@ -38,12 +38,11 @@ Python packages, QGIS, and ESRI products.
 
 ## Getting Started
 
-Both Atlas and Ceres have GDAL installed as a module. To start 
-using GDAL on either cluster, load the module with the following command:
-
-```bash
-module load gdal
-```
+1.  {% include setup/workdir %}
+1.  Both Atlas and Ceres have GDAL installed as a module. To start using GDAL on either cluster, load the module with the following command:
+    ```bash
+    module load gdal
+    ```
 
 ## Tutorial Sections
 

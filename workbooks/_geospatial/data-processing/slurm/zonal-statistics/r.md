@@ -1,6 +1,7 @@
 ---
 title: Parallel Zonal Statistics - R
 author: Heather Savoy
+description: Calculate zonal statistics and use SLURM job arrays to execute an R script with different inputs across multiple cores.
 wgs: geospatial
 language: R
 
@@ -11,12 +12,11 @@ packages: [rgeocdl, terra]
 
 updated: 2022-09-28 
 
-overview:
-  materials:
-    - code: GRWG22_ZonalStats_wSLURM.Rmd
-  resources:
-    packages: packages
-    datasets: [US Census Cartographic Boundary Files, PRISM]
+overview: [materials, packages-datasets]
+
+code: GRWG22_ZonalStats_wSLURM.Rmd
+datasets: [US Census Cartographic Boundary Files, PRISM]
+
 ---
 
 
@@ -35,32 +35,20 @@ in each county per year. We will request SLURM to distribute the 21 years of inp
 across as many cores and run our zonal statistics R script on each one.
 
 If you prefer to have an R script handle looping over your data inputs and 
-submitting many job submission scripts, see [this tutorial](https://geospatial.101workbook.org/ExampleGeoWorkflows/GRWG22_JobPerDataFile_R).
+submitting many job submission scripts, see [the Job Arrays tutorial](../job-arrays/r).
 
 
 {% include overviews %}
 
-## Tutorial Steps
+## Getting Started
 
-* Write serial R script - this script will accept a year argument, open the 
-  raster file associated with that year, open the polygon dataset, calculate 
-  the mean value per polygon, and write a new shapefile with the mean values.
-* Write and save a SLURM job submission script - Create a batch script with
-  SLURM commands requesting resources to execute your calculations on multiple
-  cores.
-* Submit your job - Submit your batch script to SLURM
-* Check results - Monitor the SLURM queue until your job is complete and then 
-  ensure your job executed successfully.
-
-<div class="process-list" markdown='1'>  
-
-### Install packages and download data
+{% include setup/workdir %}
 
 For this tutorial, we are not running our spatial analyses via Open OnDemand,
 so we do not have access to the same breadth of geospatial R packages in the
 site library. If you have not used `terra` or `rgeocdl` outside of Open 
 OnDemand on Ceres before, you can install it in a shell with the code chunks 
-below. The first three `module load` commands load versions of non-R  
+below. The first three `module load` commands load versions of non-R 
 libraries on which `terra` or `rgeocdl` depends. Then we load the 3.6 
 version of R, which is a version recent enough for `terra` to install that also
 has some `rgeocdl` install dependencies also available in the site library on 
@@ -75,7 +63,12 @@ module load r/3.6
 R
 ```
 
-Which will open R and you can run the following lines to install `terra`. The 
+This will open R.
+
+{% include setup/code %}
+
+
+You can run the following lines to install `terra`. The 
 second line installs the SCINet `rgeocdl` package used for downloading the 
 example data for this tutorial.
 
@@ -83,7 +76,6 @@ example data for this tutorial.
 # Install packages
 install.packages('terra') # if needed
 devtools::install_github('USDA-SCINet/rgeocdl') # if needed
-
 ```
 
 The code chunk below will download the example data. For our US county polygons, 
@@ -121,7 +113,19 @@ You may now exit R by typing:
 q()
 ```
 
+## Tutorial Steps
 
+* Write serial R script - this script will accept a year argument, open the 
+  raster file associated with that year, open the polygon dataset, calculate 
+  the mean value per polygon, and write a new shapefile with the mean values.
+* Write and save a SLURM job submission script - Create a batch script with
+  SLURM commands requesting resources to execute your calculations on multiple
+  cores.
+* Submit your job - Submit your batch script to SLURM
+* Check results - Monitor the SLURM queue until your job is complete and then 
+  ensure your job executed successfully.
+
+<div class="process-list" markdown='1'>  
  
 
 ### Write and save a serial R script that accepts command line arguments

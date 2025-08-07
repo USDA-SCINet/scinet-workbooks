@@ -64,6 +64,6 @@ icons:
     icon: /assets/uswds/img/usa-icons/check_circle.svg
 
 
-glossaryattributes: [term,definition,link,tutorial]
+glossaryattributes: [term,definition,link,tutorial,alt]
 
 overview-attributes: [overview,terminology,datasets,materials,objectives,packages,code]

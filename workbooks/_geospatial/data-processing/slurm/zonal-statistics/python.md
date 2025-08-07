@@ -8,15 +8,14 @@ language: Python
 
 tags: [GeoCDL, SLURM, Zonal statistics]
 packages: [geopandas, rasterstats]
+code: GRWG22_ZonalStats_wSLURM.ipynb
 
 updated: 2022-09-29 
 
-overview:
-  materials:
-    - code: GRWG22_ZonalStats_wSLURM.ipynb
-  terminology: tags
-  resources:
-    datasets: [US Census Cartographic Boundary Files, PRISM]
+overview: [terminology, packages, materials]
+
+intro: geospatial/data-processing
+environment: geoenv
 ---
 
 ## Overview
@@ -33,9 +32,46 @@ in each county per year. We will request SLURM to distribute the 21 years of inp
 across as many cores and run our zonal statistics Python script on each one.
 
 If you prefer to have a python script handle looping over your data inputs and 
-submitting many job submission scripts, see [this tutorial](../job-arrays/python).
+submitting many job submission scripts, see [the Job Arrays tutorial](../job-arrays/python).
 
 {% include overviews %}
+
+## Getting Started
+
+1.  {% include setup/intro %}
+1.  Activate Python
+    ```bash
+    python
+    ```
+1.  The code chunk below will download the example data.      
+    ```python
+    import urllib.request
+    import zipfile
+
+    # Vector data
+    vector_base = 'us_counties2021'
+    vector_zip = vector_base + '.zip'
+    urllib.request.urlretrieve('https://www2.census.gov/geo/tiger/GENZ2021/shp/cb_2021_us_county_20m.zip', vector_zip)
+    with zipfile.ZipFile(vector_zip,"r") as zip_ref:
+        zip_ref.extractall(vector_base)
+
+    # Raster data
+    geocdl_url = 'http://10.1.1.80:8000/subset_polygon?datasets=PRISM%3Appt&years=2000:2020&clip=(-87.5,31),(-79,24.5)'
+    raster_base = 'ppt_for_zonal_stats'
+    raster_zip = raster_base + '.zip'
+    urllib.request.urlretrieve(geocdl_url, raster_zip)
+    with zipfile.ZipFile(raster_zip,"r") as zip_ref:
+        zip_ref.extractall(raster_base)
+    ```
+      * For our US county polygons, we are downloading a zipped folder containing a shapefile.  
+      * For our precipitation data, we are using the SCINet GeoCDL to download annual precipitation 
+        for 2000-2020 in a bounding box approximately covering the state of Florida.  
+        Feel free to change the latitude and longitude to your preferred area, but any mentions of processing times below will reflect the bounds provided. 
+1.  You may now exit python by typing:
+    ```python
+    quit()
+    ```
+
 
 ## Tutorial Steps
 
@@ -51,6 +87,7 @@ submitting many job submission scripts, see [this tutorial](../job-arrays/python
 
 <div class="process-list" markdown='1'>  
 
+<!--{% comment %}
 ### Install packages and download data
 
 Below are commands to run to create a new Conda environment named 'geoenv' that contains the packages used in this tutorial series. To learn more about using Conda environments on Ceres, see [this guide](https://scinet.usda.gov/guide/conda/). NOTE: If you have used other Geospatial Workbook tutorials from the SCINet Geospatial Research Working Group Workshop 2022, you may have aleady created this environment and may skip to activating the environment, opening python, and downloading data.
@@ -102,7 +139,7 @@ You may now exit python by typing:
 ```python
 quit()
 ```
-
+{% endcomment %}-->
  
 
 ### Write and save a serial python script that accepts command line arguments

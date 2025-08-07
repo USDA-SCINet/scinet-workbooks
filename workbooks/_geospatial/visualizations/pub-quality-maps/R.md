@@ -3,6 +3,7 @@
 title: Creating publication-quality maps - R
 description: "This tutorial covers creating maps in R using the sf and ggplot2 packages."
 type: interactive tutorial
+interface: RStudio
 
 tags: [graphic design]
 terms: [Raster, CRS]
@@ -23,9 +24,25 @@ This tutorial covers creating maps in R using the `sf` and `ggplot2` packages.
 
 {% include overviews %}
 
+## Getting Started
+
+1.  {% include setup/workdir %}
+1.  Open your directory in RStudio
+1.  {% include setup/code %}
+1.  Import Libraries/Packages
+    ```r
+    library(httr)           # Access data from online resources
+    library(sf)             # Handle vector data
+    library(terra)          # Handle raster data
+    library(USAboundaries)  # US boundaries vector data
+    library(dplyr)          # General data manipulation
+    library(ggplot2)        # Visualizations
+    library(ggspatial)      # Extra geospatial annotations for maps
+    ```
+
+
 ## Tutorial Steps
 
--   Import Libraries
 -   Acquire data:
     -   Access informational boundaries
     -   Define study area and points
@@ -39,18 +56,6 @@ This tutorial covers creating maps in R using the `sf` and `ggplot2` packages.
 -   Format legends, axes, and map scale
 
 <div class="process-list" markdown='1'>
-
-### Import Libraries/Packages
-
-```r
-library(httr)           # Access data from online resources
-library(sf)             # Handle vector data
-library(terra)          # Handle raster data
-library(USAboundaries)  # US boundaries vector data
-library(dplyr)          # General data manipulation
-library(ggplot2)        # Visualizations
-library(ggspatial)      # Extra geospatial annotations for maps
-```
 
 ### Acquire data
 
@@ -71,7 +76,7 @@ my_bbox <- my_area %>%
 plot(my_area['name'])
 ```
 
-![](../Visualizations/assets/R_study_area_sf_plot-1.png)
+![]({{ images_path }}/R_study_area_sf_plot-1.png)
 
 But we will use the `ggplot2` functions to build more complicated maps.
 With both the `ggplot2` and `sf` packages, we can take advantage of the
@@ -85,7 +90,7 @@ ggplot() +
   geom_sf(data=my_area)
 ```
 
-![](../Visualizations/assets/R_study_area_4326-1.png)
+![]({{ images_path }}/R_study_area_4326-1.png)
 
 Say you want to use a certain CRS in the project for which you are
 making your map. This can affect the plotted map.
@@ -106,7 +111,7 @@ ggplot() +
   geom_sf(data=my_area_tcrs) 
 ```
 
-![](../Visualizations/assets/R_study_area_5070-1.png)
+![]({{ images_path }}/R_study_area_5070-1.png)
 
 The plot coordinate system depends on the order of the `geom_sf()`
 calls, or what’s specifically stated in `coord_sf()`.
@@ -145,7 +150,7 @@ ggplot() +
   geom_sf(data=collection_sf)
 ```
 
-![](../Visualizations/assets/R_forests-1.png)
+![]({{ images_path }}/R_forests-1.png)
 
 Now let’s plot both this forest dataset and our study area.
 
@@ -155,7 +160,7 @@ ggplot() +
   geom_sf(data=collection_sf)
 ```
 
-![](../Visualizations/assets/R_forest_study_area-1.png)
+![]({{ images_path }}/R_forest_study_area-1.png)
 
 First, it is hard to distinguish the two vector datasets with the
 default coloring. Second, we requested forests within a bounding box of
@@ -174,7 +179,7 @@ ggplot() +
           fill = 'forestgreen')
 ```
 
-![](../Visualizations/assets/R_forests_study_area_clear-1.png)
+![]({{ images_path }}/R_forests_study_area_clear-1.png)
 
 And let’s also get a raster dataset to fill in our study area. We will
 download some elevation from The National Map. Again, we will use our
@@ -193,7 +198,7 @@ elev <- rast(my_raster)
 plot(elev)
 ```
 
-![](../Visualizations/assets/R_elev-1.png)
+![]({{ images_path }}/R_elev-1.png)
 
 We will reproject this raster into our target CRS and apply a mask
 defined by our study area. Then, we will also convert this `terra`
@@ -217,7 +222,7 @@ elev_df %>%
   geom_raster()
 ```
 
-![](../Visualizations/assets/R_raster-1.png)
+![]({{ images_path }}/R_raster-1.png)
 
 There is an option to apply transformations within the fill color scale,
 `scale_fill_continuous`, e.g., the square-root transform which can
@@ -236,7 +241,7 @@ elev_df %>%
 #> Warning: Transformation introduced infinite values in discrete y-axis
 ```
 
-![](../Visualizations/assets/R_raster_bad_transform-1.png)
+![]({{ images_path }}/R_raster_bad_transform-1.png)
 
 You can also manually modify your raster variable being plotted to
 perform similar transformations, including more flexibility like an
@@ -250,7 +255,7 @@ elev_df %>%
   geom_raster()
 ```
 
-![](../Visualizations/assets/R_raster_manual_transform-1.png)
+![]({{ images_path }}/R_raster_manual_transform-1.png)
 
 Another option is to break up your fill color scale into bins. One
 option for binning continous values in `ggplot2` is the
@@ -266,7 +271,7 @@ ggplot() +
                        breaks = c(-50,0,50,250,500,750))
 ```
 
-![](../Visualizations/assets/R_raster_binned-1.png)
+![]({{ images_path }}/R_raster_binned-1.png)
 
 ### Incrementally Plot
 
@@ -286,7 +291,7 @@ ggplot() +
                        breaks = c(-50,0,50,250,500,750))
 ```
 
-![](../Visualizations/assets/R_raster_with_vector-1.png)
+![]({{ images_path }}/R_raster_with_vector-1.png)
 
 Now, we can add some nice map background layers and annotations. First,
 let’s build a background to show the context of neighboring states and
@@ -315,7 +320,7 @@ ggplot() +
         panel.grid.major = element_line(color = 'white', linewidth = 0.3)) 
 ```
 
-![](../Visualizations/assets/R_background-1.png)
+![]({{ images_path }}/R_background-1.png)
 
 ### Format legends, axes, and map scale
 
@@ -374,6 +379,6 @@ ggplot() +
         panel.grid.major = element_line(color = 'white', linewidth = 0.3)) 
 ```
 
-![](../Visualizations/assets/R_final-1.png)
+![]({{ images_path }}/R_final-1.png)
 
 </div>

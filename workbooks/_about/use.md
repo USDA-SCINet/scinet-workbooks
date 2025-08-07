@@ -168,7 +168,7 @@ There are multiple different interfaces available on SCINet.  In this section, w
 
 Note: Each tutorial may have specific inputs depending on the resource needs and objectives of the tutorial.  Use the parameters specified by the tutorial if they differ from these demo instructions.
 
-<div class="process-list" markdown="1">
+<div class="process-list ul" markdown="1">
 
 ### Using the Shell
 

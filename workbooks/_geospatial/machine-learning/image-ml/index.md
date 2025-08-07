@@ -11,10 +11,11 @@ kernel: true
 pythonenv: image-ml-for-python
 renv: image-ml-for-r
 
-setup: [mkdir]
-
 conda: [python=3.7 numpy matplotlib imageio scikit-image ipykernel -y]
+
+setup: [directory,conda,kernel,exit,jupyter_terminal]
 ---
+{% include file_path %}
 
 Materials modified from the USDA ARS AI Workshop 2020.
 
@@ -25,24 +26,18 @@ Materials modified from the USDA ARS AI Workshop 2020.
 ### For Python
 
 {% include setups environment=page.pythonenv %}
-1. {% include setup/conda %}
-1. {% include setup/kernel %}
-1. Launch JupyterLab in OoD and open a terminal
-  * File > New > Terminal
-1. Make sure the tutorial kernel is selected:
-  * Kernel > Change Kernel > select `{{ kernel }}` from the drop down menu
-1. In the notebook's empty cell paste this:
-  ```
-  import keras
-  print(keras.backend.backend())
-  ```
-1. Run the cell: 
-  * Click Run > Run All Cells or with your cursor inside the cell type Shift+Enter. 
-  * The result should tell you you're using TensorFlow backend.
+1.  In the notebook's empty cell paste this:
+    ```
+    import keras
+    print(keras.backend.backend())
+    ```
+1.  Run the cell: 
+    * Click Run > Run All Cells or with your cursor inside the cell type Shift+Enter. 
+    * The result should tell you you're using TensorFlow backend.
 
 ### For R
 
-{% include setups environment=page.renv %}
+1. {% include setup/directory environment=page.renv exit=true %}
 
 <!--## Creating an Environment for this Module
 
