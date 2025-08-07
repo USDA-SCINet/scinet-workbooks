@@ -14,11 +14,10 @@ terms: [Parallel processing, Core, Tile, NDVI]
 
 overview: [packages,terminology, materials]
 
+intro: geospatial/data-processing
 environment: geoenv
-setup: [shell, mkdir,conda,kernel]
-conda: [geopandas rioxarray rasterstats plotnine ipython ipykernel dask dask-jobqueue -c conda-forge]
+setup: [jupyter_kernel, code]
 ---
-
 
 
 ## Overview
@@ -39,9 +38,7 @@ an example on how to submit your own SLURM job, please see
 
 ## Getting Started
 
-{% include setup/90daydata %}
-
-{% include setups %}
+1. {% include setup/intro %}
 1.  Launch JupyterLab in OoD.  
   Select the following parameter values when requesting a JupyterLab app to be launched depending on which cluster you choose. All other values can be left to their defaults.  
     *  **Ceres:**  
@@ -56,11 +53,8 @@ an example on how to submit your own SLURM job, please see
         *  `Number of hours`: 1  
         *  `Number of tasks`: 16  
         *  `Additional Slurm Parameters`: --mem=24G  
-1.  Open a terminal in JupyterLab
-  *  File > New > Terminal
-1.  {% include setup/code %}
-1.  Make sure the tutorial kernel is selected:
-  *  Kernel > Change Kernel > select `{{ kernel }}` from the drop down menu
+1. Open a terminal in JupyterLab (File > New > Terminal)
+{% include setups %}
 1.  Import Libraries / Packages:
     ```python
     import time
