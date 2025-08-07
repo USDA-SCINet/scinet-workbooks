@@ -1,11 +1,11 @@
 {%- assign file = include.file %}
 {%- if include.path %}{% assign fpath = include.path %}{%- else %}{% include setup/check_path folder=include.folder %}{%- assign fpath = file_path %}{%- endif %}
-{%- unless include.justbullet %}
-**To download the Rmarkdown file** for this tutorial within Open on Demand, you can use the following lines:  
+{%- capture codefilepath %}{{ fpath }}/{{ file }}{%- endcapture %}{%- if include.justbullet %} [Download RMarkdown]({{ codefilepath }})
+{%- else %}To download the [Rmarkdown file]({{ codefilepath }}) for this tutorial within Open on Demand, you can use the following lines:  
 ```r
 library(httr)
 tutorial_name <- '{{ file }}'
 GET(paste0('{{ site.url }}{{ fpath }}/',tutorial_name), 
     write_disk(tutorial_name))
 ```    
-  * {%- endunless %} [Download RMarkdown]({{ fpath }}/{{ file }})
+{%- endif %}

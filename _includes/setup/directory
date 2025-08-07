@@ -1,0 +1,7 @@
+Set up your directory:  
+    1.  Open a shell on the HPC.  
+        If you are unsure how to do this, please refer to [Getting Started with SCINet Workbooks](/about/use#using-the-shell) for instructions.  
+    1.  {% include setup/mkdir %}{%- if include.shell-tasks or page.shell-tasks %}{%- if include.shell-tasks %}{%- assign sections = page[{{include.shell-tasks}}] %}{%- unless sections %}{%- assign sections = include.shell-tasks | split: ", " %}{%- endunless %}{%- else %}{%- assign sections = page.shell-tasks %}{%- endif %}
+{% include setups sections=sections %}{%- if page.interface or include.exit %}{%- if include.exit or page.interface=="Jupyter" or page.interface=="RStudio" %}
+1.  {% include setup/exit %}{%- endif %}{%- endif %}{%- elsif page.interface or include.exit %}{%- if include.exit or page.interface=="Jupyter" or page.interface=="RStudio" %}
+    1.  {% include setup/exit %}{%- endif %}{%- endif %}

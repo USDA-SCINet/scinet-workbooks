@@ -8,7 +8,7 @@
 </div>
 {% elsif _item contains "-" %}
 {% assign splittitle = _item | split: "-" %}
-{% capture itemtitle %}{% for _ititle in splittitle %}{{ _ititle | capitalize }}{% unless forloop.last %} / {% endunless %}{% endfor %}{% endcapture %}
+{% capture itemtitle %}{% for _ititle in splittitle %}{{ _ititle | capitalize | replace: "_", " " }}{% unless forloop.last %} / {% endunless %}{% endfor %}{% endcapture %}
 {%- assign itemslug = _item | slugify | append: "-acc" %}
 {% include accordion title=itemtitle class="secondary " controls=itemslug %}
 <div id="{{ itemslug }}" class="accordion_content" hidden>
@@ -16,6 +16,7 @@
     {%- if overviewatt contains _loopedatt %}
     {% include overview/{{ _loopedatt }} folder=include.folder %}
     {% elsif page[_loopedatt] %}{%- assign pageitem = page[_loopedatt] %}
+    <strong>{{ _loopedatt | capitalize | replace: "_", " " }}</strong>
     {% include layout/li-check data=pageitem %}
     {% endif %}
     {% unless forloop.last %}<hr class="usa-section-divider">{% endunless %}
