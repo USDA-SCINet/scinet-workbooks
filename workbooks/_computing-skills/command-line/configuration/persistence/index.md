@@ -21,12 +21,9 @@ applications:
   - "**Persistent shell modifications:** Ensure that all customizations remain effective across different sessions."
   - "**Troubleshooting configuration issues:** Identify and fix common problems related to `.bashrc` setups."
 terms:
-  - term: Bash shell
-    definition: A popular shell environment (command interpreter) available on most Unix-like and HPC systems.
-  - term: Configuration file
-    definition: Text file like `.bashrc` or `.bash_profile` that define environment variables and other shell settings.
-  - term: Module system
-    definition: The `module` command used in HPC clusters to load software environments.
+  - Bash shell
+  - Configuration file
+  - Module system
 
 overview: [objectives, applications, terminology]
 

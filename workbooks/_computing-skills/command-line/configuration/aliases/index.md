@@ -22,10 +22,8 @@ concepts:
   - "**Alias expansion and nesting:** Handling complex commands or sequences of commands using aliases."
 
 terms:
-  - term: Bash shell
-    definition: A popular shell environment (command interpreter) available on most Unix-like and HPC systems.
-  - term: Configuration file
-    definition: Text file like `.bashrc` or `.bash_profile` that define environment variables and other shell settings, including text coloring and prompt styles.
+  - Bash shell
+  - Configuration file
   - term: Command substitution
     definition: A technique used to enhance aliases by embedding dynamic commands.
 

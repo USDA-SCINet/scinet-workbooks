@@ -28,8 +28,7 @@ applications:
   - "**Error handling and cleanup:** Simplify complex cleanup operations in scripts by encapsulating them within functions with error-handling capabilities."
 
 terms:
-  - term: Bash shell
-    definition: A popular shell environment (command interpreter) available on most Unix-like and HPC systems
+  - Bash shell
   - term: Shell scripting
     definition: Defining shell functions to automate tasks and improve workflow efficiency. 
 

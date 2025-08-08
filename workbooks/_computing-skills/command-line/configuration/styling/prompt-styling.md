@@ -18,8 +18,7 @@ concepts:
   - "**Prompt Customization:** Modifying `PS1` to create a visually engaging and functional shell prompt."
 
 terms:
-  - term: Bash shell
-    definition: A popular shell environment (command interpreter) available on most Unix-like and HPC systems.
+  - Bash shell
 
 overview: [objectives,concepts,terminology]
 ---
