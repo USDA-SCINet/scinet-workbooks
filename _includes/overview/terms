@@ -96,11 +96,11 @@
 {% if include.table %}
 <tr>
     <th data-label="Term" scope="row">
-        {{ define.term | markdownify }}{% if define.alt %} ({{ define.alt }}){% endif %}
+        {{ define.term }}{% if define.alt %} ({{ define.alt }}){% endif %}
     </th>
     <td data-label="Definition">
         {% if define.definition %}
-        {{ define.definition | markdownify }}
+        {{ define.definition }}
         {% elsif define.definitions %}
         <ul>
         {% for definition in define.definitions %}

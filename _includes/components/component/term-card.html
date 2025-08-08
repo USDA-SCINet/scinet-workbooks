@@ -1,19 +1,38 @@
 {% assign option = include.option %}
 {% assign gloss = include.gloss | default: site.data.glossary['glossary'] %}
-<li class="glossary usa-collection__item width-full fullwidth-i fc" datameta="{{  option.term  }}" {% if sort_list %}
+<li class="glossary usa-collection__item width-full fullwidth-i fc" datameta="{{  include.filtertermlist | default: option.term  }}" {% if sort_list %}
     wb="{% for wb in pwb %}{{ wb }} {% endfor %} all"
     tagged="{% for tag in ptags %}{{ tag }} {% endfor %}all" type="{% for types in ptypes %}{{ types }} {% endfor %}all"
     difficulty="{% for lvl in pdifficulties %}{{ lvl }} {% endfor %}all" {% endif %}>
 
     <div class="padding-x-2 usa-collection__body">
-        <h3 class="usa-collection__heading no_toc rm-a">
+        <h3 class="usa-collection__heading">
             {{ option.term }}
         </h3>
         {% if option.alt %}<span>({{ option.alt }})</span>{% endif %}
         {% unless no_summary %}
-        {% if option.definition %}
+        {% if option.definition or option.compile %}
         <p class="usa-collection__description">
             {{ option.definition }}
+            {%- if option.compile %}
+            <ul>
+                {% for getterm in option.compile %}
+                <li>
+                    {% assign compiledterms = gloss | where: "term", getterm %}
+                    {%- if compiledterms.size > 1 %}
+                    {% for _compterm in compiledterms %}
+                    <b>{{ _compterm.cat }} - {{ _compterm.term }}</b>{% if _compterm.alt %}({{ definition.alt}}){% endif %} - 
+                    {{ _compterm.definition }}
+                    {% endfor %}
+                    {%- else %}
+                    {%- assign  _compterm = compiledterms[0] %}
+                    <b>{% unless _compterm.cat == option.cat %}{{ _compterm.cat }} - {% endunless %}{{ _compterm.term }}</b>{% if _compterm.alt %}({{ definition.alt }}){% endif %} - 
+                    {{ _compterm.definition }}
+                    {%- endif %}
+                </li>
+                {% endfor %}
+            </ul>
+            {%- endif %}
         </p>
         {% elsif option.definitions %}
         <p class="usa-collection__description">
@@ -78,10 +97,9 @@
         {% endif %}
 
         {% unless include.no-related %}
-        {% if option.related %}
+        {% if option.related or option.cat %}
         <ul class="usa-collection__meta padding-top-1" aria-label="Related Terms">
-            {% assign relateds = option.related | split: ', ' %}
-            {% for _related in relateds %}
+            {% if option.related %}{% for _related in option.related %}
 
             <li class="usa-collection__meta-item usa-tag">{{ _related }}</li>
 
@@ -94,7 +112,7 @@
             {% endif %}
             {% endcomment %}
 
-            {% endfor %}
+            {% endfor %}{% endif %}
             {% if option.cat %}
                 {% assign _cats = option.cat | split: ', ' %}
                 {% for _cat in _cats %}
