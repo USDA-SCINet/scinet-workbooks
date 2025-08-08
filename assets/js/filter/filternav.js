@@ -2,6 +2,14 @@
 ---
 // set search
 $(document).ready(function() {
+
+  let iconfilter = document.getElementById('icon-filter');
+  if(iconfilter){
+    iconfilter.addEventListener('keyup', function () {
+      filterComp(this); 
+    });
+  }
+  
   var filternavs = $(".filter-nav");
 
   filternavs.bind('click', function() {
