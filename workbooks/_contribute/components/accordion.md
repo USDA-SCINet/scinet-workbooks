@@ -81,3 +81,26 @@ Additional guidance can be found on the [USWDS component page](https://designsys
     *  Add the data-allow-multiple attribute to any usa-accordion to create a multiselectable accordion group.
 *  **Default an accordion button to open**: 
     *  Add *expanded="true"* to the accordion include statement to have that section open by default at page load.
+
+
+
+<div class="highlighted highlighted--tip ">
+<div class="highlighted__body" markdown="1">
+
+To link the user directly to a specific accordion and have that accordion open automatically, use the `nav-hidden` component with the ID used to create the accordion.
+This component can take either dot notation for a relative path or use the full path.
+
+* Linking accordions on other pages: 
+  {% include nav-hidden text="See alternative ways to code alerts" url="./alerts#alternative-alert-code-code" %}
+  ```
+  {% raw %}{% include nav-hidden text="See alternative ways to code alerts" url="./alerts#alternative-alert-code-code" %}
+  {% include nav-hidden text="See alternative ways to code alerts" url="/contribute/components/alerts#alternative-alert-code-code" %}{% endraw %}
+  ```
+* Accordion on same page:
+  {% include nav-hidden text="Open the accordion options dropdown" url="#accordion-options-options" %}
+  ```
+  {% raw %}{% include nav-hidden text="Open the accordion options dropdown" url="#accordion-options-options" %}{% endraw %}
+  ```
+
+</div>
+</div>

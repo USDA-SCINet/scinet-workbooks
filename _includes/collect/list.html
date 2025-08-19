@@ -13,6 +13,8 @@
 {%- if pwb contains page.subject %}show{%- else %}remove{%- endif %}{%- else %}show{%- endif %}
 {%- endcapture %}
 
+{%- capture subdatameta %}{{ tsets.title }}{%- if page.layout=="single"%}, {{ tsets.description }}{%-endif %}{%- endcapture %}
+
 {% unless page.index == 0 and override-display == "remove" %}
 {% include collect/li.html ttsets=tsets class=include.class aclass=include.aclass decor=decor %}
 {% if tsets.index %}

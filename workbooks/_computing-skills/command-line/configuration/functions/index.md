@@ -198,7 +198,7 @@ You can use one-line or multi-line functions depending on your use case.
 | readability | Easy to define but can be harder to extend.  | Easier to read and maintain for complex tasks. |
 | spaces and semicolons | Requires a space after `{ ` and before `}`. Commands must be separated by semicolons (`;`) to avoid syntax errors. | Requires a space after `{ ` and before `}`. No semicolons are needed as commands are separated by newlines. |" %}
 
-<div id="note-alerts-1" class="highlighted highlighted--warning ">
+<div class="highlighted highlighted--warning ">
 <div class="highlighted__body" markdown="1">
 <h4 class="highlighted__heading">Use proper spacing to avoid errors</h4>
 
@@ -266,7 +266,7 @@ This is important, is it:
   * Ensures variables are correctly expanded inside function definitions.
   * Protects commands from unintended shell interpretation, especially in HPC environments where precision is critical.
 
-<div id="note-alerts-1" class="highlighted highlighted--note">
+<div class="highlighted highlighted--note">
 <div class="highlighted__body" markdown="1">
 This topic is comprehensively covered in the Aliases tutorial, section: [Quoting and escaping special characters](../aliases#quoting-and-escaping-special-characters). You can refer to that section for detailed explanations and examples.
 </div>
@@ -425,7 +425,7 @@ case variable in
 esac
 ```
 
-<div id="note-alerts-1" class="highlighted highlighted--highlighted ">
+<div class="highlighted highlighted--highlighted ">
 <div class="highlighted__body" markdown="1">
 
 In the case statement within shell scripts, the double semicolon (`;;`) is used to mark the end of a case branch. 
@@ -501,7 +501,7 @@ function_name arg_value1 arg_value2 arg_value3
 #             $1         $2         $3
 ```
 
-<div id="note-alerts-1" class="highlighted highlighted--note ">
+<div class="highlighted highlighted--note ">
 <div class="highlighted__body" markdown="1">
 Shell functions also support advanced argument handling techniques, allowing you to work with variable-length argument lists and even named arguments for better flexibility and readability.
 </div>
@@ -566,7 +566,7 @@ print_args() {
 
 ![function with shifting arguments]({{ images_path }}/function/function_shift_arguments.png)
 
-<div id="note-alerts-1" class="highlighted highlighted--tip ">
+<div class="highlighted highlighted--tip ">
 <div class="highlighted__body" markdown="1">
 
 Shifting arguments with `shift` is useful when you want to perform the same task on all items in the argument list within a single function call. 
@@ -636,7 +636,7 @@ run_task() {
 
 ![function with named arguments]({{ images_path }}/function/function_named_arguments.png)
 
-<div id="note-alerts-1" class="highlighted highlighted--tip ">
+<div class="highlighted highlighted--tip ">
 <div class="highlighted__body" markdown="1">
 
 When parsing named arguments in shell functions, using the `case` statement with `shift` allows you to handle options flexibly and cleanly. 
@@ -659,7 +659,7 @@ Functions in shell scripting do not return values like traditional programming l
 * `echo` command for standard output (used for passing text or data).
 * Exit status codes (i.e., `return` or `exit`) for signaling success or failure.
 
-<div id="note-alerts-1" class="highlighted highlighted--success ">
+<div class="highlighted highlighted--success ">
 <div class="highlighted__body" markdown="1">
 By using echo for output and exit codes for control flow, shell functions become more reliable, modular and easier to integrate into larger scripts.
 </div>
@@ -692,7 +692,7 @@ echo "Today's date is: $today"
 Every command in Linux returns an exit code (0 for success, non-zero for failure).  
 Functions can propagate these exit codes for error handling.
 
-<div id="note-alerts-1" class="highlighted highlighted--tip ">
+<div class="highlighted highlighted--tip ">
 <div class="highlighted__body" markdown="1">
 Use exit codes when the function's success or failure determines script execution flow.
 </div></div>
@@ -740,7 +740,7 @@ backup_logs > backup_report.txt       # Save output to a file
 In HPC environments, function performance is critical, especially when dealing with large datasets, job scheduling, or computational tasks. 
 Monitoring execution time helps identify bottlenecks, optimize scripts, and improve efficiency.
 
-<div id="note-alerts-1" class="highlighted highlighted--note ">
+<div class="highlighted highlighted--note ">
 <div class="highlighted__body" markdown="1">
 By incorporating timing and performance monitoring into your shell functions, you ensure your scripts run efficiently, predictably and optimized for HPC workloads.
 </div>
@@ -961,7 +961,7 @@ Limitations of temporary functions include:
 * **Lost after logout:** The function disappears once the session is closed or the system logs out.
 * **Not suitable for repetitive tasks:** If you need the function in multiple sessions or nodes, defining it every time becomes inefficient.
 
-<div id="note-alerts-1" class="highlighted highlighted--tip ">
+<div class="highlighted highlighted--tip ">
 <div class="highlighted__body" markdown="1">
 Temporary functions are useful during debugging, interactive (real-time) analysis, or temporary fixes while working on an HPC node.
 </div>
@@ -1040,7 +1040,7 @@ When working on multiple HPC projects, maintaining a clean and organized environ
 Instead of cluttering your `~/.bashrc` with all permanent functions, a project-specific approach allows you to load only the functions you need for a given project. 
 This keeps your environment lightweight and prevents unnecessary function definitions from overwhelming your shell session.
 
-<div id="note-alerts-1" class="highlighted highlighted--tip ">
+<div class="highlighted highlighted--tip ">
 <div class="highlighted__body" markdown="1">
 
 When working with complex scripts or multiple reusable functions, it's best to organize them into separate files and load them into your session dynamically.
@@ -1067,7 +1067,7 @@ source ~/bin/functions_projectA.sh
 ```
 Now, all functions defined in the sourced file are available in your current shell.
 
-<div id="note-alerts-1" class="highlighted highlighted--tip ">
+<div class="highlighted highlighted--tip ">
 <div class="highlighted__body" markdown="1">
 <h4 class="highlighted__heading">Why Use a Project-Specific Approach?</h4>
 

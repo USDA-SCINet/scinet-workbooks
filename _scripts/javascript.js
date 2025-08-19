@@ -19,7 +19,7 @@ function jslint() {
 }
 
 function jsbuild() {
-  var entryArray = ["main","quiz"]
+  var entryArray = ["main","quiz","filters"]
 
   var tasks = entryArray.map(function(packagename) {
     log(packagename);

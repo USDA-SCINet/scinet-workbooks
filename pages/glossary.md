@@ -5,7 +5,7 @@ layout: single
 
 style: single
 nobreadcrumb: true
-beforeTOC:
+afterTOC:
   - title: Packages
     url: /glossary/packages
 ---

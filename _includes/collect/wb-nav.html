@@ -1,5 +1,6 @@
-<aside class="rtt-next">
+<section class="rtt-next{%- if site.survey and page.survey %} survey-flex{%- endif %}">
   <ul class="usa-sidenav">
+    {%- if include.siblingarray %}
     {%- assign siblingarray = include.siblingarray %}
     
     {%- assign prevpage == nil %}
@@ -49,11 +50,12 @@
     
     {%- endunless %}
     {%- endif %}
+    {%- endif %}
 
-    <li class="usa-sidenav__item">
-      <a href="#"><svg class="usa-icon margin-bottom-neg-2px margin-right-05" aria-hidden="true" focusable="false" role="img">
-        <use href="/assets/uswds/img/sprite.svg#arrow_upward"></use>
-      </svg><span class="render-sm">Return to </span>Top </a>
-    </li>
-  </ul>
-</aside>
+      <li class="usa-sidenav__item">
+        <a href="#"><svg class="usa-icon margin-bottom-neg-2px margin-right-05" aria-hidden="true" focusable="false" role="img">
+          <use href="/assets/uswds/img/sprite.svg#arrow_upward"></use>
+        </svg><span class="render-sm">Return to </span>Top </a>
+      </li>
+    </ul>
+  </section>
