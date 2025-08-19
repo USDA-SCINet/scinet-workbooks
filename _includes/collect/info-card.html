@@ -22,13 +22,13 @@
 {%- endcapture %}
 
 {%- capture datameta %}
-{%- if page.filter-names %}datameta="{{ post.title }}, {%- assign titles = pagesubset | map: 'title' | uniq %}{{ titles | array_to_sentence_string: "" }}"{%- endif %}
+{{ post.title }}{%- if page.layout=="single"%}, {{ post.description }}{%-endif %}
 {%- endcapture %}
 
 {% assign wbtags = post.subject %}
 
 {% unless page.index == 0 and override-display == "remove" %}
-<li class="{% if cal_id %}{{ cal_id }}{% endif %} usa-collection__item fullwidth-i{%- if page.filter-names %} fc{% endif %}" {{ datameta }}
+<li class="{% if cal_id %}{{ cal_id }}{% endif %} usa-collection__item fullwidth-i{%- if page.filter-names or page.layout == "single" %} fc{% endif %}" datameta="{{ datameta | default: post.title }}"
     {%- if fetchjs %}id="{{ post.id }}"{%- endif %}>
 
     {% if post_type == 'media' %}

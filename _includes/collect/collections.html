@@ -30,6 +30,23 @@
     <div class="bg-white border  margin-top-2">
       {% include layout/nav_icons %}
     </div>
+    <div class="bg-base-lighter border  margin-top-2">
+      <div class="usa-accordion usa-accordion--bordered width-full maxw-full">
+        <h4 class="usa-accordion__heading">
+            <button
+                type="button"
+                class="usa-accordion__button"
+                aria-expanded="false" 
+                aria-controls="nav_search"
+            >
+                Filter Index
+            </button>
+        </h4>
+        <div id="nav_search" class="usa-accordion__content usa-prose allow-overflow bg-base-lighter" hidden>
+          {% include contribute/filter sorting="workbook" label="Filter by name and description" %}
+        </div>
+    </div>
+    </div>
     {% endif %}
       
       {% comment %}{% include collect/collect-filter.html %}{% endcomment %}
