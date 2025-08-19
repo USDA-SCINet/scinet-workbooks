@@ -11,12 +11,14 @@ author: Aleksandra Badaczewska
 
 Scripts that colorize and highlight important information and enhance the visibility of different types of text output, such as differentiating file types, emphasizing matched patterns, and distinguishing standard output from errors.
 
-Here’s how it can be particularly useful:
-* [Highlighting errors and warnings](#highlighting-errors-and-warnings)
+Here's how it can be particularly useful:
+
+{:.fancy-ul--green}
+* **[Highlighting errors and warnings](#highlighting-errors-and-warnings)**
   * Easily differentiate between error messages, warnings and regular logs to quickly identify critical information.
-* [Monitoring system performance](#monitoring-system-performance)
+* **[Monitoring system performance](#monitoring-system-performance)**
   * Enhance readability of real-time metrics by using color-coded output for resource utilization, completion statuses or performance metrics.
-* [Debugging and troubleshooting](#debugging-and-troubleshooting)
+* **[Debugging and troubleshooting](#debugging-and-troubleshooting)**
   * Visually separate successful and failed operations to streamline the debugging process.
 
 ## Highlighting errors and warnings 
