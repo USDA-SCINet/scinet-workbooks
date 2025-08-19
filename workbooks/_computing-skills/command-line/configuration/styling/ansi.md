@@ -36,7 +36,7 @@ echo -e "\e[33mThis text is yellow\e[0m"
 ```
 ![ansi code syntax](./assets/img/ansi_code_syntax.png)
 
-<div id="note-alerts-1" class="highlighted highlighted--highlighted ">
+<div class="highlighted highlighted--highlighted ">
 <div class="highlighted__body" markdown="1">
 The specified color and formatting are applied to all text following the ANSI escape code until a reset code (`\e[0m`) is included, which restores the default terminal settings.
 </div>

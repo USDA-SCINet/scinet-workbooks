@@ -87,7 +87,7 @@ Prompt elements are placeholders that dynamically display useful system informat
 | `[` `]` | Brackets are used for enhanced clarity and visibility, e.g., `[\d] \u`       | `[16:33:09] alex.badacz` |" %}
 
 
-<div id="note-alerts-1" class="highlighted highlighted--highlighted ">
+<div class="highlighted highlighted--highlighted ">
 <div class="highlighted__body" markdown="1">
 The `\$` is used instead of `$` because the dollar sign has a special meaning in the shell, representing variables and commands, 
 so escaping it (`\$`) ensures it is displayed literally in the prompt, whereas `@` does not have special meaning 
@@ -360,7 +360,7 @@ PS1="\e[32m\u\e[0m@\e[34m\h\e[0m:\e[33m\W\e[0m\$ "
 However, this change is temporary and applies only to the current shell session. Once you close the terminal or start a new session, 
 the prompt will revert to its default or previously set value. 
 
-<div id="note-alerts-1" class="highlighted highlighted--tip ">
+<div class="highlighted highlighted--tip ">
 <div class="highlighted__body" markdown="1">
 This level of persistence is useful for quick, temporary customizations or testing different prompt styles without making permanent modifications.
 </div>
@@ -376,7 +376,7 @@ export PS1="\e[32m\u\e[0m@\e[34m\h\e[0m:\e[33m\W\e[0m\$ "
 ```
 However, this change remains temporary and will be lost once the terminal session is closed or the system is restarted. 
 
-<div id="note-alerts-1" class="highlighted highlighted--tip ">
+<div class="highlighted highlighted--tip ">
 <div class="highlighted__body" markdown="1">
 This level of persistence is useful when you need the custom prompt to be available across multiple subshells without permanently modifying configuration files.
 </div>
@@ -398,13 +398,13 @@ PS1='\e[32m\u\e[0m@\e[34m\h\e[0m:\e[33m\W\e[0m\$ '
 ```
 This method ensures that your prompt customization persists for all future sessions without the need to manually reapply the settings.
 
-<div id="note-alerts-1" class="highlighted highlighted--tip ">
+<div class="highlighted highlighted--tip ">
 <div class="highlighted__body" markdown="1">
 This level of persistence is ideal for users who want a consistent prompt experience across all shell sessions.
 </div>
 </div>
 
-<div id="note-alerts-1" class="highlighted highlighted--warning ">
+<div class="highlighted highlighted--warning ">
 <div class="highlighted__body" markdown="1">
 Using the `echo "PS1='...'" >> ~/.bashrc` command to modify your `PS1` will append a new definition to the end of the `.bashrc` file each time it is executed, 
 leading to redundant entries. To prevent your config file from becoming cluttered or accidentally overwritten, it is recommended to manually update the `PS1` variable within the file. 

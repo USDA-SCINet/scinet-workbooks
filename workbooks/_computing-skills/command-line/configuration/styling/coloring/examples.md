@@ -116,7 +116,7 @@ This monitors CPU usage every 2 seconds, filters jobs with CPU usage >10% and hi
 
 ![monitor cpu usage]({{ images_path }}/monitor_cpu_usage.png)
 
-<div id="note-alerts-1" class="highlighted highlighted--tip ">
+<div class="highlighted highlighted--tip ">
 <div class="highlighted__body" markdown="1">
 Customize thresholds or add memory checks to gain deeper insights into potential resource bottlenecks during job execution.
 </div>
@@ -165,7 +165,7 @@ squeue -u $USER -o "%.18i %.8j %.8u %.10M %.6D %.6C %.10L %.6t" | awk 'NR == 1 {
 
 ![monitoring resources is the queue]({{ images_path }}/queue_monitoring_resources.png)
 
-<div id="note-alerts-1" class="highlighted highlighted--tip ">
+<div class="highlighted highlighted--tip ">
 <div class="highlighted__body" markdown="1">
 
 You can use an awk-based coloring approach to easily analyze resource usage and job statuses in your completed jobs by combining it with the `sacct` command, helping you quickly spot high memory usage, long runtimes or failed jobs.
@@ -189,7 +189,7 @@ In this example:
 
 ## Debugging and troubleshooting
 
-<div id="note-alerts-1" class="highlighted highlighted--warning ">
+<div class="highlighted highlighted--warning ">
 <div class="highlighted__body" markdown="1">
 **Search patterns in aliases are not case-sensitive by default** unless specified, so they will only match exact cases (e.g., "ERROR" vs. "error"). Be sure to customize these patterns to match the specific messages or keywords relevant to your applications for effective filtering and debugging.
 </div>

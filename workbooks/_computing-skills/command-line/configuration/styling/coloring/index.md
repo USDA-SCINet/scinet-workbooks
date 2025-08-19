@@ -239,7 +239,7 @@ This allows you to easily distinguish between different file types and prioritiz
 
 To customize colors, you can define them directly by modifying the `LS_COLORS` variable in your startup script (`~/.bashrc`).
 
-<div id="note-alerts-1" class="highlighted highlighted--warning ">
+<div class="highlighted highlighted--warning ">
 <div class="highlighted__body" markdown="1">
 
 Before assigning/exporting a new value to the `LS_COLORS` variable, check if it is already defined in your `~/.bashrc` to avoid duplicated definitions.
@@ -276,7 +276,7 @@ grep "Text" file
 Unformatted text output from `grep` can be hard to parse visually when dealing with large data sets, especially on HPC systems where log files are enormous. 
 Coloring the output helps you quickly distinguish matches, filenames, line numbers and contextual information.
 
-<div id="note-alerts-1" class="highlighted highlighted--highlighted ">
+<div class="highlighted highlighted--highlighted ">
 <div class="highlighted__body" markdown="1">
 
 On both SCINet clusters, `grep` coloring by default highlights matched words in bold red, 
@@ -429,7 +429,7 @@ The `-R` option in `less` preserves color codes.
 
 </div>
 
-<div id="note-alerts-1" class="highlighted highlighted--tip ">
+<div class="highlighted highlighted--tip ">
 <div class="highlighted__body" markdown="1">
 
 Avoid conflicting grep settings, for example, ensure no existing aliases like  
