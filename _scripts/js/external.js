@@ -5,6 +5,7 @@ function externallinks(){
         links[ i ].target = '_blank';
         links[ i ].className += ' usa-link--external';
         links[ i ].rel = "noreferrer";
+        links[ i ].rel = "noopener";
       }
     }
 }

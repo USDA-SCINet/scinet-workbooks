@@ -40,8 +40,11 @@ function fillForm(filldata, form, clear){
           if( input.id === key){
             // set checkbox
               switch(input.type) {
-                case 'checkbox': input.checked = !!val; 
-                default:         input.value = val;     
+                case 'checkbox': 
+                  input.checked = !!val; 
+                  break;
+                default: 
+                  input.value = val;     
               }       
           } else if (input instanceof RadioNodeList) {
             // set radio button
