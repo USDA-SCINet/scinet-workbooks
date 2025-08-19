@@ -166,9 +166,14 @@
   }
   @include at-media("desktop-lg") {
     padding-bottom: units(5);
+    pointer-events: none;
     bottom: 0; // Stick to the bottom of the parent container
     position: sticky;
     z-index: z-index(500);
+    
+    .usa-sidenav{
+      pointer-events: auto;
+    }
   }
   &.survey-flex{
     @include at-media($theme-header-max-width) {
@@ -177,6 +182,7 @@
       bottom: 100px; // Raise above survey
     }
   }
+
 }
 
 .render-sm{

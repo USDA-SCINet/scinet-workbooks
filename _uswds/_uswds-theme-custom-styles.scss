@@ -121,6 +121,7 @@ pre {
       justify-content: flex-end;
       padding-left: units(5);
       padding-right: units(5);
+      pointer-events: none;
    }
    @include at-media($theme-header-max-width) {
       display: flex;
@@ -135,6 +136,7 @@ pre {
       @include at-media($theme-site-margins-breakpoint){
          margin-bottom: units(5);
          @include u-bg('white');
+         pointer-events: auto;
       }
    }
  }
