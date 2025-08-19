@@ -59,7 +59,7 @@ These two approaches are equivalent and help maintain clean and flexible file re
 
 ## Front Matter
 
-<div id="note-alerts-1" class="highlighted highlighted--note ">
+<div class="highlighted highlighted--note ">
 <div class="highlighted__body" markdown="1">
 Front matter is a section at the beginning of a file, typically enclosed in triple dashes (`---`), that contains metadata about the document. It is commonly used in static site generators like Jekyll to define variables such as **title**, **author** and **tags**. This metadata helps control how the content is processed and displayed.
 </div>
@@ -349,7 +349,7 @@ It should almost always be named `index.html`.
 
 If a file is not an *index* or *introduction* type, it should not include the `index` variable.
 
-<div id="note-alerts-1" class="highlighted highlighted--highlighted ">
+<div class="highlighted highlighted--highlighted ">
 <div class="highlighted__body" markdown="1">
 
 If your *index* or *introduction* file is not named `index`, provide a reason in a comment after the variable (e.g., `index: 2 ## explanation`). This ensures clarity and prevents unintended changes by editors.
