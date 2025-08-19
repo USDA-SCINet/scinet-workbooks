@@ -121,10 +121,11 @@ wbComp:
   {% include layout/survey %}
 {% endif %}
 
-
-
-{% comment %{% include authors.html %}{% endcomment %}
-{% endif %}
 </div>
+{% else %}
+</div>
+{% include collect/wb-nav.html %}
+{% endif %}
+
 {% endif %}
 {% endif %}
