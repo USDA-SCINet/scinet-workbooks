@@ -12,9 +12,23 @@ function unhidenavButtons(){
               desthash = ent.attr("data-unhide"),
               desturl = ent.attr("data-navurl");
       
-            //console.log(arr)
             sessionStorage.setItem('sciwbUnhidesection', desthash);
             window.location.href = desturl;
+        });
+
+        var localhiddennavs = $("button.unhide-local-nav");
+
+        localhiddennavs.bind('click', function() {
+            let ent = $(this),
+              desthash = ent.attr("data-unhide"),
+              unhideBtn = document.getElementById(desthash + "-accordbutton");
+
+              if (unhideBtn) {
+                setTimeout(function() {
+                    unhideBtn.click();
+                    unhideBtn.scrollIntoView({ behavior: 'smooth' });
+                }, 100); // Small delay to ensure visibility
+            }
         });
 }
 
