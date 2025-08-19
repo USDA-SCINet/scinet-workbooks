@@ -2,7 +2,7 @@
     {% assign gloss = site.data.glossary['glossary'] %}
     {% assign inner = site.documents | where: 'variety', 'workbook' %}
     {% assign stags = inner | map: 'tags' | uniq | compact %}
-    {% include contribute/filter title="Filter Terms" label="Filter Terms" count=gloss.size sorting="term" %}
+    {% include contribute/filter title="Filter Terms" label="Filter Terms" sorting="term" %}
     {% assign glosstags = gloss | map: 'terms' | uniq %}
 
     {% assign glosscompile = gloss | map: 'compile' | uniq %}
