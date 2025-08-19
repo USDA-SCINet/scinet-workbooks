@@ -12,7 +12,7 @@ function filterComp(e){
         }
     });
     componentCount = document.querySelectorAll('.fc:not(.fc-no-display):not(.no-display)').length;
-    var word = (componentCount === 1) ? "component" : "components";
+    var word = (componentCount === 1) ? "workbook" : "workbooks";
     var ccount = document.getElementById("component-count");
     if (ccount){
       ccount.innerHTML = `<strong>${componentCount}</strong> ${word} found`;

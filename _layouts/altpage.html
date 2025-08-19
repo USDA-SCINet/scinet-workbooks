@@ -91,7 +91,7 @@ scripts:
   {% capture sectiondata %}
   <div class="grid-row" aria-label="{{ page.componentdisplay }}">
 <!--     <h2>{{ page.componentdisplay }}</h2> -->
-    {% include contribute/filter title=page.componentdisplay label=page.componentdisplay count=displayposts.size sorting="component" %}
+    {% include contribute/filter title=page.componentdisplay label=page.componentdisplay sorting="component" %}
     {% include components/cards.html data=hashed %}
   </div>
   {% endcapture %}
