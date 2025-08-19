@@ -1,17 +1,17 @@
-{%- capture count %}{%- if include.toggle %}
-<div><p class="text-base-darker margin-top-1 margin-bottom-0"><span id='component-count' path='class'><strong>{{ include.count }}</strong> {{ include.sorting }}s found</span><span class=' margin-left-1 tooltip-toggle'
+{%- capture count %}{%- if include.count %}{%- if include.toggle %}
+<div><p class="text-base-darker margin-top-1 margin-bottom-0"><span id='component-count' path='class'><strong>{{ include.count }}</strong> {{ include.sorting }}s found</span><!--<span class=' margin-left-1 tooltip-toggle'
   aria-label='{{ include.toggle }}' 
   toggles='filter-counting-tooltip'><svg class='usa-icon'
       role='img'>
     <use xlink:href='/assets/uswds/img/sprite.svg#help'></use>
-  </svg></span></p>
-  <p id='filter-counting-tooltip' class='usa-checkbox__label-description no-display'>{{ include.toggle }}</p>
+  </svg></span>--></p>
+  <!--<p id='filter-counting-tooltip' class='usa-checkbox__label-description no-display'>{{ include.toggle }}</p>-->
 </div>
 {%- else %}
 <p class="text-base-darker margin-top-1 margin-bottom-0" aria-live="polite"><span id="component-count" path="class"><strong>{{ include.count }}</strong> {{ include.sorting }}s found</span></p>
-{%- endif %}{%- endcapture %}
+{%- endif %}{%- endif %}{%- endcapture %}
 <div class="bg-base-lighter padding-2 radius-md width-full">
-  <h2 class="font-lang-lg margin-top-0 margin-bottom-0 no_toc rm-a no_toc">{{ include.title }}</h2>
+  {%- if include.title %}<h2 class="font-lang-lg margin-top-0 margin-bottom-0 no_toc rm-a no_toc">{{ include.title }}</h2>{%- endif %}
   <div role="region" aria-label="{{ include.label }}" aria-atomic="true" class="margin-top-1">
     <label for="icon-filter">{{ include.label | default: "Filter by name" }}</label>
     <input class="usa-input" id="icon-filter" type="text">

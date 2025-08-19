@@ -16,7 +16,15 @@
     @include OR.no-display  
 }
 .fc-no-display{
+  &>a {
+    @include u-text('base')
+  }
+  h3>a.usa-link{
+    @include u-text('base')
+  }
+  &:not(:has(li.fc-display)) {
     @include OR.no-display 
+  }
 }
 
 .unstyled-list {

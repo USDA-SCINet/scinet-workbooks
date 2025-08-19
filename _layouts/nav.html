@@ -104,19 +104,18 @@ wbComp:
      <div class="usa-layout-docs__sidenav sidenav_mobile">
      {{ sidenavigation }}
      </div>
-
-     <div class="desktop-lg:grid-col-auto">
-      <div class="flexnav">
-      {% assign siblingposts = siblingposts %}
-      {% include collect/wb-nav.html siblingarray=siblingposts %}
-      </div>
-     </div>
     </div>
     {% if page.collection %}
     {% if page.type and page.ext == '.md' %}
     {% include collect/related-reading.html %}
     {% endif %}
   </div>
+
+  
+{% assign siblingposts = siblingposts %}
+<section class="rtt-next{%- if site.survey and page.survey %} survey-flex{%- endif %}">
+{% include collect/wb-nav.html siblingarray=siblingposts %}
+</section>
 
 {% if site.survey and page.survey %}
   {% include layout/survey %}

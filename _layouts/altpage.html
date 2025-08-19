@@ -2,7 +2,6 @@
 layout: default
 scripts: 
   - '/assets/js/lib/jquery-3.4.1.min.js'
-  - '/assets/js/filter/filternav.js'
 ---
 {% assign hero = page.header %}
 {% assign blankarray = "" | split: "" %}
@@ -203,3 +202,13 @@ scripts:
      </div>
     </div>
   </div>
+
+  <section class="rtt-next">
+    <ul class="usa-sidenav">
+      <li class="usa-sidenav__item">
+        <a href="#"><svg class="usa-icon margin-bottom-neg-2px margin-right-05" aria-hidden="true" focusable="false" role="img">
+        <use href="/assets/uswds/img/sprite.svg#arrow_upward"></use>
+        </svg><span class="render-sm">Return to </span>Top </a>
+      </li>
+    </ul>
+  </section>

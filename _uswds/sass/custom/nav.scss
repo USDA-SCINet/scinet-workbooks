@@ -154,39 +154,27 @@
 
 //// next/prev nav container
 
-.flexnav {
-  display: flex;
-  position: sticky;
-  top: 0;
-  flex-direction: column;
-  height: auto; // Default for smaller screens
-  @include u-padding-y(5);
-
-  @include at-media("desktop-lg") {
-    height: 100vh; // Match viewport height on desktop and larger screens
+.rtt-next {
+  padding-top: units(4);
+  @include at-media-max($theme-site-margins-breakpoint){
+    @include grid-container;
   }
-
-  .rtt-next {
-    @include u-width('full');
-
-    // Push nav to the bottom of the container and sticky
-    margin-top: auto;
+  @include at-media($theme-site-margins-breakpoint){
+    padding-right: units(5);
+    display: flex;
+    justify-content: flex-end;
+  }
+  @include at-media("desktop-lg") {
+    padding-bottom: units(5);
+    bottom: 0; // Stick to the bottom of the parent container
     position: sticky;
-
-    // adjust location below text prior to other nav flexing
-    @include at-media ($theme-header-min-width) {
-      @include u-maxw('tablet'); 
-      margin-left: auto; 
-    }
-    
-    @include at-media("desktop-lg") {
-      bottom: 35px; // Stick to the bottom of the parent container
-    }
-    @include at-media("widescreen") {
-      bottom: 100px; // Stick to the bottom of the parent container
-    }
-    @media screen and (min-width: 1750px) {
-      bottom: 35px; // Stick to the bottom of the parent container
+    z-index: z-index(500);
+  }
+  &.survey-flex{
+    @include at-media($theme-header-max-width) {
+      padding-right: units(6);
+      padding-bottom: 0;
+      bottom: 100px; // Raise above survey
     }
   }
 }

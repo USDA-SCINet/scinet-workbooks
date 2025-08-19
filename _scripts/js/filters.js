@@ -1,8 +1,5 @@
----
----
 // load workbook data
-const packaged = [{% include packages.js sect='workbooks' %}]
-
+var packaged = [];
 
 // saves filter state and calls sorting function
 function submitFilters(form){
@@ -27,31 +24,36 @@ var savedData = sessionStorage.getItem('sciwbLastsearch'),
 //set clear as key, value pair to remove from URLParams, then resubmit form
 
 // loop through saved session information
- for(const [ key, val ] of fdata) {
-  if(key === clear[ 0 ] && val === clear[ 1 ]){
-    // skip filter
-  } else {
-    if( !(val === "") ){
-    const input = form.elements[ key ];
-    if( input.id === key){
-      // set checkbox
-        switch(input.type) {
-          case 'checkbox': input.checked = !!val; 
-          default:         input.value = val;     
-        }       
-    } else if (input instanceof RadioNodeList) {
-      // set radio button
-        rlength = input.length;
-        for (var i = 0; i < rlength; i++) {
-          if(input[ i ].value === val){
-            input[ i ].checked = !!val;
-           }
-        }
-      } 
-  } }
-}
+fillForm(fdata, form, clear);
+
 // submit loaded form
 submitFilters(form);
+}
+
+function fillForm(filldata, form, clear){
+    for(const [ key, val ] of filldata) {
+        if(key === clear[ 0 ] && val === clear[ 1 ]){
+          // skip filter
+        } else {
+          if( !(val === "") ){
+          const input = form.elements[ key ];
+          if( input.id === key){
+            // set checkbox
+              switch(input.type) {
+                case 'checkbox': input.checked = !!val; 
+                default:         input.value = val;     
+              }       
+          } else if (input instanceof RadioNodeList) {
+            // set radio button
+              rlength = input.length;
+              for (var i = 0; i < rlength; i++) {
+                if(input[ i ].value === val){
+                  input[ i ].checked = !!val;
+                 }
+              }
+            } 
+        } }
+      }
 }
 
 function sortForm(fdata){
@@ -117,6 +119,7 @@ function filterWBs(formobject, inclusive){
 // Split filters into inclusive and exclusive
   var obj1 = Object.fromEntries(formobject.filter(([ k ]) => inclusive.includes(k)));
   var obj2 = Object.fromEntries(formobject.filter(([ k ]) => !inclusive.includes(k)));
+
 // Helper functions for inclusive/exclusive matching
   var c_exclusive = (arr, target) => target.every(v => arr.includes(v));
   var c_inclusive = (arr, target) => target.some(v => arr.includes(v));
@@ -191,21 +194,6 @@ filterCounts(counter);
 
 }
 
-
-// Title search box - Filters components by search input 
-function filterComp(e){
-  search = e.value.toLowerCase();
-  document.querySelectorAll('.fc').forEach(function(row){
-      text = row.getAttribute("datameta").toLowerCase();
-      if(text.match(search)){
-          row.classList.remove("fc-no-display");
-      } else {
-          row.classList.add("fc-no-display");
-      }
-  });
-  classCount($("#component-count"));
-}
-
 // Updates the count of filtered workbooks
 function filterCounts(num){
 var div = $("#component-count");
@@ -236,7 +224,7 @@ filters.append(myfilters);
 } 
 
 function makePill(k,v){
-var pSet = "filter-pill-" + k + "-" + v;
+//var pSet = "filter-pill-" + k + "-" + v;
 //var pID = pSet.replace(/ /g, "-");
 var vText = v;
 
@@ -278,55 +266,59 @@ myform.reset();
 loadFilters(myform, [ k,v ]);
 }
 
-// Returns the "questions" array from quizdata
-function getPages() {  
-  const baseURL = window.location.origin;
-  $.ajax({
-      type: 'GET',
-      url: baseURL + '/assets/js/filter/workbooks.json',
-      data: { get_param: 'value' },
-      dataType: 'json',
-      success: function (data) {
-        var entries = data;
-        packaged = entries;
-      },
-      error: function () {
-        console.log("Failed to fetch workbook data");
-      },
-  });
+// Returns the "workbook" array from workbookdata
+function getWorkbooks(myform) {  
+    const baseURL = window.location.origin;
+    $.ajax({
+        type: 'GET',
+        url: baseURL + '/assets/js/filter/workbooks.json',
+        data: { get_param: 'value' },
+        dataType: 'json',
+        success: function (data) {
+          packaged = data;
+
+          // Load filters from session storage if present
+          if ('sciwbLastsearch' in sessionStorage) {
+            loadFilters(myform);
+          } else { 
+            classCount($("#component-count")); 
+          }
+        },
+        error: function () {
+          console.log("Failed to fetch workbook filter data");
+        },
+    });
 }
 
-$(document).ready(function() {
-
-  let iconfilter = document.getElementById('icon-filter');
-  if(iconfilter){
-    iconfilter.addEventListener('keyup', function () {
-      filterComp(this); 
-    });
-  }
+function filterload() {
   
-  var myform = document.getElementById("workbook-array");
+  var myform = document.getElementById("workbook-array"),
+    clearsearchbutton = document.getElementById("clearsearch");
+    getWorkbooks(myform);
 
   // add submitFilters function to form
   myform.addEventListener("submit", function (e) {
     e.preventDefault();
     submitFilters(this); 
     });
-      // Toggle all checkboxes in a section
-      $('.filter-toggle').prop("checked", false).click(function() {
+  clearsearchbutton.addEventListener("click", function(){
+        clearSearch();
+    });
+      // Toggle all checkboxes in a section to enable the Select All option
+       $('.filter-toggle').prop("checked", false).click(function() {
   
           let sectfilter = $(this).attr("toggles"),
               togs = $(this);
           
           if(togs.prop("checked")){
               togs.text('Select All');
-          } else { togs.text('Deselect All') }
+          } else { togs.text('Deselect All'); }
   
           togs.prop("checked", !togs.prop("checked"));
           $('.'+sectfilter).prop('checked', this.checked);                
-      });
+      }); 
   // Handle select-multiple dropdowns with confirmation
-      $('.selectmultiple').on('change', function (e) {
+      $('.selectmultiple').on('change', function () {
         let selectedO = $("option:selected", this),
           selectV = this.value;
   
@@ -334,10 +326,10 @@ $(document).ready(function() {
           let confirmer = selectedO.attr( "confirms" ),
             match = selectedO.attr( "match" );
   
-          var fetched = myform.elements[confirmer];
+          var fetched = myform.elements[ confirmer ];
   
-          if(fetched[match].value === selectV){
-            fetched[match].checked = !!selectV;
+          if(fetched[ match ].value === selectV){
+            fetched[ match ].checked = !!selectV;
           }      
         }
       });
@@ -347,20 +339,16 @@ $(document).ready(function() {
             togv = $("#"+tog.attr("value")+"-hint");
             
         if(tog.prop("checked")){
-          togv.text('Results match tag 1 OR tag 2')
+          togv.text('Results match tag 1 OR tag 2');
         } else { togv.text('Results match tag 1 AND tag 2'); }
-      })
+      });
   
       // Tooltip toggles
       $('.tooltip-toggle').click(function(){
-        let tog = $(this).attr("toggles")
-        $("#"+tog).toggleClass( "no-display" )
+        let tog = $(this).attr("toggles");
+        $("#"+tog).toggleClass( "no-display" );
   
       });
-  // Load filters from session storage if present
-      if ('sciwbLastsearch' in sessionStorage) {
-        loadFilters(myform)
+}
   
-      } else { classCount($("#component-count")); }
-  });
-  
+module.exports = filterload;

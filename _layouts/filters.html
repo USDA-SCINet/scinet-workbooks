@@ -3,7 +3,7 @@ layout: default
 main:
   class: usa-layout-docs usa-layout-docs__main usa-prose
 
-scripts: ['/assets/js/lib/jquery-3.4.1.min.js', '/assets/js/filter/filters.js']
+scripts: ['/assets/js/lib/jquery-3.4.1.min.js', '/assets/js/filters.js']
 
 alert: 
   type: error
@@ -64,10 +64,10 @@ alert:
 {% assign nestingvals = "" | split: "" %}
 {% assign hero = page.header %}{% include layout/hero.html %}
 <div class="mobile-lg:grid-container main-side">
-    <div class="grid-row flex-align-start">
+    <div class="grid-row flex-align-stretch">
 
       <div class="desktop:grid-col-4 align-c">
-        <div class="bg-{{ color-select }}-lighter margin-y-2 padding-y-2 width-full maxw-tablet">
+        <div class="bg-{{ color-select }}-lighter margin-y-2 padding-y-2 width-full maxw-tablet sticky-nav">
         <div class=" bg-white border margin-x-2">
           <div aria-label="content filters" class="filters-container usa-card">
             <form id="workbook-array">
@@ -239,7 +239,7 @@ alert:
                   <div id="filter-pills" class="filter-pills"></div>
                 </div>
                 <div class="tablet:grid-col-3">
-                  <button class="usa-button usa-button--base" type="button" onclick="clearSearch()">Clear Search</button>
+                  <button class="usa-button usa-button--base" type="button" id="clearsearch">Clear Search</button>
                 </div>
               </div>
 
@@ -265,4 +265,15 @@ alert:
           <!-- </div> -->
       </div>
     </div>
-  </div>
+
+</div>
+
+<section class="rtt-next">
+  <ul class="usa-sidenav">
+    <li class="usa-sidenav__item">
+      <a href="#"><svg class="usa-icon margin-bottom-neg-2px margin-right-05" aria-hidden="true" focusable="false" role="img">
+      <use href="/assets/uswds/img/sprite.svg#arrow_upward"></use>
+      </svg><span class="render-sm">Return to </span>Top </a>
+    </li>
+  </ul>
+</section>
