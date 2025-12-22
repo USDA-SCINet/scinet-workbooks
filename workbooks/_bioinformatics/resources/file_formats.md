@@ -1267,12 +1267,4 @@ liftOver input.bed reference.chain.gz output_ref.bed unMapped.bed
 </div>
 
 
-{% if page.takeaways %}
-## Best Practices
-
-<ul>
-  {% for takeaway in page.takeaways %}
-    <li>{{ takeaway }}</li>
-  {% endfor %}
-</ul>
-{% endif %}
+{% include takeaways title="Best Practices" %}

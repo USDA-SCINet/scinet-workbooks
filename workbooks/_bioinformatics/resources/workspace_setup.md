@@ -844,14 +844,6 @@ section under construction; will be cross-linked to learning pathways or pipelin
 -->
 </div>
 
-{% if page.takeaways %}
-## Best Practices
-
-<ul>
-  {% for takeaway in page.takeaways %}
-    <li>{{ takeaway }}</li>
-  {% endfor %}
-</ul>
-{% endif %}
+{% include takeaways title="Best Practices" %}
 
 

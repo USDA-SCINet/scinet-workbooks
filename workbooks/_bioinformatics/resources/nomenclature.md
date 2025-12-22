@@ -366,14 +366,5 @@ Each line represents a single variant, with columns describing its genomic locat
 Variants are central to many bioinformatics analyses, including the identification of disease-associated mutations, population genetics, and evolutionary studies.
 
 
-{% if page.takeaways %}
-## Lesson takeaways
-
-<ul>
-  {% for takeaway in page.takeaways %}
-    <li>{{ takeaway }}</li>
-  {% endfor %}
-</ul>
-
-{% endif %}
+{% include takeaways %}
 

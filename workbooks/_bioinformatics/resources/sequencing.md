@@ -968,13 +968,4 @@ and identification of taxa associated with different (forest) soil types or cond
 </div>
 
 
-{% if page.takeaways %}
-## Lesson takeaways
-
-<ul>
-  {% for takeaway in page.takeaways %}
-    <li>{{ takeaway }}</li>
-  {% endfor %}
-</ul>
-
-{% endif %}
+{% include takeaways %}
