@@ -158,13 +158,4 @@ Fill the input fields with the following:
 
 
 
-{% if page.takeaways %}
-## Lesson takeaways
-
-<ul>
-  {% for takeaway in page.takeaways %}
-    <li>{{ takeaway }}</li>
-  {% endfor %}
-</ul>
-
-{% endif %}
+{% include takeaways %}

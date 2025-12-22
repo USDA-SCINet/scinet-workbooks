@@ -418,12 +418,4 @@ The [Shell configuration persistence](/computing-skills/command-line/configurati
 </div>
 
 
-{% if page.takeaways %}
-## Best Practices
-
-<ul>
-  {% for takeaway in page.takeaways %}
-    <li>{{ takeaway }}</li>
-  {% endfor %}
-</ul>
-{% endif %}
+{% include takeaways title="Best Practices" %}
