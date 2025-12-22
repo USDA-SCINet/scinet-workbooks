@@ -21,6 +21,8 @@ overview: [objectives, terminology]
 
 ---
 
+This is our guide to using SCINet.  
+For the quickstart guide to getting started with these workbooks, see [Getting Started with the SCINet Workbooks](/about).
 
 {% include overviews %}
 
