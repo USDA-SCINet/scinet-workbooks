@@ -160,10 +160,9 @@ This tutorial introduces the file system on SCINet supercomputers, explaining th
 
 ## SCINet file system
 
-<div class="highlighted highlighted--basic"><div class="highlighted__body" markdown="1"> 
 A **file system** is the structure an operating system uses to organize, manage, and access data on storage devices. 
 It defines how key directories are arranged under the system's root, how files are stored within those directories, and how they are accessed by users and programs.
-</div></div>
+
 
 Effective use of an HPC system starts with understanding how its file system is structured. 
 **Atlas and Ceres supercomputers provide separate storage locations optimized for different tasks**, such as managing private project data, 

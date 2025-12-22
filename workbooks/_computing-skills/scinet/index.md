@@ -52,12 +52,16 @@ User Guide: [Differences between Ceres and Atlas](https://scinet.usda.gov/guides
 
 {% include setup/scinet_login keep="true" %}
 
+</div>
+
 
 ## Next steps
 
 Before moving on to subject-specific tutorials in areas such as [computing skills](/computing-skills/), [data science](/data-science/), 
 [bioinformatics](/bioinformatics/), or [geospatial](/geospatial/) analysis, it’s important to first complete the introductory SCINet workbooks tutorials. 
 These foundational exercises will help you configure your workspace and project setup, and familiarize you with the available software options on SCINet supsrcomputers.
+
+<div class="process-list" markdown="1">
 
 ### Explore interfaces and file system
 
