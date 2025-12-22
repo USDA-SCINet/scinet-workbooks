@@ -1,21 +1,26 @@
 ---
 title: Getting Started with the SCINet Workbooks
-description: A guide to using the SCINet Workbook
+description: A quickstart guide to using the SCINet Workbook
 order: 1
 author: The SCINet Office
 updated: 2025-06-24 
 
-objective: "objective of this tutorial"
+objective: "Provide foundational skills needed for accomplishing the tutorials in the workbooks"
 overview: [objectives]
 
 mkdir: getting-started_dir
 survey: true
+subject: "computing-skills" ## add to the computing skills section
+type: interactive tutorial
 ---
 
 
 ## Overview
 
-Introduction to your tutorial and what the tutorial aims to accomplish.
+This quickstart guide provides the basic foundations needed for getting started with the learning material included on this website.  
+
+If you would like to learn more about the subjects covered in this quickstart guide, see our [Getting started with SCINet](/computing-skills/scinet/) learning module.
+
 
 {% include overviews %}
 
@@ -106,7 +111,7 @@ Most tutorials that use Conda environments default to creating the environment i
 
 ### Modifying workflows to use /project
 
-If you would like to use your project space instead of `/90daydata`, you can modify the tutorial instructions by substituting `/project/your_project_name/` wherever you see `/90daydata/shared/$USER/`.
+If you would like to use your project space instead of `/90daydata`, you can modify the tutorial instructions by substituting `/project/`<project_name>`/` wherever you see `/90daydata/shared/$USER/`.
 
 <div class="usa-accordion">
 
@@ -122,16 +127,16 @@ sacctmgr -Pns show user format=account,defaultaccount
 </div>
 
 
-For example, to modify the instructions above for creating a directory and Conda environment in a project named "your_project_name", you would:
+For example, to modify the instructions above for creating a directory and Conda environment in a project named "`<project_name>`", you would:
 1.  Open the Shell
 1.  Request a compute node:
     ```
-    srun -A your_project_name -t 01:00:00 --pty bash
+    srun -A `<project_name>` -t 01:00:00 --pty bash
     ```
 1.  Create your wookbook directory and navigate to it:
     ```
-    mkdir -p /project/your_project_name/{{ environment }}
-    cd /project/your_project_name/{{ environment }}
+    mkdir -p /project/`<project_name>`/{{ environment }}
+    cd /project/`<project_name>`/{{ environment }}
     ```
 1.  Load Conda.
     * Atlas: `module load miniconda3`
@@ -143,22 +148,25 @@ For example, to modify the instructions above for creating a directory and Conda
       ```
     * Create and load your new Conda environment:  
       ```bash
-      conda env create --prefix /project/your_project_name/envs/{{ environment }} -f {{ environment }}.yml
-      source activate /project/your_project_name/envs/{{ environment }}
+      conda env create --prefix /project/`<project_name>`/envs/{{ environment }} -f {{ environment }}.yml
+      source activate /project/`<project_name>`/envs/{{ environment }}
       ```  
 
 </div>
 
 ## Accessing interfaces on SCINet
 
-There are multiple different interfaces available on SCINet.  In this section, we provide template instructions for launching these interfaces and provide an overview of each input parameter.
+There are multiple different interfaces available on SCINet Open OnDemand.  In this section, we provide template instructions for launching these interfaces and provide an overview of each input parameter.
+
+  * Log in to [Ceres Open OnDemand](http://ceres-ood.scinet.usda.gov/).
+  * Log in to [Atlas Open OnDemand](https://atlas-ood.hpc.msstate.edu/).  
 
 Note: Each tutorial may have specific inputs depending on the resource needs and objectives of the tutorial.  Use the parameters specified by the tutorial if they differ from these demo instructions.
 
+
 <div class="process-list ul" markdown="1">
 
-{% include setup/scinet_login %}
-{% include setup/ood_shell %}
+{% include setup/ood/shell %}
 
 From here, your tutorial may have specific instructions for you to execute.  One of the first steps is often to [request a compute note and create a working directory in /90daydata](#making-your-workspace-directory-in-90daydata), as explained above.
 
@@ -167,8 +175,8 @@ Requesting a compute node keeps all the intense computation off the login nodes,
 ### Launching RStudio: 
 Back on the main Atlas/Ceres OOD tab, click on the top or side navigation bar: "Interactive Apps" > "RStudio Server".
 Fill the input fields with the following: 
-* If using Ceres
-    * Account: your_project_name (replace with your project account name)
+* If using Ceres:
+    * Account: `<project_name>` (replace with your project account name)
     * Queue: ceres
     * QOS: 400thread
     * R Version: 4.4.1
@@ -179,7 +187,7 @@ Fill the input fields with the following:
 
 * If using Atlas:
     * R Version: 4.4.0
-    * Account name: your_project_name (replace with your project account name)
+    * Account name: `<project_name>` (replace with your project account name)
     * Partition:atlas 
     * QOS:normal
     * Number of hours: 1
@@ -195,7 +203,7 @@ Fill the input fields with the following:
 Back on the main Atlas/Ceres OOD tab, click on the top or side navigation bar: “Interactive Apps” > “JupyterLab Server”.
 Fill the input fields with the following:
 * If using Ceres:
-    * Account: your_project_name (replace with your project account name)
+    * Account: `<project_name>` (replace with your project account name)
     * Queue: ceres
     * QOS: 400 thread
     * Number of hours: 1
@@ -206,7 +214,7 @@ Fill the input fields with the following:
     * Working Directory defaults to $HOME
 
 * If using Atlas: 
-    * Account: your_project_name (replace with your project account name)
+    * Account: `<project_name>` (replace with your project account name)
     * Partition: atlas
     * QOS: normal
     * Number of hours: 1
@@ -220,20 +228,31 @@ Fill the input fields with the following:
 * Click on the “Connect to JupyterLab Server” button to open a new tab with the JupyterLab Server interface.
 
 
-### Launching VS Code (Only available on Ceres)
-Back on the main Ceres OOD tab, click on the top or side navigation bar: “Interactive Apps” > “VSCode Server”.
-
+### Launching VS Code 
+Back on the main Atlas/Ceres OOD tab, click on the top or side navigation bar: “Interactive Apps” > “VSCode Server”.  
 Fill the input fields with the following:
 
-* Account: your_project_name (replace with your project account name)
-* Queue: ceres
-* QOS: 400 thread
-* Number of cores: 1
-* Memory required: 8GB
-* Number of hours: 1
-* Optional Slurm Arguments: (leave empty for demo purposes)
-* Working Directory: defaults to $HOME
-* Codeserver Version: 4.17 
+* If using Ceres:
+    * Account: `<project_name>` (replace with your project account name)
+    * Queue: ceres
+    * QOS: 400 thread
+    * Number of cores: 1
+    * Memory required: 8GB
+    * Number of hours: 1
+    * Optional Slurm Arguments: (leave empty for demo purposes)
+    * Working Directory: defaults to $HOME
+    * Codeserver Version: 4.17 
+
+* If using Atlas: 
+    * Partition: atlas
+    * Account: `<project_name>` (replace with your project account name)
+    * QOS: normal
+    * Number of hours: 1
+    * Number of nodes: 1
+    * Number of tasks: 1
+    * Additional Slurm Parameters: (leave empty for demo purposes)
+    * Working Directory defaults to $HOME
+
 * Click the “Launch” button.
 * Wait a moment for the job card to update from “Queued” to “Running”.
 * Click on the “Connect to VSCode Server” button to open a new tab with the VSCode Server interface.
