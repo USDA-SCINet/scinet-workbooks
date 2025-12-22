@@ -26,7 +26,7 @@ For the quickstart guide to getting started with these workbooks, see [Getting S
 
 {% include overviews %}
 
-### What is SCINet?
+## What is SCINet?
 
 The SCINet initiative is an effort by the USDA [Agricultural Research Service (ARS)](https://www.ars.usda.gov/) to grow USDA’s research capacity by providing scientists with access to high-performance computing clusters, high-speed networking for data transfer, and training in scientific computing.
 

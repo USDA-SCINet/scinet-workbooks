@@ -68,7 +68,7 @@ First, you will log in through **Open OnDemand (OOD)** in your web browser and e
 </div>
 </div> {% endcomment %}-->
 
-### Choose an interface
+## Available interfaces
 
 There are multiple different interfaces available on SCINet.  In this section, we provide template instructions for launching these interfaces and provide an overview of each input parameter.
 
