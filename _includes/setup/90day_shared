@@ -1,0 +1,32 @@
+<div markdown="1">
+[/90daydata/shared directory](https://scinet.usda.gov/guides/data/storage#large-short-term-storage) is open to all users on Ceres and Atlas. 
+This location is intended to support collaboration between groups and to optimize storage by minimizing redundant copies of the same data. 
+Files older than 90 days will be automatically deleted.   
+
+Anyone can create a nested directory in this location and put data:
+```bash
+cd /90daydata/shared     # navigate to shared workspace
+mkdir -p $USER           # create a subfolder for your user <first.last>
+cd $USER                 # enter the subfolder
+pwd                      # check the absolute path, e.g., /90daydata/shared/alex.badacz
+cp /aboslute_path/to/<source_of_data> /90daydata/shared/$USER/   # transfer data
+```
+
+Data will be readable by everyone on the system unless file owner [limits access permissions](http://127.0.0.1:4500/computing-skills/command-line/#understanding-and-changing-file-permissions). 
+
+<div class="highlighted highlighted--highlighted"><div class="highlighted__body" markdown="1"> 
+<details markdown="1"><summary><b>Update access dates to retain files</b></summary>
+When you transferring archived files, they may contain files with an access date from long ago. 
+This date will still trigger deletion, so make sure that the files have a new access date. 
+- When extracting a `.tar` or `.tgz` archive, use the `-m` flag. 
+```bash
+tar -xvzmf archive.tgz
+```
+- When transferring files with `rsync`, avoid the `-a` flag.
+```bash
+rsync -vz --no-p --no-g <local_dir> <SCINetID>@ceres-dtn.scinet.usda.gov:/90daydata/<project_name>
+```
+</details>
+</div></div>
+
+</div>

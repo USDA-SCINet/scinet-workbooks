@@ -9,8 +9,23 @@ index: 0
 order: 3
 wg: Bioinformatics
 description: "Decoding genetic information by wrangling sequence data"
+terms: [bioinformatics]
 ---
 
 
+{% include alert class="highlighted" content="This subject area assumes that users have a foundational knowledge of biology and a basic familiarity with the [Unix command line environment](/computing-skills/)." title="Prerequisites" %}
 
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<div class="highlighted highlighted--basic "><div class="highlighted__body"  markdown="1">
+<h4 class="highlighted__heading">Bioinformatics</h4>
+{% assign term = site.data.glossary.glossary | where: "term", "Bioinformatics" | first %}
+{{ term.definition }}
+</div></div>
+
+The most effective way to master bioinformatics is by solving real-world scientific problems. 
+This workbook is designed to guide you through the full lifecycle of data-driven biological inquiry: 
+from experimental design to data acquisition, wrangling, analysis, and visualization.
+
+Each module provides practical examples that mirror common challenges encountered in modern biological research, 
+followed by advanced problem sets with detailed solutions. 
+Together, they offer a hands-on approach that builds both conceptual understanding and technical proficiency in using tools on SCINet supercomputers.
+

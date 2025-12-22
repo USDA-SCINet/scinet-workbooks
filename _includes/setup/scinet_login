@@ -1,0 +1,18 @@
+### Log in to SCINet
+
+<div class="highlighted highlighted--basic"><div class="highlighted__body" markdown="1"> 
+Once your SCINet account has been approved, you will be able to login to SCINet and gain access to our computing resources. If you encounter issues with your account, please email scinet_vrsc@usda.gov.
+</div></div>
+
+{% if include.keep == "true" %}
+You can log in to SCINet via our web-based Open OnDemand interface or via ssh. 
+Most of the tutorials are designed for Open OnDemand, and unless otherwise specified you do not need to use a direct SSH connection to SCINet clusters.
+{% endif %} 
+
+Access selected SCINet supercomputer in your web browser: *([detailed OOD guide](https://scinet.usda.gov/guides/use/open-ondemand))*
+* Log in to [Ceres Open OnDemand](http://ceres-ood.scinet.usda.gov/). 
+* Log in to [Atlas Open OnDemand](https://atlas-ood.hpc.msstate.edu/).  
+
+{% if include.keep == "true" %}
+For more information on login procedures for SCINet access, including our SSH access instructions, see the [SCINet access user guide](https://scinet.usda.gov/guides/access/). 
+{% endif %}

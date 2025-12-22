@@ -1,0 +1,17 @@
+<div markdown="1">
+[Home directories](https://scinet.usda.gov/guides/data/storage#home-directories) are private, they are only accessible to the user and the system administrators. When a user logs into Ceres or Atlas, they are automatically logged into their home directory. 
+```bash
+pwd
+#/home/firstname.lastname
+```
+
+Home directories have **30GB** quotas and are intended to be mainly used for configuration and login files. Most of these files and folders are hidden by default *(their names start with a dot)* and can be displayed with `ls -lha` command. Among them are important [startup scripts](/computing-skills/command-line/configuration/persistence/) such as `.bashrc` and `.bash_profile`, directories like `.conda`, `.jupyter`, and `.cache`, as well as automatically created folders such as `ondemand` and `galaxy` after the first use of corresponding [SCINet services](https://scinet.usda.gov/guides/application/).
+
+{% if include.keep == "true" %}
+<div class="highlighted highlighted--highlighted"><div class="highlighted__body" markdown="1"> 
+Run computations from project directories in `/90daydata` or in `/project`.  
+Use `/project` for large software installs (e.g., conda virtual environments).
+</div></div>
+{% endif %}
+
+</div>

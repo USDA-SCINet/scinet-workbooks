@@ -1,9 +1,19 @@
 glossary:
 
+  - term: Access Permissions
+    cat: Computing Skills
+    definition: Access permissions determine who can read, write, or execute a file or directory, controlling user and group access within the HPC environment.
+    related: [File System, User, Group, Security]
+
   - term: Algorithm
     cat: Computing Skills
     definition: A set of rules in problem-solving operations. Creating algorithms is a foundation of programming, where a developer defines a finite sequence of well-defined instructions to perform computations and process data. Among the typical elements of an algorithm, regardless of programming language, are conditionals and loops that enable repetitive actions and logical decisions.
     related: [Bash Scripting, Programming, Problem-Solving]
+
+  - term: Alias
+    cat: Computing Skills
+    definition: An alias is a shortcut command that maps a custom name to a longer or more complex command, helping users simplify and speed up their work in the command line.
+    related: [Command Line, Shell, Bash, Environment Variables]
 
   - term: Artificial Intelligence
     cat: Data Science
@@ -30,11 +40,6 @@ glossary:
     definition: A CLI environment serves as a system-wide configuration, providing a command interpreter that processes user inputs, along with environment variables, system utilities, and scripting support for managing tasks and processes.
     related: [Command Line Interface, Unix Shell]
 
-  - term: Cluster
-    cat: Data Science
-    definition: or a computer cluster is a group of computing machines or servers that work together as a single system. Clusters provide high performance computing and parallel processing by distribution of tasks across multiple machines.
-    related: [Distributed Computing, Big Data]
-
   - term: Code
     cat: Computing Skills
     definition: in programming is a set of instructions for the computer. Code is written using programming language(s) and can be used to run a process, task, software, system, etc. on a computer.
@@ -57,9 +62,14 @@ glossary:
     definition: A command is a text-based instruction given to a computer through the Command Line Interface (CLI) to perform a specific task, such as running a program, managing files or processing data. Commands trigger the execution of various processes.
     related: [Unix Shell, Terminal, Bash, Command Line]
 
-  - term: Container
+  - term: Conda
     cat: Computing Skills
-    definition: A executable package of specific application code and its dependencies. A software container includes all necessary elements needed to run the software such that it can be run in any environment/system.
+    definition: An open-source package and environment manager used to install, update, and manage bioinformatics software reproducibly.
+    related: [Environment File, Module System]
+
+  - term: Container
+    cat: [Computing Skills, Bioinformatics]
+    definition: An executable package of specific application code and its dependencies, bundled together into a consistent, portable environment. This eliminates the need for users to install or configure software manually and ensures that tools in compatible versions run reliably across different systems.  
     related: [Programming]
 
   - term: Data Science
@@ -71,32 +81,54 @@ glossary:
     cat: Data Science
     definition: is the process of transforming raw data into a usable format according to your project's requirements.
 
+  - term: Development Environment
+    alt: DE
+    cat: Computing Skills
+    definition: A software with the interface for developers where they create and modify the source code of their application (software, pipeline, analysis). Examples include VS Code or PyCharm.
+
   - term: Digital Data
     cat: Data Science
     definition: A collection of observables registered in a computer-readable representation. A single item of data is called a datum. Each datum has assigned the binary value of “false, 0” or “true, 1”, resulting in a bit of information, i.e., one binary digit.
     related: [Structured Data, Unstructured Data, Big Data]
+
+  - term: Directory
+    cat: Computing Skills
+    definition: A directory is a location in the file system used to organize and store files or other directories. It functions like a folder that helps structure data within the HPC environment.
+    related: [File System, Path, Home Directory]
+
+  - term: Directory Tree
+    cat: Computing Skills
+    definition: "A hierarchical structure that organizes files and folders on a computer system, starting from a root directory and branching into subdirectories. A project directory tree provides a logical layout for project data, scripts, results, and documentation, making it easier to navigate, manage versions, and maintain reproducibility."
+    related: [Project Directory, Documentation, README]
 
   - term: Distributed Computing
     cat: Computing Skills
     definition: A system of multiple computer machines connected over a network to create a computing cluster that appears as a single computer to the end-user. It provides a unified environment with access to shared resources (software, data, storage) and coordinated computing power. Distributed computing is a technique typically used in the High-Performance Computing (HPC) infrastructures.
     related: [Queue, Job Scheduler, High-Performance Computing, HPC]
 
+  - term: Documentation
+    cat: Computing Skills
+    definition: The systematic recording of information about research processes, methods, data, and results. In a research context, documentation ensures transparency, reproducibility, and long-term usability of scientific work. In HPC projects, a README file is often used as the primary form of documentation.
+    related: [Queue, Job Scheduler, High-Performance Computing, HPC]
+
   - term: Environment
     cat: Computing Skills
     compile: [Development environment, Programming environment, CLI Environment]
-    
-  - term: Development environment
-    cat: Computing Skills
-    definition: A workspace for developers where they create and modify the source code of their application (software, web, etc.).
 
-  - term: Programming environment
+  - term: Environment File
     cat: Computing Skills
-    definition: A layer of settings specific for a given programming language or type of developed application. It can be isolated from the general operating system and provides a kind of virtual environment with adjusted software configuration or modules loaded in a selected release. Virtual environments are commonly used when programming in Python and can be easily created using Conda (environment management system). 
+    definition: A configuration file listing software packages and versions required to reproduce a specific computational environment.
+    related: [Conda, Module System]
 
   - term: File System
     cat: Computing Skills
     definition: is the organization of data retained in the digital storage on the computing machine. The content consists of hierarchically ordered folders and files. Folders are user-categorized containers for files. Files contain data and consume digital storage space. Some files belong to the operating system and include configurations, source code, and executables of various programs. Each file and folder is assigned an absolute path that defines its location in the file system. Knowing this path is very useful for navigating the file system from the command line.
     related: [Operating System, Command Line, Bash Scripting]
+
+  - term: Git Repository
+    cat: Computing Skills
+    definition: A storage space where code, documents, and version history are tracked and managed with Git, supporting collaboration and reproducibility.
+    related: [Metadata, Project Directory]
 
   - term: Gnuplot
     cat: Data Science
@@ -106,6 +138,11 @@ glossary:
   - term: GUI
     cat: Data Science
     definition: short for Graphical User Interface, is an interface through which users interact with computers and other electronic devices using icons and other visual elements.
+
+  - term: Home Directory
+    cat: Computing Skills
+    definition: The home directory is a user's personal storage space on the HPC system, intended for individual files, scripts, and configurations.
+    related: [Directory, File System, User Workspace]
 
   - term: HPC
     cat: Computing Skills
@@ -118,7 +155,7 @@ glossary:
 
   - term: IDE
     cat: Computing Skills
-    definition: Integrated Development Environment is an application for software development that includes a code editor, debugging tools, and version control system. IDE softwares are designed to make the process of writing, testing, and debugging code easier and more efficient.
+    definition: Integrated Development Environment is an application for software development that includes a code editor, debugging tools, and version control system. IDE software (RStudio, JupyterLab) are designed to make the process of writing, testing, and debugging code easier and more efficient.
 
   - term: Information
     cat: Data Science
@@ -157,7 +194,7 @@ glossary:
 
   - term: Local Machine
     cat: Computing Skills
-    definition: is the computer that the user is using with direct access to it. Usually, it is your personal computer.
+    definition: is the computer that the user is using with direct access to it. Usually, it is your personal computer. A local machine can be used to access the remote supercomputer.
     related: [Distributed Computing, HPC, remote machine]
 
   - term: Loop
@@ -170,11 +207,21 @@ glossary:
     definition: A field of study focused on developing advanced computer algorithms that search for deeply coupled patterns in massive, disparate data and enable knowledge extraction. Machine learning methods are trained with large sets of data, and they learn from examples to make intelligent decisions without being explicitly programmed.
     related: [Big Data, Unstructured Data, data science, artificial intelligence]
 
+  - term: Metadata
+    cat: Data Science
+    definition: Descriptive information about data (such as origin, format, or parameters) that provides context and supports reproducibility.
+    related: [Project Directory, Environment File]
+
   - term: Module
     cat: Computing Skills
     compile: [Module system]
     definition: A small piece of a larger program. Modular programming is a way to design software such that each module is independent and can be used to execute a part of the function.
     related: [Programming]
+
+  - term: Module System
+    cat: Computing Skills
+    definition: A system that allows users to dynamically load, unload, and manage software packages on HPC.
+    related: [Conda, Environment File]
 
   - term: Nextflow
     cat: Data Science
@@ -185,10 +232,21 @@ glossary:
     cat: Computing Skills
     definition: A unit in an HPC cluster. It can be a single computer or a server in a collection that makes the cluster.
 
+  - term: Open OnDemand 
+    alt: [OOD] 
+    cat: Computing Skills  
+    definition: Open OnDemand is a web-based interface that provides users with easy access to HPC resources without requiring command-line interaction. It allows users to manage files, submit and monitor jobs, and launch interactive applications such as JupyterLab or RStudio directly from a web browser.  
+    related: [HPC, Web Portal, JupyterLab, RStudio, File Management]
+
   - term: Operating System
     cat: Computing Skills
     definition: OS, is the core software on the computer that manages computing resources, performes installations, and executes available programs. Command-line interface (CLI) and Graphical User Interface (GUI) enable the user directly interact with the operating system to set up, configure, and troubleshoot it. Among the popular operating systems are Windows, Mac OS, and Linux.
     related: [Command Line, Bash shell, Programming]
+
+  - term: Path
+    cat: Computing Skills
+    definition: A path specifies the location of a file or directory within the file system, showing how to navigate to it from the root or current directory.
+    related: [Directory, File System, Command Line]
 
   - term: Prompt
     cat: Computing Skills 
@@ -200,15 +258,34 @@ glossary:
     definition: means creating a set of instructions for a computer on how to execute operations in order, following the assumptions and logical conditions of the algorithm. Many programming languages facilitate communication between the code developer and the computing machine. Bash enables a shell scripting using a command-line interpreter for automating repetitive tasks by executing pre-defined commands according to requested conditionals and loops. More advanced analytical operations, including mathematical and statistical functions, modifying complex data structures, or processing non-text data, usually require a higher-level programming language such as Python or C++.
     related: [Algorithm, Command Line, Bash, Python, R, C++]
 
+  - term: Programming environment
+    cat: Computing Skills
+    definition: A layer of settings specific for a given programming language or type of developed application. It can be isolated from the general operating system and provides a kind of virtual environment with adjusted software configuration or modules loaded in a selected release. Virtual environments are commonly used when programming in Python and can be easily created using Conda (environment management system). 
+
+  - term: Project Directory
+    cat: Computing Skills
+    definition: "A structured workspace on SCINet supercomputers containing data, scripts, results, and documentation, usually associated with ARS Research Projects. After being added to the project group, users are able to access <b>/peoject/</b>project_name, <b>/90daydata/</b>project_name on Atlas and Ceres, and <b>/LTS/project/</b>project_name on Juno archive storage."
+    related: [Scratch Space, Metadata]
+
   - term: Pseudocode
     cat: Computing Skills
     definition: A representation of code or algorithm, summarizing the code. It is a readable step by step description of what the program should do.
     related: [Programming]
 
+  - term: Purge Policy
+    cat: Computing Skills
+    definition: A purge policy defines how and when files are automatically deleted from certain storage areas, such as temporary or scratch spaces, to manage disk usage and maintain system performance. On SCINet supercomputers the 90 day purge policy is set for <b>/90daydata/</b> path.
+    related: [Storage, Scratch Space]
+
   - term: Queue
     cat: Computing Skills
     definition: in distributed computing, it is an organized list (sequence) of tasks submitted to the job scheduler that manages the computational resources and decides to start or stop the task. The queue is ordered by wait time, user priority, and availability of requested resources. When the combination of these factors is advantageous, the submitted task begins executing, and so its status changes from waiting to running. The queuing system is typical for distributed computing, such as a network of computer clusters shared by more users. Some of the most popular workload managers are SLURM and PBS.
     related: [HPC, Distributed Computing, SLURM, PBS]
+
+  - term: Quota
+    cat: Computing Skills
+    definition: A <a href="https://scinet.usda.gov/guides/data/storage#quotas" target="_blank">storage limit</a> set by the HPC system, defining how much space a user or group can use.
+    related: [Scratch Space, Project Directory]
 
   - term: Raw Data
     cat: Data Science
@@ -219,6 +296,29 @@ glossary:
     cat: Computing Skills
     definition: Any other computer or computing network that the user can access by logging into the external network. Performing actions on a remote machine requires a secure login and often requires the user to have an account created by the network administrator. In scientific projects, we use remote computing machines as part of the HPC infrastructure to access high-performance computing and collaboratively share big data.
     related: [Distributed Computing, HPC, Local Machine]
+
+  - term: README
+    cat: Computing Skills
+    definition: A plain-text or markdown file placed in a directory that explains the contents, purpose, and usage of the files within it. A README is often included at the project or pipeline workspace level (and ideally in subfolders) to provide quick guidance and context for anyone accessing the directory.
+    related: [Project Directory, Workspace, README]
+
+  - term: Reproducibility
+    cat: Computing Skills
+    definition: The ability to repeat an analysis and obtain the same results, critical for robust scientific workflows.
+
+  - term: SCINet supercomputers
+    cat: Computing Skills
+    definition: Powerful computing infrastructure used to process large datasets efficiently, often required in modern research. This infrastructure provides two supercomputers (Atlas, Ceres) and Juno (archive storage).
+
+  - term: Scratch Space
+    cat: Computing Skills
+    definition: High-performance temporary storage on an HPC system, intended for active computations and subject to automatic purging. <i>See <a href="https://scinet.usda.gov/guides/data/storage#temporary-local-node-storage" target="_blank">Temporary Local Node Storage</a> guide for SCINet users.</i>
+    related: [Quota, Project Directory]
+
+  - term: Shared Space
+    cat: Computing Skills
+    definition: "Shared space is a storage area on the HPC system accessible by multiple users, typically used for collaboration and shared project data. On SCINet, shared spaces include /90daydata/shared for collaboration and centrally managed /reference/ location with pre-downloaded data/ and containers/."
+    related: [Project Directory, Access Permissions, Collaboration]
 
   - term: Shell
     cat: Computing Skills
@@ -234,10 +334,20 @@ glossary:
     cat: Computing Skills
     definition: The text result of a command
 
+  - term: Storage
+    cat: Computing Skills
+    definition: Storage is the capacity and infrastructure used to hold data on the HPC system. It includes various spaces, such as /home, /project, and temporary areas (e.g., /90daydata/), each designed for specific types of data and usage needs.
+    related: [File System, Directory, Project Directory, Home Directory]
+
   - term: Structured Data
     cat: Data Science
     definition: is highly organized in terms of easy digital deciphering. That includes a standardized format, enduring order, and categorization in a well-determined arrangement that facilitates managing and querying datasets in various combinations. A typical example of an organized data structure is a spreadsheet or relational database.
     related: [Digital Data, Unstructured Data, Big Data]
+
+  - term: Supercomputer
+    cat: Data Science
+    definition: or a computer cluster is a group of computing machines or servers that work together as a single system. Clusters provide high performance computing and parallel processing by distribution of tasks across multiple machines.
+    related: [Distributed Computing, Big Data]
 
   - term: Terminal
     cat: Computing Skills
@@ -254,6 +364,11 @@ glossary:
     definition: has no organized structure that can be easily detected, processed, and categorized by computer algorithms. This type of data is usually massive and descriptive in nature. A good example is the streams of highly varied text (e.g., emails, social media posts, online blogs, newspapers, books, and scientific publications), audio and video recording, images and photos, data from various sensors (weather, traffic), and medical records.
     related: [Digital Data, Structured Data, Big Data]
 
+  - term: Virtual Environment
+    cat: Computing Skills
+    definition: A virtual environment is an isolated workspace that allows users to manage specific software packages and dependencies without affecting the system-wide configuration.
+    related: [Python, Software Environment, Modules, Containers]
+
   - term: Visualization
     cat: Data Science
     definition: A highly visually influential and semantically meaningful form of modern communication methods. In Data Science, interactive graphing and creating concise infographics support both the ease of extracting insights and the opportunity for deeper analysis for those interested. That contributes to better knowledge retention.
@@ -261,7 +376,7 @@ glossary:
 
   - term: Web Browser
     cat: Data Science
-    definition: An application used to access internet and browse websites and web pages.
+    definition: An application used to access internet and browse websites and web pages. You can use web browser to access SCINet supercomputers via Open OnDemand interface.
 
   - term: Welcome Message
     cat: Computing Skills
@@ -271,6 +386,23 @@ glossary:
     cat: Computing Skills
     definition: A working directory for a project or computational task. It often appears as a variable or instruction that can be assigned a path to a selected location in the file system. That path is then used for all future commands that require a location, such as writing to a file. It is a common variable for workload managers on distributed computing infrastructures. The pathname of the current working directory can be accessed with the 'pwd' command or using the '$PWD' environmental variable.
     related: [HPC, Command Line]
+
+  - term: Working Directory
+    cat: Computing Skills
+    definition: "A working directory is the <b>active location</b> (usually within a workspace) where computations are executed and outputs are written during a run."
+    related: [HPC, Command Line]
+
+  - term: Workspace
+    cat: Computing Skills
+    definition: "A workspace is a <b>directory tree</b> created by a user to organize input data, scripts, intermediate files, and results for a specific analysis, pipeline, or computational task."
+    related: [HPC, Command Line]     
+
+### Bioinformatics
+
+  - term: Aligned Reads
+    cat: Bioinformatics
+    definition: Sequencing reads that have been mapped to a reference genome, with positions and alignment quality recorded in formats like SAM/BAM/CRAM.  
+    related: [Sequencing Technologioes, Alignment]
 
   - term: Alignment 
     alt: [Sequence Alignment]
@@ -299,82 +431,131 @@ glossary:
 
   - term: Annotation 
     cat: Bioinformatics
-    definition: Annotation
+    definition: The process of identifying and labeling functional elements in a genome or transcriptome, such as genes, exons, or regulatory regions.
 
   - term: Assembly 
     cat: Bioinformatics
-    definition: Assembly
+    definition: The computational reconstruction of longer sequences (contigs or scaffolds) from shorter sequencing reads.
     related: [Genome Assembly, Transcriptome Assembly]
+
+  - term: Base
+    cat: Bioinformatics
+    definition: "A single nucleotide unit: adenine (A), cytosine (C), guanine (G) and thymine (T) in a DNA strand or uracil (U) in RNA molecule. Bases are the fundamental building blocks of nucleotide sequences."
+    related: [DNA, RNA, Nucleotide Sequence]
 
   - term: Bioinformatics 
     cat: Bioinformatics
-    definition: Bioinformatics
+    definition: "Bioinformatics applies computational methods to manage, analyze, and interpret biological data. <b>Sequence Bioinformatics</b> involves processing and analysis of large-scale DNA, RNA, and protein sequences generated from high-throughput technologies to enable biological interpretation. Typical tasks include sequence alignment, motif discovery, gene prediction, variant calling, phylogenetic analysis, the annotation of genomes and transcriptomes, and expression quantification."
     related: [RNA-Seq, Sequencing Technologies, Big Data]
+
+  - term: Biological Sample
+    cat: Bioinformatics
+    definition: A source of genetic material (e.g., tissue, cells, soil) from which DNA or RNA is extracted for sequencing.
+    related: [DNA, RNA]
+
+  - term: Biological Sequences
+    cat: Bioinformatics
+    definition: Linear representations of DNA, RNA, or protein molecules that carry genetic or functional information.
+    related: [DNA, RNA, Protein]
 
   - term: Chromosome 
     cat: Bioinformatics
-    definition: Chromosome
+    definition: A long DNA molecule containing part or all of the genetic material of an organism, often organized into linear or circular structures.
     related: [DNA, Gene, Genome]
 
   - term: Contig 
     cat: Bioinformatics
-    definition: Contig
+    definition: A continuous DNA sequence assembled from overlapping sequencing reads, without gaps. Contigs often represent only partial regions of the genome. 
     related: [Read, Scaffold, RNA-Seq]
+
+  - term: Coverage
+    cat: Bioinformatics
+    definition: The average number of times each base in the genome is sequenced; higher coverage increases data accuracy and variant detection power.
+    related: [Read, Scaffold, RNA-Seq]
+
+  - term: Data Formats
+    cat: Bioinformatics
+    definition: Standardized ways of storing and organizing biological data to facilitate analysis and interoperability.
+    related: []
 
   - term: Differential Expression 
     cat: Bioinformatics
-    definition: Differential Expression
+    definition: A comparison of gene expression levels between samples or conditions to identify genes with statistically significant changes.
     related: [Gene Expression, Transcriptome, RNA-Seq]
     wiki: https://en.wikipedia.org/wiki/RNA-Seq#Differential_expression
 
   - term: DNA 
     cat: Bioinformatics
-    definition: DNA
-    related: [Gene, Gene Expression, Sequencing Technologies]
+    definition: <i>(Deoxyribonucleic Acid)</i> The molecule that carries genetic instructions in all living organisms and many viruses. DNA sequences are composed of A, G, C, T nucleotide bases.
+    related: [Base, Nucleotide Sequence, Gene]
 
   - term: Exon 
     cat: Bioinformatics
-    definition: Exon
+    definition: A segment of a gene that remains in the mature RNA transcript after splicing and typically encodes protein.
     related: [Gene Expression, Alternative Splicing]
     wiki: https://en.wikipedia.org/wiki/Exon
 
+  - term: Feature
+    cat: Bioinformatics
+    definition: A genomic element described in annotation files (e.g., gene, transcript, exon, regulatory region), defined by genomic coordinates and additional metadata.  
+    related: [Gene, Exon, Genomic Coordinates, Annotation]
+
+  - term: File Compression
+    cat: Bioinformatics
+    definition: Reducing file size using algorithms (e.g., gzip), often essential for handling large sequencing datasets. 
+
+  - term: File Extension 
+    cat: Bioinformatics
+    definition: The suffix of a file name that indicates its format (e.g., .fastq, .fa, .bam).
+
   - term: Gene 
     cat: Bioinformatics
-    definition: Gene
+    definition: A region of DNA that encodes a functional product, usually a protein or functional RNA.
     related: [DNA, Gene Expression, Chromosome]
 
   - term: Gene Expression 
     cat: Bioinformatics
-    definition: Gene Expression
-    related: [Transcriptome, RNA-Seq, Alternative Splicing]
+    definition: "The biological process by which information from a gene is used to produce RNA and, often, a protein product. <br>
+    In bioinformatics, gene expressionis is quantified as the amount of RNA transcribed from each gene. It is analyzed using sequencing data (e.g., RNA-seq) to determine when, where, and to what extent genes are active under specific biological conditions."
+    related: [Sequencing Technologies, RNA-Seq, Transcriptome]
 
   - term: Genome Assembly 
     cat: Bioinformatics
-    definition: Genome Assembly
-    related: [DNA, Sequencing Technologies, Alignment]
+    definition: The reconstruction of the complete DNA sequence of an organism's genome from sequencing reads.
+    related: [Sequencing Technologies, Read, DNA]
 
   - term: Genome Index
     cat: Bioinformatics
     definition: A data structure of a compressed full-text file containing the reference genome (e.g., .fna file). Using the genome index makes it efficient when searching a substring (e.g., matching reads) in a large text. Programs such as HISAT2 ⤴ (hisat2-build indexer) build the reference genome index using the FM-index ⤴ approach, where the data is both compressed and indexed to reasonably fit within a computer's memory.
-    related: [RNA-seq, Transcriptome Assembly, Mapping, Alignment, Sequencing]
+    related: [RNA-seq, Transcriptome Assembly, Mapping, Alignment, Sequencing Technologies]
+
+  - term: Genomic Coordinates
+    cat: Bioinformatics
+    definition: The precise location of a feature on a reference genome, defined by chromosome/contig name, start, and end positions (e.g., chr1:11869-12227).  
+    related: [Feature, Genomic Reference, Sequencing Technologies]
 
   - term: Genomic Reference 
     alt: [Reference Genome]
     cat: Bioinformatics
-    definition: Genomic Reference
+    definition: A curated and standardized representation of an organism's genome used for read alignment and variant analysis.
     related: [RNA-seq, Genome-guided Alignment, Transcriptome Assembly]
     wiki: https://en.wikipedia.org/wiki/Reference_genome
 
+  - term: High-Throughput Sequencing
+    cat: Bioinformatics
+    definition: Modern (experimental) sequencing technologies that generate massive volumes of sequence data quickly and cost-effectively.
+    related: [DNA, Sequencing Technologies]
+
   - term: Intron 
     cat: Bioinformatics
-    definition: Intron
+    definition: A non-coding segment of a gene that is removed from the RNA transcript during splicing.
     related: [Exon, Gene, Gene Expression]
     wiki: https://en.wikipedia.org/wiki/Intron
 
   - term: Isoform 
     alt: [transcript]
     cat: Bioinformatics
-    definition: Isoform
+    definition: An alternative version of a transcript produced from the same gene via alternative splicing or different transcription start sites.
     related: [Alternative Splicing, Gene Expression, Messenger RNA]
     wiki: https://en.wikipedia.org/wiki/Protein_isoform
 
@@ -392,50 +573,96 @@ glossary:
   - term: Multiple Sequence Alignment 
     alt: [MSA]
     cat: Bioinformatics
-    definition: Multiple Sequence Alignment
+    definition: A computational alignment of three or more biological sequences (DNA, RNA, or protein) to identify regions of similarity.
     related: [Sequence Alignment, Evolutionary Insights, SNP (polymorphism)]
 
   - term: Multiplexing 
     alt: [Multiplexed Sequencing]
     cat: Bioinformatics
-    definition: Multiplexing 
+    definition: A technique that allows multiple samples to be sequenced in a single run by adding unique barcode sequences to each sample.
     related: [RNA-Seq, Sequencing Technologies, optimization]
     tutorial: Tutorial
 
   - term: Nuclotide 
+    alt: [Base]
     cat: Bioinformatics
     definition: Nuclotide
-    related: [DNA, RNA, Monomer]
+    related: [DNA, RNA, Nuclotide Sequence]
+
+  - term: Nucleotide Sequence
+    cat: Bioinformatics
+    definition: An ordered string of nucleotide bases (A, T, C, G for DNA; A, U, C, G for RNA) that represents the genetic information of an organism.
+    related: [DNA, RNA, base]
+
+  - term: Platform Bias
+    cat: Bioinformatics
+    definition: Systematic errors or preferences introduced by a sequencing platform, which can affect base calling or representation of certain sequences.
+    related: [Sequencing Technologies, Read]
+
+  - term: Project Organization
+    cat: Bioinformatics
+    definition: The practice of setting up directories, managing files, and documenting processes for scalable, reproducible analysis.
+    related: []
+
+  - term: Public Databases
+    cat: Bioinformatics
+    definition: Curated online repositories that store biological sequences, annotations, and related metadata for research use.
+    related: []
 
   - term: Quality Control 
     alt: [of RNA-Seq data]
     cat: Bioinformatics
-    definition: Quality Control
+    definition: (<b>QC</b>) The process of assessing and filtering sequencing data (reads) for issues like low-quality bases, contamination, or adapter sequences before analysis.
     related: [RNA-Seq, Read, FastQC]
 
   - term: Read
     cat: Bioinformatics
-    definition: A text in 1-letter per nucleotide base notation for a single fragment of a sequence [DNA/RNA] obtained from sequencing experiment. Due to the huge size of genetic material (~250 million nucleotide in a single chromosome), a typical sequencing experiment requires fragmentation. The superset of selected/filtered fragments of unknown sequences creates the library. During sequencing, library items are encoded, providing a bulk set of reads (i.e., text strings specifying the order of nucleotides in fragments).
-    related: [RNA-Seq, Sequencing Technologies, quality control, assembly]
-    tutorial: https://bioinformaticsworkbook.org/introduction/terminology_index#gsc.tab=0 
+    definition: "A fragment of DNA or RNA sequences generated by a sequencing machine during sequencing experiment and saved in 1-letter per nucleotide base notation to a digital FASTQ file. 
+    Due to the huge size of genetic material (~250 million nucleotide in a single chromosome), a typical sequencing experiment requires fragmentation. 
+    The superset of selected/filtered fragments of unknown sequences creates the library. During sequencing, library items are encoded, providing a bulk set of reads (i.e., text strings specifying the order of nucleotides in fragments)."
+    related: [Sequencing Technologies, quality control, RNA-Seq]
+    tutorial: "/bioinformatics/resources/nomenclature"
     wiki: https://en.wikipedia.org/wiki/Read_(biology)
+
+  - term: Read Length
+    cat: Bioinformatics
+    definition: "The number of base pairs in a single sequencing read; affects alignment, assembly, and resolution of analysis.
+    <ul><li><b>short-read</b> - Sequencing reads typically 50-300 base pairs long, commonly produced by Illumina platforms, offering high accuracy.</li>
+    <li><b>long-read</b> - Sequencing reads that span thousands of bases, produced by platforms like PacBio or Oxford Nanopore, useful for resolving complex genomic regions.</li></ul>"
+    related: [DNA, Read, Transcriptome, RNA-Seq]
 
   - term: RNA 
     cat: Bioinformatics
-    definition: RNA
+    definition: <i>(Ribonucleic Acid)</i> A molecule that plays roles in coding, decoding, regulation, and expression of genes; includes messenger RNA (mRNA) and other types.
     related: [DNA, Transcriptome, RNA-Seq]
 
   - term: RNA-Seq 
     alt: [RNA Sequencing]
     cat: Bioinformatics
-    definition: RNA-Seq
-    related: [Gene Expression, Transcriptome Assembly, NGS (sequencing)]
+    definition: A sequencing-based method to quantify RNA transcripts, allowing measurement of gene expression and transcript diversity.
+    related: [Gene Expression, Transcriptome Assembly, Sequencing Technologies]
     tutorial: https://bioinformaticsworkbook.org/dataAnalysis/RNA-Seq/RNA-SeqIntro/RNAseq-intro#gsc.tab=0
     wiki: https://en.wikipedia.org/wiki/RNA-Seq
 
   - term: RNA-Seq Library
     cat: Bioinformatics
-    definition: RNA-Seq Library
+    definition: A prepared and processed collection of RNA-derived fragments with sequencing adapters, ready for input into a sequencer.
+    related: [Sequencing Technologies, High-Throughput Sequencing, Read]
+
+  - term: Sample Metadata
+    cat: Bioinformatics
+    definition: Contextual information about a biological sample (e.g., species, tissue type, treatment condition), critical for downstream analysis and interpretation.
+    related: [Biological Sample, Sequencing Technologies]
+
+  - term: Scaffold 
+    cat: Bioinformatics
+    definition: A higher-order sequence structure that connects and orders contigs using long-range information, with unresolved regions represented by gaps (Ns). It provides orientation and approximate layout of the genome.
+    related: [Contig, Read, RNA-Seq]
+
+  - term: Sequencing Technologies
+    cat: Bioinformatics
+    definition: The method or platform used to determine the order of nucleotides in DNA or RNA, such as Illumina, PacBio, or Oxford Nanopore.
+    related: [High-Throughput Sequencing, Read]
 
   - term: Single-end vs paired-end
     cat: Bioinformatics
@@ -447,21 +674,6 @@ glossary:
     <li>different sequencing depths</li></ul>"
     related: [RNA-Seq, Read, Sequencing Technologies]
 
-  - term: Scaffold 
-    cat: Bioinformatics
-    definition: Scaffold
-    related: [Contig, Read, RNA-Seq]
-
-  - term: Sequence 
-    cat: Bioinformatics
-    definition: Sequence
-    related: [biopolymers, Sequence Alignment, RNA - DNA - proteins]
-
-  - term: Sequencing Technologies 
-    cat: Bioinformatics
-    definition: Sequencing Technologies
-    related: [NGS, RNA-Seq, assembly]
-
   - term: Soft-Clip 
     alt: [of reads]
     cat: Bioinformatics
@@ -469,17 +681,34 @@ glossary:
     learn: LINK
     related: [RNA-seq, Reads Mapping, Reads Trimming]
 
+  - term: Throughput
+    cat: Bioinformatics
+    definition: The amount of sequencing data a platform can produce in a given run, usually measured in bases or reads per unit time.
+    related: [Sequencing Technologies, High-Throughput Sequencing]
+
+  - term: Transcript
+    cat: Bioinformatics
+    definition: An RNA molecule produced from a gene through transcription, represented in annotation files (e.g., GTF/GFF3) as a sequence of exons that may encode a protein or function as non-coding RNA.  
+    related: [RNA, Gene Expression]
+
   - term: Transcriptome 
     cat: Bioinformatics
-    definition: Transcriptome
+    definition: The full set of RNA transcripts (coding and non-coding) expressed in a cell, tissue, or organism at a given time.
     related: [RNA, Gene Expression, Alternative Splicing]
 
   - term: Transcriptome Assembly 
     cat: Bioinformatics
     related: [RNA-Seq, Gene Expression]
-    definition: "Transcriptome Assembly"
+    definition: The reconstruction of transcript sequences from RNA-seq reads, often used when no reference genome is available.
     tutorial: https://bioinformaticsworkbook.org/dataAnalysis/RNA-Seq/RNA-SeqIntro/RNAseq-using-a-genome.html#gsc.tab=0
     wiki: https://en.wikipedia.org/wiki/RNA-Seq#Transcriptome_assembly
+
+  - term: Variant
+    cat: Bioinformatics
+    definition: A difference between a sample's sequence and the reference genome, such as a single nucleotide polymorphism (SNP), insertion, deletion, or structural change, typically stored in VCF/BCF files.  
+    related: []
+
+### Geospatial
 
   - term: Spatial Interpolation
     cat: Geospatial

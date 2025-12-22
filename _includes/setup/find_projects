@@ -1,0 +1,24 @@
+{% assign id = include.id | default: "find-projects" %}
+<div id="proj-check" class="usa-accordion">
+{% include accordion title="Check your membership in projects" class="note" icon=true controls=id %}
+<div class="accordion_content" id="{{ id }}" markdown='1' hidden>
+If you don't know what projects you have available, you can check by running:
+```bash
+sacctmgr -Pns show user format=account,defaultaccount
+```
+Or use:
+```bash
+id $USER | grep "proj"  # check group membership
+```
+</div>
+</div>
+
+{% if include.keep == "true" %}
+<div class="highlighted highlighted--basic"><div class="highlighted__body" markdown="1">
+To start interactive session or run jobs on compute nodes of either cluster, the jobs need to be associated with a slurm account. 
+For users that have access to one or more project directories, their slurm accounts have same names as the project directories. 
+The slurm account for **new users** without project directories is called **sandbox**. To specify slurm account, either use: 
+- `-A <project_name>` on the slurm command (`srun`, `salloc`, `sbatch`) 
+- or add the `#SBATCH -A <project_name>` line to your job script.
+</div></div>
+{% endif %}

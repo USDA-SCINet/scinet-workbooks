@@ -1,5 +1,7 @@
-Create your wookbook directory and navigate to it:{% include setup/check_path folder=include.folder %}  
+Create your working directory and navigate to it:{% include setup/check_path folder=include.folder %}  
+{% assign target = include.dir | default: mkdir %}
 ```bash
-mkdir -p /90daydata/shared/$USER/{{ mkdir }}
-cd /90daydata/shared/$USER/{{ mkdir }}
+mkdir -p /90daydata/shared/$USER/{{ target }}
+cd /90daydata/shared/$USER/{{ target }}
+pwd      # your current path: /90daydata/shared/<user.name>/{{ target }}
 ```

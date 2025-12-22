@@ -1,0 +1,21 @@
+<div markdown="1">
+
+The `/reference/data/` location provides centrally maintained datasets and pre-downloaded databases that are commonly used in research workflows. This space is accessible to all users in read-only mode, ensuring shared reference data can be used consistently without being altered. 
+```bash
+ls -lh /reference/data
+
+# directory contents
+drwxrwxr-x.  2 4.0K Feb  2  2022 BUSCO
+drwxr-xr-x.  2 4.0K Nov 20  2023 Genome
+drwxrwxr-x.  2 4.0K Jan 30  2025 NCBI
+drwxr-xr-x.  2 4.0K Oct  3  2024 Pfam
+drwxrwxr-x.  2 4.0K Oct  6  2016 RepBase
+drwxrwxr-x.  2 4.0K Jul  7 12:21 Uniprot
+drwxr-xr-x.  2 4.0K Mar  8  2024 alphafill
+drwxrwxr-x.  2 4.0K Dec 16  2024 alphafold
+...
+```
+
+It is intended to save time and storage by offering shared access to large, frequently used resources (e.g., genome assemblies or protein databases). Instead of each user downloading and storing their own copy, everyone can access and use in a task the same curated data directly from this location.
+
+</div>

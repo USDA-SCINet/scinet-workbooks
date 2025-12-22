@@ -37,21 +37,8 @@ Introduction to your tutorial and what the tutorial aims to accomplish.
 ## Accessing SCINet
 
 <div class="process-list" markdown="1">
-
-### Request a SCINet account
-
-A SCINet account is required to access SCINet. You can [request a SCINet account by visiting here](https://scinet.usda.gov/about/signup#sign-up-for-a-scinet-account).
-A SCINet account provides access to two high performance computing clusters - Ceres and Atlas - as well as the long-term storage device, Juno. For more information on our compute resources, see our [Computing Resources guide](https://scinet.usda.gov/guides/resources/#scinet-computing-resources).
-
-### Log in to SCINet
-
-Once your SCINet account has been approved, you will be able to login to SCINet and gain access to our computing resources. If you encounter issues with your account, please email scinet_vrsc@usda.gov.
-You can log in to SCINet via our web-based Open OnDemand interface or via ssh. Most of the tutorials are designed for Open OnDemand, and unless otherwise specified you do not need to use a direct SSH connection to SCINet clusters. 
-* Log in to [Ceres Open OnDemand](http://ceres-ood.scinet.usda.gov/). 
-* Log in to [Atlas Open OnDemand](https://atlas-ood.hpc.msstate.edu/).  
-
-For more information on login procedures for SCINet access, including our SSH access instructions, see the [SCINet access user guide](https://scinet.usda.gov/guides/access/). 
-
+{% include setup/scinet_access %}
+{% include setup/scinet_login keep="true" %}
 </div>
 
 ## Setting up your workspace
@@ -170,17 +157,8 @@ Note: Each tutorial may have specific inputs depending on the resource needs and
 
 <div class="process-list ul" markdown="1">
 
-### Using the Shell
-
-Most of the tutorials can be completed using the [Open OnDemand interface (OOD)](https://scinet.usda.gov/guides/use/open-ondemand).  
-* Log in to [Ceres Open OnDemand](http://ceres-ood.scinet.usda.gov/). 
-* Log in to [Atlas Open OnDemand](https://atlas-ood.hpc.msstate.edu/).  
-
-After logging in to SCINet via OOD, you will be directed to the OOD homepage associated with the cluster (Ceres or Atlas) you are accessing: 
-
-[placeholder for image]
-
-While on the home page of your cluster, you can open a command-line session by clicking on "Clusters" -> "Ceres/Atlas Shell Access" on the top menu. This will open a new tab with a command-line session on Ceres'/Atlas' login node.  
+{% include setup/scinet_login %}
+{% include setup/ood_shell %}
 
 From here, your tutorial may have specific instructions for you to execute.  One of the first steps is often to [request a compute note and create a working directory in /90daydata](#making-your-workspace-directory-in-90daydata), as explained above.
 

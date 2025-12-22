@@ -1,0 +1,17 @@
+<div class="highlighted highlighted--basic"><div class="highlighted__body" markdown="1">
+* With **SCINet account** you get small storage quota (30GB) in your `/home/<user.name>/` directory. This is a personal storage space assigned to an individual user.
+* As a member of ARS **research project**, you get access to group-shared large storage quota (e.g., 1TB) in a specific `/project/<project_name/>` directory and `/90daydata/<project_name>/` space for unlimited but temporary files (with 90-day auto-purge policy). *Ask your PI to be added to the [project group](https://scinet.usda.gov/guides/data/storage#project-directories).*
+* **Everyone** has access to shared space in `/90daydata/shared` dedicated for cross-group collaboration and to `$TMPDIR` when using a compute node.
+</div></div>
+
+{% include table caption="Storage types and key characteristics on SCINet" content="|      | /home     | /project  | /90daydata | $TMPDIR    | /LTS/project/ |
+|---------------|-----------|-----------|------------|------------|-----------|
+| Location  | Atlas, Ceres | Atlas, Ceres | Atlas, Ceres | Atlas, Ceres | Juno |
+| Quota     | 30GB      | 1TB       | no quota   | ~1.5TB     | 1TB or more |
+| Duration  | permanent | permanent | 90-day purge | job runtime | permanent |
+| Backup    | No        | No        | No         | No         | Yes       |
+| Compute   | limited   | Yes       | Yes        | Yes (fast) | No        |
+| Access    | User      | Group     | All (**shared/**) | User | Group    |
+| Purpose   | scripts, configs | installs, data, research | tmp data, large research | compute node only, intensive I/O | long-term storage |
+| Docs      | [guide](https://scinet.usda.gov/guides/data/storage#home-directories) | [guide](https://scinet.usda.gov/guides/data/storage#project-directories) | [guide](https://scinet.usda.gov/guides/data/storage#large-short-term-storage) | [guide](https://scinet.usda.gov/guides/data/storage#temporary-local-node-storage) | [guide](https://scinet.usda.gov/guides/data/data-management#data-and-storage-sop)" %}
+

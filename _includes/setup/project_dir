@@ -1,0 +1,58 @@
+<div markdown="1">
+
+[Project directories](https://scinet.usda.gov/guides/data/storage#project-directories) are usually associated with ARS Research Projects. They are shared between group members working on the same project. Project manager can give and revoke access to the project directory to other SCINet users. After being added to the project group, users are able to access:
+
+<div class="usa-accordion" data-allow-multiple style="margin-top: 1em;">
+
+{% include accordion title="/project/<span style='font-weight: 300;'>&emsp; project storage with quota (Atlas/Ceres); recommended for installations</span>" class="info" controls="proj-1" icon=false %}
+<div id="proj-1" class="accordion_content" markdown='1' hidden> 
+<https://scinet.usda.gov/guides/data/storage#project-directories>
+```bash
+cd /project/<project_name>          # on Atlas or Ceres
+```
+
+- Default quota for `/project/<project_name>` is set to **1TB**. 
+- Directories in `/project` are not automatically backed up. 
+- Project directories are not meant to be used as a data archive. 
+  - Data that cannot be easily reproduced should be manually copied to [Juno](https://scinet.usda.gov/guides/data/storage#juno-archive-storage).
+</div>
+
+{% include accordion title="/90daydata/<span style='font-weight: 300;'>&emsp; large short-term storage without quota (Atlas/Ceres) for computations</span>" class="info" controls="proj-2" icon=false %}
+<div id="proj-2" class="accordion_content" markdown='1' hidden> 
+<https://scinet.usda.gov/guides/data/storage#large-short-term-storage>
+```bash
+cd /90daydata/<project_name>        # on Atlas or Ceres
+``` 
+- `/90daydata/<project_name>` has no quota, which provides flexibility for computations that generate large amounts of intermediate data.
+- Files with an access time (`atime`) older than 90 days will be automatically deleted. This is permanent and the files cannot be recovered. No backup for this space.
+- 90daydata directories are not meant to be used as a data archive. 
+  - Data that cannot be easily reproduced should be manually copied to [Juno](https://scinet.usda.gov/guides/data/storage#juno-archive-storage).
+</div>
+
+{% include accordion title="/LTS/project/<span style='font-weight: 300;'>&emsp; ARS archive storage device on Juno</span>" class="info" controls="proj-3" icon=false %}
+<div id="proj-3" class="accordion_content" markdown='1' hidden> 
+<https://scinet.usda.gov/guides/data/storage#juno-archive-storage>
+```bash
+cd /LTS/project/<project_name>      # on Juno
+```
+- Data that cannot be easily reproduced should be manually copied to Juno.
+  - For instructions on how to transfer data to and from Juno, see [Managing Data on ARS HPC and Storage Infrastructure](https://scinet.usda.gov/guides/data/data-management).
+</div>
+
+</div>
+
+In all these locations, users with granted access can freely create subfolders, either for their own workspaces or to organize outputs from different pipeline steps.
+
+<div class="highlighted highlighted--highlighted"><div class="highlighted__body" markdown="1"> 
+<details markdown="1"><summary>Software installs (e.g., conda environments) should be done in <b>/project</b>.</summary>
+It is recommended to install software, such as Python, Perl, R packages and conda virtual environments in `/project/<project_name>`. The [Conda Guide](https://scinet.usda.gov/guides/software/conda#example-2-installing-tensorflow-into-a-project-directory) provides instructions on how to install conda virtual environments in `/project`, while [Guide to Installing R, Python, and Perl Packages](https://scinet.usda.gov/guides/software/r-perl-python) has examples of installing packages in a project directory.
+</details>
+</div></div> 
+
+<div class="highlighted highlighted--highlighted"><div class="highlighted__body" markdown="1">
+<details markdown="1"><summary>Computations should be run from <b>/90daydata</b>&ensp;or&ensp;<b>/project</b>.</summary> 
+Since project directories in `/project` have limited quotas, in most cases computations should be run from `/90daydata/<project_name>` which does not have quota. However, files with an access time (atime) older than 90 days will be automatically deleted.  
+</details>
+</div></div>
+
+</div>

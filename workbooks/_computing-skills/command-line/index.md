@@ -3,7 +3,7 @@ title: "Introduction to Command Line Computing"
 description: "Important command-line skills for navigating and managing files in a Unix-based system"
 
 index: 1
-order: 1
+order: 2
 tags: [unix, command line]
 
 type: introduction

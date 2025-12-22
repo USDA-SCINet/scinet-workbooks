@@ -1,0 +1,22 @@
+<div markdown="1">
+
+The [/reference/containers](https://scinet.usda.gov/guides/software/singularity#ceres-container-repository) location provides a collection of (~100) pre-built software containers maintained by the system administrators. All users can access and run these containers on both Atlas and Ceres supercomputers, ensuring reproducibility and saving time when setting up pipelines. 
+
+```bash
+ls -lh /reference/data
+
+# directory contents
+drwxr-xr-x. 2 4.0K Mar 12  2025 alphafold
+drwxrwxr-x. 2 4.0K Feb  4  2025 braker
+drwxr-xr-x. 2 4.0K Mar 23  2023 cufflinks
+drwxrwxr-x. 2 4.0K Oct 18  2023 funannotate
+drwxrwxr-x. 2 4.0K May  3  2023 gatk
+drwxrwxr-x. 2 4.0K Jun 28  2019 nanopolish
+drwxrwxr-x. 2 4.0K Dec 10  2024 opendronemap
+...
+```
+
+This directory contains downloaded container images that can be executed with [Apptainer](https://scinet.usda.gov/guides/software/singularity#executing-containers) (e.g., `apptainer run`, `apptainer exec`). Many of them can be loaded as [environment modules](https://scinet.usda.gov/guides/software/preinstalled#ceres-command-line-software-managed-by-the-module-system), allowing users to run pre-configured software directly (e.g., `salmon -h`) without manual installation or invoking Apptainer. Containers should be executed on a [compute node](https://scinet.usda.gov/guides/software/singularity#prerequisites) or submitted to the [SLURM queue](https://scinet.usda.gov/guides/use/slurm#slurm-resource-manager). 
+
+
+</div>
