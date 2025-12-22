@@ -202,15 +202,17 @@ This tutorial introduces best practices for setting up research projects on SCIN
 
 First, you will log in through **Open OnDemand (OOD)** and use the shell to access SCINet file system locations.
 
-<div class="usa-accordion" style="margin-top: 1em;">
+<!--{% comment %} <div class="usa-accordion" style="margin-top: 1em;">
 
 {% include accordion title="<h3 style='margin: 0; border-bottom: none; font-size: 1.1em; display: inline;'>Access the shell via SCINet OOD</h3><span style='font-weight: 300;'>(required) used for accessing supercomputers</span>" class="primary" controls="access-scinet" icon=false %}
 <div id="access-scinet" class="accordion_content" markdown='1' hidden> 
 {% include setup/scinet_access %}
 {% include setup/scinet_login %}
-{% include setup/ood_shell %}
+{% include setup/ood/shell %}
 </div>
-</div>
+</div> {% endcomment %}-->
+
+{% include setup/ood/accord shell=true %}
 
 The goal is to help you manage research projects efficiently by choosing the right location for your pipeline workspace and structuring it wisely, making effective use of temporary storage within system limits, and maintaining clear documentation for reproducibility and collaboration.
 

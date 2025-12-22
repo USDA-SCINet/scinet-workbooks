@@ -60,14 +60,16 @@ Explore how to create efficient and reproducible software ecosystems for your re
 
 First, you will log in through **Open OnDemand (OOD)** and use the shell to access SCINet file system locations.
 
-<div class="usa-accordion" style="margin-top: 1em;">
+<!--{% comment %} <div class="usa-accordion" style="margin-top: 1em;">
 
 {% include accordion title="<h3 style='margin: 0; border-bottom: none; font-size: 1.1em; display: inline;'>Access the shell via SCINet OOD</h3><span style='font-weight: 300;'>(required) used for accessing supercomputers</span>" class="primary" controls="access-scinet" icon=false %}
 <div id="access-scinet" class="accordion_content" markdown='1' hidden> 
 {% include setup/scinet_login %}
-{% include setup/ood_shell %}
+{% include setup/ood/shell %}
 </div>
-</div>
+</div> {% endcomment %}-->
+
+{% include setup/ood/accord shell=true %}
 
 The goal is to introduce the environment options available on SCINet supercomputers and show how they can be combined flexibly to support efficient, portable, and reproducible research. You’ll explore tools like modules, containers, and virtual environments (Conda, venv), along with shell features like aliases and environment variables, to streamline your workflows and ensure consistency across systems.
 

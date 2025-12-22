@@ -1,0 +1,21 @@
+### Launch the shell
+
+After logging in to [SCINet via OOD](https://scinet.usda.gov/guides/use/open-ondemand), you will be directed to the OOD homepage associated with the cluster (Ceres or Atlas) you are accessing:
+
+<details open><summary>Ceres OOD interface</summary>
+<img src="/contribute/assets/ceres_ood.png" alt="Ceres shell access via OOD">
+</details>
+
+<details><summary>Atlas OOD interface</summary>
+<img src="/contribute/assets/atlas_ood.png" alt="Atlas shell access via OOD">
+</details>
+
+{% include setup/ood/shell_access %}
+
+<details open><summary>Ceres shell interface</summary>
+<img src="/contribute/assets/ceres_shell.png" alt="Ceres shell interface on OOD">
+</details>
+
+<details><summary>Atlas shell interface</summary>
+<img src="/contribute/assets/atlas_shell.png" alt="Atlas shell interface on OOD">
+</details>

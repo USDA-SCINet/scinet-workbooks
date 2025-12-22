@@ -233,13 +233,15 @@ First, you will log in through **Open OnDemand (OOD)** and use the shell to acce
 
 <div class="usa-accordion" style="margin-top: 1em;">
 
-{% include accordion title="<h3 style='margin: 0; border-bottom: none; font-size: 1.1em; display: inline;'>Access the shell via SCINet OOD</h3><span style='font-weight: 300;'>(required) used for accessing supercomputers</span>" class="primary" controls="access-scinet" icon=false %}
+<!--{% comment %}{% include accordion title="<h3 style='margin: 0; border-bottom: none; font-size: 1.1em; display: inline;'>Access the shell via SCINet OOD</h3><span style='font-weight: 300;'>(required) used for accessing supercomputers</span>" class="primary" controls="access-scinet" icon=false %}
 <div id="access-scinet" class="accordion_content" markdown='1' hidden> 
 {% include setup/scinet_access %}
 {% include setup/scinet_login %}
 {% include setup/ood_shell %}
 </div>
-</div>
+</div>{% endcomment %}-->
+{% include setup/ood/accord %}
+
 
 The goal is to help you set up and organize a well-structured **workspace for bioinformatics workflows** by creating a clear directory structure, using the appropriate storage tiers for inputs, temporary files, and results, and documenting your pipeline for reproducibility and collaboration.
 

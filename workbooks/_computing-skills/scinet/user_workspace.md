@@ -77,14 +77,7 @@ With access to SCINet infrastructure you have multiple options for storing your 
 
 First, you will log in through **Open OnDemand (OOD)** and use the shell to access SCINet file system locations.
 
-<div class="usa-accordion" style="margin-top: 1em;">
-
-{% include accordion title="<h3 style='margin: 0; border-bottom: none; font-size: 1.1em; display: inline;'>Access the shell via SCINet OOD</h3><span style='font-weight: 300;'>(required) used for accessing supercomputers</span>" class="primary" controls="access-scinet" icon=false %}
-<div id="access-scinet" class="accordion_content" markdown='1' hidden> 
-{% include setup/scinet_login %}
-{% include setup/ood_shell %}
-</div>
-</div>
+{% include setup/ood/accord shell=true %}
 
 The goal is to help you get started with SCINet high-performance computing by creating well-structured workspaces in a temporary location with no quota for practicing tutorials. You’ll learn where and how to build these spaces within system policies, preparing you for more advanced workflows and persistent research projects.
 

@@ -51,13 +51,22 @@ If you need a SCINet account, please refer to [Getting started with SCINet](/com
 
 First, you will log in through **Open OnDemand (OOD)** in your web browser and explore the available interfaces.
 
-<div class="usa-accordion" style="margin-top: 1em;">
+
+<div class="usa-accordion">
+
+{% include accordion title="Access SCINet via OOD <span class='h-note'>(required) used for accessing supercomputers</span>" class="primary" controls="access-scinet" %}
+<div id="access-scinet" class="accordion_content" markdown='1' hidden> 
+{% include setup/scinet_login basic=true %}
+</div>
+</div>
+
+<!--{% comment %} <div class="usa-accordion" style="margin-top: 1em;">
 
 {% include accordion title="<h3 style='margin: 0; border-bottom: none; font-size: 1.1em; display: inline;'>Access SCINet via OOD</h3><span style='font-weight: 300;'>(required) used for accessing supercomputers</span>" class="primary" controls="access-scinet" icon=false %}
 <div id="access-scinet" class="accordion_content" markdown='1' hidden> 
 {% include setup/scinet_login keep="true" %}
 </div>
-</div>
+</div> {% endcomment %}-->
 
 ### Choose an interface
 
@@ -74,7 +83,7 @@ Note: Each tutorial may have specific inputs depending on the resource needs and
 
 <div class="process-list ul" markdown="1">
 
-{% include setup/ood_shell %}
+{% include setup/ood/shell %}
 
 From here, your tutorial may have specific instructions for you to execute.  One of the first steps is often to request a compute note and create a working directory in `/90daydata`, as explained in the [Setting up your workspace](/computing-skills/scinet/user_workspace) tutorial.
 

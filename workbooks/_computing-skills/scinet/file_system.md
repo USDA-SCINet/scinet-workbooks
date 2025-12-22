@@ -192,15 +192,17 @@ Each location listed in a table is linked to detailed documentation, where you c
 It is useful to take a quick tour of the **key file system locations** available on SCINet supercomputers. 
 First, you will log in through **Open OnDemand (OOD)** and use the shell to explore the main directories.
 
-<div class="usa-accordion" style="margin-top: 1em;">
+<!--{% comment %} <div class="usa-accordion" style="margin-top: 1em;">
 
 {% include accordion title="<h3 style='margin: 0; border-bottom: none; font-size: 1.1em; display: inline;'>Access the shell via SCINet OOD</h3><span style='font-weight: 300;'>(required) used for accessing supercomputers</span>" class="primary" controls="access-scinet" icon=false %}
 <div id="access-scinet" class="accordion_content" markdown='1' hidden> 
 {% include setup/scinet_access %}
 {% include setup/scinet_login %}
-{% include setup/ood_shell %}
+{% include setup/ood/shell %}
 </div>
-</div>
+</div> {% endcomment %}-->
+
+{% include setup/ood/accord shell=true %}
 
 The goal is to understand what each location is meant for and how it fits into the workflow of building and running bioinformatics pipelines. 
 Knowing these spaces will help you find reference datasets or software and decide where to place different types of files when setting up a new bioinformatics project. Once you are familiar with these locations, you will be ready to set up your own workspace or working directory for the pipeline.

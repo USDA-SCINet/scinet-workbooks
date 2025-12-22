@@ -1,0 +1,13 @@
+<div class="usa-accordion">
+
+{% include accordion title="Access SCINet via OOD <span class='h-note'>(required) used for accessing supercomputers</span>" class="primary" controls="access-scinet" icon=false %}
+<div id="access-scinet" class="accordion_content" markdown='1' hidden> 
+{% include setup/ood/access %}
+
+{% if include.shell %}
+After logging in, you will be directed to the OOD homepage associated with the cluster you are accessing.  
+
+{% include setup/ood/shell_access %} 
+{% endif %}
+</div>
+</div>
