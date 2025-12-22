@@ -1,0 +1,8 @@
+{% assign takeaways = include.takeaways | default: page.takeaways %}
+<h2>{{ include.title | default: "Lesson Takeaways" }}</h2>
+
+<ul>
+  {% for takeaway in takeaways %}
+    <li>{{ takeaway }}</li>
+  {% endfor %}
+</ul>
