@@ -6,8 +6,9 @@ author: [Aleksandra Badaczewska, The SCINet Office]
 index: 1
 order: 1
 
-tags: [unix, command line]
-terms: [SCINet supercomputers, Supercomputer, HPC, Local Machine, Remote Machine, Open OnDemand, Web Browser, Unix Shell, Command Line Interface, Command]
+tags: [SCINet]
+terms: [SCINet supercomputers, Supercomputer, HPC, Open OnDemand, Web Browser, SSH]
+# terms: [SCINet supercomputers, Supercomputer, HPC, Local Machine, Remote Machine, Open OnDemand, Web Browser, Unix Shell, Command Line Interface, Command]
 
 objectives:
 - Introduce the SCINet Initiative and its mission in advancing scientific computing.
