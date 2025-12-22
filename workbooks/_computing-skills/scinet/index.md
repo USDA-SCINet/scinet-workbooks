@@ -71,8 +71,8 @@ These foundational exercises will help you configure your workspace and project 
 As a new user, begin by exploring the SCINet interfaces and navigating the core areas of the file system. 
 These steps provide concise, practical guidance and will greatly facilitate your work on the system.
 
-* **(selected)** [Accessing interfaces on SCINet](/computing-skills/scinet/interfaces) *(Shell, RStudio, JupyterLab, VS Code)*
-* **(required)** [File system on Atlas and Ceres supercomputers](/computing-skills/scinet/file_system)
+* **(selected)** [Accessing interfaces on SCINet](interfaces) *(Shell, RStudio, JupyterLab, VS Code)*
+* **(required)** [File system on Atlas and Ceres supercomputers](file_system)
 
 ### Set up user workspace
 
@@ -82,7 +82,7 @@ You can also use collaborative space in `/90daydata/shared`.
 </div></div>
 
 With your SCINet account activated, you can quickly configure a **personal workspace** to work through the tutorials provided in this workbook. 
-* **(required)** [Setting up your workspace]()
+* **(required)** [Setting up your workspace](user_workspace)
 * **(optional)** [Customizing your shell](/computing-skills/command-line/configuration/)
 
 ### Set up project workspace
@@ -92,7 +92,7 @@ Users are advised to [request a SCINet project](https://scinet.usda.gov/support/
 </div></div>
 
 With your SCINet project approved, set up the **project workspace** to launch your research tasks.
-* **(required)** [Project setup on SCINet’s supercomputers](/computing-skills/scinet/project_setup)
+* **(required)** [Project setup on SCINet’s supercomputers](project_setup)
 
 ### Set up software environment
 
@@ -104,7 +104,7 @@ or they can download and install packages in their `/project` directories.
 </div></div>
 
 With your first computing task underway, set up the **software environment** for efficient workflows.
-* **(required)** [Setting up a reproducible environment](/computing-skills/scinet/environment)
+* **(required)** [Setting up a reproducible environment](environment)
 
 </div>
 

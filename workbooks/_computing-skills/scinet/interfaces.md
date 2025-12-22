@@ -39,7 +39,7 @@ overview: [objectives, applications, terminology]
 
 <div class="highlighted highlighted--basic"><div class="highlighted__body" markdown="1">
 An activated SCINet account with confirmed login access is required before using any interface.  
-If you need a SCINet account, please refer to [Getting started with SCINet](/computing-skills/scinet/) for instructions.  
+If you need a SCINet account, please refer to [Getting started with SCINet](../scinet/) for instructions.  
 </div></div>
 
 ## Overview
