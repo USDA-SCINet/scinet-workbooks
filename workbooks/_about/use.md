@@ -12,15 +12,13 @@ mkdir: getting-started_dir
 survey: true
 subject: "computing-skills" ## add to the computing skills section
 type: interactive tutorial
+
+note: "This quickstart guide provides the basic foundations needed for getting started with the learning material included on this website.  <br>
+  If you would like to learn more about the subjects covered in this quickstart guide, see our [Getting started with SCINet](/computing-skills/scinet/) learning module."
 ---
 
 
 ## Overview
-
-This quickstart guide provides the basic foundations needed for getting started with the learning material included on this website.  
-
-If you would like to learn more about the subjects covered in this quickstart guide, see our [Getting started with SCINet](/computing-skills/scinet/) learning module.
-
 
 {% include overviews %}
 
@@ -66,6 +64,20 @@ To create a working directory:
     ```
     srun -A <project_name> -t 01:00:00 --pty bash
     ```
+    <div class="usa-accordion padding-top-2">
+    {% include accordion title="Check what projects you have available" class="note" icon=true controls="find-projects-1" %}
+    <div class="accordion_content" id="find-projects-1" markdown='1' hidden>
+    
+    If you don't know what projects you have available, you can check by running:
+    
+    ```bash
+    sacctmgr -Pns show user format=account,defaultaccount
+    ```
+    
+    New users without project access can use the slurm account **sandbox**
+    
+    </div>
+    </div>
 1.  {% include setup/mkdir %}
 
 ### Creating a Conda environment
@@ -111,12 +123,12 @@ Most tutorials that use Conda environments default to creating the environment i
 
 ### Modifying workflows to use /project
 
-If you would like to use your project space instead of `/90daydata`, you can modify the tutorial instructions by substituting `/project/`<project_name>`/` wherever you see `/90daydata/shared/$USER/`.
+If you would like to use your project space instead of `/90daydata`, you can modify the tutorial instructions by substituting `/project/<project_name>/` wherever you see `/90daydata/shared/$USER/`.
 
 <div class="usa-accordion">
 
-{% include accordion title="Check what projects you have available" class="note" icon=true controls="find-projects" %}
-<div class="accordion_content" id="find-projects" markdown='1' hidden>
+{% include accordion title="Check what projects you have available" class="note" icon=true controls="find-projects-2" %}
+<div class="accordion_content" id="find-projects-2" markdown='1' hidden>
 
 If you don't know what projects you have available, you can check by running:
 ```bash
