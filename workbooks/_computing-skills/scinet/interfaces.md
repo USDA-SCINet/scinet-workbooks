@@ -12,7 +12,7 @@ header:
   overlay_image: 
 svg: /genomics.svg
 
-terms: [SCINet supercomputers, Local Machine, Open OnDemand, Web Browser, Unix Shell, Development environment, IDE]
+terms: [SCINet supercomputers, Local Machine, Open OnDemand, Web Browser, Unix Shell, Development Environment, IDE]
 
 objectives: 
   - Understand the different interfaces available on SCINet for interacting with the system.
@@ -38,11 +38,9 @@ overview: [objectives, applications, terminology]
 
 ---
 
-
-<div class="highlighted highlighted--basic"><div class="highlighted__body" markdown="1">
 An activated SCINet account with confirmed login access is required before using any interface.  
 If you need a SCINet account, please refer to [Getting started with SCINet](../scinet/) for instructions.  
-</div></div>
+
 
 ## Overview
 
@@ -72,7 +70,21 @@ First, you will log in through **Open OnDemand (OOD)** in your web browser and e
 
 ## Available interfaces
 
-There are multiple different interfaces available on SCINet.  In this section, we provide template instructions for launching these interfaces and provide an overview of each input parameter.
+* **[Jupyter](https://scinet.usda.gov/guides/ide/jupyter)** is an Integrated Development Environment (IDE) that provides an interactive and collaborative environment for scientific computing. This interactive coding environment allows for immediate execution and visualization of code, facilitating on-the-fly data analysis and visualization. It supports over 40 programming languages (including Python, R, Julia, Java, and Scala) and seamlessly integrates with popular data science libraries.
+
+* **[RStudio](https://scinet.usda.gov/guides/ide/r-studio)** is an IDE for the R programming language, with limited support for other programming languages (including Python, bash, and SQL).
+
+* **[Microsoft’s Visual Studio Code](https://scinet.usda.gov/guides/ide/r-studio)** (VS Code) is a popular source-code editor and development environment with support for many different programming languages.
+  
+  There are two main ways to use VS Code on SCINet clusters. One is to use the VS Code interactive application in Open OnDemand. The second is to use the Microsoft “Remote – Tunnels” extension that connects to the cluster from your local VS Code session via a secure tunnel, allowing you to execute your code on the cluster from within your local VS Code session.
+
+*  **[The Shell](/computing-skills/command-line/)** - The Command Line Interface is a text-based way to interact with a computer by typing text commands in a program called a terminal, rather than using point-and-click navigation in a graphical interface.
+  
+   To launch the shell via OoD, you can open a command-line session from the homepage by clicking on “Clusters” -> “Ceres/Atlas Shell Access” on the top menu. This will open a new tab with a command-line session on the login node.
+
+
+
+<!--There are multiple different interfaces available on SCINet.  In this section, we provide template instructions for launching these interfaces and provide an overview of each input parameter.
 
 - [Launch the Shell](#launch-the-shell)
 - [Launch RStudio](#launch-rstudio)
@@ -165,7 +177,7 @@ Fill the input fields with the following:
 * Wait a moment for the job card to update from “Queued” to “Running”.
 * Click on the “Connect to VSCode Server” button to open a new tab with the VSCode Server interface.
 
-</div>
+</div>-->
 
 
 
