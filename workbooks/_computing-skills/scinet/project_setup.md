@@ -152,34 +152,29 @@ questions:
   - question: "Create a new pipeline workspace in your <b>`/90daydata/shared/<user>`</b> directory with subdirectories for numbered steps (e.g., `01_data_prep`, `02_analysis`, `03_final_report`). Add a `README.md` file at the top level that describes the purpose of each subdirectory. What commands would you use?"
     title: "You Try! Create Your First Workspace"
     qid: 13
+    formatted: true
     solution: |
       Example solution:  
       ```bash
       mkdir -p /90daydata/shared/$USER   
-      ```
-      ```bash
       cd /90daydata/shared/$USER 
-      ```
-      ```bash 
       mkdir -p pipeline_workspace/{01_data_prep,02_analysis,03_final_report}  
-      ```
-      ```bash
       cd pipeline_workspace  
-      ```
-      ```bash
       nano README.md   # or use your preferred editor  
       ```
-      *README.md content (example):*
-      <div class="highlighted highlighted--basic"><div class="highlighted__body" markdown="0" icon="false">
-      # Pipeline Workspace <br>
-      - Goal: Create a simple template for well-organized project structure <br>
-      - location: @Ceres:/90daydata/shared/alex.badacz/pipeline_workspace <br>
-      - created: Oct 2025 <br><br>
-      ## Directory Tree <br> 
-      - **01_data_prep/**: preparing raw input files: file integrity, format validation, initial pre-processing <br>
-      - **02_analysis/**: main analysis steps, exploratory data analysis <br>
-      - **03_final_report/**: selected final results, summary tables, plots, notes on key insights <br>
-      </div></div>
+
+      *Example README.md content:*
+      ```
+      # Pipeline Workspace 
+      - Goal: Create a simple template for well-organized project structure  
+      - location: @Ceres:/90daydata/shared/alex.badacz/pipeline_workspace  
+      - created: Oct 2025   
+
+      ## Directory Tree   
+      - **01_data_prep/**: preparing raw input files: file integrity, format validation, initial pre-processing  
+      - **02_analysis/**: main analysis steps, exploratory data analysis  
+      - **03_final_report/**: selected final results, summary tables, plots, notes on key insights  
+      ```
       This structure keeps project data organized and makes workflows easier to reproduce.
 
 ---
