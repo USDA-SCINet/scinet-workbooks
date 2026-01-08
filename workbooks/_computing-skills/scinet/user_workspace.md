@@ -73,7 +73,7 @@ With access to SCINet infrastructure you have multiple options for storing your 
 {% include accordion title="Storage types on SCINet" controls="storagetypes-acc"%}
 <div id="storagetypes-acc" class="accordion_content"   markdown='1' hidden>
 
-{% include setup/storage_types %}
+{% include segment/storage_types %}
 
 </div></div>
 
@@ -97,7 +97,7 @@ Before completing this section, it is recommended that you first go through the 
 To avoid accidentally running intensive tasks on the shared login node, always request a compute node right after connecting to a shell. It’s a simple step that protects SCINet system performance for all users.
 
 
-{% include setup/find_projects keep="true" %}
+{% include segment/find_projects keep="true" %}
 
 1.  Open the Shell - if you are not sure how, start with [Getting started](#getting-started) section above.
 

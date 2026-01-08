@@ -64,7 +64,7 @@ First, you will log in through **Open OnDemand (OOD)** and use the shell to acce
 
 {% include accordion title="<h3 style='margin: 0; border-bottom: none; font-size: 1.1em; display: inline;'>Access the shell via SCINet OOD</h3><span style='font-weight: 300;'>(required) used for accessing supercomputers</span>" class="primary" controls="access-scinet" icon=false %}
 <div id="access-scinet" class="accordion_content" markdown='1' hidden> 
-{% include setup/scinet_login %}
+{% include segment/scinet_login %}
 {% include setup/ood/shell %}
 </div>
 </div> {% endcomment %}-->
@@ -267,7 +267,7 @@ Open the Shell &emsp; *([see guide if needed](#getting-started))*
 # replace <project_name> with your project_name; "sandbox" for new users without a project
 srun -A <project_name> -t 02:00:00 --pty bash
 ```
-{% include setup/find_projects %}
+{% include segment/find_projects %}
 </li>
 
 <li markdown="1">Load Conda module.  

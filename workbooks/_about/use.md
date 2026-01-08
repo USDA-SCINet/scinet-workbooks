@@ -40,8 +40,8 @@ note: "This quickstart guide provides the basic foundations needed for getting s
 ## Accessing SCINet
 
 <div class="process-list" markdown="1">
-{% include setup/scinet_access %}
-{% include setup/scinet_login keep="true" %}
+{% include segment/scinet_access %}
+{% include segment/scinet_login keep="true" %}
 </div>
 
 ## Setting up your workspace

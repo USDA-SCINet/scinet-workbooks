@@ -56,7 +56,7 @@ First, you will log in through **Open OnDemand (OOD)** in your web browser and e
 
 {% include accordion title="Access SCINet via OOD <span class='h-note'>(required) used for accessing supercomputers</span>" class="primary" controls="access-scinet" %}
 <div id="access-scinet" class="accordion_content" markdown='1' hidden> 
-{% include setup/scinet_login basic=true %}
+{% include segment/scinet_login basic=true %}
 </div>
 </div>
 
@@ -64,7 +64,7 @@ First, you will log in through **Open OnDemand (OOD)** in your web browser and e
 
 {% include accordion title="<h3 style='margin: 0; border-bottom: none; font-size: 1.1em; display: inline;'>Access SCINet via OOD</h3><span style='font-weight: 300;'>(required) used for accessing supercomputers</span>" class="primary" controls="access-scinet" icon=false %}
 <div id="access-scinet" class="accordion_content" markdown='1' hidden> 
-{% include setup/scinet_login keep="true" %}
+{% include segment/scinet_login keep="true" %}
 </div>
 </div> {% endcomment %}-->
 

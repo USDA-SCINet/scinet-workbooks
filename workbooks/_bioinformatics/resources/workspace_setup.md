@@ -239,8 +239,8 @@ First, you will log in through **Open OnDemand (OOD)** and use the shell to acce
 
 <!--{% comment %}{% include accordion title="<h3 style='margin: 0; border-bottom: none; font-size: 1.1em; display: inline;'>Access the shell via SCINet OOD</h3><span style='font-weight: 300;'>(required) used for accessing supercomputers</span>" class="primary" controls="access-scinet" icon=false %}
 <div id="access-scinet" class="accordion_content" markdown='1' hidden> 
-{% include setup/scinet_access %}
-{% include setup/scinet_login %}
+{% include segment/scinet_access %}
+{% include segment/scinet_login %}
 {% include setup/ood_shell %}
 </div>
 </div>{% endcomment %}-->
@@ -533,6 +533,8 @@ Installing a new Conda environment for each workflow often leads to **duplicate 
 │       ├── ...
 │       └── bio_dge_env/          # e.g, Conda env for R + DESeq2
 ```
+{: .no-copy}
+
 
 #### Reference environments in your workspace
 
@@ -552,6 +554,8 @@ RNAseq_thaliana_v1_Oct2025/       # root folder for your RNA-Seq project; custom
 │   ├── dge_env/                  # e.g, environment.yml for Conda env with R + DESeq2; absolute path to env
 │   └── README.md                 # documentation on switching and using environments
 ```
+{: .no-copy}
+
 Each environment folder can store:  
 - **Environment definition files** (e.g., `environment.yml`, `requirements.txt`, `module_list.txt`)  
 - **Activation notes** or small README explaining how to load/run the tools  

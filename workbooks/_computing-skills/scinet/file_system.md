@@ -195,8 +195,8 @@ First, you will log in through **Open OnDemand (OOD)** and use the shell to expl
 
 {% include accordion title="<h3 style='margin: 0; border-bottom: none; font-size: 1.1em; display: inline;'>Access the shell via SCINet OOD</h3><span style='font-weight: 300;'>(required) used for accessing supercomputers</span>" class="primary" controls="access-scinet" icon=false %}
 <div id="access-scinet" class="accordion_content" markdown='1' hidden> 
-{% include setup/scinet_access %}
-{% include setup/scinet_login %}
+{% include segment/scinet_access %}
+{% include segment/scinet_login %}
 {% include setup/ood/shell %}
 </div>
 </div> {% endcomment %}-->
@@ -210,26 +210,26 @@ Knowing these spaces will help you find reference datasets or software and decid
 
 ### Home directory
 
-{% include setup/home_dir %}
+{% include segment/home_dir %}
 
 ### Project directory
 
-{% include setup/project_dir %}
+{% include segment/project_dir %}
 
 ### 90daydata/shared
 
-{% include setup/90day_shared %}
+{% include segment/90day_shared %}
 
 ### Reference/data
 
-{% include setup/ref_data %}
+{% include segment/ref_data %}
 
 ### Reference/containers
 
 {% include term term="Container" %}
 <hr>
 
-{% include setup/ref_containers %}
+{% include segment/ref_containers %}
 
 </div>
 

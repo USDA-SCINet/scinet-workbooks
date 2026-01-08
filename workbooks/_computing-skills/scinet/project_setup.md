@@ -201,8 +201,8 @@ First, you will log in through **Open OnDemand (OOD)** and use the shell to acce
 
 {% include accordion title="<h3 style='margin: 0; border-bottom: none; font-size: 1.1em; display: inline;'>Access the shell via SCINet OOD</h3><span style='font-weight: 300;'>(required) used for accessing supercomputers</span>" class="primary" controls="access-scinet" icon=false %}
 <div id="access-scinet" class="accordion_content" markdown='1' hidden> 
-{% include setup/scinet_access %}
-{% include setup/scinet_login %}
+{% include segment/scinet_access %}
+{% include segment/scinet_login %}
 {% include setup/ood/shell %}
 </div>
 </div> {% endcomment %}-->
@@ -373,7 +373,7 @@ Before completing this section, it is recommended that you first go through the 
 
 ### Storage types on SCINet
 
-{% include setup/storage_types %}
+{% include segment/storage_types %}
 
 ### Check Your Quota
 
