@@ -6,6 +6,8 @@ author: The SCINet Office
 index: 
 order: 2
 
+published: false # unpublish as information is a duplicate of the user guides
+
 header:
   overlay_image: 
 svg: /genomics.svg
