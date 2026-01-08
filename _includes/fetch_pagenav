@@ -1,0 +1,39 @@
+{% assign listnav = false %}
+{% if include.nav %}
+{% assign listnav = include.nav | split: " | " %}
+{% endif %}
+<ul class="usa-collection">
+  <li class="usa-collection__item">
+    <div class="usa-collection__body">
+      <h4 class="usa-collection__heading">
+        <a
+          class="usa-link"
+          href="{{ include.url }}">{{ include.title }}</a>
+      </h4>
+      {% if include.description %}
+      <p class="usa-collection__description">
+        {{ include.description }}
+      </p>
+      {% endif %}
+      {% if listnav %}
+      <ul class="usa-collection__meta" aria-label="Linked page navigation">
+        <li class="usa-collection__meta-item">
+          Content:
+          {% for _list in listnav %}{% assign _sublist = _list | split: ", " %}
+          <ul class="unstyled-list usa-list">
+            {% for _item in _sublist %}
+            {% if forloop.first %}<a href="{{ include.url }}#{{ _item | slugify }}">{{ _item }}</a>
+            {% if _sublist.size > 1 %}<ul>{% endif %}
+              {% else %}
+              <li><a href="{{ include.url }}#{{ _item | slugify }}">{{ _item }}</a></li>
+            {% endif %}
+            {% endfor %}
+            {% if _sublist.size > 1 %}</ul>{% endif %}
+          </ul>
+          {% endfor %}
+        </li>
+      </ul>
+      {% endif %}
+    </div>
+  </li>
+</ul>
