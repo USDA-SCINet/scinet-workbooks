@@ -240,32 +240,32 @@ and generates raw digital data in the form of reads: short sequences that repres
 
 Sequencing technologies are specialized machines that read the order of nucleotide bases in DNA or RNA, producing digital sequence data used for analysis in genomics and molecular biology.
 
-| **Generation** | **Key Features** | **Platforms** | **Use Cases** |
+{% include table content="| Generation | Key Features | Platforms | Use Cases |
 |----------------|------------------|-----------------------|--------------|
-| **FGS**        | long, accurate reads, low throughput, high cost per base      | Sanger                  | small-scale validation, targeted sequencing                                 |
-| **NGS / HTS**  | short reads (50–300 bp), high accuracy, very high throughput  | Illumina                | variant calling, RNA-seq, population studies, targeted resequencing         |
-| **TGS**        | long reads (10 kb+), real-time sequencing, higher error rates | PacBio, Oxford Nanopore | de novo genome assembly, metagenomics, structural variant analysis, phasing |
+| FGS        | long, accurate reads, low throughput, high cost per base      | Sanger                  | small-scale validation, targeted sequencing                                 |
+| NGS / HTS  | short reads (50–300 bp), high accuracy, very high throughput  | Illumina                | variant calling, RNA-seq, population studies, targeted resequencing         |
+| TGS        | long reads (10 kb+), real-time sequencing, higher error rates | PacBio, Oxford Nanopore | de novo genome assembly, metagenomics, structural variant analysis, phasing |" %}
 
 
-<div class="process-list h4" markdown="1">
+<div class="process-list ul" markdown="1">
 
-#### First-generation sequencing
+### First-generation sequencing
 
 First-generation sequencing (**FGS**), most notably the Sanger method, was the first widely adopted approach for reading DNA. It produces long, high-accuracy reads (typically up to ~1000 bp) but is low-throughput and relatively expensive per base. While no longer used for large-scale studies, it remains valuable for small-scale validation, targeted sequencing, or applications where precision is critical and data volume is low.
 
-#### High-throughput sequencing
+### High-throughput sequencing
 
 Modern sequencing is often referred to as high-throughput sequencing (**HTS**) because it can generate millions to billions of reads in parallel, 
 dramatically increasing data yield and reducing cost per base. This is in contrast to early Sanger sequencing, 
 which was slower, lower in scale, and limited to sequencing one region at a time.
 
-#### Next-generation sequencing
+### Next-generation sequencing
 
 The term next-generation sequencing (**NGS**) typically refers to the first wave of [high-throughput methods](#high-throughput-sequencing) that emerged in the mid-2000s, 
 revolutionizing genomics by making it feasible to sequence whole genomes, transcriptomes, and more. 
 NGS is now a standard term, although [newer technologies](#third-generation-sequencing) have since emerged, pushing the boundaries of read length, accuracy, and throughput.
 
-#### Third-generation sequencing 
+### Third-generation sequencing 
 
 Third-generation sequencing (**TGS**) refers to a set of newer technologies capable of reading individual DNA or RNA molecules in real time without prior amplification. 
 TGS methods produce long reads that can span thousands to even millions of bases. These long reads simplify genome assembly, 
@@ -282,21 +282,18 @@ Bioinformatics is rooted long before data analysis - it starts with how the sequ
 Experimental design decisions shape the type, quality, and structure of sequencing data, directly impacting what bioinformatics tools and workflows can be applied. 
 Factors such as [sequencing technology](#sequencing-technologies), read length, depth, assay type, and library preparation all contribute to the final dataset's characteristics.
 
-<div class="highlighted highlighted--note ">
-<div class="highlighted__body"  markdown="1">
-*For example:* <br>
-**Fragment size** directly affects how well reads map, especially in repetitive or low-complexity regions. Short fragments may increase ambiguity in repetitive regions.  
-**read type:** Paired-end reads provide more mapping context than single-end reads.  
-**read length:** Long reads may require specialized alignment tools.  
-Shallow **sequencing depth** may limit statistical power in expression studies.  
-Strand-specific **libraries** preserve transcription direction, which aids transcript annotation.  
-</div>
-</div>
+For example:  
+* **Fragment size** directly affects how well reads map, especially in repetitive or low-complexity regions. Short fragments may increase ambiguity in repetitive regions.  
+* **read type:** Paired-end reads provide more mapping context than single-end reads.  
+* **read length:** Long reads may require specialized alignment tools.  
+* Shallow **sequencing depth** may limit statistical power in expression studies.  
+* Strand-specific **libraries** preserve transcription direction, which aids transcript annotation.  
+
 
 As a bioinformatician, you may not always perform the sequencing yourself, but understanding how the data was generated is essential for making informed decisions later. 
 This includes selecting appropriate quality control methods, choosing a compatible aligner, and ensuring the data matches the assumptions of downstream tools.
 
-<div class="highlighted highlighted--question ">
+<div class="highlighted highlighted--highlighted ">
 <div class="highlighted__body"  markdown="1">
 
 <h4 class="highlighted__heading">Before beginning analysis, always ask:</h4>
@@ -716,8 +713,8 @@ Illumina short reads assist with polishing. Combining HiFi with scaffolding data
 </div></div>
 
 <div class="highlighted highlighted--tip">
-<div class="highlighted__body" markdown="1"><h4>Bioinformatics</h4></div>
-<div style="margin-left: 1.3em; margin-right: 1.3em;" markdown="1">
+<div class="highlighted__body" markdown="1"><h4 class="highlighted__heading">Bioinformatics</h4>
+
 **Input:** Required **raw reads in FASTQ format** from PacBio (HiFi) and Illumina platforms. Optional Hi-C reads in FASTQ for scaffolding.
 
 **Analysis:**  
@@ -778,8 +775,8 @@ Well-suited for differential expression analysis between conditions.
 </div></div>
 
 <div class="highlighted highlighted--tip"><div class="highlighted__body" markdown="1">
-<h4>Bioinformatics</h4></div>
-<div style="margin-left: 1.3em; margin-right: 1.3em;" markdown="1">
+<h4 class="highlighted__heading">Bioinformatics</h4>
+
 **Input:** RNA Sequencing produces **paired-end FASTQ files** containing raw reads with base quality scores. 
 
 **Analysis:** 
@@ -834,8 +831,8 @@ Barcoding and UMIs enable pooling thousands of nuclei and accurate expression qu
 </div></div>
 
 <div class="highlighted highlighted--tip"><div class="highlighted__body" markdown="1">
-<h4>Bioinformatics</h4></div>
-<div style="margin-left: 1.3em; margin-right: 1.3em;" markdown="1">
+<h4 class="highlighted__heading">Bioinformatics</h4>
+
 **Input:** Single-cell or single-nucleus RNA sequencing produces **paired-end FASTQ files** with unique molecular identifiers (UMIs) and cell barcodes.
 
 **Analysis:** 
@@ -888,8 +885,8 @@ This enables identification of markers linked to stress traits for marker-assist
 </div></div>
 
 <div class="highlighted highlighted--tip">
-<div class="highlighted__body" markdown="1"><h4>Bioinformatics</h4></div>
-<div style="margin-left: 1.3em; margin-right: 1.3em;" markdown="1">
+<div class="highlighted__body" markdown="1"><h4 class="highlighted__heading">Bioinformatics</h4>
+
 **Input:** Illumina WGS produces **paired-end FASTQ files** with 150 bp reads.
 
 **Analysis:**  
@@ -946,8 +943,8 @@ Forest soils host highly diverse and functionally relevant microbiomes involved 
 </div></div>
 
 <div class="highlighted highlighted--tip">
-<div class="highlighted__body" markdown="1"><h4>Bioinformatics</h4></div>
-<div style="margin-left: 1.3em; margin-right: 1.3em;" markdown="1">
+<div class="highlighted__body" markdown="1"><h4 class="highlighted__heading">Bioinformatics</h4>
+
 **Input:** 16S amplicon sequencing produces **paired-end FASTQ files** of PCR products with barcode/index sequences.
 
 **Analysis:**  

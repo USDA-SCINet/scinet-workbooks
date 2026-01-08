@@ -8,7 +8,7 @@ main:
   {% include layout/header-details page=page %}
   
 {%- if page.prereq %}
-<div class="highlighted highlighted--basic"><div class="highlighted__body" markdown="1">
+<div class="highlighted highlighted--basic"><div class="highlighted__body">
 {{ page.prereq | markdownify }}
 </div></div>
 {%- endif %}

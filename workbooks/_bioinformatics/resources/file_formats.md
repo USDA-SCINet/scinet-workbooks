@@ -154,7 +154,7 @@ Bioinformatics workflows depend on standard file formats to manage data generate
 from raw sequencing reads to processed outputs like alignments, variants, or expression levels. 
 Many of these formats require paired index files (`.bai`, `.tbi`, `.fai`) to allow fast access during analysis.
 
-| **Format**              | **Content**                                | **Notes**                                                    |
+{% include table caption="Standard file formats" content="| Format              | Content                                | Notes                                                    |
 |-------------------------|--------------------------------------------|--------------------------------------------------------------|
 | [FASTA](#fasta)         | reference sequences or assembled contigs   | contains plain sequence with headers; used for sequenece assembly (genome or transcriptome) |
 | [FASTQ](#fastq)         | raw sequencing reads                       | contains reads + quality scores; often gzipped; 2 files for paired-end (PE) sequencing mode |
@@ -166,20 +166,20 @@ Many of these formats require paired index files (`.bai`, `.tbi`, `.fai`) to all
 | [BED](#bed)             | genomic intervals                          | used for peak regions, annotation features, etc.             |
 | [VCF](#vcf--bcf)        | variant calls (SNPs, indels)               | text-based; includes genotypes, quality, annotations         |
 | [BCF](#vcf--bcf)        | binary VCF                                 | compressed version of VCF; faster to parse                   |
-| **INDEX FILES**         | `.bai`, `.tbi`, `.fai`, `.crai`, `.dict`   | required for random access in BAM/VCF/FASTA/CRAM             |
+| INDEX FILES         | `.bai`, `.tbi`, `.fai`, `.crai`, `.dict`   | required for random access in BAM/VCF/FASTA/CRAM             |" %}
 
 
 In addition to the core formats, bioinformatics workflows also make use of **complementary formats** for visualization, metadata, and specialized data types:
 
-| **Format**     | **Used For**                               | **Notes**                                                    |
-|----------------|--------------------------------------------|--------------------------------------------------------------|
-| **BigWig**     | scaled coverage data (visualization)       | compressed, indexed binary format for fast display           |
-| **BEDGraph**   | raw coverage signal (text-based)           | similar to BigWig; used as input or intermediate format      |
-| **AGP**        | scaffold layout information                | describes how contigs form scaffolds, including gaps         |
-| **MTX**        | sparse gene expression matrix              | from single-cell RNA-seq; often paired with barcodes & genes |
-| **HDF5**       | hierarchical data (e.g., 10x single-cell)  | efficient storage for large, structured data (e.g. `.h5ad`)  |
-| **TSV / CSV**  | expression matrices, metadata              | output of quant tools like Salmon, DESeq2, etc.              |
-| **JSON / YAML**| pipeline configs, metadata                 | used by workflow managers (e.g., Snakemake, Nextflow)        |
+{% include table caption="Complementary formats" content="| Format     | Used For                               | Notes                                                    |
+|-------------|--------------------------------------------|--------------------------------------------------------------|
+| BigWig      | scaled coverage data (visualization)       | compressed, indexed binary format for fast display           |
+| BEDGraph    | raw coverage signal (text-based)           | similar to BigWig; used as input or intermediate format      |
+| AGP         | scaffold layout information                | describes how contigs form scaffolds, including gaps         |
+| MTX         | sparse gene expression matrix              | from single-cell RNA-seq; often paired with barcodes & genes |
+| HDF5        | hierarchical data (e.g., 10x single-cell)  | efficient storage for large, structured data (e.g. `.h5ad`)  |
+| TSV / CSV   | expression matrices, metadata              | output of quant tools like Salmon, DESeq2, etc.              |
+| JSON / YAML | pipeline configs, metadata                 | used by workflow managers (e.g., Snakemake, Nextflow)        |" %}
 
 *Note: Different tools may use different formats for the same analysis step, e.g., Cell Ranger’s `.h5` vs STARsolo’s `.tsv` output.*
 
@@ -196,14 +196,12 @@ Knowing what each file format contains, and why it is used, is essential for tro
 
 ## FASTA
 
-**Text-based format for storing nucleotide or amino acid sequences.**
-
-| **Data Type**       | **Components**           | **Molecule**      | **Application**                       |
+{% include table caption="Text-based format for storing nucleotide or amino acid sequences" content="| Data Type       | Components           | Molecule      | Application                       |
 |---------------------|--------------------------|-------------------|---------------------------------------|
 | reference           | genome, transcriptome    | DNA, RNA          | input for mapping/alignment tasks (e.g., RNA-seq pipeline)     |
 | assembly            | contigs, scaffolds       | DNA, RNA          | genome or transcriptome assembly task |
 | query               | specific sequences       | DNA, RNA          | BLAST queries, motif searching, primer design                  |
-| database resource   | collections of sequences | DNA, RNA, Protein | protein DBs (e.g., UniProt), nucleotide DBs (e.g., NR, RefSeq) |
+| database resource   | collections of sequences | DNA, RNA, Protein | protein DBs (e.g., UniProt), nucleotide DBs (e.g., NR, RefSeq) |" %}
 
 
 ### Example FASTA file(s)
@@ -257,8 +255,10 @@ SEQUENCE-IN-ONE-LETTER-NOTATION
 
 
 <div class="highlighted highlighted--error ">
-<div class="highlighted__body"  markdown="1"><h4>Common issues</h4></div>
-<div style="margin-left: 1.3em; margin-right: 1.3em;" markdown="1">
+<div class="highlighted__body"  markdown="1">
+
+<h4 class="highlighted__heading">Common issues</h4>
+
 **Line wrapping mismatch**   
 Some tools require sequences on a *single line*, others require *wrapped lines (80 characters)*.
 
@@ -267,9 +267,9 @@ Missing `>` or malformed identifiers can break parsing.
 
 **Hidden spaces**   
 Trailing spaces or carriage returns may cause unexpected errors. 
-</div>
-&nbsp;
-</div>
+
+
+</div></div>
 
 
 ### File validation
@@ -354,13 +354,11 @@ busco -i assembly.fasta -l eukaryota_odb10 -o busco_out -m genome
 
 ## FASTQ
 
-**Text-based format for storing nucleotide sequences together with quality scores.**
-
-| **Data Type**       | **Components**           | **Molecule** | **Application / Analysis Step**                     |
+{% include table caption="Text-based format for storing nucleotide sequences together with quality scores" content="| Data Type       | Components           | Molecule | Application / Analysis Step                     |
 |---------------------|--------------------------|--------------|-----------------------------------------------------|
 | raw sequencing      | reads + quality scores   | DNA, RNA     | primary output of NGS machines <br>(Illumina, Nanopore) |
 | pre-processed data  | trimmed/filtered reads   | DNA, RNA     | input for alignment or assembly pipelines           |
-| subsets             | selected read sets       | DNA, RNA     | downstream testing, debugging, tool benchmarking    |
+| subsets             | selected read sets       | DNA, RNA     | downstream testing, debugging, tool benchmarking    |" %}
 
 
 ### Example FASTQ file(s)
@@ -418,8 +416,10 @@ GATTTGGGGTTCAAAGCAGTATCGATCAAATAGTTA     #2
 </div>
 
 <div class="highlighted highlighted--error ">
-<div class="highlighted__body"  markdown="1"><h4>Common issues</h4></div>
-<div style="margin-left: 1.3em; margin-right: 1.3em;" markdown="1">
+<div class="highlighted__body"  markdown="1">
+
+<h4 class="highlighted__heading">Common issues</h4>
+
 **Mismatched lengths**  
 Sequence and quality strings must have identical length.  
 
@@ -431,9 +431,8 @@ Interrupted transfers can leave `.fastq.gz` truncated or corrupted.
 
 **Identifier inconsistencies**  
 Paired-end reads may lose sync if filenames or read IDs are inconsistent.  
-</div>
-&nbsp;
-</div>
+
+</div></div>
 
 
 ### File validation
@@ -508,11 +507,11 @@ seqtk seq -A reads.fastq.gz > reads.fasta
 - **BAM**: binary, compressed SAM (faster and smaller).  
 - **CRAM**: reference-based compression (even smaller, requires reference for decompression).  
 
-| **Data Type** | **Components**                 | **Molecule** | **Application / Analysis Step**                       |
-|---------------|--------------------------------|--------------|-------------------------------------------------------|
-| alignment     | mapped reads, flags, tags      | DNA, RNA     | output of aligners (e.g., BWA, STAR, HISAT2)          |
-| post-alignment| sorted & indexed alignments    | DNA, RNA     | input for variant calling, expression quantification  |
-| reduced size  | compressed alignments (`CRAM`) | DNA, RNA     | long-term storage, efficient disk use                 |
+{% include table content="| Data Type  | Components                 | Molecule | Application / Analysis Step                       |
+|----------------|--------------------------------|--------------|-------------------------------------------------------|
+| alignment      | mapped reads, flags, tags      | DNA, RNA     | output of aligners (e.g., BWA, STAR, HISAT2)          |
+| post-alignment | sorted & indexed alignments    | DNA, RNA     | input for variant calling, expression quantification  |
+| reduced size   | compressed alignments (`CRAM`) | DNA, RNA     | long-term storage, efficient disk use                 |" %}
 
 *Reads (whether DNA-seq, RNA-seq, ChIP-seq, etc.) are always aligned to a DNA reference genome. 
 So while the experimental data might be RNA (from RNA-seq), the alignments are stored in the context of the DNA reference.*
@@ -556,8 +555,10 @@ QNAME FLAG RNAME POS MAPQ CIGAR RNEXT PNEXT TLEN SEQ QUAL [TAG:TYPE:VALUE]
 - **SEQ/QUAL**: read sequence & qualities
 
 <div class="highlighted highlighted--error ">
-<div class="highlighted__body"  markdown="1"><h4>Common issues</h4></div>
-<div style="margin-left: 1.3em; margin-right: 1.3em;" markdown="1">
+<div class="highlighted__body"  markdown="1">
+
+<h4 class="highlighted__heading">Common issues</h4>
+
 **Unsorted files**  
 Variant callers and many tools require coordinate-sorted BAM files.  
 
@@ -572,9 +573,8 @@ Interrupted downloads/transfers may truncate BAM/CRAM files.
 
 **Incorrect flags**  
 Misinterpretation of FLAG values can lead to wrong assumptions about read pairing or orientation.  
-</div>
-&nbsp;
-</div>
+
+</div></div>
 
 
 ### File validation
@@ -650,11 +650,11 @@ samtools view -q 30 input.bam       # reads with MAPQ ≥30
 **Gene Transfer Format is a tab-delimited text format for describing gene annotations on a reference genome.** 
 It is a more rigid, widely used variant of [GFF](#gff), often required by RNA-seq tools.  
 
-| **Data Type** | **Components**                          | **Molecule** | **Application / Analysis Step**                     |
-|---------------|-----------------------------------------|--------------|-----------------------------------------------------|
-| annotation    | exons, transcripts, genes               | DNA, RNA     | RNA-seq quantification (e.g., featureCounts, HTSeq) |
-| genome model  | gene models from reference databases    | DNA, RNA     | input for alignment and expression analysis         |
-| processed data| standardized annotations (Ensembl, GENCODE) | DNA, RNA | consistent references across pipelines              |
+{% include table content="| Data Type | Components                          | Molecule | Application / Analysis Step                     |
+|----------------|-----------------------------------------|--------------|-----------------------------------------------------|
+| annotation     | exons, transcripts, genes               | DNA, RNA     | RNA-seq quantification (e.g., featureCounts, HTSeq) |
+| genome model   | gene models from reference databases    | DNA, RNA     | input for alignment and expression analysis         |
+| processed data | standardized annotations (Ensembl, GENCODE) | DNA, RNA | consistent references across pipelines              |" %}
 
 *GTF is a gene annotation format. It describes genomic features (genes, transcripts, exons) mapped to DNA coordinates. 
 Even though features represent RNA molecules (like mRNA), they are anchored to the DNA genome.*
@@ -692,8 +692,10 @@ chr1    HAVANA  gene        11869   14409   .   +   .         gene_id "ENSG00000
 - (col 9) **attributes**: Attributes in 9th column encodes metadata as `key "value`. Common attributes include: `gene_id`, `transcript_id`, `gene_name`, `exon_number`.
 
 <div class="highlighted highlighted--error ">
-<div class="highlighted__body"  markdown="1"><h4>Common issues</h4></div>
-<div style="margin-left: 1.3em; margin-right: 1.3em;" markdown="1">
+<div class="highlighted__body"  markdown="1">
+
+<h4 class="highlighted__heading">Common issues</h4>
+
 **Incorrect delimiters**  
 Spaces instead of tabs can break parsers.  
 
@@ -705,9 +707,8 @@ GTF annotations must match the reference genome version used in alignment.
 
 **Mixed GFF/GTF use**  
 Confusion between GTF (rigid) and GFF3 (flexible) formats can cause pipeline errors.  
-</div>
-&nbsp;
-</div>
+
+</div></div>
 
 
 ### File validation
@@ -761,6 +762,7 @@ gffread annotations.gff3 -T -o annotations.gtf
 
 {% include accordion title="Genome build consistency" class=" " controls="gtf-5" icon=false %}
 <div id="gtf-5" class="accordion_content" markdown='1' hidden> 
+
 Check annotation matches reference FASTA. Ensure chromosome naming conventions match (e.g., `chr1` vs `1`).
 ```bash
 grep -v "^#" annotations.gtf | cut -f1 | sort | uniq | head
@@ -771,6 +773,7 @@ Compare/assess annotation consistency with `gffcompare`:
 gffcompare -r reference.gtf -o qc annotations.gtf       # outputs: qc.stats (summary), qc.annotated.gtf (classified features)
 ```
 Compares your GTF against a trusted reference to detect mismatches/novel features.
+
 </div>
 </div>
 
@@ -779,11 +782,11 @@ Compares your GTF against a trusted reference to detect mismatches/novel feature
 **General Feature Format is a tab-delimited format for describing genomic features.** GFF3 is the standardized, widely used version. 
 Unlike [GTF](#gtf), GFF3 supports hierarchical annotations and a broader range of feature types, and is often used in genome browsers and annotation databases.  
 
-| **Data Type** | **Components**                              | **Molecule** | **Application / Analysis Step**                 |
-|---------------|---------------------------------------------|--------------|-------------------------------------------------|
-| annotation    | genes, transcripts, exons, regulatory sites | DNA, RNA     | genome browsers, visualization (e.g., JBrowse, IGV) |
-| genome model  | gene models from Ensembl, RefSeq, or NCBI   | DNA, RNA     | input for comparative genomics and annotation   |
-| processed data| flexible annotation files                   | DNA, RNA     | interoperability between tools and databases    |
+{% include table content="| Data Type | Components                              | Molecule | Application / Analysis Step                 |
+|----------------|---------------------------------------------|--------------|-------------------------------------------------|
+| annotation     | genes, transcripts, exons, regulatory sites | DNA, RNA     | genome browsers, visualization (e.g., JBrowse, IGV) |
+| genome model   | gene models from Ensembl, RefSeq, or NCBI   | DNA, RNA     | input for comparative genomics and annotation   |
+| processed data | flexible annotation files                   | DNA, RNA     | interoperability between tools and databases    |" %}
 
 *GFF is a gene annotation format. It describes genomic features (genes, transcripts, exons) mapped to DNA coordinates. 
 Even though features represent RNA molecules (like mRNA), they are anchored to the DNA genome.*
@@ -829,8 +832,10 @@ chr1    RefSeq  gene   11869   14409   .   +   .   ID=gene1;Name=DDX11L1
   - additional tags (e.g., `biotype`, `Note`) depending on source  
 
 <div class="highlighted highlighted--error ">
-<div class="highlighted__body"  markdown="1"><h4>Common issues</h4></div>
-<div style="margin-left: 1.3em; margin-right: 1.3em;" markdown="1">
+<div class="highlighted__body"  markdown="1">
+
+<h4 class="highlighted__heading">Common issues</h4>
+
 **Format confusion**  
 Mixing GTF and GFF3 can break pipelines - attribute syntax differs.  
 
@@ -842,8 +847,8 @@ Annotations must match reference genome build.
 
 **Improper sorting**  
 Some tools require sorted GFF3 (by `seqid` and `start` position).  
+
 </div>
-&nbsp;
 </div>
 
 
@@ -903,11 +908,11 @@ Ensure feature hierarchies (`gene → mRNA → exon`) are valid and complete.
 **Browser Extensible Data is a lightweight tab-delimited format for representing genomic intervals.** 
 It is widely used for storing regions of interest (e.g., peaks, annotation tracks) and for visualization in genome browsers.  
 
-| **Data Type** | **Components**                          | **Molecule** | **Application / Analysis Step**                     |
-|---------------|-----------------------------------------|--------------|-----------------------------------------------------|
-| intervals     | genomic coordinates                     | DNA          | defining regions of interest (e.g., peaks, motifs)  |
-| annotation    | genes, promoters, regulatory sites      | DNA          | track visualization in genome browsers (UCSC, IGV)  |
-| processed data| outputs from peak callers (e.g., MACS2) | DNA          | ChIP-seq, ATAC-seq, DNase-seq analysis              |
+{% include table content="| Data Type | Components                        | Molecule | Application / Analysis Step              |
+|----------------|-----------------------------------------|--------------|-----------------------------------------------------|
+| intervals      | genomic coordinates                     | DNA          | defining regions of interest (e.g., peaks, motifs)  |
+| annotation     | genes, promoters, regulatory sites      | DNA          | track visualization in genome browsers (UCSC, IGV)  |
+| processed data | outputs from peak callers (e.g., MACS2) | DNA          | ChIP-seq, ATAC-seq, DNase-seq analysis              |" %}
 
 
 ### Example BED file
@@ -963,8 +968,10 @@ chr1  11868 14409 transcript1 0   +    11868      14409    0,0,255 2     359,255
   - (col 9) **blockCount / blockSizes / blockStarts**: for multi-block features (e.g., exons in transcripts)  
 
 <div class="highlighted highlighted--error ">
-<div class="highlighted__body"  markdown="1"><h4>Common issues</h4></div>
-<div style="margin-left: 1.3em; margin-right: 1.3em;" markdown="1">
+<div class="highlighted__body"  markdown="1">
+
+<h4 class="highlighted__heading">Common issues</h4>
+
 **Coordinate confusion**  
 BED uses 0-based, half-open intervals; mixing with 1-based formats ([GTF](#gtf)/[GFF](#gff)/[VCF](#vcf--bcf)) causes off-by-one errors.  
 
@@ -976,8 +983,9 @@ Some tools require BED6 or BED12, not just BED3.
 
 **Improper sorting**  
 Many pipelines expect intervals sorted by chromosome and start position.  
+
 </div>
-&nbsp;
+
 </div>
 
 
@@ -1036,11 +1044,11 @@ Compare BED seqids with reference FASTA headers.
 **Variant Call Format is a text-based format for storing genomic variants** (SNPs, indels, structural variants) along with genotypes and annotations. 
 **BCF** is the binary, compressed equivalent of **VCF**, optimized for efficient storage and indexing for fast querying.  
 
-| **Data Type** | **Components**                           | **Molecule** | **Application / Analysis Step**                        |
+{% include table content="| Data Type | Components                           | Molecule | Application / Analysis Step      |
 |---------------|------------------------------------------|--------------|--------------------------------------------------------|
 | variants      | SNPs, indels, structural variants        | DNA          | results of variant calling (e.g., GATK, bcftools)      |
 | genotypes     | per-sample alleles and quality metrics   | DNA          | population genetics, GWAS, clinical variant analysis   |
-| annotations   | INFO fields (e.g., functional effect)    | DNA          | interpretation, filtering, prioritization              |
+| annotations   | INFO fields (e.g., functional effect)    | DNA          | interpretation, filtering, prioritization              |" %}
 
 
 ### Example VCF file
@@ -1090,8 +1098,10 @@ chr1    11869   rs1     G   A   60   PASS   DP=100;AF=0.5
 - **Sample columns**: genotype and per-sample information (e.g., `GT`, `GQ`, `DP`)  
 
 <div class="highlighted highlighted--error ">
-<div class="highlighted__body"  markdown="1"><h4>Common issues</h4></div>
-<div style="margin-left: 1.3em; margin-right: 1.3em;" markdown='1'>
+<div class="highlighted__body"  markdown="1">
+
+<h4 class="highlighted__heading">Common issues</h4>
+
 **Reference mismatch**  
 VCF must be generated and interpreted with the same reference genome.  
 
@@ -1106,9 +1116,8 @@ Improper key=value formatting breaks parsers.
 
 **Multiallelic variants**  
 Some tools struggle with sites containing multiple alternate alleles.  
-</div>
-&nbsp;
-</div>
+
+</div></div>
 
 
 ### File validation
@@ -1199,11 +1208,11 @@ try these short questions to test your knowledge and avoid common pitfalls when 
 Different annotation formats use different genomic coordinate conventions. Mixing them without conversion leads to **off-by-one errors**. 
 Always check whether a format is **0-based or 1-based**, and whether intervals are **closed or half-open**, before integrating files across tools.  
 
-| **Format**   | **Coordinate system** | **Start** | **End**   | **Notes** |
-|--------------|-----------------------|-----------|-----------|-----------|
-| **BED**      | 0-based, half-open    | inclusive | exclusive | `chromStart` is 0-based; <br>`chromEnd` is 1-based. <br>`interval_len = end – start` |
-| **GTF/GFF3** | 1-based, closed       | inclusive | inclusive | Both start and end are 1-based. `interval_len = end – start + 1` |
-| **VCF**      | 1-based, left-aligned | inclusive | inclusive | Variants are anchored at a single 1-based position; indels extend coordinates. |
+{% include table content="| Format   | Coordinate system | Start | End   | Notes |
+|----------|-----------------------|-----------|-----------|-----------|
+| BED      | 0-based, half-open    | inclusive | exclusive | `chromStart` is 0-based; <br>`chromEnd` is 1-based. <br>`interval_len = end – start` |
+| GTF/GFF3 | 1-based, closed       | inclusive | inclusive | Both start and end are 1-based. `interval_len = end – start + 1` |
+| VCF      | 1-based, left-aligned | inclusive | inclusive | Variants are anchored at a single 1-based position; indels extend coordinates. |" %}
 
 
 Consider a genomic feature spanning **bases 11869–12227** on chromosome 1 (forward strand).  

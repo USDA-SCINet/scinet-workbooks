@@ -181,27 +181,27 @@ Both approaches aim to improve data quality, but awareness of their scope is ess
 
 ## Browse databases
 
-{% include table caption="A list of bioinformatics databases, spanning sequences, genomes, variants, expression data, protein structures, and pathways." sortable=true content="| # | database | category | content | format(s) | identifier(s) | curation |
-|---|----------|----------|---------|-----------|---------------|----------|
-| 1  | [**GenBank**](https://www.ncbi.nlm.nih.gov/genbank/) | sequence *(primary)* | nucleotide&nbsp;sequences | FASTA, GenBank&nbsp;flatfile | accession number <br>(*MN908947.3*) | automated, some manual |
-| 2  | [**ENA**](https://www.ebi.ac.uk/ena) | sequence *(primary)* | nucleotide sequences & raw reads | FASTA, FASTQ, EMBL flatfile | run/study/sample ID <br>(*ERR000111*) | automated |
-| 3  | [**DDBJ**](https://www.ddbj.nig.ac.jp) | sequence *(primary)* | nucleotide sequences | FASTA, DDBJ flatfile | accession number <br>(*AB000001*) | automated + some manual |
-| 4  | [**miRBase**](https://www.mirbase.org/) | sequence *(specialized)* | microRNA sequences & annotations | FASTA, GFF | miRBase ID <br>(*hsa-let-7a-1*) | manual/expert |
-| 5  | [**RefSeq**](https://www.ncbi.nlm.nih.gov/refseq/) | curated sequences | reference genomes, transcripts, proteins | FASTA, GenBank flatfile | RefSeq accession <br>(*NM_000546.6*) | automated + manual/expert |
-| 6  | [**Ensembl**](https://www.ensembl.org/) | genome, annotation | genome assembly, gene model, variation | FASTA, VCF, GTF/GFF3 | Ensembl ID <br>(*ENSG00000139618*) | automated + manual/expert |
-| 7  | [**UCSC Genome Browser**](https://genome.ucsc.edu/) | genome, annotation | genome assembly, annotations, tracks | GTF/GFF, BED, FASTA, bigWig | UCSC ID / track name <br>(*uc001aaa.3*) | automated |
-| 8  | [**GENCODE**](https://www.gencodegenes.org/) | annotation | comprehensive gene, transcript annotation | GTF/GFF3 | Ensembl/GENCODE <br>(*ENST00000456328*) | automated + manual/expert |
-| 9  | [**dbSNP**](https://www.ncbi.nlm.nih.gov/snp/) | variation | SNPs, indels, short genetic variants | VCF | rsID <br>(*rs7412*) | automated |
-| 10 | [**ClinVar**](https://www.ncbi.nlm.nih.gov/clinvar/) | variation (clinical) | variants with clinical significance | VCF, XML | ClinVar accession <br>(*RCV000198123*) | manual/expert |
-| 11 | [**gnomAD**](https://gnomad.broadinstitute.org/) | variation (population) | population allele frequencies | VCF | variant ID <br>(*1:55516888:G:A*) | automated |
-| 12 | [**SRA**](https://www.ncbi.nlm.nih.gov/sra) | gene expression | raw sequencing reads | FASTQ | run ID <br>(*SRR390728*) | automated |
-| 13 | [**GEO**](https://www.ncbi.nlm.nih.gov/geo/) | gene expression | gene expression, RNA-seq, microarray | series matrix (TXT), SOFT, MINiML | GEO accession <br>(*GSE12345*) | automated |
-| 14 | [**ArrayExpress**](https://www.ebi.ac.uk/arrayexpress/) | gene expression | transcriptomics & functional_genomics | MAGE-TAB, FASTQ | ArrayExpress ID <br>(*E-MTAB-3050*) | automated + manual/expert |
-| 15 | [**Gene Ontology (GO)**](http://geneontology.org/) | functional enrichment | gene function classification | OBO, GAF | GO ID <br>(*GO:0006915*) | manual/expert |
-| 16 | [**KEGG**](https://www.genome.jp/kegg/) | functional enrichment | metabolic, signaling, disease pathways | KGML (XML), tabular | KEGG ID <br>(*hsa00010*) | manual/expert |
-| 17 | [**Reactome**](https://reactome.org/) | functional enrichment | biological pathways & reactions | BioPAX, SBML | Reactome ID <br>(*R-HSA-109581*) | manual/expert |
-| 18 | [**UniProt**](https://www.uniprot.org/) TrEMBL / SP | protein | protein sequences, function, structure | FASTA, TSV, XML | UniProtKB ID <br>(*P38398*) | automated; manual/expert |
-| 19 | [**PDB**](https://www.rcsb.org/) | protein *(structure)* | 3D protein & nucleic acid structures | PDB, mmCIF | PDB ID <br>(*1A1X*) | manual/expert |" %}
+{% include table caption="A list of bioinformatics databases, spanning sequences, genomes, variants, expression data, protein structures, and pathways." sortable=true content="| database | category | content | format(s) | identifier(s) | curation |
+|----------|----------|---------|-----------|---------------|----------|
+| [**GenBank**](https://www.ncbi.nlm.nih.gov/genbank/) | sequence *(primary)* | nucleotide&nbsp;sequences | FASTA, GenBank&nbsp;flatfile | accession number <br>(*MN908947.3*) | automated, some manual |
+| [**ENA**](https://www.ebi.ac.uk/ena) | sequence *(primary)* | nucleotide sequences & raw reads | FASTA, FASTQ, EMBL flatfile | run/study/sample ID <br>(*ERR000111*) | automated |
+| [**DDBJ**](https://www.ddbj.nig.ac.jp) | sequence *(primary)* | nucleotide sequences | FASTA, DDBJ flatfile | accession number <br>(*AB000001*) | automated + some manual |
+| [**miRBase**](https://www.mirbase.org/) | sequence *(specialized)* | microRNA sequences & annotations | FASTA, GFF | miRBase ID <br>(*hsa-let-7a-1*) | manual/expert |
+| [**RefSeq**](https://www.ncbi.nlm.nih.gov/refseq/) | curated sequences | reference genomes, transcripts, proteins | FASTA, GenBank flatfile | RefSeq accession <br>(*NM_000546.6*) | automated + manual/expert |
+| [**Ensembl**](https://www.ensembl.org/) | genome, annotation | genome assembly, gene model, variation | FASTA, VCF, GTF/GFF3 | Ensembl ID <br>(*ENSG00000139618*) | automated + manual/expert |
+| [**UCSC Genome Browser**](https://genome.ucsc.edu/) | genome, annotation | genome assembly, annotations, tracks | GTF/GFF, BED, FASTA, bigWig | UCSC ID / track name <br>(*uc001aaa.3*) | automated |
+| [**GENCODE**](https://www.gencodegenes.org/) | annotation | comprehensive gene, transcript annotation | GTF/GFF3 | Ensembl/GENCODE <br>(*ENST00000456328*) | automated + manual/expert |
+| [**dbSNP**](https://www.ncbi.nlm.nih.gov/snp/) | variation | SNPs, indels, short genetic variants | VCF | rsID <br>(*rs7412*) | automated |
+| [**ClinVar**](https://www.ncbi.nlm.nih.gov/clinvar/) | variation (clinical) | variants with clinical significance | VCF, XML | ClinVar accession <br>(*RCV000198123*) | manual/expert |
+| [**gnomAD**](https://gnomad.broadinstitute.org/) | variation (population) | population allele frequencies | VCF | variant ID <br>(*1:55516888:G:A*) | automated |
+| [**SRA**](https://www.ncbi.nlm.nih.gov/sra) | gene expression | raw sequencing reads | FASTQ | run ID <br>(*SRR390728*) | automated |
+| [**GEO**](https://www.ncbi.nlm.nih.gov/geo/) | gene expression | gene expression, RNA-seq, microarray | series matrix (TXT), SOFT, MINiML | GEO accession <br>(*GSE12345*) | automated |
+| [**ArrayExpress**](https://www.ebi.ac.uk/arrayexpress/) | gene expression | transcriptomics & functional_genomics | MAGE-TAB, FASTQ | ArrayExpress ID <br>(*E-MTAB-3050*) | automated + manual/expert |
+| [**Gene Ontology (GO)**](http://geneontology.org/) | functional enrichment | gene function classification | OBO, GAF | GO ID <br>(*GO:0006915*) | manual/expert |
+| [**KEGG**](https://www.genome.jp/kegg/) | functional enrichment | metabolic, signaling, disease pathways | KGML (XML), tabular | KEGG ID <br>(*hsa00010*) | manual/expert |
+| [**Reactome**](https://reactome.org/) | functional enrichment | biological pathways & reactions | BioPAX, SBML | Reactome ID <br>(*R-HSA-109581*) | manual/expert |
+| [**UniProt**](https://www.uniprot.org/) TrEMBL / SP | protein | protein sequences, function, structure | FASTA, TSV, XML | UniProtKB ID <br>(*P38398*) | automated; manual/expert |
+| [**PDB**](https://www.rcsb.org/) | protein *(structure)* | 3D protein & nucleic acid structures | PDB, mmCIF | PDB ID <br>(*1A1X*) | manual/expert |" %}
 
 
 <div class="process-list ul" markdown="1">

@@ -148,17 +148,20 @@ TTAACCTTGGTTTTGAACTTGAACACTTAGGGGATTGAAGATTCAACAAC
 
 ### Read type and length
 
-<div class="usa-accordion " >
-{% include accordion title="The length of a read depends on the sequencing technology used" controls="read-length" expanded=false class="outline" icon=false %}
-<div id="read-length" class="accordion_content"   markdown='1'>
+<div class="usa-accordion" >
+
+{% include accordion title="The length of a read depends on the sequencing technology used" controls="read-length" class="outline" icon=false %}
+<div id="read-length" class="accordion_content"   markdown='1' hidden>
+
 - **short-read** sequencing platforms (like Illumina) typically produce reads between 50 and 300 base pairs, up to ~1,000 bp
 - **long-read** technologies such as PacBio and Oxford Nanopore can generate reads that span thousands to even millions of bases
 
 Long reads improve assembly continuity, while short reads offer higher accuracy and throughput for variant calling and expression analysis.
 </div>
 
-{% include accordion title="Read types vary by how the DNA molecule is sequenced" controls="read-type" expanded=false class="outline" icon=false %}
-<div id="read-type" class="accordion_content"   markdown='1'>
+{% include accordion title="Read types vary by how the DNA molecule is sequenced" controls="read-type" class="outline" icon=false %}
+<div id="read-type" class="accordion_content"   markdown='1' hidden>
+
 - **single-end**, sequencing is performed from one end of the DNA fragment
 - **paired-end**, both ends of the same fragment are sequenced, providing information about the distance and orientation between the paired reads
 

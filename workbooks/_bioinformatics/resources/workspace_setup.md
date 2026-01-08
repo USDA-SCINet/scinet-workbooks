@@ -189,8 +189,10 @@ questions:
 
 
 <div class="highlighted highlighted--basic"><div class="highlighted__body" markdown="1"> 
+
 An active SCINet account with access to shared and project directories is required to complete this tutorial. 
 Basic familiarity with the [SCINet File System](/computing-skills/scinet/file_system) and [Shell interface](/computing-skills/scinet/interfaces) for [navigating directories](/computing-skills/command-line/#navigating-the-unix-file-system) and [managing files](/computing-skills/command-line/#file-management-in-the-shell) is also expected. No prior experience with bioinformatics pipeline development is required. 
+
 </div></div>
 
 
@@ -218,7 +220,9 @@ A well-structured workspace setup is more than a matter of convenience on a shar
 Project structure matters in bioinformatics because it directly affects efficiency, reproducibility, and resource usage. Placing inputs and outputs in the right storage tier can speed up calculations and prevent quota or purge issues, while organizing scripts and results makes workflows easier to share and repeat. Many datasets (e.g., reference genomes) and tools are pre-downloaded on HPC systems, so knowing where to find them can save hours of unnecessary setup.
 
 <div class="highlighted highlighted--tip"><div class="highlighted__body" markdown="1">
+
 **Structure your project, and your research will structure itself!**
+
 </div></div>
 
 ## Getting started
@@ -240,8 +244,10 @@ First, you will log in through **Open OnDemand (OOD)** and use the shell to acce
 {% include setup/ood_shell %}
 </div>
 </div>{% endcomment %}-->
+
 {% include setup/ood/accord %}
 
+</div>
 
 The goal is to help you set up and organize a well-structured **workspace for bioinformatics workflows** by creating a clear directory structure, using the appropriate storage tiers for inputs, temporary files, and results, and documenting your pipeline for reproducibility and collaboration.
 
@@ -678,11 +684,14 @@ This helps catch mistakes in file paths, environment setup, or resource requests
 4. Adjust paths and resources (memory, cores, walltime) until the pipeline runs smoothly.  
 5. Scale up gradually - once the test passes, extend it to a full dataset on the proper storage tier.  
 
-<div class="highlighted highlighted--tip"><div class="highlighted__body" markdown="1"> 
+<div class="highlighted highlighted--tip"><div class="highlighted__body" markdown="1">
+
 Many bioinformatics tools provide built-in sample data or allow downsampling (e.g., `seqtk sample`) - use these to create quick, efficient test cases. 
+
 </div></div>
 
 <div class="highlighted highlighted--question"><div class="highlighted__body" markdown="1"> 
+
 **Exercise: downsampling FASTQ files with seqtk**
 
 Load the `seqtk/1.3` module on Ceres:
@@ -695,6 +704,7 @@ seqtk sample -s100 large_sample_R1.fastq.gz 0.01 > test_R1.fastq.gz
 seqtk sample -s100 large_sample_R2.fastq.gz 0.01 > test_R2.fastq.gz
 ```
 *This produces a small paired dataset (test_R1.fastq.gz, test_R2.fastq.gz) suitable for quick trial runs.*
+
 </div></div>
 
 </div>

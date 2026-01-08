@@ -264,7 +264,7 @@ glossary:
 
   - term: Project Directory
     cat: Computing Skills
-    definition: "A structured workspace on SCINet supercomputers containing data, scripts, results, and documentation, usually associated with ARS Research Projects. After being added to the project group, users are able to access <b>/peoject/</b>project_name, <b>/90daydata/</b>project_name on Atlas and Ceres, and <b>/LTS/project/</b>project_name on Juno archive storage."
+    definition: "A structured workspace on SCINet supercomputers containing data, scripts, results, and documentation, usually associated with ARS Research Projects. After being added to the project group, users are able to access <b>/project/</b>project_name, <b>/90daydata/</b>project_name on Atlas and Ceres, and <b>/LTS/project/</b>project_name on Juno archive storage."
     related: [Scratch Space, Metadata]
 
   - term: Pseudocode
