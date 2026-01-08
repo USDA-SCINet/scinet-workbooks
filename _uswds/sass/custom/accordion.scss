@@ -5,6 +5,10 @@
     margin-top: 1em;
 }
 
+li > .usa-accordion {
+    margin-top: 1em;
+}
+
 .accordion_content {
     @extend .usa-accordion__content;
     overflow:visible;
