@@ -774,6 +774,8 @@ RNAseq_thaliana_v1_Oct2025/       # root folder for your RNA-Seq project; custom
 ├── envs/                         # documentation for environments used in a pipeline 
 └── README.md                     # main README with the purpose of the workspace and outline of the pipeline
 ```
+{: .no-copy}
+
 </div>
 
 {% include accordion title="SLURM optimization before running with huge dataset" controls="bw3" expanded=false class="outline" icon=false %}

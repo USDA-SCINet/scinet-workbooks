@@ -215,6 +215,8 @@ GCTAGCTAGCTAGCTAGCTAGCTAGCTAGCTAGCTAGCTAGCTAGCTAGCTAGCTAGC
 TTGCGTAACGTAGCTAGCTAGCTAAGCTAGCTAAGCTAGCTAAGCTAGCTAAGCTAGC
 TAGCTAGCTAGCT
 ```
+{: .no-copy}
+
 This file represents a DNA sequence in FASTA format. The header (`>`) identifies the sequence, typically by **chromosome** or **scaffold** name. 
 The sequence is shown in standard IUPAC nucleotide codes. Line breaks are for readability and have no biological significance. 
 Typically stores the reference genome assembly used in the alignment step.
@@ -226,6 +228,8 @@ Typically stores the reference genome assembly used in the alignment step.
 AUGCGUAACGUAGCUAGCUAGCUAAGCUAGCUAAGCUAGCUAAGCUAGCUAAGCUAGCU
 GCUAGCUAGCUAGCUAGCUAGCUAGCUAGCUAGCUAGCUAGCUAGCUAGCUAGCUAGC
 ```
+{: .no-copy}
+
 This file represents an RNA sequence in FASTA format. The sequence uses `U` (uracil) instead of `T` for RNA. The header (`>`) identifies the **transcript**. 
 This format is used in transcriptomics and RNA-seq analyses.
 </details>
@@ -237,6 +241,8 @@ This format is used in transcriptomics and RNA-seq analyses.
 MKTAYIAKQRQISFVKSHFSRQDILDLWIYHTQGYFPDWQNYTPGPGIRYPLKF
 GNSHVAQVKETQAAEGLKQGVAIALKALF
 ```
+{: .no-copy}
+
 This file shows an amino acid sequence in FASTA format. Each letter corresponds to an amino acid using standard 20 one-letter codes. 
 The header (`>`) typically contains a **protein identifier** and optional description. Protein FASTA files are used in functional annotation and similarity searches.
 </details>
@@ -249,6 +255,8 @@ Each entry begins with a **header line** starting with `>` (sequence identifier 
 > sequence_id description
 SEQUENCE-IN-ONE-LETTER-NOTATION
 ```
+{: .no-copy}
+
 - Recommended sequence line length: 60–80 characters.  
 - Empty lines are typically ignored by parsers.  
 - Multiple sequences can be included in one file.
@@ -374,6 +382,8 @@ GGCTTTTCCTGCGCAGCTTAGGTGGAAGGCGAAGAAGGCCCCCTTCCGGGGGGCCCGAGCCATCAGTGAGATACTACTCT
 +
 CCCFFFFFHHHHHJJJJJJJJJFHJJJJJJJJJJJJJJJJJJJJJJJHHFDDDDDDDDDDDDDDDDEDDDDDDDDDDDDDDDDDDDDDDDDDDDDDEEED
 ```
+{: .no-copy}
+
 The excerpt contains 2 records (reads). Each read entry has four lines. The header line starting with @ (identifier) identifies the read. 
 The second line contains the raw DNA sequence (`A`/`C`/`G`/`T` and `N` for unknown bases). A separator line starting with `+` and may repeat the identifier. 
 The final line encodes per base Phred quality scores (ASCII-encoded)
@@ -403,6 +413,8 @@ GATTTGGGGTTCAAAGCAGTATCGATCAAATAGTTA     #2
 +                                        #3
 !''*((((***+))%%%++)(%%%%).1***-+*''))   #4
 ```
+{: .no-copy}
+
 - Line 1: starts with @, contains sequence identifier.
 - Line 2: raw nucleotide sequence.
 - Line 3: + separator (optionally repeats identifier).
@@ -525,6 +537,8 @@ So while the experimental data might be RNA (from RNA-seq), the alignments are s
 
 r001  99  chr1  7  60  8M2I4M1D3M  =  37  39  TTAGATAAAGAGGATACTG  *  NM:i:1  MD:Z:8A4^G3
 ```
+{: .no-copy}
+
 **Header line(s)** start with @ (e.g., reference info, program info).   
 **Alignment lines** contain fields: *QNAME*, *FLAG*, *RNAME*, *POS*, *MAPQ*, *CIGAR*, *RNEXT*, *PNEXT*, *TLEN*, *SEQ*, *QUAL*. 
 Optional tags (e.g., NM:i, MD:Z) carry alignment metadata.
@@ -547,6 +561,8 @@ Each alignment line has **11 mandatory fields**, followed by optional tags:
    #1   #2    #3  #4   #5    #6    #7    #8   #9 #10  #11 optional #12+ 
 QNAME FLAG RNAME POS MAPQ CIGAR RNEXT PNEXT TLEN SEQ QUAL [TAG:TYPE:VALUE]
 ```
+{: .no-copy}
+
 - **QNAME**: query (read) name
 - **FLAG**: bitwise flag encoding read properties (e.g., paired, mapped, reverse strand)
 - **RNAME/POS**: reference sequence name & alignment start position
@@ -667,6 +683,8 @@ chr1    HAVANA  gene        11869   14409   .   +   .   gene_id "ENSG00000223972
 chr1    HAVANA  transcript  11869   14409   .   +   .   gene_id "ENSG00000223972"; transcript_id "ENST00000456328";
 chr1    HAVANA  exon        11869   12227   .   +   .   gene_id "ENSG00000223972"; transcript_id "ENST00000456328"; exon_number "1";
 ```
+{: .no-copy}
+
 These GTF lines describe a **gene annotation on chromosome 1**: the gene *DDX11L1* (`ENSG00000223972`) located on the forward strand 
 from positions **11869–14409**, one of its **transcripts** (`ENST00000456328`) spanning the same coordinates, and the first **exon** of that transcript covering **11869–12227**.  
 
@@ -682,6 +700,8 @@ GTF files are **tab-delimited with 9 required fields**:
 seqname source  feature     start     end score strand frame  attributes
 chr1    HAVANA  gene        11869   14409   .   +   .         gene_id "ENSG00000223972"; gene_name "DDX11L1";
 ```
+{: .no-copy}
+
 - (col 1) **seqname**: chromosome
 - (col 2) **source**: annotation source (e.g., HAVANA)
 - (col 3) **feature**: feature type (gene, transcript, exon, CDS, UTR); features are hierarchical: `gene → transcript → exon/CDS`.
@@ -800,6 +820,8 @@ chr1    RefSeq  gene        11869   14409   .   +   .   ID=gene1;Name=DDX11L1
 chr1    RefSeq  mRNA        11869   14409   .   +   .   ID=transcript1;Parent=gene1;Name=DDX11L1-201
 chr1    RefSeq  exon        11869   12227   .   +   .   ID=exon1;Parent=transcript1
 ```
+{: .no-copy}
+
 The header line declares the file format version (`##gff-version 3`). 
 Each subsequent feature line contains **9 tab-delimited fields**, similar to [GTF](#gtf) format. 
 The final column holds **attributes** in `key=value` pairs, separated by semicolons (e.g., `ID`, `Parent`, `Name`). 
@@ -816,6 +838,8 @@ GFF3 files are **tab-delimited with 9 required fields**, like GTF:
 seqid   source  type   start   end score strand phase         attributes
 chr1    RefSeq  gene   11869   14409   .   +   .   ID=gene1;Name=DDX11L1
 ```
+{: .no-copy}
+
 - (col 1) **seqid**: reference sequence name (e.g., chromosome or contig); must match IDs in the ref. FASTA
 - (col 2) **source**: annotation source (program or database that generated the feature: `RefSeq`, `Ensembl`) 
 - (col 3) **type**: feature type, ideally from Sequence Ontology (e.g., `gene`, `mRNA`, `exon`, `CDS`)
@@ -922,6 +946,8 @@ It is widely used for storing regions of interest (e.g., peaks, annotation track
 chr1    11868   12227
 chr1    12612   12721
 ```
+{: .no-copy}
+
 - Three required fields: `chrom`, `chromStart`, `chromEnd`
 - Coordinates are 0-based, half-open (start is 0-based, end is 1-based)
 </details> 
@@ -952,6 +978,7 @@ BED files can contain 3–12 tab-delimited fields:
 chrom start   end name    score strand thickStart thickEnd itemRgb count sizes   starts
 chr1  11868 14409 transcript1 0   +    11868      14409    0,0,255 2     359,255 0,2285 
 ```
+{: .no-copy}
 
 - **Required (BED3):**  
   - (col 1) **chrom**: chromosome/contig name  
@@ -1062,6 +1089,8 @@ Compare BED seqids with reference FASTA headers.
 chr1    11869   rs1     G   A   60   PASS   DP=100;AF=0.5
 chr1    12227   .       T   C   50   q10    DP=80;AF=0.4
 ```
+{: .no-copy}
+
 **Header lines** start with `##`, describing metadata and format version. Column header line starts with  a single `#`, defining 8 fields. 
 In **data lines**, each row coressponds to one variant record.
 </details>
@@ -1082,6 +1111,7 @@ VCF files contain a header section and a variant records section.
 #CHROM  POS     ID      REF ALT QUAL FILTER INFO
 chr1    11869   rs1     G   A   60   PASS   DP=100;AF=0.5
 ```
+{: .no-copy}
 
 **Mandatory columns in variant records:**
 - (col 1) **CHROM**: reference sequence name (chromosome/contig)  
@@ -1228,6 +1258,7 @@ chr1    source    exon    11869    12227    .    +    .    gene_id "gene1"; tran
 # VCF represents a variant at position 11869 (reference allele A, alternate allele T).
 chr1    11869    .    A    T    60    PASS    .
 ```
+{: .no-copy}
 
 **Key difference:**  
 - In BED, the same region starts at 11868 (0-based indexing) and ends at 12227 (exclusive).  

@@ -125,6 +125,8 @@ which begins with a descriptor line starting with `>` followed by the sequence i
 >example_sequence
 TTAACCTTGGTTTTGAACTTGAACACTTAGGGGATTGAAGATTCAACAACCCTAAAGCTTGGGGTAAAAC
 ```
+{: .no-copy}
+
 FASTA files usually have extensions such as `.fa`, `.fasta`, or `.fna`.
 
 ## Base
@@ -145,6 +147,8 @@ Here is an example of a read that is 50 bases long:
 ```markdown
 TTAACCTTGGTTTTGAACTTGAACACTTAGGGGATTGAAGATTCAACAAC
 ```
+{: .no-copy}
+
 
 ### Read type and length
 
@@ -186,6 +190,8 @@ TTAACCTTGGTTTTGAACTTGAACACTTAGGGGATTGAAGATTCAACAAC      #2 READ SEQUENCE
 +                                                       #3 separator line
 CCCFFFFFHHHHHJJJJJJJHIIJJFFFEDEEEEEEEDDDDDDDDEDD$$      #4 QUALITY STRING (Phred score)
 ```
+{: .no-copy}
+
 
 
 {% include alert class="tip" content="**Paired-end FASTQ** files are typically named with suffixes like `_R1.fq` and `_R2.fq` to indicate the forward and reverse reads from each DNA fragment, and must be correctly matched for downstream analyses to interpret the read pairs accurately." %}
@@ -200,6 +206,8 @@ They are critical for quality control and downstream analysis.
 TTAACCTTGGTTTTGAACTTGAACACTTAGGGGATTGAAGATTCAACAAC  # Line 2: nucleotide sequence  
 CCCFFFFFHHHHHJJJJJJJHIIJJFFFEDEEEEEEEDDDDDDDDEDD$$  # Line 4: quality scores  
 ```
+{: .no-copy}
+
 The quality string in a FASTQ file is a sequence of ASCII characters that represent the **Phred quality scores** for each base in the read. 
 Higher ASCII characters correspond to higher confidence in base calls. For example:
 
@@ -232,6 +240,8 @@ contig TTAACCTTGGTTTTGAACTTGAACACTTAGGGGATTGAAGATTCAACAACCCTAAAGCTTGGGGTAAAAC
        |        |         |         |         |         |         |         |      
        1       10        20        30        40        50        60        70
 ```
+{: .no-copy}
+
 The last line in the example above is the consensus of the aligned reads. We call this consensus sequence a **contig**. 
 Contigs contain **no gaps**, but they often represent only partial regions of the genome. 
 Contig length is limited by low [coverage](#sequencing-depth--coverage), sequencing errors, or repetitive sequences that cannot be resolved.
@@ -258,6 +268,8 @@ A scaffold is a higher-order sequence structure that connects [contigs](#contig)
 ```markdown
 contig NNNNNNNNNNNN gitnoc NNNNNNNN contig NNNNNNNN contig NNNN gitnoc
 ```
+{: .no-copy}
+
 - `contig` is a string of of bases (`A`, `T`, `C` or `G`)
 - `gitnoc` is the word contig written backwards to represent the reverse-complement orientation
 - `N` is an unknown base
@@ -299,6 +311,8 @@ AGCTTAGGGTAACTGACCTTACAGGTCAGGTAGGCTATCGTAACTG...
 >chr2
 ...
 ```
+{: .no-copy}
+
 
 {% include alert class="tip" content="Genome assemblies can vary in quality. Even most chromosome-scale assemblies are rarely perfect. They may be [unphased](#phasing), represent multiple individuals, or contain gaps, unresolved regions, and errors depending on data quality and bioinformatics methods." %}
 
@@ -341,6 +355,8 @@ Deletion (CGAT deleted at positions 7–10, alignment view):
 ATCGATCGATCGATCG
 ATCGAT----CGATCG
 ```
+{: .no-copy}
+
 
 Insertions and deletions are shown using an alignment-style representation, where dashes (-) indicate gaps relative to the reference.
 
@@ -363,6 +379,7 @@ Variants are commonly stored in **VCF (Variant Call Format)** files, a standardi
 chr1    12345   rs12345     A    G    99    PASS    DP=30;AF=0.5
 chr1    12400   .           CT   C    85    PASS    DP=25;AF=1.0
 ```
+{: .no-copy}
 
 Each line represents a single variant, with columns describing its genomic location, the reference and alternate alleles, quality scores, and additional annotations.
 
