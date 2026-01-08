@@ -54,87 +54,109 @@ function processCodeBlocks (solutionhtml){
 
 function quizSuccess(formid, idval, myResponses) {
   var displayDivId = formid + "-result";
+  var solutionDivId = formid + "-solution";
   var displayDiv = $('#' + displayDivId);
-
-  // Find the question by qid (ensure idval is number if needed)
-  var mySolutions = questions ? questions.find(q => String(q.qid) === String(idval)) : null;
-  var myAnswer = mySolutions ? mySolutions.answer : null;
-  var mySolution =  mySolutions ? mySolutions.solution : null;
-  var myCorrections = mySolutions ? mySolutions.responses : null;
   
-  // Get the user's response(s) as array or value
-  var userResponse = myResponses.getAll(idval);
-  
-  // If multiple checkboxes, FormData returns array, else string
-  // Normalize for comparison
-  let responseArr = Array.isArray(userResponse) ? userResponse.map(String) : (userResponse !== undefined ? [ String(userResponse) ] : [ ]);
-  let solutionArr = Array.isArray(myAnswer) ? myAnswer.map(String) : (myAnswer !== undefined ? [ String(myAnswer) ] : [ ]);
-  let correctionArr = Array.isArray(myCorrections) ? myCorrections.map(String) : (myCorrections !== undefined ? [ String(myCorrections) ] : [ ]);
-  let resultMsg = "";
-  let solutionMsg = "";
-  let alertClass = "";
+  let solDiv = document.getElementById(solutionDivId);
+  if (solDiv !== null) {
+    solDiv.classList.toggle("no-display");
+  } else {
+    var mcsolDivId = formid + "-MC-solution";
+    let alertDiv = document.getElementById(mcsolDivId);
+    if (alertDiv !== null){ alertDiv.classList.add("no-display"); }
 
-  if (myAnswer === undefined || myAnswer === null) {
-    // No solution, just show the answer
-    resultMsg = "Answer:";
-    solutionMsg = mySolution ? mySolution : "No answer available.";
-    alertClass = "usa-alert usa-alert--info";
-  } else if (responseArr.length > 1 && solutionArr.length === 1) {
-    // User selected multiple answers but only one is correct
-    resultMsg = "Error";
-    solutionMsg = "Please only select one answer";
-    alertClass = "usa-alert usa-alert--error";
-  } else if (responseArr.length > 1 && solutionArr.length > 1) {
-    // Compare arrays (order-insensitive)
-    const sortedResp = [ ...responseArr ].sort();
-    const sortedSol = [ ...solutionArr ].sort();
-    const isMatch = sortedResp.length === sortedSol.length && sortedResp.every((v, i) => v === sortedSol[ i ]);
-    if (isMatch) {
-      resultMsg = "Success!";
-      solutionMsg = mySolution ? mySolution : "";
-      alertClass = "usa-alert usa-alert--success";
+
+    // Find the question by qid (ensure idval is number if needed)
+    var mySolutions = questions ? questions.find(q => String(q.qid) === String(idval)) : null;
+    var myAnswer = mySolutions ? mySolutions.answer : null;
+    var mySolution =  mySolutions ? mySolutions.solution : null;
+    var myCorrections = mySolutions ? mySolutions.responses : null;
+    
+    // Get the user's response(s) as array or value
+    var userResponse = myResponses.getAll(idval);
+    
+    // If multiple checkboxes, FormData returns array, else string
+    // Normalize for comparison
+    let responseArr = Array.isArray(userResponse) ? userResponse.map(String) : (userResponse !== undefined ? [ String(userResponse) ] : [ ]);
+    let solutionArr = Array.isArray(myAnswer) ? myAnswer.map(String) : (myAnswer !== undefined ? [ String(myAnswer) ] : [ ]);
+    let correctionArr = Array.isArray(myCorrections) ? myCorrections.map(String) : (myCorrections !== undefined ? [ String(myCorrections) ] : [ ]);
+    let resultMsg = "";
+    let solutionMsg = "";
+    let alertClass = "";
+    let passes = 0;
+
+    if (myAnswer === undefined || myAnswer === null) {
+      // No solution, just show the answer
+      resultMsg = "Answer:";
+      solutionMsg = mySolution ? mySolution : "No answer available.";
+      alertClass = "usa-alert usa-alert--info";
+      passes = 1;
+    } else if (responseArr.length > 1 && solutionArr.length === 1) {
+      // User selected multiple answers but only one is correct
+      resultMsg = "Error";
+      solutionMsg = "Please only select one answer";
+      alertClass = "usa-alert usa-alert--error";
+    } else if (responseArr.length > 1 && solutionArr.length > 1) {
+      // Compare arrays (order-insensitive)
+      const sortedResp = [ ...responseArr ].sort();
+      const sortedSol = [ ...solutionArr ].sort();
+      const isMatch = sortedResp.length === sortedSol.length && sortedResp.every((v, i) => v === sortedSol[ i ]);
+      if (isMatch) {
+        resultMsg = "Success!";
+        solutionMsg = mySolution ? mySolution : "";
+        alertClass = "usa-alert usa-alert--success";
+        passes = 1;
+      } else {
+        resultMsg = "Incorrect";
+        solutionMsg = "<p>Please try again</p>";
+        alertClass = "usa-alert usa-alert--error";
+      }
+    } else if (responseArr.length === 1 && solutionArr.length === 1) {
+      // Compare single values
+      if (String(responseArr[ 0 ]) === String(solutionArr[ 0 ])) {
+        resultMsg = "Success!";
+        solutionMsg = myCorrections ? correctionArr[ userResponse-1 ] : (mySolution ? mySolution : "");
+        alertClass = "usa-alert usa-alert--success";
+        passes = 1;
+      } else {
+        resultMsg = "Incorrect";
+        solutionMsg = myCorrections ? correctionArr[ userResponse-1 ] : "<p>Please try again</p>";
+        alertClass = "usa-alert usa-alert--error";
+      }
     } else {
       resultMsg = "Incorrect";
       solutionMsg = "<p>Please try again</p>";
       alertClass = "usa-alert usa-alert--error";
     }
-  } else if (responseArr.length === 1 && solutionArr.length === 1) {
-    // Compare single values
-    if (String(responseArr[ 0 ]) === String(solutionArr[ 0 ])) {
-      resultMsg = "Success!";
-      solutionMsg = myCorrections ? correctionArr[ userResponse-1 ] : (mySolution ? mySolution : "");
-      alertClass = "usa-alert usa-alert--success";
+
+    if (alertDiv !== null && passes === 1) {
+      let alertheader = alertDiv.querySelector("h4"); 
+      alertheader.textContent = resultMsg;
+      alertDiv.setAttribute("class", "margin-2 shadow-3 " + alertClass);
+      displayDiv.empty();
     } else {
-      resultMsg = "Incorrect";
-      solutionMsg = myCorrections ? correctionArr[ userResponse-1 ] : "<p>Please try again</p>";
-      alertClass = "usa-alert usa-alert--error";
+
+    var htmlSolution = solutionMsg ? $.parseHTML( solutionMsg ) : null;
+    var solPrint = solutionMsg ? htmlSolution[ 0 ].data : " ";
+
+    // Wrap the result in a USWDS Alert
+    const alertHtml = $("<div/>", {
+        "class": alertClass + " margin-2 shadow-3",
+      }).append($('<div/>',{
+        "class": "usa-alert__body",
+      }).append($("<h4/>", {
+        "class":"usa-alert__heading",
+        text:resultMsg,
+      })).append($("<div/>", {
+        "class":"usa-alert__text",
+      }).html(solPrint))); 
+
+      processCodeBlocks(alertHtml);
+
+      displayDiv.html(alertHtml);
     }
-  } else {
-    resultMsg = "Incorrect";
-    solutionMsg = "<p>Please try again</p>";
-    alertClass = "usa-alert usa-alert--error";
   }
-
-  var htmlSolution = solutionMsg ? $.parseHTML( solutionMsg ) : null;
-  var solPrint = solutionMsg ? htmlSolution[ 0 ].data : " ";
-
-  // Wrap the result in a USWDS Alert
-   const alertHtml = $("<div/>", {
-      "class": alertClass + " margin-2 shadow-3",
-    }).append($('<div/>',{
-      "class": "usa-alert__body",
-    }).append($("<h4/>", {
-      "class":"usa-alert__heading",
-      text:resultMsg,
-    })).append($("<div/>", {
-      "class":"usa-alert__text",
-    }).html(solPrint))); 
-
-    processCodeBlocks(alertHtml);
-
-    displayDiv.html(alertHtml);
-
-  }
+}
 
 // Returns the "questions" array from quizdata
 function getQuizQuestions() {  
@@ -161,8 +183,8 @@ function quizload(){
 
   getQuizQuestions();
   
-  $( "code.no-copy" ).wrap("<div class='language-plaintext highlighter-rouge'><div class='highlight'><pre class='highlight'></pre></div></div>");
-  $( "code.copy" ).wrap("<div class='language-plaintext quiz-copy-code highlighter-rouge'><div class='highlight'><pre class='highlight'></pre></div></div>");
+  //$( "code.no-copy" ).wrap("<div class='language-plaintext highlighter-rouge'><div class='highlight'><pre class='highlight'></pre></div></div>");
+  //$( "code.copy" ).wrap("<div class='language-plaintext quiz-copy-code highlighter-rouge'><div class='highlight'><pre class='highlight'></pre></div></div>");
   /* $("div.quiz-copy-code").each(function(){
     codeProcess(this);
   }); */
