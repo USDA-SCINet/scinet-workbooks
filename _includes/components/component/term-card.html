@@ -13,7 +13,7 @@
         {% unless no_summary %}
         {% if option.definition or option.compile %}
         <p class="usa-collection__description">
-            {{ option.definition }}
+            {{ option.definition | markdownify }}
             {%- if option.compile %}
             <ul>
                 {% for getterm in option.compile %}
