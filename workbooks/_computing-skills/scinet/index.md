@@ -7,8 +7,8 @@ index: 1
 order: 1
 
 tags: [SCINet]
-terms: [SCINet supercomputers, Supercomputer, HPC, Open OnDemand, Web Browser, SSH]
-# terms: [SCINet supercomputers, Supercomputer, HPC, Local Machine, Remote Machine, Open OnDemand, Web Browser, Unix Shell, Command Line Interface, Command]
+terms: [SCINet supercomputers, supercomputer, HPC, open ondemand, web browser, ssh]
+# terms: [SCINet supercomputers, supercomputer, HPC, local machine, remote machine, open ondemand, web browser, Unix shell, command line interface, command]
 
 objectives:
 - Introduce the SCINet Initiative and its mission in advancing scientific computing.

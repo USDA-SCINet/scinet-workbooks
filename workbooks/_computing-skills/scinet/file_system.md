@@ -10,7 +10,7 @@ header:
   overlay_image: 07-wrangling/assets/img/07_data_acquisition_banner.png
 svg: /genomics.svg
 
-terms: [File System, Directory, Home Directory, Project Directory, Workspace, Path, Access Permissions, Shared Space]
+terms: [file system, directory, home directory, project directory, workspace, path, access permissions, shared space]
 
 objectives: 
   - Understand the structure of the file system on SCINet and the role of each storage location.
@@ -226,7 +226,7 @@ Knowing these spaces will help you find reference datasets or software and decid
 
 ### Reference/containers
 
-{% include term term="Container" %}
+{% include term term="container" %}
 <hr>
 
 {% include segment/ref_containers %}

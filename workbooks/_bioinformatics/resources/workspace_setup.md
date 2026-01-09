@@ -25,7 +25,7 @@ applications:
   - Using reproducible project templates for consistent pipeline setup and configuration.
   - Integrating GitHub repositories for version control, collaboration, and workflow transparency.
 
-terms: [HPC, File System, Quota, Scratch Space, Project Directory, Metadata, Module System, Container, Environment File, Conda, Git Repository, Reproducibility]
+terms: [HPC, file system, quota, scratch space, project directory, metadata, module system, container, environment file, Conda, Git repository, reproducibility]
 
 takeaways: 
   - "Start with a clear directory tree structure: separate raw data, processed results, scripts, and logs."

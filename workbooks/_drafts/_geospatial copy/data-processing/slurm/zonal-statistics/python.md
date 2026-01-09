@@ -6,7 +6,7 @@ wgs: geospatial
 
 language: Python
 
-tags: [GeoCDL, SLURM, Zonal statistics]
+tags: [GeoCDL, SLURM, zonal statistics]
 packages: [geopandas, rasterstats]
 
 updated: 2022-09-29 

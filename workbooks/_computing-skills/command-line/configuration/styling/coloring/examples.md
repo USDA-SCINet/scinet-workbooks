@@ -3,7 +3,7 @@ title: "Output styling examples"
 description: "Practical examples of coloring your command outputs."
 type: reference material
 order: 3
-tags: [unix, customization]
+tags: [UNIX, customization]
 author: Aleksandra Badaczewska
 ---
 

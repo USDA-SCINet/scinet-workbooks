@@ -5,8 +5,8 @@ description: "(Page description here)"
 type: interactive tutorial
 author: Heather Savoy
 
-tags: [spatial interpolation, Random Forest]
-terms: [Spatial Interpolation, Geostatistics, Kriging, Variogram, Random Forest]
+tags: [spatial interpolation, random forest]
+terms: [spatial interpolation, geostatistics, kriging, variogram, random forest]
 datasets: [meuse]
 packages: [geoR, ranger]
 

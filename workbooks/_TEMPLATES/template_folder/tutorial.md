@@ -4,10 +4,10 @@ title: Tutorial Title
 description: Short and informative description of your tutorial
 type: interactive tutorial # is this an interactive tutorial, reference material, or lesson module?
 
-tags: [Raster, Vector, CRS] # tags allow for users to filter for terms
+tags: [raster, vector, CRS] # tags allow for users to filter for terms
 ## can also be used in the include terms function if no separate terms list provided
 
-# terms: [GeoCDL, Raster, Vector, CRS] # For if you want defined terms that are not your tags 
+# terms: [geocdl, raster, vector, crs] # for if you want defined terms that are not your tags 
 ## only referred to by the include terms function
 
 # language: Python # uncomment if workbook uses use a coding language 

@@ -12,7 +12,7 @@ header:
   overlay_image: 
 svg: /genomics.svg
 
-terms: [SCINet supercomputers, Local Machine, Open OnDemand, Web Browser, Unix Shell, Development Environment, IDE]
+terms: [SCINet supercomputers, local machine, open ondemand, web browser, Unix shell, development environment, IDE]
 
 objectives: 
   - Understand the different interfaces available on SCINet for interacting with the system.

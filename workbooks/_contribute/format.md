@@ -89,9 +89,9 @@ description: "Describe the workbook for index and search purposes"
 author: Your Name
 # wgs: geospatial          # if this is associated with a working group
 type: interactive tutorial
-tags: [R Project, Raster, GeoCDL]
+tags: [R Project, raster, GeoCDL]
 
-# terms: [Spatial Interpolation, Geostatistics] # use if you want to automatically define terms that are not tags
+# terms: [spatial interpolation, geostatistics] # use if you want to automatically define terms that are not tags
 # language: R              # if workbook is specific to a programming language
 # packages: [bioperl, biopython]
 

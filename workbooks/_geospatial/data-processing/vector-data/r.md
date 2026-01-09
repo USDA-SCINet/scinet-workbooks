@@ -8,7 +8,7 @@ author: Heather Savoy
 
 language: R
 
-tags: [Vector,CRS,Spatial join]
+tags: [vector,CRS,spatial join]
 packages: [sf, USAboundaries, ggplot2]
 datasets:
   - name: "National Interagency Fire Center's Historic Perimeters dataset"

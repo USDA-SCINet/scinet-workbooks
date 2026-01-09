@@ -11,7 +11,7 @@ header:
   overlay_image: 07-wrangling/assets/img/07_data_acquisition_banner.png
 svg: /genomics.svg
 
-terms: [File System, Workspace, Shared Space, Project Directory, Access Permissions, Purge Policy, Storage, Quota]
+terms: [file system, workspace, shared space, project directory, access permissions, purge policy, storage, quota]
 
 objectives: 
   - "Learn where and how to set up a personal workspace for tutorials and training on SCINet clusters."

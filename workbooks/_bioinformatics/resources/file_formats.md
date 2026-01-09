@@ -24,7 +24,7 @@ applications:
   - Preparing inputs for bioinformatics tasks.
   - Recognizing intermediate and final results.
 
-terms: [Data Formats, File Extension, File Compression, Nucleotide Sequence, Sequencing Technologies, Read, Aligned Reads, Variant, Annotation, Feature, Gene, Transcript, Exon, Genome Index, Genomic Coordinates]
+terms: [data formats, file extension, file compression, nucleotide sequence, sequencing technologies, read, aligned reads, variant, annotation, feature, gene, transcript, exon, genome index, genomic coordinates]
 
 takeaways: 
   - Use the correct file format for each stage of analysis (e.g., FASTQ for raw reads, VCF for variants).  

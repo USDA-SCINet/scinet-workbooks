@@ -7,7 +7,7 @@ language: R
 
 type: interactive tutorial
 
-tags: [GeoCDL, SLURM, Zonal statistics]
+tags: [GeoCDL, SLURM, zonal statistics]
 packages: [rgeocdl, terra]
 
 updated: 2022-09-28 

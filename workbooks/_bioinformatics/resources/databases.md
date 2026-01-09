@@ -24,7 +24,7 @@ applications:
   - Accessing curated variant and disease-associated datasets.  
   - Using specialized repositories to guide experimental design and validation.  
 
-terms: [Primary Database, Secondary Database, Data Curation, Accession Number, Metadata]
+terms: [primary database, secondary database, data curation, accession number, metadata]
 
 takeaways: 
   - Always check the primary source of data and the version (e.g., genome assembly build, annotation release).  

@@ -6,7 +6,7 @@ author: Heather Savoy
 type: interactive tutorial
 language: Python
 
-tags: [Parallel processing, Raster]
+tags: [parallel processing, raster]
 packages: [rioxarray, rasterio, multiprocessing, dask]
 
 updated: 2022-10-07 

@@ -14,13 +14,13 @@ objectives:
   - Explore reverse search (`Ctrl` + `R`) for quick retrieval of past commands.
 
 terms:
-  - term: Command history
+  - term: command history
     definition: A record of previously executed commands that can be recalled and reused.
-  - term: Reverse search
+  - term: reverse search
     definition: A shortcut for quickly searching past commands by keyword.
-  - term: History expansion
+  - term: history expansion
     definition: Methods for executing previous commands without retyping.
-  - term: Persistent history
+  - term: persistent history
     definition: A file storing past commands across sessions.
 
 goal: Help users reduce redundant typing and improve workflow efficiency by introducing them to the basics of command history

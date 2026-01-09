@@ -4,7 +4,7 @@ title: "Shell Functions"
 description: "Group command sequences and enable argument passing with shell functions."
 type: interactive tutorial
 order: 6
-tags: [unix, customization]
+tags: [UNIX, customization]
 author: Aleksandra Badaczewska
 
 index: 3
@@ -29,7 +29,7 @@ applications:
 
 terms:
   - Bash shell
-  - term: Shell scripting
+  - term: shell scripting
     definition: Defining shell functions to automate tasks and improve workflow efficiency. 
 
 overview: [objectives, concepts, applications, terminology]

@@ -5,7 +5,7 @@ order: 7
 index: 3
 type: interactive tutorial
 
-tags: [unix, customization, bashrc]
+tags: [UNIX, customization, bashrc]
 author: Aleksandra Badaczewska
 
 

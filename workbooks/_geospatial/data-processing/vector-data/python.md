@@ -9,7 +9,7 @@ author: Heather Savoy
 language: Python
 interface: Jupyter
 
-tags: [Vector, CRS, Spatial join]
+tags: [vector, CRS, spatial join]
 packages: [geopandas, plotnine]
 datasets:
   - name: "National Interagency Fire Center's Historic Perimeters dataset"

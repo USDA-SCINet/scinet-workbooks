@@ -6,7 +6,7 @@ author: Heather Savoy
 type: interactive tutorial
 language: R
 
-tags: [Parallel processing, Raster]
+tags: [parallel processing, raster]
 packages: [terra, foreach, doParallel]
 
 updated: 2022-10-07 

@@ -4,7 +4,7 @@ title: GeoCDL - R
 description: "(Page description here)"
 type: interactive tutorial
 
-tags: [GeoCDL, Raster, CRS]
+tags: [GeoCDL, raster, CRS]
 packages: [rgeocdl, sf]
 language: R
 datasets: 

@@ -6,14 +6,14 @@ type: interactive tutorial
 author: Heather Savoy
 language: bash
 
-tags: [Raster]
+tags: [raster]
 packages: GDAL
 terms:
-  - term: Raster
+  - term: raster
     definition: A system for defining geospatial coordinates. Also known as a spatial reference system.
-  - term: Block
+  - term: block
     definition: The configuration of how raster values are read from the file. 
-  - term: Data type
+  - term: data type
     definition: If raster values are stored as integers or floating point numbers, if they are signed, and how many bits are used to store a value.
 
 wgs: geospatial 

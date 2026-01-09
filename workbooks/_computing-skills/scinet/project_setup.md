@@ -24,7 +24,7 @@ applications:
   - Writing <b>README</b> files at the project and workspace levels to document workflows and decision points.
   - Ensuring reproducibility and collaboration by maintaining organized structures and consistent documentation.
 
-terms: [File System, Directory Tree, Project Directory, Access Permissions, Storage, Quota, Workspace, Working Directory, Scratch Space, Raw Data, Documentation, README, Reproducibility]
+terms: [file system, directory tree, project directory, access permissions, storage, quota, workspace, working directory, scratch space, raw data, documentation, readme, reproducibility]
 
 takeaways: 
   - A well-structured directory tree (project setup) is the foundation of efficient and reproducible research. 

@@ -4,7 +4,7 @@ title: "Shell configuration files (startup scripts)"
 description: "Advanced customization of shell environment settings with environment variables, aliases, and functions during shell startup."
 type: lesson module
 order: 7
-tags: [unix, customization, bashrc]
+tags: [UNIX, customization, bashrc]
 author: Aleksandra Badaczewska
 
 index: 4

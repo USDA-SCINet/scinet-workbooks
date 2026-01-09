@@ -6,7 +6,7 @@ author: [Aleksandra Badaczewska, The SCINet Office]
 
 order: 1
 
-tags: [unix, command line]
+tags: [UNIX, command line]
 
 objectives:
 - "Provide guidance for new users to access the SCINet supercomputers."

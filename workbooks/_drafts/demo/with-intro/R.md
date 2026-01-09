@@ -3,9 +3,9 @@ title: Introduction to Introductions - R
 description: This is a demo structure example of an R tutorial with an introduction
 type: interactive tutorial
 
-tags: [Demonstration]
+tags: [demonstration]
 language: R
-# terms: [GeoCDL, Raster, Vector, CRS] # For if you want defined terms that are not your tags
+# terms: [geocdl, raster, vector, crs] # for if you want defined terms that are not your tags
 packages: [rgeocdl, sf]
 
 #wgs: geospatial # if made as a working group contribution

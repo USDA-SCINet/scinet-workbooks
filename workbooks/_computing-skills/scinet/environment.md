@@ -23,7 +23,7 @@ applications:
   - "Track and preserve the software stack used in publications or long-term projects."
 
 
-terms: [Command Line Interface, Command, Alias, Module System, Container, Environment File, Virtual Environment, Conda]
+terms: [command line interface, command, alias, module system, container, environment file, virtual environment, Conda]
 
 takeaways: 
   - "Use system modules and containers when possible to reduce setup effort and dependency issues."

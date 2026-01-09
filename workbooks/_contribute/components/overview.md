@@ -44,11 +44,11 @@ overview2:
 
 
 custom-terms:
-  - term: Custom
+  - term: custom
     Key-difference: "You can add the definition manually if you do not want to include it in the glossary for some reason." 
     definition: "This definition was added manually using the 'definition' variable" 
     Section-titles: "Section titles are automatically derived from the variable names"
-  - term: Terminal
+  - term: terminal
     link: "/computing-skills/command-line/cli-interface/terminal/"
     Key-difference: "This definition was automatically generated from the glossary." 
     Examples: "GNOME Terminal, Windows Terminal, iTerm2"
@@ -341,7 +341,7 @@ Basic terms component referencing "terms"
 ```{% raw %}
 ---
 tags: [IDE]
-terms: [IDE, Artificial Intelligence] #including terms variable makes it the default term source
+terms: [IDE, artificial intelligence] #including terms variable makes it the default term source
 ---
 {% include overview/terms %}{% endraw %}
 ```
@@ -355,11 +355,11 @@ Basic terms component referencing a custom variable
 ---
 ## frontmatter
 specified-frontmatter:
-  - term: Custom
+  - term: custom
     Key-difference: "You can add the definition manually if you do not want to include it in the glossary for some reason." 
     definition: "This definition was added manually using the 'definition' variable" 
     Section-titles: "Section titles are automatically derived from the variable names"
-  - term: Terminal
+  - term: terminal
     link: "/computing-skills/command-line/cli-interface/terminal/"
     Key-difference: "This definition was automatically generated from the glossary." 
     Examples: "GNOME Terminal, Windows Terminal, iTerm2"
@@ -376,8 +376,8 @@ Custom terms component using variable names as column names.
 ```{% raw %}
 <ul class="usa-collection collection" markdown='1'>
 
-    {% include term term="Custom" Key-difference="You can add the definition manually if you do not want to include it in the glossary for some reason." definition="This definition was added manually using the 'definition' variable" section-titles="Section titles are automatically derived from the variable names" %}
-    {% include term term="Terminal" link="/computing-skills/command-line/cli-interface/terminal/" Key-difference="This definition was automatically generated from the glossary." Examples="GNOME Terminal, Windows Terminal, iTerm2" %}
+    {% include term term="custom" Key-difference="You can add the definition manually if you do not want to include it in the glossary for some reason." definition="This definition was added manually using the 'definition' variable" section-titles="Section titles are automatically derived from the variable names" %}
+    {% include term term="terminal" link="/computing-skills/command-line/cli-interface/terminal/" Key-difference="This definition was automatically generated from the glossary." Examples="GNOME Terminal, Windows Terminal, iTerm2" %}
 
 </ul>{% endraw %}
 ```

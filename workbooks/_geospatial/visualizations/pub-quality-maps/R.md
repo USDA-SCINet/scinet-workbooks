@@ -6,7 +6,7 @@ type: interactive tutorial
 interface: RStudio
 
 tags: [graphic design]
-terms: [Raster, CRS]
+terms: [raster, crs]
 packages: [sf, ggplot2]
 language: R
 wgs: geospatial

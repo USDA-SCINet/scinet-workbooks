@@ -7,9 +7,9 @@ language: Python
 interface: Jupyter
 cluster: Ceres
 
-tags: [GeoCDL, Raster, Vector, CRS]
+tags: [GeoCDL, raster, vector, CRS]
 language: Python
-# terms: [GeoCDL, Raster, Vector, CRS] # For if you want defined terms that are not your tags
+# terms: [geocdl, raster, vector, crs] # for if you want defined terms that are not your tags
 packages: pygcdl
 wgs: geospatial
 author: Noa Mills
