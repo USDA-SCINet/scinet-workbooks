@@ -39,7 +39,7 @@ function searchNav() {
 
       //console.log(arr)
       sessionStorage.setItem('sciwbLastsearch', arr);
-      window.location.href = "{{ '/workbooks/' | relative_url }}";
+      window.location.href = '/workbooks/';
   });
 }
 
