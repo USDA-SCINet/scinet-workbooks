@@ -226,8 +226,7 @@ Knowing these spaces will help you find reference datasets or software and decid
 
 ### Reference/containers
 
-{% include term term="container" %}
-<hr>
+{% include term term="container" caps=true ul=true %}
 
 {% include segment/ref_containers %}
 
