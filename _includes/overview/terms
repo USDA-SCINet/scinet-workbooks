@@ -134,7 +134,7 @@
 {% if termatt == "" %}{% assign termatts = nil %}{% else %}{% assign termatts = termatt %}{% endif %}
 <li class="usa-collection__item width-full">
     <div class="padding-x-2 usa-collection__body">
-        <b class="usa-collection__heading">{{ define.term }}</b>
+        <h5 class="usa-collection__heading{% if include.caps or define.caps %} cap_title{% endif %}">{{ define.term }}</h5>
         {% if define.alt %}<span>({{ define.alt }})</span>{% endif %}
         {% unless no_summary %}
         <p class="usa-collection__description">
