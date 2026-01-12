@@ -476,6 +476,11 @@ a.gloss_wb{
    //border-right: 1px solid;
    //border-bottom: 1px solid;
    padding-bottom: 1rem;
+   li.usa-collection__item:last-child {
+      border-bottom-width: 1px;
+      border-bottom-style: solid;
+      padding-bottom: 1rem;
+   }
 }
 
 
