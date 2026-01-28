@@ -1,7 +1,8 @@
 const COPY_CODE_CLASS = "copy-code";
 //const class_FETCH = `.${COPY_CODE_CLASS}`;
 const FETCHED_DIV = "highlighter-rouge";
-const COPY_BUTTON_CLASS = `usa-button usa-button--outline ${COPY_CODE_CLASS}__button right-button`;
+// const COPY_BUTTON_CLASS = `usa-button usa-button--outline ${COPY_CODE_CLASS}__button right-button`; //for sticky copy button
+const COPY_BUTTON_CLASS = `usa-button usa-button--base ${COPY_CODE_CLASS}__button right-button`; // non-sticky copy button
 const COPY_BUTTON_SUCCESS_CLASS = `${COPY_CODE_CLASS}__button--success`;
 const COPY_WRAPPER_CLASS = `${COPY_CODE_CLASS}__wrapper`;
 const SR_STATUS_MESSAGE_CLASS = `${COPY_CODE_CLASS}__sr-status`;
@@ -112,7 +113,8 @@ function copycode(){
 
     copyCodeElement.classList.add("copy-code");
     copyWrapper.append(labelSROnly, copyButton);
-    copyCodeElement.appendChild(copyWrapper);
+    // copyCodeElement.appendChild(copyWrapper); // for sticky copy button
+    copyCodeElement.prepend(copyWrapper); // non-sticky copy button
 
     copyButton.addEventListener("click", copyOnClick);
   });
@@ -126,7 +128,8 @@ function codeProcess(copydiv){
 
     copydiv.classList.add("copy-code");
     copyWrapper.append(labelSROnly, copyButton);
-    copydiv.appendChild(copyWrapper);
+    //copydiv.appendChild(copyWrapper); // sticky copy button
+    copydiv.prepend(copyWrapper);  // non-sticky copy button
 
     copyButton.addEventListener("click", copyOnClick);
 }

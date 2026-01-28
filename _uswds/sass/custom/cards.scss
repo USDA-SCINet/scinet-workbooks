@@ -407,7 +407,43 @@ a.gloss_wb{
 }
 
 //copy code
+// non-sticky copy button
 .copy-code {
+ 
+   // Override display flex on collapsed accordion
+   &[hidden] {
+     display: none;
+   }
+ 
+   &__wrapper {
+      display: flex;
+      flex-direction: row;
+      justify-content: end;
+      background-color: color("base-lighter");
+   }
+ 
+   &__button {
+     @include u-font("sans", "3xs");
+     padding: 4px 4px 6px;
+     margin: 2px;
+     min-width: units(6);
+ 
+     &--success,
+     &--success:hover {
+       background-color: color("success-dark");
+       box-shadow: none;
+       color: color("white");
+     }
+ 
+   }
+   .highlight{
+      overflow:auto;
+      width:100%
+   }
+ }
+
+// sticky copy button
+/* .copy-code {
    display: flex;
    flex-direction: row;
    justify-content: space-between;
@@ -454,7 +490,7 @@ a.gloss_wb{
       overflow:auto;
       width:100%
    }
- }
+ } */
 
  .usa-button--primary{
    @include u-text('white');
