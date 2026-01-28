@@ -68,7 +68,18 @@ alert:
 
       <div class="desktop:grid-col-4 align-c">
         <div class="bg-{{ color-select }}-lighter margin-y-2 padding-y-2 width-full maxw-tablet sticky-nav">
-        <div class=" bg-white border margin-x-2">
+        <div class="margin-x-2 ">
+          {% if page.title=="Workbook Index" %}
+          <a class="usa-button width-full usa-button--{{ color-select }}" href="/workbooks/">
+              Switch to Expanded View
+          </a>
+          {% else %}
+          <a class="usa-button width-full" href="/workbooks/toc">
+            Switch to Index View
+          </a>
+        {% endif %}
+        </div>
+        <div class=" bg-white border margin-x-2 margin-top-2">
           <div aria-label="content filters" class="filters-container usa-card">
             <form id="workbook-array">
             <div class="usa-card__header">
@@ -198,10 +209,10 @@ alert:
 
         </div>
 
-      </div>
-      <div class=" bg-white border margin-x-2 margin-top-2">
+        </div>
+        <div class=" bg-white border margin-x-2 margin-top-2">
           {% include layout/nav_icons %}
-      </div>
+        </div>
 
       </div>
       </div>
