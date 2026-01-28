@@ -1,6 +1,7 @@
 ---
 title: Workbook Index
 index: 0.5
+filtered-check: true
 layout: filters
 filter-names: Search by Name
 filter-label: Filter by tutorial title
