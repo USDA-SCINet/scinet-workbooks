@@ -209,14 +209,14 @@ if (div.attr("path") == "json"){
 
 // 
 function jsonCount(div, num){
-  var word = (num === 1) ? "workbook" : "workbooks";
-  div.html(`<strong>${num}</strong> ${word} found`);
+  //var word = (num === 1) ? "workbook" : "workbooks";
+  div.text(num);
 }
 
 function classCount(div){
-componentCount = document.querySelectorAll('.fc:not(.fc-no-display):not(.no-display)').length;
-var word = (componentCount === 1) ? "workbook" : "workbooks";
-div.html(`<strong>${componentCount}</strong> ${word} found`);
+  componentCount = document.querySelectorAll('.fc:not(.fc-no-display):not(.no-display)').length;
+  //var word = (componentCount === 1) ? "workbook" : "workbooks";
+  div.text(componentCount);
 }
   
 

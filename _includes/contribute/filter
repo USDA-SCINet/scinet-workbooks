@@ -1,5 +1,5 @@
 {%- capture count %}{%- if include.count %}{%- if include.toggle %}
-<div><p class="text-base-darker margin-top-1 margin-bottom-0"><span id='component-count' path='class'><strong>{{ include.count }}</strong> {{ include.sorting }}s found</span><!--<span class=' margin-left-1 tooltip-toggle'
+<div><p class="text-base-darker margin-top-1 margin-bottom-0"><strong id='component-count' path='class'>{{ include.count }}</strong> {{ include.sorting }}s found<!--<span class=' margin-left-1 tooltip-toggle'
   aria-label='{{ include.toggle }}' 
   toggles='filter-counting-tooltip'><svg class='usa-icon'
       role='img'>
