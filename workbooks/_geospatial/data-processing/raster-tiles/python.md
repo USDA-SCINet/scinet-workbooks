@@ -318,7 +318,7 @@ print('Processing time: {:.2f} seconds'.format(et - st))
 Processing time: 13.72 seconds
 ```
 
-During the computation, you can check the SLURM queue by running the `squeue -u firstname.lastname` in a shell with your SCINet username and see the jobs Dask submits to perform the calculation. 
+During the computation, you can check the SLURM queue by running the `squeue -u $USER` in a shell with your SCINet username and see the jobs Dask submits to perform the calculation. 
 
 
 ```python
