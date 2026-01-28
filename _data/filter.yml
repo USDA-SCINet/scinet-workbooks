@@ -13,10 +13,10 @@ filters:
   #   values: ['interactive tutorial', 'lesson module', 'reference material']
   - section: Coding Language / Interface
     subsection:
-      - title: Select Coding Language
+      - title: Coding Language
         type: checkbox
         val: 'language'
-      - title: Select Interface
+      - title: Interface
         type: select
         val: 'interface'
   - section: Keywords

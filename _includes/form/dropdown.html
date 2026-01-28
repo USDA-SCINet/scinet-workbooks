@@ -3,7 +3,7 @@
     <label class="usa-label text-bold {{ include.labelclass }}" for="{{ include.tname }}">{{ include.title }}:</label>
     <div class="usa-combo-box">
         <select class="usa-select capital" name="{{ include.tname }}" id="{{ include.tname }}">
-            <option value>- Select {{ include.title }} -</option>
+            <option value>- {{ include.title }} -</option>
             {% for _option in include.options %}
             {% if include.formatting == 'shorthand' %}
             {% assign option = _option.shorthand %}
