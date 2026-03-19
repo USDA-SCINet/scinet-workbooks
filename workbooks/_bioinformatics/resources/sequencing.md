@@ -67,7 +67,7 @@ questions:
     qid: 3
     solution: "Paired-end sequencing means that both ends of a DNA fragment are sequenced, providing positional context and improving alignment in repetitive or complex regions."
 
-  - question: "Match the research goal to the correct assay type."
+  - question: "Select the option where the research goal is matched to the correct assay type."
     title: Matching Assays to Biological Questions
     qid: 4
     answers:
@@ -75,7 +75,9 @@ questions:
       - Chromatin accessibility → ATAC-seq  
       - Microbiome profiling → 16S rRNA  
       - Structural variants → Long-read WGS
-    solution: "Correct matching. Each assay is suited for the respective biological insight."
+      - All of the above
+    solution: "All of the above assays are suited for their respective biological insight."
+    answer: 5
 
   - question: "You want to study transcriptional activity in a frozen brain sample. Which assay is most appropriate?"
     title: Assay Selection Based on Sample Type
@@ -302,8 +304,10 @@ This includes selecting appropriate quality control methods, choosing a compatib
 3. What sequencing platform generated the data, and with what read characteristics? <br>(length, type, depth)
 4. Are there technical replicates, controls, or metadata available?
 
-Understanding these choices will help you build more accurate, reproducible, and biologically meaningful pipelines.  
-[Sequencing depth and coverage: key considerations in NGS experiments](https://www.nature.com/articles/nrg3642?)  
+Understanding these choices will help you build more accurate, reproducible, and biologically meaningful pipelines. 
+
+**Sources:**
+* [Sequencing depth and coverage: key considerations in NGS experiments](https://www.nature.com/articles/nrg3642?)  
 </div>
 </div>
 
@@ -314,9 +318,109 @@ Sequencing assays define what kind of biological question the experiment is desi
 The choice of assay determines which molecules are sequenced (DNA or RNA), how the sample is processed, and what kind of analysis is required downstream. 
 
 <div class="usa-accordion" data-allow-multiple markdown="1">
+
 ## Genomics
 DNA-focused assays that examine the structure, variation, or content of the genome.
 
+| Assay Type   | Purpose                          | Input          | Notes |
+| --- | --- | --- | --- |
+| {% include nav-hidden text="WGS" url="#wgs" %}          | sequence entire genome           | DNA            | high coverage, Illumina or PacBio |
+| {% include nav-hidden text="WES" url="#wes" %}          | sequence coding regions only     | DNA (exome)    | cost-effective, capture step |
+| {% include nav-hidden text="Targeted-seq" url="#targeted" %} |  sequence selected genes or loci | DNA (regions)  |  panels, low throughput |
+| {% include nav-hidden text="RAD-seq" url="#rad-seq" %}      |  genotype via restriction sites  | DNA (digested) | low cost, reduced genome |
+| {% include nav-hidden text="Amplicon-seq" url="#amplicon" %} |  sequence PCR-amplified targets  | PCR amplicons  |  ultra-deep, very targeted |
+
+
+{% include accordion title="WGS" controls="wgs" expanded=false class=" " icon=false %}
+<div id="wgs" class="accordion_content"   markdown='1'>
+
+Whole-Genome Sequencing (**WGS**) involves sequencing the entire genome of an organism - all coding and non-coding regions. 
+Useful for discovering variants, structural changes, or assembling new genomes.
+- Used for: variant discovery, genome assembly, population genomics
+- Data type: genomic DNA
+- Bioinformatics note: large data volume; requires careful alignment and variant calling pipelines
+
+| Platform(s)      | Read Mode  | Read Length         | Depth (Guidance)     | Library Type         |
+|------------------|------------|---------------------|----------------------|----------------------|
+| Illumina, PacBio | PE         | 150–300 bp / >10 kb | ≥30x (human) 50x (bacteria) | whole-genome shotgun |
+
+**Sources:**
+* [Whole genome sequencing in clinical practice (Bagger et al., 2024)](https://pmc.ncbi.nlm.nih.gov/articles/PMC10823711/)  
+* [Characterizing sensitivity and coverage of clinical WGS as a ... (Sun et al., 2021)](https://bmcmedgenomics.biomedcentral.com/articles/10.1186/s12920-021-00948-5)  
+* [Best practices for ... clinical whole genome sequencing (Austin‑Tse et al., 2022)](https://www.nature.com/articles/s41525-022-00295-z)  
+
+</div>
+
+{% include accordion title="WES" controls="wes" expanded=false class=" " icon=false %}
+<div id="wes" class="accordion_content"   markdown='1'>
+
+Whole-Exome Sequencing (**WES**) targets only the exonic (protein-coding) regions of the genome (~1–2% of total). 
+Focuses on variants most likely to affect gene function.
+- Used for: disease mutation discovery, cancer research
+- Data type: enriched DNA fragments covering exons
+- Bioinformatics note: requires target enrichment step; limited to coding variants
+
+| Platform(s)   | Read Mode  | Read Length | Depth (Guidance)  | Library Type              |
+|---------------|------------|-------------|-------------------|---------------------------|
+| Illumina      | PE         | 100–150 bp  | ≥100x in exome    | capture-based             |
+
+**Sources:**
+* [Twist exome capture allows for lower average sequence ... (Yaldiz et al., 2023)](https://humgenomics.biomedcentral.com/articles/10.1186/s40246-023-00485-5)
+
+</div>
+
+{% include accordion title="Targeted-seq" controls="targeted" expanded=false class=" " icon=false %}
+<div id="targeted" class="accordion_content"   markdown='1'>
+Targeted Sequencing focuses on specific genes or genomic regions of interest.
+Often used in clinical or diagnostic settings where only a subset of genes needs to be examined.
+- Used for: panel-based testing, diagnostics, gene panels
+- Data type: selected DNA regions
+- Bioinformatics note: requires knowledge of capture design; coverage can be uneven
+
+| Platform(s)   | Read Mode  | Read Length | Depth (Guidance)     | Library Type              |
+|---------------|------------|-------------|----------------------|---------------------------|
+| Illumina      | SE or PE   | 100–250 bp  | varies by panel size | amplicon/capture panel    |
+
+**Sources:**
+* [Targeted Sequencing Approach and Its Clinical Applications (X. M. Pei et al., 2023)](https://pmc.ncbi.nlm.nih.gov/articles/PMC9913990/)
+
+</div>
+
+{% include accordion title="RAD-seq" controls="rad-seq" expanded=false class=" " icon=false %}
+<div id="rad-seq" class="accordion_content"   markdown='1'>
+Restriction-site Associated DNA Sequencing (**RAD-seq**) focuses on regions flanking restriction enzyme cut sites across the genome. 
+Used for population genomics and genotyping when full genome sequencing is unnecessary.
+- Used for: SNP discovery, genetic mapping, population structure
+- Data type: reduced representation of the genome
+- Bioinformatics note: requires restriction site recognition and reference alignment; uneven genomic coverage
+
+| Platform(s)   | Read Mode  | Read Length | Depth (Guidance)        | Library Type              |
+|---------------|------------|-------------|-------------------------|---------------------------|
+| Illumina      | SE or PE   | 75–150 bp   | moderate (5–15x/sample) | restriction-digested      |
+
+**Sources:**
+* [Harnessing the power of RADseq for ecological and evolutionary genomics (K. R. Andrews et al., 2016)](https://pmc.ncbi.nlm.nih.gov/articles/PMC4823021/)
+
+</div>
+
+{% include accordion title="Amplicon-seq" controls="amplicon" expanded=false class=" " icon=false %}
+<div id="amplicon" class="accordion_content"   markdown='1'>
+Amplicon Sequencing targets and sequences specific PCR-amplified regions of DNA.
+Common in microbiome studies and mutation hotspot analysis.
+- Used for: microbial profiling (e.g. 16S/ITS), targeted mutation detection
+- Data type: high-depth coverage of selected loci
+- Bioinformatics note: primer design is crucial; chimera detection and sequence clustering often required
+
+| Platform(s)   | Read Mode  | Read Length | Depth (Guidance)          | Library Type              |
+|---------------|------------|-------------|---------------------------|---------------------------|
+| Illumina      | SE         | 100–300 bp  | very high (1000x–10,000x) | PCR amplicons             |
+
+**Sources:**
+* [Amplicon Sequencing Solutions (Illumina) technical documentation](https://www.illumina.com/techniques/sequencing/dna-sequencing/targeted-resequencing/amplicon-sequencing.html)
+
+</div>
+
+<!-- {% comment %}Commenting out former formatting 
 <div class="borderless" markdown="1">
 <table style="width:100%; table-layout:fixed;"><tr><td style="width:15%;"><b>Assay Type</b></td><td style="width: 20%;">|&ensp; Purpose</td><td>-</td><td>Input</td><td>-</td><td style="width: 35%;">Notes (requirements)</td></tr></table>
 </div>
@@ -402,13 +506,137 @@ Common in microbiome studies and mutation hotspot analysis.
 [Amplicon Sequencing Solutions (Illumina) technical documentation](https://www.illumina.com/techniques/sequencing/dna-sequencing/targeted-resequencing/amplicon-sequencing.html)
 
 </div>
+{% endcomment %} -->
 </div>
 
 
 <div class="usa-accordion" data-allow-multiple markdown="1">
+
 ## Transcriptomics
 RNA-focused assays that analyze gene expression and RNA composition.
 
+| Assay Type    | Purpose                        | Input        | Notes |
+| --- | --- | --- | --- |
+| {% include nav-hidden text="RNA-seq" url="#rna-seq" %}       | quantify gene expression       | RNA (cDNA)   | strand info, depth matters |
+| {% include nav-hidden text="total RNA-seq" url="#tot-rna" %} | coding and non-coding RNAs     | RNA          |  rRNA depletion or filtering |
+| {% include nav-hidden text="scRNA-seq" url="#sc-seq" %}     | single-cell gene expression    | RNA (cells)  |  barcoding, high dropout, noisy |
+| {% include nav-hidden text="snRNA-seq" url="#sn-seq" %}     | single-nucleus gene expression | RNA (nuclei) |  frozen tissues or hard samples |
+| {% include nav-hidden text="PRO-seq" url="#pro-seq" %}       | detects new transcripts        | RNA (nuclei) |  complex prep |
+| {% include nav-hidden text="Ribo-seq" url="#ribo-seq" %}      | detects new transcripts        | RNA (nuclei) |  complex prep |
+
+{% include accordion title="RNA-seq" controls="rna-seq" expanded=false class=" " icon=false %}
+<div id="rna-seq" class="accordion_content"   markdown='1'>
+
+RNA sequencing (**RNA-seq**) measures gene expression by sequencing RNA transcripts. 
+After converting RNA to cDNA, sequenced reads reflect how actively genes are being transcribed in the sample. 
+- Used for: differential expression, transcript discovery, isoform quantification
+- Data type: cDNA, aligned to the genome or transcriptome
+- Bioinformatics note: requires strandedness awareness, spliced aligners (e.g., STAR, HISAT2), and normalization methods
+
+| Platform(s)   | Read Mode  | Read Length | Depth (Guidance)  | Library Type              |
+|---------------|------------|-------------|-------------------|---------------------------|
+| Illumina      | PE         | 75–150 bp   | 20-50M reads/sample | poly(A) or rRNA-depleted  |
+
+**Sources:**
+* [Illumina Bulletin](https://support.illumina.com/content/illumina-support/apac/ja_JP/bulletins/2017/04/considerations-for-rna-seq-read-length-and-coverage-.html)  
+* [A survey of best practices for RNA-seq data analysis (Conesa et al., 2016)](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-016-0881-8)  
+* [Brief guide to RNA sequencing analysis for nonexperts in bioinformatics (Lee G-Y. et al., 2024)](https://pmc.ncbi.nlm.nih.gov/articles/PMC11091515/)  
+* [A comprehensive workflow for optimizing RNA-seq data analysis (Zhou et al., 2024)](https://bmcgenomics.biomedcentral.com/articles/10.1186/s12864-024-10414-y)
+
+</div>
+
+{% include accordion title="Total RNA-seq" controls="tot-rna" expanded=false class=" " icon=false %}
+<div id="tot-rna" class="accordion_content"   markdown='1'>
+
+Total RNA-seq captures both coding and non-coding RNAs, including rRNA, tRNA, and lncRNA. 
+Can provide broader transcriptome coverage than mRNA-focused RNA-seq.
+- Used for: transcriptome profiling beyond mRNA
+- Data type: all RNA species (if rRNA is not depleted)
+- Bioinformatics note: may require rRNA depletion; more complex expression quantification
+
+
+| Platform(s)   | Read Mode  | Read Length | Depth (Guidance)  | Library Type              |
+|---------------|------------|-------------|-------------------|---------------------------|
+| Illumina      | PE         | 75–150 bp   | ≥30M reads/sample | rRNA-depleted total RNA   |
+
+**Sources:**
+* [Illumina: “Total RNA Sequencing” Overview](https://www.illumina.com/techniques/sequencing/rna-sequencing/total-rna-seq.html)
+
+</div>
+
+{% include accordion title="scRNA-seq" controls="sc-seq" expanded=false class=" " icon=false %}
+<div id="sc-seq" class="accordion_content"   markdown='1'>
+
+Single-cell RNA-seq (**scRNA-seq**) measures gene expression at the level of individual cells. 
+Reveals cell-to-cell variation and uncovers rare cell types.
+- Used for: cellular heterogeneity, developmental biology, tumor microenvironment
+- Data type: barcoded short reads from individual cells
+- Bioinformatics note: requires demultiplexing, normalization, and dimensionality reduction
+
+| Platform(s)             | Read Mode  | Read Length | Depth (Guidance)        | Library Type              |
+|-------------------------|------------|-------------|-------------------------|---------------------------|
+| 10x Genomics (Illumina) | SE or PE   | 50–100 bp   | 20-100K reads/cell      | barcoded, UMI             |
+
+**Sources:**
+* [Determining sequencing depth in a single‑cell RNA‑seq study (Zhang et al., 2020)](https://www.nature.com/articles/s41467-020-14482-y)  
+* [10x Genomics Knowledge Base: search for "single cell"](https://kb.10xgenomics.com/hc/en-us)
+
+</div>
+
+{% include accordion title="snRNA-seq" controls="sn-seq" expanded=false class=" " icon=false %}
+<div id="sn-seq" class="accordion_content"   markdown='1'>
+
+Single-nucleus RNA-seq (**snRNA-seq**) profiles gene expression from isolated nuclei rather than whole cells. 
+Used when full cell dissociation is difficult (e.g., brain, frozen tissue).
+- Used for: gene expression in archived or hard-to-dissociate samples
+- Input: RNA extracted from isolated nuclei
+- Bioinformatics note: similar pipeline to scRNA-seq but may include more unspliced transcripts and require nucleus-aware annotation
+
+| Platform(s)   | Read Mode  | Read Length | Depth (Guidance)     | Library Type              |
+|---------------|------------|-------------|----------------------|---------------------------|
+| 10x Genomics  | SE or PE   | 50–100 bp   | similar to scRNA-seq | nuclear RNA, barcoded     |
+
+**Sources:**
+* [Single‑Nucleus RNA‑Sequencing in Brain Tissue (Waag et al., Current Protocols, 2023)](https://currentprotocols.onlinelibrary.wiley.com/doi/10.1002/cpz1.919)
+
+</div>
+
+{% include accordion title="PRO-seq" controls="pro-seq" expanded=false class=" " icon=false %}
+<div id="pro-seq" class="accordion_content"   markdown='1'>
+
+Precision Run-On Sequencing (**PRO-seq**) detects newly synthesized RNA to measure transcriptional activity in real time.
+- Used for: high-resolution mapping of RNA polymerase activity and transcription start sites
+- Data type: strand-specific, single-nucleotide resolution
+- Bioinformatics note: complex protocol, requires nuclei isolation and careful handling of nascent transcripts
+
+| Platform(s)   | Read Mode  | Read Length | Depth (Guidance)  | Library Type              |
+|---------------|------------|-------------|-------------------|---------------------------|
+| Illumina      | SE         | 30–50 bp    | ≥20M reads/sample | nascent RNA, run-on assay |
+
+**Sources:**
+* [Enhancing Transcriptome Mapping with Rapid PRO‑seq (Cingaram et al., 2025)](https://www.cell.com/molecular-cell/fulltext/S1097-2765%2825%2900579-9)  
+* [PRO‑IP‑seq tracks molecular modifications of engaged Pol II (Vihervaara et al., 2023)](https://www.nature.com/articles/s41467-023-42715-3)
+
+</div>
+
+{% include accordion title="Ribo-seq" controls="ribo-seq" expanded=false class=" " icon=false %}
+<div id="ribo-seq" class="accordion_content"   markdown='1'>
+Ribosome Profiling (**Ribo-seq**) captures mRNA fragments protected by ribosomes to reveal which genes are actively being translated.
+- Used for: studying translation efficiency, ribosome occupancy, and post-transcriptional regulation
+- Data type: short reads (~30 bp), representing ribosome-protected fragments
+- Bioinformatics note: requires precise alignment and specialized tools to map to coding regions and detect ribosome pauses
+
+| Platform(s)   | Read Mode  | Read Length | Depth (Guidance)  | Library Type                 |
+|---------------|------------|-------------|-------------------|------------------------------|
+| Illumina      | SE         | ~30 bp      | 50-100M reads/sample | ribosome-protected fragments |
+
+**Sources:**
+* [Advances in ribosome profiling technologies (Tomuro et al., 2025)](https://pmc.ncbi.nlm.nih.gov/articles/PMC12224887/)  
+* [Recommendations for bacterial ribosome profiling (Glaub et al., 2020)](https://pmc.ncbi.nlm.nih.gov/articles/PMC7335797/)
+
+</div>
+
+<!-- {% comment %}Commenting out former formatting 
 <div class="borderless" markdown="1">
 <table style="width:100%; table-layout:fixed;"><tr><td style="width:15%;"><b>Assay Type</b></td><td style="width: 20%;">|&ensp; Purpose</td><td>-</td><td>Input</td><td>-</td><td style="width: 35%;">Notes (requirements)</td></tr></table>
 </div>
@@ -513,13 +741,75 @@ Ribosome Profiling (**Ribo-seq**) captures mRNA fragments protected by ribosomes
 [Recommendations for bacterial ribosome profiling (Glaub et al., 2020)](https://pmc.ncbi.nlm.nih.gov/articles/PMC7335797/)
 
 </div>
+{% endcomment%} -->
 </div>
 
 
 <div class="usa-accordion" data-allow-multiple markdown="1">
+
 ## Metagenomics / Microbiome
 Assays to profile complex microbial communities or mixed samples.
 
+| Assay Type   | Purpose                      | Input     | Notes |
+| --- | --- | --- | --- |
+| {% include nav-hidden text="Metagenomics" url="#metagen" %} | sequence mixed microbial DNA | DNA       | long reads, complex samples |
+| {% include nav-hidden text="16S rRNA Seq" url="#r-rna" %} | detect bacterial taxa        | DNA (16S) | low-cost, species-level limited |
+| {% include nav-hidden text="ITS Seq" url="#its-seq" %}      | fungal community profiling   | DNA (ITS) | fungi-specific, analogous to 16S |
+
+{% include accordion title="Metagenomics" controls="metagen" expanded=false class=" " icon=false %}
+<div id="metagen" class="accordion_content"   markdown='1'>
+Metagenomic Sequencing is used to study the genetic material from environmental or host-associated microbial communities.
+Can be either amplicon-based (e.g., 16S rRNA) or whole-metagenome shotgun.
+- Used for: microbiome analysis, environmental sampling, pathogen discovery
+- Data type: mixed microbial DNA
+- Bioinformatics note: requires taxonomic classification tools; often involves complex assembly and binning
+
+| Platform(s)            | Read Mode  | Read Length        | Depth (Guidance)  | Library Type              |
+|------------------------|------------|--------------------|-------------------|---------------------------|
+| Illumina, ONT, PacBio  | PE or long | 150–250 bp / >5 kb | ≥5M reads/sample  | total DNA                 |
+
+**Sources:**
+* [Methodological guidance for clinical metagenomics (De Koster et al., 2022)](https://www.microbiotajournal.com/wp-content/uploads/sites/7/2022/09/e773.pdf)
+
+</div>
+
+{% include accordion title="16S rRNA Seq" controls="r-rna" expanded=false class=" " icon=false %}
+<div id="r-rna" class="accordion_content"   markdown='1'>
+16S rRNA Sequencing amplifies and sequences the conserved 16S gene in bacteria. 
+Used for profiling bacterial communities in environmental or clinical samples.
+- Used for: microbiome studies, taxonomic classification
+- Data type: amplicon reads from 16S variable regions
+- Bioinformatics note: requires accurate clustering, chimera filtering, and taxonomic annotation
+
+| Platform(s)   | Read Mode  | Read Length | Depth (Guidance)  | Library Type                 |
+|---------------|------------|-------------|-------------------|------------------------------|
+| Illumina      | SE         | 250–300 bp  | ≥50K reads/sample | 16S amplicons (V3–V4, etc.)  |
+
+**Sources:**
+* [Best practices for generating and analyzing 16S rRNA gene amplicon sequencing (Silva et al., 2022)](https://www.frontiersin.org/journals/microbiology/articles/10.3389/fmicb.2022.1007877/full)  
+* [Benchmark of 16S rRNA gene amplicon sequencing using gut microbiome (Kameoka et al., 2021)](https://bmcgenomics.biomedcentral.com/articles/10.1186/s12864-021-07746-4)
+
+</div>
+
+{% include accordion title="ITS Seq" controls="its-seq" expanded=false class=" " icon=false %}
+<div id="its-seq" class="accordion_content"   markdown='1'>
+ITS Sequencing targets the Internal Transcribed Spacer (ITS) region of fungal rRNA genes. 
+Fungal counterpart to 16S sequencing for microbiome studies.
+- Used for: fungal diversity and taxonomy
+- Data type: fungal amplicon reads
+- Bioinformatics note: similar pipelines as 16S, but with ITS-specific databases
+
+| Platform(s)   | Read Mode  | Read Length | Depth (Guidance)  | Library Type              |
+|---------------|------------|-------------|-------------------|---------------------------|
+| Illumina      | SE         | 200–300 bp  | similar to 16S    | fungal ITS amplicons      |
+
+**Sources:**
+* [ITS Illumina Amplicon Protocol (Earth Microbiome Project)](https://earthmicrobiome.org/protocols-and-standards/its/)  
+* [Fungal Metagenomic Sequencing Demonstrated Protocol (Illumina) - ITS Workflow](https://support.illumina.com/content/dam/illumina-support/documents/documentation/chemistry_documentation/metagenomic/fungal-metagenomic-demonstrated-protocol-1000000064940-01.pdf)
+
+</div>
+
+<!-- {% comment %}Commenting out former formatting 
 <div class="borderless" markdown="1">
 <table style="width:100%; table-layout:fixed;"><tr><td style="width:15%;"><b>Assay Type</b></td><td style="width: 20%;">|&ensp; Purpose</td><td>-</td><td>Input</td><td>-</td><td style="width: 35%;">Notes (requirements)</td></tr></table>
 </div>
@@ -573,11 +863,91 @@ Fungal counterpart to 16S sequencing for microbiome studies.
 [Fungal Metagenomic Sequencing Demonstrated Protocol (Illumina) - ITS Workflow](https://support.illumina.com/content/dam/illumina-support/documents/documentation/chemistry_documentation/metagenomic/fungal-metagenomic-demonstrated-protocol-1000000064940-01.pdf)
 
 </div>
+{% endcomment %} -->
 </div>
 
 <div class="usa-accordion" data-allow-multiple markdown="1">
+
 ## Epigenomics & Regulation
 Assays to study gene regulation, chromatin state, and DNA-protein interactions.
+
+| Assay Type    | Purpose                        | Input             | Notes |
+| --- | --- | --- | --- |
+| {% include nav-hidden text="ChIP-seq" url="" %}     | study protein-DNA interactions | DNA (IP)          | antibody-based, moderate depth |
+| {% include nav-hidden text="ATAC-seq" url="" %}      | detect open chromatin regions  | DNA (nuclei)      | short reads, quality-sensitive |
+| {% include nav-hidden text="Bisulfite Seq" url="" %} | detect DNA methylation         | DNA               | bisulfite-treated, special tools |
+| {% include nav-hidden text="Hi-C" url="" %}          | detect 3D genome organization  | DNA (crosslinked) | complex prep, large frags |
+
+{% include accordion title="ChIP-seq" controls="chip-seq" expanded=false class=" " icon=false %}
+<div id="chip-seq" class="accordion_content"   markdown='1'>
+Chromatin Immunoprecipitation Sequencing (**ChIP-seq**) is used to identify protein-DNA interactions, such as transcription factor binding or histone modifications.
+DNA fragments bound to proteins of interest are sequenced after immunoprecipitation.
+- Used for: epigenetics, transcription regulation studies
+- Data type: DNA fragments enriched for binding sites
+- Bioinformatics note: peak calling is central; requires input control samples for background correction
+
+| Platform(s)   | Read Mode  | Read Length | Depth (Guidance)  | Library Type              |
+|---------------|------------|-------------|-------------------|---------------------------|
+| Illumina      | SE         | 50–75 bp    | ≥20M reads/sample | IP-enriched DNA           |
+
+**Sources:**
+* [ChIP‑seq guidelines and practices of the ENCODE and modENCODE consortia (Landt et al., 2012)](https://pmc.ncbi.nlm.nih.gov/articles/PMC3431496/)
+
+</div>
+
+{% include accordion title="ATAC-seq" controls="atac-seq" expanded=false class=" " icon=false %}
+<div id="atac-seq" class="accordion_content"   markdown='1'>
+Assay for Transposase-Accessible Chromatin (**ATAC-seq**) identifies open chromatin regions by inserting sequencing adapters into accessible DNA.
+Captures genome-wide chromatin accessibility patterns.
+- Used for: epigenomic profiling, regulatory element discovery
+- Data type: DNA from accessible chromatin regions
+- Bioinformatics note: high signal-to-noise; typically produces short fragments; peak analysis required
+
+| Platform(s)   | Read Mode  | Read Length | Depth (Guidance)  | Library Type              |
+|---------------|------------|-------------|-------------------|---------------------------|
+| Illumina      | PE         | 50 bp       | ≥50M reads/sample | tagmented open chromatin  |
+
+**Sources:**
+* [From reads to insight: a hitchhiker’s guide to ATAC‑seq data (Yan et al., 2020)](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-020-1929-3)  
+* [Extensive evaluation of ATAC‑seq protocols for native or fixed nuclei (Zhang et al., 2022)](https://pmc.ncbi.nlm.nih.gov/articles/PMC8928671/)
+
+</div>
+
+{% include accordion title="Bisulfite Seq" controls="bisulf-seq" expanded=false class=" " icon=false %}
+<div id="bisulf-seq" class="accordion_content"   markdown='1'>
+Bisulfite Sequencing detects DNA methylation by converting unmethylated cytosines to uracil. 
+Used in epigenetic research to study methylation patterns genome-wide or at specific loci.
+- Used for: epigenetic profiling, cancer research, developmental biology
+- Data type: methylation-sensitive DNA reads
+- Bioinformatics note: requires methylation-aware alignment and careful interpretation
+
+| Platform(s)   | Read Mode  | Read Length | Depth (Guidance)  | Library Type              |
+|---------------|------------|-------------|-------------------|---------------------------|
+| Illumina      | PE         | 75–150 bp   | ≥30x coverage     | bisulfite converted DNA   |
+
+**Sources:**
+* [Standards and Guidelines for Whole Genome Shotgun Bisulfite Sequencing (MethylC‑Seq)](https://www.encodeproject.org/documents/108d2515-c053-4b18-bc65-27e8f26d62c5/%40%40download/attachment/MethylC-SeqStandards_ENCODE3_EM.pdf)  
+* [Guidelines for whole genome bisulphite sequencing of intact DNA (Nair et al. 2018)](https://epigeneticsandchromatin.biomedcentral.com/articles/10.1186/s13072-018-0194-0)  
+* [Coverage recommendations for methylation analysis by whole genome bisulfite sequencing (Ziller et al. 2014)](https://pmc.ncbi.nlm.nih.gov/articles/PMC4344394/)  
+</div>
+
+{% include accordion title="Hi-C" controls="hic" expanded=false class=" " icon=false %}
+<div id="hic" class="accordion_content"   markdown='1'>
+Hi-C captures spatial proximity of DNA regions to study 3D genome architecture. 
+Identifies loops, domains, and higher-order chromatin structure.
+- Used for: chromosome conformation, genome scaffolding, regulatory interactions
+- Data type: paired-end reads from crosslinked DNA fragments
+- Bioinformatics note: specialized tools required; analysis is computationally intensive
+
+| Platform(s)   | Read Mode  | Read Length | Depth (Guidance)     | Library Type              |
+|---------------|------------|-------------|----------------------|---------------------------|
+| Illumina      | PE         | 100–150 bp  | varies (100M+ reads/sample, often ~500M-2B) | proximity ligation |
+
+* [Guiding the design of well‑powered Hi‑C experiments (Parker et al., 2023)](https://academic.oup.com/bioinformaticsadvances/article/3/1/vbad152/7319106)
+
+</div>
+
+<!-- {% comment %}Commenting out former formatting 
 
 <div class="borderless" markdown="1">
 <table style="width:100%; table-layout:fixed;"><tr><td style="width:14%;"><b>Assay Type</b></td><td style="width: 20%;">|&ensp; Purpose</td><td>-</td><td>Input</td><td>-</td><td style="width: 35%;">Notes (requirements)</td></tr></table>
@@ -648,6 +1018,7 @@ Identifies loops, domains, and higher-order chromatin structure.
 [Guiding the design of well‑powered Hi‑C experiments (Parker et al., 2023)](https://academic.oup.com/bioinformaticsadvances/article/3/1/vbad152/7319106)
 
 </div>
+{% endcomment %}-->
 </div>
 
 
@@ -681,15 +1052,15 @@ consider using **WGS (Whole Genome Sequencing)** with **long-read sequencing pla
  - Illumina paired-end short reads for polishing  
  - Coverage: 30×–60× long reads + 50× short reads
 
-| Organism Type | Long-Read Coverage | Short-Read Coverage | Notes  |
+{% include table content="| Organism Type | Long-Read Coverage | Short-Read Coverage | Notes  |
 |---------------|--------------------|---------------------|--------|
 | large genome plants <br>(e.g., wheat, barley)             | ≥60× HiFi    | ≥60× Illumina    | polyploid-aware tools required   |
 | medium genome plants <br>(e.g., sorghum, cotton)          | 40–60× HiFi  | 40–50× Illumina  | repeat-aware assembly methods    |
-| small genome plants <br>(e.g., *Setaria*, *Brachypodium*) | 30–40× HiFi  | 30–40× Illumina  | fast and cost-efficient assembly |
+| small genome plants <br>(e.g., *Setaria*, *Brachypodium*) | 30–40× HiFi  | 30–40× Illumina  | fast and cost-efficient assembly |" %}
 
-[Effect of sequence depth and length in long-read assembly of complex genomes (Ou et al., 2020)](https://www.nature.com/articles/s41467-020-16037-7)  
-[Building near-complete plant genomes (Michael & VanBuren, 2020)](https://pubmed.ncbi.nlm.nih.gov/31981929/)  
-[The impact of third generation genomic technologies on plant genome assembly (Jiao et al., 2020)](https://pubmed.ncbi.nlm.nih.gov/28231512/)
+* [Effect of sequence depth and length in long-read assembly of complex genomes (Ou et al., 2020)](https://www.nature.com/articles/s41467-020-16037-7)  
+* [Building near-complete plant genomes (Michael & VanBuren, 2020)](https://pubmed.ncbi.nlm.nih.gov/31981929/)  
+* [The impact of third generation genomic technologies on plant genome assembly (Jiao et al., 2020)](https://pubmed.ncbi.nlm.nih.gov/28231512/)
 
 <div class="highlighted highlighted--basic"><div class="highlighted__body" markdown="1">
 #### Example: De Novo Genome Assembly in quinoa
@@ -737,18 +1108,18 @@ consider using **RNA-seq** assay with **Illumina** sequencing platform
  - with strand-specific paired-end (PE) short reads (~150 bp) 
  - ~30–50 million reads per sample
 
-| Organism Type     | Read Length     | Depth per Sample     | Notes                         |
+{% include table content="| Organism Type     | Read Length     | Depth per Sample     | Notes                         |
 |-------------------|-----------------|----------------------|-------------------------------|
 | Human/Mouse       | 2 × 150 bp      | 30–50M reads         | strand-specific recommended   |
 | Yeast/Fungi       | 2 × 75–100 bp   | 10–20M reads         | lower complexity; unstranded  |
 | Plants            | 2 × 100–150 bp  | 20–40M reads         | may need rRNA depletion       |
-| Bacteria          | 2 × 75 bp       | 5–10M reads          | simpler mapping if no introns |
+| Bacteria          | 2 × 75 bp       | 5–10M reads          | simpler mapping if no introns |" %}
 
-[Multi‑perspective quality control of Illumina RNA‑seq (Q. Sheng et al., 2016)](https://pmc.ncbi.nlm.nih.gov/articles/PMC5860075/)   
-[Unleashing the power within short‑read RNA‑seq for plant research (Tu et al., 2022)](https://www.frontiersin.org/journals/plant-science/articles/10.3389/fpls.2022.1038109/full)   
-[Effect of sequence depth and length in long‑read assembly of the maize... (Ou et al., 2020)](https://www.nature.com/articles/s41467-020-16037-7)   
-[Protocol for RNA‑seq Expression Analysis in Yeast (Bohn et al., 2021)](https://pmc.ncbi.nlm.nih.gov/articles/PMC8481016/)   
-[RNA‑seq Sample Preparation Kits Strongly Affect Transcriptome Profiles... (de Lima et al., 2022)](https://pmc.ncbi.nlm.nih.gov/articles/PMC9431689/)   
+* [Multi‑perspective quality control of Illumina RNA‑seq (Q. Sheng et al., 2016)](https://pmc.ncbi.nlm.nih.gov/articles/PMC5860075/)   
+* [Unleashing the power within short‑read RNA‑seq for plant research (Tu et al., 2022)](https://www.frontiersin.org/journals/plant-science/articles/10.3389/fpls.2022.1038109/full)   
+* [Effect of sequence depth and length in long‑read assembly of the maize... (Ou et al., 2020)](https://www.nature.com/articles/s41467-020-16037-7)   
+* [Protocol for RNA‑seq Expression Analysis in Yeast (Bohn et al., 2021)](https://pmc.ncbi.nlm.nih.gov/articles/PMC8481016/)   
+* [RNA‑seq Sample Preparation Kits Strongly Affect Transcriptome Profiles... (de Lima et al., 2022)](https://pmc.ncbi.nlm.nih.gov/articles/PMC9431689/)   
 
 <div class="highlighted highlighted--basic"><div class="highlighted__body" markdown="1">
 #### Example: Gene Expression in Maize
@@ -796,18 +1167,18 @@ consider using **scRNA-seq** or **snRNA-seq** assay with **Illumina** sequencing
 - paired-end short reads (~100–150 bp), 50K–100K reads per cell 
 - droplet-based barcoding (10x Genomics Chromium)
 
-| Sample Type                | Assay Type | Read Length | Depth per Cell | Notes                                  |
+{% include table content="| Sample Type                | Assay Type | Read Length | Depth per Cell | Notes                                  |
 |----------------------------|------------|-------------|----------------|----------------------------------------|
 | fresh, dissociable tissue  | scRNA-seq  | 2 × 100 bp  | 50K–100K reads | single-cell suspension required        |
 | frozen or hard tissue      | snRNA-seq  | 2 × 100 bp  | 50K–100K reads | compatible with archived material      |
 | plant tissues              | snRNA-seq  | 2 × 100 bp  | 50K–150K reads | avoids digestion, handles cell walls   |
 | neuronal tissue            | snRNA-seq  | 2 × 100 bp  | 100K+ reads    | easier nuclei isolation than full cells|
-| immune cells (blood, etc.) | scRNA-seq  | 2 × 100 bp  | 50K–100K reads | clean suspensions, strong markers      |
+| immune cells (blood, etc.) | scRNA-seq  | 2 × 100 bp  | 50K–100K reads | clean suspensions, strong markers      |" %}
 
-[Benchmarking Single-Cell RNA‑Seq protocols (Ziegenhain et al., 2017)](https://doi.org/10.1016/j.molcel.2017.01.023)  
-[Comparative analysis of single-cell and single-nucleus RNA Sequencing (Bakken et al., 2018)](https://singleron.bio/wp-content/uploads/2024/12/AppNote_scRNAseq_snRNAseq.pdf)  
-[Single‑nucleus RNA‑seq and ATAC-seq of Arabidopsis roots (Farmer et al., 2021)](https://pubmed.ncbi.nlm.nih.gov/33422696/)  
-[Current best practices in single-cell RNA-seq analysis: a tutorial (Luecken & Theis, 2019)](https://www.embopress.org/doi/full/10.15252/msb.20188746)
+* [Benchmarking Single-Cell RNA‑Seq protocols (Ziegenhain et al., 2017)](https://doi.org/10.1016/j.molcel.2017.01.023)  
+* [Comparative analysis of single-cell and single-nucleus RNA Sequencing (Bakken et al., 2018)](https://singleron.bio/wp-content/uploads/2024/12/AppNote_scRNAseq_snRNAseq.pdf)  
+* [Single‑nucleus RNA‑seq and ATAC-seq of Arabidopsis roots (Farmer et al., 2021)](https://pubmed.ncbi.nlm.nih.gov/33422696/)  
+* [Current best practices in single-cell RNA-seq analysis: a tutorial (Luecken & Theis, 2019)](https://www.embopress.org/doi/full/10.15252/msb.20188746)
 
 <div class="highlighted highlighted--basic"><div class="highlighted__body" markdown="1">
 #### Example: Single-cell transcriptomics of Arabidopsis root cells
@@ -853,16 +1224,16 @@ consider using **WGS** or **Targeted Sequencing** on **Illumina** platform
  - paired-end short reads (~150 bp)  
  - for population genomics, marker discovery, or trait mapping
 
-| Plant Type             | Assay Type     | Read Length    | Depth per Sample | Notes                               |
+{% include table content="| Plant Type             | Assay Type     | Read Length    | Depth per Sample | Notes                               |
 |------------------------|----------------|----------------|----------|---------------------------------------------|
 | model crop (e.g. rice) | WGS            | 2 × 150 bp     | 20–30×   | full variant discovery, reference available |
 | non-model crop         | WGS or RAD-seq | 2 × 150 bp     | 10–30×   | may require custom assembly or SNP panel    |
 | breeding populations   | Targeted-seq   | 2 × 150 bp     | 100–200× | genotyping known trait loci                 |
-| landrace panels        | WGS or GBS     | 2 × 100–150 bp | 5–15×    | reduced rep. sequencing, many samples       |
+| landrace panels        | WGS or GBS     | 2 × 100–150 bp | 5–15×    | reduced rep. sequencing, many samples       |" %}
 
-[Designing Future Crops: Genomics-Assisted Breeding Comes of Age (Varshney et al., 2021)](https://doi.org/10.1016/j.tplants.2021.03.010)  
-[Triumphs of genomic‑assisted breeding in crop improvement (V. Mangal et al., 2024)](https://www.sciencedirect.com/science/article/pii/S2405844024115447)  
-[Progress of Genomics-Driven Approaches for Sustaining Legume Crops (U.C. Jha et al., 2022)](https://www.frontiersin.org/journals/genetics/articles/10.3389/fgene.2022.831656/full)  
+* [Designing Future Crops: Genomics-Assisted Breeding Comes of Age (Varshney et al., 2021)](https://doi.org/10.1016/j.tplants.2021.03.010)  
+* [Triumphs of genomic‑assisted breeding in crop improvement (V. Mangal et al., 2024)](https://www.sciencedirect.com/science/article/pii/S2405844024115447)  
+* [Progress of Genomics-Driven Approaches for Sustaining Legume Crops (U.C. Jha et al., 2022)](https://www.frontiersin.org/journals/genetics/articles/10.3389/fgene.2022.831656/full)  
 
 <div class="highlighted highlighted--basic"><div class="highlighted__body" markdown="1">
 #### Example: Variant Discovery in Chickpea Cultivars
@@ -912,16 +1283,16 @@ consider using **16S rRNA amplicon sequencing** on **Illumina MiSeq/NextSeq**
  - paired-end reads (2 × 250 bp) for V3–V4 or V4–V5 regions  
  - ~10k–100k reads per sample depending on diversity & resolution needs  
 
-| Sample Type       | Target Region | Read Length    | Depth per Sample | Notes                                 |
+{% include table content="| Sample Type       | Target Region | Read Length    | Depth per Sample | Notes                                 |
 |-------------------|---------------|----------------|------------------|---------------------------------------|
 | soil (forest, urban, agricultural)| V4 or V3–V4   | 2 × 250 bp     | 20K–50K          | high diversity, may need blocking primers |
 | insect hosts      | V3–V4         | 2 × 250 bp     | 10K–30K          | host DNA contamination possible       |
 | animal feces      | V4            | 2 × 150–250 bp | 50K–100K         | capture gut microbiome                |
-| plant rhizosphere | V3–V5         | 2 × 250 bp     | 20K–50K          | root-zone community profiling         |
+| plant rhizosphere | V3–V5         | 2 × 250 bp     | 20K–50K          | root-zone community profiling         |" %}
 
-[Combining 16S rRNA gene variable regions enables high-resolution microbial profiling (Fuks et al., 2018)](https://microbiomejournal.biomedcentral.com/articles/10.1186/s40168-017-0396-x)  
-[Soil microbiomes show consistent and predictable responses to extreme events (Knight et al., 2021)](https://www.nature.com/articles/s41586-024-08185-3)  
-[Evaluation of general 16S ribosomal RNA gene PCR primers for NGS (Klindworth et al., 2013)](https://pubmed.ncbi.nlm.nih.gov/22933715/)
+* [Combining 16S rRNA gene variable regions enables high-resolution microbial profiling (Fuks et al., 2018)](https://microbiomejournal.biomedcentral.com/articles/10.1186/s40168-017-0396-x)  
+* [Soil microbiomes show consistent and predictable responses to extreme events (Knight et al., 2021)](https://www.nature.com/articles/s41586-024-08185-3)  
+* [Evaluation of general 16S ribosomal RNA gene PCR primers for NGS (Klindworth et al., 2013)](https://pubmed.ncbi.nlm.nih.gov/22933715/)
 
 <div class="highlighted highlighted--basic"><div class="highlighted__body" markdown="1">
 #### Example: Microbial Profiling in Forest Floor Soils
