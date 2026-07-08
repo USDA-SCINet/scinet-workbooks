@@ -873,10 +873,10 @@ Assays to study gene regulation, chromatin state, and DNA-protein interactions.
 
 | Assay Type    | Purpose                        | Input             | Notes |
 | --- | --- | --- | --- |
-| {% include nav-hidden text="ChIP-seq" url="" %}     | study protein-DNA interactions | DNA (IP)          | antibody-based, moderate depth |
-| {% include nav-hidden text="ATAC-seq" url="" %}      | detect open chromatin regions  | DNA (nuclei)      | short reads, quality-sensitive |
-| {% include nav-hidden text="Bisulfite Seq" url="" %} | detect DNA methylation         | DNA               | bisulfite-treated, special tools |
-| {% include nav-hidden text="Hi-C" url="" %}          | detect 3D genome organization  | DNA (crosslinked) | complex prep, large frags |
+| {% include nav-hidden text="ChIP-seq" url="#chip-seq" %}     | study protein-DNA interactions | DNA (IP)          | antibody-based, moderate depth |
+| {% include nav-hidden text="ATAC-seq" url="#atac-seq" %}      | detect open chromatin regions  | DNA (nuclei)      | short reads, quality-sensitive |
+| {% include nav-hidden text="Bisulfite Seq" url="#bisulf-seq" %} | detect DNA methylation         | DNA               | bisulfite-treated, special tools |
+| {% include nav-hidden text="Hi-C" url="#hic" %}          | detect 3D genome organization  | DNA (crosslinked) | complex prep, large frags |
 
 {% include accordion title="ChIP-seq" controls="chip-seq" expanded=false class=" " icon=false %}
 <div id="chip-seq" class="accordion_content"   markdown='1'>
