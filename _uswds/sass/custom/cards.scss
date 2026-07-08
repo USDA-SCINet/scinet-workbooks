@@ -407,7 +407,43 @@ a.gloss_wb{
 }
 
 //copy code
+// non-sticky copy button
 .copy-code {
+ 
+   // Override display flex on collapsed accordion
+   &[hidden] {
+     display: none;
+   }
+ 
+   &__wrapper {
+      display: flex;
+      flex-direction: row;
+      justify-content: end;
+      background-color: color("base-lighter");
+   }
+ 
+   &__button {
+     @include u-font("sans", "3xs");
+     padding: 4px 4px 6px;
+     margin: 2px;
+     min-width: units(6);
+ 
+     &--success,
+     &--success:hover {
+       background-color: color("success-dark");
+       box-shadow: none;
+       color: color("white");
+     }
+ 
+   }
+   .highlight{
+      overflow:auto;
+      width:100%
+   }
+ }
+
+// sticky copy button
+/* .copy-code {
    display: flex;
    flex-direction: row;
    justify-content: space-between;
@@ -425,7 +461,7 @@ a.gloss_wb{
  
      @include at-media("tablet") {
        display: block;
-       margin-left: units(2);
+       margin-left: units(1);
      }
    }
  
@@ -434,7 +470,7 @@ a.gloss_wb{
      @include u-padding-x(0.5);
      margin-right: 0;
      margin-top: 1rem;
-     min-width: units(10);
+     min-width: units(6);
      position: sticky;
      top: units(1);
  
@@ -454,7 +490,7 @@ a.gloss_wb{
       overflow:auto;
       width:100%
    }
- }
+ } */
 
  .usa-button--primary{
    @include u-text('white');
@@ -476,6 +512,11 @@ a.gloss_wb{
    //border-right: 1px solid;
    //border-bottom: 1px solid;
    padding-bottom: 1rem;
+   li.usa-collection__item:last-child {
+      border-bottom-width: 1px;
+      border-bottom-style: solid;
+      padding-bottom: 1rem;
+   }
 }
 
 

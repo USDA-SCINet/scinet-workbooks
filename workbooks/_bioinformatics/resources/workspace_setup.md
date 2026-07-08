@@ -25,7 +25,7 @@ applications:
   - Using reproducible project templates for consistent pipeline setup and configuration.
   - Integrating GitHub repositories for version control, collaboration, and workflow transparency.
 
-terms: [HPC, File System, Quota, Scratch Space, Project Directory, Metadata, Module System, Container, Environment File, Conda, Git Repository, Reproducibility]
+terms: [HPC, file system, quota, scratch space, project directory, metadata, module system, container, environment file, Conda, Git repository, reproducibility]
 
 takeaways: 
   - "Start with a clear directory tree structure: separate raw data, processed results, scripts, and logs."
@@ -189,8 +189,10 @@ questions:
 
 
 <div class="highlighted highlighted--basic"><div class="highlighted__body" markdown="1"> 
+
 An active SCINet account with access to shared and project directories is required to complete this tutorial. 
 Basic familiarity with the [SCINet File System](/computing-skills/scinet/file_system) and [Shell interface](/computing-skills/scinet/interfaces) for [navigating directories](/computing-skills/command-line/#navigating-the-unix-file-system) and [managing files](/computing-skills/command-line/#file-management-in-the-shell) is also expected. No prior experience with bioinformatics pipeline development is required. 
+
 </div></div>
 
 
@@ -218,7 +220,9 @@ A well-structured workspace setup is more than a matter of convenience on a shar
 Project structure matters in bioinformatics because it directly affects efficiency, reproducibility, and resource usage. Placing inputs and outputs in the right storage tier can speed up calculations and prevent quota or purge issues, while organizing scripts and results makes workflows easier to share and repeat. Many datasets (e.g., reference genomes) and tools are pre-downloaded on HPC systems, so knowing where to find them can save hours of unnecessary setup.
 
 <div class="highlighted highlighted--tip"><div class="highlighted__body" markdown="1">
+
 **Structure your project, and your research will structure itself!**
+
 </div></div>
 
 ## Getting started
@@ -233,12 +237,16 @@ First, you will log in through **Open OnDemand (OOD)** and use the shell to acce
 
 <div class="usa-accordion" style="margin-top: 1em;">
 
-{% include accordion title="<h3 style='margin: 0; border-bottom: none; font-size: 1.1em; display: inline;'>Access the shell via SCINet OOD</h3><span style='font-weight: 300;'>(required) used for accessing supercomputers</span>" class="primary" controls="access-scinet" icon=false %}
+<!--{% comment %}{% include accordion title="<h3 style='margin: 0; border-bottom: none; font-size: 1.1em; display: inline;'>Access the shell via SCINet OOD</h3><span style='font-weight: 300;'>(required) used for accessing supercomputers</span>" class="primary" controls="access-scinet" icon=false %}
 <div id="access-scinet" class="accordion_content" markdown='1' hidden> 
-{% include setup/scinet_access %}
-{% include setup/scinet_login %}
+{% include segment/scinet_access %}
+{% include segment/scinet_login %}
 {% include setup/ood_shell %}
 </div>
+</div>{% endcomment %}-->
+
+{% include setup/ood/accord %}
+
 </div>
 
 The goal is to help you set up and organize a well-structured **workspace for bioinformatics workflows** by creating a clear directory structure, using the appropriate storage tiers for inputs, temporary files, and results, and documenting your pipeline for reproducibility and collaboration.
@@ -525,6 +533,8 @@ Installing a new Conda environment for each workflow often leads to **duplicate 
 │       ├── ...
 │       └── bio_dge_env/          # e.g, Conda env for R + DESeq2
 ```
+{: .no-copy}
+
 
 #### Reference environments in your workspace
 
@@ -544,6 +554,8 @@ RNAseq_thaliana_v1_Oct2025/       # root folder for your RNA-Seq project; custom
 │   ├── dge_env/                  # e.g, environment.yml for Conda env with R + DESeq2; absolute path to env
 │   └── README.md                 # documentation on switching and using environments
 ```
+{: .no-copy}
+
 Each environment folder can store:  
 - **Environment definition files** (e.g., `environment.yml`, `requirements.txt`, `module_list.txt`)  
 - **Activation notes** or small README explaining how to load/run the tools  
@@ -676,11 +688,14 @@ This helps catch mistakes in file paths, environment setup, or resource requests
 4. Adjust paths and resources (memory, cores, walltime) until the pipeline runs smoothly.  
 5. Scale up gradually - once the test passes, extend it to a full dataset on the proper storage tier.  
 
-<div class="highlighted highlighted--tip"><div class="highlighted__body" markdown="1"> 
+<div class="highlighted highlighted--tip"><div class="highlighted__body" markdown="1">
+
 Many bioinformatics tools provide built-in sample data or allow downsampling (e.g., `seqtk sample`) - use these to create quick, efficient test cases. 
+
 </div></div>
 
 <div class="highlighted highlighted--question"><div class="highlighted__body" markdown="1"> 
+
 **Exercise: downsampling FASTQ files with seqtk**
 
 Load the `seqtk/1.3` module on Ceres:
@@ -693,6 +708,7 @@ seqtk sample -s100 large_sample_R1.fastq.gz 0.01 > test_R1.fastq.gz
 seqtk sample -s100 large_sample_R2.fastq.gz 0.01 > test_R2.fastq.gz
 ```
 *This produces a small paired dataset (test_R1.fastq.gz, test_R2.fastq.gz) suitable for quick trial runs.*
+
 </div></div>
 
 </div>
@@ -762,6 +778,8 @@ RNAseq_thaliana_v1_Oct2025/       # root folder for your RNA-Seq project; custom
 ├── envs/                         # documentation for environments used in a pipeline 
 └── README.md                     # main README with the purpose of the workspace and outline of the pipeline
 ```
+{: .no-copy}
+
 </div>
 
 {% include accordion title="SLURM optimization before running with huge dataset" controls="bw3" expanded=false class="outline" icon=false %}
@@ -842,14 +860,6 @@ section under construction; will be cross-linked to learning pathways or pipelin
 -->
 </div>
 
-{% if page.takeaways %}
-## Best Practices
-
-<ul>
-  {% for takeaway in page.takeaways %}
-    <li>{{ takeaway }}</li>
-  {% endfor %}
-</ul>
-{% endif %}
+{% include takeaways title="Best Practices" %}
 
 

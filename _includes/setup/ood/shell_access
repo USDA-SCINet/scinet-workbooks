@@ -1,0 +1,1 @@
+While on the home page of your cluster, you can open a command-line session by clicking on "Clusters" -> "{{ page.cluster | default: "Ceres/Atlas" }} Shell Access" on the top menu. This will open a new tab with a command-line session on the login node. 

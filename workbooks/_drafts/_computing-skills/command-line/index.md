@@ -8,23 +8,23 @@ tags: [command line]
 author: Aleksandra Badaczewska
 type: introduction
 
-##terminal-terms: [Terminal, Welcome Message, Prompt, Command Line]
-##shell-terms: [Shell, Bash, Command, Standard Out, Standard Error, Built-in commands, Aliases, Shell function, Startup script, Environment Variable, Syntax]
-##cl-terms: [Input Area, Cursor, Argument, Flag or Option, Pipes, Background Process, Foreground Process, Exit Code]
+##terminal-terms: [terminal, welcome message, prompt, command line]
+##shell-terms: [shell, Bash, command, standard out, standard error, built-in commands, aliases, shell function, startup script, environment variable, syntax]
+##cl-terms: [input area, cursor, argument, flag or option, pipes, background process, foreground process, exit code]
 
 terms:
-   - term: Command Line Interface
+   - term: command line interface
      link: "/computing-skills/command-line/cli-interface/concepts/" 
      Key-difference: "It's a concept, not a specific software. CLI describes the environment in which commands are entered and executed."
-   - term: Terminal
+   - term: terminal
      link: "/computing-skills/command-line/cli-interface/terminal/"
      Key-difference: "A terminal is just the container or access point for the CLI, but it doesn't process the commands itself."
      Examples: "GNOME Terminal, Windows Terminal, iTerm2"
-   - term: Shell
+   - term: shell
      link: "/computing-skills/command-line/cli-interface/shell/"
      Key-difference: "The shell is a program running within the terminal to interpret and execute commands. Different shells have unique features and syntax." 
      Examples: "Unix shell: Bash, Zsh, ksh, tcsh"
-   - term: Command Line
+   - term: command line
      link: "/computing-skills/command-line/cli-interface/shell/commands/" 
      Key-difference: "The command line is a specific part of the CLI environment." 
      Examples: "Usually preceded by a prompt, e.g., <code>user@host:~$</code> in Unix/Linux or <code>C:\\></code> in Windows."

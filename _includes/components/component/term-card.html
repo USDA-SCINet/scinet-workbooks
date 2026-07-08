@@ -6,14 +6,14 @@
     difficulty="{% for lvl in pdifficulties %}{{ lvl }} {% endfor %}all" {% endif %}>
 
     <div class="padding-x-2 usa-collection__body">
-        <h3 class="usa-collection__heading">
+        <h5 class="usa-collection__heading{% if include.caps or option.caps %} cap_title{% endif %}">
             {{ option.term }}
-        </h3>
+        </h5>
         {% if option.alt %}<span>({{ option.alt }})</span>{% endif %}
         {% unless no_summary %}
         {% if option.definition or option.compile %}
         <p class="usa-collection__description">
-            {{ option.definition }}
+            {{ option.definition | markdownify }}
             {%- if option.compile %}
             <ul>
                 {% for getterm in option.compile %}

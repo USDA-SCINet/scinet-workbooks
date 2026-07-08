@@ -65,7 +65,7 @@
                     {% assign psubset=pagesubset | sort: "order" %}
                     {% assign largersubset=mypagesubset %}
                     {% for sets in psubset %}
-                        {% include collect/list.html set=sets mysubset=largersubset class="usa-collection__meta-item" aclass="text-bold text-underline" parenttags=pposttags %}
+                        {% include collect/list.html set=sets mysubset=largersubset class="usa-collection__meta-item" aclass="text-bold" parenttags=pposttags %}
                     {% endfor %}
                 </ul>
             </li>

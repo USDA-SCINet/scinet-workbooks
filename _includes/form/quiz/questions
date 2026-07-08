@@ -11,8 +11,17 @@
 {% include form/quiz/solutions q=q idstring=idstring button="TRUE" %}
 
 </form>
+{% if q.formatted %}
+<div id="{{ idstring }}-{% if q.answers %}MC-{% endif %}solution" class="usa-alert usa-alert--info margin-2 shadow-3 no-display">
+<div class="usa-alert__body">
+<h4 class="usa-alert__heading">Answer:</h4>
+<div class="usa-alert__text">
+{% if q.solution %}{{ q.solution | markdownify }}{% elsif q.responses and q.answer %}{% assign qanswer = q.answer | minus: 1 %}{{ q.responses[qanswer] | markdownify }}{% endif %}
+</div>
+</div>
+</div>
+{% endif %}
 <div id="{{ idstring }}-result">
-
 </div>
 {% else %}
 <div id="{{ idstring }}" class="highlighted__body">

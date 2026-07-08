@@ -4,21 +4,21 @@ title: Unix Basics
 description: Short and informative description of your tutorial
 type: interactive tutorial 
 
-tags: [unix, bash, command line] 
+tags: [UNIX, bash, command line] 
 
 terms:
-  - term: Command Line Interface
+  - term: command line interface
     link: "/computing-skills/command-line/cli-interface/concepts/" 
     Key-difference: "It's a concept, not a specific software. CLI describes the environment in which commands are entered and executed."
-  - term: Terminal
+  - term: terminal
     link: "/computing-skills/command-line/cli-interface/terminal/"
     Key-difference: "A terminal is just the container or access point for the CLI, but it doesn't process the commands itself."
     Examples: "GNOME Terminal, Windows Terminal, iTerm2"
-  - term: Shell
+  - term: shell
     link: "/computing-skills/command-line/cli-interface/shell/"
     Key-difference: "The shell is a program running within the terminal to interpret and execute commands. Different shells have unique features and syntax." 
     Examples: "Unix shell: Bash, Zsh, ksh, tcsh"
-  - term: Command Line
+  - term: command line
     link: "/computing-skills/command-line/cli-interface/shell/commands/" 
     Key-difference: "The command line is a specific part of the CLI environment." 
     Examples: "Usually preceded by a prompt, e.g., <code>user@host:~$</code> in Unix/Linux or <code>C:\\></code> in Windows."

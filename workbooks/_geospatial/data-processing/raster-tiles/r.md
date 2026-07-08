@@ -7,9 +7,9 @@ type: interactive tutorial
 language: R
 interface: RStudio
 
-tags: [Parallel processing, Raster]
+tags: [parallel processing, raster]
 packages: [terra, foreach, doParallel]
-terms: [Parallel processing, Core, Tile, NDVI]
+terms: [parallel processing, core, tile, ndvi]
 code: GRWG22_RasterTiles.Rmd
 updated: 2022-10-07 
 

@@ -7,13 +7,13 @@ description: How to leverage a SpatioTemporal Asset Catalog to streamline the pr
 language: Python
 interface: Jupyter
 packages: [xarray,hvplot,geopandas,stackstac,satsearch]
-terms: 
-  - term: SpatioTemporal Asset Catalog 
+terms:
+  - term: spatiotemporal asset catalog 
     alt: STAC
     definition: A ~json catalog to standardize the way geospatial asset metadata is structured and queried.
-  - term: Lazy Loading
+  - term: lazy loading
     definition: Delaying the loading of data until the object is called/computed. This can improve performance and reduce system resource use.
-  - term: Transform
+  - term: transform
     alt: Affine
     definition: A matrix that maps the pixels in a raster to physical coordiantes (x, y). This consists of six elements, upper-left x coordinate, upper-left y coordinate, w-e pixel resolution, n-s pixel resolution, row rotation (typically zero), and the column rotation (typically zero).
   - term: Amazon Web Services 
@@ -28,7 +28,7 @@ terms:
     alt: MGRS
     definition: Grid system used to tile Sentinel 2 data products.
   - NDVI
-  - term: Cloud Optimized Geotiff 
+  - term: cloud optimized geotiff 
     alt: COG
     definition: A GeoTiff file that has a specialized internal organization that enables cloud computing workflows.
 

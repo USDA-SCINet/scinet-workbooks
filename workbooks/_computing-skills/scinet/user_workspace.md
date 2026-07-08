@@ -5,12 +5,13 @@ type: interactive tutorial
 author: [Aleksandra Badaczewska, The SCINet Office]
 index: 
 order: 4
+published: false ## leaving in the Using the Workbook page instead
 
 header:
   overlay_image: 07-wrangling/assets/img/07_data_acquisition_banner.png
 svg: /genomics.svg
 
-terms: [File System, Workspace, Shared Space, Project Directory, Access Permissions, Purge Policy, Storage, Quota]
+terms: [file system, workspace, shared space, project directory, access permissions, purge policy, storage, quota]
 
 objectives: 
   - "Learn where and how to set up a personal workspace for tutorials and training on SCINet clusters."
@@ -48,22 +49,13 @@ Learn where to build temporary spaces for training and how to shift to persisten
 
 {% include overviews %}
 
-<div class="process-list ul" markdown="1">
-### Storage types on SCINet
-
-{% include setup/storage_types %}
-
 ### Decide on workspace location
 
-**Your user workspace** is the starting point for learning and practicing on SCINet supercomputers. You will need to decide where files will be stored for the tutorials. 
-The **/90daydata/shared/** is the location in the SCINet file system, where you have access with a SCINet account, even before you gain access to a project space. 
-For consistancy, most tutorials default to using this location: `/90daydata/shared/$USER/<tutorial_subdirectory>`
+**Your user workspace** is the starting point for learning and practicing on SCINet supercomputers. You will need to decide where files will be stored for the specific task you are trying to complete. 
+The **/90daydata/shared/** directory is a location in the SCINet file system that you have access to with a SCINet account, even before you gain access to a project space. 
 
-| /90daydata/shared/`$USER`  | /project/`<project_name>` |
-|----------------------------|---------------------------|
-| access with SCINet account | access with project membership |
-| Use to complete tutorials, test workflows, and <br>build skills in a temporary but flexible environment. | Use as persistent storage for <br>project-specific research work. | 
-| recommended for **user workspace** | recomended for **research&nbsp;workspace**|
+For consistancy, most tutorials in these workbooks default to using this location: `/90daydata/shared/$USER/<tutorial_subdirectory>`
+
 
 With access to SCINet infrastructure you have multiple options for storing your files: 
 * **Home directory:** small storage quota and recommended for [shell configuration](/computing-skills/command-line/configuration/) and login files.  
@@ -71,20 +63,28 @@ With access to SCINet infrastructure you have multiple options for storing your 
 [Click here to request a project directory](https://scinet.usda.gov/guides/data/storage#project-directories)  
 * **90daydata:** temporary workspace for large, short-term data where files will be deleted after 90 days. **/90daydata/shared** is a sub-space where data can be shared among users or teams, but each user still can create a dedicated folder. Read our [Storage Guides](https://scinet.usda.gov/guides/data/storage#large-short-term-storage) for more information on `/90daydata`.  
 
-</div>
+{% include table content="| Workspace | Access requirement | Use case | Reccommended for |
+| --- | --- | --- | --- |
+| /90daydata/shared/$USER | Requires SCINet account | Complete tutorials, test workflows, and build skills in a temporary but flexible environment. | **User workspace** |
+| /project/<code>&#60;project_name&#62;</code> | Requires project membership | Persistent storage for project-specific research work. | **Research workspace** |" %}
+
+<div class="usa-accordion">
+
+{% include accordion title="Storage types on SCINet" controls="storagetypes-acc"%}
+<div id="storagetypes-acc" class="accordion_content"   markdown='1' hidden>
+
+{% include segment/storage_types %}
+
+</div></div>
+
+
+
 
 ## Getting started
 
 First, you will log in through **Open OnDemand (OOD)** and use the shell to access SCINet file system locations.
 
-<div class="usa-accordion" style="margin-top: 1em;">
-
-{% include accordion title="<h3 style='margin: 0; border-bottom: none; font-size: 1.1em; display: inline;'>Access the shell via SCINet OOD</h3><span style='font-weight: 300;'>(required) used for accessing supercomputers</span>" class="primary" controls="access-scinet" icon=false %}
-<div id="access-scinet" class="accordion_content" markdown='1' hidden> 
-{% include setup/scinet_login %}
-{% include setup/ood_shell %}
-</div>
-</div>
+{% include setup/ood/accord shell=true %}
 
 The goal is to help you get started with SCINet high-performance computing by creating well-structured workspaces in a temporary location with no quota for practicing tutorials. You’ll learn where and how to build these spaces within system policies, preparing you for more advanced workflows and persistent research projects.
 
@@ -94,9 +94,10 @@ Before completing this section, it is recommended that you first go through the 
 
 ### Always request a compute node
 
-<div class="highlighted highlighted--highlighted"><div class="highlighted__body" markdown="1">
 To avoid accidentally running intensive tasks on the shared login node, always request a compute node right after connecting to a shell. It’s a simple step that protects SCINet system performance for all users.
-</div></div>
+
+
+{% include segment/find_projects keep="true" %}
 
 1.  Open the Shell - if you are not sure how, start with [Getting started](#getting-started) section above.
 
@@ -107,13 +108,15 @@ To avoid accidentally running intensive tasks on the shared login node, always r
    *For example, the VRSC members use `isu_gif_vrsc` slurm account in this command:*  
    &emsp; `srun -A isu_gif_vrsc -t 01:00:00 --pty bash`   
 
-{% include setup/find_projects keep = "true" %}
 
 
 
-### Make your workspace in /90daydata/shared 
 
-If you're starting a tutorial for the first time or your workspace at this location hasn't been used in 90 days, you'll need to create a new one.
+### Make your workspace
+
+#### In /90daydata/shared 
+
+If you are starting a tutorial for the first time or your workspace at this location hasn't been used in 90 days, you'll need to create a new one.
 
 To create a working directory:
 1.  Open the Shell &emsp; *([see guide if needed](#getting-started))*
@@ -123,10 +126,10 @@ To create a working directory:
 1.  {% include setup/mkdir dir="workbooks" %}
 
 
-### Modify workflows to use /project space
+#### In /project space
 
-If you prefer to use a `/project` space instead of `/90daydata`, modify the tutorial steps by replacing `/90daydata/shared/$USER` with **`/project/<project_name>/$USER`**. Be sure to substitute `<project_name>` with your actual project name. 
-*If you're unsure which projects you're a member of, [Check your projects](#proj-check).*
+If you prefer to use a `/project` space instead of `/90daydata`, modify the tutorial steps by replacing `/90daydata/shared/$USER` with **`/project/<project_name>/$USER`**. Be sure to substitute `<project_name>` with your actual project name.   
+*If you are unsure which projects you are a member of, [Check your projects](#proj-check).*
 
 For example, to modify the instructions for creating a working directory for a tutorial in a project named **`your_project_name`**, you would:
 1.  Open the Shell &emsp; *([see guide if needed](#getting-started))*
@@ -140,25 +143,24 @@ For example, to modify the instructions for creating a working directory for a t
     ```
 Creating a personal `$USER` subfolder within your group-shared project space helps keep your workspace organized and separate from others. For collaborative or shared research efforts, consider creating a dedicated [pipeline workspace](#create-a-pipeline-workspace-for-research) directly under `/project/<project_name>/` instead.
 
+</div>
+
 ## Next steps
 
+<div class="process-list" markdown="1">
 ### Create a pipeline workspace for research
 
-<div class="highlighted highlighted--tip"><div class="highlighted__body" markdown="1">
 When you begin applying tutorial steps to your own research data, the work transitions from practice to active research. 
 At that point, it's a good idea to shift your workflow to the `/project` directory (or `/90daydata/<project_name>`). 
 This ensures your data is accessible only to project members, and that any key results you generate are stored in a persistent location
-</div></div>
+
 
 **For a detailed guide on organizing your research workspace**, see the [Setting up a project and managing storage](/computing-skills/scinet/project_setup) tutorial. It introduces best practices for structuring research projects on SCINet supercomputers, including how to organize directories, create pipeline workspaces, use scratch storage effectively, and document your work with README files to support clarity and reproducibility.
 
-| [Manage project structure](/computing-skills/scinet/project_setup#manage-project-structure) | [Manage storage](/computing-skills/scinet/project_setup#manage-storage) |
-|------------------|--------------|
-| [Directory Tree](/computing-skills/scinet/project_setup#directory-tree)         | [Check Your Quota](/computing-skills/scinet/project_setup#check-your-quota) |
-| [Pipeline Workspace](/computing-skills/scinet/project_setup#pipeline-workspace) | [Data Lifecycle in HPC](/computing-skills/scinet/project_setup#data-lifecycle) |
-| [README](/computing-skills/scinet/project_setup#readme) | [Working Directory](/computing-skills/scinet/project_setup#working-directory) |
-| | [$TMPDIR on a compute node](/computing-skills/scinet/project_setup#tmpdir) |
-| | [Backed up LTS device](/computing-skills/scinet/project_setup#backed-up-lts) |
+{% include fetch_pagenav title="Setting up a project and managing storage" url="/computing-skills/scinet/project_setup" 
+nav="Magage project structure, Directory tree, Pipeline workspace, README | Manage storage, Check your quota, Data lifecycle, Working directory, TMPDIR, Backed up LTS" %}
+
+
 
 ### Consider environment options
 
@@ -168,12 +170,4 @@ This ensures your data is accessible only to project members, and that any key r
 
 
 
-{% if page.takeaways %}
-## Best Practices
-
-<ul>
-  {% for takeaway in page.takeaways %}
-    <li>{{ takeaway }}</li>
-  {% endfor %}
-</ul>
-{% endif %}
+{% include takeaways title="Best Practices" %}

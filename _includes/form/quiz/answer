@@ -1,0 +1,23 @@
+{% assign q=include.q %}{% assign qid = include.qid %}
+{%- capture htitle %}{% if include.title or q.title %}{{ q.title | default: include.title }}{% else %}{{ page.questiontitles | default: "You Try!" }}{% endif %}{%- endcapture %}
+{%- capture idstring %}{{ page.id | slugify }}-{{ qid | default: 0 }}{% endcapture %}
+{% if q.answers or q.solution %}
+<form id="{{ idstring }}" class="sn-question" data-qid="{{ qid | default: 0 }}" >
+{% if q.question %}{{ q.question | markdownify }}{% endif %}
+
+{% include form/quiz/solutions q=q idstring=idstring button="TRUE" %}
+
+</form>
+{% if q.formatted %}
+<div id="{{ idstring }}-{% if q.answers %}MC-{% endif %}solution" class="usa-alert usa-alert--info margin-2 shadow-3 no-display">
+<div class="usa-alert__body">
+<h4 class="usa-alert__heading">Answer:</h4>
+<div class="usa-alert__text">
+{% if q.solution %}{{ q.solution | markdownify }}{% elsif q.responses and q.answer %}{% assign qanswer = q.answer | minus: 1 %}{{ q.responses[qanswer] | markdownify }}{% endif %}
+</div>
+</div>
+</div>
+{% endif %}
+<div id="{{ idstring }}-result">
+</div>
+{% endif %}

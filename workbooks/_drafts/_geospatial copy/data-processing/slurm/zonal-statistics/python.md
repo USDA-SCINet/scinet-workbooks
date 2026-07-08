@@ -6,7 +6,7 @@ wgs: geospatial
 
 language: Python
 
-tags: [GeoCDL, SLURM, Zonal statistics]
+tags: [GeoCDL, SLURM, zonal statistics]
 packages: [geopandas, rasterstats]
 
 updated: 2022-09-29 
@@ -242,7 +242,7 @@ with the `-u` parameter followed by their SCINet account name.
 
 
 ```bash
-squeue -u firstname.lastname
+squeue -u $USER
 ```
 
 Below is a partial output for the queue showing this job array. You can see the

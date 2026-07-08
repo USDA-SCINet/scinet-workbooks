@@ -218,7 +218,7 @@ command to view the queue is `squeue` and you can filter it to a specific user
 with the `-u` parameter followed by their SCINet account name.
 
 ```bash
-squeue -u firstname.lastname
+squeue -u $USER
 ```
 
 ```

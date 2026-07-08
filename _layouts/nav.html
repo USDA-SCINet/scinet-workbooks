@@ -90,6 +90,13 @@ wbComp:
             {% if headertitle or page.subtitle %}
             <h1 class="top-header" >{{ headertitle | default: page.subtitle }}</h1>
             {%- endif -%}
+            {% assign pagenote = pageparent.note | default: page.note %}
+            {% if pagenote %}
+            <div class="highlighted highlighted--highlighted">
+              <div class="highlighted__body">
+                {{ pagenote | markdownify }}
+              </div>
+            </div>{% endif %}
             <div class="{{ layout.main.class }}" id="wb-content">
             {{ content }}
             </div>

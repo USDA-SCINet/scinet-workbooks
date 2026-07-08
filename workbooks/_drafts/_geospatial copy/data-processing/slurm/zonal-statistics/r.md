@@ -6,7 +6,7 @@ language: R
 
 type: interactive tutorial
 
-tags: [GeoCDL, SLURM, Zonal statistics]
+tags: [GeoCDL, SLURM, zonal statistics]
 packages: [rgeocdl, terra]
 
 updated: 2022-09-28 
@@ -255,7 +255,7 @@ command to view the queue is `squeue` and you can filter it to a specific user
 with the `-u` parameter followed by their SCINet account name.
 
 ```bash
-squeue -u firstname.lastname
+squeue -u $USER
 ```
 
 Below is a partial output for the queue showing this job array. You can see the

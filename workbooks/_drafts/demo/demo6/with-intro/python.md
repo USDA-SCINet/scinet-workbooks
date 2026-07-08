@@ -3,9 +3,9 @@ title: Introduction to Introductions - Python
 description: This is a demo structure example of a python tutorial with an introduction
 type: interactive tutorial
 
-tags: [Demonstration2, Another tag]
+tags: [demonstration2, another tag]
 language: Python
-# terms: [GeoCDL, Raster, Vector, CRS] # For if you want defined terms that are not your tags
+# terms: [geocdl, raster, vector, crs] # for if you want defined terms that are not your tags
 packages: pygcdl
 
 #wgs: geospatial # if made as a working group contribution

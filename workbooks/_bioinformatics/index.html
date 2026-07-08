@@ -7,7 +7,7 @@ header:
   overlay_image: 07-wrangling/assets/img/07_data_acquisition_banner.png
 index: 0
 order: 3
-wg: Bioinformatics
+## wg: Bioinformatics
 description: "Decoding genetic information by wrangling sequence data"
 terms: [bioinformatics]
 ---
@@ -15,11 +15,9 @@ terms: [bioinformatics]
 
 {% include alert class="highlighted" content="This subject area assumes that users have a foundational knowledge of biology and a basic familiarity with the [Unix command line environment](/computing-skills/)." title="Prerequisites" %}
 
-<div class="highlighted highlighted--basic "><div class="highlighted__body"  markdown="1">
-<h4 class="highlighted__heading">Bioinformatics</h4>
-{% assign term = site.data.glossary.glossary | where: "term", "Bioinformatics" | first %}
-{{ term.definition }}
-</div></div>
+{% include term term="bioinformatics" caps=true ul=true %}
+
+
 
 The most effective way to master bioinformatics is by solving real-world scientific problems. 
 This workbook is designed to guide you through the full lifecycle of data-driven biological inquiry: 

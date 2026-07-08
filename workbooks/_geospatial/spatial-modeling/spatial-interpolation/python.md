@@ -5,7 +5,7 @@ description: "This tutorial will implement and compare machine learning techniqu
 type: interactive tutorial
 author: Heather Savoy
 
-tags: [Spatial Interpolation, Random Forest]
+tags: [spatial Interpolation, random forest]
 packages: [pandas, geopandas, scikit-learn, plotnine]
 code: GRWG23_SpatialInterpolation_python.ipynb
 

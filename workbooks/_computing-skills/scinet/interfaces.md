@@ -6,11 +6,13 @@ author: The SCINet Office
 index: 
 order: 2
 
+published: false # unpublish as information is a duplicate of the user guides
+
 header:
   overlay_image: 
 svg: /genomics.svg
 
-terms: [SCINet supercomputers, Local Machine, Open OnDemand, Web Browser, Unix Shell, Development environment, IDE]
+terms: [SCINet supercomputers, local machine, open ondemand, web browser, Unix shell, development environment, IDE]
 
 objectives: 
   - Understand the different interfaces available on SCINet for interacting with the system.
@@ -36,11 +38,9 @@ overview: [objectives, applications, terminology]
 
 ---
 
-
-<div class="highlighted highlighted--basic"><div class="highlighted__body" markdown="1">
 An activated SCINet account with confirmed login access is required before using any interface.  
-If you need a SCINet account, please refer to [Getting started with SCINet](/computing-skills/scinet/) for instructions.  
-</div></div>
+If you need a SCINet account, please refer to [Getting started with SCINet](../scinet/) for instructions.  
+
 
 ## Overview
 
@@ -51,17 +51,40 @@ If you need a SCINet account, please refer to [Getting started with SCINet](/com
 
 First, you will log in through **Open OnDemand (OOD)** in your web browser and explore the available interfaces.
 
-<div class="usa-accordion" style="margin-top: 1em;">
+
+<div class="usa-accordion">
+
+{% include accordion title="Access SCINet via OOD <span class='h-note'>(required) used for accessing supercomputers</span>" class="primary" controls="access-scinet" %}
+<div id="access-scinet" class="accordion_content" markdown='1' hidden> 
+{% include segment/scinet_login basic=true %}
+</div>
+</div>
+
+<!--{% comment %} <div class="usa-accordion" style="margin-top: 1em;">
 
 {% include accordion title="<h3 style='margin: 0; border-bottom: none; font-size: 1.1em; display: inline;'>Access SCINet via OOD</h3><span style='font-weight: 300;'>(required) used for accessing supercomputers</span>" class="primary" controls="access-scinet" icon=false %}
 <div id="access-scinet" class="accordion_content" markdown='1' hidden> 
-{% include setup/scinet_login keep="true" %}
+{% include segment/scinet_login keep="true" %}
 </div>
-</div>
+</div> {% endcomment %}-->
 
-### Choose an interface
+## Available interfaces
 
-There are multiple different interfaces available on SCINet.  In this section, we provide template instructions for launching these interfaces and provide an overview of each input parameter.
+* **[Jupyter](https://scinet.usda.gov/guides/ide/jupyter)** is an Integrated Development Environment (IDE) that provides an interactive and collaborative environment for scientific computing. This interactive coding environment allows for immediate execution and visualization of code, facilitating on-the-fly data analysis and visualization. It supports over 40 programming languages (including Python, R, Julia, Java, and Scala) and seamlessly integrates with popular data science libraries.
+
+* **[RStudio](https://scinet.usda.gov/guides/ide/r-studio)** is an IDE for the R programming language, with limited support for other programming languages (including Python, bash, and SQL).
+
+* **[Microsoft’s Visual Studio Code](https://scinet.usda.gov/guides/ide/r-studio)** (VS Code) is a popular source-code editor and development environment with support for many different programming languages.
+  
+  There are two main ways to use VS Code on SCINet clusters. One is to use the VS Code interactive application in Open OnDemand. The second is to use the Microsoft “Remote – Tunnels” extension that connects to the cluster from your local VS Code session via a secure tunnel, allowing you to execute your code on the cluster from within your local VS Code session.
+
+*  **[The Shell](/computing-skills/command-line/)** - The Command Line Interface is a text-based way to interact with a computer by typing text commands in a program called a terminal, rather than using point-and-click navigation in a graphical interface.
+  
+   To launch the shell via OoD, you can open a command-line session from the homepage by clicking on “Clusters” -> “Ceres/Atlas Shell Access” on the top menu. This will open a new tab with a command-line session on the login node.
+
+
+
+<!--There are multiple different interfaces available on SCINet.  In this section, we provide template instructions for launching these interfaces and provide an overview of each input parameter.
 
 - [Launch the Shell](#launch-the-shell)
 - [Launch RStudio](#launch-rstudio)
@@ -74,7 +97,7 @@ Note: Each tutorial may have specific inputs depending on the resource needs and
 
 <div class="process-list ul" markdown="1">
 
-{% include setup/ood_shell %}
+{% include setup/ood/shell %}
 
 From here, your tutorial may have specific instructions for you to execute.  One of the first steps is often to request a compute note and create a working directory in `/90daydata`, as explained in the [Setting up your workspace](/computing-skills/scinet/user_workspace) tutorial.
 
@@ -154,17 +177,8 @@ Fill the input fields with the following:
 * Wait a moment for the job card to update from “Queued” to “Running”.
 * Click on the “Connect to VSCode Server” button to open a new tab with the VSCode Server interface.
 
-</div>
+</div>-->
 
 
 
-{% if page.takeaways %}
-## Lesson takeaways
-
-<ul>
-  {% for takeaway in page.takeaways %}
-    <li>{{ takeaway }}</li>
-  {% endfor %}
-</ul>
-
-{% endif %}
+{% include takeaways %}

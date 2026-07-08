@@ -1,7 +1,7 @@
 {%- assign _term = include.term %}
 {% assign glossaryattributes = site.data.filter['glossaryattributes'] %}
 {%- assign define = include %}
-{%- capture termatt %}{%- for att in define %}{%- assign att0 = att[0] %}{%- unless att0 == "term" or att0 == "definition" or att0 == "link" %}<li class="usa-collection__meta-item"><b>{{ att0 | replace: "-", " " }}:</b> {{ define[att0] }}</li>{%- endunless %}{%- endfor %}{% if define.link %}<li><a href="{{ define.link }}" class="arrow sm-txt">{{ _term }} Tutorial</a></li>{% endif %}{%- endcapture %}
+{%- capture termatt %}{%- for att in define %}{%- assign att0 = att[0] %}{%- unless glossaryattributes contains att0 %}<li class="usa-collection__meta-item"><b>{{ att0 | replace: "-", " " }}:</b> {{ define[att0] }}</li>{%- endunless %}{%- endfor %}{% if define.link %}<li><a href="{{ define.link }}" class="arrow sm-txt">{{ _term }} Tutorial</a></li>{% endif %}{%- endcapture %}
 
 {%- unless define.definition %}
 {% assign gloss = site.data.glossary['glossary'] %}
@@ -14,9 +14,10 @@
 {%- endif %}
 {%- endunless %}
 
+{% if include.ul %}<ul class="usa-collection collection">{% endif %}
 <li class="usa-collection__item width-full">
     <div class="padding-x-2 usa-collection__body">
-        <b class="usa-collection__heading">{{ _term }}</b>
+        <h5 class="usa-collection__heading{% if include.caps %} cap_title{% endif %}">{{ _term }}</h5>
         {% if define.alt %}<span>({{ define.alt }})</span>{% endif %}
         <p class="usa-collection__description">
             {{ define.definition }}
@@ -24,7 +25,13 @@
         {% if termatt.size > 1 %}
         <ul class="usa-collection__meta">
             {{ termatt }}
+            {% if define.tutorial %}
+            <li class="usa-collection__meta-item">
+                <a href="{{ define.tutorial.url }}" class="arrow sm-txt">{{ define.tutorial.title | default: "Related Tutorial"}}</a>
+            </li>
+            {% endif %}
         </ul>
         {% endif %}
     </div>
 </li>
+{% if include.ul %}</ul>{% endif %}

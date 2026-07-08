@@ -6,7 +6,7 @@ description: A self-check learning assessment tool
 questions:
   - question: "All questions, solutions, responses, and answers can display basic markdown formatting."
     qid: 1 ## This is the id of the question and is used to call it in the markdown
-    solution: "This is a solution to the first question and `includes code formatting` in the response." ## This shows on a Success, or Show Answer if there are no Answers provided
+    solution: This is a solution to the first question and `includes code formatting` in the response. ## This shows on a Success, or Show Answer if there are no Answers provided
   - question: "Custom question titles can be included in the yml if you would like one to be different from the rest"
     title: Each answer has its own response 
     qid: 2
@@ -36,7 +36,12 @@ questions:
       - answer2
       - answer3
     answer: 2  
-    solution: "This is printed if the user gets the answer correct. If this is not included, and there is no \"Response\" attribute, the result will just show \"Success!\" instead"
+    solution: |
+      This is printed if the user gets the answer correct. 
+      If this is not included, and there is no \"Response\" attribute, the result will just show \"Success!\" instead
+      ```
+      Demo Code
+      ```
   - question: "This question has code in the solution.  You can specify that code should be copiable or not."
     qid: 6
     solution: "The code for this component will look something like:  
@@ -44,6 +49,18 @@ questions:
     <code class='copy'>This code can be copied</code>  
     
     <code class='no-copy'>This code can not be copied</code>"
+
+  - question: "Including a \"formatted\" variable makes the solution static and enables more complex markdown formatting."
+    qid: 7
+    formatted: true
+    solution: |
+      Including a \"formatted\" variable makes the solution static and enables more complex markdown formatting.  
+      
+      The code for this component will look something like:  
+      ```bash
+      This is code for this section ## coded with markdown
+      ```
+
 ---
 
 ## Component Examples
@@ -66,7 +83,7 @@ You can put a question by itslf, or you can call it in a group.
 You can also group questions into a self-assessment quiz.  
 If you would like the same question on the page twice, you can use it once in a question component and again in a quiz component.
 
-{% include quiz qid="1,3,5" %}  
+{% include quiz qid="1,3,5,7" %}  
 
 If you want to include a question that does not require an answer, and do not want to include it in the frontmatter with the other questions, you may use the alert component with type "question".
 
@@ -119,6 +136,21 @@ questions:
     <code class='copy'>This code can be copied</code>  
     
     <code class='no-copy'>This code can not be copied</code>"
+
+  - question: "This question has more complex markdown formatting in the solution.  You can specify that code should be copiable or not."
+    qid: 7
+    formatted: true
+    solution: |
+      Including a \"formatted\" variable makes the solution static and enables more complex markdown formatting.
+      The code for this component will look something like:  
+      ```
+      This code can be copied
+      ```
+
+      ```
+      This code can not be copied
+      ```
+      \{: .no-copy}
 ```
 
 #### Using the components
@@ -129,14 +161,14 @@ questions:
 {% include question qid=5 %}
 {% include question qid=6 %}
 
-You can put a question by itslf, or you can call it in a group.
+You can put a question by itself, or you can call it in a group.
 
 {% include question qid="2,3" %}  
 
 You can also group questions into a self-assessment quiz.  
 If you would like the same question on the page twice, you can use it once in a question component and again in a quiz component.
 
-{% include quiz qid="1,3,5" %}  
+{% include quiz qid="1,3,5,7" %}  
 
 If you want to include a question that does not require an answer, and do not want to include it in the frontmatter with the other questions, you may use the alert component with type "question".
 

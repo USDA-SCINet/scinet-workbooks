@@ -3,7 +3,7 @@ title: Unix Commands
 description: Exploration of useful commands in the CLI.
 type: introduction
 index: 2
-tags: [unix] 
+tags: [UNIX] 
 
 language: Bash
 

@@ -10,7 +10,7 @@ wgs: geospatial          # if this is associated with a working group
 type: interactive tutorial
 
 ## Data for filters
-tags: [Raster, GeoCDL]
+tags: [raster, GeoCDL]
 language: R
 packages: [bioperl, biopython]
 
@@ -29,7 +29,7 @@ objectives:
 terms: # use if you want to automatically define terms that are not tags
   - Shell
   - Prompt  
-  - term: Environment Variable 
+  - term: environment variable 
     definition: A key-value pair used to store system or user-specific settings. Examples include `PATH`, which defines the directories the shell searches for commands.  
 materials:
   - "[This is a pdf](./assets/demofile.pdf)"
@@ -76,7 +76,7 @@ wgs: geospatial          # if this is associated with a working group
 type: interactive tutorial
 
 ## Data for filters
-tags: [Raster, GeoCDL]
+tags: [raster, GeoCDL]
 language: R
 packages: [bioperl, biopython]
 
@@ -95,7 +95,7 @@ objectives:
 terms: # use if you want to automatically define terms that are not tags
   - Shell
   - Prompt  
-  - term: Environment Variable 
+  - term: environment variable 
     definition: A key-value pair used to store system or user-specific settings. Examples include `PATH`, which defines the directories the shell searches for commands.  
 materials:
   - "[This is a pdf](./assets/demofile.pdf)"

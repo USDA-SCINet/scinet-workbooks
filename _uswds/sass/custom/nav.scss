@@ -91,6 +91,8 @@
 }
 .wb-select{
   > a{
+    @include u-text('semibold');
+    // color: color($theme-color-secondary-vivid);
     .filtered{
       display: inline-block;
       margin-right: .25rem;

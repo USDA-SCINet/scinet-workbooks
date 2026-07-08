@@ -5,14 +5,14 @@ order: 1
 description: Getting started with Bash on SCINet
 type: interactive tutorial 
 index: 2
-tags: [unix, command line] 
+tags: [UNIX, command line] 
 
 terms:
   - Shell
   - Prompt  
-  - term: Environment Variable 
+  - term: environment variable 
     definition: A key-value pair used to store system or user-specific settings. Examples include `PATH`, which defines the directories the shell searches for commands.
-  - term: PATH
+  - term: path
     definition: "An environment variable specifying directories where the shell looks for executable commands. Adding a directory to `PATH` allows running commands from that directory directly."
   - Command
   - term: alias

@@ -17,9 +17,9 @@ objectives:
 
 terms:
   - Shell
-  - term: Environment variables
+  - term: environment variables
     definition: Key-value pairs that define system-wide settings and influence the behavior of processes.
-  - term: Shell variables
+  - term: shell variables
     definition: Local variables used within the shell session for temporary configurations and scripting purposes.
 
 applications: 

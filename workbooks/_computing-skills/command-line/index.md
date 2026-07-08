@@ -4,20 +4,20 @@ description: "Important command-line skills for navigating and managing files in
 
 index: 1
 order: 2
-tags: [unix, command line]
+tags: [UNIX, command line]
 
 type: introduction
 
 cli-terms:
-  - term: Command Line Interface
+  - term: command line interface
     Key-difference: "It's a concept, not a specific software. CLI describes the environment in which commands are entered and executed."
-  - term: Terminal
+  - term: terminal
     Key-difference: "A terminal is just the container or access point for the CLI, but it doesn't process the commands itself."
-  - term: Shell
+  - term: shell
     Key-difference: "The shell is a program running within the terminal to interpret and execute commands. Different shells have unique features and syntax." 
     Examples: "Unix shell: Bash, Zsh, ksh, tcsh"
     link: "/computing-skills/command-line/unix" 
-  - term: Command Line
+  - term: command line
     Key-difference: "The command line is a specific part of the CLI environment." 
     Examples: "Usually preceded by a prompt, e.g., <code>user@host:~$</code> in Unix/Linux or <code>C:\\></code> in Windows."
 
@@ -27,9 +27,9 @@ cli-terms:
 terms:
   - Shell
   - Prompt  
-  - term: Environment Variable 
+  - term: environment variable 
     definition: A key-value pair used to store system or user-specific settings. Examples include `PATH`, which defines the directories the shell searches for commands.
-  - term: PATH
+  - term: path
     definition: "An environment variable specifying directories where the shell looks for executable commands. Adding a directory to `PATH` allows running commands from that directory directly."
   - Command
   - term: alias

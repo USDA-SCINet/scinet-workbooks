@@ -6,8 +6,9 @@ author: [Aleksandra Badaczewska, The SCINet Office]
 index: 1
 order: 1
 
-tags: [unix, command line]
-terms: [SCINet supercomputers, Supercomputer, HPC, Local Machine, Remote Machine, Open OnDemand, Web Browser, Unix Shell, Command Line Interface, Command]
+tags: [SCINet]
+terms: [SCINet supercomputers, supercomputer, HPC, open ondemand, web browser, ssh]
+# terms: [SCINet supercomputers, supercomputer, HPC, local machine, remote machine, open ondemand, web browser, Unix shell, command line interface, command]
 
 objectives:
 - Introduce the SCINet Initiative and its mission in advancing scientific computing.
@@ -18,13 +19,12 @@ objectives:
 
 overview: [objectives, terminology]
 
-
+note: "This is our guide to using SCINet.  <br>For the quickstart guide to getting started with these workbooks, see [Getting Started with the SCINet Workbooks](/about)."
 ---
-
 
 {% include overviews %}
 
-### What is SCINet?
+## What is SCINet?
 
 The SCINet initiative is an effort by the USDA [Agricultural Research Service (ARS)](https://www.ars.usda.gov/) to grow USDA’s research capacity by providing scientists with access to high-performance computing clusters, high-speed networking for data transfer, and training in scientific computing.
 
@@ -37,7 +37,7 @@ The SCINet initiative is an effort by the USDA [Agricultural Research Service (A
 ## Accessing SCINet
 
 <div class="process-list" markdown="1">
-{% include setup/scinet_access %}
+{% include segment/scinet_access %}
 
 ### Start onboarding
 
@@ -50,7 +50,9 @@ Users who are new to the HPC environment may benefit from the [SCINet/Ceres onbo
 
 User Guide: [Differences between Ceres and Atlas](https://scinet.usda.gov/guides/resources/CeresAtlasDifferences)
 
-{% include setup/scinet_login keep="true" %}
+{% include segment/scinet_login keep="true" %}
+
+</div>
 
 
 ## Next steps
@@ -59,53 +61,50 @@ Before moving on to subject-specific tutorials in areas such as [computing skill
 [bioinformatics](/bioinformatics/), or [geospatial](/geospatial/) analysis, it’s important to first complete the introductory SCINet workbooks tutorials. 
 These foundational exercises will help you configure your workspace and project setup, and familiarize you with the available software options on SCINet supsrcomputers.
 
+<div class="process-list" markdown="1">
+
 ### Explore interfaces and file system
 
-As a new user, begin by exploring the SCINet interfaces and navigating the core areas of the file system. 
+As a new user, begin by navigating the core areas of the file system. 
 These steps provide concise, practical guidance and will greatly facilitate your work on the system.
 
-* **(selected)** [Accessing interfaces on SCINet](/computing-skills/scinet/interfaces) *(Shell, RStudio, JupyterLab, VS Code)*
-* **(required)** [File system on Atlas and Ceres supercomputers](/computing-skills/scinet/file_system)
+* [File system on Atlas and Ceres supercomputers](file_system)
+* [Accessing different development environments on SCINet](https://scinet.usda.gov/guides/ide/) *(RStudio, JupyterLab, VS Code)*
 
 ### Set up user workspace
 
-<div class="highlighted highlighted--basic"><div class="highlighted__body" markdown="1"> 
-SCINet account provides you 30 GB of storage space on Ceres and Atlas in a home directory `/home/<username>/`. 
+SCINet account provides you 30 GB of storage space on Ceres and Atlas in a home directory `/home/<user_name>/`. 
 You can also use collaborative space in `/90daydata/shared`.
-</div></div>
 
 With your SCINet account activated, you can quickly configure a **personal workspace** to work through the tutorials provided in this workbook. 
-* **(required)** [Setting up your workspace]()
+* [Setting up your workspace](user_workspace)
 * **(optional)** [Customizing your shell](/computing-skills/command-line/configuration/)
 
 ### Set up project workspace
 
-<div class="highlighted highlighted--basic"><div class="highlighted__body" markdown="1"> 
-Users are advised to [request a SCINet project](https://scinet.usda.gov/support/request#project-request) with additional storage space. Requests for new projects must be submitted by a full-time ARS employee. Other users gain access to a project once they are added as members of the project group. SCINet project storage allocations are located in project directories `/project/<project_name>/` on both supercomputers.
-</div></div>
+Research project leads are advised to [request a SCINet project](https://scinet.usda.gov/support/request#project-request) with additional storage space. Requests for new projects must be submitted by a full-time ARS employee. Other users gain access to a project once they are added as members of the project group. SCINet project storage allocations are located in project directories `/project/<project_name>/` on both supercomputers.
 
 With your SCINet project approved, set up the **project workspace** to launch your research tasks.
-* **(required)** [Project setup on SCINet’s supercomputers](/computing-skills/scinet/project_setup)
+* [Project setup on SCINet’s supercomputers](project_setup)
 
 ### Set up software environment
 
-<div class="highlighted highlighted--basic"><div class="highlighted__body" markdown="1"> 
 Each SCINet cluster has software preinstalled on it. Some general software is available in the global environment 
 but most specialized scientific software is managed by the Module system. Some software packages are available on SCINet as pre-built container images. 
 If users need packages that are not available, they can either [request VRSC to add packages](https://scinet.usda.gov/support/request#software-request), 
 or they can download and install packages in their `/project` directories. 
-</div></div>
 
 With your first computing task underway, set up the **software environment** for efficient workflows.
-* **(required)** [Setting up a reproducible environment](/computing-skills/scinet/environment)
+* [Setting up a reproducible environment](environment)
 
 </div>
 
 
 ## Where to get help?
 
-* [SCINet FAQs](https://scinet.usda.gov/support/faq#faqs)
-* [SCINet user guides](https://scinet.usda.gov/guides/#scinet-guides-list)
+* [SCINet user guides](https://scinet.usda.gov/guides/)
+* [SCINet FAQs](https://scinet.usda.gov/support/faq)
+* [SCINet Forum](https://forum.scinet.usda.gov/)
 * [Contact the VRSC](mailto:scinet_vrsc@iastate.edu)
 
-You're now ready to join SCINet community! 
+Welcome to the SCINet community! 

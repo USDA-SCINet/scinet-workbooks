@@ -1,0 +1,5 @@
+Access selected SCINet supercomputer in your web browser: *([detailed OOD guide](https://scinet.usda.gov/guides/use/open-ondemand))*  
+{%- unless page.cluster == "Atlas" %}
+* Log in to [Ceres Open OnDemand](http://ceres-ood.scinet.usda.gov/).  {%- endunless %}{%- unless page.cluster == "Ceres" %}  
+* Log in to [Atlas Open OnDemand](https://atlas-ood.hpc.msstate.edu/).  
+{% endunless %}  

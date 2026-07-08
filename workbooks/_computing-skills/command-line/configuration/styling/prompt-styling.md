@@ -4,7 +4,7 @@ title: "Shell prompt styling"
 description: "Adjusting the shell prompt appearance to display dynamic information such as the user, working directory and more."
 type: interactive tutorial
 order: 2
-tags: [unix, customization]
+tags: [UNIX, customization]
 author: Aleksandra Badaczewska
 
 objectives:

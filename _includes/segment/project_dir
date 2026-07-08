@@ -4,7 +4,7 @@
 
 <div class="usa-accordion" data-allow-multiple style="margin-top: 1em;">
 
-{% include accordion title="/project/<span style='font-weight: 300;'>&emsp; project storage with quota (Atlas/Ceres); recommended for installations</span>" class="info" controls="proj-1" icon=false %}
+{% include accordion title="/project/<span class='h-note'>&emsp; project storage with quota (Atlas/Ceres); recommended for installations</span>" class="info" controls="proj-1" icon=false %}
 <div id="proj-1" class="accordion_content" markdown='1' hidden> 
 <https://scinet.usda.gov/guides/data/storage#project-directories>
 ```bash
@@ -17,7 +17,7 @@ cd /project/<project_name>          # on Atlas or Ceres
   - Data that cannot be easily reproduced should be manually copied to [Juno](https://scinet.usda.gov/guides/data/storage#juno-archive-storage).
 </div>
 
-{% include accordion title="/90daydata/<span style='font-weight: 300;'>&emsp; large short-term storage without quota (Atlas/Ceres) for computations</span>" class="info" controls="proj-2" icon=false %}
+{% include accordion title="/90daydata/<span class='h-note'>&emsp; large short-term storage without quota (Atlas/Ceres) for computations</span>" class="info" controls="proj-2" icon=false %}
 <div id="proj-2" class="accordion_content" markdown='1' hidden> 
 <https://scinet.usda.gov/guides/data/storage#large-short-term-storage>
 ```bash
@@ -29,7 +29,7 @@ cd /90daydata/<project_name>        # on Atlas or Ceres
   - Data that cannot be easily reproduced should be manually copied to [Juno](https://scinet.usda.gov/guides/data/storage#juno-archive-storage).
 </div>
 
-{% include accordion title="/LTS/project/<span style='font-weight: 300;'>&emsp; ARS archive storage device on Juno</span>" class="info" controls="proj-3" icon=false %}
+{% include accordion title="/LTS/project/<span class='h-note'>&emsp; ARS archive storage device on Juno</span>" class="info" controls="proj-3" icon=false %}
 <div id="proj-3" class="accordion_content" markdown='1' hidden> 
 <https://scinet.usda.gov/guides/data/storage#juno-archive-storage>
 ```bash

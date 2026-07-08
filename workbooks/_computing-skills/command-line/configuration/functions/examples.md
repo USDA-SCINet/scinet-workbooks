@@ -4,7 +4,7 @@ title: "Shell Function examples"
 description: "Examples of practical functions you may wish to use in your scripts."
 type: reference material
 order: 3
-tags: [unix, customization]
+tags: [UNIX, customization]
 author: Aleksandra Badaczewska
 
 ---

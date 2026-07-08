@@ -6,10 +6,9 @@
     {% assign glosstags = gloss | map: 'terms' | uniq %}
 
     {% assign glosscompile = gloss | map: 'compile' | uniq %}
-    
 
-    {% assign gloss_letters = gloss | sort: 'term' 
-    | group_by_exp: "item", "item.term | slice: 0, 1" %}
+    {% assign gloss_letters = gloss | sort_natural: 'term' 
+    | group_by_exp: "item", "item.term | capitalize | slice: 0, 1" %}
     
     {% for letter in gloss_letters %}
     {% assign termlist = "" %}

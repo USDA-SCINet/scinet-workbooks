@@ -5,6 +5,10 @@
     margin-top: 1em;
 }
 
+li > .usa-accordion {
+    margin-top: 1em;
+}
+
 .accordion_content {
     @extend .usa-accordion__content;
     overflow:visible;
@@ -12,4 +16,17 @@
 
  .usa-accordion {
     @extend .usa-accordion--bordered;
+}
+
+.usa-accordion__button > .h-note {
+    font-weight: 300;
+}
+
+/* .inset {
+    margin-left: 24px;
+    margin-top: 12px;
+} */
+
+details summary { 
+    cursor: pointer; 
 }

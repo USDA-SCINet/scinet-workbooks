@@ -24,7 +24,7 @@ applications:
   - Writing <b>README</b> files at the project and workspace levels to document workflows and decision points.
   - Ensuring reproducibility and collaboration by maintaining organized structures and consistent documentation.
 
-terms: [File System, Directory Tree, Project Directory, Access Permissions, Storage, Quota, Workspace, Working Directory, Scratch Space, Raw Data, Documentation, README, Reproducibility]
+terms: [file system, directory tree, project directory, access permissions, storage, quota, workspace, working directory, scratch space, raw data, documentation, readme, reproducibility]
 
 takeaways: 
   - A well-structured directory tree (project setup) is the foundation of efficient and reproducible research. 
@@ -152,34 +152,29 @@ questions:
   - question: "Create a new pipeline workspace in your <b>`/90daydata/shared/<user>`</b> directory with subdirectories for numbered steps (e.g., `01_data_prep`, `02_analysis`, `03_final_report`). Add a `README.md` file at the top level that describes the purpose of each subdirectory. What commands would you use?"
     title: "You Try! Create Your First Workspace"
     qid: 13
+    formatted: true
     solution: |
       Example solution:  
       ```bash
       mkdir -p /90daydata/shared/$USER   
-      ```
-      ```bash
       cd /90daydata/shared/$USER 
-      ```
-      ```bash 
       mkdir -p pipeline_workspace/{01_data_prep,02_analysis,03_final_report}  
-      ```
-      ```bash
       cd pipeline_workspace  
-      ```
-      ```bash
       nano README.md   # or use your preferred editor  
       ```
-      *README.md content (example):*
-      <div class="highlighted highlighted--basic"><div class="highlighted__body" markdown="0" icon="false">
-      # Pipeline Workspace <br>
-      - Goal: Create a simple template for well-organized project structure <br>
-      - location: @Ceres:/90daydata/shared/alex.badacz/pipeline_workspace <br>
-      - created: Oct 2025 <br><br>
-      ## Directory Tree <br> 
-      - **01_data_prep/**: preparing raw input files: file integrity, format validation, initial pre-processing <br>
-      - **02_analysis/**: main analysis steps, exploratory data analysis <br>
-      - **03_final_report/**: selected final results, summary tables, plots, notes on key insights <br>
-      </div></div>
+
+      *Example README.md content:*
+      ```
+      # Pipeline Workspace 
+      - Goal: Create a simple template for well-organized project structure  
+      - location: @Ceres:/90daydata/shared/alex.badacz/pipeline_workspace  
+      - created: Oct 2025   
+
+      ## Directory Tree   
+      - **01_data_prep/**: preparing raw input files: file integrity, format validation, initial pre-processing  
+      - **02_analysis/**: main analysis steps, exploratory data analysis  
+      - **03_final_report/**: selected final results, summary tables, plots, notes on key insights  
+      ```
       This structure keeps project data organized and makes workflows easier to reproduce.
 
 ---
@@ -202,15 +197,17 @@ This tutorial introduces best practices for setting up research projects on SCIN
 
 First, you will log in through **Open OnDemand (OOD)** and use the shell to access SCINet file system locations.
 
-<div class="usa-accordion" style="margin-top: 1em;">
+<!--{% comment %} <div class="usa-accordion" style="margin-top: 1em;">
 
 {% include accordion title="<h3 style='margin: 0; border-bottom: none; font-size: 1.1em; display: inline;'>Access the shell via SCINet OOD</h3><span style='font-weight: 300;'>(required) used for accessing supercomputers</span>" class="primary" controls="access-scinet" icon=false %}
 <div id="access-scinet" class="accordion_content" markdown='1' hidden> 
-{% include setup/scinet_access %}
-{% include setup/scinet_login %}
-{% include setup/ood_shell %}
+{% include segment/scinet_access %}
+{% include segment/scinet_login %}
+{% include setup/ood/shell %}
 </div>
-</div>
+</div> {% endcomment %}-->
+
+{% include setup/ood/accord shell=true %}
 
 The goal is to help you manage research projects efficiently by choosing the right location for your pipeline workspace and structuring it wisely, making effective use of temporary storage within system limits, and maintaining clear documentation for reproducibility and collaboration.
 
@@ -376,7 +373,7 @@ Before completing this section, it is recommended that you first go through the 
 
 ### Storage types on SCINet
 
-{% include setup/storage_types %}
+{% include segment/storage_types %}
 
 ### Check Your Quota
 
@@ -745,12 +742,4 @@ Submit a [Resources Request](https://scinet.usda.gov/support/request#request-res
 </div>
 </div>
 
-{% if page.takeaways %}
-## Best Practices
-
-<ul>
-  {% for takeaway in page.takeaways %}
-    <li>{{ takeaway }}</li>
-  {% endfor %}
-</ul>
-{% endif %}
+{% include takeaways title="Best Practices" %}

@@ -1,0 +1,5 @@
+{%- assign questions = page.questions %}{% assign qid = include.qid %}
+{%- assign q = questions | find: "qid", qid %}
+{% if q %}
+{% include form/quiz/answer q=q qid=qid %}
+{% endif %}

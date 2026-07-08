@@ -73,6 +73,10 @@ packages:
     lang: R
     description: Create Elegant Data Visualisations Using the Grammar of Graphics
     url: https://cran.r-project.org/web/packages/ggplot2/index.html
+  - name: renv
+    lang: R
+    description: The renv package helps you create reproducible environments for your R projects.
+    url: https://cran.r-project.org/web/packages/renv/index.html
   - name: rasterstats
     lang: Python
     description: Summarizes geospatial raster datasets based on vector geometries
@@ -101,3 +105,15 @@ packages:
     url: https://github.com/sat-utils/sat-search
     description: Discovering/downloading satellite imagery using a STAC compliant API
     lang: Python
+  - name: venv
+    description: "A built-in Python module used to create isolated virtual environments"
+    lang: Python
+    url: https://docs.python.org/3/library/venv.html
+  - name: pip
+    lang: Python
+    description: "pip is the package installer for Python"
+    url: https://pypi.org/project/pip/
+  - name: ipykernel
+    lang: Python
+    description: This package provides the IPython kernel for Jupyter.
+    url: https://pypi.org/project/ipykernel/

@@ -3,7 +3,7 @@ title: Demo File 1 - Introduction to file structure
 description: This is a demo structure example
 
 author: Moe Richert
-tags: [Artificial Intelligence]
+tags: [artificial intelligence]
 packages: sf
 language: R
 description: This is a demo - demo number 1

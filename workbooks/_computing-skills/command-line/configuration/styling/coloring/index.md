@@ -5,7 +5,7 @@ description: "Color-based highlighting of command outputs."
 type: interactive tutorial
 order: 3
 index: 4
-tags: [unix, customization]
+tags: [UNIX, customization]
 author: Aleksandra Badaczewska
 
 objectives:
@@ -16,7 +16,7 @@ objectives:
 terms:
   - term: ANSI escape codes
     definition: Special sequences used in the terminal to control text appearance (color, bold, underline).
-  - term: Configuration file
+  - term: configuration file
     definition: Text file like `.bashrc` or `.bash_profile` that define environment variables and other shell settings, including text coloring and prompt styles.
 
 applications:

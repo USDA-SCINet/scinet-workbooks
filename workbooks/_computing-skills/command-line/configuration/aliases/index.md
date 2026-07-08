@@ -4,7 +4,7 @@ title: "Alias definition and usage"
 description: "Simplify complex or frequently used commands with user-defined abbreviations."
 type: lesson module
 order: 7
-tags: [unix, customization, bashrc]
+tags: [UNIX, customization, bashrc]
 author: Aleksandra Badaczewska
 
 index: 3
@@ -24,7 +24,7 @@ concepts:
 terms:
   - Bash shell
   - Configuration file
-  - term: Command substitution
+  - term: command substitution
     definition: A technique used to enhance aliases by embedding dynamic commands.
 
 applications:
