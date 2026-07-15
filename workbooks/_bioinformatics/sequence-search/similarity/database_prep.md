@@ -54,16 +54,16 @@ Before beginning this tutorial, you should be comfortable with:
 
 ## Software requirements
 
-This tutorial requires the NCBI BLAST+ command-line tools.
+This tutorial requires the NCBI BLAST+ command-line tools. There are five flavors of BLAST, each with its own query and database type. The query type and database type jointly determine which BLAST program should be used. For example, blastx translates a nucleotide query and searches a protein database, whereas tblastn searches a translated nucleotide database using a protein query.
 
-The following programs will be used:
 
-* makeblastdb
-* blastdbcmd
-* blastp
-* blastx
-* blastn
-* tblastn
+| Query type            | Database type         | Program   |
+| --------------------- | --------------------- | --------- |
+| Nucleotide            | Nucleotide            | `blastn`  |
+| Protein               | Protein               | `blastp`  |
+| Translated nucleotide | Protein               | `blastx`  |
+| Protein               | Translated nucleotide | `tblastn` |
+| Translated nucleotide | Translated nucleotide | `tblastx` |
 
 
 Verify that BLAST+ is available:
@@ -111,16 +111,7 @@ ATGCGTACGTAGCTAGCTAGCTAGCTAGCTAGCTAGC...
 >scaffold_002
 GGCATCGATCGATCGATCGATCGATCGATCGATCGA...
 ```
-There are five flavors of BLAST, each with its own query and database type. The query type and database type jointly determine which BLAST program should be used. For example, blastx translates a nucleotide query and searches a protein database, whereas tblastn searches a translated nucleotide database using a protein query.
 
-
-| Query type            | Database type         | Program   |
-| --------------------- | --------------------- | --------- |
-| Nucleotide            | Nucleotide            | `blastn`  |
-| Protein               | Protein               | `blastp`  |
-| Translated nucleotide | Protein               | `blastx`  |
-| Protein               | Translated nucleotide | `tblastn` |
-| Translated nucleotide | Translated nucleotide | `tblastx` |
 
 
 ## 1. Create a working directory
